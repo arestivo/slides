@@ -1,0 +1,947 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="cardinality.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.24748737"
+     inkscape:cx="660.27648"
+     inkscape:cy="117.42605"
+     inkscape:document-units="px"
+     inkscape:current-layer="g3113-7-4"
+     showgrid="false"
+     inkscape:window-width="796"
+     inkscape:window-height="861"
+     inkscape:window-x="800"
+     inkscape:window-y="37"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g3542"
+       transform="translate(0,14.515403)"
+       inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+       inkscape:export-xdpi="74"
+       inkscape:export-ydpi="74">
+      <g
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         transform="matrix(0.03794642,0,0,-0.03794642,218.481,352.7193)"
+         id="g2987">
+        <path
+           style="fill:#000000"
+           inkscape:connector-curvature="0"
+           d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+           id="path2989" />
+      </g>
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         d="m 72.740558,334.53714 q 0,-2.2673 -1.61459,-3.8819 -1.614588,-1.61459 -3.881924,-1.61459 -2.267285,0 -3.881872,1.61459 -1.614588,1.6146 -1.614588,3.8819 0,2.2673 1.614588,3.88189 1.614587,1.61459 3.881872,1.61459 2.267336,0 3.881924,-1.61459 1.61459,-1.61459 1.61459,-3.88189 z m 1.236673,-10.99297 h 34.902689 l -3.05742,-12.26403 q -0.0687,-0.27482 -0.48095,-0.60118 -0.41222,-0.32635 -0.72141,-0.32635 H 78.237018 q -0.309194,0 -0.721418,0.32635 -0.412224,0.32636 -0.480945,0.60118 z m 47.132389,10.99297 q 0,-2.2673 -1.61464,-3.8819 -1.61459,-1.61459 -3.88187,-1.61459 -2.26729,0 -3.88188,1.61459 -1.61458,1.6146 -1.61458,3.8819 0,2.2673 1.61458,3.88189 1.61459,1.61459 3.88188,1.61459 2.26728,0 3.88187,-1.61459 1.61464,-1.61459 1.61464,-3.88189 z m 5.49646,-3.29789 v 13.19156 q 0,0.48094 -0.30919,0.79012 -0.30915,0.30917 -0.79009,0.30917 h -3.2979 v 4.39719 q 0,2.74824 -1.92378,4.67201 -1.92378,1.92377 -4.67201,1.92377 -2.74823,0 -4.67201,-1.92377 -1.92379,-1.92377 -1.92379,-4.67201 V 345.5301 H 73.83984 v 4.39719 q 0,2.74824 -1.923782,4.67201 -1.923784,1.92377 -4.672014,1.92377 -2.74823,0 -4.672012,-1.92377 -1.923781,-1.92377 -1.923781,-4.67201 v -4.39719 h -3.297846 q -0.480945,0 -0.790139,-0.30917 -0.309194,-0.30918 -0.309194,-0.79012 v -13.19156 q 0,-3.19483 2.25013,-5.44496 2.25013,-2.25012 5.444945,-2.25012 h 0.961891 l 3.607091,-14.39392 q 0.790088,-3.22919 3.572681,-5.4106 2.782642,-2.18142 6.149208,-2.18142 h 26.383122 q 3.36661,0 6.1492,2.18142 2.78259,2.18141 3.57273,5.4106 l 3.60704,14.39392 h 0.96189 q 3.19482,0 5.44495,2.25012 2.25013,2.25013 2.25013,5.44496 z"
+         id="path3001" />
+      <g
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         transform="translate(0,-0.13144984)"
+         id="g3113">
+        <path
+           id="path3001-1"
+           d="m 72.740552,422.88608 q 0,-2.2673 -1.61459,-3.8819 -1.614588,-1.61459 -3.881924,-1.61459 -2.267285,0 -3.881872,1.61459 -1.614588,1.6146 -1.614588,3.8819 0,2.2673 1.614588,3.88189 1.614587,1.61459 3.881872,1.61459 2.267336,0 3.881924,-1.61459 1.61459,-1.61459 1.61459,-3.88189 z m 1.236673,-10.99297 h 34.902705 l -3.05742,-12.26403 q -0.0687,-0.27482 -0.48095,-0.60118 -0.41222,-0.32635 -0.72141,-0.32635 H 78.237009 q -0.30919,0 -0.72141,0.32635 -0.412229,0.32636 -0.48095,0.60118 z m 47.132405,10.99297 q 0,-2.2673 -1.61464,-3.8819 -1.61459,-1.61459 -3.88187,-1.61459 -2.26729,0 -3.88188,1.61459 -1.61458,1.6146 -1.61458,3.8819 0,2.2673 1.61458,3.88189 1.61459,1.61459 3.88188,1.61459 2.26728,0 3.88187,-1.61459 1.61464,-1.61459 1.61464,-3.88189 z m 5.49646,-3.29789 v 13.19156 q 0,0.48094 -0.30919,0.79012 -0.30915,0.30917 -0.79009,0.30917 h -3.2979 v 4.39719 q 0,2.74824 -1.92378,4.67201 -1.92378,1.92377 -4.67201,1.92377 -2.74823,0 -4.67201,-1.92377 -1.92379,-1.92377 -1.92379,-4.67201 v -4.39719 H 73.839834 v 4.39719 q 0,2.74824 -1.923782,4.67201 -1.923784,1.92377 -4.672014,1.92377 -2.74823,0 -4.672012,-1.92377 -1.923781,-1.92377 -1.923781,-4.67201 v -4.39719 h -3.297846 q -0.480945,0 -0.790139,-0.30917 -0.309194,-0.30918 -0.309194,-0.79012 v -13.19156 q 0,-3.19483 2.25013,-5.44496 2.25013,-2.25012 5.444945,-2.25012 h 0.961891 l 3.607091,-14.39392 q 0.790088,-3.22919 3.572681,-5.4106 2.782642,-2.18142 6.149205,-2.18142 h 26.383141 q 3.36661,0 6.1492,2.18142 2.78259,2.18141 3.57273,5.4106 l 3.60704,14.39392 h 0.96189 q 3.19482,0 5.44495,2.25012 2.25013,2.25013 2.25013,5.44496 z"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path3001-9"
+           d="m 72.74055,510.97218 q 0,-2.2673 -1.61459,-3.8819 -1.614588,-1.61459 -3.881924,-1.61459 -2.267285,0 -3.881872,1.61459 -1.614588,1.6146 -1.614588,3.8819 0,2.2673 1.614588,3.88189 1.614587,1.61459 3.881872,1.61459 2.267336,0 3.881924,-1.61459 1.61459,-1.61459 1.61459,-3.88189 z m 1.236673,-10.99297 h 34.902707 l -3.05742,-12.26403 q -0.0687,-0.27482 -0.48095,-0.60118 -0.41222,-0.32635 -0.72141,-0.32635 H 78.23701 q -0.309194,0 -0.721418,0.32635 -0.412224,0.32636 -0.480945,0.60118 z m 47.132407,10.99297 q 0,-2.2673 -1.61464,-3.8819 -1.61459,-1.61459 -3.88187,-1.61459 -2.26729,0 -3.88188,1.61459 -1.61458,1.6146 -1.61458,3.8819 0,2.2673 1.61458,3.88189 1.61459,1.61459 3.88188,1.61459 2.26728,0 3.88187,-1.61459 1.61464,-1.61459 1.61464,-3.88189 z m 5.49646,-3.29789 v 13.19156 q 0,0.48094 -0.30919,0.79012 -0.30915,0.30917 -0.79009,0.30917 h -3.2979 v 4.39719 q 0,2.74824 -1.92378,4.67201 -1.92378,1.92377 -4.67201,1.92377 -2.74823,0 -4.67201,-1.92377 -1.92379,-1.92377 -1.92379,-4.67201 v -4.39719 H 73.839832 v 4.39719 q 0,2.74824 -1.923782,4.67201 -1.923784,1.92377 -4.672014,1.92377 -2.74823,0 -4.672012,-1.92377 -1.923781,-1.92377 -1.923781,-4.67201 v -4.39719 h -3.297846 q -0.480945,0 -0.790139,-0.30917 -0.309194,-0.30918 -0.309194,-0.79012 v -13.19156 q 0,-3.19483 2.25013,-5.44496 2.25013,-2.25012 5.444945,-2.25012 h 0.961891 l 3.607091,-14.39392 q 0.790088,-3.22919 3.572681,-5.4106 2.782642,-2.18142 6.149208,-2.18142 h 26.38314 q 3.36661,0 6.1492,2.18142 2.78259,2.18141 3.57273,5.4106 l 3.60704,14.39392 h 0.96189 q 3.19482,0 5.44495,2.25012 2.25013,2.25013 2.25013,5.44496 z"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         transform="translate(-2e-6,-9.9414062e-6)"
+         id="g3117">
+        <path
+           id="path3001-6"
+           d="m 72.740554,599.05825 q 0,-2.2673 -1.61459,-3.8819 -1.614588,-1.61459 -3.881924,-1.61459 -2.267285,0 -3.881872,1.61459 -1.614588,1.6146 -1.614588,3.8819 0,2.2673 1.614588,3.88189 1.614587,1.61459 3.881872,1.61459 2.267336,0 3.881924,-1.61459 1.61459,-1.61459 1.61459,-3.88189 z m 1.236673,-10.99297 h 34.902703 l -3.05742,-12.26403 q -0.0687,-0.27482 -0.48095,-0.60118 -0.41222,-0.32635 -0.72141,-0.32635 H 78.237014 q -0.309194,0 -0.721418,0.32635 -0.412224,0.32636 -0.480945,0.60118 z m 47.132403,10.99297 q 0,-2.2673 -1.61464,-3.8819 -1.61459,-1.61459 -3.88187,-1.61459 -2.26729,0 -3.88188,1.61459 -1.61458,1.6146 -1.61458,3.8819 0,2.2673 1.61458,3.88189 1.61459,1.61459 3.88188,1.61459 2.26728,0 3.88187,-1.61459 1.61464,-1.61459 1.61464,-3.88189 z m 5.49646,-3.29789 v 13.19156 q 0,0.48094 -0.30919,0.79012 -0.30915,0.30917 -0.79009,0.30917 h -3.2979 v 4.39719 q 0,2.74824 -1.92378,4.67201 -1.92378,1.92377 -4.67201,1.92377 -2.74823,0 -4.67201,-1.92377 -1.92379,-1.92377 -1.92379,-4.67201 v -4.39719 H 73.839836 v 4.39719 q 0,2.74824 -1.923782,4.67201 -1.923784,1.92377 -4.672014,1.92377 -2.74823,0 -4.672012,-1.92377 -1.923781,-1.92377 -1.923781,-4.67201 v -4.39719 h -3.297846 q -0.480945,0 -0.790139,-0.30917 -0.309194,-0.30918 -0.309194,-0.79012 v -13.19156 q 0,-3.19483 2.25013,-5.44496 2.25013,-2.25012 5.444945,-2.25012 h 0.961891 l 3.607091,-14.39392 q 0.790088,-3.22919 3.572681,-5.4106 2.782642,-2.18142 6.149208,-2.18142 h 26.383126 q 3.36661,0 6.14921,2.18142 2.78259,2.18141 3.57273,5.4106 l 3.60704,14.39392 h 0.96189 q 3.19481,0 5.44495,2.25012 2.25013,2.25013 2.25013,5.44496 z"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path3001-5"
+           d="m 72.740555,687.14439 q 0,-2.2673 -1.61459,-3.8819 -1.614588,-1.61459 -3.881924,-1.61459 -2.267285,0 -3.881872,1.61459 -1.614588,1.6146 -1.614588,3.8819 0,2.2673 1.614588,3.88189 1.614587,1.61459 3.881872,1.61459 2.267336,0 3.881924,-1.61459 1.61459,-1.61459 1.61459,-3.88189 z m 1.236673,-10.99297 h 34.902692 l -3.05742,-12.26403 q -0.0687,-0.27482 -0.48095,-0.60118 -0.41222,-0.32635 -0.72141,-0.32635 H 78.23701 q -0.30919,0 -0.72141,0.32635 -0.41223,0.32636 -0.48095,0.60118 z m 47.132392,10.99297 q 0,-2.2673 -1.61464,-3.8819 -1.61459,-1.61459 -3.88187,-1.61459 -2.26729,0 -3.88188,1.61459 -1.61458,1.6146 -1.61458,3.8819 0,2.2673 1.61458,3.88189 1.61459,1.61459 3.88188,1.61459 2.26728,0 3.88187,-1.61459 1.61464,-1.61459 1.61464,-3.88189 z m 5.49646,-3.29789 v 13.19156 q 0,0.48094 -0.30919,0.79012 -0.30915,0.30917 -0.79009,0.30917 h -3.2979 v 4.39719 q 0,2.74824 -1.92378,4.67201 -1.92378,1.92377 -4.67201,1.92377 -2.74823,0 -4.67201,-1.92377 -1.92379,-1.92377 -1.92379,-4.67201 v -4.39719 H 73.839837 v 4.39719 q 0,2.74824 -1.923782,4.67201 -1.923784,1.92377 -4.672015,1.92377 -2.748229,0 -4.672012,-1.92377 -1.923781,-1.92377 -1.923781,-4.67201 v -4.39719 h -3.297846 q -0.480945,0 -0.790139,-0.30917 -0.309194,-0.30918 -0.309194,-0.79012 V 683.8465 q 0,-3.19483 2.25013,-5.44496 2.25013,-2.25012 5.444945,-2.25012 h 0.961891 l 3.607091,-14.39392 q 0.790088,-3.22919 3.572681,-5.4106 2.782642,-2.18142 6.149203,-2.18142 h 26.383131 q 3.36661,0 6.1492,2.18142 2.78259,2.18141 3.57273,5.4106 l 3.60704,14.39392 h 0.96189 q 3.19482,0 5.44495,2.25012 2.25013,2.25013 2.25013,5.44496 z"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         transform="matrix(0.03794642,0,0,-0.03794642,218.481,485.11121)"
+         id="g2987-7">
+        <path
+           style="fill:#000000"
+           inkscape:connector-curvature="0"
+           d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+           id="path2989-6" />
+      </g>
+      <g
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         transform="matrix(0.03794642,0,0,-0.03794642,218.481,661.2834)"
+         id="g2987-7-4">
+        <path
+           style="fill:#000000"
+           inkscape:connector-curvature="0"
+           d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+           id="path2989-6-3" />
+      </g>
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         id="path3138"
+         d="m 137.77611,423.07647 72.14286,44.28571"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path3140"
+         d="m 138.86986,510.93361 69.95536,-41.11607"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         id="path3142"
+         d="m 139.20468,335.21932 69.28572,0"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         id="path3138-7"
+         d="m 137.77611,596.29076 72.14286,44.28571"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         sodipodi:nodetypes="cc"
+         inkscape:connector-curvature="0"
+         id="path3140-4"
+         d="M 138.91067,684.1479 208.7844,644.51248"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <g
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         transform="translate(0,6.4775085)"
+         id="g3490">
+        <text
+           xml:space="preserve"
+           style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu Condensed;-inkscape-font-specification:'Ubuntu Condensed,'"
+           x="81.032593"
+           y="272.26819"
+           id="text3165"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3167"
+             x="81.032593"
+             y="272.26819">car</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu Condensed;-inkscape-font-specification:'Ubuntu Condensed,'"
+           x="205.89008"
+           y="272.83521"
+           id="text3169"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3171"
+             x="205.89008"
+             y="272.83521">employee</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu Condensed;-inkscape-font-specification:'Ubuntu Condensed,'"
+           x="173.55301"
+           y="213.358"
+           id="text3165-0"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             x="173.55301"
+             y="213.358"
+             id="tspan3194"
+             style="font-size:20px;text-align:center;text-anchor:middle">many-to-one</tspan><tspan
+             sodipodi:role="line"
+             x="173.55301"
+             y="238.358"
+             id="tspan3198"
+             style="font-size:20px;text-align:center;text-anchor:middle">N:1</tspan></text>
+      </g>
+      <g
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         transform="matrix(0.03794642,0,0,-0.03794642,218.481,574.61218)"
+         id="g2987-4">
+        <path
+           style="fill:#000000"
+           inkscape:connector-curvature="0"
+           d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+           id="path2989-1" />
+      </g>
+    </g>
+    <g
+       id="g3572"
+       transform="translate(450.52803,14.515403)"
+       inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+       inkscape:export-xdpi="74"
+       inkscape:export-ydpi="74">
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         d="m 524.40535,368.51397 h 12.15278 v -3.0382 h -12.15278 v 3.0382 z m -8.35508,0 v 30.38198 h -1.51906 q -2.1837,0 -3.75028,-1.56657 -1.56658,-1.56657 -1.56658,-3.75028 v -19.74829 q 0,-2.1837 1.56658,-3.75027 1.56658,-1.56657 3.75028,-1.56657 h 1.51906 z m 26.58425,0 v 30.38198 h -24.30557 v -30.38198 h 3.03818 v -3.79775 q 0,-0.94944 0.66463,-1.61405 0.66459,-0.6646 1.61401,-0.6646 h 13.67189 q 0.94946,0 1.61405,0.6646 0.66463,0.66461 0.66463,1.61405 v 3.79775 h 3.03818 z m 9.1146,5.31684 v 19.74829 q 0,2.18371 -1.56658,3.75028 -1.56657,1.56657 -3.75027,1.56657 h -1.51911 v -30.38198 h 1.51911 q 2.1837,0 3.75027,1.56657 1.56658,1.56657 1.56658,3.75027 z"
+         id="path3051" />
+      <g
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         transform="matrix(0.03794642,0,0,-0.03794642,381.81169,374.04075)"
+         id="g2987-9">
+        <path
+           style="fill:#000000"
+           inkscape:connector-curvature="0"
+           d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+           id="path2989-4" />
+      </g>
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         d="m 524.40535,494.14844 h 12.15278 v -3.0382 h -12.15278 v 3.0382 z m -8.35508,0 v 30.38198 h -1.51906 q -2.1837,0 -3.75028,-1.56657 -1.56658,-1.56657 -1.56658,-3.75028 v -19.74829 q 0,-2.1837 1.56658,-3.75027 1.56658,-1.56657 3.75028,-1.56657 h 1.51906 z m 26.58425,0 v 30.38198 h -24.30557 v -30.38198 h 3.03818 v -3.79775 q 0,-0.94944 0.66463,-1.61405 0.66459,-0.6646 1.61401,-0.6646 h 13.67189 q 0.94946,0 1.61405,0.6646 0.66463,0.66461 0.66463,1.61405 v 3.79775 h 3.03818 z m 9.1146,5.31684 v 19.74829 q 0,2.18371 -1.56658,3.75028 -1.56657,1.56657 -3.75027,1.56657 h -1.51911 v -30.38198 h 1.51911 q 2.1837,0 3.75027,1.56657 1.56658,1.56657 1.56658,3.75027 z"
+         id="path3051-4" />
+      <g
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         transform="matrix(0.03794642,0,0,-0.03794642,381.81169,448.53297)"
+         id="g2987-9-4">
+        <path
+           style="fill:#000000"
+           inkscape:connector-curvature="0"
+           d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+           id="path2989-4-2" />
+      </g>
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         d="m 524.40535,619.78288 h 12.15278 v -3.0382 h -12.15278 v 3.0382 z m -8.35508,0 v 30.38198 h -1.51906 q -2.1837,0 -3.75028,-1.56657 -1.56658,-1.56657 -1.56658,-3.75028 v -19.74829 q 0,-2.1837 1.56658,-3.75027 1.56658,-1.56657 3.75028,-1.56657 h 1.51906 z m 26.58425,0 v 30.38198 h -24.30557 v -30.38198 h 3.03818 v -3.79775 q 0,-0.94944 0.66463,-1.61405 0.66459,-0.6646 1.61401,-0.6646 h 13.67189 q 0.94946,0 1.61405,0.6646 0.66463,0.66461 0.66463,1.61405 v 3.79775 h 3.03818 z m 9.1146,5.31684 v 19.74829 q 0,2.18371 -1.56658,3.75028 -1.56657,1.56657 -3.75027,1.56657 h -1.51911 v -30.38198 h 1.51911 q 2.1837,0 3.75027,1.56657 1.56658,1.56657 1.56658,3.75027 z"
+         id="path3051-7" />
+      <g
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         transform="matrix(0.03794642,0,0,-0.03794642,381.81169,525.30456)"
+         id="g2987-9-9">
+        <path
+           style="fill:#000000"
+           inkscape:connector-curvature="0"
+           d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+           id="path2989-4-20" />
+      </g>
+      <g
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         transform="matrix(0.03794642,0,0,-0.03794642,381.81169,600.05585)"
+         id="g2987-9-3">
+        <path
+           style="fill:#000000"
+           inkscape:connector-curvature="0"
+           d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+           id="path2989-4-6" />
+      </g>
+      <g
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         transform="matrix(0.03794642,0,0,-0.03794642,381.81169,673.79699)"
+         id="g2987-9-92">
+        <path
+           style="fill:#000000"
+           inkscape:connector-curvature="0"
+           d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+           id="path2989-4-60" />
+      </g>
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         id="path3299"
+         d="m 428.30468,353.13357 73.74114,29.29442"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         id="path3301"
+         d="m 428.30468,365.2554 72.73098,267.69043"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         id="path3303"
+         d="M 429.31483,427.88486 501.03566,386.4686"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         id="path3305"
+         d="M 429.31483,504.65645 501.03566,393.53967"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         id="path3307"
+         d="m 429.31483,575.36713 74.75129,-65.65992"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         id="path3309"
+         d="M 429.31483,648.09811 502.04582,513.74783"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <g
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         transform="translate(0,6.4775085)"
+         id="g3481">
+        <text
+           xml:space="preserve"
+           style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu Condensed;-inkscape-font-specification:'Ubuntu Condensed,'"
+           x="369.22076"
+           y="272.83521"
+           id="text3165-3"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3167-2"
+             x="369.22076"
+             y="272.83521">employee</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu Condensed;-inkscape-font-specification:'Ubuntu Condensed,'"
+           x="506.52316"
+           y="272.43918"
+           id="text3169-8"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3171-1"
+             x="506.52316"
+             y="272.43918">project</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu Condensed;-inkscape-font-specification:'Ubuntu Condensed,'"
+           x="466.22995"
+           y="213.358"
+           id="text3165-0-1"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             x="466.22995"
+             y="213.358"
+             id="tspan3194-4"
+             style="font-size:20px;text-align:center;text-anchor:middle">many-to-many</tspan><tspan
+             sodipodi:role="line"
+             x="466.22995"
+             y="238.358"
+             id="tspan3198-6"
+             style="font-size:20px;text-align:center;text-anchor:middle">N:N</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g3601"
+       transform="translate(-268.197,15.943977)"
+       inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+       inkscape:export-xdpi="74"
+       inkscape:export-ydpi="74">
+      <g
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         transform="matrix(0.03794642,0,0,-0.03794642,703.42858,376.16263)"
+         id="g2987-9-8">
+        <path
+           style="fill:#000000"
+           inkscape:connector-curvature="0"
+           d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+           id="path2989-4-9" />
+      </g>
+      <g
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         transform="matrix(0.03794642,0,0,-0.03794642,703.42858,450.65485)"
+         id="g2987-9-4-6">
+        <path
+           style="fill:#000000"
+           inkscape:connector-curvature="0"
+           d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+           id="path2989-4-2-1" />
+      </g>
+      <g
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         transform="matrix(0.03794642,0,0,-0.03794642,703.42858,527.42644)"
+         id="g2987-9-9-5">
+        <path
+           style="fill:#000000"
+           inkscape:connector-curvature="0"
+           d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+           id="path2989-4-20-7" />
+      </g>
+      <g
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         transform="matrix(0.03794642,0,0,-0.03794642,703.42858,602.17773)"
+         id="g2987-9-3-2">
+        <path
+           style="fill:#000000"
+           inkscape:connector-curvature="0"
+           d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+           id="path2989-4-6-9" />
+      </g>
+      <g
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         transform="matrix(0.03794642,0,0,-0.03794642,703.42858,675.9189)"
+         id="g2987-9-92-4">
+        <path
+           style="fill:#000000"
+           inkscape:connector-curvature="0"
+           d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+           id="path2989-4-60-8" />
+      </g>
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         id="path3424"
+         d="m 754.28571,355.21933 98.57143,10"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         id="path3426"
+         d="M 750,428.07647 854.28571,545.21933"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         id="path3428"
+         d="M 751.42857,579.50504 852.85714,456.6479"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         id="path3430"
+         d="m 752.85714,652.36218 97.14286,-20"
+         style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <g
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         transform="translate(0,-5.0489349)"
+         id="g3472">
+        <text
+           xml:space="preserve"
+           style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu Condensed;-inkscape-font-specification:'Ubuntu Condensed,'"
+           x="706.21362"
+           y="285.79022"
+           id="text3165-3-3"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3167-2-4"
+             x="706.21362"
+             y="285.79022">employee</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu Condensed;-inkscape-font-specification:'Ubuntu Condensed,'"
+           x="869.51605"
+           y="285.3942"
+           id="text3169-8-7"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3171-1-8"
+             x="869.51605"
+             y="285.3942">team</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu Condensed;-inkscape-font-specification:'Ubuntu Condensed,'"
+           x="812.93713"
+           y="223.45587"
+           id="text3165-0-1-3"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             x="812.93713"
+             y="223.45587"
+             id="tspan3198-6-7"
+             style="font-size:20px;text-align:center;text-anchor:middle">one-to-one</tspan><tspan
+             sodipodi:role="line"
+             x="812.93713"
+             y="248.45587"
+             style="font-size:20px;text-align:center;text-anchor:middle"
+             id="tspan3470">1:1</tspan></text>
+      </g>
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         d="m 874.77052,357.35916 q -4.0226,0.12416 -6.5801,3.17835 h -3.3273 q -2.0361,0 -3.4267,-1.00565 -1.3905,-1.00565 -1.3905,-2.94245 0,-8.76527 3.079,-8.76527 0.149,0 1.0802,0.52145 0.9311,0.52144 2.421,1.05531 1.4898,0.53386 2.9548,0.53386 1.6637,0 3.3025,-0.57111 -0.1242,0.91874 -0.1242,1.63884 0,3.45147 2.0113,6.35667 z m 26.5938,15.81722 q 0,2.97969 -1.8126,4.70543 -1.8127,1.72574 -4.8172,1.72574 h -21.7021 q -3.0045,0 -4.81719,-1.72574 -1.8126,-1.72574 -1.8126,-4.70543 0,-1.31603 0.087,-2.56999 0.087,-1.25396 0.3476,-2.70656 0.2607,-1.4526 0.658,-2.69414 0.3973,-1.24153 1.0678,-2.421 0.6704,-1.17946 1.5395,-2.01129 0.869,-0.83183 2.123,-1.32845 1.254,-0.49661 2.7686,-0.49661 0.2483,0 1.0677,0.53386 0.8195,0.53386 1.8127,1.19187 0.9932,0.65802 2.6569,1.19188 1.66369,0.53387 3.35209,0.53387 1.6885,0 3.3522,-0.53387 1.6637,-0.53386 2.6569,-1.19188 0.9932,-0.65801 1.8126,-1.19187 0.8195,-0.53386 1.0678,-0.53386 1.5146,0 2.7686,0.49661 1.254,0.49662 2.123,1.32845 0.8691,0.83183 1.5395,2.01129 0.6705,1.17947 1.0678,2.421 0.3973,1.24154 0.65801,2.69414 0.2607,1.4526 0.3476,2.70656 0.087,1.25396 0.087,2.56999 z m -25.4267,-31.70892 q 0,2.63206 -1.8623,4.49437 -1.8623,1.86231 -4.4944,1.86231 -2.6321,0 -4.4944,-1.86231 -1.8623,-1.86231 -1.8623,-4.49437 0,-2.63206 1.8623,-4.49437 1.8623,-1.86231 4.4944,-1.86231 2.6321,0 4.4944,1.86231 1.8623,1.86231 1.8623,4.49437 z m 17.4809,9.53503 q 0,3.94809 -2.7935,6.74155 -2.7935,2.79347 -6.7416,2.79347 -3.94809,0 -6.74149,-2.79347 -2.7935,-2.79346 -2.7935,-6.74155 0,-3.9481 2.7935,-6.74156 2.7934,-2.79347 6.74149,-2.79347 3.9481,0 6.7416,2.79347 2.7935,2.79346 2.7935,6.74156 z m 14.3025,5.58692 q 0,1.9368 -1.3905,2.94245 -1.39059,1.00565 -3.4267,1.00565 h -3.3273 q -2.5575,-3.05419 -6.5801,-3.17835 2.0113,-2.9052 2.0113,-6.35667 0,-0.7201 -0.1242,-1.63884 1.6388,0.57111 3.3025,0.57111 1.465,0 2.9548,-0.53386 1.4899,-0.53387 2.421,-1.05531 0.9312,-0.52145 1.0802,-0.52145 3.079,0 3.079,8.76527 z m -3.1783,-15.12195 q 0,2.63206 -1.8623,4.49437 -1.8623,1.86231 -4.4944,1.86231 -2.6321,0 -4.4944,-1.86231 -1.8623,-1.86231 -1.8623,-4.49437 0,-2.63206 1.8623,-4.49437 1.8623,-1.86231 4.4944,-1.86231 2.6321,0 4.4944,1.86231 1.8623,1.86231 1.8623,4.49437 z"
+         id="path3501" />
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         d="m 874.77052,447.60545 q -4.0226,0.12416 -6.5801,3.17835 h -3.3273 q -2.0361,0 -3.4267,-1.00565 -1.3905,-1.00565 -1.3905,-2.94245 0,-8.76527 3.079,-8.76527 0.149,0 1.0802,0.52145 0.9311,0.52144 2.421,1.05531 1.4898,0.53386 2.9548,0.53386 1.6637,0 3.3025,-0.57111 -0.1242,0.91874 -0.1242,1.63884 0,3.45147 2.0113,6.35667 z m 26.5938,15.81722 q 0,2.97969 -1.8126,4.70543 -1.8127,1.72574 -4.8172,1.72574 h -21.7021 q -3.0045,0 -4.81719,-1.72574 -1.8126,-1.72574 -1.8126,-4.70543 0,-1.31603 0.087,-2.56999 0.087,-1.25396 0.3476,-2.70656 0.2607,-1.4526 0.658,-2.69414 0.3973,-1.24153 1.0678,-2.421 0.6704,-1.17946 1.5395,-2.01129 0.869,-0.83183 2.123,-1.32845 1.254,-0.49661 2.7686,-0.49661 0.2483,0 1.0677,0.53386 0.8195,0.53386 1.8127,1.19187 0.9932,0.65802 2.6569,1.19188 1.66369,0.53387 3.35209,0.53387 1.6885,0 3.3522,-0.53387 1.6637,-0.53386 2.6569,-1.19188 0.9932,-0.65801 1.8126,-1.19187 0.8195,-0.53386 1.0678,-0.53386 1.5146,0 2.7686,0.49661 1.254,0.49662 2.123,1.32845 0.8691,0.83183 1.5395,2.01129 0.6705,1.17947 1.0678,2.421 0.3973,1.24154 0.65801,2.69414 0.2607,1.4526 0.3476,2.70656 0.087,1.25396 0.087,2.56999 z m -25.4267,-31.70892 q 0,2.63206 -1.8623,4.49437 -1.8623,1.86231 -4.4944,1.86231 -2.6321,0 -4.4944,-1.86231 -1.8623,-1.86231 -1.8623,-4.49437 0,-2.63206 1.8623,-4.49437 1.8623,-1.86231 4.4944,-1.86231 2.6321,0 4.4944,1.86231 1.8623,1.86231 1.8623,4.49437 z m 17.4809,9.53503 q 0,3.94809 -2.7935,6.74155 -2.7935,2.79347 -6.7416,2.79347 -3.94809,0 -6.74149,-2.79347 -2.7935,-2.79346 -2.7935,-6.74155 0,-3.9481 2.7935,-6.74156 2.7934,-2.79347 6.74149,-2.79347 3.9481,0 6.7416,2.79347 2.7935,2.79346 2.7935,6.74156 z m 14.3025,5.58692 q 0,1.9368 -1.3905,2.94245 -1.39059,1.00565 -3.4267,1.00565 h -3.3273 q -2.5575,-3.05419 -6.5801,-3.17835 2.0113,-2.9052 2.0113,-6.35667 0,-0.7201 -0.1242,-1.63884 1.6388,0.57111 3.3025,0.57111 1.465,0 2.9548,-0.53386 1.4899,-0.53387 2.421,-1.05531 0.9312,-0.52145 1.0802,-0.52145 3.079,0 3.079,8.76527 z m -3.1783,-15.12195 q 0,2.63206 -1.8623,4.49437 -1.8623,1.86231 -4.4944,1.86231 -2.6321,0 -4.4944,-1.86231 -1.8623,-1.86231 -1.8623,-4.49437 0,-2.63206 1.8623,-4.49437 1.8623,-1.86231 4.4944,-1.86231 2.6321,0 4.4944,1.86231 1.8623,1.86231 1.8623,4.49437 z"
+         id="path3501-7" />
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         d="m 874.77052,537.8518 q -4.0226,0.12416 -6.5801,3.17835 h -3.3273 q -2.0361,0 -3.4267,-1.00565 -1.3905,-1.00565 -1.3905,-2.94245 0,-8.76527 3.079,-8.76527 0.149,0 1.0802,0.52145 0.9311,0.52144 2.421,1.05531 1.4898,0.53386 2.9548,0.53386 1.6637,0 3.3025,-0.57111 -0.1242,0.91874 -0.1242,1.63884 0,3.45147 2.0113,6.35667 z m 26.5938,15.81722 q 0,2.97969 -1.8126,4.70543 -1.8127,1.72574 -4.8172,1.72574 h -21.7021 q -3.0045,0 -4.81719,-1.72574 -1.8126,-1.72574 -1.8126,-4.70543 0,-1.31603 0.087,-2.56999 0.087,-1.25396 0.3476,-2.70656 0.2607,-1.4526 0.658,-2.69414 0.3973,-1.24153 1.0678,-2.421 0.6704,-1.17946 1.5395,-2.01129 0.869,-0.83183 2.123,-1.32845 1.254,-0.49661 2.7686,-0.49661 0.2483,0 1.0677,0.53386 0.8195,0.53386 1.8127,1.19187 0.9932,0.65802 2.6569,1.19188 1.66369,0.53387 3.35209,0.53387 1.6885,0 3.3522,-0.53387 1.6637,-0.53386 2.6569,-1.19188 0.9932,-0.65801 1.8126,-1.19187 0.8195,-0.53386 1.0678,-0.53386 1.5146,0 2.7686,0.49661 1.254,0.49662 2.123,1.32845 0.8691,0.83183 1.5395,2.01129 0.6705,1.17947 1.0678,2.421 0.3973,1.24154 0.65801,2.69414 0.2607,1.4526 0.3476,2.70656 0.087,1.25396 0.087,2.56999 z m -25.4267,-31.70892 q 0,2.63206 -1.8623,4.49437 -1.8623,1.86231 -4.4944,1.86231 -2.6321,0 -4.4944,-1.86231 -1.8623,-1.86231 -1.8623,-4.49437 0,-2.63206 1.8623,-4.49437 1.8623,-1.86231 4.4944,-1.86231 2.6321,0 4.4944,1.86231 1.8623,1.86231 1.8623,4.49437 z m 17.4809,9.53503 q 0,3.94809 -2.7935,6.74155 -2.7935,2.79347 -6.7416,2.79347 -3.94809,0 -6.74149,-2.79347 -2.7935,-2.79346 -2.7935,-6.74155 0,-3.9481 2.7935,-6.74156 2.7934,-2.79347 6.74149,-2.79347 3.9481,0 6.7416,2.79347 2.7935,2.79346 2.7935,6.74156 z m 14.3025,5.58692 q 0,1.9368 -1.3905,2.94245 -1.39059,1.00565 -3.4267,1.00565 h -3.3273 q -2.5575,-3.05419 -6.5801,-3.17835 2.0113,-2.9052 2.0113,-6.35667 0,-0.7201 -0.1242,-1.63884 1.6388,0.57111 3.3025,0.57111 1.465,0 2.9548,-0.53386 1.4899,-0.53387 2.421,-1.05531 0.9312,-0.52145 1.0802,-0.52145 3.079,0 3.079,8.76527 z m -3.1783,-15.12195 q 0,2.63206 -1.8623,4.49437 -1.8623,1.86231 -4.4944,1.86231 -2.6321,0 -4.4944,-1.86231 -1.8623,-1.86231 -1.8623,-4.49437 0,-2.63206 1.8623,-4.49437 1.8623,-1.86231 4.4944,-1.86231 2.6321,0 4.4944,1.86231 1.8623,1.86231 1.8623,4.49437 z"
+         id="path3501-4" />
+      <path
+         inkscape:export-ydpi="74"
+         inkscape:export-xdpi="74"
+         inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+         inkscape:connector-curvature="0"
+         d="m 874.77053,628.09811 q -4.02261,0.12416 -6.58011,3.17835 h -3.3273 q -2.0361,0 -3.4267,-1.00565 -1.3905,-1.00565 -1.3905,-2.94245 0,-8.76527 3.079,-8.76527 0.149,0 1.0802,0.52145 0.9311,0.52144 2.421,1.05531 1.4898,0.53386 2.9548,0.53386 1.6637,0 3.3025,-0.57111 -0.12419,0.91874 -0.12419,1.63884 0,3.45147 2.0113,6.35667 z m 26.59379,15.81722 q 0,2.97969 -1.81259,4.70543 -1.8127,1.72574 -4.8172,1.72574 h -21.7021 q -3.0045,0 -4.8172,-1.72574 -1.8126,-1.72574 -1.8126,-4.70543 0,-1.31603 0.087,-2.56999 0.087,-1.25396 0.3476,-2.70656 0.2607,-1.4526 0.658,-2.69414 0.3973,-1.24153 1.0678,-2.421 0.6704,-1.17946 1.5395,-2.01129 0.869,-0.83183 2.123,-1.32845 1.254,-0.49661 2.7686,-0.49661 0.2483,0 1.0677,0.53386 0.8195,0.53386 1.8127,1.19187 0.9932,0.65802 2.6569,1.19188 1.6637,0.53387 3.3521,0.53387 1.6885,0 3.3522,-0.53387 1.6637,-0.53386 2.6569,-1.19188 0.9932,-0.65801 1.8126,-1.19187 0.81949,-0.53386 1.0678,-0.53386 1.5146,0 2.7686,0.49661 1.254,0.49662 2.123,1.32845 0.8691,0.83183 1.5395,2.01129 0.6705,1.17947 1.0678,2.421 0.3973,1.24154 0.658,2.69414 0.2607,1.4526 0.3476,2.70656 0.087,1.25396 0.087,2.56999 z m -25.42669,-31.70892 q 0,2.63206 -1.8623,4.49437 -1.8623,1.86231 -4.49441,1.86231 -2.6321,0 -4.4944,-1.86231 -1.8623,-1.86231 -1.8623,-4.49437 0,-2.63206 1.8623,-4.49437 1.8623,-1.86231 4.4944,-1.86231 2.63211,0 4.49441,1.86231 1.8623,1.86231 1.8623,4.49437 z m 17.4809,9.53503 q 0,3.94809 -2.7935,6.74155 -2.7935,2.79347 -6.7416,2.79347 -3.9481,0 -6.7415,-2.79347 -2.7935,-2.79346 -2.7935,-6.74155 0,-3.9481 2.7935,-6.74156 2.7934,-2.79347 6.7415,-2.79347 3.9481,0 6.7416,2.79347 2.7935,2.79346 2.7935,6.74156 z m 14.3025,5.58692 q 0,1.9368 -1.3905,2.94245 -1.3906,1.00565 -3.4267,1.00565 h -3.3273 q -2.5575,-3.05419 -6.5801,-3.17835 2.0113,-2.9052 2.0113,-6.35667 0,-0.7201 -0.1242,-1.63884 1.6388,0.57111 3.3025,0.57111 1.465,0 2.9548,-0.53386 1.4899,-0.53387 2.421,-1.05531 0.9312,-0.52145 1.0802,-0.52145 3.079,0 3.079,8.76527 z m -3.1783,-15.12195 q 0,2.63206 -1.8623,4.49437 -1.86231,1.86231 -4.49441,1.86231 -2.6321,0 -4.4944,-1.86231 -1.8623,-1.86231 -1.8623,-4.49437 0,-2.63206 1.8623,-4.49437 1.8623,-1.86231 4.4944,-1.86231 2.6321,0 4.49441,1.86231 1.8623,1.86231 1.8623,4.49437 z"
+         id="path3501-8" />
+    </g>
+    <g
+       id="g3542-1"
+       transform="translate(247.47288,740.15124)"
+       inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/participation.png"
+       inkscape:export-xdpi="74"
+       inkscape:export-ydpi="74">
+      <g
+         id="g3752">
+        <g
+           id="g2987-6"
+           transform="matrix(0.03794642,0,0,-0.03794642,218.481,352.7193)"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74">
+          <path
+             id="path2989-8"
+             d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+             inkscape:connector-curvature="0"
+             style="fill:#000000" />
+        </g>
+        <path
+           id="path3001-2"
+           d="m 72.740558,334.53714 q 0,-2.2673 -1.61459,-3.8819 -1.614588,-1.61459 -3.881924,-1.61459 -2.267285,0 -3.881872,1.61459 -1.614588,1.6146 -1.614588,3.8819 0,2.2673 1.614588,3.88189 1.614587,1.61459 3.881872,1.61459 2.267336,0 3.881924,-1.61459 1.61459,-1.61459 1.61459,-3.88189 z m 1.236673,-10.99297 h 34.902689 l -3.05742,-12.26403 q -0.0687,-0.27482 -0.48095,-0.60118 -0.41222,-0.32635 -0.72141,-0.32635 H 78.237018 q -0.309194,0 -0.721418,0.32635 -0.412224,0.32636 -0.480945,0.60118 z m 47.132389,10.99297 q 0,-2.2673 -1.61464,-3.8819 -1.61459,-1.61459 -3.88187,-1.61459 -2.26729,0 -3.88188,1.61459 -1.61458,1.6146 -1.61458,3.8819 0,2.2673 1.61458,3.88189 1.61459,1.61459 3.88188,1.61459 2.26728,0 3.88187,-1.61459 1.61464,-1.61459 1.61464,-3.88189 z m 5.49646,-3.29789 v 13.19156 q 0,0.48094 -0.30919,0.79012 -0.30915,0.30917 -0.79009,0.30917 h -3.2979 v 4.39719 q 0,2.74824 -1.92378,4.67201 -1.92378,1.92377 -4.67201,1.92377 -2.74823,0 -4.67201,-1.92377 -1.92379,-1.92377 -1.92379,-4.67201 V 345.5301 H 73.83984 v 4.39719 q 0,2.74824 -1.923782,4.67201 -1.923784,1.92377 -4.672014,1.92377 -2.74823,0 -4.672012,-1.92377 -1.923781,-1.92377 -1.923781,-4.67201 v -4.39719 h -3.297846 q -0.480945,0 -0.790139,-0.30917 -0.309194,-0.30918 -0.309194,-0.79012 v -13.19156 q 0,-3.19483 2.25013,-5.44496 2.25013,-2.25012 5.444945,-2.25012 h 0.961891 l 3.607091,-14.39392 q 0.790088,-3.22919 3.572681,-5.4106 2.782642,-2.18142 6.149208,-2.18142 h 26.383122 q 3.36661,0 6.1492,2.18142 2.78259,2.18141 3.57273,5.4106 l 3.60704,14.39392 h 0.96189 q 3.19482,0 5.44495,2.25012 2.25013,2.25013 2.25013,5.44496 z"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74" />
+        <g
+           id="g3113-7"
+           transform="translate(0,-0.13144984)"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74">
+          <path
+             inkscape:connector-curvature="0"
+             d="m 72.740552,422.88608 q 0,-2.2673 -1.61459,-3.8819 -1.614588,-1.61459 -3.881924,-1.61459 -2.267285,0 -3.881872,1.61459 -1.614588,1.6146 -1.614588,3.8819 0,2.2673 1.614588,3.88189 1.614587,1.61459 3.881872,1.61459 2.267336,0 3.881924,-1.61459 1.61459,-1.61459 1.61459,-3.88189 z m 1.236673,-10.99297 h 34.902705 l -3.05742,-12.26403 q -0.0687,-0.27482 -0.48095,-0.60118 -0.41222,-0.32635 -0.72141,-0.32635 H 78.237009 q -0.30919,0 -0.72141,0.32635 -0.412229,0.32636 -0.48095,0.60118 z m 47.132405,10.99297 q 0,-2.2673 -1.61464,-3.8819 -1.61459,-1.61459 -3.88187,-1.61459 -2.26729,0 -3.88188,1.61459 -1.61458,1.6146 -1.61458,3.8819 0,2.2673 1.61458,3.88189 1.61459,1.61459 3.88188,1.61459 2.26728,0 3.88187,-1.61459 1.61464,-1.61459 1.61464,-3.88189 z m 5.49646,-3.29789 v 13.19156 q 0,0.48094 -0.30919,0.79012 -0.30915,0.30917 -0.79009,0.30917 h -3.2979 v 4.39719 q 0,2.74824 -1.92378,4.67201 -1.92378,1.92377 -4.67201,1.92377 -2.74823,0 -4.67201,-1.92377 -1.92379,-1.92377 -1.92379,-4.67201 v -4.39719 H 73.839834 v 4.39719 q 0,2.74824 -1.923782,4.67201 -1.923784,1.92377 -4.672014,1.92377 -2.74823,0 -4.672012,-1.92377 -1.923781,-1.92377 -1.923781,-4.67201 v -4.39719 h -3.297846 q -0.480945,0 -0.790139,-0.30917 -0.309194,-0.30918 -0.309194,-0.79012 v -13.19156 q 0,-3.19483 2.25013,-5.44496 2.25013,-2.25012 5.444945,-2.25012 h 0.961891 l 3.607091,-14.39392 q 0.790088,-3.22919 3.572681,-5.4106 2.782642,-2.18142 6.149205,-2.18142 h 26.383141 q 3.36661,0 6.1492,2.18142 2.78259,2.18141 3.57273,5.4106 l 3.60704,14.39392 h 0.96189 q 3.19482,0 5.44495,2.25012 2.25013,2.25013 2.25013,5.44496 z"
+             id="path3001-1-2" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 72.74055,510.97218 q 0,-2.2673 -1.61459,-3.8819 -1.614588,-1.61459 -3.881924,-1.61459 -2.267285,0 -3.881872,1.61459 -1.614588,1.6146 -1.614588,3.8819 0,2.2673 1.614588,3.88189 1.614587,1.61459 3.881872,1.61459 2.267336,0 3.881924,-1.61459 1.61459,-1.61459 1.61459,-3.88189 z m 1.236673,-10.99297 h 34.902707 l -3.05742,-12.26403 q -0.0687,-0.27482 -0.48095,-0.60118 -0.41222,-0.32635 -0.72141,-0.32635 H 78.23701 q -0.309194,0 -0.721418,0.32635 -0.412224,0.32636 -0.480945,0.60118 z m 47.132407,10.99297 q 0,-2.2673 -1.61464,-3.8819 -1.61459,-1.61459 -3.88187,-1.61459 -2.26729,0 -3.88188,1.61459 -1.61458,1.6146 -1.61458,3.8819 0,2.2673 1.61458,3.88189 1.61459,1.61459 3.88188,1.61459 2.26728,0 3.88187,-1.61459 1.61464,-1.61459 1.61464,-3.88189 z m 5.49646,-3.29789 v 13.19156 q 0,0.48094 -0.30919,0.79012 -0.30915,0.30917 -0.79009,0.30917 h -3.2979 v 4.39719 q 0,2.74824 -1.92378,4.67201 -1.92378,1.92377 -4.67201,1.92377 -2.74823,0 -4.67201,-1.92377 -1.92379,-1.92377 -1.92379,-4.67201 v -4.39719 H 73.839832 v 4.39719 q 0,2.74824 -1.923782,4.67201 -1.923784,1.92377 -4.672014,1.92377 -2.74823,0 -4.672012,-1.92377 -1.923781,-1.92377 -1.923781,-4.67201 v -4.39719 h -3.297846 q -0.480945,0 -0.790139,-0.30917 -0.309194,-0.30918 -0.309194,-0.79012 v -13.19156 q 0,-3.19483 2.25013,-5.44496 2.25013,-2.25012 5.444945,-2.25012 h 0.961891 l 3.607091,-14.39392 q 0.790088,-3.22919 3.572681,-5.4106 2.782642,-2.18142 6.149208,-2.18142 h 26.38314 q 3.36661,0 6.1492,2.18142 2.78259,2.18141 3.57273,5.4106 l 3.60704,14.39392 h 0.96189 q 3.19482,0 5.44495,2.25012 2.25013,2.25013 2.25013,5.44496 z"
+             id="path3001-9-8" />
+        </g>
+        <g
+           id="g3117-8"
+           transform="translate(-2e-6,-9.9414062e-6)"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74">
+          <path
+             inkscape:connector-curvature="0"
+             d="m 72.740554,599.05825 q 0,-2.2673 -1.61459,-3.8819 -1.614588,-1.61459 -3.881924,-1.61459 -2.267285,0 -3.881872,1.61459 -1.614588,1.6146 -1.614588,3.8819 0,2.2673 1.614588,3.88189 1.614587,1.61459 3.881872,1.61459 2.267336,0 3.881924,-1.61459 1.61459,-1.61459 1.61459,-3.88189 z m 1.236673,-10.99297 h 34.902703 l -3.05742,-12.26403 q -0.0687,-0.27482 -0.48095,-0.60118 -0.41222,-0.32635 -0.72141,-0.32635 H 78.237014 q -0.309194,0 -0.721418,0.32635 -0.412224,0.32636 -0.480945,0.60118 z m 47.132403,10.99297 q 0,-2.2673 -1.61464,-3.8819 -1.61459,-1.61459 -3.88187,-1.61459 -2.26729,0 -3.88188,1.61459 -1.61458,1.6146 -1.61458,3.8819 0,2.2673 1.61458,3.88189 1.61459,1.61459 3.88188,1.61459 2.26728,0 3.88187,-1.61459 1.61464,-1.61459 1.61464,-3.88189 z m 5.49646,-3.29789 v 13.19156 q 0,0.48094 -0.30919,0.79012 -0.30915,0.30917 -0.79009,0.30917 h -3.2979 v 4.39719 q 0,2.74824 -1.92378,4.67201 -1.92378,1.92377 -4.67201,1.92377 -2.74823,0 -4.67201,-1.92377 -1.92379,-1.92377 -1.92379,-4.67201 v -4.39719 H 73.839836 v 4.39719 q 0,2.74824 -1.923782,4.67201 -1.923784,1.92377 -4.672014,1.92377 -2.74823,0 -4.672012,-1.92377 -1.923781,-1.92377 -1.923781,-4.67201 v -4.39719 h -3.297846 q -0.480945,0 -0.790139,-0.30917 -0.309194,-0.30918 -0.309194,-0.79012 v -13.19156 q 0,-3.19483 2.25013,-5.44496 2.25013,-2.25012 5.444945,-2.25012 h 0.961891 l 3.607091,-14.39392 q 0.790088,-3.22919 3.572681,-5.4106 2.782642,-2.18142 6.149208,-2.18142 h 26.383126 q 3.36661,0 6.14921,2.18142 2.78259,2.18141 3.57273,5.4106 l 3.60704,14.39392 h 0.96189 q 3.19481,0 5.44495,2.25012 2.25013,2.25013 2.25013,5.44496 z"
+             id="path3001-6-3" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 72.740555,687.14439 q 0,-2.2673 -1.61459,-3.8819 -1.614588,-1.61459 -3.881924,-1.61459 -2.267285,0 -3.881872,1.61459 -1.614588,1.6146 -1.614588,3.8819 0,2.2673 1.614588,3.88189 1.614587,1.61459 3.881872,1.61459 2.267336,0 3.881924,-1.61459 1.61459,-1.61459 1.61459,-3.88189 z m 1.236673,-10.99297 h 34.902692 l -3.05742,-12.26403 q -0.0687,-0.27482 -0.48095,-0.60118 -0.41222,-0.32635 -0.72141,-0.32635 H 78.23701 q -0.30919,0 -0.72141,0.32635 -0.41223,0.32636 -0.48095,0.60118 z m 47.132392,10.99297 q 0,-2.2673 -1.61464,-3.8819 -1.61459,-1.61459 -3.88187,-1.61459 -2.26729,0 -3.88188,1.61459 -1.61458,1.6146 -1.61458,3.8819 0,2.2673 1.61458,3.88189 1.61459,1.61459 3.88188,1.61459 2.26728,0 3.88187,-1.61459 1.61464,-1.61459 1.61464,-3.88189 z m 5.49646,-3.29789 v 13.19156 q 0,0.48094 -0.30919,0.79012 -0.30915,0.30917 -0.79009,0.30917 h -3.2979 v 4.39719 q 0,2.74824 -1.92378,4.67201 -1.92378,1.92377 -4.67201,1.92377 -2.74823,0 -4.67201,-1.92377 -1.92379,-1.92377 -1.92379,-4.67201 v -4.39719 H 73.839837 v 4.39719 q 0,2.74824 -1.923782,4.67201 -1.923784,1.92377 -4.672015,1.92377 -2.748229,0 -4.672012,-1.92377 -1.923781,-1.92377 -1.923781,-4.67201 v -4.39719 h -3.297846 q -0.480945,0 -0.790139,-0.30917 -0.309194,-0.30918 -0.309194,-0.79012 V 683.8465 q 0,-3.19483 2.25013,-5.44496 2.25013,-2.25012 5.444945,-2.25012 h 0.961891 l 3.607091,-14.39392 q 0.790088,-3.22919 3.572681,-5.4106 2.782642,-2.18142 6.149203,-2.18142 h 26.383131 q 3.36661,0 6.1492,2.18142 2.78259,2.18141 3.57273,5.4106 l 3.60704,14.39392 h 0.96189 q 3.19482,0 5.44495,2.25012 2.25013,2.25013 2.25013,5.44496 z"
+             id="path3001-5-4" />
+        </g>
+        <g
+           id="g2987-7-1"
+           transform="matrix(0.03794642,0,0,-0.03794642,218.481,485.11121)"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74">
+          <path
+             id="path2989-6-8"
+             d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+             inkscape:connector-curvature="0"
+             style="fill:#000000" />
+        </g>
+        <g
+           id="g2987-7-4-4"
+           transform="matrix(0.03794642,0,0,-0.03794642,218.481,661.2834)"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74">
+          <path
+             id="path2989-6-3-6"
+             d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+             inkscape:connector-curvature="0"
+             style="fill:#000000" />
+        </g>
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 137.77611,423.07647 72.14286,44.28571"
+           id="path3138-78"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 138.86986,510.93361 69.95536,-41.11607"
+           id="path3140-43"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 139.20468,335.21932 69.28572,0"
+           id="path3142-3"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 137.77611,596.29076 72.14286,44.28571"
+           id="path3138-7-4"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="M 138.91067,684.1479 208.7844,644.51248"
+           id="path3140-4-0"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74" />
+        <g
+           id="g3490-6"
+           transform="translate(0,6.4775085)"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74">
+          <text
+             sodipodi:linespacing="125%"
+             id="text3165-9"
+             y="272.26819"
+             x="81.032593"
+             style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu Condensed;-inkscape-font-specification:'Ubuntu Condensed,'"
+             xml:space="preserve"><tspan
+               y="272.26819"
+               x="81.032593"
+               id="tspan3167-7"
+               sodipodi:role="line">car</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text3169-4"
+             y="272.83521"
+             x="205.89008"
+             style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu Condensed;-inkscape-font-specification:'Ubuntu Condensed,'"
+             xml:space="preserve"><tspan
+               y="272.83521"
+               x="205.89008"
+               id="tspan3171-4"
+               sodipodi:role="line">employee</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text3165-0-5"
+             y="213.358"
+             x="173.55301"
+             style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu Condensed;-inkscape-font-specification:'Ubuntu Condensed,'"
+             xml:space="preserve"><tspan
+               style="font-size:20px;text-align:center;text-anchor:middle"
+               id="tspan3198-1"
+               y="213.358"
+               x="173.55301"
+               sodipodi:role="line">total:partial</tspan></text>
+        </g>
+        <g
+           style="fill:#888888"
+           id="g2987-4-1"
+           transform="matrix(0.03794642,0,0,-0.03794642,218.481,574.61218)"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74">
+          <path
+             id="path2989-1-1"
+             d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+             inkscape:connector-curvature="0"
+             style="fill:#888888" />
+        </g>
+      </g>
+    </g>
+    <g
+       id="g3542-1-2"
+       transform="translate(689.91969,730.99971)"
+       inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+       inkscape:export-xdpi="74"
+       inkscape:export-ydpi="74">
+      <g
+         id="g3752-8">
+        <g
+           id="g2987-6-1"
+           transform="matrix(0.03794642,0,0,-0.03794642,218.481,352.7193)"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/participation.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74">
+          <path
+             id="path2989-8-6"
+             d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+             inkscape:connector-curvature="0"
+             style="fill:#000000" />
+        </g>
+        <path
+           id="path3001-2-7"
+           d="m 72.740558,334.53714 q 0,-2.2673 -1.61459,-3.8819 -1.614588,-1.61459 -3.881924,-1.61459 -2.267285,0 -3.881872,1.61459 -1.614588,1.6146 -1.614588,3.8819 0,2.2673 1.614588,3.88189 1.614587,1.61459 3.881872,1.61459 2.267336,0 3.881924,-1.61459 1.61459,-1.61459 1.61459,-3.88189 z m 1.236673,-10.99297 h 34.902689 l -3.05742,-12.26403 q -0.0687,-0.27482 -0.48095,-0.60118 -0.41222,-0.32635 -0.72141,-0.32635 H 78.237018 q -0.309194,0 -0.721418,0.32635 -0.412224,0.32636 -0.480945,0.60118 z m 47.132389,10.99297 q 0,-2.2673 -1.61464,-3.8819 -1.61459,-1.61459 -3.88187,-1.61459 -2.26729,0 -3.88188,1.61459 -1.61458,1.6146 -1.61458,3.8819 0,2.2673 1.61458,3.88189 1.61459,1.61459 3.88188,1.61459 2.26728,0 3.88187,-1.61459 1.61464,-1.61459 1.61464,-3.88189 z m 5.49646,-3.29789 v 13.19156 q 0,0.48094 -0.30919,0.79012 -0.30915,0.30917 -0.79009,0.30917 h -3.2979 v 4.39719 q 0,2.74824 -1.92378,4.67201 -1.92378,1.92377 -4.67201,1.92377 -2.74823,0 -4.67201,-1.92377 -1.92379,-1.92377 -1.92379,-4.67201 V 345.5301 H 73.83984 v 4.39719 q 0,2.74824 -1.923782,4.67201 -1.923784,1.92377 -4.672014,1.92377 -2.74823,0 -4.672012,-1.92377 -1.923781,-1.92377 -1.923781,-4.67201 v -4.39719 h -3.297846 q -0.480945,0 -0.790139,-0.30917 -0.309194,-0.30918 -0.309194,-0.79012 v -13.19156 q 0,-3.19483 2.25013,-5.44496 2.25013,-2.25012 5.444945,-2.25012 h 0.961891 l 3.607091,-14.39392 q 0.790088,-3.22919 3.572681,-5.4106 2.782642,-2.18142 6.149208,-2.18142 h 26.383122 q 3.36661,0 6.1492,2.18142 2.78259,2.18141 3.57273,5.4106 l 3.60704,14.39392 h 0.96189 q 3.19482,0 5.44495,2.25012 2.25013,2.25013 2.25013,5.44496 z"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/participation.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74" />
+        <g
+           id="g3113-7-4"
+           transform="translate(0,-0.13144984)"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/cardinality.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74">
+          <path
+             inkscape:connector-curvature="0"
+             d="m 72.740552,422.88608 q 0,-2.2673 -1.61459,-3.8819 -1.614588,-1.61459 -3.881924,-1.61459 -2.267285,0 -3.881872,1.61459 -1.614588,1.6146 -1.614588,3.8819 0,2.2673 1.614588,3.88189 1.614587,1.61459 3.881872,1.61459 2.267336,0 3.881924,-1.61459 1.61459,-1.61459 1.61459,-3.88189 z m 1.236673,-10.99297 h 34.902705 l -3.05742,-12.26403 q -0.0687,-0.27482 -0.48095,-0.60118 -0.41222,-0.32635 -0.72141,-0.32635 H 78.237009 q -0.30919,0 -0.72141,0.32635 -0.412229,0.32636 -0.48095,0.60118 z m 47.132405,10.99297 q 0,-2.2673 -1.61464,-3.8819 -1.61459,-1.61459 -3.88187,-1.61459 -2.26729,0 -3.88188,1.61459 -1.61458,1.6146 -1.61458,3.8819 0,2.2673 1.61458,3.88189 1.61459,1.61459 3.88188,1.61459 2.26728,0 3.88187,-1.61459 1.61464,-1.61459 1.61464,-3.88189 z m 5.49646,-3.29789 v 13.19156 q 0,0.48094 -0.30919,0.79012 -0.30915,0.30917 -0.79009,0.30917 h -3.2979 v 4.39719 q 0,2.74824 -1.92378,4.67201 -1.92378,1.92377 -4.67201,1.92377 -2.74823,0 -4.67201,-1.92377 -1.92379,-1.92377 -1.92379,-4.67201 v -4.39719 H 73.839834 v 4.39719 q 0,2.74824 -1.923782,4.67201 -1.923784,1.92377 -4.672014,1.92377 -2.74823,0 -4.672012,-1.92377 -1.923781,-1.92377 -1.923781,-4.67201 v -4.39719 h -3.297846 q -0.480945,0 -0.790139,-0.30917 -0.309194,-0.30918 -0.309194,-0.79012 v -13.19156 q 0,-3.19483 2.25013,-5.44496 2.25013,-2.25012 5.444945,-2.25012 h 0.961891 l 3.607091,-14.39392 q 0.790088,-3.22919 3.572681,-5.4106 2.782642,-2.18142 6.149205,-2.18142 h 26.383141 q 3.36661,0 6.1492,2.18142 2.78259,2.18141 3.57273,5.4106 l 3.60704,14.39392 h 0.96189 q 3.19482,0 5.44495,2.25012 2.25013,2.25013 2.25013,5.44496 z"
+             id="path3001-1-2-4"
+             style="fill:#888888"
+             inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/participation.png"
+             inkscape:export-xdpi="74"
+             inkscape:export-ydpi="74" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 72.74055,510.97218 q 0,-2.2673 -1.61459,-3.8819 -1.614588,-1.61459 -3.881924,-1.61459 -2.267285,0 -3.881872,1.61459 -1.614588,1.6146 -1.614588,3.8819 0,2.2673 1.614588,3.88189 1.614587,1.61459 3.881872,1.61459 2.267336,0 3.881924,-1.61459 1.61459,-1.61459 1.61459,-3.88189 z m 1.236673,-10.99297 h 34.902707 l -3.05742,-12.26403 q -0.0687,-0.27482 -0.48095,-0.60118 -0.41222,-0.32635 -0.72141,-0.32635 H 78.23701 q -0.309194,0 -0.721418,0.32635 -0.412224,0.32636 -0.480945,0.60118 z m 47.132407,10.99297 q 0,-2.2673 -1.61464,-3.8819 -1.61459,-1.61459 -3.88187,-1.61459 -2.26729,0 -3.88188,1.61459 -1.61458,1.6146 -1.61458,3.8819 0,2.2673 1.61458,3.88189 1.61459,1.61459 3.88188,1.61459 2.26728,0 3.88187,-1.61459 1.61464,-1.61459 1.61464,-3.88189 z m 5.49646,-3.29789 v 13.19156 q 0,0.48094 -0.30919,0.79012 -0.30915,0.30917 -0.79009,0.30917 h -3.2979 v 4.39719 q 0,2.74824 -1.92378,4.67201 -1.92378,1.92377 -4.67201,1.92377 -2.74823,0 -4.67201,-1.92377 -1.92379,-1.92377 -1.92379,-4.67201 v -4.39719 H 73.839832 v 4.39719 q 0,2.74824 -1.923782,4.67201 -1.923784,1.92377 -4.672014,1.92377 -2.74823,0 -4.672012,-1.92377 -1.923781,-1.92377 -1.923781,-4.67201 v -4.39719 h -3.297846 q -0.480945,0 -0.790139,-0.30917 -0.309194,-0.30918 -0.309194,-0.79012 v -13.19156 q 0,-3.19483 2.25013,-5.44496 2.25013,-2.25012 5.444945,-2.25012 h 0.961891 l 3.607091,-14.39392 q 0.790088,-3.22919 3.572681,-5.4106 2.782642,-2.18142 6.149208,-2.18142 h 26.38314 q 3.36661,0 6.1492,2.18142 2.78259,2.18141 3.57273,5.4106 l 3.60704,14.39392 h 0.96189 q 3.19482,0 5.44495,2.25012 2.25013,2.25013 2.25013,5.44496 z"
+             id="path3001-9-8-7"
+             inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/participation.png"
+             inkscape:export-xdpi="74"
+             inkscape:export-ydpi="74" />
+        </g>
+        <g
+           id="g3117-8-9"
+           transform="translate(-2e-6,-9.9414062e-6)"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/participation.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74">
+          <path
+             inkscape:connector-curvature="0"
+             d="m 72.740554,599.05825 q 0,-2.2673 -1.61459,-3.8819 -1.614588,-1.61459 -3.881924,-1.61459 -2.267285,0 -3.881872,1.61459 -1.614588,1.6146 -1.614588,3.8819 0,2.2673 1.614588,3.88189 1.614587,1.61459 3.881872,1.61459 2.267336,0 3.881924,-1.61459 1.61459,-1.61459 1.61459,-3.88189 z m 1.236673,-10.99297 h 34.902703 l -3.05742,-12.26403 q -0.0687,-0.27482 -0.48095,-0.60118 -0.41222,-0.32635 -0.72141,-0.32635 H 78.237014 q -0.309194,0 -0.721418,0.32635 -0.412224,0.32636 -0.480945,0.60118 z m 47.132403,10.99297 q 0,-2.2673 -1.61464,-3.8819 -1.61459,-1.61459 -3.88187,-1.61459 -2.26729,0 -3.88188,1.61459 -1.61458,1.6146 -1.61458,3.8819 0,2.2673 1.61458,3.88189 1.61459,1.61459 3.88188,1.61459 2.26728,0 3.88187,-1.61459 1.61464,-1.61459 1.61464,-3.88189 z m 5.49646,-3.29789 v 13.19156 q 0,0.48094 -0.30919,0.79012 -0.30915,0.30917 -0.79009,0.30917 h -3.2979 v 4.39719 q 0,2.74824 -1.92378,4.67201 -1.92378,1.92377 -4.67201,1.92377 -2.74823,0 -4.67201,-1.92377 -1.92379,-1.92377 -1.92379,-4.67201 v -4.39719 H 73.839836 v 4.39719 q 0,2.74824 -1.923782,4.67201 -1.923784,1.92377 -4.672014,1.92377 -2.74823,0 -4.672012,-1.92377 -1.923781,-1.92377 -1.923781,-4.67201 v -4.39719 h -3.297846 q -0.480945,0 -0.790139,-0.30917 -0.309194,-0.30918 -0.309194,-0.79012 v -13.19156 q 0,-3.19483 2.25013,-5.44496 2.25013,-2.25012 5.444945,-2.25012 h 0.961891 l 3.607091,-14.39392 q 0.790088,-3.22919 3.572681,-5.4106 2.782642,-2.18142 6.149208,-2.18142 h 26.383126 q 3.36661,0 6.14921,2.18142 2.78259,2.18141 3.57273,5.4106 l 3.60704,14.39392 h 0.96189 q 3.19481,0 5.44495,2.25012 2.25013,2.25013 2.25013,5.44496 z"
+             id="path3001-6-3-1" />
+          <path
+             inkscape:connector-curvature="0"
+             d="m 72.740555,687.14439 q 0,-2.2673 -1.61459,-3.8819 -1.614588,-1.61459 -3.881924,-1.61459 -2.267285,0 -3.881872,1.61459 -1.614588,1.6146 -1.614588,3.8819 0,2.2673 1.614588,3.88189 1.614587,1.61459 3.881872,1.61459 2.267336,0 3.881924,-1.61459 1.61459,-1.61459 1.61459,-3.88189 z m 1.236673,-10.99297 h 34.902692 l -3.05742,-12.26403 q -0.0687,-0.27482 -0.48095,-0.60118 -0.41222,-0.32635 -0.72141,-0.32635 H 78.23701 q -0.30919,0 -0.72141,0.32635 -0.41223,0.32636 -0.48095,0.60118 z m 47.132392,10.99297 q 0,-2.2673 -1.61464,-3.8819 -1.61459,-1.61459 -3.88187,-1.61459 -2.26729,0 -3.88188,1.61459 -1.61458,1.6146 -1.61458,3.8819 0,2.2673 1.61458,3.88189 1.61459,1.61459 3.88188,1.61459 2.26728,0 3.88187,-1.61459 1.61464,-1.61459 1.61464,-3.88189 z m 5.49646,-3.29789 v 13.19156 q 0,0.48094 -0.30919,0.79012 -0.30915,0.30917 -0.79009,0.30917 h -3.2979 v 4.39719 q 0,2.74824 -1.92378,4.67201 -1.92378,1.92377 -4.67201,1.92377 -2.74823,0 -4.67201,-1.92377 -1.92379,-1.92377 -1.92379,-4.67201 v -4.39719 H 73.839837 v 4.39719 q 0,2.74824 -1.923782,4.67201 -1.923784,1.92377 -4.672015,1.92377 -2.748229,0 -4.672012,-1.92377 -1.923781,-1.92377 -1.923781,-4.67201 v -4.39719 h -3.297846 q -0.480945,0 -0.790139,-0.30917 -0.309194,-0.30918 -0.309194,-0.79012 V 683.8465 q 0,-3.19483 2.25013,-5.44496 2.25013,-2.25012 5.444945,-2.25012 h 0.961891 l 3.607091,-14.39392 q 0.790088,-3.22919 3.572681,-5.4106 2.782642,-2.18142 6.149203,-2.18142 h 26.383131 q 3.36661,0 6.1492,2.18142 2.78259,2.18141 3.57273,5.4106 l 3.60704,14.39392 h 0.96189 q 3.19482,0 5.44495,2.25012 2.25013,2.25013 2.25013,5.44496 z"
+             id="path3001-5-4-1" />
+        </g>
+        <g
+           id="g2987-7-1-8"
+           transform="matrix(0.03794642,0,0,-0.03794642,218.481,485.11121)"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/participation.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74">
+          <path
+             id="path2989-6-8-5"
+             d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+             inkscape:connector-curvature="0"
+             style="fill:#000000" />
+        </g>
+        <g
+           id="g2987-7-4-4-7"
+           transform="matrix(0.03794642,0,0,-0.03794642,218.481,661.2834)"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/participation.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74">
+          <path
+             id="path2989-6-3-6-7"
+             d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+             inkscape:connector-curvature="0"
+             style="fill:#000000" />
+        </g>
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 138.86986,510.93361 69.95536,-41.11607"
+           id="path3140-43-3"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/participation.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 139.20468,335.21932 69.28572,0"
+           id="path3142-3-0"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/participation.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m 137.77611,596.29076 72.14286,44.28571"
+           id="path3138-7-4-8"
+           inkscape:connector-curvature="0"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/participation.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74" />
+        <path
+           style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="M 138.91067,684.1479 208.7844,644.51248"
+           id="path3140-4-0-8"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/participation.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74" />
+        <g
+           id="g3490-6-1"
+           transform="translate(0,6.4775085)"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/participation.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74">
+          <text
+             sodipodi:linespacing="125%"
+             id="text3165-9-6"
+             y="272.26819"
+             x="81.032593"
+             style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu Condensed;-inkscape-font-specification:'Ubuntu Condensed,'"
+             xml:space="preserve"><tspan
+               y="272.26819"
+               x="81.032593"
+               id="tspan3167-7-9"
+               sodipodi:role="line">car</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text3169-4-0"
+             y="272.83521"
+             x="205.89008"
+             style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu Condensed;-inkscape-font-specification:'Ubuntu Condensed,'"
+             xml:space="preserve"><tspan
+               y="272.83521"
+               x="205.89008"
+               id="tspan3171-4-2"
+               sodipodi:role="line">employee</tspan></text>
+          <text
+             sodipodi:linespacing="125%"
+             id="text3165-0-5-3"
+             y="213.358"
+             x="173.55301"
+             style="font-size:18px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu Condensed;-inkscape-font-specification:'Ubuntu Condensed,'"
+             xml:space="preserve"><tspan
+               style="font-size:20px;text-align:center;text-anchor:middle"
+               id="tspan3198-1-8"
+               y="213.358"
+               x="173.55301"
+               sodipodi:role="line">partial:partial</tspan></text>
+        </g>
+        <g
+           style="fill:#888888"
+           id="g2987-4-1-5"
+           transform="matrix(0.03794642,0,0,-0.03794642,218.481,574.61218)"
+           inkscape:export-filename="/run/user/arestivo/gvfs/sftp:host=pinguim.fe.up.pt/usr/users1/dei/arestivo/public_html/presentation/assets/entityrelationship/participation.png"
+           inkscape:export-xdpi="74"
+           inkscape:export-ydpi="74">
+          <path
+             id="path2989-1-1-6"
+             d="M 1024,832 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 352 h -64 v -912 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 v 464 h -64 v -464 q 0,-46 -33,-79 -33,-33 -79,-33 -46,0 -79,33 -33,33 -33,79 V 768 H 192 V 416 q 0,-40 -28,-68 -28,-28 -68,-28 -40,0 -68,28 -28,28 -28,68 v 416 q 0,80 56,136 56,56 136,56 h 640 q 80,0 136,-56 56,-56 56,-136 z m -288,448 q 0,-93 -65.5,-158.5 Q 605,1056 512,1056 419,1056 353.5,1121.5 288,1187 288,1280 q 0,93 65.5,158.5 65.5,65.5 158.5,65.5 93,0 158.5,-65.5 Q 736,1373 736,1280 z"
+             inkscape:connector-curvature="0"
+             style="fill:#888888" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

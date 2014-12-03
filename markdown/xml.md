@@ -1,0 +1,77 @@
+name: inverse
+layout: true
+class: center, middle, inverse
+.indexlink[[<i class="fa fa-home"></i>](#) [<i class="fa fa-list"></i>](#index)]
+
+---
+
+name: normal
+layout: true
+class: left, middle
+.indexlink[[<i class="fa fa-home"></i>](#) [<i class="fa fa-list"></i>](#index)]
+
+---
+
+template:inverse
+# XML
+<a href="http://www.fe.up.pt/~arestivo">André Restivo</a>
+
+---
+
+template: inverse
+name:index
+# Index
+
+.indexlist[
+1. [Introduction](#intro)
+]
+
+---
+
+template: inverse
+name:intro
+# Introduction
+
+---
+
+# Markup Languages
+
+* A **markup language** is a set of words and symbols for describing the
+  identity or function of the component parts of a document.
+* Programs can use markup with a **stylesheet** to transform the document into
+  output for screen, print, audio, video, Braille, or reprocessable data
+  formats.
+
+---
+
+# XML
+
+* E**x**tensible **M**arkup **L**anguage (XML) 
+* A **markup language** that defines a set of rules for encoding documents in a
+  format which is both human-readable and machine-readable.
+* It is **extensible** because it is not a fixed format like HTML (which is a
+  single, predefined markup language).
+* XML is a metalanguage which lets you design your own markup languages for 
+  limitless different types of documents.
+  
+---
+
+# SGML
+
+* SGML is the **S**tandard **G**eneralized **M**arkup **L**anguage, the
+  international standard for defining markup to describe the structure of
+  different types of electronic document.
+* SGML is very **large**, **powerful**, and **complex**.
+* XML is a **lightweight** cut-down version of SGML.
+
+---
+
+# SGML, XML and HTML
+
+![](../assets/xml/sgml.png)
+
+* SGML and XML are **metalanguages**. They allow users to develop their own
+  languages.
+* HTML and XHTML are **concrete** languages with a fixed format.
+
+
