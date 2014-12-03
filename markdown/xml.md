@@ -24,6 +24,8 @@ name:index
 
 .indexlist[
 1. [Introduction](#intro)
+1. [XML](#xml)
+1. [Valid XML](#valid)
 ]
 
 ---
@@ -174,6 +176,10 @@ Attributes should be used for **metadata**.
 
 template: inverse
 name: valid
+# Valid XML
+
+---
+
 # Valid XML
 
 ---
