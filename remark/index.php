@@ -10,7 +10,7 @@ $style = $styles[$_GET['style']];
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>André Restivo : <?=$_GET['p']?></title>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
   </head>
   <body>
     <script src="http://gnab.github.com/remark/downloads/remark-0.6.5.min.js" type="text/javascript"></script>
