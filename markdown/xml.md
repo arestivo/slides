@@ -182,12 +182,96 @@ name: valid
 
 # Valid XML
 
+XML is a **metalanguage** as it doesn't impose the use of a restricted set of elements.
+
+If we want to **restrict** the structure of a document to a certain format we can use one of several existing **schema** languages:
+
+* Document Type Definition (**DTD**)
+* XML Schema (**XSD**)
+* Relax NG
+
+An XML document is considered **valid** if it is **well-formed** and **conforms** to its **schema**.
+
 ---
 
 # Document Type Definition
+
+
 
 ```xml
 <?xml version="1.1"?>
 <!DOCTYPE message SYSTEM "message.dtd">
 <message>Hello, world!</message> 
+```
+
+---
+
+# Example
+
+```xml
+<addressBook>
+  <card>
+    <name>John Smith</name>
+    <email>js@example.com</email>
+  </card>
+  <card>
+    <name>Fred Bloggs</name>
+    <email>fb@example.net</email>
+  </card>
+</addressBook>
+```
+
+---
+
+# DTD
+
+```xml
+<!DOCTYPE addressBook [
+<!ELEMENT addressBook (card*)>
+<!ELEMENT card (name, email)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+]>
+```
+
+---
+
+# XSD
+
+```xml
+<xs:schema elementFormDefault="qualified">
+  <xs:element name="addressBook">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="card" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" type="xs:string"/>
+              <xs:element name="email" type="xs:string"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+```
+
+---
+
+# Relax NG
+
+```xml
+<element name="addressBook" xmlns="http://relaxng.org/ns/structure/1.0">
+  <zeroOrMore>
+    <element name="card">
+      <element name="name">
+        <text/>
+      </element>
+      <element name="email">
+        <text/>
+      </element>
+    </element>
+  </zeroOrMore>
+</element>
 ```
