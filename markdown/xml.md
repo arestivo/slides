@@ -196,7 +196,14 @@ An XML document is considered **valid** if it is **well-formed** and **conforms*
 
 # Document Type Definition
 
+Model that defines the structure of a valid XML document:
 
+* specifies the **names** of all elements and attributes
+* specifies the **type** of content of the elements and attributes
+* specifies the **sequence** of the elements in the document
+* specifies the document tree **structure**
+
+**Document Type Declaration** used to associate DTD to XML document:
 
 ```xml
 <?xml version="1.1"?>
@@ -206,7 +213,38 @@ An XML document is considered **valid** if it is **well-formed** and **conforms*
 
 ---
 
+# XML Schema
+
+**W3C**’s proposal for replacing DTD
+
+Design principles:
+* More **expressive** than DTD.
+* Use **XML** notation.
+* [Self-describing](http://www.w3.org/2001/XMLSchema.xsd).
+* **Simplicity**.
+* Embedded **documentation**.
+
+Technical requirements:
+* **Namespace** support.
+* User-defined **datatypes**.
+* **Inheritance**.
+* **Evolution**.
+
+---
+
+# Relax NG
+
+An alternative to XML Schemas:
+
+* Very **simple** to understand.
+* **XML** Syntax (or compact non-XML).
+* Supports **namespaces**.
+* [Self-describing](http://relaxng.org/spec-20011203.html#IDA5MCS).
+
+---
+
 # Example
+##XML
 
 ```xml
 <addressBook>
@@ -223,7 +261,8 @@ An XML document is considered **valid** if it is **well-formed** and **conforms*
 
 ---
 
-# DTD
+# Example
+## DTD
 
 ```xml
 <!DOCTYPE addressBook [
@@ -236,7 +275,8 @@ An XML document is considered **valid** if it is **well-formed** and **conforms*
 
 ---
 
-# XSD
+# Example
+## XSD
 
 ```xml
 <xs:schema elementFormDefault="qualified">
@@ -259,7 +299,8 @@ An XML document is considered **valid** if it is **well-formed** and **conforms*
 
 ---
 
-# Relax NG
+# Example
+## Relax NG
 
 ```xml
 <element name="addressBook" xmlns="http://relaxng.org/ns/structure/1.0">
