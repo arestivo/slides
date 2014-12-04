@@ -1,0 +1,7 @@
+RewriteEngine On
+
+RewriteCond %{QUERY_STRING} !^p=
+RewriteRule ^([a-zA-Z0-9]+)$ /~arestivo/presentation/$1/ [R]
+
+RewriteCond %{QUERY_STRING} !^p=
+RewriteRule ^([a-zA-Z0-9]+)/$ /~arestivo/presentation/remark/index.php?p=$1
