@@ -26,6 +26,9 @@ name:index
 1. [Introduction](#intro)
 1. [XML](#xml)
 1. [Valid XML](#valid)
+1. [Namespaces](#namespaces)
+1. [Technologies](#technologies)
+1. [Applications](#applications)
 ]
 
 ---
@@ -316,3 +319,116 @@ An alternative to XML Schemas:
   </zeroOrMore>
 </element>
 ```
+
+---
+
+template: inverse
+name: namespaces
+# Namespaces
+
+---
+
+# Motivation
+
+A **single XML** document should be able to contain elements and attributes that are 
+defined for and used by **multiple** software modules.
+
+---
+
+# Binding
+
+* An XML **namespace* is identified by a **URI** reference. 
+* To declare a **default** namespace the attribute ```xmlns``` is used. A default namespace declaration applies to all unprefixed element names within its scope.
+* To declare a **prefixed** namespace an attribute of the form ```xmlns:prefix``` is used. Such a namespace declaration applies to all element and attribute names within its scope whose prefix matches that specified in the declaration.
+* The prefix **xml** is by definition bound to the namespace name ```http://www.w3.org/XML/1998/namespace```.
+* The prefix **xmlns** is used only to declare namespace bindings and is by definition bound to the namespace name ```http://www.w3.org/2000/xmlns/```.
+
+---
+
+# Example
+##Namespace
+
+```xml
+<?xml version="1.0"?>
+<bk:book xmlns:bk='urn:loc.gov:books'
+         xmlns:isbn='urn:ISBN:0-395-36341-6'>
+    <bk:title>Cheaper by the Dozen</bk:title>
+    <isbn:number>1568491379</isbn:number>
+</bk:book>
+```
+
+---
+
+# Namespace Scope
+
+The **scope** of a namespace declaration extends from the beginning of the **start-tag** in which it appears to the end of the corresponding **end-tag**.
+
+```xml
+<?xml version="1.0"?>
+<!-- initially, the default namespace is "books" -->
+<book xmlns='urn:loc.gov:books'
+      xmlns:isbn='urn:ISBN:0-395-36341-6'>
+    <title>Cheaper by the Dozen</title>
+    <isbn:number>1568491379</isbn:number>
+    <notes>
+      <!-- make HTML the default namespace for some commentary -->
+      <p xmlns='http://www.w3.org/1999/xhtml'>
+          This is a <i>funny</i> book!
+      </p>
+    </notes>
+</book>
+```
+
+---
+
+template: inverse
+name: technologies
+# Technologies
+
+---
+
+#XSL(t) and XSL-FO
+
+* XSLT (E**x**tensible **S**tylesheet **L**anguage **T**ransformations) is a language for transforming XML documents into other XML documents.
+* XSL-FO (**XSL** **F**ormatting **O**bjects) is a markup language for XML document formatting which is most often used to generate PDFs.
+
+![](../assets/xml/xsl.png)
+
+---
+
+#XPath
+
+A query language for **selecting** nodes from an XML document.
+
+Used in several other technologies like **XSL** and **XSD**.
+
+---
+
+#XQuery
+
+A **query** and **functional** programming language that is designed to query and transform 
+collections of structured and unstructured data, usually in the form of **XML**.
+
+---
+
+template: inverse
+name: applications
+# Applications
+
+---
+
+# Applications
+
+* XHTML (a XML variant of HTML)
+* CML - Chemical Markup Language
+* MathML - Mathematical Markup Language
+* RDF - Resource Description Framework
+* GraphML - File Format for Graphs
+* MusicXML - Digital Sheet Music
+* SVG - Scalable Vector Graphics
+* OSD - Open Software Description
+* SOAP - Simple Object Access Protocol
+* WSDL - Web Service Description Language
+* UDDI - Universal Description Discovery and Integration
+
+
