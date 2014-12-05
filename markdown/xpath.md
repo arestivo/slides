@@ -301,7 +301,7 @@ In a **e1[e2]** expression, square brackets enclose a predicate, which specifies
 A location step has 0 or more predicates.
 
 ```xpath
-child::book[attribute:lang='en']
+child::book[attribute::lang='en']
 ```
 
 This XPath expression selects all children elements named book that have an attribute lang with the value *en*.
@@ -326,9 +326,9 @@ Some of the functions that can be used in predicate expressions:
 
 |||
 |-:|-|
-| **child:book[1]** | selects the first *book* child of the context node
-| **child:book[last()]** | selects the last *book* child of the context node
-| **child:book[attribute:lang="en"][5]** | selects the *book* childs with a attribute *lang* with the value *en*. Of those, selects the fifth one.
+| **child::book[1]** | selects the first *book* child of the context node
+| **child::book[last()]** | selects the last *book* child of the context node
+| **child::book[attribute::lang="en"][5]** | selects the *book* childs with a attribute *lang* with the value *en*. Of those, selects the fifth one.
 
 ---
 
@@ -405,7 +405,7 @@ name:examples
 | **book[@lang]** | selects the *book* children of the context node that have an attribute named *lang*
 | **book[title and @lang]** | selects the *book* children of the context node that have both one or more title *children* and an attribute named *lang*
 | **book[not(@lang)]** | selects the *book* children of the context node that do not have an attribute named *lang*
-| **book[count(descendant:author) > 1]** | selects the *book* children of the context node that have more than one descendants *author*
+| **book[count(descendant::author) > 1]** | selects the *book* children of the context node that have more than one descendants *author*
 
 ---
 
