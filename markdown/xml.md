@@ -337,7 +337,7 @@ defined for and used by **multiple** software modules.
 
 # Binding
 
-* An XML **namespace* is identified by a **URI** reference. 
+* An XML **namespace** is identified by a **URI** reference. 
 * To declare a **default** namespace the attribute ```xmlns``` is used. A default namespace declaration applies to all unprefixed element names within its scope.
 * To declare a **prefixed** namespace an attribute of the form ```xmlns:prefix``` is used. Such a namespace declaration applies to all element and attribute names within its scope whose prefix matches that specified in the declaration.
 * The prefix **xml** is by definition bound to the namespace name ```http://www.w3.org/XML/1998/namespace```.
