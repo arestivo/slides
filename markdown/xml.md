@@ -190,14 +190,14 @@ XML is a **metalanguage** as it doesn't impose the use of a restricted set of el
 If we want to **restrict** the structure of a document to a certain format we can use one of several existing **schema** languages:
 
 * Document Type Definition (**DTD**)
-* XML Schema (**XSD**)
+* XML Schema Definition (**XSD**)
 * Relax NG
 
 An XML document is considered **valid** if it is **well-formed** and **conforms** to its **schema**.
 
 ---
 
-# Document Type Definition
+# Document Type Definition (DTD)
 
 Model that defines the structure of a valid XML document:
 
@@ -216,7 +216,7 @@ Model that defines the structure of a valid XML document:
 
 ---
 
-# XML Schema
+# XML Schema Definition (XSD)
 
 **W3C**’s proposal for replacing DTD
 
