@@ -53,7 +53,7 @@ name:intro
 
 The ```xsi:schemaLocation``` and ```xsi:noNamespaceSchemaLocation``` attributes can be used 
 in a document to provide **hints** as to the **physical** location of schema documents which can 
-be used for **assessment**.
+be used for **validation**.
 
 An example XSD:
 
@@ -112,8 +112,8 @@ name:simple
 
 #Simple Types
 
-* Simple types describe values not structured by XML markup.
-* They can be used as content or in attributes.
+* Simple types describe values **not structured** by XML markup.
+* They can be used as **content** or in **attributes**.
 * XSD has a library of [built-in](http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/datatypes.html#built-in-datatypes) simple types.
 
 ```xml
