@@ -160,7 +160,7 @@ name:simple
 
 # Union
 
-The union element defines a simple type as a collection of values from specified simple data types.
+The ```union``` element defines a simple type as a **collection** of values from specified simple data types.
 
 
 ```xml
@@ -189,7 +189,7 @@ The union element defines a simple type as a collection of values from specified
 
 # List 
 
-List types define a whitespace-separated list of values.
+The ```list``` element defines a **whitespace-separated list** of values.
 
 ```xml
 <xs:simpleType name="sizeList">
@@ -214,7 +214,7 @@ List types define a whitespace-separated list of values.
 
 # Anonymous Types
 
-The type of an element can be directly defined inside the element declaration.
+The type of an element can be directly defined **inside** the element declaration, making it an anonymous type.
 
 ```xml
 <xs:element name="size"/>
@@ -356,7 +356,7 @@ Valid:
 * The **default** value for both attributes is **1**.
 * The **maxOccurs** attribute can have a value of **unbounded** (unlimited).
 * The **minOccurs** attribute can have a value of **0** (optional).
-* These attributes can be applied to ```<elements>```, ```<sequence>```, ```<all>``` and ```<choice>``` elements.
+* These attributes can be applied to ```<element>```, ```<sequence>```, ```<all>``` and ```<choice>``` elements.
 
 .box_info[In XSD 1.0 the maxOccurs attribute of elements inside an all group was always 1. This restriction was lifted in XSD 1.1]
 
@@ -470,7 +470,7 @@ A mixed complex type element can contain attributes, elements, and **text**.
 
 # Attributes
 
-Complex Types can have attributes. The type of an attribute is always a simple type.
+Complex Types can have **attributes**. The type of an attribute is always a **simple type**.
 
 ```xml
 <xs:element name="person">
@@ -481,13 +481,13 @@ Complex Types can have attributes. The type of an attribute is always a simple t
 </xs:element>
 ```
 
-Attributes can have default or fixed values.
+Attributes can have **default** or **fixed** values.
 
 ```xml
 <xs:attribute name="lang" type="xs:string" default="en"/>
 ```
 
-By default they are optional but can be made mandatory.
+By default they are **optional** but can be made **mandatory**.
 
 ```xml
 <xs:attribute name="lang" type="xs:string" use="required"/>
@@ -607,7 +607,7 @@ name:references
 
 # Ref
 
-References another element that is delared elsewhere.
+References another element that is declared **elsewhere**.
 
 ```xml
 <xs:element name="email" type="xs:string"/>
@@ -863,9 +863,9 @@ Works like a **foreign key**. Specifies that an **attribute** or **element value
     <xs:field xpath="@number"/>
   </xs:key>
   <xs:keyref name="studentRef" refer="studentKey">
-        <xs:selector xpath="class/student"/>
-      <xs:field xpath="@number"/>
-    </xs:keyref>      
+    <xs:selector xpath="class/student"/>
+    <xs:field xpath="@number"/>
+  </xs:keyref>      
 </xs:element>
 ```
 
