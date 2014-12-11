@@ -56,6 +56,9 @@
         font-size: 0.9em;
         padding: 15px;
       }
+      .small .remark-code {
+        font-size: 0.8em;
+      }
       .inverse {
         background: #272822;
         color: #CCCCCC;

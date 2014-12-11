@@ -269,15 +269,15 @@ name:complex
 
 # Sequence
 
-The ```<sequence>``` element specifies that the child elements **must** appear in a specific sequence.
+The ```<sequence>``` element specifies that the child elements **must** appear in a specific **sequence**.
 
 ```xml
 <xs:element name="person">
     <xs:complexType>
-    <xs:sequence>
-      <xs:element name="name" type="xs:string"/>
-      <xs:element name="email" type="xs:string"/>
-    </xs:sequence>
+      <xs:sequence>
+        <xs:element name="name" type="xs:string"/>
+        <xs:element name="email" type="xs:string"/>
+      </xs:sequence>
     </xs:complexType>
 </xs:element>
 ```
@@ -394,19 +394,19 @@ Group elements can be nested to create more complex groupings.
 ```xml
 <xs:element name="group">
     <xs:complexType>
-    <xs:sequence>
-      <xs:element name="person" maxOccurs="unbounded">
+      <xs:sequence>
+        <xs:element name="person" maxOccurs="unbounded">
           <xs:complexType>
-            <xs:sequence>
-            <xs:element name="name" type="xs:string"/>
-            <xs:choice>
-              <xs:element name="phone" type="xs:string"/>
-              <xs:element name="email" type="xs:string"/>
-            </xs:choice>
-            </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
+              <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:choice>
+                  <xs:element name="phone" type="xs:string"/>
+                  <xs:element name="email" type="xs:string"/>
+                </xs:choice>
+              </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
     </xs:complexType>
 </xs:element>
 ```
@@ -571,7 +571,7 @@ Contains **extensions** or **restrictions** on a **complex type** that contains 
 
 <xs:complexType name="studentType">
   <xs:complexContent>
-    <xs:extension base="person">
+    <xs:extension base="personType">
       <xs:sequence>
         <xs:element name="number" type="xs:integer"/>
         <xs:element name="course" type="xs:string"/>
@@ -605,13 +605,458 @@ name:references
 
 ---
 
+# Ref
+
+References another element that is delared elsewhere.
+
+```xml
+<xs:element name="email" type="xs:string"/>
+
+<xs:element name="student">
+	<xs:complexType>
+	  <xs:sequence>
+        <xs:element name="name" type="xs:string"/>	
+        <xs:element ref="email"/>	
+	  </xs:sequence>
+	</xs:complexType>
+</xs:element>
+```
+
+```xml
+<student>
+  <name>John Doe</name>
+  <email>dasdas</email>
+</student>
+```
+
+---
+
 template:inverse
 name:keys
 # Keys
 
 ---
 
+# Key
+
+The **key** element specifies one, or more, **attributes** or **element values** as a **key** 
+(**unique**, **non-nullable**, and always **present**) within the containing 
+**element** in an instance document.
+
+* a required **name**.
+* one **selector** element (**XPath** expression that specifies the set of elements across which the values specified by field must be unique)
+* one or more **field** elements (**XPath** expression that specifies the values that must be unique for the set of elements specified by the selector element)
+
+---
+
+# Key [Example 1 XSD]
+
+```xml
+<xs:complexType name="referenceType">
+  <xs:sequence>
+    <xs:element name="make" type="xs:string"/>
+    <xs:element name="model" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="productType">
+  <xs:sequence>
+    <xs:element name="reference" type="referenceType"/>
+    <xs:element name="price" type="xs:decimal"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="productList">
+  <xs:sequence>
+    <xs:element name="product" type="productType" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="products" type="productList">
+  <xs:key name="productKey">
+    <xs:selector xpath="product"/>
+    <xs:field xpath="reference/make">
+    <xs:field xpath="reference/model">
+  </xs:key>  
+</xs:element>
+```
+
+---
+
+# Key [Example 1 XML]
+
+```xml
+<products>
+  <product>
+    <reference>
+      <make>LG</make>
+      <model>Nexus 5</model>
+    </reference>
+    <price>415.00</price>
+  </product>
+
+  <product>
+    <reference>
+      <make>Motorola</make>
+      <model>Nexus 6</model>
+    </reference>
+    <price>620.00</price>
+  </product>
+</products>
+```
+
+---
+
+# Key [Example 2 XSD]
+
+```xml
+<xs:complexType name="studentType">
+  <xs:sequence>
+    <xs:element name="name" type="xs:string"/>
+  </xs:sequence>
+  <xs:attribute name="number" type="xs:integer"/>
+</xs:complexType>
+
+<xs:complexType name="classType">
+  <xs:sequence>
+    <xs:element name="student" type="studentType" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="schoolType">
+  <xs:sequence>
+    <xs:element name="class" type="classType" maxOccurs="unbounded">
+      <xs:key name="studentKey">
+        <xs:selector xpath="student"/>
+        <xs:field xpath="@number"/>
+      </xs:key>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="school" type="schoolType"/>
+```
+
+---
+
+#Key [Example 2 XML]
+
+We can have 2 students with the same number as long as they are in different classes.
+
+```xml
+<school>
+
+  <class>
+    <student number="1">
+      <name>John Doe</name>
+    </student>
+
+    <student number="2">
+      <name>Jane Doe</name>
+    </student>
+  </class>
+
+  <class>
+    <student number="1">
+      <name>Mary Doe</name>
+    </student>
+
+    <student number="2">
+      <name>Carl Doe</name>
+    </student>
+  </class>
+</school>
+```
+
+---
+
+# Unique
+
+A **weaker** form of **key**. Specifies that an **attribute** or **element value** (or a combination of attribute or element values) must be **unique** or **null** within the specified scope. 
+
+```xml
+<xs:complexType name="studentType">
+  <xs:sequence>
+    <xs:element name="name" type="xs:string"/>
+    <xs:element name="email" type="xs:string" minOccurs="0"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="schoolType">
+  <xs:sequence>
+    <xs:element name="student" type="studentType" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="school" type="schoolType">
+  <xs:unique name="uniqueEmail">
+    <xs:selector xpath="student"/>
+    <xs:field xpath="email"/>
+  </xs:unique>
+</xs:element>
+```
+
+---
+
+# Unique
+
+Students can't have the same email but can have no email.
+
+```xml
+<school>
+  <student>
+    <name>John Doe</name>
+    <email>john.doe@gmail.com</email>
+  </student>
+  
+  <student>
+    <name>Jane Doe</name>
+    <email>jane.doe@gmail.com</email>
+  </student>
+  
+  <student>
+    <name>Mary Doe</name>
+  </student>
+</school>
+```
+
+---
+
+# KeyRef
+
+Works like a **foreign key**. Specifies that an **attribute** or **element value** (or set of values) correspond to those of the specified **key** or **unique** element.
+
+```xml
+<xs:complexType name="studentType">
+  <xs:sequence>
+    <xs:element name="name" type="xs:string"/>
+  </xs:sequence>
+  <xs:attribute name="number" type="xs:integer"/>
+</xs:complexType>
+
+<xs:complexType name="classType">
+  <xs:sequence>
+    <xs:element name="student">
+      <xs:complexType>
+        <xs:attribute name="number" type="xs:integer"/>
+      </xs:complexType>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="schoolType">
+  <xs:sequence>
+    <xs:element name="student" type="studentType" maxOccurs="unbounded"/>
+    <xs:element name="class" type="classType" maxOccurs="unbounded"/>
+  </xs:sequence>
+</xs:complexType>
+```
+
+---
+
+# KeyRef
+##Continued
+
+```xml
+<xs:element name="school" type="schoolType">
+  <xs:key name="studentKey">
+    <xs:selector xpath="student"/>
+    <xs:field xpath="@number"/>
+  </xs:key>
+  <xs:keyref name="studentRef" refer="studentKey">
+        <xs:selector xpath="class/student"/>
+      <xs:field xpath="@number"/>
+    </xs:keyref>      
+</xs:element>
+```
+
+---
+
+# KeyRef
+
+Student numbers inside classes must exist in the school's student list.
+
+```xml
+<school>
+  <student number="1">
+    <name>John Doe</name>
+  </student>
+  <student number="2">
+    <name>John Doe</name>
+  </student>
+  <class>
+    <student number="1"/>
+    <student number="2"/>
+  </class>
+</school>
+```
+---
+
 template:inverse
 name:namespaces
 # Namespaces
 
+---
+
+# Target Namespace
+
+When writing XSD schemas, you **can** use the XSD ```targetNamespace``` attribute to specify a target namespace.
+
+By defining a target namespace, all **elements** and **attributes** defined in the XSD belong to that namespace.
+
+```xml
+<xs:schema
+	targetNamespace="http://www.example.com/students"
+	xmlns="http://www.example.com/students" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" >
+  <xs:element name="student">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="name" type="xs:string"/>
+        <xs:element name="email" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+```
+
+```xml
+<s:student xmlns:s="http://www.example.com/students">
+  <name>John Doe</name>
+  <email>john.doe@gmail.com</email>
+</s:student>
+```
+
+---
+
+# Schema Location
+
+To associate a XML file to its corresponding XSD we can use a ```schemaLocation``` attribute, 
+if the ```targetNamespace``` has been defined in the XSD, or a ```noNamespaceSchemaLocation```, if it hasn't.
+
+```xml
+<s:student 
+  schemaLocation="students.xsd"
+  xmlns:s="http://www.example.com/students">
+  <name>John Doe</name>
+  <email>john.doe@gmail.com</email>
+</s:student>
+```
+
+---
+
+# Schema Location
+
+When using ```schemaLocation```, a list of URIs can be used.
+
+```xml
+<c:class 
+  schemaLocation="students.xsd classes.xsd"
+  xmlns:s="http://www.example.com/students"
+  xmlns:c="http://www.example.com/classes">
+  <s:student>
+	  <name>John Doe</name>
+	  <email>john.doe@gmail.com</email>
+  </s:student>
+</c:class>
+```
+
+---
+
+# Qualification
+
+By default, only elements defined as root elements in the XSD must be qualified (with the namespace prefix). To change this behavior we can set the ```elementFormDefault``` and ```attributeFormDefault``` attributes to ```qualified```.
+
+```xml
+<xs:schema
+	targetNamespace="http://www.example.com/students"
+	xmlns="http://www.example.com/students" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	elementFormDefault="qualified" attributeFormDefault="qualified">
+  <xs:element name="student">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="name" type="xs:string"/>
+        <xs:element name="email" type="xs:string"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+```
+
+```xml
+<s:student xmlns:s="http://www.example.com/students" s:id="1">
+  <s:name>John Doe</s:name>
+  <s:email>john.doe@gmail.com</s:email>
+</s:student>
+```
+
+---
+
+# Include
+
+The ```include``` element, imports external XSDs that share the **same namespace**.
+
+types.xsd:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+	targetNamespace="http://www.example.com/school" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType name="studentType">
+        <attribute name="name" type="xs:string"/>
+    </xs:complexType>
+</xs:schema>
+```
+
+school.xsd
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+	targetNamespace="http://www.example.com/school"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 	
+	xmlns:s="http://www.example.com/school">
+    <include schemaLocation="types.xsd"/>
+    <element name="student" type=“s:studentType"/>
+</xs:schema>
+```
+
+---
+
+# Import
+
+The ```import``` element, imports external XSDs that have **different namespaces**.
+
+types.xsd:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+	targetNamespace="http://www.example.com/students" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType name="studentType">
+        <attribute name="name" type="xs:string"/>
+    </xs:complexType>
+</xs:schema>
+```
+
+school.xsd
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+	targetNamespace="http://www.example.com/school"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 	
+	xmlns:s="http://www.example.com/students">
+    <import schemaLocation="types.xsd"/>
+    <element name="student" type=“s:studentType"/>
+</xs:schema>
+```
+
+---
+
+template: inverse
+# Validator
+## http://www.freeformatter.com/xml-validator-xsd.html
