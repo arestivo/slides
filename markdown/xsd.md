@@ -217,7 +217,7 @@ The ```list``` element defines a **whitespace-separated list** of values.
 The type of an element can be directly defined **inside** the element declaration, making it an anonymous type.
 
 ```xml
-<xs:element name="size"/>
+<xs:element name="size">
   <xs:simpleType>
     <xs:union memberTypes="sizebynumber sizebyname" />
   </xs:simpleType>
