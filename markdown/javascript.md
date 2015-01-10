@@ -1085,5 +1085,5 @@ JSON.parse(this.responseText)  // The server response
 
 # Wat
 
-[![](http://img.youtube.com/vi/Othc45WPBhA/0.jpg)](http://www.youtube.com/watch?v=Othc45WPBhA)
+[](https://www.destroyallsoftware.com/talks/wat)
 
