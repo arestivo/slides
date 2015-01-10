@@ -1085,5 +1085,5 @@ JSON.parse(this.responseText)  // The server response
 
 # Wat
 
-[](https://www.destroyallsoftware.com/talks/wat)
+[https://www.destroyallsoftware.com/talks/wat](https://www.destroyallsoftware.com/talks/wat)
 
