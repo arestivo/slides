@@ -372,11 +372,11 @@ The **nth-child(an+b)** selector, selects elements that are the **bth** child of
 In other words, this class matches all children whose index fall in the set ```{ an + b; n = 0, 1, 2, ... }```.
 
 ```css
-  :nth-child(1)    // is the same as :first-child
-  :nth-child(2)    // second child
-  :nth-child(2n)   // the even childs
-  :nth-child(2n+1) // the odd childs
-  :nth-child(-n+3) // one of the first three children
+  :nth-child(1)    /* is the same as :first-child */
+  :nth-child(2)    /* second child */
+  :nth-child(2n)   /* the even childs */
+  :nth-child(2n+1) /* the odd childs */
+  :nth-child(-n+3) /* one of the first three children */
 ```
 
 The **nth-of-type(an+b)** selector does the same thing but counts only siblings with the same name.
