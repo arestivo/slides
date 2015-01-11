@@ -351,29 +351,25 @@ More [pseudo-classes](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-cl
 
 ---
 
-## First and Last Pseudo-elements
+## First and Last Pseudo-classes
 
-Selects elements or parts of elements based on their position in the tree:
+Selects elements based on their position in the tree:
 ```css
 p:first-child
 ```
 
-```css
-p:first-letter
-```
-
 * **first-child**: Selects elements that are the first child of their parents
 * **last-child**: Selects elements that are the last child of their parents
-* **first-line**: Selects the first line of the selector
-* **first-letter**: Selects the first character of the selector
+* **first-of-type**: Selects elements that are the first child of their type in their parents children's list
+* **last-of-type**: Selects elements that are the last child of their type in their parents children's list
 
 ---
 
-## Nth Child Pseudo-elements
+## Nth Child Pseudo-classes
 
-The **nth-child(an+b)** selector, selects elements that have **an+b-1** siblings before it.
+The **nth-child(an+b)** selector, selects elements that are the **bth** child of an element after all its children have been split into groups of **a** elements each.
 
-Having **a** and **b** as user defined integers and **n** in the set {0, 1, 2, ...}
+In other words, this class matches all children whose index fall in the set ```{ an + b; n = 0, 1, 2, ... }```.
 
 ```css
   :nth-child(1)    // is the same as :first-child
@@ -383,7 +379,19 @@ Having **a** and **b** as user defined integers and **n** in the set {0, 1, 2, .
   :nth-child(-n+3) // one of the first three children
 ```
 
-The **nth-last-of-type(an+b)** selector does the same thing but counts only siblings with the same name.
+The **nth-of-type(an+b)** selector does the same thing but counts only siblings with the same name.
+
+---
+
+## First and Last Pseudo-elements
+
+Selects parts of elements based on their position in the tree:
+```css
+p:first-letter
+```
+
+* **first-line**: Selects the first line of the selector
+* **first-letter**: Selects the first character of the selector
 
 ---
 
