@@ -1463,7 +1463,7 @@ p {
 * div#sidebar p: 2 elements, 1 id – (0,1,0,2)
 * div#sidebar p.bio: 2 elements, 1 class, 1 id – (0,1,1,2)
 
-Specificity Calculator: [](http://specificity.keegan.st) 
+Specificity Calculator: [http://specificity.keegan.st](http://specificity.keegan.st) 
 
 ---
 ## Specificity Rules
