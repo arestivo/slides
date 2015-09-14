@@ -64,7 +64,7 @@ template:normal
 # History
 * 1992: **HTML 1.0**, Tim Berners-Lee original proposal
 * 1993: **HTML+**, Dave Raggett's competing standard
-* 1994: **HTML 2.0**, tables, file upload, ...
+* 1994: **HTML 2.0**, tables, file upload, ... (IETF)
 * 1995: Non-standard Netscape features
 * 1996: Competing Netscape and Internet Explorer features
 * 1996: **HTML 3.2**, W3C standard, the Browser Wars end
