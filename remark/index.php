@@ -13,7 +13,7 @@ $style = $styles[$_GET['style']];
     <link rel="stylesheet" href="../css/style.css">
   </head>
   <body>
-    <script src="http://gnab.github.com/remark/downloads/remark-0.6.5.min.js" type="text/javascript"></script>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript"></script>
     <script type="text/javascript">
       var hljs = remark.highlighter.engine;
     </script>
