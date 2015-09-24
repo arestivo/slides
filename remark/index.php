@@ -1,7 +1,11 @@
 <?
+session_start();
+
 $styles = array('arta', 'ascetic', 'dark', 'default', 'far', 'github', 'googlecode', 'idea', 'ir_black', 'magula', 'monokai', 'rainbow', 'solarized_dark', 'solarized_light', 'sunburst', 'tomorrow', 'tomorrow-night-blue', 'tomorrow-night-bright', 'tomorrow-night', 'tomorrow-night-eighties', 'vs', 'zenburn');
 
-$style = $styles[$_GET['style']];
+if ($_SESSION['style'] > count($styles)) $_SESSION['style'] = 0;
+
+$style = $styles[$_SESSION['style']];
 ?>
 
 <!DOCTYPE html>
