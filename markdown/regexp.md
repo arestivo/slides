@@ -1,14 +1,14 @@
 name: inverse
 layout: true
 class: center, middle, inverse
-.indexlink[[<i class="fa fa-home"></i>](#) [<i class="fa fa-list"></i>](#index) [<i class="fa fa-paint-brush"></i>](change-color.php)]
+.indexlink[[<i class="fa fa-home"></i>](#) [<i class="fa fa-list"></i>](#index) [<i class="fa fa-paint-brush"></i>](../change-color.php)]
 
 ---
 
 name: normal
 layout: true
 class: left, middle
-.indexlink[[<i class="fa fa-home"></i>](#) [<i class="fa fa-list"></i>](#index) [<i class="fa fa-paint-brush"></i>](change-color.php)]
+.indexlink[[<i class="fa fa-home"></i>](#) [<i class="fa fa-list"></i>](#index) [<i class="fa fa-paint-brush"></i>](../change-color.php)]
 
 ---
 
