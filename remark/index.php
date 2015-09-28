@@ -17,7 +17,7 @@ $style = $styles[$_SESSION['style']];
     <link rel="stylesheet" href="../css/style.css">
   </head>
   <body>
-    <script src="http://gnab.github.com/remark/downloads/remark-0.12.min.js" type="text/javascript"></script>
+    <script src="http://gnab.github.com/remark/downloads/remark-0.9.1.min.js" type="text/javascript"></script>
     <script type="text/javascript">
       var hljs = remark.highlighter.engine;
     </script>
