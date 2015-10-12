@@ -1463,7 +1463,7 @@ Normally called in every page to ensure session variables are always accessible.
 
 # $_SESSION
 
-The special **$_SESSIONS** variable is an associative array containing session variables available to the current script.
+The special **$_SESSION** variable is an associative array containing session variables available to the current script.
 
 ```php
 session_start();
