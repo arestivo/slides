@@ -13,7 +13,7 @@ $style = $styles[$_SESSION['style']];
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>André Restivo : <?=$_GET['p']?></title>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
   </head>
   <body>
