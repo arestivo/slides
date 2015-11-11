@@ -477,7 +477,7 @@ name: rest
 
 # REST
 
-* [http://restcookbook.com/](REST Cook Book)
+[REST Cook Book](http://restcookbook.com/)
 
 ---
 
