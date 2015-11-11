@@ -76,7 +76,7 @@ name: urls
 
 * An identifier is an object that can act as a **reference** to something that has **identity**.
 * In the case of URI, the object is a sequence of characters with a restricted **syntax** [RFC3986](http://tools.ietf.org/html/rfc3986).
-* A URI can be further classified as a locator (**URL**), a name (**URN**), or both. 
+* A URI can be further classified as a locator (**URL**), a name (**URN**), or both.
 
 ![](../assets/http/uri.png)
 
@@ -84,7 +84,7 @@ name: urls
 
 # URN
 
-**U**niform **R**esource **N**ames are intended to serve as **persistent**, **location-independent**, 
+**U**niform **R**esource **N**ames are intended to serve as **persistent**, **location-independent**,
 resource **identifiers** [RFC2141](http://tools.ietf.org/html/rfc2141).
 
 ---
@@ -93,8 +93,8 @@ resource **identifiers** [RFC2141](http://tools.ietf.org/html/rfc2141).
 
 **U**niform **R**esource **L**ocator
 
-URL refers to the **subset** of URI that identify resources via a representation of 
-their primary access mechanism (e.g., their network *location*), rather than 
+URL refers to the **subset** of URI that identify resources via a representation of
+their primary access mechanism (e.g., their network *location*), rather than
 identifying the resource by name or by some other attribute(s) of that resource.
 
 > A Uniform Resource Name (URN) functions like a person’s name, while a Uniform Resource Locator (URL) resembles that person’s street address.
@@ -141,7 +141,7 @@ Every HTTP URL consists of the following, in the given order:
 
 # Query String
 
-* The query string contains **data** to be passed to software running on the server. 
+* The query string contains **data** to be passed to software running on the server.
 * It may contain **name/value pairs** separated by ampersands.
 
 For example:
@@ -249,7 +249,7 @@ All HTTP servers must implements these methods.
 
 # Idempotent Methods
 
-A idempotent method is a method where the side-effects on the server of several identical 
+A idempotent method is a method where the side-effects on the server of several identical
 requests with the method are the same as the side-effects of one single request.
 
 * **HEAD** and **GET** are also idempotent.
@@ -477,6 +477,8 @@ name: rest
 
 # REST
 
+* [http://restcookbook.com/](REST Cook Book)
+
 ---
 
 # REST
@@ -507,34 +509,34 @@ First described by Roy T. Fielding in his [PhD thesis](http://www.ics.uci.edu/~f
 
 
 * Communication must be stateless in nature.
-* Each request from client to server must contain all of the information necessary to understand the request, and cannot take advantage of any stored context on the server. 
+* Each request from client to server must contain all of the information necessary to understand the request, and cannot take advantage of any stored context on the server.
 * Session state is therefore kept entirely on the client.
 
 ---
 
 # Cacheable
 
-* Data within a response to a request should be implicitly or explicitly labeled as **cacheable** or **non-cacheable**. 
+* Data within a response to a request should be implicitly or explicitly labeled as **cacheable** or **non-cacheable**.
 * If a response is cacheable, then a client cache is given the right to reuse that response data for later, equivalent requests.
 
 ---
 
 # Uniform Interface
 
-Use the HTTP standard to describe communication. 
+Use the HTTP standard to describe communication.
 
 ```
 http://www.example.com/employee
 ```
 
-* **GET** to list all employee. 
-* **POST** create a new employee. 
+* **GET** to list all employee.
+* **POST** create a new employee.
 
 ```
 http://www.example.com/employee/1234
 ```
 
-* **GET** to get information about the employee 1234. 
+* **GET** to get information about the employee 1234.
 * **PUT** means that you want to create/update employee 1234.
 * **DELETE** means that you want to delete employee 1234.
 
@@ -569,11 +571,11 @@ Accept: text/html
 **H**ypermedia **a**s **t**he **E**ngine **o**f **A**pplication **S**tate
 
 ```xml
-<order> 
-   <amount>3</amount> 
-   <link rel="self" uri="http://example.com/order/1234" /> 
-   <link rel="product" uri="http://example.com/product/4554" /> 
-   <link rel="customer" uri="http://example.com/customer/8937" /> 
+<order>
+   <amount>3</amount>
+   <link rel="self" uri="http://example.com/order/1234" />
+   <link rel="product" uri="http://example.com/product/4554" />
+   <link rel="customer" uri="http://example.com/customer/8937" />
 </order>
 ```
 
@@ -605,7 +607,7 @@ To find which **HTTP method** was used to access the resource use the **$_SERVER
 
 ```php
 if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
-  // update resource 
+  // update resource
 }
 ```
 
