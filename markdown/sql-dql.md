@@ -133,11 +133,11 @@ SELECT id, name FROM employee;
 .sqltable[
 |id|name
 |-|-|
-|1 | John Doe    | 
-|2 | Jane Doe    | 
-|3 | John Smith  | 
-|4 | Jane Roe    | 
-|5 | Richard Roe | 
+|1 | John Doe    |
+|2 | Jane Doe    |
+|3 | John Smith  |
+|4 | Jane Roe    |
+|5 | Richard Roe |
 ]
 
 .box_info[Selects columns id and name from table employee]
@@ -447,7 +447,7 @@ SELECT * FROM employee CROSS JOIN department;
 
 # Solving ambiguities
 
-When selecting from more than one table, columns with the same name might lead to ambiguities. 
+When selecting from more than one table, columns with the same name might lead to ambiguities.
 
 ```sql
 SELECT id, name, name FROM employee, department;
@@ -665,9 +665,225 @@ name: aggregating
 
 ---
 
+# Aggregate Functions
+
+There are **five** special aggregate functions defined in the SQL language:
+
+```sql
+MIN, MAX, SUM, AVG and COUNT
+```
+
+.sqltable[
+|value
+|-|-|
+|1
+|2
+|NULL
+|3
+]
+
+```sql
+SELECT MIN(value)   FROM table; -- 1
+SELECT MAX(value)   FROM table; -- 3
+SELECT SUM(value)   FROM table; -- 6
+SELECT AVG(value)   FROM table; -- 2
+SELECT COUNT(value) FROM table; -- 3 (counts non null values)
+SELECT COUNT(*)     FROM table; -- 4 (counts lines)
+```
+
+---
+
+# Aggregate Functions
+
+* When using aggregate functions, all rows are grouped into a single row.
+* You can **no longer refer to columns** without using an aggregate function.
+
+.sqltable[
+|id|name|salary|taxes|num|d_name
+|-|-|
+|1 | John Doe    | 700 | 200 | 1 | Marketing
+|2 | Jane Doe    | 800  | 100 | 2 | Sales
+|3 | John Smith  | 1500 | 350 | 2 | Sales
+|4 | Jane Roe    | 1000 | 200 | 3 | Production
+]
+
+```sql
+SELECT AVG(salary)       FROM employees; -- 1000
+SELECT name, AVG(salary) FROM employees; -- Does not work
+```
+
+---
+
+# GROUP BY
+
+Groups the rows into sets based on the value of a specific column or columns.
+
+.smaller.sqltable[
+|id|name|salary|taxes|num|d_name
+|-|-|
+|1 | John Doe    | 700  | 200 | 1 | Marketing
+|2 | Jane Doe    | 800  | 100 | 2 | Sales
+|3 | John Smith  | 1500 | 350 | 2 | Sales
+|4 | Jane Roe    | 1000 | 200 | 3 | Production
+]
+
+```sql
+SELECT AVG(salary) FROM employees GROUP BY num;
+```
+
+* All rows with same value in the *num* column get grouped together.
+* The aggregate functions are used inside each group.
+
+.sqltable[
+|AVG(salary)
+|-|-|
+|700
+|1150
+|1000
+]
+
+---
+
+# GROUP BY
+
+Only columns used in **GROUP BY** expressions can be selected without using an aggregate function.
+
+.smaller.sqltable[
+|id|name|salary|taxes|num|d_name
+|-|-|
+|1 | John Doe    | 700  | 200 | 1 | Marketing
+|2 | Jane Doe    | 800  | 100 | 2 | Sales
+|3 | John Smith  | 1500 | 350 | 2 | Sales
+|4 | Jane Roe    | 1000 | 200 | 3 | Production
+]
+
+```sql
+SELECT num, AVG(salary) FROM employees GROUP BY num;
+```
+
+.sqltable[
+|num|AVG(salary)
+|-|-|
+|1|700
+|2|1150
+|3|1000
+]
+
+---
+
+# GROUP BY
+
+Only columns used in **GROUP BY** expressions can be selected without using an aggregate function.
+
+.smaller.sqltable[
+|id|name|salary|taxes|num|d_name
+|-|-|
+|1 | John Doe    | 700  | 200 | 1 | Marketing
+|2 | Jane Doe    | 800  | 100 | 2 | Sales
+|3 | John Smith  | 1500 | 350 | 2 | Sales
+|4 | Jane Roe    | 1000 | 200 | 3 | Production
+]
+
+```sql
+SELECT num, d_name, AVG(salary) FROM employees GROUP BY num, d_name;
+```
+
+.sqltable[
+|d_name|AVG(salary)
+|-|-|
+|Marketing|700
+|Sales|1150
+|Production|1000
+]
+
+---
+
 template: inverse
 name: sorting
 # Sorting Rows
+
+---
+
+# ORDER BY
+
+* The order in which rows are sorted in a query result is unpredictable.
+* You can sort the end result using the **ORDER BY** clause.
+
+.smaller.sqltable[
+|id|name|salary|taxes|num|d_name
+|-|-|
+|1 | John Doe    | 700  | 200 | 1 | Marketing
+|2 | Jane Doe    | 800  | 100 | 2 | Sales
+|3 | John Smith  | 1500 | 350 | 2 | Sales
+|4 | Jane Roe    | 1000 | 200 | 3 | Production
+]
+
+```sql
+SELECT * FROM employees ORDER BY salary;
+```
+
+.sqltable[
+|id|name|salary|taxes|num|d_name
+|-|-|
+|1 | John Doe    | **700**  | 200 | 1 | Marketing
+|2 | Jane Doe    | **800**  | 100 | 2 | Sales
+|4 | Jane Roe    | **1000** | 200 | 3 | Production
+|3 | John Smith  | **1500** | 350 | 2 | Sales
+]
+
+---
+
+# ORDER BY
+
+* By default values are sorted in **ascending** order.
+* We can change the default order using the **ASC** and **DESC** clauses.
+
+```sql
+SELECT * FROM employees ORDER BY salary ASC; -- default
+```
+
+.smaller.sqltable[
+|id|name|salary|taxes|num|d_name
+|-|-|
+|1 | John Doe    | **700**  | 200 | 1 | Marketing
+|2 | Jane Doe    | **800**  | 100 | 2 | Sales
+|4 | Jane Roe    | **1000** | 200 | 3 | Production
+|3 | John Smith  | **1500** | 350 | 2 | Sales
+]
+
+```sql
+SELECT * FROM employees ORDER BY salary DESC; -- default
+```
+
+.smaller.sqltable[
+|id|name|salary|taxes|num|d_name
+|-|-|
+|3 | John Smith  | **1500** | 350 | 2 | Sales
+|4 | Jane Roe    | **1000** | 200 | 3 | Production
+|2 | Jane Doe    | **800**  | 100 | 2 | Sales
+|1 | John Doe    | **700**  | 200 | 1 | Marketing
+]
+
+---
+
+# ORDER BY
+
+* We can also sort by more than one column.
+* When this happens, we first sort using the first column and if there is a tie we use the next column.
+
+```sql
+SELECT * FROM employees ORDER BY taxes DESC, salary ASC;
+SELECT * FROM employees ORDER BY taxes DESC, salary;     -- same result
+```
+
+.sqltable[
+|id|name|salary|taxes|num|d_name
+|-|-|
+|3 | John Smith  | **1500** | 350 | 2 | Sales
+|1 | John Doe    | **700**  | 200 | 1 | Marketing
+|4 | Jane Roe    | **1000** | 200 | 3 | Production
+|2 | Jane Doe    | **800**  | 100 | 2 | Sales
+]
 
 ---
 
@@ -692,4 +908,3 @@ name: text
 template: inverse
 name: order
 # Execution Order
-
