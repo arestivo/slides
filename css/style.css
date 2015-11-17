@@ -1,7 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Droid+Serif);
-@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-
 body {
   font-family: 'Droid Serif';
 }
@@ -76,7 +72,7 @@ code {
   height: 92%;
   float: left;
 }
-  
+
 .left-column h2:last-of-type, .left-column h3:last-child {
     color: #000;
 }
@@ -102,10 +98,10 @@ img {
   opacity: .5;
 }
 
-.indexlist li { 
-  display: block; 
-  float: left; 
-  background-color: #333; 
+.indexlist li {
+  display: block;
+  float: left;
+  background-color: #333;
   padding: 1em;
   border-radius: .5em;
 }
@@ -123,7 +119,7 @@ table td:first-child {
   white-space: nowrap;
   background-color: inherit;
 }
-            
+
 blockquote {
   font-size: 0.7em;
   background: #f9f9f9;
@@ -151,20 +147,20 @@ blockquote p {
 .relation.selected table td { color: red; }
 .relation table td:first-child { border: none; }
 .relation table td .pk { border-right: 1px solid black; padding: 10px 5px;}
-     
+
 .sqltable table    { font-family: monospace; }
 .sqltable table td { background-color: white; color: black; border: 1px solid black; border-radius: 0;}
 .sqltable table th { background-color: white; color: black; border: 1px solid black; border-radius: 0; text-align: center;}
-               
-.selected { color: red }   
+
+.selected { color: red }
 .key {text-decoration: underline}
-.small {font-size: .8em}      
+.small {font-size: .8em}
 .smaller {font-size: .5em}
- 
+
 del {
   color: red;
 }
- 
+
 .box_info, .box_success, .box_warning, .box_error, .box_example, .box_regexp {
   display: block;
   margin: 10px 0px;
@@ -224,7 +220,7 @@ del {
     content: "\f057";
     padding-right: 1em;
     font-family: FontAwesome;
-}           
+}
 .box_error {
     color: #D8000C;
     background-color: #FFBABA;
