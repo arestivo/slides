@@ -35,10 +35,8 @@ name:index
 1. [Aggregating Data](#aggregating)
 1. [Sorting Rows](#sorting)
 1. [Limiting Data](#limiting)
-1. [Nested Queries](#nested)
 1. [Text Operators](#text)
-1. [Execution Order](#order)
-
+1. [Nested Queries](#nested)
 ]
 
 ---
@@ -695,8 +693,7 @@ SELECT COUNT(*)     FROM table; -- 4 (counts lines)
 
 # Aggregate Functions
 
-* When using aggregate functions, all rows are grouped into a single row.
-* You can **no longer refer to columns** without using an aggregate function.
+When using aggregate functions, all rows are grouped into a single row.
 
 .sqltable[
 |id|name|salary|taxes|num|d_name
@@ -711,6 +708,8 @@ SELECT COUNT(*)     FROM table; -- 4 (counts lines)
 SELECT AVG(salary)       FROM employees; -- 1000
 SELECT name, AVG(salary) FROM employees; -- Does not work
 ```
+
+.box_warning[You can **no longer refer to columns** without an aggregate function.]
 
 ---
 
@@ -798,6 +797,33 @@ SELECT num, d_name, AVG(salary) FROM employees GROUP BY num, d_name;
 
 ---
 
+# HAVING
+
+Grouped rows can be filtered using the **HAVING** clause.
+
+.smaller.sqltable[
+|id|name|salary|taxes|num|d_name
+|-|-|
+|1 | John Doe    | 700  | 200 | 1 | Marketing
+|2 | Jane Doe    | 800  | 100 | 2 | Sales
+|3 | John Smith  | 1500 | 350 | 2 | Sales
+|4 | Jane Roe    | 1000 | 200 | 3 | Production
+]
+
+```sql
+SELECT num, d_name, AVG(salary) FROM employees
+GROUP BY num, d_name HAVING AVG(salary) >= 1000;
+```
+
+.sqltable[
+|d_name|AVG(salary)
+|-|-|
+|Sales|1150
+|Production|1000
+]
+
+---
+
 template: inverse
 name: sorting
 # Sorting Rows
@@ -873,7 +899,7 @@ SELECT * FROM employees ORDER BY salary DESC; -- default
 
 ```sql
 SELECT * FROM employees ORDER BY taxes DESC, salary ASC;
-SELECT * FROM employees ORDER BY taxes DESC, salary;     -- same result
+SELECT * FROM employees ORDER BY taxes DESC, salary;     -- equivalent
 ```
 
 .sqltable[
@@ -893,9 +919,83 @@ name: limiting
 
 ---
 
+# LIMIT
+
+The number of rows returned by a query can be limited using the **LIMIT** clause.
+
+```sql
+SELECT * FROM employees ORDER BY salary LIMIT 2;
+```
+
+.sqltable[
+|id|name|salary|taxes|num|d_name
+|-|-|
+|3 | John Smith  | **1500** | 350 | 2 | Sales
+|4 | Jane Roe    | **1000** | 200 | 3 | Production
+]
+
+---
+
+# OFFSET
+
+When using the **LIMIT** clause, we can also indicate how many rows to skip using the **OFFSET** clause.
+
+```sql
+SELECT * FROM employees ORDER BY salary LIMIT 2 OFFSET 1;
+```
+
+.sqltable[
+|id|name|salary|taxes|num|d_name
+|-|-|
+|4 | Jane Roe    | **1000** | 200 | 3 | Production
+|2 | Jane Doe    | **800**  | 100 | 2 | Sales
+]
+
+.box_info[Here the first line (with a salary of 1500) was skipped.]
+
+---
+
+# Pagination
+
+**LIMIT** and **OFFSET** can be used to paginate our results.
+
+.box_info[Example for page 3 with 10 results per page.]
+
+```sql
+SELECT * FROM employees ORDER BY id LIMIT 10 OFFSET 20;
+```
+
+.box_info[Generically for page N with R results per page.]
+
+```sql
+SELECT * FROM employees ORDER BY id LIMIT R OFFSET R * (N - 1);
+```
+
+---
+
 template: inverse
 name: nested
-# Nested Queries
+# A Complete Query
+
+---
+
+# A Complete Query
+
+* A query will always start with the **SELECT** clause.
+* All the other clauses are optional.
+* But they always follow the same order.
+
+```sql
+SELECT c1, c2, SUM(c3), AVG(c4) AS c5
+FROM t1 JOIN
+     t2 ON t1.foreign_key = t2.primary_key JOIN
+     t3 USING (join_column)
+WHERE condition_1 AND (condition_2 OR condition_3)
+GROUP BY c1, c2
+HAVING AVG(c4) > 10
+ORDER BY AVG(c4)
+LIMIT 5 OFFSET 10
+```
 
 ---
 
@@ -905,6 +1005,148 @@ name: text
 
 ---
 
+# LIKE
+
+The **LIKE** operator can be used to compare strings using simple patterns.
+
+* The **%** particle means zero or more characters
+* The **_** character means exactly one character.
+
+.sqltable[
+|id|name
+|-|-|
+|1 | John Doe
+|2 | Jane Doe
+|3 | Jean Doe
+|4 | Jennifer Doe
+|5 | William Doe
+]
+
+
+```sql
+SELECT * FROM people WHERE name LIKE '% Doe'    -- All five rows
+SELECT * FROM people WHERE name LIKE 'J% Doe'   -- John, Jane, Jean and Jennifer
+SELECT * FROM people WHERE name LIKE 'J___ Doe' -- John, Jane and Jean
+SELECT * FROM people WHERE name LIKE '_e%'      -- Jean and Jennifer
+```
+
+---
+
+# SIMILAR TO
+
+To be done
+
+---
+
+# POSIX Regular Expressions
+
+To be done
+
+---
+
 template: inverse
-name: order
-# Execution Order
+name: nested
+# Nested Queries
+
+---
+
+# Queries as Tables
+
+The result of a query is a table. This allows us to use queries in the same
+places we use tables.
+
+```sql
+SELECT *
+FROM (SELECT * FROM
+        employees JOIN
+        department USING(d_num)
+      WHERE department.name = 'Logistics') AS logistic_employees JOIN
+     works ON logistic_employees.id = works.id
+WHERE works.hours > 10
+```
+
+.box_info[*Subqueries* must be named using the **AS** particle.]
+
+---
+
+# Subquery Expressions
+
+Subquery expressions can be used to combine two queries in the **WHERE** or
+**HAVING** clauses.
+
+There are several subquery expressions:
+
+```sql
+expression IN subquery
+expression NOT IN subquery
+expression operator ANY (subquery) -- Same as SOME
+expression operator ALL (subquery)
+```
+
+---
+
+# IN and NOT IN
+
+```sql
+expression IN subquery
+expression NOT IN subquery
+```
+
+These expressions test if a value (or values) exist (or not) in the subquery.
+
+```sql
+SELECT *               -- Employees whose id exists in the subquery
+FROM employees
+WHERE employee.id IN (
+    SELECT emp_id      -- The ids of employees that work more
+    FROM works         -- than 10 hours in projects
+    GROUP BY emp_id
+    HAVING SUM(hours) > 10
+)
+```
+
+---
+
+# ANY
+
+```sql
+expression operator ANY (subquery) -- Same as SOME
+```
+
+The **ANY** expression compares a value with every row of the subquery and
+returns true if **at least one** of the comparisons returns true.
+
+```sql
+SELECT *               -- Employees that have a larger salary than at least
+FROM employees         -- one logistics department employee
+WHERE salary >= ANY (
+    SELECT salary      -- All the salaries from logistic department employees
+    FROM employees JOIN
+      departments ON employees.d_num = department.num
+)
+```
+
+.box_info[= ANY is the same as IN]
+
+---
+
+# ALL
+
+```sql
+expression operator ALL (subquery)
+```
+
+The **ALL** expression compares a value with every row of the subquery and
+only returns true if **all** of the comparisons returns true.
+
+```sql
+SELECT *               -- Employees that have a larger salary than all of
+FROM employees         -- the logistics department employees
+WHERE salary >= ALL (
+    SELECT salary      -- All the salaries from logistic department employees
+    FROM employees JOIN
+      departments ON employees.d_num = department.num
+)
+```
+
+.box_info[<> ALL is the same as NOT IN]
