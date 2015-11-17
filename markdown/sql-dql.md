@@ -1030,6 +1030,8 @@ SELECT * FROM people WHERE name LIKE 'J___ Doe' -- John, Jane and Jean
 SELECT * FROM people WHERE name LIKE '_e%'      -- Jean and Jennifer
 ```
 
+.box_info[The ILIKE operator is similar but also ignores case.]
+
 ---
 
 # SIMILAR TO
