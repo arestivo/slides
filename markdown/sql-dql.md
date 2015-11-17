@@ -1012,7 +1012,7 @@ The **LIKE** operator can be used to compare strings using simple patterns.
 * The **%** particle means zero or more characters
 * The **_** character means exactly one character.
 
-.sqltable[
+.smaller.sqltable[
 |id|name
 |-|-|
 |1 | John Doe
@@ -1029,6 +1029,8 @@ SELECT * FROM people WHERE name LIKE 'J% Doe'   -- John, Jane, Jean and Jennifer
 SELECT * FROM people WHERE name LIKE 'J___ Doe' -- John, Jane and Jean
 SELECT * FROM people WHERE name LIKE '_e%'      -- Jean and Jennifer
 ```
+
+.box_info[The ILIKE operator is similar but also ignores case.]
 
 ---
 
