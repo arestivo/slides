@@ -437,7 +437,7 @@ Events that are related to form and inputs:
 $("input#username").focus(h);    // Username input got focus
 $("form#register").focusin(h);   // Element or any descendant gained focus
 $("input#username").blur(h);     // Username input lost focus
-$("form#register").focusouth(h); // Element or any descendant lost focus
+$("form#register").focusout(h); // Element or any descendant lost focus
 ```
 
 ```javascript
