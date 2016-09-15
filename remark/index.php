@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 
 $styles = array('default', 'arta', 'ascetic', 'dark', 'far', 'github', 'googlecode', 'idea', 'ir_black', 'magula', 'monokai', 'rainbow', 'solarized_dark', 'solarized_light', 'sunburst', 'tomorrow', 'tomorrow-night-blue', 'tomorrow-night-bright', 'tomorrow-night', 'tomorrow-night-eighties', 'vs', 'zenburn');
@@ -16,6 +16,7 @@ $style = $styles[$_SESSION['style']];
     <link rel="stylesheet" href="../css/font-awesome.css">
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/print.css" media="print">
   </head>
   <body>
     <script src="../script/remark-0.9.1.min.js" type="text/javascript"></script>
