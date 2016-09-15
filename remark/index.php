@@ -20,14 +20,33 @@ $style = $styles[$_SESSION['style']];
   </head>
   <body>
     <script src="../script/remark-0.9.1.min.js" type="text/javascript"></script>
+    <script src="../script/jquery-2.2.4.min.js" type="text/javascript"></script>
     <script type="text/javascript">
       var hljs = remark.highlighter.engine;
     </script>
+	<script type="text/javascript"
+	  src="../script/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=configured">
+	</script>
     <script type="text/javascript">
       var slideshow = remark.create({
           highlightStyle: '<?=$style?$style:"default"?>',
           sourceUrl: '../markdown/<?=$_GET['p']?>.md'
         }) ;
+	  // Setup MathJax
+      MathJax.Hub.Config({
+          tex2jax: {
+	      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+          }
+
+      });
+      MathJax.Hub.Queue(function() {
+          $(MathJax.Hub.getAllJax()).map(function(index, elem) {
+              return(elem.SourceElement());
+          }).parent().addClass('has-jax');
+      });
+
+      MathJax.Hub.Configured();
     </script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
