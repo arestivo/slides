@@ -295,6 +295,7 @@ All cars in the database must have an owner. Not all persons have to own cars.
 ---
 
 # Total Participation
+
 * We should **only** label a participation as total when it is necessary to ensure that all entities participate in a relationship.
 * A total participation is a **constraint**. It restricts the possible values for an attribute.
 * It is most common in **N:1** relationships in the **many** side.
