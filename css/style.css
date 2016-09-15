@@ -98,6 +98,7 @@ img {
   position: absolute;
   left: 20px;
   opacity: .5;
+  font-size: 0.8em;
 }
 
 .indexlist li {
@@ -107,6 +108,11 @@ img {
   padding: 1em;
   border-radius: .5em;
 }
+
+.indexlink a {
+	color: #999;
+    padding-right: 1em;
+} 
 
 table td{
   padding: 0.5em;

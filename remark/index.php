@@ -37,7 +37,6 @@ $style = $styles[$_SESSION['style']];
 
       ga('create', 'UA-108721-9', 'auto');
       ga('send', 'pageview');
-
     </script>
   </body>
 </html>
