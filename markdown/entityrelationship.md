@@ -27,6 +27,7 @@ name:index
 1. [Attributes](#attributes)
 1. [Entities](#entities)
 1. [Relationships](#relationships)
+1. [Constraints](#constraints)
 1. [Example](#example)
 1. [Visual Notation](#notation)
 ]
@@ -236,6 +237,12 @@ Ternary (can be transformed into binaries)
 .box_example[
 supplied(Supplier, Product, Project)
 ]
+
+---
+
+template: inverse
+name: constraints
+# Constraints
 
 ---
 
