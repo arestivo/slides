@@ -276,8 +276,8 @@ worksOn(Employee, Project) N:N
 
 # Participation
 
-* Total (existencial dependency) - All entity of this type must participate in the relationship.
-* Partial - Entities may not participate in the relationship.
+* Total (existencial dependency): All entities of this type must participate in the relationship.
+* Partial: Entities may not participate in the relationship.
 
 .box_example[
 belongsTo(Car, Person) N:1 t/p
@@ -348,16 +348,12 @@ name: notation
 
 ---
 
-# Notation
-
-Alternative visual notation
+# Visual Notation
 
 ![](../assets/entityrelationship/notation.png)
 
 ---
 
 # Example
-
-Alternative visual notation
 
 ![](../assets/entityrelationship/example.png)
