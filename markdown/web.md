@@ -258,36 +258,21 @@ Source: http://www.w3counter.com/trends
 # HTML Example
 
 ```html
-<html>
-  <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <title>The Title of the Document</title>
-  </head>
-  <body bgcolor= "white">
-  </body>
+</head>
+<body>
+	<h1>This is a title</h1>
+	<p>This is a paragraph <br> with line break.</p>
+    <p>This is <br>another paragraph <br> with line breaks.</p>
+</body>
 </html>
+
 ```
 
----
-
-# Another HTML Example
-
-```html
-<html>
-  <head>
-    <title>Good Advice</title>
-  </head>
-  <body>
-    <h1>Good Advice for Everyday Life </h1>
-    <h2>For UNIX programmers</h2>
-    <b>Never</b> type:
-    <p><tt>rm -rf / * </tt><p>
-    on your computer.
-    <h2>For Nuclear Scientists</h2>
-    <b>Never</b> press the
-    <i>Big <font color="red">Red</font> Button</i>.
-  </body>
-</html>
-```
 ---
 
 # Result
