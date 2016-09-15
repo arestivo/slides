@@ -56,6 +56,6 @@ After completing this course you should be able to:
 #Evaluation
 
 * To obtain frequency, students may not exceed the maximum number allowed of missed classes. Attendance will be registered in practice sessions.
-* It is necessary to obtain a minimum of 8 (out of 20) in both the exam and the distributed evaluation component.
+* It is necessary to obtain a minimum of **8 (out of 20)** in both the exam and the distributed evaluation component.
 * Distributed evaluation referes to the implementation of a information system project.
 * Final mark = 0.5 * Exam + 0.5 * Project
