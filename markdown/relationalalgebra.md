@@ -27,6 +27,7 @@ name:index
 1. [Unary Operators](#operators)
 1. [Set Operators](#set)
 1. [Joins](#join)
+1. [Division](#division)
 ]
 
 ---
@@ -48,6 +49,10 @@ name: intro
 ---
 
 # Relational Model
+
+* The cardinality (number of tuples) in relation $R$:
+
+.box_example[$|R|$]
 
 * A tuple with attribute values $v_1, v_2, v_3, ..., v_n$:
 
@@ -95,6 +100,8 @@ $Employee(id, name, salary, taxes, department)$
 |4 | Jane Roe    | 1000 | 200 | 3
 |5 | John Doe    | 1000 | 0   | $\perp$
 ]
+
+$|Employee| = 5$
 
 ---
 
@@ -187,13 +194,13 @@ Renaming the relation $R$ to $S$:
 
 .box_example[$\rho_S(R)$]
 
-Renaming attribute $a_i$ to aatribute $B_i$ in relation $R(a,b,c)$:
+Renaming attribute $a$ to atribute $x$ in relation $R(a,b,c)$:
 
-.box_example[$\rho_{c/x}(R) \Rightarrow R(a,b,x)$]
+.box_example[$\rho_{a/x}(R) \Rightarrow R(x,b,c)$]
 
-Renaming several attributes in relation $R(a,b,c)$ using the original order:
+Renaming attribute $a$ to atribute $x$ and $c$ to atribute $y$ in relation $R(a,b,c)$:
 
-.box_example[$\rho_{a,x}(R) \Rightarrow R(a,x,c)$]
+.box_example[$\rho_{a/x, c/y}(R) \Rightarrow R(x,b,y)$]
 
 ---
 
@@ -201,7 +208,7 @@ Renaming several attributes in relation $R(a,b,c)$ using the original order:
 
 Select a set of tuples where a certain condition $c$ holds:
 
-.box_example[$S = \delta_c(R)$]
+.box_example[$S = \sigma_c(R)$]
 
 * $c$ is a condition involving attributes from $R$.
 * The condition can contain arithmetic ($+ - \times \div$), conditional ($< > \leq \geq \neq$) and logical ($\vee \wedge \neg$) operators.
@@ -211,7 +218,7 @@ Select a set of tuples where a certain condition $c$ holds:
 
 # Example
 
-.box_example[$S = \delta_{salary < 1000 \vee department = 3}(Employee)$]
+.box_example[$S = \sigma_{salary < 1000 \vee department = 3}(Employee)$]
 
 Employees with a salary smaller than 1000 or that work at department 3.
 
@@ -253,15 +260,15 @@ name: set
 
 The two relations involved must be union-compatible: 
 
-* they have the same number of attributes
-* the domain of each attribute, in column order, is the same in both R and S
+* they must have the same number of attributes
+* the domain of each attribute must be the same in both R and S
 
 .box_example[
-$R \cup S$
+$R \cup S = \\{x: x \in R \vee x \in S\\}$
 
-$R \cap S$
+$R \cap S = \\{x: x \in R \wedge x \in S\\}$
 
-$R - S$
+$R - S = \\{x: x \in R \wedge x \notin S\\}$
 ]
 
 ---
@@ -270,7 +277,7 @@ $R - S$
 
 .small[
 .pull-left[
-Employee
+$Employee$
 .sqltable[
 |id|name|salary|taxes|departament
 |-|-|
@@ -281,7 +288,7 @@ Employee
 |5 | John Doe    | 1000 | 0   | $\perp$
 ]
 
-Manager
+$Manager$
 .sqltable[
 |id|name|salary|taxes|departament
 |-|-|
@@ -310,10 +317,10 @@ $Employee \cup Manager$
 
 .small[
 .pull-left[
-Employee
+$Employee$
 .sqltable[
 |id|name|salary|taxes|departament
-|-|-|
+|-|-|javascript/#46
 |1 | John Doe    | 1000 | 200 | 1
 |2 | Jane Doe    | 800  | 100 | 2
 |3 | John Smith  | 1200 | 350 | 2
@@ -321,7 +328,7 @@ Employee
 |5 | John Doe    | 1000 | 0   | $\perp$
 ]
 
-Manager
+$Manager$
 .sqltable[
 |id|name|salary|taxes|departament
 |-|-|
@@ -345,7 +352,7 @@ $Employee \cap Manager$
 
 .small[
 .pull-left[
-Employee
+$Employee$
 .sqltable[
 |id|name|salary|taxes|departament
 |-|-|
@@ -356,7 +363,7 @@ Employee
 |5 | John Doe    | 1000 | 0   | $\perp$
 ]
 
-Manager
+$Manager$
 .sqltable[
 |id|name|salary|taxes|departament
 |-|-|
@@ -382,3 +389,334 @@ $Employee - Manager$
 template: inverse
 name: join
 # Joins
+
+---
+
+# Cartesian Product
+
+
+The cartesian product $R \times S$ is the set of all ordered pairs $(r, s)$ where $r \in R$ and $s \in S$. 
+
+$R \times S = \\{ &lt; r,s &gt; : r \in R, s \in S \\}$
+
+The cartesian product between relations $R(a_1,...,a_n)$ and $S(b_1,...,b_m)$ is a relation with $n+m$ attributes $(a_1, ..., a_n, b_1, ..., b_m)$ where there is a tuple for each possible combination of tuples from $R$ and $S$.
+
+The cardinality of the resulting relation is equal to the product between the cardinalities of the original relations:
+
+.box_example[ $ |R \times S| = |R| \times |S| $ ]
+
+---
+
+# Example
+
+.small[
+.pull-left[
+$Employee$
+.sqltable[
+|id|name|departament
+|-|-|
+|1 | John Doe    | 1
+|2 | Jane Doe    | 2
+|3 | John Smith  | 2
+|4 | John Doe    | $\perp$
+]
+
+$Department$
+.sqltable[
+|number|designation
+|-|-|
+|1 | Marketing
+|2 | Accounting
+]]]
+
+.small[
+.pull-right[
+$Employee \times Department$
+.sqltable[
+|id|name|department|number|designation
+|-|-|
+|1 | John Doe    | 1       | 1 | Marketing
+|2 | Jane Doe    | 2       | 1 | Marketing
+|3 | John Smith  | 2       | 1 | Marketing
+|4 | John Doe    | $\perp$ | 1 | Marketing
+|1 | John Doe    | 1       | 2 | Accounting
+|2 | Jane Doe    | 2       | 2 | Accounting
+|3 | John Smith  | 2       | 2 | Accounting
+|4 | John Doe    | $\perp$ | 2 | Accounting
+]]]
+
+---
+
+# Conditional Join
+
+A cartesian product between relations $R$ and $S$ followed by a selection on condition $c$:
+
+.box_example[$R \bowtie_c S$]
+
+The same as a cartesian product followed by a selection:
+
+.box_example[$R \bowtie_c S = \sigma_c(R \times S) $]
+
+Allows the combination of relations that are associated by a foreign key.
+
+---
+
+# Example
+
+.small[
+.pull-left[
+$Employee$
+.sqltable[
+|id|name|departament
+|-|-|
+|1 | John Doe    | 1
+|2 | Jane Doe    | 2
+|3 | John Smith  | 2
+|4 | John Doe    | $\perp$
+]
+
+$Department$
+.sqltable[
+|number|designation
+|-|-|
+|1 | Marketing
+|2 | Accounting
+]]]
+
+.small[
+.pull-right[
+$Employee \bowtie_{department=number} Department$
+.sqltable[
+|id|name|department|number|designation
+|-|-|
+|1 | John Doe    | 1       | 1 | Marketing
+|2 | Jane Doe    | 2       | 2 | Accounting
+|3 | John Smith  | 2       | 2 | Accounting
+]]]
+
+---
+
+# Natural Join
+
+A particular case of a join where the condition is the equality of attributes on both relations having the same name.
+
+.box_example[$R \bowtie S$]
+
+Attributes used in the condition are merged together.
+
+---
+
+# Example
+
+.small[
+.pull-left[
+$Employee$
+.sqltable[
+|id|name|number
+|-|-|
+|1 | John Doe    | 1
+|2 | Jane Doe    | 2
+|3 | John Smith  | 2
+|4 | John Doe    | $\perp$
+]
+
+$Department$
+.sqltable[
+|number|designation
+|-|-|
+|1 | Marketing
+|2 | Accounting
+]]]
+
+.small[
+.pull-right[
+$Employee \bowtie Department$
+.sqltable[
+|id|name|number|designation
+|-|-|
+|1 | John Doe    | 1 | Marketing
+|2 | Jane Doe    | 2 | Accounting
+|3 | John Smith  | 2 | Accounting
+]]]
+
+---
+
+# Semijoin
+
+A join where only attributes from one of the relations is kept.
+
+.box_example[$R \ltimes S = \Pi_R (R \bowtie S)$]
+.box_example[$R \rtimes S = \Pi_S (R \bowtie S)$]
+
+---
+
+
+# Examplejavascript/#46
+
+.small[
+.pull-left[
+$Employee$
+.sqltable[
+|id|name|number
+|-|-|
+|1 | John Doe    | 1
+|2 | Jane Doe    | 2
+|3 | John Smith  | 2
+|4 | John Doe    | $\perp$
+]
+
+$Department$
+.sqltable[
+|number|designation
+|-|-|
+|1 | Marketing
+|2 | Accounting
+|3 | Transports
+]]]
+
+.small[
+.pull-right[
+$Employee \ltimes Department$
+.sqltable[
+|id|name|number
+|-|-|
+|1 | John Doe    | 1 
+|2 | Jane Doe    | 2
+|3 | John Smith  | 2
+]
+
+$Employee \rtimes Department$
+.sqltable[
+|number|designation
+|-|-|
+|1 | Marketing
+|2 | Accounting
+]]]
+
+---
+
+# Outer Join
+
+A join operation where unmatched tuples are part of the result set. This tuples can come from the $R$ relation (left), the $S$ relation (right) or from both (full).
+
+Left outer join:
+
+.box_example[$R ⟕ _c S$]
+
+Right outer join:
+
+.box_example[$R ⟖_c S$]
+
+Full outer join:
+
+.box_example[$R ⟗_c S$]
+
+---
+
+# Example
+
+.small[
+.pull-left[
+$Employee$
+.sqltable[
+|id|name|number
+|-|-|
+|1 | John Doe    | 1
+|2 | Jane Doe    | 2
+|3 | John Smith  | 2
+|4 | John Doe    | $\perp$
+]
+
+$Department$
+.sqltable[
+|number|designation
+|-|-|
+|1 | Marketing
+|2 | Accounting
+|3 | Transports
+]]]
+
+.small[
+.pull-right[
+$Employee ⟕  Department$
+.sqltable[
+|id|name|number|designation
+|-|-|
+|1 | John Doe    | 1 | Marketing
+|2 | Jane Doe    | 2 | Accounting
+|3 | John Smith  | 2 | Accounting
+|4 | John Doe    | $\perp$ | $\perp$ 
+]
+
+$Employee ⟖  Department$
+.sqltable[
+|id|name|number|designation
+|-|-|
+|1 | John Doe    | 1 | Marketing
+|2 | Jane Doe    | 2 | Accounting
+|3 | John Smith  | 2 | Accounting
+|$\perp$| $\perp$ |3 | Transports
+
+]]]
+
+---
+template: inverse
+name: division
+# Division
+
+---
+
+#Division
+
+The restrictions of tuples in $R$ to the attribute names unique to $R$ for which it holds that all their combinations with tuples in $S$ are present in $R$.
+
+.box_example[$R(a,b,c) \div S(b,c)$] 
+
+In this example, the result of the division will have one attribute $a$ (the one that does not exist in $S$), containing the values of $a$ that are combined with all values of $S$.
+
+---
+
+# Example
+
+.small[
+.pull-left[
+$Works$
+.sqltable[
+|id|name|number|designation
+|-|-|
+|1 | John Doe    | 1 | Big Rocket
+|1 | John Doe    | 2 | Thingamabob
+|1 | John Doe    | 3 | Take a Nap
+|2 | Jane Doe    | 2 | Thingamabob
+|2 | Jane Doe    | 3 | Take a Nap
+|3 | Jack Doe    | 1 | Big Rocket
+|3 | Jack Doe    | 2 | Thingamabob
+]
+
+$Project$
+.sqltable[
+|number|designation
+|-|-|
+|1 | Big Rocket
+|2 | Thingamabob
+|3 | Take a Nap
+]]]
+
+.pull-right[
+$Works \div  Project$
+.sqltable[
+|id|name
+|-|-|
+|1 | John Doe
+]]
+
+---
+
+#Division without Division
+
+$a_{n-m}$
+
+$R ÷ S = \Pi_{a_1,...,a_{m-n} }$
+
+(R) - \Pi_{a_1,..., a_{n − m} (\Pi_{a_1 ,..., a_{n - m} (R) × S − R)$
+
