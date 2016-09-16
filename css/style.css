@@ -156,9 +156,9 @@ blockquote p {
 .relation table td:first-child { border: none; }
 .relation table td .pk { border-right: 1px solid black; padding: 10px 5px;}
 
-.sqltable table    { font-family: monospace; }
+.sqltable table    { font-family: "Droid Sans Mono"; }
 .sqltable table td { background-color: white; color: black; border: 1px solid black; border-radius: 0;}
-.sqltable table th { background-color: white; color: black; border: 1px solid black; border-radius: 0; text-align: center;}
+.sqltable table th { background-color: #EEE; color: black; border: 1px solid black; border-radius: 0; text-align: center;}
 
 .selected { color: red }
 .key {text-decoration: underline}
