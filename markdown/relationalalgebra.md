@@ -714,9 +714,113 @@ $Works \div  Project$
 
 #Division without Division
 
-$a_{n-m}$
+.box_example[$R(a_1,...,a_n,b_1,...,b_m) \div S(b_1, ..., b_m)$]
 
-$R ÷ S = \Pi_{a_1,...,a_{m-n} }$
+.box_example[
+$R \div S = \Pi\_{a\_1,...,a\_n}(R) - \Pi\_{a\_1,...,a\_n} ( \Pi\_{a\_1,...,a\_n}(R) \times S - R)$
+]
 
-(R) - \Pi_{a_1,..., a_{n − m} (\Pi_{a_1 ,..., a_{n - m} (R) × S − R)$
+---
+
+# Explanation
+
+All tuples from the first $n$ attributes of $R$:
+.box_example[
+$ \Pi\_{a\_1,...,a\_n}(R) $
+]
+.box_example[
+$ \Pi\_{id,name}(Works) $
+]
+
+.centered[.sqltable[
+|id|name
+|-|-|
+|1 | John Doe
+|2 | Jane Doe
+|3 | Jack Doe
+]]
+
+---
+
+# Explanation
+
+Cartesian product with S gives all possible combinations of those attributes with the tuples of $S$:
+.box_example[
+$ \Pi\_{a\_1,...,a\_n}(R) \times S$
+]
+.box_example[
+$ \Pi\_{id,name}(Works) \times Project$
+]
+
+.centered[.small[.sqltable[
+|id|name|number|designation
+|-|-|
+|1 | John Doe|1 | Big Rocket
+|2 | Jane Doe|1 | Big Rocket
+|3 | Jack Doe|1 | Big Rocket
+|1 | John Doe|2 | Thingamabob
+|2 | Jane Doe|2 | Thingamabob
+|3 | Jack Doe|2 | Thingamabob
+|1 | John Doe|3 | Take a Nap
+|2 | Jane Doe|3 | Take a Nap
+|3 | Jack Doe|3 | Take a Nap
+]]]
+
+
+---
+
+# Explanation
+
+Removing the original $R$ tuples we get the tuples that are not present in the original $R$ relation:
+.box_example[
+$\Pi\_{a\_1,...,a\_n}(R) \times S - R$
+]
+.box_example[
+$ \Pi\_{id,name}(Works) \times Project - Works$
+]
+
+.centered[.sqltable[
+|id|name|number|designation
+|-|-|
+|2 | Jane Doe|1 | Big Rocket
+|3 | Jack Doe|3 | Take a Nap
+]]
+
+---
+
+# Explanation
+
+Projecting again we get the first $n$ attributes of those tuples:
+.box_example[
+$\Pi\_{a\_1,...,a\_n} ( \Pi\_{a\_1,...,a\_n}(R) \times S - R)$
+]
+
+.box_example[
+$ \Pi\_{id,name} (\Pi\_{id,name}(Works) \times Project - Works)$
+]
+
+.centered[.sqltable[
+|id|name
+|-|-|
+|2 | Jane Doe|
+|3 | Jack Doe|
+]]
+
+---
+
+#Explanation
+
+.box_example[
+$\Pi\_{a\_1,...,a\_n}(R) - \Pi\_{a\_1,...,a\_n} ( \Pi\_{a\_1,...,a\_n}(R) \times S - R)$
+]
+
+.box_example[
+$\Pi\_{id,name}(Works) - \Pi\_{id,name} (\Pi\_{id,name}(Works) \times Project - Works)$
+]
+
+.centered[.sqltable[
+|id|name
+|-|-|
+|1 | John Doe
+]]
 

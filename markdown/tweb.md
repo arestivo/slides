@@ -56,9 +56,9 @@ After completing this course you should be able to:
 
 * To obtain frequency, students may not exceed the maximum number allowed of missed classes. Attendance will be registered in all classes.
 * It is necessary to obtain a minimum of 10 (out of 20) in the distributed evaluation component to have access to the exam.
-* Distributed evaluation is determined by evaluating one small written report and a practical assessment (RP and PT).
-* Final mark = 0.4 * Exam + 0.2 * RP + 0.4 * TP
-* To pass it is mandatory to have a minimum of 8 marks (in 20) in the final exam.
+* Distributed evaluation is determined by evaluating one small written report and a practical assessment.
+* Final mark = 0.4 * Exam + 0.2 * Report + 0.4 * Pratical
+* To pass, it is mandatory to have a minimum of 8 marks (in 20) in the final exam.
 
 ---
 
