@@ -43,6 +43,12 @@ After completing this course you should be able to:
 
 ---
 
+# Project
+
+![Project Diagram](../assets/web/project.svg)
+
+---
+
 # Main Bibliography
 
 * Michal Zalewski; The tangled Web. ISBN: 978-1-59327-388-0
