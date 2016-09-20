@@ -113,7 +113,7 @@ The Internet is a redundant network of networks that connects millions of hardwa
 * IP addresses (IPv4) consist of four 8 bit numbers (0-255).
 * There are 4,294,967,296 different possible IP addresses.
 * Some IP addresses are exclusive for internal use: 10.x.x.x, 172.16-31.x.x and 192.168.x.x.
-* IPv4 addresses are nearly exhaustion and are slowly being replaced by the new IPv6 standard.
+* IPv4 addresses are nearly exhaustion and are slowly being replaced by the new IPv6 standard (e.g. 2001:4860:4860::8888). There are 3.4×10<sup>38</sup> possible IPv6 addresses.
 * Some devices have static IP addresses while others have dynamic ones. Dynamic addresses are distributed using DHCP (Dynamic Host Configuration Protocol).
 
 ---
