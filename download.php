@@ -1,4 +1,4 @@
 <?php
-	echo $_REFERER;
+	echo $HTTP_REFERER;
 ?>
-<scsript>window.history.back();</script>
+<script>window.history.back();</script>
