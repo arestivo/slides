@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/style.css">
 	<link rel="stylesheet" href="../css/print.css" media="print">
+	<link rel="icon" type="image/ico" href="../img/favicon.ico">
   </head>
   <body>
     <script src="../script/remark-0.9.1.min.js" type="text/javascript"></script>
