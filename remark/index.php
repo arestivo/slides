@@ -9,7 +9,7 @@
 	$style = $styles[$_SESSION['style']];
 
 	if (!file_exists("../markdown/$slides.md")) 
-		die(header('location:/~arestivo'));
+		die(header('location:/~arestivo/#slides'));
 ?>
 
 <!DOCTYPE html>
