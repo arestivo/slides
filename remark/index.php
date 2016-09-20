@@ -1,11 +1,12 @@
 <?php
-session_start();
+	session_start();
 
-$styles = array('default', 'arta', 'ascetic', 'dark', 'far', 'github', 'googlecode', 'idea', 'ir_black', 'magula', 'monokai', 'rainbow', 'solarized_dark', 'solarized_light', 'sunburst', 'tomorrow', 'tomorrow-night-blue', 'tomorrow-night-bright', 'tomorrow-night', 'tomorrow-night-eighties', 'vs', 'zenburn');
+	$styles = array('default', 'arta', 'ascetic', 'dark', 'far', 'github', 'googlecode', 'idea', 'ir_black', 'magula', 'monokai', 'rainbow', 'solarized_dark', 'solarized_light', 'sunburst', 'tomorrow', 'tomorrow-night-blue', 'tomorrow-night-bright', 'tomorrow-night', 'tomorrow-night-eighties', 'vs', 'zenburn');
 
-if ($_SESSION['style'] > count($styles)) $_SESSION['style'] = 0;
+	if ($_SESSION['style'] > count($styles)) $_SESSION['style'] = 0;
 
-$style = $styles[$_SESSION['style']];
+	$slides = preg_replace('/[^a-z0-9-]/i', '_', $_GET['p']);
+	$style = $styles[$_SESSION['style']];
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +31,7 @@ $style = $styles[$_SESSION['style']];
     <script type="text/javascript">
       var slideshow = remark.create({
           highlightStyle: '<?=$style?$style:"default"?>',
-          sourceUrl: '../markdown/<?=$_GET['p']?>.md'
+          sourceUrl: '../markdown/<?=$slides?>.md'
         }) ;
 	  // Setup MathJax
       MathJax.Hub.Config({
