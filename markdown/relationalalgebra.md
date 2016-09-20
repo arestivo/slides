@@ -50,26 +50,28 @@ name: intro
 
 # Relational Model
 
-* The cardinality (number of tuples) in relation $R$:
+.small[
+
+The cardinality (number of tuples) in relation $R$:
 
 .box_example[$|R|$]
 
-* A tuple with attribute values $v_1, v_2, v_3, ..., v_n$:
+A tuple with attribute values $v_1, v_2, v_3, ..., v_n$:
 
 .box_example[$t = &lt;v_1, v_2, v_3, ..., v_n&gt;$]
 
-* Attribute $a_i$ belonging to relation $R$:
+Attribute $a_i$ belonging to relation $R$:
 
 .box_example[$R.a_i$]
 
-* The domain of attribute $a_i$:
+The domain (possible values) of attribute $a_i$:
 
 .box_example[$Dom(a_i)$]
 
-* The *null* value:
+The *null* value:
 
 .box_example[$\perp$]
-
+]
 ---
 
 # Example
@@ -78,7 +80,7 @@ name: intro
 .box_example[
 Relation: $Employee(id, name, salary, taxes, department)$
 
-Tuple: $t = &lt;1234, John, 1200, 200, 3&gt;$
+Tuple: $t = &lt;1234, John, 1200, 200, \perp&gt;$
 
 Attribute: $Employee.name$
 

@@ -23,7 +23,7 @@ li {
   margin:0 10px 10px 0;
 }
 a, a > code {
-  color: rgb(249, 38, 114);
+  color: #f92672;
   text-decoration: none;
 }
 code {
