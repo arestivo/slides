@@ -7,6 +7,9 @@
 
 	$slides = preg_replace('/[^a-z0-9-]/i', '_', $_GET['p']);
 	$style = $styles[$_SESSION['style']];
+
+	if (!file_exists("../markdown/$slides.md")) 
+		die(header('location:/~arestivo'));
 ?>
 
 <!DOCTYPE html>
