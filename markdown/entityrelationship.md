@@ -213,7 +213,7 @@ Examples:
 belongsTo(Car, Person)
 ]
 .box_example[
-enrolled(Students, Class)
+enrolled(Student, Class)
 ]
 
 ---
@@ -237,6 +237,21 @@ Ternary (can be transformed into binaries)
 .box_example[
 supplied(Supplier, Product, Project)
 ]
+
+---
+
+# Attributes
+
+Relationships can also have attributes 
+
+.box_example[
+bid(Person, Item, value)
+]
+
+* A person bid on an item a certain ammount of money.
+* It is not an attribute of the person because a person can bid on many items.
+* It is not an attribute of the item because a item can have many bidders.
+* It is an attribute of the relationship between the two.
 
 ---
 
@@ -342,10 +357,10 @@ project should also be saved.
 
 ##Relationships
 
-* manages (Employee, Department) 1:1 p/p
+* manages (Employee, Department, date) 1:1 p/p
 * controls (Department, Project) 1:N p/t
 * belongsTo (Employee, Department) N:1 t/p
-* worksOn (Employee, Project) N:N p/p
+* worksOn (Employee, Project, hours) N:N p/p
 * supervises (Employee, Employee) 1:N p/p
 
 ---
