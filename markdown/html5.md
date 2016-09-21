@@ -589,7 +589,7 @@ An input field can vary in many ways, depending on the **type** attribute.
   * **date**: control to select a date
   * **datetime**: control to select a time in a certain day
   * **week**: control to select a week
-* **value**: the initial value according to: <a href="http://tools.ietf.org/html/rfc3339">RFC3339</a>
+* **value**: the initial value according to: <a href="http://tools.ietf.org/html/rfc3339">RFC3339</a> ([obligatory XKCD](https://xkcd.com/1179/))
 
 ![](../assets/html5/datepicker.png)
 
@@ -998,6 +998,7 @@ Div is a generic **block** tag that can be used to define sections of a website:
 
 # Example
 
+.small[
 ```html
 <html>
   <head><title>Science News</title></head>
@@ -1028,6 +1029,7 @@ Div is a generic **block** tag that can be used to define sections of a website:
   </body>
 </html>
 ```
+]
 
 ---
 
