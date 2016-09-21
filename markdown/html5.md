@@ -438,6 +438,7 @@ Cells can be merged horizontally or vertically
 
 ## Sections
 
+.small[
 ```html
 <table>
   <thead>
@@ -460,6 +461,7 @@ Cells can be merged horizontally or vertically
   </tbody>
 </table>
 ```
+]
 ![](../assets/html5/table4.png)
 
 ---
