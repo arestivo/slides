@@ -53,13 +53,12 @@ name: intro
 # Principles
 
 * Relational Model:
-  * Set of **relations** (tables)
-  * Composed by **tuples** and **attributes** (rows and columns)
-* Subject to **constraints**
+  * Set of relations: **tables**
+  * Composed by *tuples* and *attributes*: **rows** and **columns**
 * Relation:
-  * Relation name
-  * Attributes
-  * Constraints
+  * Has **name**
+  * Contains **attributes**
+  * Subject to **constraints**
 
 ---
 
@@ -71,10 +70,10 @@ name: intro
 
 # Tuples
 
- * The lines of a relation.
- * Ordered sequence of values.
+ * The **lines** of a relation.
+ * **Ordered** sequence of values.
  * Tuples do not have a specific order between them.
- * Tuple values are atomic (no composite or multi-value).
+ * Tuple values are **atomic** (no composite or multi-value).
 
 ---
 
@@ -82,19 +81,22 @@ name: intro
 
 The notation used to represent a basic relation is the following:
 
+.box_example[
 .relation[
-|||
-|-:|-|
-|Relation Name|attribute_1|attribute_2|...|attribute_n
+	|||
+	|-:|-|
+	|Relation Name|attribute_1|attribute_2|...|attribute_n
+]
 ]
 
 Example for an employee:
 
+.box_example[
 .relation[
 |||
 |-:|-|
 |Employee|id|name|address|telephone
-]
+]]
 
 ---
 
@@ -120,11 +122,12 @@ template: inverse
 
 Notation for **not null** attributes:
 
+.box_example[
 .relation[
 |||
 |-:|-|
 |Relation Name|attribute_1|attribute_2 (NN)|...|attribute_n
-]
+]]
 
 ---
 
@@ -153,19 +156,21 @@ name: pks
 
 Notation for primary keys:
 
+.box_example[
 .relation[
 |||
 |-:|-|
 |Relation Name|.pk[primary_key]|attribute_1|...|attribute_n
-]
+]]
 
 Example for an employee:
 
+.box_example[
 .relation[
 |||
 |-:|-|
 |Employee|.pk[id]|name|address|telephone
-]
+]]
 
 ---
 
@@ -179,19 +184,21 @@ Example for an employee:
 
 Notation for double primary keys:
 
+.box_example[
 .relation[
 |||
 |-:|-|
 |Relation Name|primary_key_1|.pk[primary_key_2]|attribute_1|...|attribute_n
-]
+]]
 
 Example for a phone list:
 
+.box_example[
 .relation[
 |||
 |-:|-|
 |Phone|person|.pk[number]|type
-]
+]]
 
 ---
 
@@ -218,19 +225,21 @@ name: uks
 
 Notation for unique keys:
 
+.box_example[
 .relation[
 |||
 |-:|-|
 |Relation Name|.pk[primary_key]|attribute_1 (UK)|...|attribute_n
-]
+]]
 
 Example for an employee:
 
+.box_example[
 .relation[
 |||
 |-:|-|
 |Employee|.pk[id]|name|username (UK)|phone|address
-]
+]]
 
 ---
 
@@ -259,25 +268,27 @@ name:fks
 
 Notation for foreign keys:
 
+.box_example[
 .relation[
 |||
 |-:|-|
 |Relation Name|.pk[primary_key]|attribute_1|attribute_2|#foreign_key &rarr; referenced_relation
-]
+]]
 
 Example for an employee and a department:
 
+.box_example[
 .relation[
 |||
 |-:|-|
 |Employee|.pk[id]|name|address|phone|#dep_id &rarr; Department
 ]
-
+<br>
 .relation[
 |||
 |-:|-|
 |Department|.pk[id]|name (UK)
-]
+]]
 
 ---
 
@@ -367,7 +378,7 @@ If the **many** side has **total participation** in the relationship
 
 # Step 3. One-to-one relationships
 
-When **none** of the entities has a total participation in the relationship choose.
+When **none** of the entities has a total participation in the relationship choose either one. Normally we choose the one with less rows.
 
 ![](../assets/relationalmodel/step3a.png)
 

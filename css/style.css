@@ -156,7 +156,7 @@ blockquote p {
 }
 
 .relation table {border-collapse: collapse; font-size: 1em;}
-.relation table td { background-color: white; color: black; border: 1px solid black; padding: 10px 5px; }
+.relation table td { background-color: rgba(0,0,0,0); color: black; border: 1px solid black; padding: 10px 5px; }
 .relation.selected table td { color: red; }
 .relation table td:first-child { border: none; }
 .relation table td .pk { border-right: 1px solid black; padding: 10px 5px;}
