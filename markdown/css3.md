@@ -1664,7 +1664,7 @@ http://jigsaw.w3.org/css-validator/
 * Frameworks: [Ink](http://ink.sapo.pt/), [Bootstrap](http://getbootstrap.com/), [Flat UI](http://designmodo.github.io/Flat-UI/), [Pure](http://purecss.io/)
 * Reset: [CSS Reset](http://www.cssreset.com/)
 * Fonts: [Google Fonts](https://www.google.com/fonts)
-* Advanced/Experimental: [Flexbox](http://css-tricks.com/snippets/css/a-guide-to-flexbox/), [Shadows](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow), [Animations](https://developer.mozilla.org/en-US/docs/Web/CSS/animation)
+* Advanced/Experimental: [Flexbox](http://css-tricks.com/snippets/css/a-guide-to-flexbox/), [Shadows](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow), [Animations](https://developer.mozilla.org/en-US/docs/Web/CSS/animation), [Grids](https://drafts.csswg.org/css-grid-1/)
 * Pre-processors: [Less](http://lesscss.org/), [Sass](http://sass-lang.com/)
 * Information: [Google Web Essentials](https://developers.google.com/web/fundamentals/), [Mozilla Developer Network](https://developer.mozilla.org/en-US/)
 * Icons: [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
