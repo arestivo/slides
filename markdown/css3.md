@@ -772,7 +772,7 @@ Elements all live inside a box. They can have a **border**, some space between t
 ---
 # Display
 
-There are 17 different possible values for the **display** property. We will concentrate on three of them: **none**, **inline** and **block**.
+There are 17 different possible values for the **display** property. We will concentrate on four of them: **none**, **inline**, **block** and **inline-block**.
 ---
 # Block Elements
 
@@ -794,7 +794,9 @@ img {
 # Blocks
 
 <img src="../assets/css3/css-block-boxes.png" style="padding: 10px;">
+
 ---
+
 # Inline Elements
 
 * **Do not force** any **line changes**.
@@ -805,16 +807,39 @@ img {
 Examples: img, span, strong
 
 ```css
-li {
+span {
   display: inline;
+  margin: 1em;
 }
 ```
 
+![inline example](../assets/css3/inline.png)
+
+
 ---
+
 # Blocks and Inlines 
 
 <img src="../assets/css3/css-normal-flow.png" style="padding: 10px;">
+
 ---
+
+# Inline-Block Elements
+
+Inline elements that **do not ignore** the **width** and **height** properties.
+
+```css
+span {
+  display: inline-block;
+  margin: 1em;
+}
+```
+
+![inline-block example](../assets/css3/inline-block.png)
+
+---
+
+
 # Display None
 
 * Setting the **display** property to none, **removes** the element from the page.
@@ -982,7 +1007,7 @@ The possible combinations are as follows:
 
 * One value: single radius for the whole element
 * Two values: **top-left-and-bottom-right** and **top-right-and-bottom-left**
-* Four values: **top-left**, **top-right**, **bottom-right*, **bottom-left**
+* Four values: **top-left**, **top-right**, **bottom-right**, **bottom-left**
 
 ---
 

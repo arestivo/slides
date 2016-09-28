@@ -144,7 +144,7 @@ Precision for numeric types:
 |SMALLINT	| 2 bytes	        | -32768 to +32767
 |INTEGER	| 4 bytes	        | -2147483648 to +2147483647
 |BIGINT	  | 8 bytes	        | -9223372036854775808 to +9223372036854775807
-|NUMERIC	| user-specified	| numeric(3,2) -99.9 to 99.9
+|NUMERIC	| user-specified	| numeric(3,1) -99.9 to 99.9
 |REAL	    | 4 bytes	        | inexact 6 decimal digits precision
 |DOUBLE 	| 8 bytes	        | inexact 15 decimal digits precision
 
