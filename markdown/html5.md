@@ -527,6 +527,7 @@ An input field can vary in many ways, depending on the **type** attribute.
 
 *	**type**: the type of the input
 *	**name**: name of the field to be passed to the action
+* **placeholder**: hint for the user
 * **autocomplete**: value of the control can be automatically completed by the browser (on/off)
 * **readonly**: input value cannot be modified (boolean)
 * **required**: input must be filled out (boolean)
