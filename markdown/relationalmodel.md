@@ -439,7 +439,7 @@ Project (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
   
-manages (Employee, Department) 1:1 p/p<br>
+manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
 controls (Employee, Project) 1:N p/p<br>
@@ -458,7 +458,7 @@ Project (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
   
-manages (Employee, Department) 1:1 p/p<br>
+manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
 controls (Employee, Project) 1:N p/p<br>
@@ -483,7 +483,7 @@ Project (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
   
-manages (Employee, Department) 1:1 p/p<br>
+manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
 controls (Employee, Project) 1:N p/p<br>
@@ -514,7 +514,7 @@ Department (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
   
-manages (Employee, Department) 1:1 p/p<br>
+manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
 controls (Employee, Project) 1:N p/p<br>
@@ -551,7 +551,7 @@ Project (.key[number], name)<br>
 .selected[Car (.key[plate])]<br>
 Model (.key[make], .key[model])
   
-manages (Employee, Department) 1:1 p/p<br>
+manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
 controls (Employee, Project) 1:N p/p<br>
@@ -595,7 +595,7 @@ Project (.key[number], name)<br>
 Car (.key[plate])<br>
 .selected[Model (.key[make], .key[model])]
   
-manages (Employee, Department) 1:1 p/p<br>
+manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
 controls (Employee, Project) 1:N p/p<br>
@@ -644,7 +644,7 @@ Project (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
   
-.selected[manages (Employee, Department) 1:1 p/p]<br>
+.selected[manages (Employee, Department, date) 1:1 p/p]<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
 controls (Employee, Project) 1:N p/p<br>
@@ -661,7 +661,7 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 .relation[
 |||
 |-:|-|
-|Department|.pk[number]|name|.selected[\#manager &rarr; Employee (UK)]
+|Department|.pk[number]|name|.selected[\\#manager &rarr; Employee (UK)]|.selected[date]
 ]
 
 .relation[
@@ -693,7 +693,7 @@ Project (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
   
-manages (Employee, Department) 1:1 p/p<br>
+manages (Employee, Department, date) 1:1 p/p<br>
 .selected[uses (Employee, Car) 1:1 p/t]<br>
 belongsTo (Employee, Department) N:1 t/p<br>
 controls (Employee, Project) 1:N p/p<br>
@@ -710,7 +710,7 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 .relation[
 |||
 |-:|-|
-|Department|.pk[number]|name|\#manager &rarr; Employee (UK)
+|Department|.pk[number]|name|\\#manager &rarr; Employee (UK)|date
 ]
 
 .relation[
@@ -742,7 +742,7 @@ Project (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
   
-manages (Employee, Department) 1:1 p/p<br>
+manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 .selected[belongsTo (Employee, Department) N:1 t/p]<br>
 controls (Employee, Project) 1:N p/p<br>
@@ -759,7 +759,7 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 .relation[
 |||
 |-:|-|
-|Department|.pk[number]|name|\#manager &rarr; Employee (UK)
+|Department|.pk[number]|name|\\#manager &rarr; Employee (UK)|date
 ]
 
 .relation[
@@ -791,7 +791,7 @@ Project (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
   
-manages (Employee, Department) 1:1 p/p<br>
+manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
 .selected[controls (Employee, Project) 1:N p/p]<br>
@@ -808,7 +808,7 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 .relation[
 |||
 |-:|-|
-|Department|.pk[number]|name|\#manager &rarr; Employee (UK)
+|Department|.pk[number]|name|\\#manager &rarr; Employee (UK)|date
 ]
 
 .relation[
@@ -840,7 +840,7 @@ Project (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
   
-manages (Employee, Department) 1:1 p/p<br>
+manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
 controls (Employee, Project) 1:N p/p<br>
@@ -857,7 +857,7 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 .relation[
 |||
 |-:|-|
-|Department|.pk[number]|name|\#manager &rarr; Employee (UK)
+|Department|.pk[number]|name|\\#manager &rarr; Employee (UK)|date
 ]
 
 .relation[
@@ -889,7 +889,7 @@ Project (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
   
-manages (Employee, Department) 1:1 p/p<br>
+manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
 controls (Employee, Project) 1:N p/p<br>
@@ -906,7 +906,7 @@ itsA (Car, Model) N:1 t/p<br>
 .relation[
 |||
 |-:|-|
-|Department|.pk[number]|name|\#manager &rarr; Employee (UK)
+|Department|.pk[number]|name|\\#manager &rarr; Employee (UK)|date
 ]
 
 .relation[
