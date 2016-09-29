@@ -322,7 +322,7 @@ $Employee \cup Manager$
 $Employee$
 .sqltable[
 |id|name|salary|taxes|departament
-|-|-|javascript/#46
+|-|-|
 |1 | John Doe    | 1000 | 200 | 1
 |2 | Jane Doe    | 800  | 100 | 2
 |3 | John Smith  | 1200 | 350 | 2
@@ -553,7 +553,7 @@ A join where only attributes from one of the relations is kept.
 ---
 
 
-# Examplejavascript/#46
+# Example
 
 .small[
 .pull-left[
