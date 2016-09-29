@@ -430,10 +430,10 @@ name: example
 
 ---
 
-# Example
+## Example
 
 .small[
-Employee (.key[id], name, address (city, street, number, appartment))<br>
+Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
 Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
@@ -449,10 +449,10 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 
 ---
 
-# Example
+## Example
 
 .small[
-.selected[Employee (.key[id], name, address (city, street, number, appartment))]<br>
+.selected[Employee (.key[id], name, address (city, street, number, appartment), {phone})]<br>
 Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
@@ -474,10 +474,10 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 
 ---
 
-# Example
+## Example
 
 .small[
-Employee (.key[id], name, address (city, street, number, appartment))<br>
+Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
 .selected[Department (.key[number], name)]<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
@@ -505,10 +505,10 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 
 ---
 
-# Example
+## Example
 
 .small[
-Employee (.key[id], name, address (city, street, number, appartment))<br>
+Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
 Department (.key[number], name)<br>
 .selected[Project (.key[number], name)]<br>
 Car (.key[plate])<br>
@@ -542,10 +542,10 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 
 ---
 
-# Example
+## Example
 
 .small[
-Employee (.key[id], name, address (city, street, number, appartment))<br>
+Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
 Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 .selected[Car (.key[plate])]<br>
@@ -586,10 +586,10 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 
 ---
 
-# Example
+## Example
 
 .small[
-Employee (.key[id], name, address (city, street, number, appartment))<br>
+Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
 Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
@@ -635,10 +635,10 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 
 ---
 
-# Example
+## Example
 
 .small[
-Employee (.key[id], name, address (city, street, number, appartment))<br>
+Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
 Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
@@ -661,7 +661,7 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 .relation[
 |||
 |-:|-|
-|Department|.pk[number]|name|.selected[\\#manager &rarr; Employee (UK)]|.selected[date]
+|Department|.pk[number]|name|.selected[\#manager &rarr; Employee (UK)]|.selected[date]
 ]
 
 .relation[
@@ -684,10 +684,10 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 
 ---
 
-# Example
+## Example
 
 .small[
-Employee (.key[id], name, address (city, street, number, appartment))<br>
+Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
 Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
@@ -710,7 +710,7 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 .relation[
 |||
 |-:|-|
-|Department|.pk[number]|name|\\#manager &rarr; Employee (UK)|date
+|Department|.pk[number]|name|\#manager &rarr; Employee (UK)|date
 ]
 
 .relation[
@@ -733,10 +733,10 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 
 ---
 
-# Example
+## Example
 
 .small[
-Employee (.key[id], name, address (city, street, number, appartment))<br>
+Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
 Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
@@ -759,7 +759,7 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 .relation[
 |||
 |-:|-|
-|Department|.pk[number]|name|\\#manager &rarr; Employee (UK)|date
+|Department|.pk[number]|name|\#manager &rarr; Employee (UK)|date
 ]
 
 .relation[
@@ -782,10 +782,10 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 
 ---
 
-# Example
+## Example
 
 .small[
-Employee (.key[id], name, address (city, street, number, appartment))<br>
+Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
 Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
@@ -808,7 +808,7 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 .relation[
 |||
 |-:|-|
-|Department|.pk[number]|name|\\#manager &rarr; Employee (UK)|date
+|Department|.pk[number]|name|\#manager &rarr; Employee (UK)|date
 ]
 
 .relation[
@@ -831,10 +831,10 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 
 ---
 
-# Example
+## Example
 
 .small[
-Employee (.key[id], name, address (city, street, number, appartment))<br>
+Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
 Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
@@ -857,7 +857,7 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 .relation[
 |||
 |-:|-|
-|Department|.pk[number]|name|\\#manager &rarr; Employee (UK)|date
+|Department|.pk[number]|name|\#manager &rarr; Employee (UK)|date
 ]
 
 .relation[
@@ -880,10 +880,10 @@ worksAt (Employee, Project, hours) N:N p/p<br>
 
 ---
 
-# Example
+## Example
 
 .small[
-Employee (.key[id], name, address (city, street, number, appartment))<br>
+Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
 Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
@@ -894,7 +894,7 @@ uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
 controls (Employee, Project) 1:N p/p<br>
 itsA (Car, Model) N:1 t/p<br>
-.selected[worksAt (Employee, Project, hours) N:N p/p]<br>
+.selected[worksAt (Employee, Project, hours) N:N p/p]
 ]
 
 .relation[
@@ -906,7 +906,7 @@ itsA (Car, Model) N:1 t/p<br>
 .relation[
 |||
 |-:|-|
-|Department|.pk[number]|name|\\#manager &rarr; Employee (UK)|date
+|Department|.pk[number]|name|\#manager &rarr; Employee (UK)|date
 ]
 
 .relation[
@@ -931,5 +931,65 @@ itsA (Car, Model) N:1 t/p<br>
 |||
 |-:|-|
 |WorksAt|\#id &rarr; Employee|.pk[\#number &rarr; Project]|hours
+]
+
+---
+
+## Example
+
+.small[
+Employee (.key[id], name, address (city, street, number, appartment), .selected[{phone}])<br>
+Department (.key[number], name)<br>
+Project (.key[number], name)<br>
+Car (.key[plate])<br>
+Model (.key[make], .key[model])
+  
+manages (Employee, Department, date) 1:1 p/p<br>
+uses (Employee, Car) 1:1 p/t<br>
+belongsTo (Employee, Department) N:1 t/p<br>
+controls (Employee, Project) 1:N p/p<br>
+itsA (Car, Model) N:1 t/p<br>
+worksAt (Employee, Project, hours) N:N p/p]
+
+.relation[
+|||
+|-:|-|
+|Employee|.pk[id]|name|city|street|number|apartment|\#number &rarr; Department (NN)
+]
+
+.relation[
+|||
+|-:|-|
+|Department|.pk[number]|name|\#manager &rarr; Employee (UK)|date
+]
+
+.relation[
+|||
+|-:|-|
+|Project|.pk[number]|name|\#controled &rarr; Employee
+]
+
+.relation[
+|||
+|-:|-|
+|Car|.pk[plate]|\#used_by &rarr; Employee (UK, NN)|\#(make, model) &rarr; Model (NN)
+]
+
+.relation[
+|||
+|-:|-|
+|Model|make|.pk[model]
+]
+
+.relation[
+|||
+|-:|-|
+|WorksAt|\#id &rarr; Employee|.pk[\#number &rarr; Project]|hours
+]
+
+.relation.selected[
+|||
+|-:|-|
+|Phone|\#id &rarr; Employee|.pk[phone]|
 ]
 
