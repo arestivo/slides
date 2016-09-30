@@ -42,7 +42,7 @@
       MathJax.Hub.Config({
           tex2jax: {
 	      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+          skipTags: ['h1', 'script', 'noscript', 'style', 'textarea', 'pre']
           }
 
       });

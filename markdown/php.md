@@ -1379,7 +1379,7 @@ name:parameters
 
 ---
 
-# $_GET and $_POST
+# $\_GET and &dollar;\_POST$
 
 The special **$_GET** variable is an associative array of variables passed to the current script via the **URL** parameters.
 The special **$_POST** variable is an associative array of variables passed to the current script via the **HTTP Header**.
