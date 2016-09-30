@@ -566,23 +566,6 @@ Accept: text/html
 
 ---
 
-# HATEOAS
-
-**H**ypermedia **a**s **t**he **E**ngine **o**f **A**pplication **S**tate
-
-```xml
-<order>
-   <amount>3</amount>
-   <link rel="self" uri="http://example.com/order/1234" />
-   <link rel="product" uri="http://example.com/product/4554" />
-   <link rel="customer" uri="http://example.com/customer/8937" />
-</order>
-```
-
-See also: [Richardson Maturity Model](http://martinfowler.com/articles/richardsonMaturityModel.html)
-
----
-
 template: inverse
 name: php
 # PHP and HTTP
