@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="../css/font-awesome.css">
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/examples.css">
 	<link rel="stylesheet" href="../css/print.css" media="print">
 	<link rel="icon" type="image/ico" href="../images/favicon.ico">
   </head>

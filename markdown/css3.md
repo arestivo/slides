@@ -38,6 +38,7 @@ name:index
 1. [Lists](#lists)
 1. [Tables](#tables)
 1. [Transforms](#transforms)
+1. [Transitions](#transitions)
 1. [Positioning](#positioning)
 1. [Precedence](#precedence)
 1. [Responsive Design](#responsive)
@@ -1212,6 +1213,50 @@ div {
 
 ![](../assets/css3/transform.png)
 
+
+---
+
+template:inverse
+name:transitions
+#Transitions
+
+---
+
+#Transitions
+
+* Provide a way to control **animation speed** when changing CSS properties
+
+* Instead of having property changes take effect immediately, you can cause the changes in a property to take place over a period of time.
+
+* CSS transitions let you decide: 
+  * which properties to animate (**list**)
+  * when the animation will start (**delay**)
+  * how long the transition will last (**duration**)
+  * how the transition will run (**timing function**)
+
+---
+
+#Example
+
+<div class="transition"></div>
+
+```css
+.box {
+    border-style: solid;
+    border-width: 1px;
+    width: 100px;
+    height: 100px;
+    background-color: #0000FF;
+    transition: width 2s, height 2s, background-color 2s, transform 2s;
+}
+
+.box:hover {
+    background-color: #FFCCCC;
+    width: 150px;
+    height: 150px;
+    transform: rotate(180deg);
+}
+```
 
 ---
 
