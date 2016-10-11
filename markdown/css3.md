@@ -295,6 +295,10 @@ aside#menu li.selected + li > a
 * A pseudo-class is a way of selecting existing HTML elements, based on some specific characteristic (e.g. a visited link)
 * Pseudo-elements allow logical elements to be defined which are not actually in the document element tree (e.g. The first letter of a paragraph)
 
+More on [pseudo-classes](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes)
+
+More on [pseudo-elements](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements)
+
 ---
 
 ## Anchor Pseudo-classes
@@ -347,8 +351,6 @@ div:target {
   border: 1px solid red;
 }
 ```
-
-More [pseudo-classes](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes)
 
 ---
 
@@ -407,6 +409,11 @@ The **content** property can have the following values:
  * **an url** An external resource (such as an image). ```url('dog.png')```
  * **counter** Variables maintained by CSS whose values may be incremented by CSS rules to track how many times they're used. ```counter(section)``` [Learn more](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Counters).
  * **open-quote** and **close-quote** Open and close quotes. ```open-quote```
+
+```css
+blockquote:before { open-quote;  }
+blockquote:after  { close-quote; }
+```
 
 ---
 
