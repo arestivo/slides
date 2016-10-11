@@ -292,7 +292,7 @@ aside#menu li.selected + li > a
 
 ## Pseudo Classes and Elements
 
-* A pseudo-class is way of selecting certain parts of a HTML document, based in principle not on the HTML document tree itself (e.g. a visited link)
+* A pseudo-class is a way of selecting existing HTML elements, based on some specific characteristic (e.g. a visited link)
 * Pseudo-elements allow logical elements to be defined which are not actually in the document element tree (e.g. The first letter of a paragraph)
 
 ---
