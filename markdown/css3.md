@@ -409,8 +409,8 @@ The **content** property can have the following values:
  * **open-quote** and **close-quote** Open and close quotes. ```open-quote```
 
 ```css
-blockquote:before { open-quote;  }
-blockquote:after  { close-quote; }
+blockquote:before { content: open-quote;  }
+blockquote:after  { content: close-quote; }
 ```
 
 ---
