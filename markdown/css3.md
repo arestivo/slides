@@ -1605,7 +1605,7 @@ Pages optimized for a variety of devices must include a meta viewport element in
 * *width=device-width* matchs the screen's width in device independent pixels.
 * initial-scale=1* establishs a 1:1 relationship between CSS pixels and device independent pixels.
 
-Learn more: https://developer.mozilla.org/en/docs/Mozilla/Mobile/Viewport_meta_tag
+Learn more: https://developer.mozilla.org/en/docs/Mozilla/Mobile/Viewport_meta_tag and a tale of two viewports [part 1](http://www.quirksmode.org/mobile/viewports.html) and [part 2](http://www.quirksmode.org/mobile/viewports2.html)
 
 ---
 
