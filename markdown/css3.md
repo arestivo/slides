@@ -1281,7 +1281,12 @@ name:positioning
 
 # Position
 
-The **position** property allows the developer to alter the way an element is positioned. There are 4 possible values.
+The **position** property allows the developer to alter the way an element is positioned. There are 4 possible values:
+
+* static
+* relative
+* fixed
+* absolute
 
 ---
 
@@ -1356,7 +1361,7 @@ The **position** property allows the developer to alter the way an element is po
 
 # Float
 
-The **float** property removes an element from the document flow and moves it to the **left** or to the **right**.
+The **float** property removes an element from the document flow and shifts it to the **left** or to the **right** until it touches the edge of its containing box or another floated element.
 
 <img src="../assets/css3/float-left.png" style="padding: 10px;">
 
@@ -1392,7 +1397,7 @@ Floats go right or left until they find another float or the parent container.
 ---
 ## Clear
 
-* The **clear** property indicates that no floating elements are allowed on the left and/or the right side of a specified element. 
+* The **clear** property indicates if an element can be next to floating elements that precede it or must be moved down. 
 * Values can be **left**, **right** or **both**.
 
 <img src="../assets/css3/float-clear.png" style="padding: 10px;">
@@ -1456,8 +1461,8 @@ div {
 ---
 # Inherit
 
-* There is a special value that can be used in almost every property.
-* When a property is set to **inherit**, the value of that property is **inherited from the element's parent**.
+* A special value that can be used in almost every property.
+* When a property is set to **inherit**, the value of that property is **inherited** from the element's **parent**.
 
 ```css
 <div id="menu">
@@ -1517,7 +1522,7 @@ p {
   color: red;
 }
 ```
-
+--
 <div class="fragment roll-in"><span style="color: green">Green</span>! Because the first rule is more specific than the second one.</div>
 ---
 ## Calculating Specificity
