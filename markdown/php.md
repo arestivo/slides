@@ -1001,7 +1001,7 @@ PHP 5 allows developers to declare constructor methods for classes.
 
 Classes which have a constructor method call this method on each newly-created object.
 
-The constructor method is always called **__construct** and can receive any number of parameters. The destructor method is, as expected, called **_destruct**.
+The constructor method is always called **__construct** and can receive any number of parameters. The destructor method is, as expected, called **__destruct**.
 
 ```php
 class Car {
