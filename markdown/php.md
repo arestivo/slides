@@ -1385,8 +1385,8 @@ The special **$_GET** variable is an associative array of variables passed to th
 The special **$_POST** variable is an associative array of variables passed to the current script via the **HTTP Header**.
 
 ```php
-$name = $_GET['name']
-$email = $_GET['email']
+$name = $_GET['name'];
+$email = $_GET['email'];
 ```
 
 These are **superglobal**, or automatic global, variables. There is no need to do **global $variable;** to access them within functions or methods.
