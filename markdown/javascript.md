@@ -824,7 +824,7 @@ Some common Element **properties**:
 | **id**        | The id attribute |
 | **innerHTML** | The HTML code inside the element |
 | **outerHTML** | The HTML code including this element |
-| **style***    | The CSS style of the element |
+| **style**    | The CSS style of the element |
 
 Some common Element **methods**:
 
