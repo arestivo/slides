@@ -540,6 +540,7 @@ SELECT * FROM employee, department WHERE dep_num = num;
 * These keywords allow us to specify simultaneously **which tables** to join and with which joining **condition**.
 * Separates regular row filtering from joining conditions.
 * Makes joining lots of tables **easier** to understand.
+* These are also called *inner joins*.
 
 ```sql
 SELECT * FROM employee, department WHERE dep_num = num;
@@ -616,6 +617,49 @@ SELECT * FROM employee JOIN department USING(num);
 |3 | John Smith  | 1200 | 350 | 2 | Sales
 |4 | Jane Roe    | 1000 | 200 | 3 | Production
 ]
+
+---
+
+# Join LEFT, RIGHT and FULL
+
+* Sometimes, when joining tables, some of the rows are left out as they do not match any rows on the other table.
+* If we want these rows to be present in the result, we must use what is called and *outer join*.
+* There are three types of *outer joins*:
+  * LEFT - Rows on the **left** table that do not match any row in the right table are kept.
+  * RIGHT - Rows on the **right** table that do not match any row in the left table are kept.
+  * FULL - Rows on any of the tables that do not match any row in the other table are kept.
+
+---
+
+# JOIN vs LEFT JOIN
+
+```sql
+SELECT * FROM employee JOIN department USING(num);
+```
+
+.smaller.sqltable[
+|id|name|salary|taxes|num|name
+|-|-|
+|1 | John Doe    | 1000 | 200 | 1 | Marketing
+|2 | Jane Doe    | 800  | 100 | 2 | Sales
+|3 | John Smith  | 1200 | 350 | 2 | Sales
+|4 | Jane Roe    | 1000 | 200 | 3 | Production
+]
+
+```sql
+SELECT * FROM employee LEFT JOIN department USING(num);
+```
+
+.smaller.sqltable[
+|id|name|salary|taxes|num|name
+|-|-|
+|1 | John Doe    | 1000 | 200 | 1    | Marketing
+|2 | Jane Doe    | 800  | 100 | 2    | Sales
+|3 | John Smith  | 1200 | 350 | 2    | Sales
+|4 | Jane Roe    | 1000 | 200 | 3    | Production
+|**5** | **Richard Roe** | **900**  | **0**   | **NULL** | **NULL**
+]
+
 
 ---
 
