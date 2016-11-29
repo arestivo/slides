@@ -433,7 +433,7 @@ Not enough. Use context aware encoders. For example: [OWASP ESAPI for Javascript
 
 # Preventing in PHP
 
-* Using [strip_tags](http://php.net/manual/en/function.strip-tags.php) and [htmlentities](http://php.net/manual/en/function.htmlentities.php) is [not enough](https://isisblogs.poly.edu/2013/07/02/php-strip_tags-not-a-complete-protection-against-xss-repost-from-archive/).
+* Using [strip_tags](http://php.net/manual/en/function.strip-tags.php) and [htmlentities](http://php.net/manual/en/function.htmlentities.php) is [not enough](http://blog.isis.poly.edu/archive/vulnerabilities/2013/07/03/php-strip_tags-not-a-complete-protection-against-xss-repost-from-archive/).
 * Instead use context aware encoders. For example: [OWASP ESAPI for PHP](http://code.google.com/p/owasp-esapi-php/).
 * If some must be allowed you can use, for example, [HTML purifier](http://htmlpurifier.org/).
 
