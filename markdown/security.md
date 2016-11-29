@@ -197,10 +197,14 @@ SELECT * users WHERE username = 'johndoe' AND password = '' OR 1 = 1; --'
 $conn->query("SELECT * FROM items WHERE title = '" . $title . "'"); 
 ```
 
+Navigate to URL:
+
 ```http
 http://www.example.com/search.php?title='; INSERT INTO users VALUES 
 ('johndoe', 'password', true); --
 ```
+
+Third parameter has admin status of user:
 
 ```sql
 SELECT * FROM items WHERE title = ''; INSERT INTO users VALUES 
