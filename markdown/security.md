@@ -287,7 +287,7 @@ Cross-Site Scripting (XSS) attacks are a type of **injection**, in which **malic
 
 ```php
 <?php
-  $stmt = $conn->prepare("INSERT INTO comment VALUES (NULL, ?, ?, ?)"); 
+  $stmt = $conn->prepare("INSERT INTO comment VALUES (DEFAULT, ?, ?, ?)"); 
   $stmt->execute(array($_POST['post_id'], $_POST['text'], $_SESSION['username']));
 ?>
 ```
