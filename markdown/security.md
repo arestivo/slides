@@ -70,6 +70,8 @@ Reference: [Open Web Application Security Project](https://www.owasp.org/)
 * Using Components with Known Vulnerabilities
 * Unvalidated Redirects and Forwards
 
+[OWASP Top 10](https://www.owasp.org/index.php/Top_10_2013-Table_of_Contents)
+
 ---
 
 # Security Impact
@@ -160,10 +162,10 @@ SQL injection attacks allow attackers to:
 $conn->query("SELECT * FROM items WHERE owner = '" . $username . "'"); 
 ```
 
-Create account with username: ```johndoe' OR 1 = 1```
+Create account with username: ```johndoe' OR 1 = 1--```
 
 ```sql
-SELECT * FROM items WHERE owner = 'johndoe' OR 1 = 1'
+SELECT * FROM items WHERE owner = 'johndoe' OR 1 = 1--'
 ```
 
 ---
