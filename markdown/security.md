@@ -174,8 +174,8 @@ SELECT * FROM items WHERE owner = 'johndoe' OR 1 = 1--'
 
 ```php
 // verifies if username and password are correct
-$conn->query("SELECT * FROM users WHERE username = '" . $username . 
-                                 "' AND password ='" . $password . "'"); 
+$conn->query("SELECT * FROM users WHERE " . 
+      "username = '" . $username . "' AND password ='" . $password . "'"); 
 ```
 
 Navigate to URL:
