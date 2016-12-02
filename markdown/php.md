@@ -409,7 +409,7 @@ Both **die** and **exit** stop the execution of the current PHP script.
 They can receive a status as a string, that will be printed before stopping, or an integer, that will be as the exit status and not printed.
 
 ```php
-  if ($something == "wrong") die ("Something is Wrong);
+  if ($something == "wrong") die ("Something is Wrong");
 ```
 
 ```php
