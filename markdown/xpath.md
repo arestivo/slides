@@ -366,7 +366,7 @@ name:examples
 | **@lang** | selects the *lang* attribute of the context node
 | **@*** | selects all the attributes of the context node
 | **book[1]** | selects the first *book* child of the context node
-| **para[last()]** | selects the last *book* child of the context node
+| **para[last()]** | selects the last *para* child of the context node
 | ***/para** | selects all *book* grandchildren of the context node
 | **/books/book[2]/authors[1]** | selects the first author of the second book of the root books element 
 
