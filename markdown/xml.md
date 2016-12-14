@@ -65,7 +65,7 @@ name:intro
 
 * SGML is the **S**tandard **G**eneralized **M**arkup **L**anguage, the
   international standard for defining markup to describe the structure of
-  different types of electronic document.
+  different types of electronic documents.
 * SGML is very **large**, **powerful**, and **complex**.
 * XML is a **lightweight** cut-down version of SGML.
 
