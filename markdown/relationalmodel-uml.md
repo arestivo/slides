@@ -25,12 +25,8 @@ name:index
 .indexlist[
 1. [Introduction](#intro)
 1. [Constraints](#constraints)
-1. [Primary Keys](#pks)
-1. [Unique Keys](#uks)
-1. [Foreign Keys](#fks)
-1. [Constraints](#constraints)
 1. [Operations](#operations)
-1. [Conversion](#er-to-mr)
+1. [Conversion](#uml-to-mr)
 1. [Example](#example)
 ]
 
@@ -54,12 +50,15 @@ name: intro
 # Principles
 
 * Relational Model:
-  * Set of relations: **tables**
-  * Composed by *tuples* (*records*) and *attributes*: **rows** and **columns**
+
+  * Set of relations: **tables**;
+  * Composed by *tuples* (*records*) and *attributes*: **rows** and **columns**.
+
 * Each relation:
-  * Has **name**
-  * Contains **attributes**
-  * Subject to **constraints**
+
+  * Has **name**;
+  * Contains **attributes**;
+  * Subject to **constraints**.
 
 ---
 
@@ -71,9 +70,9 @@ name: intro
 
 # Tuples
 
- * The **lines** of a relation.
- * **Ordered** sequence of values.
- * Tuples do not have a specific order between them.
+ * The **lines** of a relation;
+ * **Ordered** sequence of values;
+ * Tuples do not have a specific order between them;
  * Tuple values are **atomic** (no composite or multi-value).
 
 ---
@@ -82,12 +81,12 @@ name: intro
 
 | | |
 |-|-| 
-| $R (A_1, A_2, ..., A_n)$ | Relation schema R of degree n |
-| $Q, R, S$ | Relation names |
-| $t, u, v$ | Tuples |
-| $t (a_1, a_2, ..., a_n)$ | Tuple $t$ of a relation |
-| $t[A_i]$ | The value of the attribute $A_i$ in the tuple $t$ |
-| $t[A_i, A_j, A_k]$ | value of the attributes $A_i, A_j ,A_k$ in the tuple $t$ |
+| R (A1, A2, ..., An) | Relation schema R of degree n |
+| Q, R, S | Relation names |
+| t, u, v | Tuples |
+| t (a1, a2, ..., an) | Tuple $t$ of a relation |
+| t[Ai] | The value of the attribute *Ai* in the tuple *t* |
+| t[Ai, Aj, Ak] | value of the attributes *Ai, Aj ,Ak* in the tuple *t* |
 
 Example for an employee:
 
@@ -104,7 +103,7 @@ template: inverse
 
 # Domain
 
-* The set of possible values for a given attribute.
+* The set of **possible** values for a given **attribute**.
 * Can be considered a **constraint** on the value of the attribute.
 * Examples:
 
@@ -119,7 +118,7 @@ template: inverse
 
 For certain attributes, **null** can be a possible value. Others don't allow the null value.
 
-Notation for **not null** attributes:
+Notation for **not null** attributes [NN]:
 
 .box_example[
 Employee (id, name [NN], address, telephone)
@@ -130,13 +129,23 @@ Employee (id, name [NN], address, telephone)
 # Key Constraints
 
 * No two tuples can have the same combination of values for
-all their attributes
+all their attributes;
 * **Superkey**: set of attributes in a relation R such that no 2
 different tuples will have the same values for that set of
-attributes
+attributes;
 * **Key**: minimal set of attributes in relation R such that no 2
-tuples have the same values
-* **Candidate key**: any key 
+tuples have the same values;
+* **Candidate key**: any key. 
+
+---
+
+# Primary Key
+
+Key chosen to be used to **identify** tuples in a relation:
+
+* Other candidate keys are **unique** keys;
+* Every relation schema **must have** a primary key;
+* The attribute values of the primary key **cannot** be *null*.
 
 ---
 
@@ -148,68 +157,34 @@ tuples have the same values
 
 # Notation
 
-Notation for primary keys:
+Notation for primary keys (underline):
 
 .box_example[
-.relation[
-|||
-|-:|-|
-|Relation Name|.pk[primary_key]|attribute_1|...|attribute_n
-]]
+Employee (<u>primary key</u>, attribute 1, addattribute 2, ..., attribute n)
+]
 
 Example for an employee:
 
 .box_example[
-.relation[
-|||
-|-:|-|
-|Employee|.pk[id]|name|address|telephone
-]]
+Employee (<u>id</u>, name [NN], address, telephone)
+]
 
 ---
 
-# Double Primary Key
+# Table with a Double Primary Key
 
 ![](../assets/relationalmodel/doubleprimarykey.png)
 
 ---
 
-# Notation
-
-Notation for double primary keys:
-
-.box_example[
-.relation[
-|||
-|-:|-|
-|Relation Name|primary_key_1|.pk[primary_key_2]|attribute_1|...|attribute_n
-]]
-
-Example for a phone list:
-
-.box_example[
-.relation[
-|||
-|-:|-|
-|Phone|person|.pk[number]|type
-]]
-
----
-
-template: inverse
-name: uks
 # Unique Keys
 
----
-
-# Definition
-
  * Unique keys are **similar to primary keys** but **allow null** values.
- * A relation can have several unique keys.
+ * A relation can have **several** unique keys.
 
 ---
 
-## Table with an Unique Key
+# Table with an Unique Key
 
 ![](../assets/relationalmodel/uniquekey.png)
 
@@ -217,36 +192,24 @@ name: uks
 
 # Notation
 
-Notation for unique keys:
+Notation for unique keys [UK]:
 
 .box_example[
-.relation[
-|||
-|-:|-|
-|Relation Name|.pk[primary_key]|attribute_1 (UK)|...|attribute_n
-]]
+Employee (<u>primary key</u>, attribute 1 [UK], addattribute 2, ..., attribute n)
+]
 
 Example for an employee:
 
 .box_example[
-.relation[
-|||
-|-:|-|
-|Employee|.pk[id]|name|username (UK)|phone|address
-]]
+Employee (<u>id</u>, name [NN], address, telephone [UK])
+]
+
 
 ---
-
-template:inverse
-name:fks
 
 # Foreign Keys
 
----
-
-# Definition
-
-* An **attribute** (or set of attributes) that **always matches a key** attribute in **another** relation.
+* An **attribute** (or set of attributes) that uniquely identifies a tuple of another, or the same, relation.
 * Can be used to **cross-reference** relations.
 * Possible to use the values of attributes in the referenced relation to restrict the domain of one or more attributes in the referencing relation.
 
@@ -260,39 +223,27 @@ name:fks
 
 ## Notation
 
-Notation for foreign keys:
+Notation for foreign keys (# and arrow):
 
 .box_example[
-.relation[
-|||
-|-:|-|
-|Relation Name|.pk[primary_key]|attribute_1|attribute_2|#foreign_key &rarr; referenced_relation
-]]
+Relation (<u>primary_key</u>, attribute, #foreign_key &rarr; Referenced Relation)
+]
+
 
 Example for an employee and a department:
 
 .box_example[
-.relation[
-|||
-|-:|-|
-|Employee|.pk[id]|name|address|phone|#dep_id &rarr; Department
-]
+Employee works at a department.
 <br>
-.relation[
-|||
-|-:|-|
-|Department|.pk[id]|name (UK)
-]]
+<br>
+Employee (<u>id</u>, name [NN], telephone [UK], #num &rarr; Department)<br><br>
+Department (<u>num</u>, name [NN])
+]
 
 ---
 
-template: inverse
-name: constraints
 # Constraints
-
----
-
-# Summary of Constraints
+## Summary
 
 * **Primary key** values **cannot be null**.
 * **Key values** (primary and unique) **cannot have repeated** values.
@@ -317,673 +268,18 @@ name: operations
 ---
 
 template: inverse
-name: er-to-mr
+name: uml-to-mr
 
-# Entity Relationship to Relational
-
----
-
-# Step 1. Entity to Relation
-
-* **Every entity** in the entity-relationship model **becomes a relation** in the relational model.
-* **Composite attributes** are **separated** into several attributes.
-* **Key attributes** become **primary keys**.
-* Multi-valued attributes (see step 5).
+# UML to Relational
 
 ---
 
-# Step 1. Entity to Relation
+# Class
 
-![](../assets/relationalmodel/step1.png)
-
----
-
-# Step 2. Many-to-one relationships
-
-* Add a foreign key **from** the relation in the **many side** of the relationship **to the** relation in the **one side**.
-* If the participation of the entity on the **many side** of the relationship is **total**, add a **not null** constraint to the **foreign key**.
+![](../assets/uml/class.svg)
 
 ---
 
-# Step 2. Many-to-one relationships
+# Many-to-one
 
-Foreign key always in the **many** side
-
-![](../assets/relationalmodel/step2a.png)
-
----
-
-# Step 2. Many-to-one relationships
-
-If the **many** side has **total participation** in the relationship
-
-![](../assets/relationalmodel/step2b.png)
-
----
-
-# Step 3. One-to-one relationships
-
-* Add a foreign key **from one** of the relations **to the other**.
-  * If one of the entities has total participation in the relationship, add the foreign key to that relation and add a not null constraint to it.
-  * If none of the entities has a total participation, pick the one expected to have less tuples.
-* **Add a unique key** constraint to the **foreign key**.
-
----
-
-# Step 3. One-to-one relationships
-
-When **none** of the entities has a total participation in the relationship choose either one. Normally we choose the one with less rows.
-
-![](../assets/relationalmodel/step3a.png)
-
----
-
-# Step 3. One-to-one relationships
-
-When **one** of the entities has a total participation in the relationship choose that one.
-
-![](../assets/relationalmodel/step3b.png)
-
----
-
-# Step 4. Many-to-many relationships
-
-* Add a **new relation** to the model.
-* Add **foreign keys** to the new relation **referencing both relations**.
-* Select **both foreign keys** as the (double) **primary key** of the new relation.
-
----
-
-# Step 4. Many-to-many relationships
-
-Always create a new relation with a double foreign key
-
-![](../assets/relationalmodel/step4.png)
-
----
-
-# Step 5. Multi-valued attributes
-
-* For each multi-valued attribute create **a new relation**.
-* Add the multi-valued **attribute** and a **foreign key**, referencing the relation containing the attribute, to the new relation.
-* **Both attributes** (foreign key and attribute) become the **primary key** of the new relation.
-
----
-
-# Step 5. Multi-values attributes
-
-Always create a new relation with a double foreign key
-
-![](../assets/relationalmodel/step5.png)
-
----
-
-template: inverse
-name: example
-# Example
-
----
-
-## Example
-
-.small[
-Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
-Department (.key[number], name)<br>
-Project (.key[number], name)<br>
-Car (.key[plate])<br>
-Model (.key[make], .key[model])
-  
-manages (Employee, Department, date) 1:1 p/p<br>
-uses (Employee, Car) 1:1 p/t<br>
-belongsTo (Employee, Department) N:1 t/p<br>
-controls (Employee, Project) 1:N p/p<br>
-itsA (Car, Model) N:1 t/p<br>
-worksAt (Employee, Project, hours) N:N p/p<br>
-]
-
----
-
-## Example
-
-.small[
-.selected[Employee (.key[id], name, address (city, street, number, appartment), {phone})]<br>
-Department (.key[number], name)<br>
-Project (.key[number], name)<br>
-Car (.key[plate])<br>
-Model (.key[make], .key[model])
-  
-manages (Employee, Department, date) 1:1 p/p<br>
-uses (Employee, Car) 1:1 p/t<br>
-belongsTo (Employee, Department) N:1 t/p<br>
-controls (Employee, Project) 1:N p/p<br>
-itsA (Car, Model) N:1 t/p<br>
-worksAt (Employee, Project, hours) N:N p/p<br>
-]
-
-.relation.selected[
-|||
-|-:|-|
-|Employee|.pk[id]|name|city|street|number|apartment
-]
-
----
-
-## Example
-
-.small[
-Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
-.selected[Department (.key[number], name)]<br>
-Project (.key[number], name)<br>
-Car (.key[plate])<br>
-Model (.key[make], .key[model])
-  
-manages (Employee, Department, date) 1:1 p/p<br>
-uses (Employee, Car) 1:1 p/t<br>
-belongsTo (Employee, Department) N:1 t/p<br>
-controls (Employee, Project) 1:N p/p<br>
-itsA (Car, Model) N:1 t/p<br>
-worksAt (Employee, Project, hours) N:N p/p<br>
-]
-
-.relation[
-|||
-|-:|-|
-|Employee|.pk[id]|name|city|street|number|apartment
-]
-
-.relation.selected[
-|||
-|-:|-|
-|Department|.pk[number]|name
-]
-
----
-
-## Example
-
-.small[
-Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
-Department (.key[number], name)<br>
-.selected[Project (.key[number], name)]<br>
-Car (.key[plate])<br>
-Model (.key[make], .key[model])
-  
-manages (Employee, Department, date) 1:1 p/p<br>
-uses (Employee, Car) 1:1 p/t<br>
-belongsTo (Employee, Department) N:1 t/p<br>
-controls (Employee, Project) 1:N p/p<br>
-itsA (Car, Model) N:1 t/p<br>
-worksAt (Employee, Project, hours) N:N p/p<br>
-]
-
-.relation[
-|||
-|-:|-|
-|Employee|.pk[id]|name|city|street|number|apartment
-]
-
-.relation[
-|||
-|-:|-|
-|Department|.pk[number]|name
-]
-
-.relation.selected[
-|||
-|-:|-|
-|Project|.pk[number]|name
-]
-
----
-
-## Example
-
-.small[
-Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
-Department (.key[number], name)<br>
-Project (.key[number], name)<br>
-.selected[Car (.key[plate])]<br>
-Model (.key[make], .key[model])
-  
-manages (Employee, Department, date) 1:1 p/p<br>
-uses (Employee, Car) 1:1 p/t<br>
-belongsTo (Employee, Department) N:1 t/p<br>
-controls (Employee, Project) 1:N p/p<br>
-itsA (Car, Model) N:1 t/p<br>
-worksAt (Employee, Project, hours) N:N p/p<br>
-]
-
-.relation[
-|||
-|-:|-|
-|Employee|.pk[id]|name|city|street|number|apartment
-]
-
-.relation[
-|||
-|-:|-|
-|Department|.pk[number]|name
-]
-
-.relation[
-|||
-|-:|-|
-|Project|.pk[number]|name
-]
-
-.relation.selected[
-|||
-|-:|-|
-|Car|.pk[plate]
-]
-
-
----
-
-## Example
-
-.small[
-Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
-Department (.key[number], name)<br>
-Project (.key[number], name)<br>
-Car (.key[plate])<br>
-.selected[Model (.key[make], .key[model])]
-  
-manages (Employee, Department, date) 1:1 p/p<br>
-uses (Employee, Car) 1:1 p/t<br>
-belongsTo (Employee, Department) N:1 t/p<br>
-controls (Employee, Project) 1:N p/p<br>
-itsA (Car, Model) N:1 t/p<br>
-worksAt (Employee, Project, hours) N:N p/p<br>
-]
-
-.relation[
-|||
-|-:|-|
-|Employee|.pk[id]|name|city|street|number|apartment
-]
-
-.relation[
-|||
-|-:|-|
-|Department|.pk[number]|name
-]
-
-.relation[
-|||
-|-:|-|
-|Project|.pk[number]|name
-]
-
-.relation[
-|||
-|-:|-|
-|Car|.pk[plate]
-]
-
-.relation.selected[
-|||
-|-:|-|
-|Model|make|.pk[model]
-]
-
----
-
-## Example
-
-.small[
-Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
-Department (.key[number], name)<br>
-Project (.key[number], name)<br>
-Car (.key[plate])<br>
-Model (.key[make], .key[model])
-  
-.selected[manages (Employee, Department, date) 1:1 p/p]<br>
-uses (Employee, Car) 1:1 p/t<br>
-belongsTo (Employee, Department) N:1 t/p<br>
-controls (Employee, Project) 1:N p/p<br>
-itsA (Car, Model) N:1 t/p<br>
-worksAt (Employee, Project, hours) N:N p/p<br>
-]
-
-.relation[
-|||
-|-:|-|
-|Employee|.pk[id]|name|city|street|number|apartment
-]
-
-.relation[
-|||
-|-:|-|
-|Department|.pk[number]|name|.selected[\#manager &rarr; Employee (UK)]|.selected[date]
-]
-
-.relation[
-|||
-|-:|-|
-|Project|.pk[number]|name
-]
-
-.relation[
-|||
-|-:|-|
-|Car|.pk[plate]
-]
-
-.relation[
-|||
-|-:|-|
-|Model|make|.pk[model]
-]
-
----
-
-## Example
-
-.small[
-Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
-Department (.key[number], name)<br>
-Project (.key[number], name)<br>
-Car (.key[plate])<br>
-Model (.key[make], .key[model])
-  
-manages (Employee, Department, date) 1:1 p/p<br>
-.selected[uses (Employee, Car) 1:1 p/t]<br>
-belongsTo (Employee, Department) N:1 t/p<br>
-controls (Employee, Project) 1:N p/p<br>
-itsA (Car, Model) N:1 t/p<br>
-worksAt (Employee, Project, hours) N:N p/p<br>
-]
-
-.relation[
-|||
-|-:|-|
-|Employee|.pk[id]|name|city|street|number|apartment
-]
-
-.relation[
-|||
-|-:|-|
-|Department|.pk[number]|name|\#manager &rarr; Employee (UK)|date
-]
-
-.relation[
-|||
-|-:|-|
-|Project|.pk[number]|name
-]
-
-.relation[
-|||
-|-:|-|
-|Car|.pk[plate]|.selected[\#used_by &rarr; Employee (UK, NN)]
-]
-
-.relation[
-|||
-|-:|-|
-|Model|make|.pk[model]
-]
-
----
-
-## Example
-
-.small[
-Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
-Department (.key[number], name)<br>
-Project (.key[number], name)<br>
-Car (.key[plate])<br>
-Model (.key[make], .key[model])
-  
-manages (Employee, Department, date) 1:1 p/p<br>
-uses (Employee, Car) 1:1 p/t<br>
-.selected[belongsTo (Employee, Department) N:1 t/p]<br>
-controls (Employee, Project) 1:N p/p<br>
-itsA (Car, Model) N:1 t/p<br>
-worksAt (Employee, Project, hours) N:N p/p<br>
-]
-
-.relation[
-|||
-|-:|-|
-|Employee|.pk[id]|name|city|street|number|apartment|.selected[\#number &rarr; Department (NN)]
-]
-
-.relation[
-|||
-|-:|-|
-|Department|.pk[number]|name|\#manager &rarr; Employee (UK)|date
-]
-
-.relation[
-|||
-|-:|-|
-|Project|.pk[number]|name
-]
-
-.relation[
-|||
-|-:|-|
-|Car|.pk[plate]|\#used_by &rarr; Employee (UK, NN)
-]
-
-.relation[
-|||
-|-:|-|
-|Model|make|.pk[model]
-]
-
----
-
-## Example
-
-.small[
-Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
-Department (.key[number], name)<br>
-Project (.key[number], name)<br>
-Car (.key[plate])<br>
-Model (.key[make], .key[model])
-  
-manages (Employee, Department, date) 1:1 p/p<br>
-uses (Employee, Car) 1:1 p/t<br>
-belongsTo (Employee, Department) N:1 t/p<br>
-.selected[controls (Employee, Project) 1:N p/p]<br>
-itsA (Car, Model) N:1 t/p<br>
-worksAt (Employee, Project, hours) N:N p/p<br>
-]
-
-.relation[
-|||
-|-:|-|
-|Employee|.pk[id]|name|city|street|number|apartment|\#number &rarr; Department (NN)
-]
-
-.relation[
-|||
-|-:|-|
-|Department|.pk[number]|name|\#manager &rarr; Employee (UK)|date
-]
-
-.relation[
-|||
-|-:|-|
-|Project|.pk[number]|name|.selected[\#controled &rarr; Employee]
-]
-
-.relation[
-|||
-|-:|-|
-|Car|.pk[plate]|\#used_by &rarr; Employee (UK, NN)
-]
-
-.relation[
-|||
-|-:|-|
-|Model|make|.pk[model]
-]
-
----
-
-## Example
-
-.small[
-Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
-Department (.key[number], name)<br>
-Project (.key[number], name)<br>
-Car (.key[plate])<br>
-Model (.key[make], .key[model])
-  
-manages (Employee, Department, date) 1:1 p/p<br>
-uses (Employee, Car) 1:1 p/t<br>
-belongsTo (Employee, Department) N:1 t/p<br>
-controls (Employee, Project) 1:N p/p<br>
-.selected[itsA (Car, Model) N:1 t/p]<br>
-worksAt (Employee, Project, hours) N:N p/p<br>
-]
-
-.relation[
-|||
-|-:|-|
-|Employee|.pk[id]|name|city|street|number|apartment|\#number &rarr; Department (NN)
-]
-
-.relation[
-|||
-|-:|-|
-|Department|.pk[number]|name|\#manager &rarr; Employee (UK)|date
-]
-
-.relation[
-|||
-|-:|-|
-|Project|.pk[number]|name|\#controled &rarr; Employee
-]
-
-.relation[
-|||
-|-:|-|
-|Car|.pk[plate]|\#used_by &rarr; Employee (UK, NN)|.selected[\#(make, model) &rarr; Model (NN)]
-]
-
-.relation[
-|||
-|-:|-|
-|Model|make|.pk[model]
-]
-
----
-
-## Example
-
-.small[
-Employee (.key[id], name, address (city, street, number, appartment), {phone})<br>
-Department (.key[number], name)<br>
-Project (.key[number], name)<br>
-Car (.key[plate])<br>
-Model (.key[make], .key[model])
-  
-manages (Employee, Department, date) 1:1 p/p<br>
-uses (Employee, Car) 1:1 p/t<br>
-belongsTo (Employee, Department) N:1 t/p<br>
-controls (Employee, Project) 1:N p/p<br>
-itsA (Car, Model) N:1 t/p<br>
-.selected[worksAt (Employee, Project, hours) N:N p/p]
-]
-
-.relation[
-|||
-|-:|-|
-|Employee|.pk[id]|name|city|street|number|apartment|\#number &rarr; Department (NN)
-]
-
-.relation[
-|||
-|-:|-|
-|Department|.pk[number]|name|\#manager &rarr; Employee (UK)|date
-]
-
-.relation[
-|||
-|-:|-|
-|Project|.pk[number]|name|\#controled &rarr; Employee
-]
-
-.relation[
-|||
-|-:|-|
-|Car|.pk[plate]|\#used_by &rarr; Employee (UK, NN)|\#(make, model) &rarr; Model (NN)
-]
-
-.relation[
-|||
-|-:|-|
-|Model|make|.pk[model]
-]
-
-.relation.selected[
-|||
-|-:|-|
-|WorksAt|\#id &rarr; Employee|.pk[\#number &rarr; Project]|hours
-]
-
----
-
-## Example
-
-.small[
-Employee (.key[id], name, address (city, street, number, appartment), .selected[{phone}])<br>
-Department (.key[number], name)<br>
-Project (.key[number], name)<br>
-Car (.key[plate])<br>
-Model (.key[make], .key[model])
-  
-manages (Employee, Department, date) 1:1 p/p<br>
-uses (Employee, Car) 1:1 p/t<br>
-belongsTo (Employee, Department) N:1 t/p<br>
-controls (Employee, Project) 1:N p/p<br>
-itsA (Car, Model) N:1 t/p<br>
-worksAt (Employee, Project, hours) N:N p/p]
-
-.relation[
-|||
-|-:|-|
-|Employee|.pk[id]|name|city|street|number|apartment|\#number &rarr; Department (NN)
-]
-
-.relation[
-|||
-|-:|-|
-|Department|.pk[number]|name|\#manager &rarr; Employee (UK)|date
-]
-
-.relation[
-|||
-|-:|-|
-|Project|.pk[number]|name|\#controled &rarr; Employee
-]
-
-.relation[
-|||
-|-:|-|
-|Car|.pk[plate]|\#used_by &rarr; Employee (UK, NN)|\#(make, model) &rarr; Model (NN)
-]
-
-.relation[
-|||
-|-:|-|
-|Model|make|.pk[model]
-]
-
-.relation[
-|||
-|-:|-|
-|WorksAt|\#id &rarr; Employee|.pk[\#number &rarr; Project]|hours
-]
-
-.relation.selected[
-|||
-|-:|-|
-|Phone|\#id &rarr; Employee|.pk[phone]|
-]
-
+![](../assets/uml/many-to-one.svg)
