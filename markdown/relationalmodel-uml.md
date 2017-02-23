@@ -435,7 +435,8 @@ Part (<u>code</u>, name, type, #number &rarr; Computer [NN])
 
 --
 
-Primary key ensures the unicity of the qualified attribute.
+* Primary key ensures that each member can only be once in each club.
+* Unique key ensures the unicity of the qualified attribute.
 
 .relational_example[
 Club (<u>code</u>, title)
@@ -443,6 +444,7 @@ Club (<u>code</u>, title)
 Member (<u>id</u>, name, address, phone)
 
 Joined (<u>#code &rarr; Club</u>, #id &rarr; Member, <u>number</u>) 
+{UK: code, number}
 ]
 
 ---
@@ -489,7 +491,77 @@ Played (#name &rarr; Team, <u>#year &rarr; Season</u>, <u>#id &rarr; Player</u>,
 
 ---
 
-# Generalizations
+# Generalizations (method #1)
+
+![](../assets/uml/generalization.svg)
+
+--
+
+* Some queries are more complex (e.g. name of all heart surgeons);
+* No way to ensure disjoint generalization;
+* Type attribute optional.
+
+.small.relational_example[
+Person (<u>num</u>, name, type)
+
+Doctor (<u>#num &rarr; Person</u>, speciality)
+
+Patient (<u>#num &rarr; Person</u>, ensurance)
+
+Appointment (<u>id</u>, #num &rarr; Doctor, #num &rarr; Patient, date)
+
+]
+
+---
+
+# Generalizations (method #2)
+
+![](../assets/uml/generalization.svg)
+
+* Some queries require more work (e.g. person named John);
+* No way to ensure disjoint generalization;
+* Can become complex if generic class has many attributes and associations.
+
+.small.relational_example[
+Doctor (<u>num</u>, name, speciality)
+
+Patient (<u>num</u>, name, ensurance)
+
+Appointment (<u>id</u>, #num &rarr; Doctor, #num &rarr; Patient, date)
+
+]
+
+---
+
+# Generalizations (method #3)
+
+![](../assets/uml/generalization.svg)
+
+* Needs extra code to ensure an appointment is between a doctor and a patient, only doctors have a speciality and patients an ensurance;
+* Easy to ensure disjoint generalization;
+* Can become complex if specialized classes have many attributes and associations.
+
+.small.relational_example[
+Person (<u>num</u>, name, speciality, ensurance, type)
+
+Appointment (<u>id</u>, #num &rarr; Person, #num &rarr; Person, date)
+
+]
+
+---
+
+# Generalizations (method #4)
+
+![](../assets/uml/generalization.svg)
+
+* Same as previous but for overlapped generalizations.
+
+.small.relational_example[
+Person (<u>num</u>, name, speciality, ensurance, isdoctor, ispatient)
+
+Appointment (<u>id</u>, #num &rarr; Person, #num &rarr; Person, date)
+
+]
 
 ---
 
@@ -501,5 +573,34 @@ name: example
 ---
 
 # Example
+
+![](../assets/uml/example.svg)
+
+---
+
+# Solution
+
+.relational_example[
+Person (<u>num</u>, name, address)
+
+Doctor (<u>#num &rarr; Person</u>, phone, #cod &rarr; Speciality)
+
+Patient (<u>#num &rarr; Person</u>)
+
+Appointment (<u>id</u>, #num &rarr; Doctor [NN], #num &rarr; Patient [NN], date)
+
+Speciality (<u>cod</u>, name)
+
+Laboratory (<u>name</u>, address)
+
+Drug (<u>ref</u>, name, #lab &rarr; Laboratory [NN])
+
+Prescribed (<u>#id &rarr; Appointment</u>, <u>#ref &rarr; Drug</u>, dosage)
+
+Company (<u>name</u>)
+
+Ensurance (<u>#num &rarr; Patient</u>, <u>#company &rarr; Company</u>, number)<br>{UK: company, number}
+
+]
 
 
