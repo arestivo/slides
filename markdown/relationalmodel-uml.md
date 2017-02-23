@@ -278,8 +278,50 @@ name: uml-to-mr
 
 ![](../assets/uml/class.svg)
 
+--
+
+* Derived attribute can be ommited and calculated when needed;
+* If no good candidate key exists, a primary key can be created.
+
+.box_example[
+A relation representing the class:
+<br>
+<br>
+Person (<u>id</u>, birth_date, name, address, salary)
+]
+
 ---
 
 # Many-to-one
 
-![](../assets/uml/many-to-one.svg)
+![](../assets/uml/many-to-one-partial.svg)
+
+--
+
+* Foreign key from the many to the one side;
+* Can have null values as employee might not have a department.
+
+.box_example[A foreign key is added:
+<br><br>
+Person (<u>id</u>, birth_date, name, address, salary, #num &rarr; Department)<br><br>
+Department (<u>num</u>, name)
+]
+
+---
+
+# Many-to-one
+
+![](../assets/uml/many-to-one-total.svg)
+
+--
+
+* Foreign key from the many to the one side;
+* Cannot have null values as employee must have a department.
+
+.box_example[A foreign key is added with a not null constraint:
+<br><br>
+Person (<u>id</u>, birth_date, name, address, salary, #num &rarr; Department [NN] )<br><br>
+Department (<u>num</u>, name)
+]
+
+
