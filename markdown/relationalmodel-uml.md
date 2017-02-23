@@ -292,7 +292,7 @@ Person (<u>id</u>, birth_date, name, address, salary)
 
 ---
 
-# Many-to-one
+# Many-to-one (partial)
 
 ![](../assets/uml/many-to-one-partial.svg)
 
@@ -303,13 +303,13 @@ Person (<u>id</u>, birth_date, name, address, salary)
 
 .box_example[A foreign key is added:
 <br><br>
-Person (<u>id</u>, birth_date, name, address, salary, #num &rarr; Department)<br><br>
+Employee (<u>id</u>, birth_date, name, address, salary, #num &rarr; Department)<br><br>
 Department (<u>num</u>, name)
 ]
 
 ---
 
-# Many-to-one
+# Many-to-one (total)
 
 ![](../assets/uml/many-to-one-total.svg)
 
@@ -320,8 +320,43 @@ Department (<u>num</u>, name)
 
 .box_example[A foreign key is added with a not null constraint:
 <br><br>
-Person (<u>id</u>, birth_date, name, address, salary, #num &rarr; Department [NN] )<br><br>
+Employee (<u>id</u>, birth_date, name, address, salary, #num &rarr; Department [NN] )<br><br>
 Department (<u>num</u>, name)
+]
+
+---
+
+# One-to-one (partial)
+
+![](../assets/uml/one-to-one-partial.svg)
+
+--
+
+* Foreign key from the total to the partial side;
+* Can have null values as person might not have a passport.
+* Unique key as every passport must belong to a different person.
+
+.box_example[A foreign key is added with a not null constraint:
+<br><br>
+Person (<u>id</u>, birth_date, name, address, #number &rarr; Passport [UK] )<br><br>
+Passport (<u>number</u>, name)
+]
+
+---
+
+# One-to-one (total)
+
+![](../assets/uml/one-to-one-total.svg)
+
+--
+
+* Foreign key from the many to the one side;
+* Cannot have null values as employee must have a department.
+
+.box_example[A foreign key is added with a not null constraint:
+<br><br>
+Person (<u>id</u>, birth_date, name, address, #number &rarr; Passport [UK,NN] )<br><br>
+Passport (<u>number</u>, name)
 ]
 
 
