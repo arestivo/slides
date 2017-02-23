@@ -26,12 +26,24 @@ a, a > code {
   color: #f92672;
   text-decoration: none;
 }
+
 code {
   -moz-border-radius: 5px;
   -web-border-radius: 5px;
   background: #e7e8e2;
   border-radius: 5px;
 }
+
+.relational_example {
+  background: #e7e8e2;
+  border-radius: 5px;
+  font-family: 'Ubuntu Mono';
+  white-space: no-wrap;
+  line-height: 1em;
+  padding: 1em;
+}
+
+
 .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
 .remark-code-line-highlighted     { background-color: #373832; }
 .pull-left {

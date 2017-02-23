@@ -90,7 +90,7 @@ name: intro
 
 Example for an employee:
 
-.box_example[
+.relational_example[
 Employee (id, name, address, telephone)
 ]
 ---
@@ -120,7 +120,7 @@ For certain attributes, **null** can be a possible value. Others don't allow the
 
 Notation for **not null** attributes [NN]:
 
-.box_example[
+.relational_example[
 Employee (id, name [NN], address, telephone)
 ]
 
@@ -159,13 +159,13 @@ Key chosen to be used to **identify** tuples in a relation:
 
 Notation for primary keys (underline):
 
-.box_example[
+.relational_example[
 Employee (<u>primary key</u>, attribute 1, addattribute 2, ..., attribute n)
 ]
 
 Example for an employee:
 
-.box_example[
+.relational_example[
 Employee (<u>id</u>, name [NN], address, telephone)
 ]
 
@@ -194,13 +194,13 @@ Employee (<u>id</u>, name [NN], address, telephone)
 
 Notation for unique keys [UK]:
 
-.box_example[
-Employee (<u>primary key</u>, attribute 1 [UK], addattribute 2, ..., attribute n)
+.relational_example[
+Employee (<u>primary</u>, attribute 1 [UK], attribute 2, ..., attribute n)
 ]
 
 Example for an employee:
 
-.box_example[
+.relational_example[
 Employee (<u>id</u>, name [NN], address, telephone [UK])
 ]
 
@@ -225,18 +225,16 @@ Employee (<u>id</u>, name [NN], address, telephone [UK])
 
 Notation for foreign keys (# and arrow):
 
-.box_example[
+.relational_example[
 Relation (<u>primary_key</u>, attribute, #foreign_key &rarr; Referenced Relation)
 ]
 
 
 Example for an employee and a department:
 
-.box_example[
-Employee works at a department.
-<br>
-<br>
-Employee (<u>id</u>, name [NN], telephone [UK], #num &rarr; Department)<br><br>
+.relational_example[
+Employee (<u>id</u>, name [NN], telephone [UK], #num &rarr; Department)
+
 Department (<u>num</u>, name [NN])
 ]
 
@@ -280,19 +278,17 @@ name: uml-to-mr
 
 --
 
+* A relation representing the class;
 * Derived attribute can be ommited and calculated when needed;
 * If no good candidate key exists, a primary key can be created.
 
-.box_example[
-A relation representing the class:
-<br>
-<br>
+.relational_example[
 Person (<u>id</u>, birth_date, name, address, salary)
 ]
 
 ---
 
-# Many-to-one (partial)
+# Many-to-one Association (partial)
 
 ![](../assets/uml/many-to-one-partial.svg)
 
@@ -301,15 +297,15 @@ Person (<u>id</u>, birth_date, name, address, salary)
 * Foreign key from the many to the one side;
 * Can have null values as employee might not have a department.
 
-.box_example[A foreign key is added:
-<br><br>
-Employee (<u>id</u>, birth_date, name, address, salary, #num &rarr; Department)<br><br>
+.relational_example[
+Employee (<u>id</u>, birth_date, name, address, salary, #num &rarr; Department)
+
 Department (<u>num</u>, name)
 ]
 
 ---
 
-# Many-to-one (total)
+# Many-to-one Association (total)
 
 ![](../assets/uml/many-to-one-total.svg)
 
@@ -318,15 +314,15 @@ Department (<u>num</u>, name)
 * Foreign key from the many to the one side;
 * Cannot have null values as employee must have a department.
 
-.box_example[A foreign key is added with a not null constraint:
-<br><br>
-Employee (<u>id</u>, birth_date, name, address, salary, #num &rarr; Department [NN] )<br><br>
+.relational_example[
+Employee (<u>id</u>, bdate, name, address, salary, #num &rarr; Department [NN])
+
 Department (<u>num</u>, name)
 ]
 
 ---
 
-# One-to-one (partial)
+# One-to-one Association (partial)
 
 ![](../assets/uml/one-to-one-partial.svg)
 
@@ -336,15 +332,15 @@ Department (<u>num</u>, name)
 * Can have null values as person might not have a passport.
 * Unique key as every passport must belong to a different person.
 
-.box_example[A foreign key is added with a not null constraint:
-<br><br>
-Person (<u>id</u>, birth_date, name, address, #number &rarr; Passport [UK] )<br><br>
+.relational_example[
+Person (<u>id</u>, birth_date, name, address, #number &rarr; Passport [UK])
+
 Passport (<u>number</u>, name)
 ]
 
 ---
 
-# One-to-one (total)
+# One-to-one Association (total)
 
 ![](../assets/uml/one-to-one-total.svg)
 
@@ -353,10 +349,75 @@ Passport (<u>number</u>, name)
 * Foreign key from the many to the one side;
 * Cannot have null values as employee must have a department.
 
-.box_example[A foreign key is added with a not null constraint:
-<br><br>
-Person (<u>id</u>, birth_date, name, address, #number &rarr; Passport [UK,NN] )<br><br>
+.relational_example[
+Person (<u>id</u>, birth_date, name, address, #number &rarr; Passport [UK,NN])
+
 Passport (<u>number</u>, name)
 ]
+
+---
+
+# Many-to-many Association
+
+![](../assets/uml/many-to-many.svg)
+
+--
+
+* A new relation containing foreign keys to both relations;
+* Primary key formed by both foreign keys.
+
+.relational_example[
+Book (<u>isbn</u>, title, date)
+
+Author (<u>number</u>, name, nationality)
+
+Wrote (<u>#isbn &rarr; Book</u>, <u>#number &rarr; Author</u>)
+
+]
+
+---
+
+# Association Class
+
+![](../assets/uml/association-class.svg)
+
+--
+
+Attributes from the association class go to the same relation as the created foreign keys.
+
+.relational_example[
+Student (<u>number</u>, name)
+
+Course (<u>code</u>, name, year)
+
+Enrolled (<u>#number &rarr; Student</u>, <u>#code &rarr; Course</u>, grade)
+]
+
+---
+
+# Aggregation
+
+---
+
+# Composition
+
+---
+
+# Ternary Associations
+
+---
+
+# Generalizations
+
+---
+
+template: inverse
+name: example
+
+# Example
+
+---
+
+# Example
 
 
