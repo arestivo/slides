@@ -3,7 +3,7 @@
 
 	$styles = array('default', 'arta', 'ascetic', 'dark', 'far', 'github', 'googlecode', 'idea', 'ir_black', 'magula', 'monokai', 'rainbow', 'solarized_dark', 'solarized_light', 'sunburst', 'tomorrow', 'tomorrow-night-blue', 'tomorrow-night-bright', 'tomorrow-night', 'tomorrow-night-eighties', 'vs', 'zenburn');
 
-	if ($_SESSION['style'] > count($styles)) $_SESSION['style'] = 0;
+	if (!isset($_SESSION['style']) || $_SESSION['style'] > count($styles)) $_SESSION['style'] = 0;
 
 	$slides = preg_replace('/[^a-z0-9-]/i', '_', $_GET['p']);
 	$style = $styles[$_SESSION['style']];
