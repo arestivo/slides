@@ -397,13 +397,95 @@ Enrolled (<u>#number &rarr; Student</u>, <u>#code &rarr; Course</u>, grade)
 
 # Aggregation
 
+![](../assets/uml/aggregation.svg)
+
+--
+
+* One-to-many relationship;
+* Diamond side has an implicit 0..1 cardinality.
+
+.relational_example[
+Computer (<u>number</u>, location)
+
+Part (<u>code</u>, name, type, #number &rarr; Computer)
+]
+
 ---
 
 # Composition
 
+![](../assets/uml/composition.svg)
+
+--
+
+* One-to-many relationship;
+* Diamond side has an implicit 1 cardinality.
+
+.relational_example[
+Computer (<u>number</u>, location)
+
+Part (<u>code</u>, name, type, #number &rarr; Computer [NN])
+]
+
 ---
 
-# Ternary Associations
+# Qualified Associations
+
+![](../assets/uml/qualified.svg)
+
+--
+
+Primary key ensures the unicity of the qualified attribute.
+
+.relational_example[
+Club (<u>code</u>, title)
+
+Member (<u>id</u>, name, address, phone)
+
+Joined (<u>#code &rarr; Club</u>, #id &rarr; Member, <u>number</u>) 
+]
+
+---
+
+# Ternary Associations (\* \* \*)
+
+![](../assets/uml/ternary.svg)
+
+--
+
+Similar to a many-to-many relationship. All combinations are possible.
+
+.small.relational_example[
+Team (<u>name</u>)
+
+Season (<u>year</u>)
+
+Player (<u>id</u>, name)
+
+Played (<u>#name &rarr; Team</u>, <u>#year &rarr; Season</u>, <u>#id &rarr; Player</u>, minutes, goals)
+]
+
+
+---
+
+# Ternary Associations (\* \* 1)
+
+![](../assets/uml/ternary-one.svg)
+
+--
+
+Players can only play for one team each season.
+
+.small.relational_example[
+Team (<u>name</u>)
+
+Season (<u>year</u>)
+
+Player (<u>id</u>, name)
+
+Played (#name &rarr; Team, <u>#year &rarr; Season</u>, <u>#id &rarr; Player</u>, minutes, goals)
+]
+
 
 ---
 
