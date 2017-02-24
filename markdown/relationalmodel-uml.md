@@ -447,7 +447,7 @@ Club (<u>code</u>, title)
 
 Member (<u>id</u>, name, address, phone)
 
-Joined (<u>#code &rarr; Club</u>, #id &rarr; Member, <u>number</u>) 
+Joined (<u>#code &rarr; Club</u>, <u>#id &rarr; Member</u>, number [NN]) 
 {UK: code, number}
 ]
 
@@ -512,7 +512,7 @@ Doctor (<u>#num &rarr; Person</u>, speciality)
 
 Patient (<u>#num &rarr; Person</u>, ensurance)
 
-Appointment (<u>id</u>, #num &rarr; Doctor [NN], #num &rarr; Patient [NN], date)
+Appointment (<u>id</u>, #numd &rarr; Doctor [NN], #nump &rarr; Patient [NN], date)
 
 ]
 
@@ -531,7 +531,7 @@ Doctor (<u>num</u>, name, speciality)
 
 Patient (<u>num</u>, name, ensurance)
 
-Appointment (<u>id</u>, #num &rarr; Doctor [NN], #num &rarr; Patient [NN], date)
+Appointment (<u>id</u>, #numd &rarr; Doctor [NN], #nump &rarr; Patient [NN], date)
 
 ]
 
@@ -548,7 +548,7 @@ Appointment (<u>id</u>, #num &rarr; Doctor [NN], #num &rarr; Patient [NN], date)
 .small.relational_example[
 Person (<u>num</u>, name, speciality, ensurance, type)
 
-Appointment (<u>id</u>, #num &rarr; Person [NN], #num &rarr; Person [NN], date)
+Appointment (<u>id</u>, #numd &rarr; Person [NN], #nump &rarr; Person [NN], date)
 
 ]
 
@@ -563,7 +563,7 @@ Same as previous but for overlapped generalizations.
 .small.relational_example[
 Person (<u>num</u>, name, speciality, ensurance, isdoctor, ispatient)
 
-Appointment (<u>id</u>, #num &rarr; Person [NN], #num &rarr; Person [NN], date)
+Appointment (<u>id</u>, #numd &rarr; Person [NN], #nump &rarr; Person [NN], date)
 
 ]
 
@@ -593,7 +593,7 @@ Doctor (<u>#num &rarr; Person</u>, phone, #cod &rarr; Speciality)
 
 Patient (<u>#num &rarr; Person</u>, birth_date)
 
-Appointment (<u>id</u>, #num &rarr; Doctor [NN], #num &rarr; Patient [NN], date)
+Appointment (<u>id</u>, #numd &rarr; Doctor [NN], #nump &rarr; Patient [NN], date)
 
 Laboratory (<u>name</u>, address)
 
