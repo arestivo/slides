@@ -56,7 +56,7 @@ name: intro
 
 * Each relation:
 
-  * Has **name**;
+  * Has a **name**;
   * Contains **attributes**;
   * Subject to **constraints**.
 
@@ -157,10 +157,10 @@ Key chosen to be used to **identify** tuples in a relation:
 
 # Notation
 
-Notation for primary keys (underline):
+Notation for primary keys (underlined):
 
 .relational_example[
-Employee (<u>primary key</u>, attribute 1, addattribute 2, ..., attribute n)
+Relation (<u>primary key</u>, attribute 1, attribute 2, ..., attribute n)
 ]
 
 Example for an employee:
@@ -195,7 +195,7 @@ Employee (<u>id</u>, name [NN], address, telephone)
 Notation for unique keys [UK]:
 
 .relational_example[
-Employee (<u>primary</u>, attribute 1 [UK], attribute 2, ..., attribute n)
+Relation (<u>primary</u>, attribute 1 [UK], attribute 2, ..., attribute n)
 ]
 
 Example for an employee:
@@ -218,6 +218,8 @@ Employee (<u>id</u>, name [NN], address, telephone [UK])
 ## Table with a Foreign Key
 
 ![](../assets/relationalmodel/foreignkey.png)
+
+The domain of the foreign key (column F) is the set of values of the primary key in the referenced table.
 
 ---
 
@@ -247,7 +249,7 @@ Department (<u>num</u>, name [NN])
 * **Key values** (primary and unique) **cannot have repeated** values.
 * **Values** have to belong to the attribute **domain**.
 * Attributes with a **not null** constraint **cannot have null** values.
-* **Foreign key** attributes can only have values that **exist in the referenced relation**.
+* **Foreign key** attributes can **only** have values that **exist** in the primary key of the **referenced** relation.
 
 ---
 
@@ -328,14 +330,14 @@ Department (<u>num</u>, name)
 
 --
 
-* Foreign key from the total to the partial side;
-* Can have null values as person might not have a passport.
-* Unique key as every passport must belong to a different person.
+* Foreign key from the partial to the total side;
+* Cannot have null values as passport must belong to someone;
+* Unique key, as every passport must belong to a different person.
 
 .relational_example[
-Person (<u>id</u>, birth_date, name, address, #number &rarr; Passport [UK])
+Person (<u>id</u>, birth_date, name, address)
 
-Passport (<u>number</u>, name)
+Passport (<u>number</u>, name, #id &rarr; Person [UK,NN])
 ]
 
 ---
@@ -346,8 +348,10 @@ Passport (<u>number</u>, name)
 
 --
 
-* Foreign key from the many to the one side;
-* Cannot have null values as employee must have a department.
+* Foreign key in either side;
+* Cannot have null values as person must have a passport;
+* Unique key, as every passport must belong to a different person;
+* Relations can be merged. Same number of tuples in both sides.
 
 .relational_example[
 Person (<u>id</u>, birth_date, name, address, #number &rarr; Passport [UK,NN])
@@ -383,7 +387,7 @@ Wrote (<u>#isbn &rarr; Book</u>, <u>#number &rarr; Author</u>)
 
 --
 
-Attributes from the association class go to the same relation as the created foreign keys.
+Attributes from the association class go to the same relation as the newly created foreign keys.
 
 .relational_example[
 Student (<u>number</u>, name)
@@ -508,7 +512,7 @@ Doctor (<u>#num &rarr; Person</u>, speciality)
 
 Patient (<u>#num &rarr; Person</u>, ensurance)
 
-Appointment (<u>id</u>, #num &rarr; Doctor, #num &rarr; Patient, date)
+Appointment (<u>id</u>, #num &rarr; Doctor [NN], #num &rarr; Patient [NN], date)
 
 ]
 
@@ -527,7 +531,7 @@ Doctor (<u>num</u>, name, speciality)
 
 Patient (<u>num</u>, name, ensurance)
 
-Appointment (<u>id</u>, #num &rarr; Doctor, #num &rarr; Patient, date)
+Appointment (<u>id</u>, #num &rarr; Doctor [NN], #num &rarr; Patient [NN], date)
 
 ]
 
@@ -544,7 +548,7 @@ Appointment (<u>id</u>, #num &rarr; Doctor, #num &rarr; Patient, date)
 .small.relational_example[
 Person (<u>num</u>, name, speciality, ensurance, type)
 
-Appointment (<u>id</u>, #num &rarr; Person, #num &rarr; Person, date)
+Appointment (<u>id</u>, #num &rarr; Person [NN], #num &rarr; Person [NN], date)
 
 ]
 
@@ -554,12 +558,12 @@ Appointment (<u>id</u>, #num &rarr; Person, #num &rarr; Person, date)
 
 ![](../assets/uml/generalization.svg)
 
-* Same as previous but for overlapped generalizations.
+Same as previous but for overlapped generalizations.
 
 .small.relational_example[
 Person (<u>num</u>, name, speciality, ensurance, isdoctor, ispatient)
 
-Appointment (<u>id</u>, #num &rarr; Person, #num &rarr; Person, date)
+Appointment (<u>id</u>, #num &rarr; Person [NN], #num &rarr; Person [NN], date)
 
 ]
 
@@ -581,15 +585,15 @@ name: example
 # Solution
 
 .relational_example[
+Speciality (<u>cod</u>, name)
+
 Person (<u>num</u>, name, address)
 
 Doctor (<u>#num &rarr; Person</u>, phone, #cod &rarr; Speciality)
 
-Patient (<u>#num &rarr; Person</u>)
+Patient (<u>#num &rarr; Person</u>, birth_date)
 
 Appointment (<u>id</u>, #num &rarr; Doctor [NN], #num &rarr; Patient [NN], date)
-
-Speciality (<u>cod</u>, name)
 
 Laboratory (<u>name</u>, address)
 
