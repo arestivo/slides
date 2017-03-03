@@ -84,7 +84,7 @@ name: intro
 | R (A1, A2, ..., An) | Relation schema R of degree n |
 | Q, R, S | Relation names |
 | t, u, v | Tuples |
-| t (a1, a2, ..., an) | Tuple $t$ of a relation |
+| t (a1, a2, ..., an) | Tuple *t* of a relation |
 | t[Ai] | The value of the attribute *Ai* in the tuple *t* |
 | t[Ai, Aj, Ak] | value of the attributes *Ai, Aj ,Ak* in the tuple *t* |
 
@@ -337,7 +337,7 @@ Department (<u>num</u>, name)
 .relational_example[
 Person (<u>id</u>, birth_date, name, address)
 
-Passport (<u>number</u>, name, #id &rarr; Person [UK,NN])
+Passport (<u>number</u>, date, #id &rarr; Person [UK,NN])
 ]
 
 ---
@@ -356,7 +356,7 @@ Passport (<u>number</u>, name, #id &rarr; Person [UK,NN])
 .relational_example[
 Person (<u>id</u>, birth_date, name, address, #number &rarr; Passport [UK,NN])
 
-Passport (<u>number</u>, name)
+Passport (<u>number</u>, date)
 ]
 
 ---
