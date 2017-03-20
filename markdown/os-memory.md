@@ -229,5 +229,45 @@ template:inverse
 name:cpp
 # Memory In C++
 
+---
 
+# Static Alocation
+
+~~~cpp
+/* Data read is 1 3 5 7*/
+void main() {
+  int a[4];
+
+  for (int i = 0; i < 4; i++)
+    cin >> a[i]; // reads from stdin
+}
+~~~
+
+.large[
+![](../assets/memory/static.svg)
+]
+
+---
+
+# Dynamic Alocation
+
+~~~cpp
+/* Data read is 3 1 3 5*/
+void main() {
+  int n, *a;
+  
+  cin >> n;
+
+  a = (int *) malloc(n ∗ sizeof(int)) ;
+
+  for (int i = 0; i < n; i++)
+    cin >> a[i]; // reads from stdin
+
+  free(a);
+}
+~~~
+
+.large[
+![](../assets/memory/dynamic.svg)
+]
 
