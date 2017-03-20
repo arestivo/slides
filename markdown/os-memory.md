@@ -148,7 +148,7 @@ The problem of having contiguous memory allocation is that as processes are swap
 
 ![](../assets/memory/fragmentation.svg)
 
-Fragmentation can be solved by using a memory compaction technique.
+Fragmentation can be fixed by using a memory compaction technique.
 
 ---
 
@@ -160,9 +160,50 @@ name:virtual
 
 # Virtual Memory
 
+Gives the illusion of access to a larger memory space than exists by storing part of the process data into secondary storage.
+
+![](../assets/memory/virtual.svg)
+
 ---
 
 # Paging
+
+Most virtual memory systems are implemented using a memory management technique called paging:
+
+.pull-left[
+* The process address space is broken into blocks of the same size called pages.
+* The main memory is divided into small fixed-sized blocks of memory called frames (usually the same size as a page).
+* At any given time, pages can be loaded into memory or stored in secondary storage.
+]
+
+.pull-right[
+![](../assets/memory/paging.svg)
+]
+
+---
+
+# Advantages
+
+* Simple to implement.
+
+* Paging reduces fragmentation.
+
+* Paging is an efficient memory management technique.
+
+* Due to equal size of the pages and frames, swapping becomes very easy.
+
+---
+
+# Page Tables
+
+* A virtual address is composed by a page number and an offset.
+* A physical address is composed by a frame number and an offset.
+
+![](../assets/memory/page-frame.svg)
+
+* From the standpoint of the process, memory is contiguous.
+* Page tables are used to translate the virtual addresses seen by the application into physical addresses used by the hardware.
+
 
 ---
 
