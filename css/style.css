@@ -263,3 +263,8 @@ code.has-jax {
 	border: inherit;
 	color: #515151;
 }
+
+.large img {
+  max-width: 97%;
+  border: none;
+}
