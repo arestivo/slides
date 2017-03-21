@@ -204,10 +204,19 @@ Most virtual memory systems are implemented using a memory management technique 
 * From the standpoint of the process, memory is contiguous.
 * Page tables are used to translate the virtual addresses seen by the application into physical addresses used by the hardware.
 
+---
+
+# Memory Allocation
+
+A flow chart will be here
 
 ---
 
 # Thrashing
+
+* If the working set of a program or a workload cannot be effectively held within physical memory, then constant data swapping, i.e., thrashing, may occur.
+* Thrashing is a state in which the CPU performs *productive* work less, and *swapping* more.
+* The CPU is busy in swapping pages so much that it can not respond to user programs as much as required. 
 
 ---
 
@@ -219,9 +228,19 @@ name:process
 
 # Heap and Stack
 
+* Stack (Local variables, return addresses and parameters).
+* Heap (Dynamically allocated memory).
+* Good idea to allocate extra space to allow program growth.
+
+![](../assets/memory/process.svg)
+
 ---
 
 # Multiple Instances
+
+Program and data can be separated in memory making it easier to have multiple instances of the same program.
+
+![](../assets/memory/multiprocess.svg)
 
 ---
 
@@ -231,15 +250,103 @@ name:cpp
 
 ---
 
+# C++ Variables
+
+* Two types of variables: statically and dynamically allocated
+* **Statically** allocated variables are stored in the **stack**.
+* **Dinamically** allocated variables are stored in the **heap**.
+* Dinamically allocated variables are created using: malloc and new.
+
+---
+
+# The Stack
+
+* When variables in the stack are no longer needed, they are **automatically** deallocated.
+* Allocation can be predetermined at compile time.
+* Allocation much **faster** than in the heap.
+* Implemented using a stack (LIFO).
+* Used to store **local** variables, return addresses and parameters.
+* Can cause a **stackoverflow** when the stack limit is reached.
+* Can be used without using pointers.
+* Use if you **know** exactly how much memory you need to allocate at compile time and it is **not a lot**.
+
+---
+
+# The Heap
+
+* Variables in the heap must be **manually** deallocated.
+* Memory is allocated using: new, new[] ou malloc.
+* Memory is freed using: delete, delete[] ou free.
+* Allocation much **slower** than in the stack.
+* Can suffer **fragmentation**.
+* Use if you **do not know** exactly how much memory you need to allocate at compile time or if you need a **lot**.
+* Responsible for **memory leaks**.
+
+---
+
+# Syntax
+
+C / C++ (cstdlib)
+
+~~~c
+void* malloc (size_t size);
+void* realloc (void* ptr, size_t size);
+void free (void* ptr);
+~~~
+
+C++
+
+~~~c
+void* operator new (std::size_t size) throw (std::bad_alloc);
+void* operator new[] (std::size_t size) throw (std::bad_alloc);
+void operator delete (void* ptr);
+void operator delete[] (void* ptr);
+~~~
+
+
+---
+
+# Examples
+~~~c
+int *data;
+
+data = (int*) malloc(4 * sizeof(int));
+
+/* we need more space after all */
+data = (int*) realloc(data, 5 * sizeof(int));
+
+/* do stuff with data */
+
+free(data);
+~~~
+
+New C++ Operators:
+
+~~~cpp
+int *data;
+
+data = new int[3];
+delete[] data;
+~~~
+
+~~~cpp
+int *data;
+
+data = new int;
+delete data;
+~~~
+
+
+---
+
 # Static Alocation
 
 ~~~cpp
-/* Data read is 1 3 5 7*/
 void main() {
   int a[4];
 
   for (int i = 0; i < 4; i++)
-    cin >> a[i]; // reads from stdin
+    cin >> a[i]; // reads from stdin values: 1 3 5 7
 }
 ~~~
 
@@ -252,16 +359,14 @@ void main() {
 # Dynamic Alocation
 
 ~~~cpp
-/* Data read is 3 1 3 5*/
 void main() {
   int n, *a;
   
-  cin >> n;
-
-  a = (int *) malloc(n ∗ sizeof(int)) ;
+  cin >> n; // number of values to read: 3 
+  a = (int *) malloc(n * sizeof(int)) ;
 
   for (int i = 0; i < n; i++)
-    cin >> a[i]; // reads from stdin
+    cin >> a[i]; // reads from stdin values: 1 3 5
 
   free(a);
 }
@@ -269,5 +374,82 @@ void main() {
 
 .large[
 ![](../assets/memory/dynamic.svg)
+]
+
+---
+
+# Passing by Value
+
+~~~cpp
+int sum(int a, int b) {
+  return a + b;
+}
+
+void main() {
+  int x, y;
+  cin >> x >> y; // reads from stdin values: 2 3 
+  int z = sum (x, y);
+}
+~~~
+
+.small[
+![](../assets/memory/byvalue.svg)
+]
+
+---
+
+# Passing by Pointer
+
+~~~cpp
+void sum(int a, int b, int* c) {
+  *c = a + b;
+}
+
+void main() {
+  int x, y, z;
+  cin >> x >> y; // reads from stdin values: 2 3 
+  sum (x, y, &z);
+}
+~~~
+
+![](../assets/memory/bypointer.svg)
+
+---
+
+# Passing by Reference
+
+~~~cpp
+void sum(int a, int b, int &c) {
+  c = a + b;
+}
+
+void main() {
+  int x, y, z;
+  cin >> x >> y; // reads from stdin values: 2 3 
+  sum (x, y, z);
+}
+~~~
+
+![](../assets/memory/byreference.svg)
+
+---
+
+# Passing by Reference and Pointer
+
+~~~cpp
+void create_array (int s,int* &b){
+  b = (int *) malloc(s * sizeof(int));
+}
+
+void main() {
+  int s, *a;
+  cin >> s; // reads 3 
+  create_array(s, a);
+  free(a);
+}
+~~~
+
+.large[
+![](../assets/memory/byreferencepointer.svg)
 ]
 

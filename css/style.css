@@ -265,6 +265,11 @@ code.has-jax {
 }
 
 .large img {
-  max-width: 97%;
+  max-width: 105%;
   border: none;
+  margin-left: -5%;
+}
+
+.small img {
+  max-width: 75%;
 }
