@@ -13,7 +13,7 @@ class: left, middle
 ---
 
 template:inverse
-# libGDX
+# LibGDX
 <a href="http://www.fe.up.pt/~arestivo">André Restivo</a>
 
 ---
@@ -34,7 +34,7 @@ name:intro
 
 ---
 
-# libGDX
+# LibGDX
 
 A Java game development framework providing a unified API that works across several different platforms:
 
