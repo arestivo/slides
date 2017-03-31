@@ -600,11 +600,12 @@ public final class World implements Disposable {
 
 # Example
 
-As an example lets checkout the *physics* branch on this example project:
+As an example lets checkout the *physics* and *ground* branches on this example project:
 
 https://github.com/arestivo/BouncingBalls/tree/physics
+https://github.com/arestivo/BouncingBalls/tree/ground
 
-In particular the [BouncingScreen](https://github.com/arestivo/BouncingBalls/blob/physics/core/src/com/aor/bouncing/BouncingScreen.java) class.
+In particular the [BouncingScreen](https://github.com/arestivo/BouncingBalls/blob/physics/core/src/com/aor/bouncing/BouncingScreen.java) (physics) and [BouncingScreen](https://github.com/arestivo/BouncingBalls/blob/ground/core/src/com/aor/bouncing/BouncingScreen.java) (ground) classes.
 
 
 ---

@@ -206,12 +206,6 @@ Most virtual memory systems are implemented using a memory management technique 
 
 ---
 
-# Memory Allocation
-
-A flow chart will be here
-
----
-
 # Thrashing
 
 * If the working set of a program or a workload cannot be effectively held within physical memory, then constant data swapping, i.e., thrashing, may occur.
