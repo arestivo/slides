@@ -13,7 +13,7 @@ class: left, middle
 ---
 
 template:inverse
-# Memory
+# Memory Management
 <a href="http://www.fe.up.pt/~arestivo">André Restivo</a>
 
 ---
