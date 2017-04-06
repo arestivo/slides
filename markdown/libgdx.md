@@ -30,6 +30,11 @@ name:index
 1. [Camera](#camera)
 1. [Physics](#physics)
 1. [Input Handling](#input)
+1. [Scene 2d](#scene2d)
+1. [Collisions](#collisions)
+1. [Sound](#sound)
+1. [Animations](#animations)
+1. [Testing](#testing)
 ]
 
 ---
@@ -718,7 +723,553 @@ public interface Input {
 
 As an example lets checkout the *input* branch on this example project:
 
-https://github.com/arestivo/BouncingBalls/tree/input
+https://github.com/arestivo/BouncingBalls/tree/inputs
 
-In particular the [BouncingScreen](https://github.com/arestivo/BouncingBalls/blob/input/core/src/com/aor/bouncing/BouncingScreen.java) class.
+In particular the [BouncingScreen](https://github.com/arestivo/BouncingBalls/blob/inputs/core/src/com/aor/bouncing/BouncingScreen.java) class.
+
+---
+
+template:inverse
+name:scened2d
+# Scene2d
+
+---
+
+# Scene2d
+
+Scene2d is a 2D scene graph for building applications and UIs using a hierarchy of actors:
+
+* Rotation and scale is applied to all child actors.
+* Each actor draws in its own un-rotated and unscaled coordinate system where 0,0 is the bottom left corner.
+* Hit (touch, mouse) detection of rotated and scaled actors.
+* Routing of input and other events to the appropriate actor.
+* Action system for easy manipulation of actors over time. 
+
+---
+
+#Stage
+
+The *Stage* class has a camera, *SpriteBatch*, and a root group and handles drawing the actors and distributing input events.
+
+~~~java
+public class Stage extends InputAdapter implements Disposable {
+  public Stage (Viewport viewport);
+  public void act (float delta);
+  public void draw ();
+}
+~~~
+
+---
+
+#Viewport
+
+Manages a *Camera* and determines how world coordinates are mapped to and from the screen.
+
+Many types of viewports can be used:
+
+* *StretchViewport*
+* *FitViewport*
+* *FillViewport*
+* *ScreenViewport*
+
+---
+
+# StrechViewport
+
+* The *StretchViewport* supports working with a virtual screen size. 
+* The virtual viewport will always be stretched to fit the screen. 
+* No black bars, but the aspect ratio may not be the same.
+
+![](../assets/libgdx/libgdx-stretch.svg)
+
+---
+
+# FitViewport
+
+* The *FitViewport* supports working with a virtual screen size. 
+* It will always maintain the aspect ratio of the virtual screen size, while scaling it as much as possible to fit the screen. 
+* One disadvantage with this strategy is that there may appear black bars.
+
+![](../assets/libgdx/libgdx-fit.svg)
+
+---
+
+# FillViewport
+
+* The *FillViewport* supports working with a virtual screen size. 
+* Keeps the aspect ratio of the virtual screen size.
+* It will always fill the whole screen.
+* Parts of the viewport might be cut off.
+
+![](../assets/libgdx/libgdx-fill.svg)
+
+---
+
+# ScreenViewport
+
+* The *ScreenViewport* does not have a constant virtual screen size.
+* It will always match the window size.
+* No scaling happens and no black bars appear. 
+* A player with a bigger screen might see more of the game, than a player with a smaller screen size.
+
+![](../assets/libgdx/libgdx-screen.svg)
+
+---
+
+# Actor
+
+The Actor class is a node in the graph which has a position, rectangular size, origin, scale, rotation, and color.
+
+~~~java
+public class Actor {
+	public void draw (Batch batch, float parentAlpha);
+	public void act (float delta);
+	protected void setStage (Stage stage);
+}
+~~~
+
+---
+
+#Group 
+
+The Group class is an actor that may have child actors.
+
+~~~java
+public class Group extends Actor {
+	public void addActor (Actor actor);
+	public boolean removeActor (Actor actor);
+}
+~~~
+
+---
+
+# Widgets
+
+LibGDX has a set of predefined actors ready to be used:
+
+* Image - An image
+* Label - A text label
+* List - A list of textual items with current selection support
+* ProgressBar - The progress of some activity or a value within a range
+* SelectBox - A dropdown list
+* TextField - A single-line input field
+* Touchpad - A virtual joystick
+
+~~~java
+  scoreLabel = new Label("0", new Label.LabelStyle(new BitmapFont(), null));
+  scoreLabel.setColor(Color.WHITE);
+  addActor(scoreLabel);
+~~~
+
+---
+
+# Usage
+
+![](../assets/libgdx/libgdx-stage.svg)
+
+---
+
+# Events
+
+*Stage* is an *InputProcessor*. When it receives input events, it fires them on the appropriate actors. 
+
+Events are propagated in two phases:
+* The *capture* phase from the root down to the target actor. 
+* And the *normal* phase from the target up to the root.
+
+~~~java
+public class Actor {
+	public boolean addListener (EventListener listener);
+	public boolean removeListener (EventListener listener);
+	public void setTouchable (Touchable touchable);
+	public void setVisible (boolean visible);
+}
+~~~
+
+---
+
+# ClickListener
+
+Listens to mouse and touch events.
+
+~~~java
+public ClickListener () {
+  public void touchDown(InputEvent e, float x, float y, int pointer, int button);
+  public void touchUp(InputEvent e, float x, float y, int pointer, int button);
+
+  public void clicked(InputEvent e, float x, float y);
+  
+  public int getTapCount();
+}
+~~~
+---
+
+# ActorGestureListener
+
+For more complex touch events.
+
+~~~java
+public ActorGestureListener () {
+  public void touchDown (InputEvent e, float x, float y, int pointer, int button);
+
+  public void touchUp (InputEvent e, float x, float y, int pointer, int button);
+
+  public void tap (InputEvent e, float x, float y, int count, int button);
+
+  public boolean longPress (Actor actor, float x, float y);
+
+  public void fling (InputEvent e, float velocityX, float velocityY, int button);
+
+  public void pan (InputEvent e, float x, float y, float deltaX, float deltaY);
+
+  public void zoom (InputEvent e, float initialDistance, float distance);
+
+  public void pinch (InputEvent e, Vector2 iPointer1, Vector2 iPointer2, 
+                                   Vector2 pointer1, Vector2 pointer2);
+}
+~~~
+
+---
+
+# Example
+
+As an example lets checkout the *stage* branch on this example project:
+
+https://github.com/arestivo/BouncingBalls/tree/stage
+
+In particular the [BouncingScreen](https://github.com/arestivo/BouncingBalls/blob/stage/core/src/com/aor/bouncing/BouncingScreen.java), [GameStage](https://github.com/arestivo/BouncingBalls/blob/stage/core/src/com/aor/bouncing/GameStage.java), [BallActor](https://github.com/arestivo/BouncingBalls/blob/stage/core/src/com/aor/bouncing/BallActor.java) and [GroundActor](https://github.com/arestivo/BouncingBalls/blob/stage/core/src/com/aor/bouncing/GroundActor.java) classes.
+
+---
+
+# Actions
+
+* Actions can be attached to actors in order to execute a certain operation on the actor for a certain time.
+
+* When a action finishes, the action is automatically removed from the actor.
+
+~~~java
+abstract public class Action {
+	abstract public boolean act (float delta);
+}
+~~~
+
+Many actions are already implemented in libGDX but more can be added easily:
+
+~~~java
+MoveToAction action = new MoveToAction();
+action.setPosition(x, y);
+action.setDuration(duration);
+actor.addAction(action);
+~~~
+
+Actions can be composed together to create more complex actions.
+
+---
+
+# Example
+
+As an example lets checkout the *action* branch on this example project:
+
+https://github.com/arestivo/BouncingBalls/tree/action
+
+In particular the [GameStage](https://github.com/arestivo/BouncingBalls/blob/action/core/src/com/aor/bouncing/GameStage.java) and [BallActor](https://github.com/arestivo/BouncingBalls/blob/action/core/src/com/aor/bouncing/BallActor.java) classes.
+
+---
+
+template:inverse
+name:collisions
+# Collisions
+
+---
+
+# Collisions
+
+To detect collisions between body in the physical world we can
+implement a *ContactListener* interface:
+
+~~~java
+public interface ContactListener {
+	public void beginContact (Contact contact);
+	public void endContact (Contact contact);
+}
+~~~
+
+To use it, just set and implement the contact listener of the physical world:
+
+~~~java
+world.setContactListener(new ContactListener() {
+  @Override
+  public void beginContact(Contact contact) {
+  }
+
+  @Override
+  public void endContact(Contact contact) {
+  }
+}
+~~~
+
+---
+
+# Contact
+
+When a collision is detected, the ContactListener receives a
+Contact class with information about the contact. We can easily get the fixtures that collided:
+
+~~~java
+public class Contact {
+	public Fixture getFixtureA ();
+	public Fixture getFixtureB ();
+}
+~~~
+
+And also the bodies:
+
+~~~java
+world.setContactListener(new ContactListener() {
+    @Override
+    public void beginContact(Contact contact) {
+      Body bodyA = contact.getFixtureA().getBody();
+      Body bodyB = contact.getFixtureB().getBody();
+    }
+}
+~~~
+
+The order of the fixtures (and bodies) is not guaranteed!
+
+---
+
+# Body User Data
+
+User data can be attached to a body to help identify the colliding bodies:
+
+~~~java
+public class Body {
+	public Object getUserData ();
+	public void setUserData (Object userData);
+}
+~~~
+
+For example:
+
+~~~java
+  body.setUserData(actor);
+~~~
+
+And then:
+
+~~~java
+  Actor actor = (Actor)body.getUserData();
+~~~
+
+---
+
+# Example
+
+As an example lets checkout the *collision* branch on this example project:
+
+https://github.com/arestivo/BouncingBalls/tree/collision
+
+In particular the [GameStage](https://github.com/arestivo/BouncingBalls/blob/collision/core/src/com/aor/bouncing/GameStage.java) class.
+
+---
+
+template:inverse
+name:sound
+# Sound
+
+---
+
+# Sound
+
+LibGDX supports two main types of sound:
+
+* **Music**: represents a streamed audio file. The interface supports pausing, resuming and so on. 
+* **Sound** a short audio clip that can be played numerous times in parallel. 
+
+~~~java
+Sound sound = Gdx.audio.newSound(Gdx.files.internal("kick.wav"));
+Music music = Gdx.audio.newMusic(Gdx.files.internal("music.mp3"));
+~~~
+
+All sounds and musics should be disposed when no longer needed:
+
+~~~java
+sound.dispose();
+music.dispose();
+~~~
+
+---
+
+# Sound Manager
+
+We can use the *AssetManager* to manage our sounds and musics just
+like we do with textures:
+
+~~~java
+assetManager.load("kick.wav", Sound.class);
+assetManager.load("music.mp3", Music.class);
+~~~
+
+And then:
+
+~~~java
+Sound sound = assetManager.get("kick.wav");
+Music music = assetManager.get("music.mp3");
+~~~
+
+---
+
+# Playing
+
+To play a sound we can use
+
+~~~java
+public interface Sound extends Disposable {
+  public long play ();
+	public long play (float volume); // Volume = [0,1]
+}
+~~~
+
+To play a music:
+
+~~~java
+public interface Music extends Disposable {
+  public void setVolume (float volume);
+  public void setLooping (boolean isLooping);
+
+  public void play ();
+  public void pause ();
+  public void stop ();
+
+  public boolean isPlaying ();
+}
+~~~
+
+---
+
+template:inverse
+name:animations
+# Animations
+
+---
+
+# Animation
+
+An animation consists of multiple frames which are shown in a sequence at set intervals.
+
+To create a animation we start by getting a texture and spliting it into *TextureRegion*s:
+
+~~~java
+  Texture texture = game.getAssetManager().get("animation.png
+  TextureRegion[][] thrustRegion = TextureRegion.split(
+    texture, 
+    texture.getWidth() / 5,    // 5 columns
+    texture.getHeight() / 3);  // 3 lines
+~~~
+
+![](../assets/libgdx/sprite.png)
+
+---
+
+# Frames
+
+We then need to transform the resulting bi-dimensional array
+into a uni-dimensional array. The easiest way to do it, is 
+to use the *System.arraycopy* method:
+
+~~~java
+public static void arraycopy(
+  Object src, int srcPos, 
+  Object dest, int destPos, 
+  int length);
+~~~
+
+Like this:
+
+~~~java
+TextureRegion[] frames = new TextureRegion[10];
+System.arraycopy(thrustRegion[0], 0, frames, 0, 10);
+~~~
+
+---
+
+# Current Frame
+
+We then create the animation:
+
+~~~java
+  // 0.25 seconds per frame
+  Animation animation = new Animation<TextureRegion>(.25f, frames);
+~~~
+
+The current frame is a *TextureRegion* and we can get it
+like this:
+
+~~~java
+public class Animation {
+	public TextureRegion getKeyFrame (
+    float stateTime, // current time
+    boolean looping  // should the animation loop
+  );
+}
+~~~
+
+---
+
+# Example
+
+As an example lets checkout the *animation* branch on this example project:
+
+https://github.com/arestivo/BouncingBalls/tree/animation
+
+In particular the [BallActor](https://github.com/arestivo/BouncingBalls/blob/animation/core/src/com/aor/bouncing/BallActor.java) class.
+
+---
+
+template:inverse
+name:testing
+# Testing
+
+---
+
+# Testing
+
+LigGDX promotes the mixing of the graphical interface with the
+model and logic rules of the game.
+
+This makes testing harder:
+
+* Because our classes start by loading their textures, a OpenGL driver must be in use, which may not be possible.
+* A world must be created if physics is being used.
+* Testing units separately is difficult.
+
+---
+
+# Model-View-Controller
+
+A better way to organize our code is to use the high-level
+archictural design pattern known as *Model-View-Controller* (MVC):
+
+![](../assets/libgdx/libgdx-mvc.svg)
+
+---
+
+# Proposed Architecture
+
+The MVC pattern is more suited for gui-driven applications than to games, that normally use a render-loop pattern.
+
+For these we propose a slightly different approach:
+
+![](../assets/libgdx/libgdx-architecture.svg)
+
+---
+
+# Example
+
+As an example lets checkout the *sprites* and *physics*
+branch on this example project:
+
+https://github.com/arestivo/AsteroidArena/tree/sprites
+
+https://github.com/arestivo/AsteroidArena/tree/physics
 
