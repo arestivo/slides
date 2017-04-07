@@ -730,7 +730,7 @@ In particular the [BouncingScreen](https://github.com/arestivo/BouncingBalls/blo
 ---
 
 template:inverse
-name:scened2d
+name:scene2d
 # Scene2d
 
 ---
