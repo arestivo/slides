@@ -109,7 +109,7 @@ name:observer
 
 # Motivation
 
-Events in the physics engine, like collisions, must be **reflected** in the game model **without** keeping the objects **tight coupled**. 
+Events in the physics engine, like collisions, must be **reflected** in the game model **without** keeping the objects **tightly coupled**. 
 
 ---
 
@@ -221,7 +221,7 @@ name:pool
 
 # Motivation
 
-There are **never** lots of bullets flying at one given moment; but they are created and destroyed at a very **high rate**. The cost of instantiating a class makes this prohibitive.
+There are **never** a lot of *bullets* flying at one given moment; but they are created and destroyed at a very **high rate**. The cost of instantiating a class makes this prohibitive.
 
 ---
 
