@@ -144,6 +144,10 @@ public class GameView {
 
 * Code is tightly coupled; they make tests harder.
 
+.right.small[
+[Patterns I Hate #1: Singleton, Alex Miller](http://puredanger.github.io/tech.puredanger.com/2007/07/03/pattern-hate-singleton/)
+]
+
 ---
 
 template:inverse
