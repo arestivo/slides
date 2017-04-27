@@ -638,6 +638,39 @@ Instead of drawing directly into the screen, use an intermediate buffer instead;
 [Double Buffer Pattern](http://gameprogrammingpatterns.com/double-buffer.html)
 ]
 
+---
+
+template:inverse
+name:update
+# Time goes by
+
+![](../assets/gamepatterns/clock.jpg)
+
+---
+
+# Motivation
+
+Our game needs enemies. Making an enemy go back and fourth is
+straightforward but keeps the game in an infinite loop.
+
+~~~java
+while (true)
+{
+  for (double x = 0; x < 100; x++)
+    enemy.setX(x);
+
+  for (double x = 100; x > 0; x--)
+    enemy.setX(x);
+}
+~~~
+
+---
+
+# Update Method .badge[Pattern]
+
+The game world maintains a collection of objects. Each object implements an update method that simulates one frame of the object’s behavior. Each frame, the game updates every object in the collection.
+
+![](../assets/gamepatterns/update.svg)
 
 ---
 
@@ -667,4 +700,3 @@ Allow a single entity to span multiple domains without coupling the domains to e
 
 .right.small[
 [Component Pattern](http://gameprogrammingpatterns.com/component.html)]
-
