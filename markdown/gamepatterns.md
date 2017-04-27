@@ -621,7 +621,7 @@ name:buffer
 
 # Motivation
 
-When the game draws the world the users see, it does so one piece at a time — the mountains in the distance, the rolling hills, the trees, each in its turn. If the user watched the view draw incrementally like that, the illusion of a coherent world would be shattered. 
+When the game draws the world the users see, it does so **one piece at a time**. If the user watched the view draw incrementally like that, the **illusion** of a coherent world would be **shattered**. 
 
 ---
 
