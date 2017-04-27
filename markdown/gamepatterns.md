@@ -34,6 +34,7 @@ name:index
 1. [Game Loop](#loop)
 1. [Double Buffer](#buffer)
 1. [Component](#component)
+1. [Update Method](#update)
 ]
 
 ---
