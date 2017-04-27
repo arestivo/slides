@@ -13,7 +13,7 @@ class: left, middle
 ---
 
 template:inverse
-# Game Patterns
+# Design Patterns for Game Development
 <a href="http://www.fe.up.pt/~arestivo">André Restivo</a>
 
 ---
@@ -26,12 +26,14 @@ name:index
 1. [Introduction](#intro)
 1. [Singleton](#singleton)
 1. [Observer](#observer)
+1. [Factory](#factory)
 1. [Flyweight](#flyweight)
 1. [Object Pool](#pool)
 1. [State](#state)
 1. [Strategy](#strategy)
-1. [Visitor](#visitor)
-1. [Abstract Factory](#factory)
+1. [Game Loop](#loop)
+1. [Double Buffer](#buffer)
+1. [Component](#component)
 ]
 
 ---
@@ -42,9 +44,47 @@ name:intro
 
 ---
 
+# Types of patterns
+
+* Patterns for game designers: how should the game work
+
+* Patterns for game **developers**: how should it be implemented
+
+---
+
+# Game Design Design Patterns
+
+* High Level: FPS, Endless Runner, Platform, Shoot 'Em Up, Puzzle
+
+* Low Level: Lives, Energy, Double Jump, Wall Jump, Stomp to Kill, ...
+
+---
+
+# Game Development Design Patterns
+
+* What this presentation is about
+
+* Writing maintanable code
+
+* Writing efficient code
+
+---
+
+# References
+
+
+* Design Patterns: Elements of Reusable Object-Oriented Software, GoF, 1994
+
+* [Game Programming Patterns](http://gameprogrammingpatterns.com/contents.html), Robert (Bob) Nystrom
+
+* [Source Making: Design Patterns](https://sourcemaking.com/design_patterns)
+
+
+---
+
 template:inverse
 name:singleton
-# One to rule them All
+# One to rule them All 
 
 ![](../assets/gamepatterns/one.jpg)
 
@@ -58,11 +98,15 @@ Game needs **one, and only one**, instance of the GameModel, GameController and 
 
 ---
 
-# Singleton
+# Singleton .badge[GoF] .badge[Pattern]
 
 Ensure a class has only one instance, and provide a global point of access to it.
 
 ![](../assets/gamepatterns/singleton.svg)
+
+.right.small[
+[Singleton Pattern](https://sourcemaking.com/design_patterns/singleton), [Singleton in Games](http://gameprogrammingpatterns.com/singleton.html)
+]
 
 ---
 
@@ -91,11 +135,13 @@ public class GameView {
 
 ---
 
-# Drawbacks
+# Consequences
 
 * They hide dependencies and promote bad code.
+
 * They control their own creation and lifecycle.
-* They make tests harder.
+
+* Code is tightly coupled; they make tests harder.
 
 ---
 
@@ -113,11 +159,15 @@ Events in the physics engine, like collisions, must be **reflected** in the game
 
 ---
 
-# Observer
+# Observer .badge[GoF] .badge[Pattern]
 
 Define a one-to-many dependency between objects so that when **one** object changes state, all its **dependents** are **notified** and updated automatically.
 
 ![](../assets/gamepatterns/observer.svg)
+
+.right.small[
+[Observer Pattern](https://sourcemaking.com/design_patterns/observer), [Observer in Games](http://gameprogrammingpatterns.com/observer.html)
+]
 
 ---
 
@@ -147,6 +197,74 @@ world.setContactListener(new ContactListener() {
 ---
 
 template:inverse
+name:factory
+#Just gimme one with 4 wheels
+
+![](../assets/gamepatterns/factory.jpg)
+
+---
+
+# Motivation
+
+The *GameView* class knows when a *EntityView* needs to be created but not which one to create, as this depends on the *Model* the view will draw.
+
+The *EntityView* class knows it has to create a *Sprite* but not how to create it, as it depends on its concrete subclasses.
+
+---
+
+# Factory .badge[GoF] .badge[Pattern]
+
+Three similar patterns:
+
+* **Factory**: Creates objects without exposing the instantiation logic to the client (not GoF).
+
+* **Factory Method** : Define an interface for creating an object, but let the subclasses decide which class to instantiate. The Factory method lets a class defer instantiation to subclasses
+
+* **Abstract Factory**: Provides an interface for creating families of related or dependent objects without specifying their concrete classes.
+
+.right.small[
+[Factory Method Pattern](https://sourcemaking.com/design_patterns/factory_method), [Abstract Factory Pattern](https://sourcemaking.com/design_patterns/abstract_factory)
+]
+
+---
+
+# Implementation
+
+~~~java
+for (AsteroidModel asteroid : asteroids) {
+  EntityView view = ViewFactory.makeView(game, asteroid);
+  view.update(asteroid);
+  view.draw(game.getBatch());
+}
+~~~
+
+---
+
+# Factory Method .badge[GoF] .badge[Pattern]
+
+![](../assets/gamepatterns/factory-method.svg)
+
+---
+
+# Implementation
+
+~~~java
+public abstract class EntityView{
+  EntityView(AsteroidArena game) {
+      sprite = createSprite(game);
+  }
+
+  public void draw(SpriteBatch batch) {
+      sprite.draw(batch);
+  }
+
+  public abstract Sprite createSprite(AsteroidArena game);
+}
+~~~
+
+---
+
+template:inverse
 name:flyweight
 # The Forest for the Trees
 
@@ -162,11 +280,15 @@ We need to maintain a lot of asteroid objects but maintaining a sprite and/or te
 
 ---
 
-# Flyweight
+# Flyweight .badge[GoF] .badge[Pattern]
 
 Use sharing to support large numbers of fine-grained objects efficiently.
 
 ![](../assets/gamepatterns/flyweight-2.svg)
+
+.right.small[
+[Flyweight Pattern](https://sourcemaking.com/design_patterns/flyweight), [Flyweight in Games](http://gameprogrammingpatterns.com/flyweight.html)
+]
 
 ---
 
@@ -185,27 +307,27 @@ Each **flyweight** object is divided into two pieces: the state-dependent (extri
 
 ~~~java
 public class ViewFactory {
-  public enum ViewType {BIGASTEROID, MEDIUMASTEROID, SHIP, BULLET};
+  private static Map<EntityModel.ModelType, EntityView> cache =
+    new HashMap<EntityModel.ModelType, EntityView>();
 
-  private static Map<ViewType, EntityView> cache = 
-    new HashMap<ViewType, EntityView>();
-
-  public static EntityView makeView(AsteroidArena game, ViewType type) {
-    if (!cache.containsKey(type)) {
-      if (type == BIGASTEROID) 
-        cache.put(BIGASTEROID, new BigAsteroidView(game));
-
+  public static EntityView makeView(AsteroidArena game, EntityModel model) {
+      if (!cache.containsKey(model.getType())) {
+        if (model.getType() == BIGASTEROID) 
+          cache.put(model.getType(), new BigAsteroidView(game));
+        if (model.getType() == MEDIUMASTEROID) 
+          cache.put(model.getType(), new MediumAsteroidView(game));
         /* ... */
-    }
-    return cache.get(type);
+      }
+      return cache.get(model.getType());
   }
 }
 ~~~
 
 ~~~java
 for (AsteroidModel asteroid : asteroids) {
-  EntityView view = ViewFactory.makeView(game, BIGASTEROID);
-  view.draw(game.getBatch(), asteroid);
+  EntityView view = ViewFactory.makeView(game, asteroid);
+  view.update(asteroid);
+  view.draw(game.getBatch());
 }
 ~~~
 
@@ -223,13 +345,19 @@ name:pool
 
 There are **never** a lot of *bullets* flying at one given moment; but they are created and destroyed at a very **high rate**. The cost of instantiating a class makes this prohibitive.
 
+![](../assets/gamepatterns/bullets.jpg)
+
 ---
 
-# Object Pool 
+# Object Pool .badge[Pattern]
 
-Improve performance and memory use by reusing objects from a fixed pool instead of allocating and freeing them individually.
+Improve **performance** and **memory** use by reusing objects from a fixed pool instead of allocating and freeing them individually.
 
 ![](../assets/gamepatterns/pool.svg)
+
+.right.small[
+[Object Pool Pattern](https://sourcemaking.com/design_patterns/object_pool), [Object Pool in Games](http://gameprogrammingpatterns.com/object-pool.html)
+]
 
 ---
 
@@ -266,35 +394,277 @@ bulletPool.free(bullet);
 
 template:inverse
 name:strategy
-# Strategy
+# Be Different
+
+![](../assets/gamepatterns/strategy.jpg)
 
 ---
 
-template:inverse
-name:visitor
-# Visitor
+# Motivation
+
+We have a mix of different enemies that perform several actions. For each action, each enemy can execute it using a **different** strategy / algorithm. We want to be able to **mix** those strategies in order to create more complex and diverse enemies.
+
+Enemies can also **change** strategy depending on their current context.
+
+---
+
+# Strategy .badge[GoF] .badge[Pattern]
+
+Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from the clients that use it.
+
+![](../assets/gamepatterns/strategy.svg)
+
+.right.small[
+[Strategy Pattern](https://sourcemaking.com/design_patterns/strategy)
+]
 
 ---
 
 template:inverse
 name:state
-# State
+# Running while Jumping
+
+![](../assets/gamepatterns/running.jpg)
 
 ---
 
-template:inverse
-name:factory
-# Abstract Factory
+# Motivation
+
+Our hero can walk, run, jump, shoot, duck but the ability to do each one of these things depends on its current state.
+
+The next example was adapted from [here](http://gameprogrammingpatterns.com/state.html).
+
+---
+
+# Motivation
+
+What's the problem with this code:
+
+~~~java
+if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+  hero.setVerticalVelocity(JUMP_VELOCITY);
+  setSprite(JUMP_SPRITE);
+}
+~~~
+
+---
+
+# Motivation
+
+~~~java
+if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+  if (!jumping) {
+    jumping = true;
+    hero.setVerticalVelocity(JUMP_VELOCITY);
+    setSprite(JUMP_SPRITE);
+  }
+}
+~~~
+
+Now lets add ducking!
+
+---
+
+# Motivation
+
+Spot the problem:
+
+~~~java
+if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+  /* Jump Code */
+}
+if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+  if (!jumping) {
+    setSprite(DUCK_SPRITE);
+  }
+}
+if (Gdx.input.isKeyReleased(Input.Keys.DOWN)) {
+    setSprite(STAND_SPRITE);
+}
+~~~
+
+---
+
+# Motivation
+
+~~~java
+if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+  if (!jumping && !ducking) {
+  /* Jump Code */
+  }
+}
+if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+  if (!jumping) {
+    ducking = true;
+    setSprite(DUCK_SPRITE);
+  }
+}
+if (Gdx.input.isKeyReleased(Input.Keys.DOWN)) {
+  if (ducking) {
+    ducking = false;
+    setSprite(STAND_SPRITE);
+  }
+}
+~~~
+
+Now the dive attack...
+
+---
+
+# Motivation
+
+Bug hunting time:
+
+~~~java
+if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+  if (!jumping && !ducking) {
+  /* Jump Code */
+  }
+}
+if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+  if (!jumping) {
+    ducking = true;
+    setSprite(DUCK_SPRITE);
+  } else {
+    jumping = false;
+    hero.setVerticalVelocity(-JUMP_VELOCITY);
+    setSprite(DIVE_SPRITE);
+  }
+}
+if (Gdx.input.isKeyReleased(Input.Keys.DOWN)) {
+  /* Standing Code */
+}
+~~~
+
+---
+
+# Maybe we are doing it wrong
+
+![](../assets/gamepatterns/state-example.svg)
+
+---
+
+# State .badge[GoF] .badge[Pattern]
+
+Allow an object to alter its behavior when its internal state changes. The object will appear to change its class.
+
+![](../assets/gamepatterns/state.svg)
+
+.right.small[
+[State Pattern](https://sourcemaking.com/design_patterns/state), [State Pattern in Games](http://gameprogrammingpatterns.com/state.html)
+]
+
 
 ---
 
 template:inverse
 name:loop
+# Groundhog Day
+
+![](../assets/gamepatterns/groundhog.jpg)
+
+---
+
+# Motivation
+
+You have a **loop** that controls your game logic but you have **no control** over how **fast** the game runs. 
+
+On a fast machine, that loop will spin so fast users won’t be able to see what’s going on. On a slow machine, the game will crawl. 
+
+![](../assets/gamepatterns/loop1.svg)
+
+---
+
+# Game Loop .badge[Pattern]
+
+Decouple the progression of game time from user input and processor speed.
+
+
+![](../assets/gamepatterns/loop2.svg)
+
+~~~java
+while (true)
+{
+  double start = getCurrentTime();
+
+  processInput();
+  update();
+  render();
+
+  sleep(start + MS_PER_FRAME - getCurrentTime());
+}
+~~~
+
+---
+
 # Game Loop
+
+The game logic/physics step is the one that is most vulnerable to hardware changes.
+
+![](../assets/gamepatterns/loop3.svg)
+
+.right.small[
+[Game Loop Pattern](http://gameprogrammingpatterns.com/game-loop.html), [Fix your Timestep](http://gafferongames.com/game-physics/fix-your-timestep/)
+]
+
+
+---
+
+template:inverse
+name:buffer
+# Make it Smooth
+
+![](../assets/gamepatterns/double.jpg)
+
+---
+
+# Motivation
+
+When the game draws the world the users see, it does so one piece at a time — the mountains in the distance, the rolling hills, the trees, each in its turn. If the user watched the view draw incrementally like that, the illusion of a coherent world would be shattered. 
+
+---
+
+# Double Buffer .badge[Pattern]
+
+Instead of drawing directly into the screen, use an intermediate buffer instead; then swap the screen contents with the buffer instantaneously. 
+
+![](../assets/gamepatterns/buffer.svg)
+
+* Done automatically by most game engines
+
+* Not only for graphics
+
+.right.small[
+[Double Buffer Pattern](http://gameprogrammingpatterns.com/double-buffer.html)
+]
+
 
 ---
 
 template:inverse
 name:component
-# Component
+# Many Making One
+
+![](../assets/gamepatterns/component.jpg)
+
+---
+
+# Motivation
+
+We create a *Hero* class. 
+
+Since the player controls him, that means reading **controller input** and translating that input into **motion**. He needs to interact with the level, that means some **physics** and **collision** detection. He also has to show up on screen, so we add **animation** and **rendering**. 
+
+This leads to unmaintanable code very fast.
+
+---
+
+# Component .badge[Pattern]
+
+Allow a single entity to span multiple domains without coupling the domains to each other.
+
+![](../assets/gamepatterns/component.svg)
+
+.right.small[
+[Component Pattern](http://gameprogrammingpatterns.com/component.html)]
 
