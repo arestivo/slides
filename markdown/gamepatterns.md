@@ -227,7 +227,40 @@ There are **never** a lot of *bullets* flying at one given moment; but they are 
 
 # Object Pool 
 
+Improve performance and memory use by reusing objects from a fixed pool instead of allocating and freeing them individually.
 
+![](../assets/gamepatterns/pool.svg)
+
+---
+
+# Implementation
+
+Using the *LibGDX Pool* class:
+
+~~~java
+Pool<BulletModel> bulletPool = new Pool<BulletModel>() {
+  @Override
+  protected BulletModel newObject() {
+      return new BulletModel(0, 0, 0);
+  }
+};
+~~~
+
+Using the pool:
+
+~~~java
+BulletModel bullet = bulletPool.obtain();
+
+bullet.setPosition(x, y);
+bullet.setRotation(rotation);
+
+bullets.add(bullet);
+~~~
+
+~~~java
+bullets.remove(bullet);
+bulletPool.free(bullet);
+~~~
 
 ---
 
@@ -252,3 +285,16 @@ name:state
 template:inverse
 name:factory
 # Abstract Factory
+
+---
+
+template:inverse
+name:loop
+# Game Loop
+
+---
+
+template:inverse
+name:component
+# Component
+
