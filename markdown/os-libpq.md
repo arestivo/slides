@@ -142,8 +142,11 @@ PGresult *PQexec(PGconn *conn, const char *command);
 
 ~~~cpp
 void deleteEmployee(int id) {
-  PGresult *res = PQexec(conn, "DELETE * FROM employee WHERE id = " + id);
+  string query = "DELETE * FROM employee WHERE id = " + intToStr(id);
+  PGresult *res = PQexec(conn, query.c_str());
 }
+
+
 ~~~
 
 ---
@@ -154,7 +157,8 @@ We should verify if the query was successful using the *PQresultStatus* function
 
 ~~~cpp
 boolean deleteEmployee(int id) {
-  PGresult *res = PQexec(conn, "DELETE * FROM employee WHERE id = " + id);
+  string query = "DELETE * FROM employee WHERE id = " + intToStr(id);
+  PGresult *res = PQexec(conn, query.c_str());
   return PQresultStatus(res) == PGRES_COMMAND_OK;
 }
 ~~~
@@ -167,7 +171,8 @@ If we want to know the error message we can use the *PQresultErrorMessage* funct
 
 ~~~cpp
 boolean deleteEmployee(int id) {
-  PGresult *res = PQexec(conn, "DELETE * FROM employee WHERE id = " + id);
+  string query = "DELETE * FROM employee WHERE id = " + intToStr(id);
+  PGresult *res = PQexec(conn, query.c_str());
   if (PQresultStatus(res) != PGRES_COMMAND_OK) {
     cout << PQresultErrorMessage(res) << endl;
     return false:
@@ -193,7 +198,8 @@ returns some results.
 
 ~~~cpp
 PGresult* getEmployees(int dep_id) {
-  PGresult *res = PQexec(conn, "SELECT id, name FROM employee WHERE dep_id = " + dep_id);
+  string query = "SELECT id, name FROM employee WHERE dep_id = " + intToStr(dep_id);
+  PGresult *res = PQexec(conn, query.c_str());
   if (PQresultStatus(res) != PGRES_TUPLES_OK) {
     cout << PQresultErrorMessage(res) << endl;
     return null;
@@ -221,11 +227,14 @@ char *PQgetvalue(const PGresult *res,
 ~~~
 
 ~~~cpp
-PGresult employees* getEmployees(5);
+PGresult* employees = getEmployees(5);
 
-if (employees != null) {
+if (employees != 0) {
   for (int row = 0; row < PQntuples(employees); row++) {
-    cout << PQgetvalue(res, row , 0) << " - " << PQgetvalue (res, row, 1) << endl;
+    cout << PQgetvalue(employees, row , 0) 
+         << " - " 
+         << PQgetvalue (employees, row, 1) 
+         << endl;
   }
 }
 ~~~
@@ -260,7 +269,8 @@ SQL injection is a code injection technique, used to attack data-driven applicat
 Consider the following code:
 
 ~~~cpp
-PQexec (conn , "SELECT emp_id, emp_name FROM employee WHERE emp_name= '" + name + "'");
+strin query = "SELECT emp_id, emp_name FROM employee WHERE emp_name= '" + name + "'";
+PQexec (conn , query.c_str());
 ~~~
 
 What happens if the user inputs:
