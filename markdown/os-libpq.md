@@ -56,13 +56,13 @@ Documentation:
 To compile a program using libpq we must first include the following file:
 
 ~~~cpp
-#include <postgresql/libpq−fe.h>
+#include <postgresql/libpq-fe.h>
 ~~~
 
 And link the library when compiling:
 
 ~~~bash
-g++ libpq.cpp −o libpq −lpq
+g++ libpq.cpp -o libpq -lpq
 ~~~
 
 ---
