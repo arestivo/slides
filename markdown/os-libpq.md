@@ -88,7 +88,7 @@ PGconn *PQconnectdb(const char *connection);
 ~~~
 
 ~~~cpp
-PGconn *conn = PQconnectdb("host='dbm.fe.up.pt' user='USERNAME' password='PASSWORD''");
+PGconn *conn = PQconnectdb("host='dbm.fe.up.pt' user='USERNAME' password='PASSWORD'");
 ~~~
 
 ---
@@ -107,6 +107,7 @@ if(!conn) {
 
 if (PQstatus (conn) != CONNECTION_OK) {
   cout << "Failed to connect to Database" << endl;
+  cout << PQerrorMessage(conn) << endl;
   exit(-1);
 }
 ~~~
