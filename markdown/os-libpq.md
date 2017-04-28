@@ -196,7 +196,7 @@ PGresult* getEmployees(int dep_id) {
   PGresult *res = PQexec(conn, "SELECT id, name FROM employee WHERE dep_id = " + dep_id);
   if (PQresultStatus(res) != PGRES_TUPLES_OK) {
     cout << PQresultErrorMessage(res) << endl;
-    return null:
+    return null;
   }
   return res;
 }
