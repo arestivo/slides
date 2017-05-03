@@ -28,6 +28,7 @@ name:index
 1. [Manipulation](#manipulation)
 1. [Queries](#queries)
 1. [SQL Injection](#injection)
+1. [Schemas](#schemas)
 ]
 
 ---
@@ -142,7 +143,7 @@ PGresult *PQexec(PGconn *conn, const char *command);
 
 ~~~cpp
 void deleteEmployee(int id) {
-  string query = "DELETE * FROM employee WHERE id = " + intToStr(id);
+  string query = "DELETE FROM employee WHERE id = " + intToStr(id);
   PGresult *res = PQexec(conn, query.c_str());
 }
 
@@ -157,7 +158,7 @@ We should verify if the query was successful using the *PQresultStatus* function
 
 ~~~cpp
 boolean deleteEmployee(int id) {
-  string query = "DELETE * FROM employee WHERE id = " + intToStr(id);
+  string query = "DELETE FROM employee WHERE id = " + intToStr(id);
   PGresult *res = PQexec(conn, query.c_str());
   return PQresultStatus(res) == PGRES_COMMAND_OK;
 }
@@ -171,7 +172,7 @@ If we want to know the error message we can use the *PQresultErrorMessage* funct
 
 ~~~cpp
 boolean deleteEmployee(int id) {
-  string query = "DELETE * FROM employee WHERE id = " + intToStr(id);
+  string query = "DELETE FROM employee WHERE id = " + intToStr(id);
   PGresult *res = PQexec(conn, query.c_str());
   if (PQresultStatus(res) != PGRES_COMMAND_OK) {
     cout << PQresultErrorMessage(res) << endl;
@@ -202,7 +203,7 @@ PGresult* getEmployees(int dep_id) {
   PGresult *res = PQexec(conn, query.c_str());
   if (PQresultStatus(res) != PGRES_TUPLES_OK) {
     cout << PQresultErrorMessage(res) << endl;
-    return null;
+    return 0;
   }
   return res;
 }
@@ -318,7 +319,34 @@ res = PQexecParams(conn,
        1,       /* one param */
        NULL,    /* let the backend deduce param type */
        paramValues,
-       NULL,    /* don't need param lengths since text */
+       NULL,    /* don't need param lengths since not binary */
        NULL,    /* default to all text params */
        0);      /* ask for text results */
+~~~
+
+---
+
+template:inverse
+name:schemas
+# Schemas
+
+---
+
+# Changing Schema
+
+The default database schema in *PostgreSQL* is the *public* schema.
+
+If we are connecting to this particular schema we do not have to worry about setting the current schema.
+
+If we want to connect to a different schema, all we have to do is use the *SET* SQL command, specific to PostgreSQL, to do it:
+
+~~~sql
+SET search_path TO myschema
+~~~
+
+As this is a SQL command, to use it in *libpq* we just have to do:
+
+~~~cpp
+PGconn *conn = PQconnectdb("host='dbm.fe.up.pt' user='USERNAME' password='PASSWORD'");
+PQexec(conn, "SET search_path TO myschema");
 ~~~
