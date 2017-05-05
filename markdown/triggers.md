@@ -116,16 +116,6 @@ CREATE FUNCTION clean_employees() RETURNS void AS '
 
 ---
 
-# Deleting Functions
-
-To delete a function, we use the *DROP FUNCTION* command:
-
-~~~sql
-DROP FUNCTION clean_employees;
-~~~
-
----
-
 # Parameters
 
 Parameters to the function are referenced in the function body using the syntax <code>$n</code>: <code>$1</code> refers to the first argument, <code>$2</code> to the second, and so on. 
@@ -136,6 +126,16 @@ Example:
 CREATE FUNCTION disable_employee(integer) RETURNS void AS '
   UPDATE employee SET disabled = true WHERE id = $1;
 ' LANGUAGE SQL;
+~~~
+
+---
+
+# Deleting Functions
+
+To delete a function, we use the *DROP FUNCTION* command:
+
+~~~sql
+DROP FUNCTION disable_employee(integer);
 ~~~
 
 ---
@@ -171,7 +171,7 @@ Example:
 -- of disabled employees in the database.
 CREATE FUNCTION disable_employee(integer) RETURNS void AS '
   UPDATE employee SET disabled = true WHERE id = $1;
-  SELECT COUNT(*) FROM employee WHERE disabled = true;
+  SELECT COUNT(*) FROM employees WHERE disabled = true;
 ' LANGUAGE SQL;
 ~~~
 
@@ -371,7 +371,7 @@ FROM employees WHERE id = $1;
 Into a record:
 
 ~~~sql
-SELECT * INTO employee 
+SELECT * FROM employees INTO employee 
 FROM employees WHERE id = $1;
 ~~~ 
 
@@ -388,7 +388,7 @@ CREATE FUNCTION get_employee_salary(integer) RETURNS numeric AS $$
 DECLARE
   employee_salary numeric;
 BEGIN
-  SELECT salary INTO employee_salary WHERE id = $1;
+  SELECT salary INTO employee_salary FROM employees WHERE id = $1;
   RETURN employee_salary;
 END
 $$ LANGUAGE plpgsql;
