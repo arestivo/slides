@@ -496,8 +496,8 @@ END LOOP
 Example:
 
 ~~~sql
-FOR s IN SELECT salary FROM employee LOOP
-    total := total + s;
+FOR e IN SELECT name, salary FROM employee LOOP
+    total := total + e.salary;
 END LOOP
 ~~~
 
