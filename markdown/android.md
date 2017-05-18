@@ -344,7 +344,7 @@ buttonAdd.setOnClickListener(new View.OnClickListener() {
 });
 ~~~
 
-* Another [https://sourcemaking.com/design_patterns/observer](design pattern)?
+* Another [design pattern](https://sourcemaking.com/design_patterns/observer)?
 * Why is the view passed as a parameter?
 
 ---
