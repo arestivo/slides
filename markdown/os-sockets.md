@@ -282,10 +282,10 @@ Example:
 int sockfd = socket(AF_INET , SOCK_STREAM , 0);
 
 struct sockaddr_in server;
-server.sin_addr.s_addr = inet_addr("127.0.0.1");
+server.sin_addr.s_addr = inet_addr("127.0.0.1"); //include <arpa/inet.h>
 server.sin_family = AF_INET;
 server.sin_port = htons(2345);
-int res = connect(sockfd , (struct sockaddr *)&server , sizeof(server);
+int res = connect(sockfd , (struct sockaddr *)&server , sizeof(server));
 ~~~
 
 ---
