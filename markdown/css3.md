@@ -40,6 +40,8 @@ name:index
 1. [Transforms](#transforms)
 1. [Transitions](#transitions)
 1. [Positioning](#positioning)
+1. [Flexbox](#flexbox)
+1. [Grid](#flexbox)
 1. [Precedence](#precedence)
 1. [Responsive Design](#responsive)
 1. [Vendor Prefixes](#prefix)
@@ -68,7 +70,7 @@ name:intro
 * 1998 **CSS 2**
 * 1999 **CSS 1** Supported by browsers
 * 2003 **CSS 2** Decently supported by browsers
-* 2003 **CSS Zen Garden**
+* 2003 **CSS Zen Garden** (http://www.csszengarden.com/)
 * 2011 **CSS 2.1**
 * 2011-2012 **CSS 3**
 
@@ -163,7 +165,7 @@ name:resources
   * http://www.w3.org/Style/CSS/specs.en.html
 
 * Tutorials:
-  * http://docs.webplatform.org/wiki/css/tutorials
+  * https://css-tricks.com/almanac/
   * http://www.htmldog.com/guides/css/
   
 ---
@@ -562,22 +564,33 @@ template: inverse
 name:units
 # Length Units
 
+https://developer.mozilla.org/en-US/docs/Web/CSS/length
+
 ---
-# Absolute length units
+# Absolute length
 
 Absolute length units represents a physical measurement. They are useful when the physical properties of the output medium are known, such as for print layout.
 
 ```css
-cm, mm, in, pt and pc
+mm, cm, in, pt and pc
 ```
 
+* **mm** One millimeter.
+* **cm** One centimeter (10 millimeters).
+* **in** One inch (2.54 centimeters).
+* **pt** One point (1/72nd of an inch).
+* **pc** One pica (12 points).
+
 ---
-# Relative length units
+# Font relative length
 
-Relative length units are relative to some other unit. They are useful when the physical properties of the output medium are unknown, such as for screen layout.
+Font relative length units are relative to the size of a particular character or font attribute in the font currently in effect in the element (or parent element in some cases). 
 
-* **rem** For fonts, **1rem** represents the size of the root element font. For lengths, it represents the height of the root element font.
-* **em** For fonts, **1em** represents the size of the parent element font. For lengths, it represents the height of the current element font.
+They are useful when the physical properties of the output medium are unknown, such as for screen layout.
+
+* **rem** Represents the size of the root element font.
+If used in the root element, represents the initial (default) value of the browser (typically 16px).
+* **em** When used with *font-size*, represents the size of the parent element font. For lengths, represents the size of the current element font.
 
 ---
 # Example (rem)
@@ -626,6 +639,20 @@ div {
 
 * On low dpi screens, the **pixel (px)** represents one device pixel (**dot**). 
 * On higher dpi devices, a pixel represents an integer number of device pixels so that 1in ≈ 96px.
+
+---
+
+# Percentage
+
+The *percentage* CSS data type represents a percentage value. A percentage consists of a *number* followed by the percentage sign %. There is no space between the symbol and the number.
+
+```css
+  div {
+    width: 50%;
+  }
+```
+
+Many CSS properties (width, margin, padding, font-size, ...) can take *percentage* values to define a size as relative to its parent object.
 
 ---
 
@@ -739,6 +766,9 @@ Text can be aligned **left**, **right**, **center** or justified (**justify**) u
   text-align: center;
 }
 ```
+
+![](../assets/css3/text-align.png)
+
 ---
 
 # Transformation
@@ -770,16 +800,23 @@ name:boxmodel
 # Box Model
 
 ---
+
 # Box Model
 
 Elements all live inside a box. They can have a **border**, some space between themselves and that border (**padding**) and some space between themselves and the next element (**margin**).
 
 <img src="../assets/css3/box-model.png" style="padding: 10px;">
+
 ---
+
 # Display
 
-There are 17 different possible values for the **display** property. We will concentrate on four of them: **none**, **inline**, **block** and **inline-block**.
+There are 40 different possible values for the **display** property. For now, we will concentrate on only four of them: **none**, **inline**, **block** and **inline-block**.
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/display
+
 ---
+
 # Block Elements
 
 * Block elements are laid out one after the other, **vertically**.
@@ -816,6 +853,8 @@ Examples: img, span, strong
 span {
   display: inline;
   margin: 1em;
+  padding: 1em;
+  background-color: red;
 }
 ```
 
@@ -834,10 +873,14 @@ span {
 
 Inline elements that **do not ignore** the **width** and **height** properties.
 
+Block elements that will be flowed with surrounding content as if they were single inline boxes.
+
 ```css
 span {
   display: inline-block;
   margin: 1em;
+  padding: 1em;
+  background-color: red;
 }
 ```
 
@@ -849,7 +892,7 @@ span {
 # Display None
 
 * Setting the **display** property to none, **removes** the element from the page.
-* Different from making it invisible.
+* Different from making it invisible (with the *visibility* attribute).
 
 ```css
 #menu {
@@ -870,17 +913,26 @@ h1 {
   margin-top: 10px;
 }
 ```
+
+* **Auto** A suitable margin is calculated by the browser (useful for centering).
+* **Percentage** Calculated with respect to the width of the generated containing block (event for top/bottom).
+
 ---
+
 # Shorthands
 
 To make it easier to define the margin and padding properties, shorthands can be used:
 
-* Using **two values**, the **top/bottom** and **left/right** margins are defined simultaneously.
+* Using **two values**, the **top/bottom** (vertical) and **left/right** (horizontal) margins are defined simultaneously.
+
+* Using **three values**, the **top**, **horizontal** and **bottom** margins are defined.
 
 * Using **four values**, the **top**, **right**, **bottom** and **left** values are defined (in that order i.e. **clockwise**).
 
 * Using **one value**, **all values** are defined the same.
+
 ---
+
 # Shorthand Examples
 
 ```css
@@ -896,6 +948,16 @@ h1 {
   padding: 5px 3px 10px 15px;
 }
 ```
+
+Common shorthand used to center the *body* element:
+
+```css
+body {
+  margin: 0 auto;
+}
+```
+
+
 ---
 # Margin Collapse
 
@@ -1013,6 +1075,7 @@ The possible combinations are as follows:
 
 * One value: single radius for the whole element
 * Two values: **top-left-and-bottom-right** and **top-right-and-bottom-left**
+* Three values: **top-left**, **top-right-and-bottom-left** and **bottom-right**
 * Four values: **top-left**, **top-right**, **bottom-right**, **bottom-left**
 
 ---
@@ -1084,7 +1147,11 @@ div#menu {
   background-attachment: local;
 }
 ```
+
+https://css-tricks.com/almanac/properties/b/background-attachment/
+
 ---
+
 # Repeat
 
 We can also define if the background repeats along one or both axis with the **background-repeat** property. Possible values are **no-repeat**, **repeat-x**, **repeat-y** and **repeat**.
@@ -1097,7 +1164,9 @@ div#menu {
   background-repeat: repeat;
 }
 ```
+
 ---
+
 # Clipping
 
 * By default, background properties, like **background-color**, apply to the space occupied by the element, its padding and border.
@@ -1105,7 +1174,11 @@ div#menu {
 * This can be changed using the **background-clip** property.
 
 * The possible values are: **border-box** (default), **padding-box** (only content and border) and **content-box** (only content).
+
+https://css-tricks.com/almanac/properties/b/background-clip/
+
 ---
+
 # Shorthands
 
 * The **background** shorthand property sets all the background properties (including color) in one declaration.
@@ -1417,7 +1490,11 @@ Floats go right or left until they find another float or the parent container.
   z-index: -1;
 }
 ```
+
+By default, the elements are stacked following the order they are declared in the HTML.
+
 ---
+
 # Overflow
 
 * The **overflow** property especifies the behavior of an element when its contents don't fit its specified size.
@@ -1428,6 +1505,175 @@ Floats go right or left until they find another float or the parent container.
  * **hidden**:	The overflow is clipped, and the rest of the content will be invisible.
  * **scroll**:	The overflow is clipped, but a scroll-bar is added to see the rest of the content.
  * **auto**:	If overflow is clipped, a scroll-bar should be added to see the rest of the content.
+
+---
+
+template: inverse
+name:flexbox
+# Flexbox
+
+---
+
+# Flexbox
+
+A direction agnostic alternative to the box model layout model.
+
+Flexbox provides block level arrangement of parent and child elements that are flexible to adapt to display size.
+
+It does not use floats, nor do the flex container's margins collapse with the margins of its contents.
+
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+---
+
+# Flexbox Vocabulary
+
+![](../assets/css3/flexbox-vocabulary.png)
+
+---
+
+# Running Example
+
+```html
+<div class="container">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+</div>
+```
+
+```css
+.container {
+  background-color: #665178;
+  padding: 1em;
+}
+
+.item {
+  color: black;
+  text-align: center;
+  margin: 1em;
+  padding: 1em;
+  background-color: #A9CDC3;
+}
+```
+
+---
+
+# Running Example
+
+![](../assets/css3/flexbox-example.png)
+
+---
+
+# Flex
+
+Changing the *display* property of the container to *flex* transforms the contained items into flexboxes.
+
+```css
+.container {
+  display: flex;
+}
+```
+
+![](../assets/css3/flexbox-display.png)
+
+By default the main axis is horizontal from left to right.
+
+---
+
+# Flex Direction
+
+We can change the directon of the main axis by changing the *flex-direction* property of the container to: **row**, **row-reverse**, **column** or **column-reverse**.
+
+```css
+.container {
+  flex-direction: row;
+}
+```
+
+![](../assets/css3/flexbox-example.png)
+
+---
+
+# Flex Wrap
+
+The *flex-wrap* property allows us to specify how items should
+wrap when changing lines: **no-wrap**, **wrap**, **wrap-reverse**
+
+```css
+.container {
+  flex-wrap: wrap-reverse;
+}
+```
+
+![](../assets/css3/flexbox-wrap.png)
+
+---
+
+# Justify Content
+
+The *justify-content* property defines the alignment along the **main** axis allowing the distribution of extra space: **flex-start**, **flex-end**, **center**, **space-around**, **space-between**, **space-evenly**.
+
+```css
+.container {
+  justify-content: flex-startxb;
+}
+```
+
+![](../assets/css3/flexbox-justify.png)
+
+---
+
+# Align Items
+
+The *align-items* property defines the default behaviour for how flex items are laid out along the **cross** axis on the current line: **flex-start**, **flex-end**, **center**, **baseline**, **stretch**.
+
+```css
+.container {
+  align-items: flex-start;
+}
+```
+
+![](../assets/css3/flexbox-align.png)
+
+---
+
+# Order
+
+The **order** property alters the order in which a flex item is layed out in its container.
+
+```css
+.item:first-child {
+   order: 3;
+}
+```
+
+![](../assets/css3/flexbox-order.png)
+
+---
+
+# Grow and Shrink
+
+The flex-grow and flex-shrink properties define the ability for a flex item to grow, if there is extra space, or shrink, if there isn't enough. They accept a unitless value that serves as a proportion.
+
+```css
+.item {
+  flex-grow: 1;
+}
+
+.item:nth-child(2) {
+  flex-grow: 2;  
+}
+```
+
+![](../assets/css3/flexbox-grow.png)
+
+---
+
+template: inverse
+name:grid
+# Grid
+
 ---
 
 template: inverse
@@ -1452,13 +1698,16 @@ div {
 }
 ```
 ---
+
 # Defaults
 
 * Each browser has **its own** set of default values for the properties of each HTML element. 
 * These defaults are very similar between browsers but the little differences make cross-browser development harder.
 
-> **Tip**: There are several reset CSS available that redeclare each default value to have the same value in every browser.
+**Tip**: There are several reset CSS available that redeclare each default value to have the same value in every browser.
+
 ---
+
 # Inherit
 
 * A special value that can be used in almost every property.
