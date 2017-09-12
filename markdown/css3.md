@@ -1654,7 +1654,7 @@ The **order** property alters the order in which a flex item is layed out in its
 
 # Grow and Shrink
 
-The flex-grow and flex-shrink properties define the ability for a flex item to grow, if there is extra space, or shrink, if there isn't enough. They accept a unitless value that serves as a proportion.
+The *flex-grow* and *flex-shrink* properties define the ability for a flex item to grow, if there is extra space, or shrink, if there isn't enough. They accept a unitless value that serves as a proportion.
 
 ```css
 .item {
@@ -1673,6 +1673,209 @@ The flex-grow and flex-shrink properties define the ability for a flex item to g
 template: inverse
 name:grid
 # Grid
+
+---
+
+# Grid
+
+A grid layout enables us to align elements into **columns** and **rows**. 
+
+A grid container's child elements could position themselves so they actually overlap and layer.
+
+![](../assets/css3/grid-1.svg)
+
+https://css-tricks.com/snippets/css/complete-guide-grid/
+
+---
+
+# Running Example
+
+```html
+<div class="container">
+  <div class="item header">Header</div>
+  <div class="item menu1">Menu 1</div>
+  <div class="item menu2">Menu 2</div>
+  <div class="item content">Lorem ipsum...</div>
+  <div class="item footer">Footer</div>
+</div>
+```
+
+```css
+.container {
+  background-color: #1A3C3D;
+  padding: 5px;
+}
+.item {
+  color: black;
+  text-align: center;
+  margin: 2px;
+  padding: 1em;
+  background-color: #84A174;
+}
+```
+
+---
+
+# Running Example
+
+
+![](../assets/css3/grid-example.png)
+
+---
+
+# Grid
+
+Changing the *display* property of the container to *grid* transforms the container into a grid layout.
+
+```css
+.container {
+  display: grid;
+}
+```
+
+By default there is only one column.
+
+---
+
+# Grid Templates
+
+The *grid-template-columns* and *grid-template-rows* properties allow us to define the number and size of the columns and rows of our table.
+
+Sizes can be defined as **auto**, a **length**, a **percentage** or a **fraction** of the free space (using the *fr* unit).
+
+```css
+.container {
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto 1fr auto;
+}
+```
+
+![](../assets/css3/grid-templates.png)
+
+---
+
+# Numerical Names
+
+By default, grid lines are assigned numerical values.
+
+![](../assets/css3/grid-2.svg)
+
+---
+
+# Assigning Location
+
+We can assign a **location** to an item within the grid by referring to specific grid lines using the *grid-column-start*, *grid-column-end*, *grid-row-start* and *grid-row-end* properties.
+
+```css
+.header {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+```
+
+Values can be the **numerical** default names of the grid lines or a name assigned by us.
+
+The end values can also be the number of rows or columns to span. By default these values are a span of one.
+
+```css
+.header {
+  grid-column-end: span 2;
+  grid-row-end: span 1;    /* not needed - default value */
+}
+```
+
+---
+
+# Location Shorthand
+
+The *grid-column* and *grid-row* properties can be used as a shorthand for assigning the location of an item. Each one of them receives two values separated by a forward slash (start / end).
+
+The *grid-area* property can be used as a shorthand for the four values at once: *row-start* / *column-start* / *row-end* / *column-end*.
+
+.small[
+```css
+.header {
+  grid-area: 1 / 1 / span 2 / span 1;
+}
+
+.menu1 {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.menu2 {
+  grid-column: 1;
+  grid-row: 3 / 5;
+}
+
+.content {
+  grid-column: 2;
+  grid-row: 2 / span 2;
+}
+
+.footer {
+  grid-column: 2;
+  grid-row: 4;
+}
+```
+]
+
+---
+
+# Location Result
+
+![](../assets/css3/grid-location.png)
+
+---
+
+# Grid Line Names
+
+When defining the grid template, we can assign names to the grid lines. A line can have more than one name.
+
+```css
+.container {
+  grid-template-columns: [left] auto [middle] 1fr [right];
+  grid-template-rows: [top] auto [header-end content-start] auto 
+                      [menu-sep] 1fr [footer-start] auto [bottom];
+}
+.content {
+  grid-area: content-start / middle / footer-start / right;
+}
+```
+
+![](../assets/css3/grid-3.svg)
+
+---
+
+# Grid Template Areas
+
+By giving names to items using the *grid-area* property, we can define a grid template in a more visual fashion.
+
+Any number of adjacent periods can be used to declare a single empty cell.
+
+```css
+.container {
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto 1fr auto;
+  
+  grid-template-areas: "header header"
+                       "menu1  content"
+                       "menu2  content"
+                       "menu2  footer";
+}
+
+.header { grid-area: header; }
+
+.menu1 { grid-area: menu1; }
+
+.menu2 { grid-area: menu2; }
+
+.content { grid-area: content; }
+
+.footer { grid-area: footer; }
+```
 
 ---
 
