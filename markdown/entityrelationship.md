@@ -157,7 +157,7 @@ name: entities
 # Entity-Type
 
 * The schema of a set of entities that share the same structure.
-* Carachterized by the entity’s name and it’s attributes.
+* Characterized by the entity’s name and it’s attributes.
 
 .box_example[
 Employee (name, address, city)
@@ -169,9 +169,10 @@ Employee (name, address, city)
 * Key Attribute: **underlined**.
 * Composite Attribute: attribute name and **list** of composing attributes.
 * Multi-valued Attribute: between **curly brackets**.
+* Derived Attribute: preceded by a **backslash**.
 
 .small.box_example[
-Employee (.key[number], name, address(street, number, apartment), {phone})
+Employee (.key[number], name, address(street, number, apartment), {phone}, birth_date, \age)
 ]
 
 ---
