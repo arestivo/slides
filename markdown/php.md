@@ -1176,7 +1176,7 @@ final class RaceCar implements Car {
     return $this->driver;
   }
 
-  public function getPlate() {
+  final public function getPlate() {
     return $this->plate;
   }
 }
