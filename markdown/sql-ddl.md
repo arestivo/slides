@@ -498,7 +498,7 @@ Unique keys are identical to primary keys but:
 * they **allow NULL** values;
 * and there can be **multiple unique keys** in one table.
 
-They are created using the same type of syntax:
+They are created using the same type of syntax used in primary keys.
 
 ---
 
@@ -586,7 +586,7 @@ CREATE TABLE employee (
     UNIQUE
     DEFAULT 0 CHECK (card_number >= 0),
   active BOOLEAN DEFAULT TRUE,
-  department_id integer REFERENCES department(id),
+  department_id INTEGER REFERENCES department(id),
   CONSTRAINT taxes_lower_salary CHECK (taxes < salary)
 );
 ```
@@ -613,7 +613,7 @@ CREATE TABLE employee (
     UNIQUE
     DEFAULT 0 CHECK (card_number >= 0),
   active BOOLEAN DEFAULT TRUE,
-  department_id integer REFERENCES department,
+  department_id INTEGER REFERENCES department,
   CONSTRAINT taxes_lower_salary CHECK (taxes < salary)
 );
 ```
@@ -735,7 +735,7 @@ CREATE TABLE employee (
     UNIQUE
     DEFAULT 0 CHECK (card_number >= 0),
   active BOOLEAN DEFAULT TRUE,
-  department_id integer REFERENCES department
+  department_id INTEGER REFERENCES department
     ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT taxes_lower_salary CHECK (taxes < salary)
 );
@@ -792,7 +792,7 @@ Is equivalent to:
 ```sql
 CREATE SEQUENCE <tablename_colname_seq>;
 CREATE TABLE <tablename> (
-    <colname> integer DEFAULT nextval('<tablename_colname_seq>') NOT NULL
+    <colname> INTEGER DEFAULT nextval('<tablename_colname_seq>') NOT NULL
 );
 ```
 

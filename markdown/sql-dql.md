@@ -721,16 +721,18 @@ MIN, MAX, SUM, AVG and COUNT
 |1
 |2
 |NULL
+|2
 |3
 ]
 
 ```sql
-SELECT MIN(value)   FROM table; -- 1
-SELECT MAX(value)   FROM table; -- 3
-SELECT SUM(value)   FROM table; -- 6
-SELECT AVG(value)   FROM table; -- 2
-SELECT COUNT(value) FROM table; -- 3 (counts non null values)
-SELECT COUNT(*)     FROM table; -- 4 (counts lines)
+SELECT MIN(value)             FROM table; -- 1
+SELECT MAX(value)             FROM table; -- 3
+SELECT SUM(value)             FROM table; -- 8
+SELECT AVG(value)             FROM table; -- 2
+SELECT COUNT(value)           FROM table; -- 4 (counts non null values)
+SELECT COUNT(DISTINCT value)  FROM table; -- 3 (counts distinct non null values)
+SELECT COUNT(*)               FROM table; -- 5 (counts lines)
 ```
 
 ---
@@ -922,7 +924,7 @@ SELECT * FROM employees ORDER BY salary ASC; -- default
 ]
 
 ```sql
-SELECT * FROM employees ORDER BY salary DESC; -- default
+SELECT * FROM employees ORDER BY salary DESC;
 ```
 
 .smaller.sqltable[

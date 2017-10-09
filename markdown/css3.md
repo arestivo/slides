@@ -1587,7 +1587,7 @@ We can change the directon of the main axis by changing the *flex-direction* pro
 
 ```css
 .container {
-  flex-direction: row;
+  flex-direction: column;
 }
 ```
 
@@ -1797,7 +1797,7 @@ The *grid-area* property can be used as a shorthand for the four values at once:
 .small[
 ```css
 .header {
-  grid-area: 1 / 1 / span 2 / span 1;
+  grid-area: 1 / 1 / span 1 / span 2;
 }
 
 .menu1 {
