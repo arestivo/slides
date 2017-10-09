@@ -1780,6 +1780,12 @@ Never mix scripts that show data with scripts that change data:
 
 ---
 
+# Separate Actions from Views
+
+![](../assets/php/best-practices.svg)
+
+---
+
 # Extra Stuff
 
 * Functions: [Dates](http://php.net/manual/en/ref.datetime.php), [Image Processing](http://php.net/manual/en/book.image.php)
