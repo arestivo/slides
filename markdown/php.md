@@ -29,7 +29,7 @@ name:index
 1. [Strings](#strings)
 1. [Arrays](#arrays)
 1. [Functions](#functions)
-1. [Objects](#objects)
+1. [Classes](#classes)
 1. [Exceptions](#exceptions)
 1. [Databases](#databases)
 1. [HTTP Parameters](#parameters)
@@ -926,8 +926,8 @@ bar(); // prints 10
 ---
 
 template:inverse
-name:objects
-# Objects
+name:classes
+# Classes
 
 ---
 
@@ -1056,7 +1056,7 @@ Obviously, **$this** cannot be used inside a static method.
 
 There are three special keywords that are used to access properties or methods from inside the class definition
 
-* **self::** - accesses the class (different than **$this**)
+* **self::** - accesses the current class (different from **$this**)
 * **parent::** - accesses the parent class
 * **static::** - accesses a static member of property
   
@@ -1074,6 +1074,37 @@ class Car {
 }
 
 echo Car::milesToKm(10);
+```
+
+---
+
+# Self vs Static
+
+```php
+<?php
+
+  class Foo
+  {
+    protected static $bar = 1234;
+
+    public function print() {
+      echo "static " . static::$bar . "<br>";
+      echo "self " . self::$bar . "<br>";
+    }
+  }
+
+  class Bar extends Foo
+  {
+    protected static $bar = 4321;
+  }
+
+  $foo = new Foo();
+  $bar = new Bar();
+
+  $foo->print();  // 1234 and 1234 
+  $bar->print();  // 4321 and 1234
+
+?>
 ```
 
 ---
