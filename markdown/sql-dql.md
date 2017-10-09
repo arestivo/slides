@@ -688,7 +688,8 @@ SELECT * FROM employee;
 # Renaming tables
 
 ```sql
-SELECT * FROM employee JOIN employee AS supervisor ON employee.sup_id = supervidor.id;
+SELECT * FROM employee JOIN 
+              employee AS supervisor ON employee.sup_id = supervidor.id;
 ```
 
 .smaller.sqltable[
