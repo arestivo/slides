@@ -167,7 +167,7 @@ name:resources
 * Tutorials:
   * https://css-tricks.com/almanac/
   * http://www.htmldog.com/guides/css/
-  
+
 ---
 
 template: inverse
@@ -469,8 +469,8 @@ p {
 Colors can be referenced using one of these pre-defined names:
 
 ```css
-aqua, black, blue, fuchsia, gray, green, 
-lime, maroon, navy, olive, orange, purple, 
+aqua, black, blue, fuchsia, gray, green,
+lime, maroon, navy, olive, orange, purple,
 red, silver, teal, white, and yellow.
 ```
 
@@ -584,7 +584,7 @@ mm, cm, in, pt and pc
 ---
 # Font relative length
 
-Font relative length units are relative to the size of a particular character or font attribute in the font currently in effect in the element (or parent element in some cases). 
+Font relative length units are relative to the size of a particular character or font attribute in the font currently in effect in the element (or parent element in some cases).
 
 They are useful when the physical properties of the output medium are unknown, such as for screen layout.
 
@@ -637,7 +637,7 @@ div {
 
 # Pixel
 
-* On low dpi screens, the **pixel (px)** represents one device pixel (**dot**). 
+* On low dpi screens, the **pixel (px)** represents one device pixel (**dot**).
 * On higher dpi devices, a pixel represents an integer number of device pixels so that 1in ≈ 96px.
 
 ---
@@ -845,7 +845,6 @@ img {
 * **Do not force** any **line changes**.
 * **Ignore top** and **bottom margin** settings, but will **apply left** and **right margins**, and **any padding**.
 * Will **ignore** the **width** and **height** properties.
-* Are subject to the **vertical-align** property.
 
 Examples: img, span, strong
 
@@ -863,7 +862,7 @@ span {
 
 ---
 
-# Blocks and Inlines 
+# Blocks and Inlines
 
 <img src="../assets/css3/css-normal-flow.png" style="padding: 10px;">
 
@@ -1112,7 +1111,7 @@ name:background
 ---
 # Image
 
-* Besides having a background color, elements can also have an image as background using the **background-image** property. 
+* Besides having a background color, elements can also have an image as background using the **background-image** property.
 * This property accepts an URL as its value.
 
 ```css
@@ -1123,7 +1122,7 @@ div#menu {
 ---
 # Position
 
-* The position of the background image can be set using the **background-position** property. This property receives two values. 
+* The position of the background image can be set using the **background-position** property. This property receives two values.
 * The first one can be **left**, **right**,  **center** or a **length**.
 * The second one can be **top**, **bottom**, **center** or a **length**.
 
@@ -1136,8 +1135,8 @@ div#menu {
 ---
 # Attachment
 
-* Using the **background-attachment** property, we can specify if the background should or not scroll with the page or element. 
-* Possible values are **fixed** (in relation to the viewport), **scroll** (in relation to the element) and **local** (in relation to the content). 
+* Using the **background-attachment** property, we can specify if the background should or not scroll with the page or element.
+* Possible values are **fixed** (in relation to the viewport), **scroll** (in relation to the element) and **local** (in relation to the content).
 * Scroll is the default value.
 
 ```css
@@ -1243,8 +1242,8 @@ table, th, td {
 
 # Collapse Borders
 
-* Both tables and cells have borders. 
-* Specifying borders for both will result in a double border effect. 
+* Both tables and cells have borders.
+* Specifying borders for both will result in a double border effect.
 * To collapse borders from these two elements into one single border we can use the **border-collapse** property:
 
 ```css
@@ -1306,7 +1305,7 @@ name:transitions
 
 * Instead of having property changes take effect immediately, you can cause the changes in a property to take place over a period of time.
 
-* CSS transitions let you decide: 
+* CSS transitions let you decide:
   * which properties to animate (**list**)
   * when the animation will start (**delay**)
   * how long the transition will last (**duration**)
@@ -1365,7 +1364,7 @@ The **position** property allows the developer to alter the way an element is po
 
 # Position Static
 
-* The default value. 
+* The default value.
 * The element keeps its place **in the document flow**.
 
 <img src="../assets/css3/position-static.png" style="padding: 10px;">
@@ -1398,7 +1397,7 @@ The **position** property allows the developer to alter the way an element is po
 # Position Fixed
 
 * The element is **no longer a part of the flow**.
-* Can be positioned relatively to the **browser window**. 
+* Can be positioned relatively to the **browser window**.
 * **Scrolling doesn't** change the element's **position**.
 
 <img src="../assets/css3/position-fixed.png" style="padding: 10px;">
@@ -1417,7 +1416,7 @@ The **position** property allows the developer to alter the way an element is po
 # Position Absolute
 
 * **No longer a part of the flow** and scrolls with the page.
-* Can be positioned relatively to its **first non static parent**. 
+* Can be positioned relatively to its **first non static parent**.
 
 <img src="../assets/css3/position-absolute.png" style="padding: 10px;">
 
@@ -1470,7 +1469,7 @@ Floats go right or left until they find another float or the parent container.
 ---
 ## Clear
 
-* The **clear** property indicates if an element can be next to floating elements that precede it or must be moved down. 
+* The **clear** property indicates if an element can be next to floating elements that precede it or must be moved down.
 * Values can be **left**, **right** or **both**.
 
 <img src="../assets/css3/float-clear.png" style="padding: 10px;">
@@ -1486,7 +1485,7 @@ Floats go right or left until they find another float or the parent container.
 * An element with greater stack order is always in front of an element with a lower stack order.
 
 ```css
-#b { 
+#b {
   z-index: -1;
 }
 ```
@@ -1678,7 +1677,7 @@ name:grid
 
 # Grid
 
-A grid layout enables us to align elements into **columns** and **rows**. 
+A grid layout enables us to align elements into **columns** and **rows**.
 
 A grid container's child elements could position themselves so they actually overlap and layer.
 
@@ -1837,7 +1836,7 @@ When defining the grid template, we can assign names to the grid lines. A line c
 ```css
 .container {
   grid-template-columns: [left] auto [middle] 1fr [right];
-  grid-template-rows: [top] auto [header-end content-start] auto 
+  grid-template-rows: [top] auto [header-end content-start] auto
                       [menu-sep] 1fr [footer-start] auto [bottom];
 }
 .content {
@@ -1859,7 +1858,7 @@ Any number of adjacent periods can be used to declare a single empty cell.
 .container {
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto 1fr auto;
-  
+
   grid-template-areas: "header header"
                        "menu1  content"
                        "menu2  content"
@@ -1904,7 +1903,7 @@ div {
 
 # Defaults
 
-* Each browser has **its own** set of default values for the properties of each HTML element. 
+* Each browser has **its own** set of default values for the properties of each HTML element.
 * These defaults are very similar between browsers but the little differences make cross-browser development harder.
 
 **Tip**: There are several reset CSS available that redeclare each default value to have the same value in every browser.
@@ -1934,7 +1933,7 @@ h1{
 ---
 # I Get it Now
 
-* In most browsers the **anchor** color is defined as **blue**. 
+* In most browsers the **anchor** color is defined as **blue**.
 * On the other hand, the **paragraph** color is defined as **inherit**.
 
 ```css
@@ -1979,7 +1978,7 @@ p {
 ---
 ## Calculating Specificity
 
-* The specificity of a rule is defined as 4 values (a, b, c, d). 
+* The specificity of a rule is defined as 4 values (a, b, c, d).
 * Each one of them is incremented when a certain type of selector is used:
  * **d**: Element, Pseudo Element
  * **c**: Class, Pseudo class, Attribute
@@ -1995,13 +1994,13 @@ p {
 * div#sidebar p: 2 elements, 1 id – (0,1,0,2)
 * div#sidebar p.bio: 2 elements, 1 class, 1 id – (0,1,1,2)
 
-Specificity Calculator: [http://specificity.keegan.st](http://specificity.keegan.st) 
+Specificity Calculator: [http://specificity.keegan.st](http://specificity.keegan.st)
 
 ---
 ## Specificity Rules
 
 * Rules with a bigger **a** value are **more specific**.
-* If the **a** value is the same for both rules, the **b** value is used for comparison. 
+* If the **a** value is the same for both rules, the **b** value is used for comparison.
 * If still needed, the **c** and **d** values are used.
 ---
 # Cascading
@@ -2013,9 +2012,9 @@ Specificity Calculator: [http://specificity.keegan.st](http://specificity.keegan
 
 * Origin Explanation:
  * **author**: The CSS rules defined by the page developer
- * **user**: User defined preferences 
+ * **user**: User defined preferences
  * **default**: Browser defaults
- 
+
 ---
 
 template:inverse
@@ -2068,8 +2067,8 @@ A **media-query** is composed of a **media type** and/or a number of **media fea
 They can be used when linking to a CSS file from HTML or directly in the CSS code.
 
 ```html
-<link rel="stylesheet" 
-      media="(min-width: 600px) and (max-width: 800px)" 
+<link rel="stylesheet"
+      media="(min-width: 600px) and (max-width: 800px)"
       href="medium.css" />
 ```
 
@@ -2122,8 +2121,8 @@ Parentheses are required around expressions; failing to use them is an error.
 * **not** applies to the whole media query and returns true if the media query would otherwise return false
 
 ```html
-<link rel="stylesheet" 
-      media="(min-width: 800px) and screen, print" 
+<link rel="stylesheet"
+      media="(min-width: 800px) and screen, print"
       href="large.css" />
 ```
 
@@ -2175,4 +2174,3 @@ http://jigsaw.w3.org/css-validator/
 * Pre-processors: [Less](http://lesscss.org/), [Sass](http://sass-lang.com/)
 * Information: [Google Web Essentials](https://developers.google.com/web/fundamentals/), [Mozilla Developer Network](https://developer.mozilla.org/en-US/)
 * Icons: [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
-
