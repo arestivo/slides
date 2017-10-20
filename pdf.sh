@@ -14,4 +14,4 @@ do
  $PRINCE --media print --page-size A4 "$name.html" "output/$name.pdf"
  rm "$name.html"
 done
-((rsync --progress -r output/ arestivo@pinguim:~/public_html/pdf && notify-send 'FEUP Sync' 'Success') || notify-send -u critical 'FEUP Sync' 'Failed')
+((rsync --progress -r output/ arestivo@pinguim.fe.up.pt:~/public_html/pdf && notify-send 'FEUP Sync' 'Success') || notify-send -u critical 'FEUP Sync' 'Failed')
