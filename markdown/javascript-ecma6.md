@@ -97,7 +97,7 @@ alert("Hello world!");
 Some changes:
 
 * No more global undeclared variables.
-* No more declaring variables with **var**.
+* No more declaring variables with **var** ([read more](http://javascript.info/var)).
 * Some warnings are now errors.
 
 ---
@@ -143,7 +143,8 @@ bar = true;
 ```
 
 ```javascript
-let foo = 10, bar = 'John Doe';
+let foo = 10, bar;
+bar = 'John Doe';
 ```
 
 ---
@@ -188,6 +189,76 @@ console.log("11" + 31); // "1131"
 console.log(11 + "31"); // "1131"
 ```
 
+Most of the time, operators and functions automatically convert a value to the right type (type conversion). You can still use the *String*, *Number* and *Boolean* functions to manually convert a value:
+
+```javascript
+  let a = 0;
+  let b = Boolean(a); // false
+  let c = String(a);  // "0"
+  let d = String(b);  // "false"
+```
+
+---
+
+# Comparison
+
+When comparing values belonging to different types, they are converted to numbers:
+
+**Examples:**
+
+```javascript
+1 == "1";    // 1 == 1 -> true
+0 == false;  // 0 == 0 -> true
+"0" == true; // 0 == 1 -> true
+"" == false; // 0 == 0 -> true
+Boolean("0") == false; // 1 == 0 -> false
+Boolean("0") == true;  // 1 == 1 -> true
+```
+
+---
+
+# Boolean Evaluation
+
+The following values all evaluate to false:
+  * false
+  * undefined
+  * null
+  * 0
+  * NaN (not a number)
+  * the empty string
+
+All other values, including objects evaluate to true.
+
+Be careful with the Boolean object:
+
+```javascript
+var foo = new Boolean(false);
+var bar = Boolean(false);
+if (foo) // evaluates to true
+if (bar) // evaluates to false
+```
+
+---
+
+# Strict Equality
+
+* Strict equality compares two values for equality.  
+* Neither value is implicitly converted to some other value before being compared.
+* If the values have different types, the values are considered unequal.
+
+```javascript
+0 === 0     // true
+0 === "0"   // false
+0 === false // false
+```
+
+Comparing anything with **null** and **undefined** returns false. Comparisons between them have the following results:
+
+```javascript
+  null === undefined; // false
+  null == undefined;  // true
+```
+
 ---
 
 name:control
@@ -207,49 +278,6 @@ if (condition) {
 } else {
   //something else
 }
-```
-
----
-
-# Boolean evaluation
-
-The following values all evaluate to false:
-  * false
-  * undefined
-  * null
-  * 0
-  * NaN (not a number)
-  * the empty string
-
-All other values, including objects evaluate to true.
-
-Be careful with the Boolean object:
-
-```javascript
-var foo = new Boolean(false);
-if (foo) // evaluates to true
-```
-
----
-
-# Equality
-
-* Strict equality compares two values for equality.  
-* Neither value is implicitly converted to some other value before being compared.
-* If the values have different types, the values are considered unequal.
-
-```javascript
-0 === 0     // true
-0 === "0"   // false
-0 === false // false
-```
-
-* Loose equality compares two values for equality, after converting both values to a common type.
-
-```javascript
-0 == 0     // true
-0 == "0"   // true
-0 == false // true
 ```
 
 ---
