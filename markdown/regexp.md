@@ -67,9 +67,9 @@ Used in:
 
 ---
 
-# Matching 
+# Matching
 
-* Matching is the process of **applying** a regular expression **pattern** to a text string and finding 
+* Matching is the process of **applying** a regular expression **pattern** to a text string and finding
   strings that are represented by that pattern.
 * When **validating**, we normally expect the **whole** string to match the pattern.
 * When **searching**, we expect a **substring** of that string to match the pattern.
@@ -127,7 +127,7 @@ I **at**e an apple.
 
 # Special Characters
 
-There are twelve characters that have special meanings in regular expressions: 
+There are twelve characters that have special meanings in regular expressions:
 
 ```text
 \ ^ $ . | ? * + ( ) [ {
@@ -149,9 +149,9 @@ All other characters should **not** be escaped as the backslash also has special
 
 #Non-Printable Characters
 
-* ```\t``` - tab
-* ```\r``` - carriage return
-* ```\n``` - line feed
+* **\t** - tab
+* **\r** - carriage return
+* **\n** - line feed
 
 ---
 
@@ -209,7 +209,7 @@ T**h**e cat is inside the box.
 
 # Special Characters
 
-Inside a character class, the only special characters are: 
+Inside a character class, the only special characters are:
 
 ```text
 ] \ ^ -
@@ -221,13 +221,13 @@ All others do not need to be escaped.
 
 #Shorthand Character Classes
 
-* ```\d``` digit - the same as ```[0-9]```
-* ```\w``` word character - the same as ```[A-Za-z0-9_]```
-* ```\s``` whitespace character - the same as ```[ \t\r\n\f]```
+* **\d** digit - the same as **[0-9]**
+* **\w** word character - the same as **[A-Za-z0-9_]**
+* **\s** whitespace character - the same as **[ \t\r\n\f]**
 
-* ```\D``` not a digit - the same as ```[^0-9]``` or ```[^\d]```
-* ```\W``` not a word character - the same as ```[^A-Za-z0-9_]``` or ```[^\w]```
-* ```\S``` not a whitespace character - the same as ```[^ \t\r\n\f]``` or ```[^\s]```
+* **\D** not a digit - the same as **[^0-9]** or **[^\d]**
+* **\W** not a word character - the same as **[^A-Za-z0-9_]** or **[^\w]**
+* **\S** not a whitespace character - the same as **[^ \t\r\n\f]** or **[^\s]**
 
 ---
 
@@ -274,8 +274,8 @@ Everyone knows boys will be **boys**
 
 # Word Boundaries
 
-* The metacharacter **\b** is an anchor. 
-* It matches at a position that is called a *word boundary*. 
+* The metacharacter **\b** is an anchor.
+* It matches at a position that is called a *word boundary*.
 * It always produces a zero-length match.
 * This allows you to do whole word searches.
 
@@ -444,7 +444,7 @@ name: grouping
 
 #Grouping
 
-Putting part of a pattern inside **parentheses** creates a group. 
+Putting part of a pattern inside **parentheses** creates a group.
 
 Groups can be used to apply **quantifiers** and **alternation** to specific parts of the pattern.
 
@@ -578,7 +578,7 @@ name: lookaround
 
 **Lookahead** and **lookbehind** are **zero-length** **assertions** (just like the start and end of line and word boundaries)
 
-* These are also called **lookaround** assertions. 
+* These are also called **lookaround** assertions.
 * They match characters but then **give up the match** without consuming the characters.
 * They only **assert** whether a match is possible or not.
 
@@ -663,7 +663,7 @@ name: nfa
 
 Nondeterministic Finite Automaton don't need to obey these restrictions.
 
-Regular expressions can [easily](https://www.youtube.com/watch?v=RYNN-tb9WxI) be transformed into NFAs. And NFA can [easily](https://www.youtube.com/watch?v=taClnxU-nao) be transformed into DFAs. 
+Regular expressions can [easily](https://www.youtube.com/watch?v=RYNN-tb9WxI) be transformed into NFAs. And NFA can [easily](https://www.youtube.com/watch?v=taClnxU-nao) be transformed into DFAs.
 
 http://hackingoff.com/compilers/regular-expression-to-nfa-dfa
 
@@ -709,7 +709,7 @@ name: php
 ```
 
 * This means that the chosen delimiter must be **escaped** inside the pattern.
-* You may add [pattern modifiers](http://php.net/manual/en/reference.pcre.pattern.modifiers.php) after the ending delimiter. 
+* You may add [pattern modifiers](http://php.net/manual/en/reference.pcre.pattern.modifiers.php) after the ending delimiter.
 
 ```php
 /ab|c/i
@@ -727,7 +727,7 @@ int preg_match ( string $pattern , string $subject [, array &$matches ])
 
 The [preg_match](http://php.net/manual/en/function.preg-match.php), searches *subject* for a match to the regular expression given in *pattern*.
 
-* If matches is provided, then it is filled with the results of the search. 
+* If matches is provided, then it is filled with the results of the search.
 * Returns 1 if the pattern matches given subject, 0 if it does not and false if an error occurred.
 
 ```php
@@ -756,7 +756,7 @@ int preg_match_all ( string $pattern , string $subject [, array &$matches ])
 
 The [preg_match_all](http://php.net/manual/en/function.preg-match-all.php), searches *subject* for **all** matches to the regular expression given in *pattern*.
 
-* If matches is provided, then it is filled with all the results of the search in a multi-dimensional array. 
+* If matches is provided, then it is filled with all the results of the search in a multi-dimensional array.
 * Returns the number of full pattern matches and false if an error occurred.
 
 ```php
@@ -912,7 +912,7 @@ console.log('dog are dog'.replace(/(cat|dog)/g, 'my $1s'));
 
 ```text
 my dogs are dog
-my dogs are my dogs 
+my dogs are my dogs
 ```
 
 ---

@@ -77,7 +77,7 @@ or even shorter
 # PHP Delimiters
 
 * The PHP interpreter only executes PHP code within its delimiters. Anything outside its delimiters is not processed by PHP.
-* PHP code can be delimited using ```<?php``` and ```?>```, ```<?``` and ```?>``` or ```<script language="php">``` and ```</script>```.
+* PHP code can be delimited using "<?php" and "?>", "<?" and "?>" or "&lt;script language="php">" and "&lt;/script>".
 * The purpose of all these delimiters is to separate PHP code from non-PHP code, including HTML.
 * After processing, the PHP code blocks are replaced by their output.
 
@@ -129,7 +129,7 @@ Multiple line comments can also be used:
  * The following line
  * prints Hello World
  */
-echo 'Hello World'; 
+echo 'Hello World';
 ```
 
 
@@ -155,7 +155,7 @@ name:data
 
 # Variables
 
-* Variables in PHP are represented by a dollar sign followed by the name of the variable. 
+* Variables in PHP are represented by a dollar sign followed by the name of the variable.
 * The variable name is **case-sensitive**.
 * PHP does not require (or support) explicit type definition in variable declaration
 * A variable's type is determined by the context in which the variable is used.
@@ -192,7 +192,7 @@ $bar = &$foo;
 $foo = 'Mary';
 
 echo $bar; // Mary
-``` 
+```
 
 ---
 
@@ -237,7 +237,7 @@ The constant **null** is case-insensitive.
 
 # Var Dump
 
-The **var_dump** function displays structured information about one or more expressions that includes its type and value. 
+The **var_dump** function displays structured information about one or more expressions that includes its type and value.
 Arrays and objects are explored recursively with values indented to show structure.
 
 ```php
@@ -251,7 +251,7 @@ float(10.5)
 bool(true)
 ```
 
-Very useful for simple and dirty debugging. 
+Very useful for simple and dirty debugging.
 
 An alternative is **print_r**, a simplified form of **var_dump**.
 
@@ -269,7 +269,7 @@ Not so different from other languages
 Executes the nested statement(s) repeatedly, as long as the while expression evaluates to *true*.
 
 ```php
-while($expr) 
+while($expr)
   do_something();
 ```
 
@@ -291,7 +291,7 @@ endwhile;
 
 # Do While
 
-Similar to while loops, except the truth expression is checked at the end of each iteration instead of in the beginning. 
+Similar to while loops, except the truth expression is checked at the end of each iteration instead of in the beginning.
 
 ```php
 do {
@@ -310,7 +310,7 @@ In the beginning of each iteration, the second expression is evaluated. If it ev
 At the end of each iteration, the third expression is executed.
 
 ```php
-for ($i = 0; $i < 10; $i++) 
+for ($i = 0; $i < 10; $i++)
   do_something($i);
 ```
 
@@ -328,7 +328,7 @@ for ($i = 0; $i < 10; $i++) {
 If the expression evaluates to *true*, executes the statement(s), and if it evaluates to *false*, ignores it(them).
 
 ```php
-if ($expr) 
+if ($expr)
   do_something();
 ```
 
@@ -341,12 +341,12 @@ if ($expr) {
 
 ---
 
-# Else 
+# Else
 
 The **else** statement extends an **if** statement to execute a statement in case the expression in the if statement evaluates to *false*.
 
 ```php
-if ($expr) 
+if ($expr)
   do_something();
 else
   do_something_else();
@@ -384,7 +384,7 @@ while ($expr) {
 
 The switch statement is similar to a series of *if* statements on the same expression.
 
-After finding a true condition, PHP continues to execute the statements until the end of the switch block, or the first time it sees a break statement. 
+After finding a true condition, PHP continues to execute the statements until the end of the switch block, or the first time it sees a break statement.
 
 ```php
 switch($name) {
@@ -404,7 +404,7 @@ switch($name) {
 
 # Die and Exit
 
-Both **die** and **exit** stop the execution of the current PHP script. 
+Both **die** and **exit** stop the execution of the current PHP script.
 
 They can receive a status as a string, that will be printed before stopping, or an integer, that will be as the exit status and not printed.
 
@@ -585,7 +585,7 @@ echo $count; //2
 
 # Some String Functions
 
-```php 
+```php
 array explode ( string $delimiter , string $string [, int $limit ] )
 ```
 Returns an array of strings, each of which is a substring of string formed by splitting it on boundaries formed by the string *delimiter*.
@@ -624,7 +624,7 @@ $values[2] = 20;
 
 for ($i = 0; $i < count($values); $i++) // count returns the size of the array
   $sum = $sum + $values[$i];
-  
+
 echo $sum / count($values); // calculates average: 11.666666666667
 ```
 
@@ -670,7 +670,7 @@ When a key is not provided, PHP will use the increment of the largest previously
 
 ```php
 $values = array('name' => 'John', 'age' => 45, 2 => 'Car', 'Bicycle');
-$values[] = 'Boat'; 
+$values[] = 'Boat';
 // 'name' => John, 'age' => 45, 2 => 'Car', 3 => 'Bicycle', 4 => 'Boat'
 ```
 
@@ -680,7 +680,7 @@ We can even use arrays as an array value.
 
 ```php
 $people = array(
-  array('name' => 'John', 'age' => 45), 
+  array('name' => 'John', 'age' => 45),
   array('name' => 'Mary', 'age' => 35);
 );
 echo $people[0]['name']; // John
@@ -694,14 +694,14 @@ As arrays might not have sequential keys, like in other languages, in PHP we use
 
 ```php
 $values = array('name' => 'John', 'age' => 45, 2 => 'Car', 'Bicycle');
-foreach ($values as $value) 
+foreach ($values as $value)
   echo "$value\n";
 ```
 
 A similiar construct can be used to cycle through the keys and values simultaneously:
 ```php
 $values = array('name' => 'John', 'age' => 45, 2 => 'Car', 'Bicycle');
-foreach ($values as $key => $value) 
+foreach ($values as $key => $value)
   echo "$key = $value\n";
 ```
 
@@ -835,7 +835,7 @@ By default, function arguments are passed by value. To have an argument to a fun
 ```php
 function sum($a, &$b) {
   echo $a + $b;
-  $a++; 
+  $a++;
   $b++;
 }
 
@@ -869,7 +869,7 @@ sum(1,2,3); // prints 6
 
 PHP functions can return values.
 
-The type of the returned value does not need to be specified. In fact, a function can return different types of values depending on some condition. 
+The type of the returned value does not need to be specified. In fact, a function can return different types of values depending on some condition.
 
 There is no distinction between a procedure (a function that doesn't return a value) and a function.
 
@@ -972,7 +972,7 @@ However, due to the dynamic typed nature of PHP, to access these properties the 
 class Car {
   private plate;
   private driver = 'John Doe';
-  
+
   public function getDriver() {
     return $this->driver; // return $driver would have returned null
   }
@@ -983,7 +983,7 @@ class Car {
 
 # Creating
 
-To create an instance of a class, the **new** keyword must be used. 
+To create an instance of a class, the **new** keyword must be used.
 
 An object will always be created unless the object has a constructor defined that throws an exception on error.
 
@@ -1007,7 +1007,7 @@ The constructor method is always called **__construct** and can receive any numb
 class Car {
   private plate;
   private driver;
-  
+
   public function __construct($driver, $plate) {
     $this->driver = $driver;
     $this->plate = $plate;
@@ -1059,7 +1059,7 @@ There are three special keywords that are used to access properties or methods f
 * **self::** - accesses the current class (different from **$this**)
 * **parent::** - accesses the parent class
 * **static::** - accesses a static member of property
-  
+
 ```php
 class Car {
   static private mile = 1.609344; //km
@@ -1067,7 +1067,7 @@ class Car {
   public function __construct($driver, $plate) {
     parent::__construct($driver, $plate);
   }
-  
+
   public static function milesToKm($miles) {
     return $miles * static::mile;
   }
@@ -1101,7 +1101,7 @@ echo Car::milesToKm(10);
   $foo = new Foo();
   $bar = new Bar();
 
-  $foo->print();  // 1234 and 1234 
+  $foo->print();  // 1234 and 1234
   $bar->print();  // 4321 and 1234
 
 ?>
@@ -1115,14 +1115,14 @@ Classes defined as abstract may not be instantiated.
 Classes that contain at least one abstract method must also be abstract.
 Methods defined as abstract cannot define the implementation.
 When inheriting from an abstract class, all methods marked abstract in the parent's class declaration must:
-  * be defined by the child; 
+  * be defined by the child;
   * be defined with the same (or a less restricted) visibility;
 
 ```php
 abstract class Car {
   private plate;
   private driver = 'John Doe';
-  
+
   public function getDriver() {
     return $this->driver;
   }
@@ -1148,7 +1148,7 @@ interface Car {
 class RaceCar implements Car {
   private plate;
   private driver;
-  
+
   public function getDriver() {
     return $this->driver;
   }
@@ -1163,7 +1163,7 @@ class RaceCar implements Car {
 
 # Final
 
-The final keyword, prevents child classes from overriding a method by prefixing the definition with final. 
+The final keyword, prevents child classes from overriding a method by prefixing the definition with final.
 
 If the class itself is being defined final then it cannot be extended.
 
@@ -1171,7 +1171,7 @@ If the class itself is being defined final then it cannot be extended.
 final class RaceCar implements Car {
   private plate;
   private driver;
-  
+
   public function getDriver() {
     return $this->driver;
   }
@@ -1276,7 +1276,7 @@ $dbh = new PDO('sqlite:database.db');
 Prepared statements are the recommended way of executing queries as they prevent SQL injection attacks.
 
 ```php
-$stmt = $dbh->prepare('INSERT INTO person (name, address) 
+$stmt = $dbh->prepare('INSERT INTO person (name, address)
                        VALUES (:name, :address)');
 $stmt->bindParam(':name', $name);
 $stmt->bindParam(':address', $address);
@@ -1356,7 +1356,7 @@ $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 Unfortunately, not every database supports transactions, so PDO needs to run in what is known as "auto-commit" mode when you first open the connection.
 
 If you need a transaction, you must use the **beginTransaction()** method to initiate one.
- 
+
 ```php
 $dbh->beginTransaction();
 
@@ -1371,12 +1371,12 @@ $dbh->commit; // or $dbh->rollBack();
 
 PDO offers you a choice of 3 different error handling strategies:
 
-* **PDO::ERRMODE_SILENT** The default mode. No error is shown. You can use the errorCode() 
+* **PDO::ERRMODE_SILENT** The default mode. No error is shown. You can use the errorCode()
   and errorInfo() on both database and statement objects to inspect the error.
 
 * **PDO::ERRMODE_WARNING** Similar to previous one but a warning is shown.
 
-* **PDO::ERRMODE_EXCEPTION** In addition to setting the error code, PDO will throw a PDOException and set its properties to reflect the error code and error information. 
+* **PDO::ERRMODE_EXCEPTION** In addition to setting the error code, PDO will throw a PDOException and set its properties to reflect the error code and error information.
 
 ---
 
@@ -1443,12 +1443,12 @@ Cookies are a mechanism for storing data in the remote browser.
 You can set a cookie using the **setcookie** function:
 
 ```php
-bool setcookie ( string $name [, string $value [, int $expire = 0 
-                 [, string $path [, string $domain [, bool $secure = false 
+bool setcookie ( string $name [, string $value [, int $expire = 0
+                 [, string $path [, string $domain [, bool $secure = false
                  [, bool $httponly = false ]]]]]] )
 ```
 
-Like other header functions, cookies must be sent before any output from your script (this is a protocol restriction). 
+Like other header functions, cookies must be sent before any output from your script (this is a protocol restriction).
 This requires that you place calls to this function prior to any output, including **<html>** and **<head>** tags as well as any **whitespace**.
 
 You can access the cookies sent by the browser using the special **$_COOKIE** array.
@@ -1464,9 +1464,9 @@ As cookies are stored in the browser, they cannot be used as a secure mechanism 
 Sessions are a mechanism, using cookies, that can be used to persist state information between page requests in the server:
 
 1. When a session is started, PHP will either:
- * **retrieve** an existing session using the ID passed (usually from a session cookie) or 
+ * **retrieve** an existing session using the ID passed (usually from a session cookie) or
  * if no session is passed it will **create** a new session.
-2. PHP will populate the **$_SESSION** superglobal with any session data after the session has started. 
+2. PHP will populate the **$_SESSION** superglobal with any session data after the session has started.
 3. When the script ends, it will automatically take the contents of the $_SESSION superglobal, serialize it, and send it for storage.
 
 ---
@@ -1485,7 +1485,7 @@ Sessions can be started using the **session_start** function:
 bool session_start ( void )
 ```
 
-Like other header functions, sessions must be started before any output from your script (this is a protocol restriction). 
+Like other header functions, sessions must be started before any output from your script (this is a protocol restriction).
 This requires that you place calls to this function prior to any output, including **<html>** and **<head>** tags as well as any **whitespace**.
 
 Normally called in every page to ensure session variables are always accessible.
@@ -1504,7 +1504,7 @@ $_SESSION['name'] = 'John';
 
 The correct way of verifying if a session variable exists is:
 
-```php 
+```php
 if (isset($_SESSION['name']))
 ```
 
@@ -1514,7 +1514,7 @@ But do not forget that it can exist and still be empty.
 
 # Session Destroy
 
-The function **session_destroy** destroys all of the data associated with the current session. 
+The function **session_destroy** destroys all of the data associated with the current session.
 
 It does not unset any of the global variables associated with the session, or unset the session cookie.
 
@@ -1531,8 +1531,8 @@ bool session_destroy ( void )
 The parameters of the cookie used for the session cookie can be changed using the **session_set_cookie_params** function.
 
 ```php
-void session_set_cookie_params ( int $lifetime [, string $path [, string $domain 
-                                 [, bool $secure = false 
+void session_set_cookie_params ( int $lifetime [, string $path [, string $domain
+                                 [, bool $secure = false
                                  [, bool $httponly = false ]]]] )
 ```
 
@@ -1549,14 +1549,14 @@ name:passwords
 
 # Hash Functions
 
-Password should never be stored in plain text. Instead you should use a one-way hashing function. 
+Password should never be stored in plain text. Instead you should use a one-way hashing function.
 
 ```php
 echo md5('apple');  
 // 1f3870be274f6c49b3e31a0c6728957f
-echo sha1('apple'); 
+echo sha1('apple');
 // d0be2dc421be4fcd0172e5afceea3970e2f3d940
-echo hash('sha256', 'apple'); 
+echo hash('sha256', 'apple');
 // 3a7bd3e2360a3d29eea436fcfb7e44c735d117c42d1c1835420b6b9942dd4f1b
 ```
 
@@ -1577,7 +1577,7 @@ This can be used, for example, to redirect the browser to another page:
 header('Location: another_page.php');
 ```
 
-Like other header functions, headers must be sent before any output from your script (this is a protocol restriction). 
+Like other header functions, headers must be sent before any output from your script (this is a protocol restriction).
 This requires that you place calls to this function prior to any output, including **<html>** and **<head>** tags as well as any **whitespace**.
 
 Do not forget that this does not stop the execution of the script. If you want to stop execution you must follow this instruction with **die()** or **exit()**.
@@ -1608,8 +1608,8 @@ name:json
 
 # JSON
 
-* JSON (**J**ava**S**cript **O**bject **N**otation) is a lightweight data-interchange format. 
-* It is easy for **humans** to read and write. 
+* JSON (**J**ava**S**cript **O**bject **N**otation) is a lightweight data-interchange format.
+* It is easy for **humans** to read and write.
 * It is easy for **machines** to parse and generate.
 
 ```json
@@ -1653,8 +1653,8 @@ name:best
 Never trust the user:
 
 ```php
-  if (!isset($_GET['username'] || 
-             $_GET['username'] === '' || 
+  if (!isset($_GET['username'] ||
+             $_GET['username'] === '' ||
              length($_GET['username'] > 20))
     // Do something about it
 ```
@@ -1753,7 +1753,7 @@ foreach ($cars as $car) { ?>
   <li><strong>Model:</strong> <?=$car['model']?></li>
   <li><strong>Price:</strong> <?=$car['price']?></li>
 </ul>
-<? } 
+<? }
 include ('templates/header.html');
 ?>
 ```
@@ -1764,17 +1764,17 @@ include ('templates/header.html');
 
 Never mix scripts that show data with scripts that change data:
 
-  * **list_news.php** 
-    * Shows all news. 
+  * **list_news.php**
+    * Shows all news.
     * Has links to each one of the news items **view_item.php**.
-  * **view_item.php** 
-    * Shows one news item and its comments. 
-    * Receives the id of the item. 
+  * **view_item.php**
+    * Shows one news item and its comments.
+    * Receives the id of the item.
     * Link to **edit_item.php**.
   * **edit_item.php**
-    * Shows a form that allows the user to edit a news item. 
+    * Shows a form that allows the user to edit a news item.
     * Submits to **save_item.php**.
-  * **save_item.php** 
+  * **save_item.php**
     * Receives the new data for the news item.
     * Saves it in the database and redirects to **view_item.php**.
 
@@ -1794,5 +1794,3 @@ Never mix scripts that show data with scripts that change data:
 * Libraries: [Pear](http://pear.php.net/)
 * Template Engines: [Smarty](http://www.smarty.net/)
 * Frameworks: [CodeIgniter](https://ellislab.com/codeigniter), [CakePHP](http://cakephp.org/), [Symfony](http://symfony.com/), [Zend](http://framework.zend.com/), [Laravel](http://laravel.com/), ...
-
-

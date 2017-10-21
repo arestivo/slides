@@ -8,7 +8,7 @@
 	$slides = preg_replace('/[^a-z0-9-]/i', '_', $_GET['p']);
 	$style = $styles[$_SESSION['style']];
 
-	if (!file_exists("../markdown/$slides.md")) 
+	if (!file_exists("../markdown/$slides.md"))
 		die(header('location:/~arestivo/#slides'));
 ?>
 
@@ -25,21 +25,21 @@
 	<link rel="icon" type="image/ico" href="../images/favicon.ico">
   </head>
   <body>
-    <script src="../script/remark-0.9.1.min.js" type="text/javascript"></script>
+    <script src="../script/remark.min.js" type="text/javascript"></script>
     <script src="../script/jquery-2.2.4.min.js" type="text/javascript"></script>
     <script type="text/javascript">
       var hljs = remark.highlighter.engine;
     </script>
-	<script type="text/javascript"
-	  src="../script/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=configured">
-	</script>
+    <!--	<script type="text/javascript" src="../script/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=configured"> </script> -->
     <script type="text/javascript">
       var slideshow = remark.create({
           highlightStyle: '<?=$style?$style:"default"?>',
+          highlightLines: false,
+          highlightSpans: false,
           sourceUrl: '../markdown/<?=$slides?>.md'
         }) ;
 	  // Setup MathJax
-      MathJax.Hub.Config({
+/*      MathJax.Hub.Config({
           tex2jax: {
 	      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
           skipTags: ['h1', 'script', 'noscript', 'style', 'textarea', 'pre']
@@ -52,7 +52,7 @@
           }).parent().addClass('has-jax');
       });
 
-      MathJax.Hub.Configured();
+      MathJax.Hub.Configured();*/
       $('a[href$="download"]').attr('href', '../../pdf/<?=$slides?>.pdf');
     </script>
     <script>

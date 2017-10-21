@@ -50,9 +50,9 @@ jQuery is a JavaScript library that simplifies the way developers interact with 
   * **Animation**
   * **Ajax**
   * Browser **compatibility**
-  
+
 ---
-  
+
 # Core API
 
 * A lot of jQuery's functionality is based on the usage of a function/object called **jQuery**.
@@ -61,7 +61,7 @@ jQuery is a JavaScript library that simplifies the way developers interact with 
  * found in the DOM.
  * based on passed arguments.
  * created by passing an HTML string.
-  
+
 ---
 
 # jQuery() or $()
@@ -226,7 +226,7 @@ $("form.secure").attr("method", "post"); // Change all secure forms to post
 $("a").removeAttr("href");               // Remove the href from all links
 ```
 
-For boolean attributes use the ```prop()``` function.
+For boolean attributes use the *prop()* function.
 
 ```javascript
 $("input:checkbox").prop("checked")       // Checked property of the 1st checkbox
@@ -268,10 +268,10 @@ $("article").replaceWith("<p>Hello</p>");// Replace articles with paragraphs
 
 Elements can be retrieved from the DOM tree.
 
-To insert a copy of the element, use the ```clone()``` function.
+To insert a copy of the element, use the *clone()* function.
 
 ```javascript
-$("article").after($("form#comment"));     // Insert the comment form after 
+$("article").after($("form#comment"));     // Insert the comment form after
                                            // each article
 $("article").after($("#comment").clone()); // Insert a copy after each article
 ```
@@ -287,7 +287,7 @@ It is easy to manipulate the parents of an element.
 $("article").unwrap();
 
 // Wrap all articles with a new parent div
-$("article").wrap('<div class="content"></div>'); 
+$("article").wrap('<div class="content"></div>');
 ```
 
 ---
@@ -296,14 +296,14 @@ $("article").wrap('<div class="content"></div>');
 
 The content of the document can also be retrieved and changed.
 
-The ```val()``` function get and set the values of **inputs**, **selects** and **textareas**.
+The *val()* function get and set the values of **inputs**, **selects** and **textareas**.
 
 ```javascript
 $("input#username").val();          // Get the value of the username input
 $("input#username").val("johndoe"); // Change the value of the username input
 ```
 
-The ```text()``` and ```html()``` functions can be used to get and manipulate the text and html contents of elements.
+The *text()* and *html()* functions can be used to get and manipulate the text and html contents of elements.
 
 ```javascript
 $("p").text();                // Get the combined text of all paragraphs
@@ -355,7 +355,7 @@ function handler ([Event event]) {
 }
 ```
 
-With ```<selector>``` replaced by a jQuery selector expression and ```<event>``` replaced by an event name.
+With *<selector>* replaced by a jQuery selector expression and *<event>* replaced by an event name.
 
 Anonymous functions can also be used:
 
@@ -391,15 +391,15 @@ The event object, received by the event handler, contains properties about the e
 
 The following properties are normalized by jQuery for cross-browser compatibility:
 
-```target```, ```relatedTarget```, ```pageX```, ```pageY```, ```which```, ```metaKey```
+*target*, *relatedTarget*, *pageX*, *pageY*, *which*, *metaKey*
 
 These ones are copied from the original event:
 
-```altKey```, ```bubbles```, ```button```, ```cancelable```, ```charCode```, ```clientX```, ```clientY```, ```ctrlKey```, 
-```currentTarget```, ```data```, ```detail```, ```eventPhase```, ```offsetX```, ```offsetY```, 
-```originalTarget```, ```prevValue```, ```screenX```, ```screenY```, ```shiftKey```, ```view```
+*altKey*, *bubbles*, *button*, *cancelable*, *charCode*, *clientX*, *clientY*, *ctrlKey*,
+*currentTarget*, *data*, *detail*, *eventPhase*, *offsetX*, *offsetY*,
+*originalTarget*, *prevValue*, *screenX*, *screenY*, *shiftKey*, *view*
 
-Other, more specific properties, can be accessed as properties of the ```event.originalEvent```.
+Other, more specific properties, can be accessed as properties of the *event.originalEvent*.
 
 Learn more about the [Event Object](http://api.jquery.com/category/events/event-object/)
 
@@ -407,9 +407,9 @@ Learn more about the [Event Object](http://api.jquery.com/category/events/event-
 
 # Document Loading
 
-The ```ready()``` event, is fired when the document finishes loading.
+The *ready()* event, is fired when the document finishes loading.
 
-Differs from Javascript's ```load``` event as it is fired as soon as the DOM tree is complete while the ```load``` event waits for all assets to be completely received.
+Differs from Javascript's *load* event as it is fired as soon as the DOM tree is complete while the *load* event waits for all assets to be completely received.
 
 ```javascript
 $(document).ready(setUp);
@@ -457,7 +457,7 @@ $("input#username").keydown(h);  // Key went down when username input had focus
 $("input#username").keyup(h);    // Key went up when username input had focus
 ```
 
-The keypress event is similar to the keydown event, except that modifier 
+The keypress event is similar to the keydown event, except that modifier
 and non-printing keys (such as shift, Esc, and delete) trigger keydown events but not keypress.
 
 ```javascript
@@ -472,11 +472,11 @@ $("input#username").keypress(h); // Key was pressed
 $("h1").click(h);              // H1 has been clicked
 $("#menu a").dblclick(h);      // Link in the menu has been double clicked
 
-$("#menu a").mousedown(h);     // Mouse button has been pressed 
+$("#menu a").mousedown(h);     // Mouse button has been pressed
 $("#menu a").mouseup(h);       // Mouse button has been released
 $("#menu a").toggle(h1, h2);   // Call h1 and h2 alternatively on button pressed
 
-$("#menu").hover(h1, h2);      // Pointer entered (h1) and left (h2) the menu 
+$("#menu").hover(h1, h2);      // Pointer entered (h1) and left (h2) the menu
 $("#menu").mouseenter(h);      // Mouse pointer entered the menu
 $("#menu").mouseleave(h);      // Mouse pointer left the menu
 $("#menu").mousemove(h);       // Mouse pointer moved inside the menu
@@ -488,7 +488,7 @@ On mouse button events, we can use event.which to know which button has been pre
 
 # Event Handlers
 
-The ```on()``` function, allows binding a function to an event passed by name. 
+The *on()* function, allows binding a function to an event passed by name.
 
 ```javascript
 $("h1").on("click", h);
@@ -508,7 +508,7 @@ only for descendants (inner elements) that match the selector.
 $("table").on("click", "tr", h); // Bind function h to all rows inside a table
 ```
 
-In this last example, the event will call function ```h``` even for table rows added in the future. But not for table rows of tables added in the future.
+In this last example, the event will call function *h* even for table rows added in the future. But not for table rows of tables added in the future.
 
 See also [.off()](http://api.jquery.com/off/) and [.one()](http://api.jquery.com/one/).
 
@@ -522,7 +522,7 @@ template: inverse
 
 # Standard Effects
 
-jQuery has some builtin effects. 
+jQuery has some builtin effects.
 
 In all of them, a handler can be added that is called when the effect finishes.
 
@@ -563,7 +563,7 @@ An object containing extra **options** can also be used instead of sending the d
 
 # Animate
 
-The ```animate()``` function performs a custom animation of a set of CSS properties.
+The *animate()* function performs a custom animation of a set of CSS properties.
 
 ```javascript
 ("#menu").animate({
@@ -586,9 +586,9 @@ template: inverse
 
 # Ajax
 
-There are several functions that make using Ajax in jQuery very easy. 
+There are several functions that make using Ajax in jQuery very easy.
 
-The ```ajax()``` function is the most configurable one:
+The *ajax()* function is the most configurable one:
 
 ```javascript
 $.ajax({
@@ -608,12 +608,12 @@ Read more on the [ajax()](http://api.jquery.com/jQuery.ajax/) function.
 
 # Get
 
-The ```get()``` function is a fast way to perform a get.
+The *get()* function is a fast way to perform a get.
 
 ```javascript
 $.get( "getdata.php", doneHandler)
   .done(function(data) { // Alternative done handler
-    alert( "done" ); 
+    alert( "done" );
   })
   .fail(function() {
     alert( "error" );
@@ -637,7 +637,7 @@ $.ajax({
 
 # Post
 
-The ```post()``` function is a fast way to perform a post.
+The *post()* function is a fast way to perform a post.
 
 ```javascript
 $.post( "getdata.php", doneHandler)
@@ -668,7 +668,7 @@ $.ajax({
 
 # Get JSON
 
-The ```getJSON()``` functions is similar to the ```get()``` function but the returned data is interpreted as JSON data.
+The *getJSON()* functions is similar to the *get()* function but the returned data is interpreted as JSON data.
 
 ```javascript
 $.getJSON( "getdata.php", doneHandler)
@@ -683,7 +683,7 @@ $.getJSON( "getdata.php", doneHandler)
   });
 ```
 
-The same as: 
+The same as:
 
 ```javascript
 $.ajax({
@@ -704,7 +704,7 @@ template:inverse
 
 # Each
 
-A generic iterator function, which can be used to seamlessly iterate over both objects and arrays. 
+A generic iterator function, which can be used to seamlessly iterate over both objects and arrays.
 
 ```javascript
 $.each(array, handler);
@@ -720,6 +720,6 @@ function handler (key, value) {
 }
 ```
 
-Can be used when receiving data from the ```getJSON``` function.
+Can be used when receiving data from the *getJSON* function.
 
 Read more on [other](http://api.jquery.com/category/utilities/) utility functions.

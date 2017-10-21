@@ -438,7 +438,7 @@ Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
-  
+
 manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
@@ -457,7 +457,7 @@ Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
-  
+
 manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
@@ -482,7 +482,7 @@ Employee (.key[id], name, address (city, street, number, appartment), {phone})<b
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
-  
+
 manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
@@ -513,7 +513,7 @@ Department (.key[number], name)<br>
 .selected[Project (.key[number], name)]<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
-  
+
 manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
@@ -550,7 +550,7 @@ Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 .selected[Car (.key[plate])]<br>
 Model (.key[make], .key[model])
-  
+
 manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
@@ -594,7 +594,7 @@ Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
 .selected[Model (.key[make], .key[model])]
-  
+
 manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
@@ -643,7 +643,7 @@ Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
-  
+
 .selected[manages (Employee, Department, date) 1:1 p/p]<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
@@ -692,7 +692,7 @@ Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
-  
+
 manages (Employee, Department, date) 1:1 p/p<br>
 .selected[uses (Employee, Car) 1:1 p/t]<br>
 belongsTo (Employee, Department) N:1 t/p<br>
@@ -741,7 +741,7 @@ Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
-  
+
 manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 .selected[belongsTo (Employee, Department) N:1 t/p]<br>
@@ -790,7 +790,7 @@ Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
-  
+
 manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
@@ -839,7 +839,7 @@ Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
-  
+
 manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
@@ -888,7 +888,7 @@ Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
-  
+
 manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
@@ -943,7 +943,7 @@ Department (.key[number], name)<br>
 Project (.key[number], name)<br>
 Car (.key[plate])<br>
 Model (.key[make], .key[model])
-  
+
 manages (Employee, Department, date) 1:1 p/p<br>
 uses (Employee, Car) 1:1 p/t<br>
 belongsTo (Employee, Department) N:1 t/p<br>
@@ -992,4 +992,3 @@ worksAt (Employee, Project, hours) N:N p/p]
 |-:|-|
 |Phone|\#id &rarr; Employee|.pk[phone]|
 ]
-
