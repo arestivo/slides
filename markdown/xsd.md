@@ -51,8 +51,8 @@ name:intro
 
 # Schema Location
 
-The ```xsi:schemaLocation``` and ```xsi:noNamespaceSchemaLocation``` attributes can be used 
-in a document to provide **hints** as to the **physical** location of schema documents which can 
+The **xsi:schemaLocation** and **xsi:noNamespaceSchemaLocation** attributes can be used
+in a document to provide **hints** as to the **physical** location of schema documents which can
 be used for **validation**.
 
 An example XSD:
@@ -92,7 +92,7 @@ name:elements
 
 #Elements
 
-* The ```<element>``` declaration contains the definition of an XML element.
+* The **&lt;element&gt;** declaration contains the definition of an XML element.
 * Elements have a **name** and a **type**.
 * The **name** defines the **tag** used to represent the element.
 * The **type** defines the possible values, children and attributes.
@@ -131,7 +131,7 @@ name:simple
 * Simple types can be **derived** by **restriction**.
 * The **base** type must be a simple type.
 * The **derived** type will be a simple type.
-* All simple types form a **tree**, rooted at the ```anySimpleType```.
+* All simple types form a **tree**, rooted at the **anySimpleType**.
 
 ---
 
@@ -139,7 +139,7 @@ name:simple
 
 * Restrictions are based on **facets**.
 * Each restriction can have **zero or more** facets.
-* The specification defines 12 different facets: ```length```, ```minLength```, ```maxLength```, ```pattern```, ```enumeration```, ```whiteSpace```, ```maxInclusive```, ```maxExclusive```, ```minExclusive```, ```minInclusive```, ```totalDigits```, ```fractionDigits```.
+* The specification defines 12 different facets: **length**, **minLength**, **maxLength**, **pattern**, **enumeration**, **whiteSpace**, **maxInclusive**, **maxExclusive**, **minExclusive**, **minInclusive**, **totalDigits**, **fractionDigits**.
 * Each built-in simple type allows only [some facets](http://www.w3.org/TR/xmlschema-0/#SimpleTypeFacets).
 
 ```xml
@@ -160,7 +160,7 @@ name:simple
 
 # Union
 
-The ```union``` element defines a simple type as a **collection** of values from specified simple data types.
+The **union** element defines a simple type as a **collection** of values from specified simple data types.
 
 
 ```xml
@@ -187,9 +187,9 @@ The ```union``` element defines a simple type as a **collection** of values from
 
 ---
 
-# List 
+# List
 
-The ```list``` element defines a **whitespace-separated list** of values.
+The **list** element defines a **whitespace-separated list** of values.
 
 ```xml
 <xs:simpleType name="sizeList">
@@ -243,9 +243,9 @@ name:complex
 
 # Complex Types
 
-* The definition of a complex type starts with the element ```<complexType>```.
+* The definition of a complex type starts with the element **&lt;complexType&gt;**.
 * Complex types can **contain** other **elements** and **attributes**.
-* To define the way those child elements are allowed to appear we use the ```<sequence>```, ```<all>``` and ```<choice>``` group elements.
+* To define the way those child elements are allowed to appear we use the **&lt;sequence&gt;**, **&lt;all&gt;** and **&lt;choice&gt;** group elements.
 
 ```xml
 <xs:element name="person">
@@ -269,7 +269,7 @@ name:complex
 
 # Sequence
 
-The ```<sequence>``` element specifies that the child elements **must** appear in a specific **sequence**.
+The **&lt;sequence&gt;** element specifies that the child elements **must** appear in a specific **sequence**.
 
 ```xml
 <xs:element name="person">
@@ -295,7 +295,7 @@ Not valid:
 
 # All
 
-The ```<all>``` element specifies that the child elements **can** appear in any order.
+The **&lt;all&gt;** element specifies that the child elements **can** appear in any order.
 
 ```xml
 <xs:element name="person">
@@ -321,7 +321,7 @@ Valid:
 
 # Choice
 
-The ```<choice>``` element specifies that only **one** child element can occur:
+The **&lt;choice&gt;** element specifies that only **one** child element can occur:
 
 ```xml
 <xs:element name="person">
@@ -356,7 +356,7 @@ Valid:
 * The **default** value for both attributes is **1**.
 * The **maxOccurs** attribute can have a value of **unbounded** (unlimited).
 * The **minOccurs** attribute can have a value of **0** (optional).
-* These attributes can be applied to ```<element>```, ```<sequence>```, ```<all>``` and ```<choice>``` elements.
+* These attributes can be applied to **&lt;element&gt;**, **&lt;sequence&gt;**, **&lt;all&gt;** and **&lt;choice&gt;** elements.
 
 .box_info[In XSD 1.0 the maxOccurs attribute of elements inside an all group was always 1. This restriction was lifted in XSD 1.1]
 
@@ -461,7 +461,7 @@ A mixed complex type element can contain attributes, elements, and **text**.
 
 ```xml
 <person>
-  My name is <name>John Doe</name> and my email 
+  My name is <name>John Doe</name> and my email
   is <email>john.doe@gmail.com</email>.
 </person>
 ```
@@ -497,7 +497,7 @@ By default they are **optional** but can be made **mandatory**.
 
 # Any
 
-We can use the ```<any>``` and ```<anyAttribute>``` elements to allow elements and attributes in complex types not defined in the XSD. 
+We can use the **&lt;any&gt;** and **&lt;anyAttribute&gt;** elements to allow elements and attributes in complex types not defined in the XSD.
 
 ```xml
 <xs:element name="person">
@@ -520,16 +520,16 @@ We can use the ```<any>``` and ```<anyAttribute>``` elements to allow elements a
 
 # Extensions
 
-* Allow the extension of ```complexTypes```.
-* Have to be used inside ```simpleContent``` and ```complexContent``` elements
+* Allow the extension of **complexTypes**.
+* Have to be used inside **simpleContent** and **complexContent** elements
 * This allows a more **object-oriented** approach to the type system.
 
 ---
 
 # Simple Content
 
-The ```simpleContent``` element enables you to specify an element as containing a 
-```simpleType``` with no elements but enables you to ***restrict*** the value of the element's 
+The **simpleContent** element enables you to specify an element as containing a
+**simpleType** with no elements but enables you to ***restrict*** the value of the element's
 content or ***extend*** the element with attributes.
 
 ```xml
@@ -580,7 +580,7 @@ Contains **extensions** or **restrictions** on a **complex type** that contains 
   </xs:complexContent>
 </xs:complexType>
 
-<xs:element name="student" type="studentType" /> 
+<xs:element name="student" type="studentType" />
 ```
 
 ---
@@ -615,8 +615,8 @@ References another element that is declared **elsewhere**.
 <xs:element name="student">
 	<xs:complexType>
 	  <xs:sequence>
-        <xs:element name="name" type="xs:string"/>	
-        <xs:element ref="email"/>	
+        <xs:element name="name" type="xs:string"/>
+        <xs:element ref="email"/>
 	  </xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -639,8 +639,8 @@ name:keys
 
 # Key
 
-The **key** element specifies one, or more, **attributes** or **element values** as a **key** 
-(**unique**, **non-nullable**, and always **present**) within the containing 
+The **key** element specifies one, or more, **attributes** or **element values** as a **key**
+(**unique**, **non-nullable**, and always **present**) within the containing
 **element** in an instance document.
 
 * a required **name**.
@@ -771,7 +771,7 @@ We can have 2 students with the same number as long as they are in different cla
 
 # Unique
 
-A **weaker** form of **key**. Specifies that an **attribute** or **element value** (or a combination of attribute or element values) must be **unique** or **null** within the specified scope. 
+A **weaker** form of **key**. Specifies that an **attribute** or **element value** (or a combination of attribute or element values) must be **unique** or **null** within the specified scope.
 
 ```xml
 <xs:complexType name="studentType">
@@ -807,12 +807,12 @@ Students can't have the same email but can have no email.
     <name>John Doe</name>
     <email>john.doe@gmail.com</email>
   </student>
-  
+
   <student>
     <name>Jane Doe</name>
     <email>jane.doe@gmail.com</email>
   </student>
-  
+
   <student>
     <name>Mary Doe</name>
   </student>
@@ -899,14 +899,14 @@ name:namespaces
 
 # Target Namespace
 
-When writing XSD schemas, you **can** use the XSD ```targetNamespace``` attribute to specify a target namespace.
+When writing XSD schemas, you **can** use the XSD **targetNamespace** attribute to specify a target namespace.
 
 By defining a target namespace, all **elements** and **attributes** defined in the XSD belong to that namespace.
 
 ```xml
 <xs:schema
 	targetNamespace="http://www.example.com/students"
-	xmlns="http://www.example.com/students" 
+	xmlns="http://www.example.com/students"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema" >
   <xs:element name="student">
     <xs:complexType>
@@ -930,11 +930,11 @@ By defining a target namespace, all **elements** and **attributes** defined in t
 
 # Schema Location
 
-To associate a XML file to its corresponding XSD we can use a ```schemaLocation``` attribute, 
-if the ```targetNamespace``` has been defined in the XSD, or a ```noNamespaceSchemaLocation```, if it hasn't.
+To associate a XML file to its corresponding XSD we can use a **schemaLocation** attribute,
+if the **targetNamespace** has been defined in the XSD, or a **noNamespaceSchemaLocation**, if it hasn't.
 
 ```xml
-<s:student 
+<s:student
   schemaLocation="students.xsd"
   xmlns:s="http://www.example.com/students">
   <name>John Doe</name>
@@ -946,10 +946,10 @@ if the ```targetNamespace``` has been defined in the XSD, or a ```noNamespaceSch
 
 # Schema Location
 
-When using ```schemaLocation```, a list of URIs can be used.
+When using **schemaLocation**, a list of URIs can be used.
 
 ```xml
-<c:class 
+<c:class
   schemaLocation="students.xsd classes.xsd"
   xmlns:s="http://www.example.com/students"
   xmlns:c="http://www.example.com/classes">
@@ -964,13 +964,13 @@ When using ```schemaLocation```, a list of URIs can be used.
 
 # Qualification
 
-By default, only elements defined as root elements in the XSD must be qualified (with the namespace prefix). To change this behavior we can set the ```elementFormDefault``` and ```attributeFormDefault``` attributes to ```qualified```.
+By default, only elements defined as root elements in the XSD must be qualified (with the namespace prefix). To change this behavior we can set the **elementFormDefault** and **attributeFormDefault** attributes to **qualified**.
 
 ```xml
 <xs:schema
 	targetNamespace="http://www.example.com/students"
-	xmlns="http://www.example.com/students" 
-	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns="http://www.example.com/students"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	elementFormDefault="qualified" attributeFormDefault="qualified">
   <xs:element name="student">
     <xs:complexType>
@@ -995,14 +995,14 @@ By default, only elements defined as root elements in the XSD must be qualified 
 
 # Include
 
-The ```include``` element, imports external XSDs that share the **same namespace**.
+The **include** element, imports external XSDs that share the **same namespace**.
 
 types.xsd:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema 
-	targetNamespace="http://www.example.com/school" 
+<xs:schema
+	targetNamespace="http://www.example.com/school"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:complexType name="studentType">
         <attribute name="name" type="xs:string"/>
@@ -1014,7 +1014,7 @@ school.xsd
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema 
+<xs:schema
 	targetNamespace="http://www.example.com/school"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema" 	
 	xmlns:s="http://www.example.com/school">
@@ -1027,14 +1027,14 @@ school.xsd
 
 # Import
 
-The ```import``` element, imports external XSDs that have **different namespaces**.
+The **import** element, imports external XSDs that have **different namespaces**.
 
 types.xsd:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema 
-	targetNamespace="http://www.example.com/students" 
+<xs:schema
+	targetNamespace="http://www.example.com/students"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:complexType name="studentType">
         <attribute name="name" type="xs:string"/>
@@ -1046,7 +1046,7 @@ school.xsd
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema 
+<xs:schema
 	targetNamespace="http://www.example.com/school"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema" 	
 	xmlns:s="http://www.example.com/students">

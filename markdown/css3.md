@@ -372,7 +372,7 @@ p:first-child
 
 The **nth-child(an+b)** selector, selects elements that are the **bth** child of an element after all its children have been split into groups of **a** elements each.
 
-In other words, this class matches all children whose index fall in the set ```{ an + b; n = 0, 1, 2, ... }```.
+In other words, this class matches all children whose index fall in the set *{ an + b; n = 0, 1, 2, ... }*.
 
 ```css
   :nth-child(1)    /* is the same as :first-child */
@@ -404,11 +404,11 @@ Before and after pseudo-elements can be combined with the **content** property t
 
 The **content** property can have the following values:
 
- * **none** The default value, adds nothing. Cannot be combined with other values. ```none```
- * **a string** Using single quotes. Adds the text to the element. ```'Chapter'```
- * **an url** An external resource (such as an image). ```url('dog.png')```
- * **counter** Variables maintained by CSS whose values may be incremented by CSS rules to track how many times they're used. ```counter(section)``` [Learn more](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Counters).
- * **open-quote** and **close-quote** Open and close quotes. ```open-quote```
+ * **none** The default value, adds nothing. Cannot be combined with other values: *none*
+ * **a string** Using single quotes. Adds the text to the element: *'Chapter'*
+ * **an url** An external resource (such as an image): *url('dog.png')*
+ * **counter** Variables maintained by CSS whose values may be incremented by CSS rules to track how many times they're used: *counter(section)* [Learn more](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Counters).
+ * **open-quote** and **close-quote** Open and close quotes: *open-quote*
 
 ```css
 blockquote:before { content: open-quote;  }

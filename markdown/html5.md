@@ -105,7 +105,7 @@ Source: http://www.w3counter.com/trends
 
 # Tags
 
-Tags start with a **&lt;** and end with a **&gt;** and always contain a name. 
+Tags start with a **&lt;** and end with a **&gt;** and always contain a name.
 
 They are case insensitive but lowercase is recommended.
 
@@ -115,9 +115,9 @@ They are case insensitive but lowercase is recommended.
 
 ***
 
-Most tags come in pairs. An opening tag and a closing tag. 
+Most tags come in pairs. An opening tag and a closing tag.
 
-Closing tags have a **/** after the **&lt;**. 
+Closing tags have a **/** after the **&lt;**.
 
 ```html
 <html> ... </html>
@@ -127,13 +127,13 @@ Closing tags have a **/** after the **&lt;**.
 
 # Tag content
 
-The content of a tag is everything between the opening and closing tags. 
+The content of a tag is everything between the opening and closing tags.
 
 ```html
 <p>Some content</p>
 ```
 
-Some tags don't have content and do not need to be closed. 
+Some tags don't have content and do not need to be closed.
 
 ```html
 <br>
@@ -153,7 +153,7 @@ name:resources
 * References:
   * http://www.w3.org/TR/html-markup/
   * http://developer.mozilla.org/en-US/docs/Web/HTML/Element
-  * WHATWG Living Standard <br> https://html.spec.whatwg.org/multipage/ 
+  * WHATWG Living Standard <br> https://html.spec.whatwg.org/multipage/
 * Books:
   * http://diveintohtml5.info/
 * Tutorials:
@@ -165,7 +165,7 @@ name:resources
 
 template:inverse
 name:document
-# Document 
+# Document
 
 ---
 
@@ -216,8 +216,8 @@ name:basic
 
 
 # Headings
-    
-* HTML implements six levels of document headings. **&lt;h1&gt;** is the most important and **&lt;h6&gt;** is the least. 
+
+* HTML implements six levels of document headings. **&lt;h1&gt;** is the most important and **&lt;h6&gt;** is the least.
 * A heading element briefly describes the topic of the section it introduces.    
 
 ```html
@@ -431,7 +431,7 @@ Cells can be merged horizontally or vertically
     <td>G</td>
   </tr>
 </table>
-``` 
+```
 ![](../assets/html5/table3.png)
 
 ---
@@ -482,7 +482,7 @@ Forms allow users to enter data that is sent to a server for processing
 
 # Action and Method
 
-* **action**: the web page that receives and processes the form results 
+* **action**: the web page that receives and processes the form results
 * **method**: either **get** (values are sent in the URL) or **post** (values are sent inside the HTTP header)
 
 ```html
@@ -661,7 +661,7 @@ The same as a text field but it does not show on the browser. We'll find what th
 
 * A **button** that allows the user to submit the form for processing.
 
-* The **value** contains the text to be used for the submit button. A multilingual default will be used if left blank. 
+* The **value** contains the text to be used for the submit button. A multilingual default will be used if left blank.
 
 ```html
 <input type="submit" value="Send">
@@ -732,9 +732,9 @@ A text input field for larger texts.
 
 ```html
 <textarea rows="4" cols="50">
-This is an input field that allows 
-the user to input several lines of text. 
-This is the default value for that input. 
+This is an input field that allows
+the user to input several lines of text.
+This is the default value for that input.
 Be careful about extra white space.
 </textarea>
 ```
@@ -747,8 +747,8 @@ Text areas also allow the common attributes **name**, **disabled**, **readonly**
 
 # Label
 
-* Allows the association between a **label** and its corresponding **input**. 
-* Clicking the **label** activates the **input**. 
+* Allows the association between a **label** and its corresponding **input**.
+* Clicking the **label** activates the **input**.
 * Important for disabled people.
 * Two ways of using it:
 
@@ -790,7 +790,7 @@ Text areas also allow the common attributes **name**, **disabled**, **readonly**
 
 template: inverse
 name:text
-# Text Tags 
+# Text Tags
 
 Text tags define portions of text as having a special meaning.
 
@@ -867,17 +867,17 @@ Character entities always start with a **&** and end with a **;**
 
 For example, the ampersand (&amp;):
 
-* Decimal character: ```&#38;```
-* Hexadecimal character: ```&#x26;```
-* Named character entity: ```&amp;```
+* Decimal character: &amp;#38;
+* Hexadecimal character: &amp;#x26;
+* Named character entity: &amp;amp;
 
 Most important character entities:
 
-* Less than sign (&lt;): ```&lt;```
-* Greater than sign (&gt;): ```&gt;```
-* Ampersand (&amp;): ```&amp;```
-* Double quote sign (&quot;): ```&quot;```
-* Non-breaking space (&nbsp;): ```&nbsp;```
+* Less than sign (&lt;): &amp;lt;
+* Greater than sign (&gt;): &amp;gt;
+* Ampersand (&amp;): &amp;amp;
+* Double quote sign (&quot;): &amp;quot;
+* Non-breaking space (&nbsp;): &amp;nbsp;
 
 Other character entities: http://dev.w3.org/html5/html-author/charref
 
@@ -885,11 +885,11 @@ Other character entities: http://dev.w3.org/html5/html-author/charref
 
 template:inverse
 name:elements
-# Elements 
+# Elements
 
 ---
 
-# Elements 
+# Elements
 
 There are two major types of HTML elements according to the way they display on the browser:
 
@@ -927,12 +927,12 @@ We can create an anchor to an element with a specific **id** within a page:
 
 ---
 
-# Span 
+# Span
 
 Span is a generic **inline** tag that can be used, for example, to mark specific parts of text:
 
 ```html
-<p>This book has been written 
+<p>This book has been written
 by <span class="author person">Arthur C. Clark</span>.</p>
 ```
 
@@ -1067,7 +1067,7 @@ Some <a href="http://davidwalsh.name/canvas-demos">examples</a>
 
 ```html
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="190">
-  <polygon 
+  <polygon
         points="100,10 40,180 190,60 10,60 160,180"
         style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;"
   >
@@ -1076,7 +1076,7 @@ Some <a href="http://davidwalsh.name/canvas-demos">examples</a>
 
 <center>
   <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="190" height="190" style="display:block; margin: 0 auto;">
-    <polygon 
+    <polygon
           points="100,10 40,180 190,60 10,60 160,180"
           style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;">
   </svg>
@@ -1090,7 +1090,7 @@ Some <a href="http://davidwalsh.name/canvas-demos">examples</a>
 HTML 5 also includes specific tags for:
 
 * **audio**: defines sound, such as music or other audio streams
-* **video**: specifies video, such as a movie clip or other video streams 
+* **video**: specifies video, such as a movie clip or other video streams
 * **source**: specify multiple media resources for media elements
 * **track**: text tracks for video and audio elements
 
@@ -1118,10 +1118,10 @@ name:doctype
 * HTML 4.01 & XHTML 1.0 (strict):
 
 ```html
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
                       "http://www.w3.org/TR/html4/strict.dtd">
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 ```
 

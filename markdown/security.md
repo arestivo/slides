@@ -49,7 +49,7 @@ template:inverse
 
 # Attacks and Vulnerabilities
 
-* A **vulnerability** is a hole or a weakness in the application, which can be a design flaw or an implementation bug, that allows an attacker to cause harm to the stakeholders of an application. 
+* A **vulnerability** is a hole or a weakness in the application, which can be a design flaw or an implementation bug, that allows an attacker to cause harm to the stakeholders of an application.
 
 * **Attacks** are the techniques that attackers use to exploit the vulnerabilities in applications.
 
@@ -93,7 +93,7 @@ name: path
 
 # Path Traversal Attack
 
-Using the ```..``` and ```/``` characters to gain access to files and directories that are not intended to be accessed.
+Using the **..** and **/** characters to gain access to files and directories that are not intended to be accessed.
 
 ```http
 http://www.example.com/../../foo.txt
@@ -159,10 +159,10 @@ SQL injection attacks allow attackers to:
 
 ```php
 // $username has the name of the logged in user
-$conn->query("SELECT * FROM items WHERE owner = '" . $username . "'"); 
+$conn->query("SELECT * FROM items WHERE owner = '" . $username . "'");
 ```
 
-Create account with username: ```johndoe' OR 1 = 1--```
+Create account with username: "johndoe' OR 1 = 1--"
 
 ```sql
 SELECT * FROM items WHERE owner = 'johndoe' OR 1 = 1--'
@@ -174,8 +174,8 @@ SELECT * FROM items WHERE owner = 'johndoe' OR 1 = 1--'
 
 ```php
 // verifies if username and password are correct
-$conn->query("SELECT * FROM users WHERE " . 
-      "username = '" . $username . "' AND password ='" . $password . "'"); 
+$conn->query("SELECT * FROM users WHERE " .
+      "username = '" . $username . "' AND password ='" . $password . "'");
 ```
 
 Navigate to URL:
@@ -194,20 +194,20 @@ SELECT * users WHERE username = 'johndoe' AND password = '' OR 1 = 1; --'
 
 ```php
 // searches for specific item
-$conn->query("SELECT * FROM items WHERE title = '" . $title . "'"); 
+$conn->query("SELECT * FROM items WHERE title = '" . $title . "'");
 ```
 
 Navigate to URL:
 
 ```http
-http://www.example.com/search.php?title='; INSERT INTO users VALUES 
+http://www.example.com/search.php?title='; INSERT INTO users VALUES
 ('johndoe', 'password', true); --
 ```
 
 Third parameter has admin status of user:
 
 ```sql
-SELECT * FROM items WHERE title = ''; INSERT INTO users VALUES 
+SELECT * FROM items WHERE title = ''; INSERT INTO users VALUES
 ('johndoe', 'password', true); --'
 ```
 
@@ -232,7 +232,7 @@ SELECT * FROM items WHERE title = ''; INSERT INTO users VALUES
 * Escaping all User Supplied Input
 
 ```php
-$stmt = $conn->prepare('SELECT * FROM items WHERE title = ?'); 
+$stmt = $conn->prepare('SELECT * FROM items WHERE title = ?');
 $stmt->execute(array($title));
 $items = $stmt->fetchAll();
 ```
@@ -275,7 +275,7 @@ Cross-Site Scripting (XSS) attacks are a type of **injection**, in which **malic
 
 #Types
 
-* **Persistent** XSS generally occurs when user input is stored on the target server, such as in a database, in a message forum, visitor log, comment field, ... 
+* **Persistent** XSS generally occurs when user input is stored on the target server, such as in a database, in a message forum, visitor log, comment field, ...
 * **Reflected** XSS occurs when user input is immediately returned by a web application in an error message, search result, or any other response that includes some or all of the input provided by the user as part of the request, without that data being made safe to render in the browser, and without permanently storing the user provided data.
 * **DOM Based** XSS occurs when the data flow never leaves the browser. For example, the malicious script could be in the URL and the page inserts it into the DOM adding malicious code.
 
@@ -287,14 +287,14 @@ Cross-Site Scripting (XSS) attacks are a type of **injection**, in which **malic
 
 ```php
 <?php
-  $stmt = $conn->prepare("INSERT INTO comment VALUES (DEFAULT, ?, ?, ?)"); 
+  $stmt = $conn->prepare("INSERT INTO comment VALUES (DEFAULT, ?, ?, ?)");
   $stmt->execute(array($_POST['post_id'], $_POST['text'], $_SESSION['username']));
 ?>
 ```
 
 ```php
 <?php
-  $stmt = $conn->prepare("SELECT * FROM comment WHERE post_id = ?"); 
+  $stmt = $conn->prepare("SELECT * FROM comment WHERE post_id = ?");
   $stmt->execute(array($_POST['post_id']));
   $comments = $stmt->fetchAll();
 
@@ -455,7 +455,7 @@ name: csrf
 
 # Cross-site Request Forgery (CSRF)
 
-The application allows a user to submit a state changing request that does not include anything secret. 
+The application allows a user to submit a state changing request that does not include anything secret.
 
 ```http
 http://example.com/transferFunds.php?amount=1500&destination=4673243243
@@ -464,7 +464,7 @@ http://example.com/transferFunds.php?amount=1500&destination=4673243243
 The attacker constructs a request that will transfer money from the victim’s account to the attacker’s account, and then embeds this attack in an image request stored on various sites under the attacker’s control:
 
 ```html
-<img src="http://example.com/transferFunds.php?amount=1500&destination=4673243243" 
+<img src="http://example.com/transferFunds.php?amount=1500&destination=4673243243"
      width="0" height="0" />
 ```
 
@@ -525,7 +525,7 @@ name:maninthemiddle
 
 # Man in the Middle Attack
 
-* **Intercept** a communication between two systems. 
+* **Intercept** a communication between two systems.
 * Using different techniques, the attacker **splits** the original TCP connection into 2 new connections, one between the client and the attacker and the other between the attacker and the server
 * Once the TCP connection is intercepted, the attacker acts as a proxy, being able to read, insert and modify the data in the intercepted communication.
 
@@ -554,7 +554,7 @@ Also known as **asymmetric** cryptography, is a class of cryptographic algorithm
 * The website **provides** a **valid** certificate, which means it was signed by a trusted authority.
 * The certificate **correctly identifies** the website.
 * The user trusts that the protocol's encryption layer (TLS/SSL) is sufficiently **secure** against eavesdroppers.
- 
+
 ---
 
 template: inverse
@@ -592,13 +592,13 @@ In the case of a database breach, having passwords stored in **clear text**, all
 ```php
 <?php
   $stmt = $db->prepare(INSERT INTO users VALUES (?, ?))';
-  $stmt->execute(array($username, md5($password))); 
+  $stmt->execute(array($username, md5($password)));
 ```
 
 ```php
 <?php
   $stmt = $db->prepare('SELECT * FROM users WHERE username = ? and password = ?');
-  $stmt->execute(array($username, md5($password))); 
+  $stmt->execute(array($username, md5($password)));
   if ($stmt->fetch() !== false) {
     $_SESSION['username'] = $username;
   }  
@@ -711,8 +711,8 @@ boolean password_verify ( string $password , string $hash )
 ```
 
 * These functions generate their own salt.
-* The **hash** function returns the used algorithm, cost and salt as part of the hash. Therefore, all information that's needed to verify the hash is included in it. 
-* This allows the **verify** function to verify the hash without needing separate storage for the salt or algorithm. 
+* The **hash** function returns the used algorithm, cost and salt as part of the hash. Therefore, all information that's needed to verify the hash is included in it.
+* This allows the **verify** function to verify the hash without needing separate storage for the salt or algorithm.
 
 ---
 
@@ -723,9 +723,9 @@ boolean password_verify ( string $password , string $hash )
   $options = ['cost' => 12];
   $stmt = $db->prepare(INSERT INTO users VALUES (?, ?))';
   $stmt->execute(array(
-    $username, 
+    $username,
     password_hash($password, PASSWORD_DEFAULT, $options))
-  ); 
+  );
 ```
 
 ```php
@@ -790,7 +790,7 @@ Destroy session if referrer is suspicious
 
 ```php
 <?php
-  if (strpos($_SERVER['HTTP_REFERER'], 'http://example.com/') !== 0) 
+  if (strpos($_SERVER['HTTP_REFERER'], 'http://example.com/') !== 0)
     session_destroy();
 ```
 
@@ -807,7 +807,7 @@ name: hijacking
 Gaining control of the user session by stealing the session id.
 
 * Cross-site scripting
-* Session Sniffing 
+* Session Sniffing
 * Man-in-the-middle attack
 
 ---
@@ -837,7 +837,7 @@ Set the session cookie parameters:
 * **HTTP Only** - If true the HttpOnly flag is sent to the browser (the cookie cannot be accessed through client side script).
 
 ```php
-void session_set_cookie_params ( int $lifetime [, string $path 
+void session_set_cookie_params ( int $lifetime [, string $path
 [, string $domain [, bool $secure = false [, bool $httponly = false ]]]] )
 ```
 
@@ -859,7 +859,7 @@ name: dos
 
 Denial-of-service (DoS) or distributed denial-of-service (DDoS) attack is an attempt to make a machine or network resource unavailable to its intended users.
 
-There are [many ways](http://en.wikipedia.org/wiki/Denial-of-service_attack#Methods_of_attack) to make a service unavailable for legitimate users by manipulating network packets, 
+There are [many ways](http://en.wikipedia.org/wiki/Denial-of-service_attack#Methods_of_attack) to make a service unavailable for legitimate users by manipulating network packets,
 programming, logical, or resources handling vulnerabilities, among others.
 
 ---
