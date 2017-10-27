@@ -134,7 +134,7 @@ img {
 .indexlink a {
 	color: #999;
     padding-right: 1em;
-} 
+}
 
 table td{
   padding: 0.5em;
@@ -294,4 +294,35 @@ code.has-jax {
   font-size: 0.2em;
   border: 1px solid;
   padding: 0.3em;
+}
+
+div.search form {
+  display: inline-block;
+}
+
+div.search form input {
+  opacity: 0;
+
+  background-color: #CCC;
+  color: black;
+
+  border: 1px solid #f92672;
+  padding: 3px;
+  width: 10em;
+
+  transition: .2s;
+}
+
+div.search a {
+  padding: 1em 0 1em 1em;
+  color: #999;
+}
+
+div.search {
+  position: absolute;
+  top: 1em;
+}
+
+.current-match {
+  background-color: cyan;
 }
