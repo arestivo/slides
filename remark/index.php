@@ -15,20 +15,22 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>André Restivo : <?=$_GET['p']?></title>
     <link rel="stylesheet" href="../css/font-awesome.css">
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/examples.css">
-	<link rel="stylesheet" href="../css/print.css" media="print">
-	<link rel="icon" type="image/ico" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../css/remark.search.css">
+    <link rel="stylesheet" href="../css/print.css" media="print">
+  	<link rel="icon" type="image/ico" href="../images/favicon.ico">
   </head>
   <body>
     <script src="../script/remark.min.js" type="text/javascript"></script>
     <script src="../script/jquery-2.2.4.min.js" type="text/javascript"></script>
     <script src="../script/mark.min.js" type="text/javascript"></script>
-    <script src="../script/search.js" type="text/javascript"></script>
+    <script src="../script/remark.search.js" type="text/javascript"></script>
     <script type="text/javascript">
       var hljs = remark.highlighter.engine;
     </script>
@@ -40,6 +42,11 @@
           highlightSpans: false,
           sourceUrl: '../markdown/<?=$slides?>.md'
         }) ;
+
+      window.addEventListener('load', function() {
+        RemarkSearch.create();
+      });
+
       $('a[href$="download"]').attr('href', '../../pdf/<?=$slides?>.pdf');
     </script>
     <script>
