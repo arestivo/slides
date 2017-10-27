@@ -6,7 +6,7 @@ class RemarkSearch {
     this.div = document.createElement('div');
     this.div.classList.add('search');
     this.div.style.zIndex = '9999';
-    this.div.innerHTML = '<form><input></form><a id="search-open"><i class="fa fa-search"></i></a><a id="search-next"><i class="fa fa-arrow-right"></i></a>'
+    this.div.innerHTML = '<form><input></form><a id="search-open"><i class="fa fa-search"></i></a>'
 
     let area = document.querySelector('.remark-slides-area');
     area.insertBefore(this.div, area.firstchild);
@@ -35,10 +35,6 @@ class RemarkSearch {
     this.div.querySelector('#search-open').addEventListener('click', function(event){
       self.toggleSearch();
     });
-
-    this.div.querySelector('#search-next').addEventListener('click', function(event){
-      self.showNextMatch(event);
-    });
   }
 
   setUpKeyListener() {
@@ -58,7 +54,10 @@ class RemarkSearch {
         if (self.matches.length == 0) {
           return self.doSearch(event);
         } else {
-          return self.showNextMatch(event);
+          if (event.shiftKey)
+            return self.showMatch(event, -1);
+          else
+            return self.showMatch(event, 1);
         }
       }
     });
@@ -72,7 +71,7 @@ class RemarkSearch {
       if (self.matches.length == 0) {
         return self.doSearch(event);
       } else {
-        return self.showNextMatch(event);
+        return self.showMatch(event, 1);
       }
     });
     this.setUpInput();
@@ -108,7 +107,6 @@ class RemarkSearch {
     this.cleanSearch();
 
     input.style.opacity = '1';
-
     input.focus();
   }
 
@@ -138,11 +136,6 @@ class RemarkSearch {
     var context = document.querySelectorAll(".remark-slide");
     var instance = new Mark(context);
     instance.unmark();
-
-    if (this.div.querySelector('input').value != '')
-      this.div.querySelector('#search-next').style.display = 'inline';
-    else
-      this.div.querySelector('#search-next').style.display = 'none';
   }
 
   doSearch(event) {
@@ -163,14 +156,14 @@ class RemarkSearch {
       },
       "done": function(){
         if (self.matches.length != 0)
-          self.showNextMatch(event);
+          self.showMatch(event, 1);
       }
     });
 
     return false;
   }
 
-  showNextMatch(event) {
+  showMatch(event, delta) {
     event.preventDefault();
 
     if (this.matches.length == 0)
@@ -180,10 +173,16 @@ class RemarkSearch {
     for (let i = 0; i < oldMatches.length; i++)
         oldMatches[i].classList.remove("current-match");
 
-    let match = this.matches[++this.currentMatch];
+    this.currentMatch += delta;
+
+    let match = this.matches[this.currentMatch];
+    console.log("match = " + this.currentMatch);
     if (match == null) {
-      this.currentMatch = -1;
-      return this.showNextMatch(event);
+      if (delta == -1)
+        this.currentMatch = this.matches.length;
+      else
+        this.currentMatch = -1;
+      return this.showMatch(event, delta);
     }
     match.classList.add('current-match');
 
@@ -196,8 +195,9 @@ class RemarkSearch {
       match = match.previousSibling;
       index++;
     };
+    console.log("slide = " + index + " - " + slideshow.getCurrentSlideIndex());
 
-    if (slideshow.getCurrentSlideIndex() != index)
+    if (slideshow.getCurrentSlideIndex() + 1 != index)
       slideshow.gotoSlide(index);
 
     return false;
