@@ -197,7 +197,8 @@ class RemarkSearch {
       index++;
     };
 
-    slideshow.gotoSlide(index);
+    if (slideshow.getCurrentSlideIndex() != index)
+      slideshow.gotoSlide(index);
 
     return false;
   }
