@@ -38,3 +38,6 @@
   border-radius: 0;
 }
 
+div.search {
+  display: none;
+}

@@ -27,6 +27,8 @@
   <body>
     <script src="../script/remark.min.js" type="text/javascript"></script>
     <script src="../script/jquery-2.2.4.min.js" type="text/javascript"></script>
+    <script src="../script/mark.min.js" type="text/javascript"></script>
+    <script src="../script/search.js" type="text/javascript"></script>
     <script type="text/javascript">
       var hljs = remark.highlighter.engine;
     </script>
@@ -38,21 +40,6 @@
           highlightSpans: false,
           sourceUrl: '../markdown/<?=$slides?>.md'
         }) ;
-	  // Setup MathJax
-/*      MathJax.Hub.Config({
-          tex2jax: {
-	      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-          skipTags: ['h1', 'script', 'noscript', 'style', 'textarea', 'pre']
-          }
-
-      });
-      MathJax.Hub.Queue(function() {
-          $(MathJax.Hub.getAllJax()).map(function(index, elem) {
-              return(elem.SourceElement());
-          }).parent().addClass('has-jax');
-      });
-
-      MathJax.Hub.Configured();*/
       $('a[href$="download"]').attr('href', '../../pdf/<?=$slides?>.pdf');
     </script>
     <script>
