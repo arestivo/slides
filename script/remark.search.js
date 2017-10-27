@@ -192,8 +192,8 @@ class RemarkSearch {
     };
 
     let index = 1;
-    while (match.previousElementSibling != null) {
-      match = match.previousElementSibling;
+    while (match.previousSibling != null) {
+      match = match.previousSibling;
       index++;
     };
 
