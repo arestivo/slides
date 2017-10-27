@@ -31,10 +31,11 @@
     <script src="../script/jquery-2.2.4.min.js" type="text/javascript"></script>
     <script src="../script/mark.min.js" type="text/javascript"></script>
     <script src="../script/remark.search.js" type="text/javascript"></script>
+
     <script type="text/javascript">
       var hljs = remark.highlighter.engine;
     </script>
-    <!--	<script type="text/javascript" src="../script/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=configured"> </script> -->
+
     <script type="text/javascript">
       var slideshow = remark.create({
           highlightStyle: '<?=$style?$style:"default"?>',
@@ -47,8 +48,8 @@
         RemarkSearch.create();
       });
 
-      $('a[href$="download"]').attr('href', '../../pdf/<?=$slides?>.pdf');
     </script>
+
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
