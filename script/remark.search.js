@@ -166,6 +166,8 @@ class RemarkSearch {
     var instance = new Mark(context);
 
     instance.mark(term, {
+      "element": "span",
+      "className": "match",
       "caseSensitive": this.options.caseSensitive,
       "separateWordSearch": false,
       "each": function(match){

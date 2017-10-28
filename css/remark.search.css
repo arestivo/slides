@@ -29,6 +29,12 @@ div.search #search-next{
   display: none;
 }
 
-.current-match {
-  background-color: cyan;
+span.match.current-match {
+  background-color: #26f944;
+}
+
+span.match {
+  padding: 1px;
+  background-color: #26dcf9;
+  color: black;
 }
