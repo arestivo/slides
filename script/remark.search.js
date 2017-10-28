@@ -34,7 +34,7 @@ class RemarkSearch {
 
   setUpPosition() {
     let self = this;
-    $(window).resize(function() {
+    window.addEventListener('resize', function() {
       self.updatePosition();
     });
     this.updatePosition();
