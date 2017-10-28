@@ -3,10 +3,20 @@ class RemarkSearch {
     this.matches = [];
     this.currentMatch = -1;
 
+    if (options == null) options = {};
+    if (options.position == null) options.position = 'top-right';
+    if (options.caseSensitive == null) options.caseSensitive = false;
+    if (options.separateWordSearch == null) options.separateWordSearch = false;
+
+    this.options = options;
+
     this.div = document.createElement('div');
     this.div.classList.add('search');
     this.div.style.zIndex = '9999';
-    this.div.innerHTML = '<form><input></form><a id="search-open"><i class="fa fa-search"></i></a>'
+    if (this.options.position.includes('left'))
+      this.div.innerHTML = '<a id="search-open"><i class="fa fa-search"></i></a><form><input></form>'
+    else
+      this.div.innerHTML = '<form><input></form><a id="search-open"><i class="fa fa-search"></i></a>'
 
     let area = document.querySelector('.remark-slides-area');
     area.insertBefore(this.div, area.firstchild);
@@ -27,6 +37,22 @@ class RemarkSearch {
       self.updatePosition();
     });
     this.updatePosition();
+  }
+
+  updatePosition() {
+    let scaler = document.querySelector('.remark-visible .remark-slide-scaler');
+    let vertical = (document.body.clientHeight - scaler.getBoundingClientRect().height) / 2 + 20;
+    let horizontal = (document.body.clientWidth - scaler.getBoundingClientRect().width) / 2 + 20;
+
+    if (this.options.position.includes('top'))
+      this.div.style.top = vertical + "px";
+    else
+      this.div.style.top = (document.body.clientHeight - vertical - this.div.getBoundingClientRect().height) + "px";
+
+    if (this.options.position.includes('right'))
+      this.div.style.right = horizontal + "px";
+    else
+      this.div.style.left = horizontal + "px";
   }
 
   setUpIcons() {
@@ -91,15 +117,6 @@ class RemarkSearch {
     });
   }
 
-  updatePosition() {
-    let scaler = document.querySelector('.remark-visible .remark-slide-scaler');
-    let top = (document.body.clientHeight - scaler.getBoundingClientRect().height) / 2 + 20;
-    let right = (document.body.clientWidth - scaler.getBoundingClientRect().width) / 2 + 20;
-
-    this.div.style.top = top + "px";
-    this.div.style.right = right + "px";
-  }
-
   openSearch() {
     let input = this.div.querySelector('form input');
 
@@ -150,7 +167,8 @@ class RemarkSearch {
     var instance = new Mark(context);
 
     instance.mark(term, {
-      "separateWordSearch": false,
+      "caseSensitive": this.options.caseSensitive,
+      "separateWordSearch": this.options.separateWordSearch,
       "each": function(match){
         self.matches.push(match);
       },

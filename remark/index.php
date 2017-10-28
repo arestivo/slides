@@ -45,7 +45,7 @@
         }) ;
 
       window.addEventListener('load', function() {
-        RemarkSearch.create();
+        RemarkSearch.create({'position': 'top-right', 'caseSensitive' : true});
       });
 
     </script>
