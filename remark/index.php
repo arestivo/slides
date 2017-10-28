@@ -45,7 +45,7 @@
         }) ;
 
       window.addEventListener('load', function() {
-        RemarkSearch.create({'showIcon': true});
+        RemarkSearch.create();
       });
 
     </script>
