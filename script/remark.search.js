@@ -6,7 +6,6 @@ class RemarkSearch {
     if (options == null) options = {};
     if (options.position == null) options.position = 'top-right';
     if (options.caseSensitive == null) options.caseSensitive = false;
-    if (options.separateWordSearch == null) options.separateWordSearch = false;
 
     this.options = options;
 
@@ -168,7 +167,7 @@ class RemarkSearch {
 
     instance.mark(term, {
       "caseSensitive": this.options.caseSensitive,
-      "separateWordSearch": this.options.separateWordSearch,
+      "separateWordSearch": false,
       "each": function(match){
         self.matches.push(match);
       },
@@ -194,7 +193,6 @@ class RemarkSearch {
     this.currentMatch += delta;
 
     let match = this.matches[this.currentMatch];
-    console.log("match = " + this.currentMatch);
     if (match == null) {
       if (delta == -1)
         this.currentMatch = this.matches.length;
@@ -213,7 +211,6 @@ class RemarkSearch {
       match = match.previousSibling;
       index++;
     };
-    console.log("slide = " + index + " - " + slideshow.getCurrentSlideIndex());
 
     if (slideshow.getCurrentSlideIndex() + 1 != index)
       slideshow.gotoSlide(index);
