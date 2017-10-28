@@ -16,8 +16,10 @@ div.search form input {
 }
 
 div.search a {
+  opacity: 0;
   padding: 1em;
   color: #999;
+  transition: .2s;
 }
 
 div.search {

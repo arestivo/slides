@@ -6,6 +6,7 @@ class RemarkSearch {
     if (options == null) options = {};
     if (options.position == null) options.position = 'top-right';
     if (options.caseSensitive == null) options.caseSensitive = false;
+    if (options.showIcon == null) options.showIcon = false;
 
     this.options = options;
 
@@ -60,6 +61,9 @@ class RemarkSearch {
     this.div.querySelector('#search-open').addEventListener('click', function(event){
       self.toggleSearch();
     });
+
+    if (this.options.showIcon)
+      this.div.querySelector('#search-open').style.opacity = 1;
   }
 
   setUpKeyListener() {
@@ -122,8 +126,13 @@ class RemarkSearch {
     input.value = '';
     this.cleanSearch();
 
-    input.style.opacity = '1';
+    input.style.opacity = 1;
     input.focus();
+
+    if (!this.options.showIcon) {
+      let icon = this.div.querySelector('#search-open');
+      icon.style.opacity = 1;
+    }
   }
 
   toggleSearch() {
@@ -141,6 +150,11 @@ class RemarkSearch {
     input.value = '';
     input.style.opacity = '0';
     input.blur();
+
+    if (!this.options.showIcon) {
+      let icon = this.div.querySelector('#search-open');
+      icon.style.opacity = 0;
+    }
 
     this.cleanSearch();
   }
