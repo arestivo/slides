@@ -7,6 +7,7 @@ class RemarkSearch {
     if (options.position == null) options.position = 'top-right';
     if (options.caseSensitive == null) options.caseSensitive = false;
     if (options.showIcon == null) options.showIcon = false;
+    if (options.autoSearch == null) options.autoSearch = true;
 
     this.options = options;
 
@@ -117,6 +118,8 @@ class RemarkSearch {
     });
     input.addEventListener('input', function(event) {
       self.cleanSearch();
+      if (self.options.autoSearch)
+        self.doSearch();
     });
   }
 
@@ -169,7 +172,8 @@ class RemarkSearch {
   }
 
   doSearch(event) {
-    event.preventDefault();
+    if (event != null) event.preventDefault();
+
     let self = this;
 
     let term = this.div.querySelector('form input').value;
@@ -197,7 +201,7 @@ class RemarkSearch {
   }
 
   showMatch(event, delta) {
-    event.preventDefault();
+    if (event != null) event.preventDefault();
 
     if (this.matches.length == 0)
       return this.doSearch(event);
