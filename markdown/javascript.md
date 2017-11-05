@@ -68,7 +68,7 @@ name:intro
 
 * Modern browsers all have a *Javascript* console that can be used to log messages from within web pages.
 * It can also be used to inspect variables, evaluate expressions and just plain experimentation.
-* The specifics of how it works vary from browser to browser, but there is a de facto set of features that are typically provided.
+* The specifics of how it works vary from browser to browser, but there is a *defacto* set of features that are typically provided.
 
 * The **console.log(msg)** function outputs a message to the console.
 * Other debug level are possible like **console.info(msg)**, **console.warn(msg)** and **console.error(msg)**.
@@ -191,7 +191,7 @@ function foo() {
 
 # Not declaring variables
 
-* It might seem that declaring variables in javascript is *optional* but that is not the case.
+* It might seem that declaring variables in *Javascript* is *optional* but that is not the case.
 
 * When you use a variable without declaring it, that variable will bubble up until if finds a variable declared with the same name.
 
@@ -232,7 +232,7 @@ Strings can be defined equally using single or double quotes:
   let lastname = "Doe";
 ```
 
-We can also use backticks. With backticks, expressions inside *${...}* are evaluated and the result becomes a part of the string.
+We can also use *backticks*. With *backticks*, expressions inside *${...}* are evaluated and the result becomes a part of the string.
 
 ```javascript
   alert( `Hello, ${firstname} ${lastname}!` ); // Hello, John Doe!
@@ -544,7 +544,7 @@ Using the function from the previous slide:
 executeNTimes((i) => console.log(i * i), 3);  // 0 1 4
 ~~~
 
-Multiline arrow functions are possible using a code-block **{...}**.
+Multi-line arrow functions are possible using a code-block **{...}**.
 
 ---
 
@@ -726,7 +726,7 @@ let name = "John Doe";
 console.log(name.substring(0,4));
 ```
 
-* In this example, the primitive type is *casted* temporarily into a String object that is discarded afterwards.
+* In this example, the primitive type is *cast* temporarily into a String object that is discarded afterwards.
 
 ---
 
@@ -898,7 +898,7 @@ john.print(); // John is a Builder
 
 # Classes
 
-* The *class* keyword is just syntatic sugar for prototype-based classes.
+* The *class* keyword is just syntactic sugar for prototype-based classes.
 * Classes can only have method and getters/setters.
 
 ```javascript
