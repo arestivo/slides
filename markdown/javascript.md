@@ -592,7 +592,7 @@ person.print(); // John Doe is 45 years old!
 
 ---
 
-# Assigning Mathods
+# Assigning Methods
 
 We can also assign a method to an object:
 
