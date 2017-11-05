@@ -45,15 +45,15 @@ name:intro
 
 # Javascript
 
-  * Javascript is a **prototype-based**, **dynamic**, **object-oriented**, **imperative** and **functional** language.
-  * In Javascript, functions are considered **first-class** citizens.
+  * *Javascript* is a **prototype-based**, **dynamic**, **object-oriented**, **imperative** and **functional** language.
+  * In *Javascript*, functions are considered **first-class** citizens.
   * Most commonly used as part of web browsers as a **client-side** scripting language.
-  
+
 ---
 
 # History
 
-  * Originally developed by **Brendan** Eich at **Netscape**.
+  * Originally developed by **Brendan Eich** at **Netscape**.
   * Developed under the name **Mocha** but later named **LiveScript**.
   * Changed name from LiveScript to **JavaScript**, in **1995**, at the time Netscape added support for Java.
   * Microsoft introduced JavaScript support in Internet Explorer in August **1996** (called JScript).
@@ -66,7 +66,7 @@ name:intro
 
 # Console
 
-* Modern browsers all have a Javascript console that can be used to log messages from within web pages.
+* Modern browsers all have a *Javascript* console that can be used to log messages from within web pages.
 * It can also be used to inspect variables, evaluate expressions and just plain experimentation.
 * The specifics of how it works vary from browser to browser, but there is a de facto set of features that are typically provided.
 
@@ -86,6 +86,22 @@ alert("Hello world!");
 
 ---
 
+# Strict Mode
+
+*ECMAScript 5* brought some big changes. To opt-in for those changes, scripts (or functions) must start with:
+
+```javascript
+'use strict';
+```
+
+Some changes:
+
+* No more global undeclared variables.
+* No more declaring variables with **var**.
+* Some warnings are now errors.
+
+---
+
 template: inverse
 # Resources
 
@@ -100,9 +116,10 @@ template: inverse
   * [JS Fiddle](http://jsfiddle.net/)
 
 * Tutorials:
+  * [The Modern Javascript Tutorial](http://javascript.info)
   * [jQuery: Javascript 101](http://learn.jquery.com/javascript-101/)
-   
-  
+  * [Javascript Style Guide](https://github.com/airbnb/javascript)
+
 ---
 
 template: inverse
@@ -116,25 +133,111 @@ name:variables
 
 * JavaScript is a loosely typed or a dynamic language. That means you don't have to declare the type of a variable ahead of time.
 * The type will get determined automatically while the program is being processed.
-* Variables are declared using the **var** instruction:
+* Variables are declared using the **let** command.
+* Variable names must contain only letters, digits, $ and _ (and not start with a digit).
 
 ```javascript
-var foo = 10;
-foo = 'John Doe';
-foo = true;
+let bar = 10;
+bar = 'John Doe';
+bar = true;
 ```
+
+```javascript
+let foo = 10, bar;
+bar = 'John Doe';
+```
+
+---
+
+# Constants
+
+* Constants behave exactly the same way as variables except they can't be changed.
+* Constants are declared using the **const** command.
+
+```javascript
+const bar = 10;
+bar = 20;       // TypeError: invalid assignment to const `bar'
+```
+
+---
+
+# Var
+
+In older scripts you might find variables declared using **var** instead of **let**.
+
+They have a different behavior than variables declared with **let**:
+
+* They have no block scope (only function scope).
+* Are processed when a function starts
+
+~~~javascript
+if (true) {
+  var bar = "1234";
+  console.log(bar);     // 1234
+}
+
+console.log(bar);       // 1234
+~~~
+
+~~~javascript
+function foo() {
+  bar = "1234";
+  console.log(bar);     //1234
+  var bar;
+}
+~~~
+
+---
+
+# Not declaring variables
+
+* It might seem that declaring variables in javascript is *optional* but that is not the case.
+
+* When you use a variable without declaring it, that variable will bubble up until if finds a variable declared with the same name.
+
+* If it doesn't it attaches itself to the *window* or *global* object.
+
+* This might have unforeseen and hard to debug consequences.
+
+~~~javascript
+function foo() {
+  bar = 1234;
+}
+
+let bar = 10;
+foo();
+console.log(bar);
+~~~
 
 ---
 
 # Primitive Data Types
 
-The ECMAScript standard defines the following data types:
+The standard defines the following data types:
 
-  * Boolean (**true** or **false**)
-  * Null (only one possible value: case sensitive **null**)
-  * Undefined (**not** been **assigned** a value)
   * Number (**double**-precision 64-bit)
   * String (**text**ual data - single or double quoted)
+  * Boolean (**true** or **false**)
+  * Null (only one possible value: case sensitive **null**)
+  * Undefined (has **not** been **assigned** a value)
+
+---
+
+# Strings
+
+Strings can be defined equally using single or double quotes:
+
+```javascript
+  let firstname = 'John';
+  let lastname = "Doe";
+```
+
+We can also use backticks. With backticks, expressions inside *${...}* are evaluated and the result becomes a part of the string.
+
+```javascript
+  alert( `Hello, ${firstname} ${lastname}!` ); // Hello, John Doe!
+  alert( `The result is ${1 + 2}` );           // The result is 3
+```
 
 ---
 
@@ -148,6 +251,76 @@ console.log("11" + 31); // "1131"
 console.log(11 + "31"); // "1131"
 ```
 
+Most of the time, operators and functions automatically convert a value to the right type (type conversion). You can still use the *String*, *Number* and *Boolean* functions to manually convert a value:
+
+```javascript
+  let a = 0;
+  let b = Boolean(a); // false
+  let c = String(a);  // "0"
+  let d = String(b);  // "false"
+```
+
+---
+
+# Comparison
+
+When comparing values belonging to different types, they are converted to numbers:
+
+**Examples:**
+
+```javascript
+1 == "1";    // 1 == 1 -> true
+0 == false;  // 0 == 0 -> true
+"0" == true; // 0 == 1 -> true
+"" == false; // 0 == 0 -> true
+Boolean("0") == false; // 1 == 0 -> false
+Boolean("0") == true;  // 1 == 1 -> true
+```
+
+---
+
+# Boolean Evaluation
+
+The following values all evaluate to false:
+  * false
+  * undefined
+  * null
+  * 0
+  * NaN (not a number)
+  * the empty string
+
+All other values, including objects evaluate to true.
+
+Be careful with the Boolean object:
+
+```javascript
+let foo = new Boolean(false);
+let bar = Boolean(false);
+if (foo) // evaluates to true
+if (bar) // evaluates to false
+```
+
+---
+
+# Strict Equality
+
+* Strict equality compares two values for equality.  
+* Neither value is implicitly converted to some other value before being compared.
+* If the values have different types, the values are considered unequal.
+
+```javascript
+0 === 0     // true
+0 === "0"   // false
+0 === false // false
+```
+
+Comparing anything with **null** and **undefined** returns false. Comparisons between them have the following results:
+
+```javascript
+  null === undefined; // false
+  null == undefined;  // true
+```
+
 ---
 
 name:control
@@ -158,8 +331,8 @@ template: inverse
 
 # If ... else
 
-* Use the **if** statement to execute a statement if a logical condition is true. 
-* Use the optional **else** clause to execute a statement if the condition is false. 
+* Use the **if** statement to execute a statement if a logical condition is true.
+* Use the optional **else** clause to execute a statement if the condition is false.
 
 ```javascript
 if (condition) {
@@ -171,52 +344,9 @@ if (condition) {
 
 ---
 
-# Boolean evaluation
-
-The following values all evaluate to false:
-  * false
-  * undefined
-  * null
-  * 0
-  * NaN (not a number)
-  * the empty string
-  
-All other values, including objects evaluate to true.
-
-Be careful with the Boolean object:
-
-```javascript
-var foo = new Boolean(false);
-if (foo) // evaluates to true
-```
-
----
-
-# Equality
-
-* Strict equality compares two values for equality.  
-* Neither value is implicitly converted to some other value before being compared. 
-* If the values have different types, the values are considered unequal. 
-
-```javascript
-0 === 0     // true
-0 === "0"   // false
-0 === false // false
-```
-
-* Loose equality compares two values for equality, after converting both values to a common type.
-
-```javascript
-0 == 0     // true
-0 == "0"   // true
-0 == false // true
-```
-
----
-
 # Switch
 
-* A switch statement allows a program to evaluate an expression and attempt to match the expression's value to a case label. 
+* A switch statement allows a program to evaluate an expression and attempt to match the expression's value to a case label.
 * If a match is found, the program executes the associated statement.
 
 ```javascript
@@ -241,13 +371,13 @@ switch (expression) {
 JavaScript supports the **for**, **do while**, and **while** loop statements:
 
 ```javascript
-for (var i = 0; i <= 10; i++) {
+for (let i = 0; i <= 10; i++) {
   console.log(i);
 }// 0 1 2 3 4 5 6 7 8 9 10
 ```
 
 ```javascript
-var i = 0;
+let i = 0;
 do {
    console.log(i);
    i++;
@@ -255,7 +385,7 @@ do {
 ```
 
 ```javascript
-var i = 0;
+let i = 0;
 while (i <= 10) {
    console.log(i);
    i++;
@@ -266,11 +396,11 @@ while (i <= 10) {
 
 # Break and continue
 
-* The break statement finishes the current loop prematurly.
+* The break statement finishes the current loop prematurely.
 * The continue statement finishes the current iteration and continues with the next.
 
 ```javascript
-for (var i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   if (i == 8) break;
   if (i % 2 == 0) continue;
   console.log(i);
@@ -293,6 +423,7 @@ A function is defined using the **function** keyword.
 function add(num1, num2) {
   console.log(num1 + num2);
 }
+
 add(1, 2);
 ```
 
@@ -309,8 +440,111 @@ Functions can also return values.
 function add(num1, num2) {
   return num1 + num2;
 }
-console.log(add(1,2));
+
+console.log(add(1, 2));
 ```
+
+A function with an empty *return* or no *return* at all, returns **undefined**.
+
+---
+
+# Default values
+
+* If a parameter expected by a function is not passed, it becomes **undefined**.
+* Unless we declare a default value for that parameter.
+* Default values can be complex expressions and are only calculated when needed.
+
+```javascript
+let count = 1;
+
+function bar() {
+  return count++;
+}
+
+function foo(var1, var2 = 1234, var3 = bar()) {
+  console.log(var1);
+  console.log(var2);
+  console.log(var3);
+}
+
+foo(10, 20);    // 10 20 1
+foo(10);        // 10 1234 2
+foo();          // undefined 1234 3
+```
+
+---
+
+# Function Expressions
+
+Another way to declare a function is the following:
+
+~~~javascript
+foo = function() {
+  console.log('bar');
+};  // don't forget the semicolon
+~~~
+
+This has the same effect as:
+
+~~~javascript
+function foo() {
+  console.log('bar');
+}
+~~~
+
+Functions are just another datatype stored in variables. We can even copy them or display them in the console:
+
+~~~javascript
+bar = foo;
+bar();
+console.log(foo);
+~~~
+
+---
+
+# Functions as Parameters
+
+Functions can be passed as parameters to other functions.
+
+~~~javascript
+function foo(i) {
+  console.log('bar = ' + i);
+}
+
+function executeNTimes(f, n) {
+  for (let i = 0; i < n; i++)
+    f(i);
+}
+
+executeNTimes(foo, 3);   // bar = 1 bar = 2 bar = 3
+executeNTimes(foo(), 3); // this is a common mistake
+~~~
+
+---
+
+# Arrow Functions
+
+A more compact way of declaring functions:
+
+~~~javascript
+let foo = function(var1, var2) {
+  return var1 + var2;
+}
+~~~
+
+Is the same as:
+
+~~~javascript
+let foo = (var1, var2) => var1 + var2;
+~~~
+
+Using the function from the previous slide:
+
+~~~javascript
+executeNTimes((i) => console.log(i * i), 3);  // 0 1 4
+~~~
+
+Multiline arrow functions are possible using a code-block **{...}**.
 
 ---
 
@@ -322,74 +556,19 @@ template: inverse
 
 # Objects
 
-* JavaScript is designed on a simple **object-based** paradigm. 
+* JavaScript is designed on a simple **object-based** paradigm.
 
-* An object is a collection of **properties**, and a property is an association between a name and a value. 
+* An object is a collection of **properties**, and a property is an association between a name and a value.
 
 * A property's value can be a function, in which case the property is known as a **method**.
 
-* JavaScript is a **prototype-based** language and **does not** have a class statement.
+* JavaScript is a **prototype-based** language and **does not** have a class statement (or does it?).
 
 
 ```javascript
-var person = new Object();
-person.name = "John Doe";
-person.age = 45;
-```
-
----
-
-# Objects as Arrays
-
-* Properties of JavaScript objects can also be accessed or set using a bracket notation. 
-* Objects can be seen as associative arrays, since each property is associated with a string value that can be used to access it.
-
-```javascript
-var person = new Object();
-person["name"] = "John Doe";
-person["age"] = 45;
-```
-
----
-
-# For ... in
-
-* The **for...in** statement iterates a specified variable over all its properties. 
-* For each distinct property, JavaScript executes the specified statements. 
-
-```javascript
-for (var foo in person)
-  console.log(foo + " = " + person[foo]);
-```
-
----
-
-# Almost Everything is an Object
-
-* In JavaScript, almost everything is an object.
-* All primitive types except null and undefined are treated as objects.
-
-```javascript
-var name = "John Doe";
-console.log(name.substring(0,4));
-```
-
-* In this example, the primitive type is casted temporarily into a String object that is discarded afterwards.
-
----
-
-# Object Initializer
-
-* Object initializers can be used to create objects.
-* Objects can contains other objects.
-
-```javascript
-var person = {name: "John Doe", 
-              age: 45, 
-              car : {make: "Honda", model: "Civic"}
-             };
-console.log(person);     // Object {name: "John Doe", age: 45, car: Object}
-console.log(person.car); // Object {make: "Honda", model: "Civic"}
+let person = { name: 'John Doe', age: 45 };
+person.job = 'Driver';
+console.log(person); // Object { name: "John Doe", age: 45, job: "Driver" }
 ```
 
 ---
@@ -401,51 +580,172 @@ console.log(person.car); // Object {make: "Honda", model: "Civic"}
 * You can use the **this** keyword within a method to refer to the current object.
 
 ```javascript
-var person = {name: "John Doe", 
-              age: 45, 
-              car: {make: "Honda", model: "Civic"},
-              print: function() {
-                console.log(this.name + " is " + this.age + " years old!");
-              } 
+let person = { name: "John Doe",
+               age: 45,
+               car: {make: "Honda", model: "Civic"},
+               print: function() {
+                 console.log(this.name + " is " + this.age + " years old!");
+               }
              };
-person.print(); // John Doe is 45 years old! 
+person.print(); // John Doe is 45 years old!
 ```
 
 ---
 
-# Assigning methods
+# Assigning Mathods
 
-Methods can be assigned to objects just like properties.
+We can also assign a method to an object:
 
 ```javascript
-var person = {name: "John Doe", 
-              age: 45, 
-              car: {make: "Honda", model: "Civic"},
+let person = { name: "John Doe",
+               age: 45,
+               car: {make: "Honda", model: "Civic"},
              };
+
 person.print = function() {
   console.log(this.name + " is " + this.age + " years old!");
-} 
-person.print(); // John Doe is 45 years old! 
+}
+
+person.print(); // John Doe is 45 years old!
 ```
+
+---
+
+# This
+
+In *Javascript*, the **this** keyword (current context) behaves unlike in almost any other language.
+
+* In the global execution context, **this** refers to the *global object* or *window*.
+* Inside a function it depends on how the function was called.
+
+  * Simple function call (undefined in strict mode).
+  * Using *apply* or *call* (*this* is the first argument).
+  * Object method (the object method was called from)
+  * Arrow functions (retains the enclosing context)
+  * Browser Events (the object that fired the event)
+
+---
+
+# This in functions
+
+Using **this** in simple functions:
+
+~~~javascript
+function bar(var1, var2) {
+  console.log(var1);
+  console.log(var2);
+  console.log(this);
+}
+
+bar(10, 20);                 // 10 20 undefined
+bar.call('foo', 10, 20);     // 10 20 foo
+bar.apply('foo', [10, 20]);  // 10 20 foo
+~~~
+
+* **Call** and **apply** are an alternative ways to call functions.
+* Both receive the **context** as the **first** argument.
+* The remaining parameters are sent as regular parameters in call and as an array in apply.
+
+---
+
+# This in methods
+
+Using **this** inside objects:
+
+~~~javascript
+let foo = {
+  bar() {
+    console.log(this);
+  }
+}
+foo.bar();          // Object { bar: bar() }
+let bar = foo.bar;
+bar();              // Undefined
+bar.apply('foo');   // foo
+~~~
+
+---
+
+# This in arrow functions
+
+Using **this** inside arrow functions:
+
+~~~javascript
+let foo = {
+  bar1: function() {
+    return () => console.log(this);
+  },
+
+  bar2: function() {
+    return function(){return console.log(this);}
+  }
+}
+
+foo.bar1()();  // Object { bar1: bar1()var person = new Object();
+foo.bar2()();  // Undefined
+~~~
+
+---
+
+# Objects as arrays
+
+* Properties of JavaScript objects can also be accessed or set using a bracket notation.
+* Objects can be seen as associative arrays, since each property is associated with a string value that can be used to access it.
+
+```javascript
+let person = new Object();  // Another way to define an empty object would be {}
+
+person['name'] = "John Doe";
+person['age'] = 45;
+
+console.log(person.age);    // 45
+console.log(person['age']); // 45
+```
+
+---
+
+# For ... in
+
+* The **for...in** statement iterates a specified variable over all its properties.
+* For each distinct property, JavaScript executes the specified statements.
+
+```javascript
+for (let foo in person)
+  console.log(foo + " = " + person[foo]);
+```
+
+---
+
+# Almost Everything is an Object
+
+* In JavaScript, almost everything is an object.
+* All primitive types except null and undefined are treated as objects.
+
+```javascript
+let name = "John Doe";
+console.log(name.substring(0,4));
+```
+
+* In this example, the primitive type is *casted* temporarily into a String object that is discarded afterwards.
 
 ---
 
 # Getter and Setters
 
-* A **getter** is a method that gets the value of a specific property. 
+* A **getter** is a method that gets the value of a specific property.
 * A **setter** is a method that sets the value of a specific property.
 
 ```javascript
-var person = {
+let person = {
     firstName: 'John',
     lastName: 'Doe',
     get fullName() {
         return this.firstName + ' ' + this.lastName;
     },
     set fullName (name) {
-        var words = name.toString().split(' ');
-        this.firstName = words[0] || '';
-        this.lastName = words[1] || '';
+        var words = name.split(' ');
+        this.firstName = words[0];
+        this.lastName = words[1];
     }
 }
 
@@ -458,7 +758,7 @@ console.log(person.fullName)   // John Doe
 ---
 
 # Constructor functions
-
+Person
 Functions can be used to create new objects using the **new** keyword.
 
 ```javascript
@@ -468,16 +768,16 @@ function Person (name, age, car) {
   this.car = car;
   this.print = function() {
     console.log(this.name + " is " + this.age + " years old!");
-  } 
+  }
 }
 
-var john = new Person("John Doe", 45, {make: "Honda", model: "Civic"});
-person.print(); // John Doe is 45 years old! 
+let john = new Person("John Doe", 45, {make: "Honda", model: "Civic"});
+person.print(); // John Doe is 45 years old!
 ```
 
 ---
 
-# Functions are Objects
+# Functions are objects
 
 When a function is created using the **function** keyword we are really defining an object.
 
@@ -503,9 +803,8 @@ sayHello.goodBye();                           //Goodbye
 
 # Prototype
 
-* Each Javascript function has an internal **prototype** property that is initialized as a nearly empty object.
-* When the **new** operator is used on a constructor function, a new object is created that has the same prototype as 
-the constructor function. The function is then executed having the new object as its context.
+* Each *Javascript* function has an internal **prototype** property that is initialized as a nearly empty object.
+* When the **new** operator is used on a constructor function, a new object is created. The function is then executed having the new object as its context.
 * We can change the prototype of a function by changing the **prototype property** directly.
 
 ```javascript
@@ -513,15 +812,14 @@ function Person(name) {
   this.name = name;
 }
 
-var john = new Person("John Doe");
+let john = new Person("John Doe");
 Person.age = 45;                    // Only changes the Person object
                                     // not its prototype.
-
-var jane = new Person("Jane Doe");
-console.log(jane.age); // undefined
+let jane = new Person("Jane Doe");
+console.log(jane.age);              // undefined
 
 Person.prototype.age = 45;          // Changes the prototype.
-var mary = new Person("Mary Doe");  // All objects constructed using the
+let mary = new Person("Mary Doe");  // All objects constructed using the
 console.log(mary.age); //45         // person constructor now have an age.
 console.log(john.age); //45         // Even if created before the change.
 ```
@@ -537,14 +835,14 @@ function Person(name) {
   this.name = name;
 }
 
-Person.prototype; // Person {}
+Person.prototype; // Object {...}
 Person.prototype.saySomething = function (){console.log("Something")};
-Person.prototype; // Person {saySomething: function}
+Person.prototype; // Object { saySomething: Person.prototype.saySomething(), ... }
 
-var john = new Person();
+let john = new Person();
 john.saySomething()        // Something
 john.constructor;          // function Person(name) { this.name = name; }
-john.constructor.prototype // Person {saySomething: function}
+john.constructor.prototype // Object { saySomething: Person.prototype.saySomething(), ... }
 ```
 
 ---
@@ -552,42 +850,27 @@ john.constructor.prototype // Person {saySomething: function}
 # Object \_\_proto\_\_
 
 When a object is created using **new**, a **\_\_proto\_\_** property is initialized with the
-prototype of the object.
+prototype of the function that created it.
 
 ```javascript
 function Person(name) {
   this.name = name;
 }
+let john = new Person("John");
 
 Person.prototype.saySomething = function (){console.log("Something")};
-var john = new Person("John");
-john.prototype; // undefined
-john.__proto__; // Person {saySomething: function}
+john.prototype;     // undefined
+john.__proto__;     // Object { saySomething: Person.prototype.saySomething(), ... }
+john.saySomething() // Something
 ```
 
----
-
-# Call
-
-The call method of a function (object), calls that function with a context passed as a parameter.
-
-```javascript
-function printGreeting(greeting) {
-  console.log(greeting + " " + this.name);
-}
-
-printGreeting("Hello");             // Hello [object Object]
-
-var john = {name: "John"};
-printGreeting.call(john, "Hello");  // Hello John
-``` 
+When we read a property from an object, and it’s missing, JavaScript will automatically take it from the prototype using **\_\_proto\_\_**.
 
 ---
 
 # Inheritance
 
-* Inheritance can be emulated in Javascript by changing the prototype chain.
-* Every time a property is accessed on an object, if the object doesn't have that property, Javascript will lookup it up in the **\_\_proto\_\_** property chain.
+Inheritance can be emulated in *Javascript* by changing the prototype chain.
 
 ```javascript
 function Person(name) {
@@ -600,13 +883,42 @@ function Worker(name, job) {
   this.job = job;
   Person.call(this, name);
 }
-Worker.prototype = new Person;
-Worker.prototype.print = function() {console.log(this.name + " is a " + this.job);}
 
-var mary = new Person("Mary");
+Worker.prototype = new Person;
+Worker.prototype.print =
+  function() {console.log(this.name + " is a " + this.job);}
+
+let mary = new Person("Mary");
 mary.print(); // Mary
-var john = new Worker("John", "Builder");
+let john = new Worker("John", "Builder");
 john.print(); // John is a Builder
+```
+
+---
+
+# Classes
+
+* The *class* keyword is just syntatic sugar for prototype-based classes.
+* Classes can only have method and getters/setters.
+
+```javascript
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  print() {console.log(this.name);}
+}
+
+class Worker extends Person {
+  constructor(name, job) {
+    super(name);
+    this.job = job;
+  }
+  print() {console.log(this.name + ' is a ' + this.job);}  
+}
+
+let john = new Worker("John", "Builder");
+john.print();
 ```
 
 ---
@@ -620,11 +932,11 @@ name:arrays
 # Arrays
 
   * Arrays are **list-like objects** whose prototype has methods to perform traversal and mutation operations.
-  * JavaScript arrays are zero-indexed
+  * *JavaScript* arrays are zero-indexed
   * Arrays can be initialized using a bracket notation:
 
 ```javascript
-var years = [1990, 1991, 1992, 1993];
+let years = [1990, 1991, 1992, 1993];
 console.log(years[0]); // 1990
 years.info = "Nice array";
 console.log(years.info); // Nice array
@@ -633,7 +945,7 @@ console.log(years.info); // Nice array
 Array elements are object properties but they cannot be accessed using the **dot** notation because their name is not valid.
 
 ```javascript
-var years = [1990, 1991, 1992, 1993];
+let years = [1990, 1991, 1992, 1993];
 console.log(years[0]); // 1990
 console.log(years.0);  // Syntax error
 ```
@@ -645,10 +957,10 @@ console.log(years.0);  // Syntax error
 By changing the Array prototype we can add methods and properties to all arrays.
 
 ```javascript
-var years = [1990, 1991, 1992, 1993];
+let years = [1990, 1991, 1992, 1993];
 Array.prototype.print = function() {
   console.log("This array has length " + this.length)
-}; 
+};
 years.print();
 ```
 
@@ -666,14 +978,14 @@ These are some of the methods defined by the [Array prototype](https://developer
 Some examples:
 
 ```javascript
-var years = [1990, 1991, 1992, 1993];
+let years = [1990, 1991, 1992, 1993];
 years.push(1994);
 console.log(years.length); // 5
 
 years.reverse();
 console.log(years);        // [1994, 1993, 1992, 1991, 1990]
 
-var sum = 0;
+let sum = 0;
 years.forEach(function (element, index, array) {sum += element});
 console.log(sum);          //9960
 
@@ -715,7 +1027,7 @@ throw "This is an error";
 
 # Error Object
 
-If you are throwing your own exceptions, in order to take advantage of the name and message properties, you can use the **Error** constructor. 
+If you are throwing your own exceptions, in order to take advantage of the name and message properties, you can use the **Error** constructor.
 
 ```javascript
 throw new Error("This is an Error");
@@ -754,7 +1066,7 @@ template: inverse
 
 # Javascript on HTML Documents
 
-Javascript can be embeded directly into an HTML document:
+*Javascript* can be embedded directly into an HTML document:
 
 ```html
 <script>
@@ -772,9 +1084,9 @@ Or as an external resource:
 
 # Script tag position
 
-As Javascript is capable of changing the HTML structure of a document, whenever the browser finds a **script** tag, it first fetches and runs that script and only then resumes loading the page.
+As *Javascript* is capable of changing the HTML structure of a document, whenever the browser finds a **script** tag, it first fetches and runs that script and only then resumes loading the page.
 
-Most Javascript scripts don't change the document until it is fully loaded but the browser does not know this. For that reason, it was recommended that **script** tags were placed at the bottom of the **body**.
+Most *Javascript* scripts don't change the document until it is fully loaded but the browser does not know this. For that reason, it was recommended that **script** tags were placed at the bottom of the **body**.
 
 Modern browsers support the async and defer attributes, so scripts can safely be placed in the **head** of the document:
 
@@ -793,7 +1105,7 @@ Modern browsers support the async and defer attributes, so scripts can safely be
 # Document
 
 * The [Document](https://developer.mozilla.org/en/docs/Web/API/Document) object represents an HTML document.
-* You can access the current document in Javascript using the **global** variable **document**.
+* You can access the current document in *Javascript* using the **global** variable **document**.
 
 Some Document **methods**:
 
@@ -809,7 +1121,7 @@ Some Document **methods**:
   var paragraphs = document.getElementsByTagName("p");  
 ```
 
-Some Document **properties**: **URL**, **title**, **location** 
+Some Document **properties**: **URL**, **title**, **location**
 
 ---
 
@@ -817,7 +1129,7 @@ Some Document **properties**: **URL**, **title**, **location**
 
 An [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element) object represents an HTML element.
 
-Some common Element **properties**: 
+Some common Element **properties**:
 
 |||
 |-:|-|
@@ -834,13 +1146,13 @@ Some common Element **methods**:
 | **setAttribute**(name, value) | modifies the attribute with the given name to value.
 | **remove**()                  | removes the element from its parent.
 
-Other **methods**: **removeAttribute**, **hasAttribute** 
+Other **methods**: **removeAttribute**, **hasAttribute**
 
 ---
 
-# HTML Element 
+# HTML Element
 
-The HTMLElement inherits from the Element object. There are [different](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model#HTML_interfaces) 
+The HTMLElement inherits from the Element object. There are [different](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model#HTML_interfaces)
 HTMLElement objects for each HTML element.
 
 |||
@@ -858,17 +1170,17 @@ HTMLElement objects for each HTML element.
 
 The [Node](https://developer.mozilla.org/en-US/docs/Web/API/Node) object represents a node in the document tree. The Element object inherits from the Node object.
 
-Some common Node **properties**: 
+Some common Node **properties**:
 
 |||
 |-:|-|
 | **firstChild** and **lastChild**           | first and last node child of this node.
-| **childNodes**                             | all child nodes as a NodeList. 
+| **childNodes**                             | all child nodes as a NodeList.
 | **previousSibling** and **nextSibling**    | previous and next sibling to this node.
 | **parentNode**                             | parent of this node.
 | **nodeType**                               | not all nodes are elements: see [Node type list](https://developer.mozilla.org/en-US/docs/Web/API/Node.nodeType)
 
-Some common Node **methods**: 
+Some common Node **methods**:
 
 |||
 |-:|-|
@@ -886,12 +1198,12 @@ Some common Node **methods**:
 Some examples:
 
 ```javascript
-var element = document.getElementById("menu"); // gets the element with id menu 
+let element = document.getElementById("menu"); // gets the element with id menu
 
 element.style.color = "blue";                  // changes the text color to blue
 element.style.padding = "2em";                 // and the padding to 2em
 
-var paragraph = document.createElement("p");   // creates a new paragraph
+let paragraph = document.createElement("p");   // creates a new paragraph
 paragraph.innerHTML = "Some text";             // inserts text in the paragraph
 
 element.appendChild(paragraph);                // adds the paragraph to the menu
@@ -902,12 +1214,12 @@ element.remove();                              // removes the menu
 
 # NodeList
 
-* A Node List is an array of elements, like the kind that is returned by the method **document.getElementsByTagName()**. 
+* A Node List is an array of elements, like the kind that is returned by the method **document.getElementsByTagName()**.
 * Items in a Node List are accessed by index like in an array:
 
 ```javascript
   var elements = document.getElementsByTagName("p");
-  for (var i = 0; i < elements.length; i++) {
+  for (let i = 0; i < elements.length; i++) {
     var element = elements[i];
     // do something with the element
   }
@@ -917,7 +1229,7 @@ element.remove();                              // removes the menu
 
 # Events
 
-* Events are sent to notify code of interesting things that have taken place. 
+* Events are sent to notify code of interesting things that have taken place.
 
 * Each event is represented by an object which is based on the Event interface, and may have additional custom fields and/or functions used to get additional information about what happened.
 
@@ -937,13 +1249,13 @@ Some possible events:
 
 A possible way to get notified of Events of a particular type (such as click) for a given object is to specify an event handler using:
 
-An HTML attribute named on{eventtype} on an element, for example: 
+An HTML attribute named on{eventtype} on an element, for example:
 
 ```html
 <button onclick="return handleClick(event);">
 ```
 
-or by setting the corresponding property from JavaScript, for example: 
+or by setting the corresponding property from JavaScript, for example:
 
 ```javascript
 document.getElementById("mybutton").onclick = function(event) { ... };
@@ -953,13 +1265,13 @@ document.getElementById("mybutton").onclick = function(event) { ... };
 
 # Add Event Handler
 
-On modern browsers, the Javascript function **addEventListener** should be used to handle events.
+On modern browsers, the *Javascript* function **addEventListener** should be used to handle events.
 
 ```javascript
 element.addEventListener(type, listener[, useCapture])
 ```
 
-** useCapture**: If true, useCapture indicates that the user wishes to initiate capture. All events of the specified type will be dispatched to the registered 
+** useCapture**: If true, useCapture indicates that the user wishes to initiate capture. All events of the specified type will be dispatched to the registered
 listener before being dispatched to any target beneath it in the DOM tree.
 
 Example:
@@ -969,7 +1281,7 @@ function handleEvent() {
   ...
 }
 
-var menu = document.getElementById("menu");
+let menu = document.getElementById("menu");
 menu.addEventListener("click", handleEvent, false);
 menu.addEventListener("click", function(){...}, false);
 ```
@@ -987,7 +1299,7 @@ function handleEvent(event) {
   ...
 }
 
-var menu = document.getElementById("menu");
+let menu = document.getElementById("menu");
 menu.addEventListener("click", handleEvent, false);
 ```
 
@@ -1003,8 +1315,8 @@ template: inverse
 
 # Ajax
 
-* Asynchronous JavaScript + XML, 
-* Not a technology in itself, but a term coined in 2005 by **Jesse James Garrett**, that describes an 
+* Asynchronous JavaScript + XML,
+* Not a technology in itself, but a term coined in 2005 by **Jesse James Garrett**, that describes an
   approach to using a number of existing technologies: namely the **XMLHttpRequest** object.
 
 ---
@@ -1024,7 +1336,7 @@ function requestListener () {
   console.log(this.responseText);
 }
 
-var request = new XMLHttpRequest();
+let request = new XMLHttpRequest();
 request.onload = requestListener;
 request.open("get", "getdata.php", true);
 request.send();
@@ -1035,7 +1347,7 @@ request.send();
 # Monitoring Progress
 
 ```javascript
-var request = new XMLHttpRequest();
+let request = new XMLHttpRequest();
 
 request.addEventListener("progress", updateProgress, false);
 request.addEventListener("load", transferComplete, false);
@@ -1069,7 +1381,7 @@ function transferCanceled(event) {
 
 If you use XMLHttpRequest to get the content of a remote **XML** document, the responseXML property will be a DOM Object containing a parsed XML document, which can be hard to manipulate and analyze.
 
-If you use **JSON**, it is very easy to parse the response as JSON is already in Javascript Object Notation.
+If you use **JSON**, it is very easy to parse the response as JSON is already in *Javascript Object Notation*.
 
 ```javascript
 JSON.parse('{}');              // {}
@@ -1087,4 +1399,3 @@ template:inverse
 # Wat
 
 [https://www.destroyallsoftware.com/talks/wat](https://www.destroyallsoftware.com/talks/wat)
-
