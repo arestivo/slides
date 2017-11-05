@@ -61,6 +61,7 @@ name:intro
   * Ecma International released the first version of the specification in **1997**.
   * Nowadays JavaScript is a trademark of the **Oracle** Corporation.
   * But JavaScript is officially managed by the **Mozilla** Foundation.
+  * *ECMAScript 6* or *ECMAScript 2015* introduced lots of new features.
 
 ---
 
@@ -681,7 +682,7 @@ let foo = {
   }
 }
 
-foo.bar1()();  // Object { bar1: bar1()var person = new Object();
+foo.bar1()();  // Object { bar1: bar1(), bar2: bar2() }
 foo.bar2()();  // Undefined
 ~~~
 
@@ -743,7 +744,7 @@ let person = {
         return this.firstName + ' ' + this.lastName;
     },
     set fullName (name) {
-        var words = name.split(' ');
+        let words = name.split(' ');
         this.firstName = words[0];
         this.lastName = words[1];
     }
@@ -961,7 +962,7 @@ let years = [1990, 1991, 1992, 1993];
 Array.prototype.print = function() {
   console.log("This array has length " + this.length)
 };
-years.print();
+years.print(); // This array has length 4
 ```
 
 ---
@@ -989,8 +990,8 @@ let sum = 0;
 years.forEach(function (element, index, array) {sum += element});
 console.log(sum);          //9960
 
-years.every(function (element, index, array) {return element >= 1990});
-years.some(function (element, index, array) {return element % 2 == 0});
+years.every(function (element, index, array) {return element >= 1990}); //true
+years.some(function (element, index, array) {return element % 2 == 0}); //true
 ```
 
 ---
@@ -1077,8 +1078,10 @@ template: inverse
 Or as an external resource:
 
 ```html
-<script type="text/javascript" src="script.js"></script>
+<script src="script.js"></script>
 ```
+
+The closing *tag* is mandatory.
 
 ---
 
@@ -1092,8 +1095,8 @@ Modern browsers support the async and defer attributes, so scripts can safely be
 
 ```html
 <head>
-  <script type="text/javascript" src="script.js" async></script>
-  <script type="text/javascript" src="script.js" defer></script>
+  <script src="script.js" async></script>
+  <script src="script.js" defer></script>
 </head>
 ```
 
@@ -1104,24 +1107,39 @@ Modern browsers support the async and defer attributes, so scripts can safely be
 
 # Document
 
-* The [Document](https://developer.mozilla.org/en/docs/Web/API/Document) object represents an HTML document.
-* You can access the current document in *Javascript* using the **global** variable **document**.
+The [Document](https://developer.mozilla.org/en/docs/Web/API/Document) object represents an HTML document.
 
-Some Document **methods**:
+You can access the current document in *Javascript* using the **global** variable **document**.
+
+Some Document **properties**:
+
+  *  **URL** - read-only location of the document
+  * **title** - contains the document title
+  * **location** - a *location* object that can be assigned in order to change to another document
+
+~~~javascript
+document.location = 'http://www.google.com/';
+~~~
+
+---
+
+# Accessing Elements
+
+The following *document* **methods** can be used to access specific HTML elements:
 
 |||
 |-:|-|
 | Element **getElementById**(id)             | returns the element with the specified id
-| NodeList **getElementsByClassName**(class) | returns all element with the specified class
-| NodeList **getElementsByTagName**(name)    | returns all element with the specified tag name
-| Element **createElement**(name)            | creates a new element.
+| NodeList **getElementsByClassName**(class) | returns all elements with the specified class
+| Element **querySelector**(selector)        | returns the first element selected by the specified CSS selector
+| NodeList **getElementsByTagName**(name)    | returns all elements with the specified tag name
+| NodeList **querySelectorAll**(selector)    | returns all elements selected by the specified CSS selector
 
 ```javascript
-  var menu = document.getElementById("menu");
-  var paragraphs = document.getElementsByTagName("p");  
+let menu = document.getElementById('menu');
+let paragraphs = document.getElementsByTagName('p');  
+let intros = document.querySelectorAll('article p:first-child');  
 ```
-
-Some Document **properties**: **URL**, **title**, **location**
 
 ---
 
@@ -1150,6 +1168,32 @@ Other **methods**: **removeAttribute**, **hasAttribute**
 
 ---
 
+# Creating Elements
+
+The **createElement** method of the *document* object can be used to create new elements:
+
+~~~javascript
+let title = 'Some Title';
+let intro = 'This is a long introduction';
+
+let article = document.createElement('article');
+article.setAttribute('class', 'post');
+article.innerHTML = '<h1>' + title + '</h1><p>' + intro + '</p>';
+
+console.log(article.outerHTML);
+~~~
+
+~~~html
+<article class="post">
+  <h1>Some Title</h1>
+  <p>This is a long introduction</p>
+</article>
+~~~
+
+This **does not insert** the element anywhere in the *document*.
+
+---
+
 # HTML Element
 
 The HTMLElement inherits from the Element object. There are [different](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model#HTML_interfaces)
@@ -1168,17 +1212,7 @@ HTMLElement objects for each HTML element.
 
 # Node
 
-The [Node](https://developer.mozilla.org/en-US/docs/Web/API/Node) object represents a node in the document tree. The Element object inherits from the Node object.
-
-Some common Node **properties**:
-
-|||
-|-:|-|
-| **firstChild** and **lastChild**           | first and last node child of this node.
-| **childNodes**                             | all child nodes as a NodeList.
-| **previousSibling** and **nextSibling**    | previous and next sibling to this node.
-| **parentNode**                             | parent of this node.
-| **nodeType**                               | not all nodes are elements: see [Node type list](https://developer.mozilla.org/en-US/docs/Web/API/Node.nodeType)
+The [Node](https://developer.mozilla.org/en-US/docs/Web/API/Node) object represents a node in the document tree. The *Element* object inherits from the *Node* object.
 
 Some common Node **methods**:
 
@@ -1188,8 +1222,6 @@ Some common Node **methods**:
 | **replaceChild**(new, old)      | replaces a child of this node.
 | **removeChild**(child)            | removes a child from this node.
 | **insertBefore**(new, reference); | inserts a new child before the reference child.
-
-
 
 ---
 
@@ -1212,15 +1244,80 @@ element.remove();                              // removes the menu
 
 ---
 
+# Traversing the DOM tree
+
+The *Node* object has the following properties that can be used to traverse the DOM tree:
+
+|||
+|-:|-|
+| **firstChild** and **lastChild**           | first and last node children of this node.
+| **childNodes**                             | all children nodes as a NodeList.
+| **previousSibling** and **nextSibling**    | previous and next siblings to this node.
+| **parentNode**                             | parent of this node.
+| **nodeType**                               | the type of the node.
+
+We have to be careful as not all nodes are elements (see [node type list](https://developer.mozilla.org/en-US/docs/Web/API/Node.nodeType))
+
+---
+
+# Traversing the DOM tree
+
+Consider the following HTML:
+
+~~~html
+<article id="article">
+  <h1>Title</h1>
+  <p>Some text</p>
+</article>
+~~~
+
+And the following *Javascript*:
+
+~~~javascript
+let article = document.getElementById('article');
+console.log(article.firstChild);                         // #text
+console.log(article.firstChild.textContent);             // '\n '
+console.log(article.firstChild.nextSibling);             // <h1>
+console.log(article.firstChild.nextSibling.textContent); // 'Title'
+~~~
+
+---
+
+# Traversing the DOM tree
+
+To solve this problem, the following properties have been added since *EcmaScript 6*:
+
+|||
+|-:|-|
+| **firstElementChild** and **lastElementChild**        | first and last element children of this node.
+| **children**                                          | all children elements as a NodeList.
+| **previousElementSibling** and **nextElementSibling** | previous and next element siblings to this node.
+
+~~~html
+<article id="article">
+  <h1>Title</h1>
+  <p>Some text</p>
+</article>
+~~~
+
+~~~javascript
+let article = document.getElementById('article');
+console.log(article.firstElementChild);                         // <h1>
+console.log(article.firstElementChild.textContent);             // 'Title'
+~~~
+
+---
+
 # NodeList
 
-* A Node List is an array of elements, like the kind that is returned by the method **document.getElementsByTagName()**.
-* Items in a Node List are accessed by index like in an array:
+* A *NodeList* is an object that behaves like an array of elements.
+* Functions like **document.getElementsByTagName()** return a *NodeList*.
+* Items in a Node List can be accessed by index like in an array:
 
 ```javascript
-  var elements = document.getElementsByTagName("p");
+  let elements = document.getElementsByTagName("p");
   for (let i = 0; i < elements.length; i++) {
-    var element = elements[i];
+    let element = elements[i];
     // do something with the element
   }
 ```
@@ -1268,10 +1365,10 @@ document.getElementById("mybutton").onclick = function(event) { ... };
 On modern browsers, the *Javascript* function **addEventListener** should be used to handle events.
 
 ```javascript
-element.addEventListener(type, listener[, useCapture])
+element.addEventListener(type, listener[, useCapture = false])
 ```
 
-** useCapture**: If true, useCapture indicates that the user wishes to initiate capture. All events of the specified type will be dispatched to the registered
+** useCapture**: If true, all events of the specified type will be dispatched to the registered
 listener before being dispatched to any target beneath it in the DOM tree.
 
 Example:
@@ -1282,8 +1379,8 @@ function handleEvent() {
 }
 
 let menu = document.getElementById("menu");
-menu.addEventListener("click", handleEvent, false);
-menu.addEventListener("click", function(){...}, false);
+menu.addEventListener("click", handleEvent);
+menu.addEventListener("click", function(){...});
 ```
 
 The **this** keyword can be used to access the element where the event was triggered.
@@ -1296,7 +1393,7 @@ A function that handles an event can receive a parameter representing the event 
 
 ```javascript
 function handleEvent(event) {
-  ...
+  event.preventDefault();
 }
 
 let menu = document.getElementById("menu");
@@ -1304,6 +1401,8 @@ menu.addEventListener("click", handleEvent, false);
 ```
 
 Depending on its type, the event can have different properties and methods: [Reference](https://developer.mozilla.org/en/docs/Web/API/Event#DOM_Event_interface)
+
+To make sure that the original behavior is prevented, we can use the [preventDefault](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) and [stopPropagation](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation) methods.
 
 ---
 
@@ -1359,7 +1458,7 @@ request.send();
 
 function updateProgress (event) {
   if (event.lengthComputable)
-    var percentComplete = event.loaded / event.total;
+    let percentComplete = event.loaded / event.total;
 }
 
 function transferComplete(event) {
@@ -1392,10 +1491,3 @@ JSON.parse('null');            // null
 JSON.parse('{"1": 1, "2": 2}') // Object {1: 1, 2: 2}
 JSON.parse(this.responseText)  // The server response
 ```
-
----
-
-template:inverse
-# Wat
-
-[https://www.destroyallsoftware.com/talks/wat](https://www.destroyallsoftware.com/talks/wat)
