@@ -1121,6 +1121,9 @@ Some Document **properties**:
 document.location = 'http://www.google.com/';
 ~~~
 
+There is also another **global** variable that represents the browser called **window**.
+
+
 ---
 
 # Accessing Elements
@@ -1131,8 +1134,8 @@ The following *document* **methods** can be used to access specific HTML element
 |-:|-|
 | Element **getElementById**(id)             | returns the element with the specified id
 | NodeList **getElementsByClassName**(class) | returns all elements with the specified class
-| Element **querySelector**(selector)        | returns the first element selected by the specified CSS selector
 | NodeList **getElementsByTagName**(name)    | returns all elements with the specified tag name
+| Element **querySelector**(selector)        | returns the first element selected by the specified CSS selector
 | NodeList **querySelectorAll**(selector)    | returns all elements selected by the specified CSS selector
 
 ```javascript
@@ -1156,6 +1159,10 @@ Some common Element **properties**:
 | **outerHTML** | The HTML code including this element |
 | **style**    | The CSS style of the element |
 
+---
+
+# Element
+
 Some common Element **methods**:
 
 |||
@@ -1163,6 +1170,13 @@ Some common Element **methods**:
 | String **getAttribute**(name) | get the attribute with the given name (or null).
 | **setAttribute**(name, value) | modifies the attribute with the given name to value.
 | **remove**()                  | removes the element from its parent.
+
+We can also use the same methods we used with the *document* object to access element children:
+
+~~~javascript
+  let article = document.getElementById('top-article');
+  let intro = article.getElementsByTagName('p')[0];
+~~~
 
 Other **methods**: **removeAttribute**, **hasAttribute**
 
@@ -1218,8 +1232,8 @@ Some common Node **methods**:
 
 |||
 |-:|-|
-| **appendChild**(node)           | appends a node to this node.
-| **replaceChild**(new, old)      | replaces a child of this node.
+| **appendChild**(node)             | appends a node to this node.
+| **replaceChild**(new, old)        | replaces a child of this node.
 | **removeChild**(child)            | removes a child from this node.
 | **insertBefore**(new, reference); | inserts a new child before the reference child.
 
@@ -1403,6 +1417,21 @@ menu.addEventListener("click", handleEvent, false);
 Depending on its type, the event can have different properties and methods: [Reference](https://developer.mozilla.org/en/docs/Web/API/Event#DOM_Event_interface)
 
 To make sure that the original behavior is prevented, we can use the [preventDefault](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) and [stopPropagation](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation) methods.
+
+---
+
+# On Load Event
+
+As we want to be sure the DOM is completely loaded before adding events to any elements,
+we normally add any initialization code to the *load* event of the *window* element.
+
+~~~javascript
+window.addEventListener('load', function() {
+  // initialization code goes here.
+});
+~~~
+
+With *EcmaScript 6* and the *defer* attribute, this is no longer necessary.
 
 ---
 
