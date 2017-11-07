@@ -480,7 +480,7 @@ foo();          // undefined 1234 3
 Another way to declare a function is the following:
 
 ~~~javascript
-foo = function() {
+let foo = function() {
   console.log('bar');
 };  // don't forget the semicolon
 ~~~
