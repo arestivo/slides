@@ -496,7 +496,7 @@ function foo() {
 Functions are just another datatype stored in variables. We can even copy them or display them in the console:
 
 ~~~javascript
-bar = foo;
+let bar = foo;
 bar();
 console.log(foo);
 ~~~
