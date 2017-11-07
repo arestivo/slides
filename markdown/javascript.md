@@ -1131,8 +1131,8 @@ The following *document* **methods** can be used to access specific HTML element
 |-:|-|
 | Element **getElementById**(id)             | returns the element with the specified id
 | NodeList **getElementsByClassName**(class) | returns all elements with the specified class
-| Element **querySelector**(selector)        | returns the first element selected by the specified CSS selector
 | NodeList **getElementsByTagName**(name)    | returns all elements with the specified tag name
+| Element **querySelector**(selector)        | returns the first element selected by the specified CSS selector
 | NodeList **querySelectorAll**(selector)    | returns all elements selected by the specified CSS selector
 
 ```javascript
