@@ -1957,7 +1957,9 @@ Another function (*setInterval*) executes executes a function, or specified piec
 
 ~~~javascript
   let counter = 1;
-  let id = window.setInterval(function() {console.log('Yay! ' + counter++)}, 1000);
+  let id = window.setInterval(function() {
+    console.log('Yay! ' + counter++)
+  }, 1000);
 ~~~
 
 The return value is an *id* that can be used to cancel the timer:
