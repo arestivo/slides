@@ -1123,7 +1123,6 @@ document.location = 'http://www.google.com/';
 
 There is also another **global** variable that represents the browser called **window**.
 
-
 ---
 
 # Accessing Elements
@@ -1382,9 +1381,6 @@ On modern browsers, the *Javascript* function **addEventListener** should be use
 element.addEventListener(type, listener[, useCapture = false])
 ```
 
-** useCapture**: If true, all events of the specified type will be dispatched to the registered
-listener before being dispatched to any target beneath it in the DOM tree.
-
 Example:
 
 ```javascript
@@ -1396,8 +1392,6 @@ let menu = document.getElementById("menu");
 menu.addEventListener("click", handleEvent);
 menu.addEventListener("click", function(){...});
 ```
-
-The **this** keyword can be used to access the element where the event was triggered.
 
 ---
 
@@ -1416,7 +1410,76 @@ menu.addEventListener("click", handleEvent, false);
 
 Depending on its type, the event can have different properties and methods: [Reference](https://developer.mozilla.org/en/docs/Web/API/Event#DOM_Event_interface)
 
-To make sure that the original behavior is prevented, we can use the [preventDefault](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) and [stopPropagation](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation) methods.
+To make sure that the original behavior is prevented, we can use the event.[preventDefault](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method.
+
+---
+
+
+# Bubbling
+
+* When an event happens on an element, it first runs the handlers on it, then on its parent, then all the way up on other ancestors.
+* In each step, the handler can know the current target (*event.currentTarget* or *this*) and also the initial target (*event.target*).
+
+.small[
+
+Example where we add some events on all elements and print **this** and **event.target** tag names:
+
+~~~html
+<section> <article> <p>Text</p> </article> </section>
+~~~
+
+~~~javascript
+document.querySelector('section').addEventListener('click', function(event){
+  console.log('Bubble: ' + this.tagName + " - " + event.target.tagName)});
+document.querySelector('article').addEventListener('click', function(event){
+  console.log('Bubble: ' + this.tagName + " - " + event.target.tagName)});
+document.querySelector('p').addEventListener('click', function(event){
+  console.log('Bubble: ' + this.tagName + " - " + event.target.tagName)});
+~~~
+]
+
+.small[
+Clicking on the paragraph:
+~~~html
+P - P
+ARTICLE - P
+SECTION - P
+~~~
+]
+
+To stop bubbling we use the event.[stopPropagation](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation) method.
+
+---
+
+# Capturing
+
+Event processing has two phases:
+  * Capturing: goes down to the element.
+  * Bubbling: the event bubbles up from the element.
+
+Although rarely used, the **useCapture** parameter of the *addEventListener* method, allows us to set the event handler on the capturing phase.
+
+The previous example with some more capture events:
+
+.small[
+~~~javascript
+document.querySelector('section').addEventListener('click', function(event){
+  console.log('Capture: ' + this.tagName + " - " + event.target.tagName)}, true); // notice the true in the end
+document.querySelector('article').addEventListener('click', function(event){
+  console.log('Capture: ' + this.tagName + " - " + event.target.tagName)}, true);
+document.querySelector('p').addEventListener('click', function(event){
+  console.log('Capture: ' + this.tagName + " - " + event.target.tagName)}, true);
+~~~
+
+~~~html
+Capture: SECTION - P
+Capture: ARTICLE - P
+Capture: P - P
+Bubble: P - P
+Bubble: ARTICLE - P
+Bubble: SECTION - P
+~~~
+]
 
 ---
 
