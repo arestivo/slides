@@ -34,6 +34,7 @@ name:index
 1. [Ajax](#ajax)
 1. [Advanced Functions](#advanced-functions)
 1. [Advanced Arrays](#advanced-arrays)
+1. [Timers](#timers)
 1. [jQuery](#jQuery)
 ]
 
@@ -1631,8 +1632,8 @@ template: inverse
 
 # Apply and Call
 
-* The **apply()** method calls a function with a given this value, and arguments provided as an array.
-* The **call()** method calls a function with a given this value and arguments provided individually.
+* The **apply()** method calls a function with a given *this* value, and arguments provided as an array.
+* The **call()** method calls a function with a given *this* value and arguments provided individually.
 
 ~~~javascript
 function foo(bar1, bar2) {
@@ -1684,7 +1685,7 @@ bar(); // 123
 
 # Closures and Events
 
-Closures are the resason code like this works in *Javascript*:
+Closures are the reason code like this works in *Javascript*:
 
 ~~~Javascript
 let paragraphs = document.querySelectorAll('p');
@@ -1694,7 +1695,7 @@ for (let i = 0; i < paragraphs.length; i++)
   });
 ~~~
 
-Several functions where created in this code, and for each one of them, the variable **i** has a different value.
+Several functions were created in this code, and for each one of them, the variable **i** has a different value.
 
 ---
 
@@ -1723,6 +1724,54 @@ We can fix it using *bind*:
 ~~~javascript
 setup() {
   document.querySelector('h1').addEventListener('click', this.bar.bind(this));
+}
+~~~
+
+---
+
+# Partial Functions
+
+Sometimes we might want to do this:
+
+~~~javascript
+document.querySelector('p.blue').addEventListener('click', changeColor('blue'));
+document.querySelector('p.red').addEventListener('click', changeColor('red'));
+
+function changeColor(color) {
+  this.style.color = color;
+}
+~~~
+
+But it obviously doesn't work. A solution would be to create anonymous functions to create a closure:
+
+~~~javascript
+document.querySelector('p.blue').addEventListener('click', function(event) {
+  changeColor('blue', event)}
+);
+document.querySelector('p.red').addEventListener('click', function(event) {
+  changeColor('red', event)}
+);
+
+function changeColor(color, event) {
+  event.target.style.color = color;
+}
+~~~
+
+---
+
+# Partial Functions
+
+Instead we can create partial functions using bind:
+
+~~~javascript
+let blue = document.querySelector('p.blue')
+blue.addEventListener('click', changeColor.bind(blue, 'blue'));
+
+let red = document.querySelector('p.red')
+red.addEventListener('click', changeColor.bind(red, 'red'))
+
+function changeColor(color) {
+  this.style.color = color;
 }
 ~~~
 
@@ -1876,6 +1925,45 @@ let array1 = Array.apply(null, paragraphs);
 let array2 = Array.prototype.slice.call(paragraphs);
 let array3 = [].slice.call(paragraphs);
 let array4 = [...paragraphs]; // the ECMAScript 2015 spread operator
+~~~
+
+---
+
+name:timers
+template: inverse
+#Timers
+
+---
+
+# Set Timeout
+
+The *window* object has a function (*setTimeout*) that sets a timer which executes a function, or specified piece of code, once it expires:
+
+~~~javascript
+  let id = window.setTimeout(function() {alert('Yay!')}, 5000);
+~~~
+
+The return value is an *id* that can be used to cancel the timer:
+
+~~~javascript
+  window.clearTimeout(id);
+~~~
+
+---
+
+# Set Interval
+
+Another function (*setInterval*) executes executes a function, or specified piece of code, with a fixed time delay between each call.
+
+~~~javascript
+  let counter = 1;
+  let id = window.setInterval(function() {console.log('Yay! ' + counter++)}, 1000);
+~~~
+
+The return value is an *id* that can be used to cancel the timer:
+
+~~~javascript
+  window.clearTimeout(id);
 ~~~
 
 ---
