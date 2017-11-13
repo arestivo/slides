@@ -899,8 +899,8 @@ john.print(); // John is a Builder
 
 # Classes
 
-* The *class* keyword is just syntactic sugar for prototype-based classes.
-* Classes can only have method and getters/setters.
+* The *class* keyword is just *syntactic sugar* for prototype-based classes.
+* Classes can only have methods and getters/setters.
 
 ```javascript
 class Person {
@@ -1453,6 +1453,10 @@ template: inverse
 
 XMLHttpRequest makes sending HTTP requests very easy.
 
+  * Method: **get** or **post**.
+  * Url: The URL to fetch.
+  * Async: if false, execution will stop while waiting for response.
+
 ```javascript
 void open(method, url, async);
 ```
@@ -1474,13 +1478,14 @@ request.send();
 
 # Monitoring Progress
 
+.small[
 ```javascript
 let request = new XMLHttpRequest();
 
-request.addEventListener("progress", updateProgress, false);
-request.addEventListener("load", transferComplete, false);
-request.addEventListener("error", transferFailed, false);
-request.addEventListener("abort", transferCanceled, false);
+request.addEventListener("progress", updateProgress);
+request.addEventListener("load", transferComplete);
+request.addEventListener("error", transferFailed);
+request.addEventListener("abort", transferCanceled);
 
 request.open("get", "getdata.php", true);
 request.send();
@@ -1502,6 +1507,36 @@ function transferCanceled(event) {
   alert("The transfer has been canceled by the user.");
 }
 ```
+]
+
+---
+
+# Sending data
+
+To send data to the server, we first must encode it properly:
+
+~~~javascript
+function encodeForAjax(data) {
+  return Object.keys(data).map(function(k){
+    return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+  }).join('&');
+}
+~~~
+
+Sending it using **get**:
+
+~~~javascript
+request.open("get", "getdata.php?" + encodeForAjax({id: 1, name: 'John'}), true);
+request.send();
+~~~
+
+Sending it using **post**:
+
+~~~javascript
+request.open("post", "getdata.php", true);
+request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+request.send(encodeForAjax({id: 1, name: 'John'}));
+~~~
 
 ---
 
