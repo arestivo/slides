@@ -1965,7 +1965,7 @@ Another function (*setInterval*) executes executes a function, or specified piec
 The return value is an *id* that can be used to cancel the timer:
 
 ~~~javascript
-  window.clearTimeout(id);
+  window.clearInterval(id);
 ~~~
 
 ---
