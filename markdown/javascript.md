@@ -32,7 +32,7 @@ name:index
 1. [Exceptions](#exceptions)
 1. [DOM](#dom)
 1. [Ajax](#ajax)
-
+1. [Advanced Functions](#advanced-functions)
 ]
 
 ---
@@ -1618,3 +1618,110 @@ JSON.parse('null');            // null
 JSON.parse('{"1": 1, "2": 2}') // Object {1: 1, 2: 2}
 JSON.parse(this.responseText)  // The server response
 ```
+
+---
+
+name:advanced-functions
+template: inverse
+#Advanced Functions
+
+---
+
+# Apply and Call
+
+* The **apply()** method calls a function with a given this value, and arguments provided as an array.
+* The **call()** method calls a function with a given this value and arguments provided individually.
+
+~~~javascript
+function foo(bar1, bar2) {
+  console.log(this);
+  console.log(bar1);
+  console.log(bar2);
+}
+
+foo.apply('hello', ['john', 123] ); //hello john 123
+foo.call('hello', 'john', 123); //hello john 123
+~~~
+
+---
+
+# Bind
+
+The *bind()* method is similar to *call()* but returns a new function where *this* and any of the initial parameters are set to the provided values.
+
+~~~javascript
+function foo(bar1, bar2) {
+  console.log(this);
+  console.log(bar1);
+  console.log(bar2);
+}
+
+let foo2 = foo.bind('hello', 'john');
+foo2(123); //hello john 123
+~~~
+
+---
+
+# Closures
+
+A closure is the combination of a function and the lexical environment within which that function was declared.
+
+~~~javascript
+function foo() {
+  let number = 123;
+  return function bar() {
+    console.log(number);
+  }
+}
+
+bar = foo();
+bar(); // 123
+~~~
+
+---
+
+# Closures and Events
+
+Closures are the resason code like this works in *Javascript*:
+
+~~~Javascript
+let paragraphs = document.querySelectorAll('p');
+for (let i = 0; i < paragraphs.length; i++)
+  paragraphs[i].addEventListener('click', function() {
+      console.log('I am paragraph #' + i);
+  });
+~~~
+
+Several functions where created in this code, and for each one of them, the variable **i** has a different value.
+
+---
+
+# Bind and Events
+
+Sometimes we lose our *this*:
+
+~~~javascript
+class Foo {
+    setup() {
+      document.querySelector('h1').addEventListener('click', this.bar);
+    }
+
+    bar(event) {
+      console.log(this);         // the h1 element (we wanted the object)
+      console.log(event.target); // the h1 element
+    }
+}
+
+let foo = new Foo();
+foo.setup();
+~~~
+
+We can fix it using *bind*:
+
+~~~javascript
+setup() {
+  document.querySelector('h1').addEventListener('click', this.bar.bind(this));
+}
+~~~
+
+---
