@@ -33,6 +33,8 @@ name:index
 1. [DOM](#dom)
 1. [Ajax](#ajax)
 1. [Advanced Functions](#advanced-functions)
+1. [Advanced Arrays](#advanced-arrays)
+1. [jQuery](#jQuery)
 ]
 
 ---
@@ -1725,3 +1727,230 @@ setup() {
 ~~~
 
 ---
+
+name:advanced-arrays
+template: inverse
+#Advanced Arrays
+
+
+---
+
+# forEach
+
+The *forEach()* method executes a provided function once for each array element.
+
+~~~javascript
+let numbers = [4, 8, 15, 16, 23, 42];
+numbers.forEach(function(value, index){
+    console.log('Element #' + index + ' is ' + value);
+});
+~~~
+
+The result would be:
+
+~~~html
+Element #0 is 4
+Element #1 is 8
+Element #2 is 15
+Element #3 is 16
+Element #4 is 23
+Element #5 is 42
+~~~
+
+---
+
+# Filter
+
+The *filter()* method creates a new array with all elements that pass the test implemented by the provided function.
+
+~~~javascript
+let numbers = [4, 8, 15, 16, 23, 42];
+let even = numbers.filter(function(n) {return n % 2 == 0});
+console.log(even); // [ 4, 8, 16, 42 ]
+~~~
+
+Or using arrow functions:
+
+~~~javascript
+let numbers = [4, 8, 15, 16, 23, 42];
+let even = numbers.filter(n => n % 2 == 0);
+console.log(even); // [ 4, 8, 16, 42 ]
+~~~
+
+The alternative would be:
+
+~~~javascript
+let numbers = [4, 8, 15, 16, 23, 42];
+let even = [];
+for (let i = 0; i < numbers.length; i++)
+  if (numbers[i] % 2 == 0) even.push(numbers[i]);
+console.log(even); // [ 4, 8, 16, 42 ]
+~~~
+
+---
+
+# Map
+
+The *map()* method creates a new array with the results of calling a provided function on every element in the calling array.
+
+~~~javascript
+let numbers = [4, 8, 15, 16, 23, 42];
+var doubled = numbers.map(function(n) {return n * 2});
+console.log(doubled); // 8, 16, 30, 32, 46, 84
+~~~
+
+Or using arrow functions:
+
+~~~javascript
+let numbers = [4, 8, 15, 16, 23, 42];
+let doubled = numbers.map(n => n * 2);
+console.log(doubled); // 8, 16, 30, 32, 46, 84
+~~~
+
+---
+
+# Generic use of map
+
+The *map()* method can be used on other types of *array like* objects:
+
+~~~javascript
+var ascii = Array.prototype.map.call('John', function(letter) {
+  return letter.charCodeAt(0);
+});
+console.log(ascii); // 74, 111, 104, 110
+~~~
+
+Simpler:
+
+~~~javascript
+var ascii = [].map.call('John', function(letter) {
+  return letter.charCodeAt(0);
+});
+console.log(ascii); // 74, 111, 104, 110
+~~~
+
+A more useful example:
+
+~~~javascript
+var inputs = document.querySelectorAll('input[type=number]');
+var values = [].map.call(inputs, function(input) {
+  return input.value;
+});
+console.log(values); // an array with all the number input values
+~~~
+
+---
+
+# Reduce
+
+The *reduce()* method applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value.
+
+~~~javascript
+let numbers = [4, 8, 15, 16, 23, 42];
+let total = numbers.reduce(function(current, number) {
+  return current + number;
+});
+console.log(total); // 108
+~~~
+
+Or with arrow functions:
+
+~~~javascript
+[4, 8, 15, 16, 23, 42].reduce( (c, n) => c + n ); // 108
+~~~
+
+---
+
+# Objects to Arrays
+
+Sometimes we need to convert an *array like* object (like *NodeList*) to a true array so that we can use these awesome new array functions.
+
+~~~javascript
+let paragraphs = document.querySelectorAll('p');
+~~~
+
+There are several ways to achieve this:
+
+~~~javascript
+let array1 = Array.apply(null, paragraphs);
+let array2 = Array.prototype.slice.call(paragraphs);
+let array3 = [].slice.call(paragraphs);
+let array4 = [...paragraphs]; // the ECMAScript 2015 spread operator
+~~~
+
+---
+
+name:jquery
+template: inverse
+#jQuery
+
+---
+
+# jQuery
+
+**jQuery** is a *Javascript* library that solves several different problems:
+
+  * Inadequacy of the *Javscript* DOM.
+  * Browser compatibility issues.
+  * Verbosity of some *Javascript* commands.
+
+Most of these have been mitigated by recent advances in the *Javascript* standard.
+
+---
+
+# How it works
+
+* *jQuery* defines a function/object called *$* (yes, the dollar sign).
+* This function is responsible for selecting and filtering elements, traversing and modifying the DOM, ...
+* Elements selected are returned nested inside a *$* object making it harder to mix *jQuery* with plain *Javascript* code.
+
+Example:
+
+~~~javascript
+$('p').click(function() {
+  console.log($(this).text());
+});
+~~~
+
+In plain Javascript this would be:
+
+~~~javascript
+let paragraphs = document.querySelectorAll('p');
+for (let i = 0; i < paragraphs.length; i++)
+  paragraphs[i].addEventListener('click', function(){
+    console.log(this.textContent);    
+  });
+~~~
+
+---
+
+# Drawbacks
+
+  * *jQuery* is big (85Kb minified).
+  * *jQuery* is slow (mainly due to having to maintain compatibility with older browsers).
+  * You end up being trapped into the *jQuery* ecosystem.
+
+---
+
+# Alternatives
+
+Roll your own:
+
+~~~javascript
+function $(selector) {
+  return document.querySelectorAll(selector);
+}
+
+NodeList.prototype.css = function(property, value) {
+  [].forEach.call(this, function(element) {
+    element.style[property] = value;
+  });
+  return this;
+}
+
+$('p').css('color', 'red').css('background-color', 'blue');
+~~~
+
+Smaller and simpler alternatives like: http://zeptojs.com/ (25Kb)
+
+Just use plain Javascript: https://plainjs.com/
