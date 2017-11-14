@@ -817,7 +817,7 @@ function Person(name) {
 }
 
 let john = new Person("John Doe");
-Person.age = 45;                    // Only changes the Person object
+Person.age = 45;                    // Only changes the Person function/object
                                     // not its prototype.
 let jane = new Person("Jane Doe");
 console.log(jane.age);              // undefined
