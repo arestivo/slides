@@ -761,26 +761,6 @@ console.log(person.fullName)   // John Doe
 
 ---
 
-# Constructor functions
-Person
-Functions can be used to create new objects using the **new** keyword.
-
-```javascript
-function Person (name, age, car) {
-  this.name = name;
-  this.age = age;
-  this.car = car;
-  this.print = function() {
-    console.log(this.name + " is " + this.age + " years old!");
-  }
-}
-
-let john = new Person("John Doe", 45, {make: "Honda", model: "Civic"});
-person.print(); // John Doe is 45 years old!
-```
-
----
-
 # Functions are objects
 
 When a function is created using the **function** keyword we are really defining an object.
@@ -801,6 +781,26 @@ sayHello.goodBye = function() {
 
 sayHello();                                   //Hello
 sayHello.goodBye();                           //Goodbye
+```
+
+---
+
+# Constructor functions
+
+Functions can be used to create new objects using the **new** keyword.
+
+```javascript
+function Person (name, age, car) {
+  this.name = name;
+  this.age = age;
+  this.car = car;
+  this.print = function() {
+    console.log(this.name + " is " + this.age + " years old!");
+  }
+}
+
+let john = new Person("John Doe", 45, {make: "Honda", model: "Civic"});
+person.print(); // John Doe is 45 years old!
 ```
 
 ---
