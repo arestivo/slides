@@ -825,7 +825,7 @@ console.log(jane.age);              // undefined
 Person.prototype.age = 45;          // Changes the prototype.
 let mary = new Person("Mary Doe");  // All objects constructed using the
 console.log(mary.age); //45         // person constructor now have an age.
-console.log(john.age); //45         // Even if created before the change.
+console.log(jane.age); //45         // Even if created before the change.
 ```
 
 ---
