@@ -808,7 +808,7 @@ person.print(); // John Doe is 45 years old!
 # Prototype
 
 * Each *Javascript* function has an internal **prototype** property that is initialized as a nearly empty object.
-* When the **new** operator is used on a constructor function, a new object is created. The function is then executed having the new object as its context.
+* When the **new** operator is used on a constructor function, a new object derived from its prototype is created. The function is then executed having the new object as its context.
 * We can change the prototype of a function by changing the **prototype property** directly.
 
 ```javascript
