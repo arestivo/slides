@@ -59,7 +59,9 @@ name:intro
 * **1992-96** HTTP/1.0 - Files of different types. HEAD and POST.
 * **1995-97** HTTP/1.1 - Reuse connections. Host header.
 
-Since then, the HTTP protocol evolved by adding new headers.
+Since then, the **HTTP 1.1** protocol evolved by adding new headers.
+
+* **2014-15/** HTTP/2.0 - A major revision of the HTTP network protocol.
 
 ---
 
