@@ -233,6 +233,8 @@ Content-Type: application/x-www-form-urlencoded
 name=John%20Doe&username=johndoe
 ```
 
+HTTP 1.1 **requires** the Host field.
+
 ---
 
 template: inverse
@@ -245,7 +247,7 @@ name: methods
 # Methods
 
 * The request method indicates the action to be performed by the server.
-* The HTTP/1.1 standard defines **seven** methods.
+* The HTTP/1.1 standard defines **nine** methods.
 * Other standards can add extra methods.
 
 ---
@@ -277,7 +279,7 @@ These methods are optional.
 # Other Methods
 
 * **POST**: used to trigger an action on the server. It has side-effects and can be used to modify a database.
-* **OPTIONS** and **TRACE**.
+* **OPTIONS**, **TRACE**, **CONNECT** and **PATCH**.
 
 These methods are optional.
 
@@ -461,6 +463,8 @@ User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/21.0
 * **Last-Modified**	The last modified date for the requested object.
 * **Location**	Used in redirection, or when a new resource has been created.
 * **Set-Cookie**	An HTTP cookie.
+
+> The Multipurpose Internet Mail Extensions (MIME) type is a standardized way to indicate the nature and format of a document. 
 
 ---
 
