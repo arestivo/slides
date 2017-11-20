@@ -77,7 +77,7 @@ name: urls
 **U**niform **R**esource **I**dentifier
 
 * An identifier is an object that can act as a **reference** to something that has **identity**.
-* In the case of URI, the object is a sequence of characters with a restricted **syntax** [RFC3986](http://tools.ietf.org/html/rfc3986).
+* In the case of a URI, the object is a sequence of characters with a restricted **syntax** [RFC3986](http://tools.ietf.org/html/rfc3986).
 * A URI can be further classified as a locator (**URL**), a name (**URN**), or both.
 
 ![](../assets/http/uri.png)
