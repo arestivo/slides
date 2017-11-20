@@ -79,6 +79,7 @@ name: urls
 * An identifier is an object that can act as a **reference** to something that has **identity**.
 * In the case of a URI, the object is a sequence of characters with a restricted **syntax** [RFC3986](http://tools.ietf.org/html/rfc3986).
 * A URI can be further classified as a locator (**URL**), a name (**URN**), or both.
+* URI components: scheme, authority, path, query, fragment
 
 ![](../assets/http/uri.png)
 
@@ -88,6 +89,9 @@ name: urls
 
 **U**niform **R**esource **N**ames are intended to serve as **persistent**, **location-independent**,
 resource **identifiers** [RFC2141](http://tools.ietf.org/html/rfc2141).
+
+![](../assets/http/urn.png)
+Source: RFC3986
 
 ---
 
@@ -99,7 +103,7 @@ URL refers to the **subset** of URI that identify resources via a representation
 their primary access mechanism (e.g., their network *location*), rather than
 identifying the resource by name or by some other attribute(s) of that resource.
 
-> A Uniform Resource Name (URN) functions like a person’s name, while a Uniform Resource Locator (URL) resembles that person’s street address.
+A Uniform Resource Name (URN) functions like a person’s **name**, while a Uniform Resource Locator (URL) resembles that person’s unique **address**.
 
 ---
 
@@ -138,6 +142,14 @@ Every HTTP URL consists of the following, in the given order:
 * The **default port** for an HTTP server on a computer is port **80**.
 * Others are also normally used: 8080, 8000.
 * The port number can be **omitted** from the URL if it is the default one.
+
+---
+
+# Path
+
+* The full path of the resource.
+* A sequence of segments separated by slashes.
+* **May** resemble or map exactly to a file system path but not necessarly.
 
 ---
 
