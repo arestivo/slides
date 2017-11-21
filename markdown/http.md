@@ -135,6 +135,18 @@ Every HTTP URL consists of the following, in the given order:
 * For HTTP connections the scheme name can be either **http** or **https**.
 * **H**yper**t**ext **T**ransfer **P**rotocol **S**ecure (HTTPS) is just HTTP on top of the **SSL/TLS** protocol.
 
+.box_info[http://]
+
+---
+
+# Hostname
+
+* The hostname as either a registered name or an IP address.
+
+.box_info[www.google.com]
+
+.box_info[127.0.0.1]
+
 ---
 
 # Port
@@ -143,6 +155,8 @@ Every HTTP URL consists of the following, in the given order:
 * Others are also normally used: 8080, 8000.
 * The port number can be **omitted** from the URL if it is the default one.
 
+.box_info[:80]
+
 ---
 
 # Path
@@ -150,6 +164,8 @@ Every HTTP URL consists of the following, in the given order:
 * The full path of the resource.
 * A sequence of segments separated by slashes.
 * **May** resemble or map exactly to a file system path but not necessarly.
+
+.box_info[/somewhere/on/this/server.php]
 
 ---
 
@@ -168,6 +184,8 @@ For example:
 
 * The fragment identifier, if present, specifies a **part** or a **position** within the overall resource or document.
 * If used with HTML, represents an element in the page identified by its **id**.
+
+.box_info[\#content]
 
 ---
 
@@ -383,6 +401,15 @@ name: codes
 
 # Some Response Codes
 
+* **418 I'm a teapot** - "Any attempt to brew coffee with a teapot should result in the error
+   code "418 I'm a teapot". The resulting entity body MAY be short and stout." -- [RFC2324](https://tools.ietf.org/html/rfc2324)
+
+<img src="../assets/http/teapot.svg" style="width:30%; border: none">
+
+---
+
+# Some Response Codes
+
 ## Server Error
 
 * **500 Internal Server Error** - The server encountered an unexpected condition which prevented it from fulfilling the request.
@@ -464,7 +491,7 @@ User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/21.0
 * **Location**	Used in redirection, or when a new resource has been created.
 * **Set-Cookie**	An HTTP cookie.
 
-> The Multipurpose Internet Mail Extensions (MIME) type is a standardized way to indicate the nature and format of a document. 
+> The Multipurpose Internet Mail Extensions (MIME) type is a standardized way to indicate the nature and format of a document.
 
 ---
 
@@ -584,6 +611,14 @@ Accept: text/html
 
 ---
 
+# Scenarios
+
+.smaller[
+![](../assets/http/rest.svg)
+]
+
+---
+
 template: inverse
 name: php
 # PHP and HTTP
@@ -599,6 +634,18 @@ header('Location: somewhere_else.php');
 ```
 
 Just be careful to do it before outputting any data.
+
+To send HTTP response codes:
+
+```php
+header('HTTP/1.0 404 Nothing to see here');
+```
+
+Or:
+
+```php
+http_response_code(418);
+```
 
 ---
 
