@@ -70,7 +70,24 @@ Reference: [Open Web Application Security Project](https://www.owasp.org/)
 * Using Components with Known Vulnerabilities
 * Unvalidated Redirects and Forwards
 
-[OWASP Top 10](https://www.owasp.org/index.php/Top_10_2013-Table_of_Contents)
+[OWASP Top 10 - 2013](https://www.owasp.org/index.php/Top_10_2013-Table_of_Contents)
+
+---
+
+# OWASP Top 10 (2017)
+
+* Injection
+* Broken Authentication
+* Sensitive Data Exposure
+* XML External Entities
+* Broken Access Control
+* Security Misconfiguration
+* Cross-Site Scripting (XSS)
+* Insecure Deserialization
+* Using Components with Known Vulnerabilities
+* Insufficient Logging & Monitoring
+
+[OWASP Top 10 - 2017](https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf)
 
 ---
 
@@ -529,6 +546,10 @@ name:maninthemiddle
 * Using different techniques, the attacker **splits** the original TCP connection into 2 new connections, one between the client and the attacker and the other between the attacker and the server
 * Once the TCP connection is intercepted, the attacker acts as a proxy, being able to read, insert and modify the data in the intercepted communication.
 
+.smaller[
+  ![](../assets/security/maninthemiddle.png)
+]
+
 ---
 
 # Public-key Cryptography
@@ -537,23 +558,67 @@ Also known as **asymmetric** cryptography, is a class of cryptographic algorithm
 
 * If the sender **signs** a message with his private key, any receiver can **verify** that the message was sent by him.
 * If a sender **encrypts** a message with a public key, **only** receiver having the private key can read that message.
+* Let's see how this works without going to deep into the [math](https://www.onebigfluke.com/2013/11/public-key-crypto-math-explained.html) behind it.
 
 ---
 
-# Preventing
+# Public-key Cryptography
 
-* Using encryption is **not enough** because every encryption method requires an additional exchange or transmission of information over a secure channel.
+.smaller[
+  ![](../assets/security/publickey.png)
+]
+
+---
+
+# Man in the Middle (again)
+
+* Using encryption is **not enough** because every encryption method requires an additional exchange or transmission of information over a secure channel (e.g. the public key).
+
+.smaller[
+  ![](../assets/security/maninthemiddle2.png)
+]
+
 * The solution is to use public keys that have been signed by a **certificate authority** (CA).
 
 ---
 
+# Digital Signature
+
+* Digital signatures are a scheme that allows the demonstration of a message's authenticity.
+* For efficiency reasons, normally only a hash of the original message is signed.
+
+.smaller[
+  ![](../assets/security/signature.png)
+]
+
+---
+
 # Certificates
+
+* Certificates are small data files that digitally bind a cryptographic key to an organization.
+* By signing a certificate, a Certificate Authority (CA) states that it verified the organization's information.
+
+.smaller[
+  ![](../assets/security/certificate.png)
+]
+
+---
+
+# Certificate Authority
 
 * Web browsers **trust** https websites based on CAs that come **pre-installed** (Verisign/Comodo/Microsoft/...).
 * The user trusts the CA to **vouch** only for **legitimate websites**.
 * The website **provides** a **valid** certificate, which means it was signed by a trusted authority.
 * The certificate **correctly identifies** the website.
 * The user trusts that the protocol's encryption layer (TLS/SSL) is sufficiently **secure** against eavesdroppers.
+
+---
+
+# Chain of Thrust
+
+.smaller[
+  ![](../assets/security/authorities.png)
+]
 
 ---
 
