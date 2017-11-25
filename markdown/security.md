@@ -557,8 +557,8 @@ name:maninthemiddle
 Also known as **asymmetric** cryptography, is a class of cryptographic algorithms which requires two separate keys, one of which is private and one of which is public.
 
 * If the sender **signs** a message with his private key, any receiver can **verify** that the message was sent by him.
-* If a sender **encrypts** a message with a public key, **only** receiver having the private key can read that message.
-* Let's see how this works without going to deep into the [math](https://www.onebigfluke.com/2013/11/public-key-crypto-math-explained.html) behind it.
+* If a sender **encrypts** a message with a public key, **only** the receiver having the private key can read that message.
+* Let's see how this works without going too deep into the [math](https://www.onebigfluke.com/2013/11/public-key-crypto-math-explained.html) behind it.
 
 ---
 
@@ -606,7 +606,7 @@ Also known as **asymmetric** cryptography, is a class of cryptographic algorithm
 
 # Certificate Authority
 
-* Web browsers **trust** https websites based on CAs that come **pre-installed** (Verisign/Comodo/Microsoft/...).
+* Web browsers **trust** websites based on CAs that come **pre-installed** (Verisign/Comodo/Microsoft/...).
 * The user trusts the CA to **vouch** only for **legitimate websites**.
 * The website **provides** a **valid** certificate, which means it was signed by a trusted authority.
 * The certificate **correctly identifies** the website.
@@ -618,6 +618,18 @@ Also known as **asymmetric** cryptography, is a class of cryptographic algorithm
 
 .smaller[
   ![](../assets/security/authorities.png)
+]
+
+---
+
+# HTTPS
+
+* **H**yper**t**ext **T**ransfer **P**rotocol **S**ecure (HTTPS) is just HTTP on top of the **SSL/TLS** protocol.
+* The browser uses the pre-installed CAs certificates to verify the authenticity of the server's public key.
+* Public key cryptography is used only initially to exchange a symmetric key to be used for communicating.
+
+.smaller[
+  ![](../assets/security/https.png)
 ]
 
 ---
