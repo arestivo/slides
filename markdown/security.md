@@ -655,7 +655,7 @@ Passwords have to be sent from the browser to the server. But they should **neve
 In the case of a database breach, having passwords stored in **clear text**, allows the attacker to have **instant** access to **all** user passwords.
 
 * Hash algorithms are one way functions. They turn any amount of data into a **fixed-length** *fingerprint* that **cannot** be reversed.
-* Small changes in the original text originate completly different hashes.
+* Small changes in the original text originate completely different hashes.
 
 ---
 
