@@ -94,7 +94,7 @@ Reference: [Open Web Application Security Project](https://www.owasp.org/)
 # Security Impact
 
 * Financial losses
-* Intelectual property theft
+* Intellectual property theft
 * Brand reputation compromise
 * Fraud
 * Legal exposure
@@ -176,7 +176,7 @@ SQL injection attacks allow attackers to:
 
 ```php
 // $username has the name of the logged in user
-$conn->query("SELECT * FROM items WHERE owner = '" . $username . "'");
+$dbh->query("SELECT * FROM items WHERE owner = '" . $username . "'");
 ```
 
 Create account with username: "johndoe' OR 1 = 1--"
@@ -191,7 +191,7 @@ SELECT * FROM items WHERE owner = 'johndoe' OR 1 = 1--'
 
 ```php
 // verifies if username and password are correct
-$conn->query("SELECT * FROM users WHERE " .
+$dbh->query("SELECT * FROM users WHERE " .
       "username = '" . $username . "' AND password ='" . $password . "'");
 ```
 
@@ -211,7 +211,7 @@ SELECT * users WHERE username = 'johndoe' AND password = '' OR 1 = 1; --'
 
 ```php
 // searches for specific item
-$conn->query("SELECT * FROM items WHERE title = '" . $title . "'");
+$dbh->query("SELECT * FROM items WHERE title = '" . $title . "'");
 ```
 
 Navigate to URL:
@@ -249,7 +249,7 @@ SELECT * FROM items WHERE title = ''; INSERT INTO users VALUES
 * Escaping all User Supplied Input
 
 ```php
-$stmt = $conn->prepare('SELECT * FROM items WHERE title = ?');
+$stmt = $dbh->prepare('SELECT * FROM items WHERE title = ?');
 $stmt->execute(array($title));
 $items = $stmt->fetchAll();
 ```
@@ -305,14 +305,14 @@ Cross-Site Scripting (XSS) attacks are a type of **injection**, in which **malic
 
 ```php
 <?php
-  $stmt = $conn->prepare("INSERT INTO comment VALUES (DEFAULT, ?, ?, ?)");
+  $stmt = $dbh->prepare("INSERT INTO comment VALUES (DEFAULT, ?, ?, ?)");
   $stmt->execute(array($_POST['post_id'], $_POST['text'], $_SESSION['username']));
 ?>
 ```
 
 ```php
 <?php
-  $stmt = $conn->prepare("SELECT * FROM comment WHERE post_id = ?");
+  $stmt = $dbh->prepare("SELECT * FROM comment WHERE post_id = ?");
   $stmt->execute(array($_POST['post_id']));
   $comments = $stmt->fetchAll();
 
@@ -693,7 +693,7 @@ In the case of a database breach, having passwords stored in **clear text**, all
 * **Dictionary Attack** - Try every password and variants from a file. These files come from dictionaries and real password databases.
 * **Lookup Tables** - Pre-compute the hashes of the passwords in a password dictionary.
 * **Reverse Lookup Tables** - Start by creating a lookup table of hashes in the database. Effective because many users use the same password.
-* **Rainbow Tables** - Rainbow tables are a time-memory trade-off technique. Slower but can store more hashes. [Examples](https://www.freerainbowtables.com/en/tables2/)
+* **Rainbow Tables** - Rainbow tables are a time-memory trade-off technique. Slower but can store more hashes. [Examples](http://project-rainbowcrack.com/table.htm)
 
 ---
 
