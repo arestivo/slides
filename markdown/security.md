@@ -273,8 +273,9 @@ name: lockout
 
 # Preventing
 
-* Implement more intelligent password throttling mechanisms such as those which take **IP address** into account, in addition to the login name.
+* Implement more intelligent account lockout mechanisms such as those which take **IP address** into account, in addition to the login name.
 * Consider **alternatives** to account lockout that would still be effective against password brute force attacks, such as presenting the user machine with a puzzle to solve.
+* Consider using exponential back-off to increase the time between consecutive login attempts.
 
 ---
 
@@ -616,6 +617,9 @@ Also known as **asymmetric** cryptography, is a class of cryptographic algorithm
 
 # Chain of Thrust
 
+* A certificate chain is an ordered list of certificates, with each one certifying the next until a root certificate is reached.
+* This allows browsers to only pre-install a few root certificates.
+
 .smaller[
   ![](../assets/security/authorities.png)
 ]
@@ -736,7 +740,7 @@ Double hashing passwords, sometimes with different hashing algorithms, can make 
 
 # Secret Key
 
-* By adding a **secret fixed key** to all passwords we prevent an attacker that only gained access to the database to even try to crack the passwords.
+* By adding a **secret fixed key** to all passwords, we prevent an attacker that only gained access to the database, to even try to crack the passwords.
 * This key has to be **kept secret** from an attacker even in the event of a breach.
 * The key must be stored in an **external system**, such as a physically separate server dedicated to password validation.
 
