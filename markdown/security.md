@@ -348,9 +348,9 @@ http://example.com/search.php?query=<script>alert("hacked")</script>
 ## DOM Based
 
 ```javascript
-var pos=document.URL.indexOf("language=") + 8;
-var language = document.URL.substring(pos,document.URL.length));
-$("#language").html(language);
+let pos = document.URL.indexOf('language=') + 8;
+let language = document.URL.substring(pos,document.URL.length));
+document.getElementById('language').innerHTML = language;
 ```
 
 ```http
@@ -429,7 +429,7 @@ But this is not enough.
 HTML Escape Before Inserting Untrusted Data into HTML Element Content
 
 ```javascript
-var entityMap = {
+let entityMap = {
   "&": "&amp;",
   "<": "&lt;",
   ">": "&gt;",
