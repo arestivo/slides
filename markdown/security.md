@@ -630,7 +630,7 @@ Also known as **asymmetric** cryptography, is a class of cryptographic algorithm
 
 * **H**yper**t**ext **T**ransfer **P**rotocol **S**ecure (HTTPS) is just HTTP on top of the **SSL/TLS** protocol.
 * The browser uses the pre-installed CAs certificates to verify the authenticity of the server's public key.
-* Public key cryptography is used only initially to exchange a symmetric key to be used for communicating.
+* For efficiency reasons, public key cryptography is used to exchange a symmetric key that is used for the rest of the session (SSL handshake).
 
 .smaller[
   ![](../assets/security/https.png)
