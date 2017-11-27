@@ -34,7 +34,6 @@ name:index
 1. [Passwords](#passwordright)
 1. [Session Fixating](#fixating)
 1. [Session Hijacking](#hijacking)
-1. [Sessions in PHP](#sessionphp)
 1. [Denial of Service](#dos)
 ]
 
@@ -392,20 +391,60 @@ if ( !preg_match ("/^[a-zA-Z\s]+$/", $_GET['name'])) {
 }
 ```
 
+## Filter
+
+Or just filter the unexpected characters:
+
+```php
+$name = preg_replace ("/[^a-zA-Z\s]/", '', $_GET['name']);
+```
+
 ---
 
 # Preventing
 
 ## Encode
 
-* **Entity encoding** - Encode special characters as HTML entities:
+When showing untrusted data encode it first using [htmlspecialchars()](http://php.net/manual/en/function.htmlspecialchars.php) or [htmlentities()](http://php.net/manual/en/function.htmlentities.php):
+
+~~~php
+<?=htmlentities($post['text'])?>     // encodes all characters
+<?=htmlspecialchars($post['text'])?> // encodes only special chars
+~~~
+
+So that this:
+
 ```html
-  <script>alert("hacked")</script>
-  &#x3C;script&#x3E;alert(&#x22;hacked&#x22;)&#x3C;/script&#x3E;
+<script>alert("hacked")</script>
 ```
-* **URL encoding** - Encode URLs:
+
+Becomes this:
+
+```html
+&#x3C;script&#x3E;alert(&#x22;hacked&#x22;)&#x3C;/script&#x3E;
+```
+
+---
+
+# Preventing
+
+## Encode
+
+When using untrusted data to create URLs encode it first using [urlencode()](http://php.net/manual/en/function.urlencode.php):
+
+~~~php
+<a href="http://example.com/search.php?q=<?=urlencode($_GET['q'])?>">
+~~~
+
+So that this:
+
 ```http
 http://example.com/search.php?q=<script>alert("h")</script>
+```
+
+Becomes this:
+
+```http
 http://example.com/search.php?q%3D%3Cscript%3Ealert(%22h%22)%3C%2Fscript%3E
 ```
 
@@ -413,14 +452,11 @@ http://example.com/search.php?q%3D%3Cscript%3Ealert(%22h%22)%3C%2Fscript%3E
 
 # Preventing
 
-Some rules for writing untrusted data:
+* To write untrusted data in other locations (attributes, tag names, comments, ...), use a context aware encoder like [PHP-ESAPI](https://github.com/OWASP/PHP-ESAPI).
 
-* **Text** inside **HTML** Body: HTML **entity encoding**
-* **HTML** inside **HTML** Body: **HTML cleaner**
-* Safe HTML **Attributes**: HTML **entity encoding**
-* GET Parameter: **URL encoding**
+* If you want to allow some HTML, [strip_tags()](http://php.net/manual/en/function.strip-tags.php) might not be enough.
 
-But this is not enough.
+* Use a more advanced HTML filter library like [HTML Purifier](http://htmlpurifier.org/).
 
 ---
 
@@ -445,19 +481,28 @@ function escapeHtml(string) {
 }
 ```
 
-Not enough. Use context aware encoders. For example: [OWASP ESAPI for Javascript](https://code.google.com/p/owasp-esapi-js/).
+Not enough in all locations; use context aware encoders. For example: [OWASP ESAPI for Javascript](https://github.com/ESAPI/owasp-esapi-js).
 
 ---
 
-# Preventing in PHP
+# Cookies
 
-* Using [strip_tags](http://php.net/manual/en/function.strip-tags.php) and [htmlentities](http://php.net/manual/en/function.htmlentities.php) is [not enough](http://blog.isis.poly.edu/archive/vulnerabilities/2013/07/03/php-strip_tags-not-a-complete-protection-against-xss-repost-from-archive/).
-* Instead use context aware encoders. For example: [OWASP ESAPI for PHP](http://code.google.com/p/owasp-esapi-php/).
-* If some must be allowed you can use, for example, [HTML purifier](http://htmlpurifier.org/).
+* Preventing all XSS flaws is hard.
+* To mitigate the impact of an XSS flaw on your site, set the *HTTPOnly* flag on your session cookie using [session-set-cookie-params](http://php.net/manual/en/function.session-set-cookie-params.php) before starting your session:
+
+~~~php
+session_set_cookie_params(0, '/', 'www.fe.up.pt', true, true);
+~~~
 
 ---
 
-# Read More
+# XSS Mantra
+
+.center[
+## "Filter input, encode output"
+]
+
+Read more:
 
 * [OWASP XSS Prevention Cheat Sheet](http://goo.gl/rXJXg2)
 * [OWASP DOM Based XSS Prevention Cheat Sheet](https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet)
@@ -482,8 +527,9 @@ http://example.com/transferFunds.php?amount=1500&destination=4673243243
 The attacker constructs a request that will transfer money from the victim’s account to the attacker’s account, and then embeds this attack in an image request stored on various sites under the attacker’s control:
 
 ```html
-<img src="http://example.com/transferFunds.php?amount=1500&destination=4673243243"
-     width="0" height="0" />
+<img
+  src="http://example.com/transferFunds.php?amount=1500&destination=4673243243"
+  width="0" height="0" />
 ```
 
 If the victim visits any of the attacker’s sites while already authenticated to example.com, these forged requests will automatically include the user’s session info, authorizing the attacker’s request.
@@ -511,6 +557,12 @@ These methods **DO NOT WORK**
 ---
 
 # Preventing
+
+~~~php
+function generate_random_token() {
+  return bin2hex(openssl_random_pseudo_bytes(32));
+}
+~~~
 
 ```php
 session_start();
@@ -671,18 +723,16 @@ In the case of a database breach, having passwords stored in **clear text**, all
 * If the hashes **match**, the user is granted **access**. If not, the user is told they entered invalid login credentials.
 
 ```php
-<?php
-  $stmt = $db->prepare(INSERT INTO users VALUES (?, ?))';
-  $stmt->execute(array($username, md5($password)));
+$stmt = $db->prepare(INSERT INTO users VALUES (?, ?))';
+$stmt->execute(array($username, md5($password)));
 ```
 
 ```php
-<?php
-  $stmt = $db->prepare('SELECT * FROM users WHERE username = ? and password = ?');
-  $stmt->execute(array($username, md5($password)));
-  if ($stmt->fetch() !== false) {
-    $_SESSION['username'] = $username;
-  }  
+$stmt = $db->prepare('SELECT * FROM users WHERE username = ? AND password = ?');
+$stmt->execute(array($username, md5($password)));
+if ($stmt->fetch() !== false) {
+  $_SESSION['username'] = $username;
+}  
 ```
 
 ---
@@ -691,8 +741,7 @@ In the case of a database breach, having passwords stored in **clear text**, all
 
 * **Brute Force Attacks** - Try every possible combination of characters up to a given length.
 * **Dictionary Attack** - Try every password and variants from a file. These files come from dictionaries and real password databases.
-* **Lookup Tables** - Pre-compute the hashes of the passwords in a password dictionary.
-* **Reverse Lookup Tables** - Start by creating a lookup table of hashes in the database. Effective because many users use the same password.
+* **Lookup Tables** - Pre-computed tables containing passwords hashes in a password dictionary.
 * **Rainbow Tables** - Rainbow tables are a time-memory trade-off technique. Slower but can store more hashes. [Examples](http://project-rainbowcrack.com/table.htm)
 
 ---
@@ -710,7 +759,7 @@ In the case of a database breach, having passwords stored in **clear text**, all
 
 Using the same salt for every user is ineffective:
 
-* Two users with the **same password** will still have the same hash (**reverse lookup**).
+* Two users with the **same password** will still have the same hash.
 * The attacker can generate a **rainbow table** for that specific salt.
 * Finding the salt is relatively easy (especially if the salt is short).
 
@@ -795,6 +844,10 @@ boolean password_verify ( string $password , string $hash )
 * The **hash** function returns the used algorithm, cost and salt as part of the hash. Therefore, all information that's needed to verify the hash is included in it.
 * This allows the **verify** function to verify the hash without needing separate storage for the salt or algorithm.
 
+.smaller[
+![](../assets/security/password_hash.svg)
+]
+
 ---
 
 # PHP Example
@@ -810,7 +863,7 @@ boolean password_verify ( string $password , string $hash )
 ```
 
 ```php
-<?php
+<?phpsession.use_only_cookies
   $stmt = $db->prepare('SELECT * FROM users WHERE username = ?');
   $stmt->execute(array($username));
   $user = $stmt->fetch();
@@ -867,13 +920,12 @@ Regenerate the session id in each request (or each n requests):
   session_regenerate_id(true);
 ```
 
-Destroy session if referrer is suspicious
+Make sure the following are set in your *php.ini* file (both are the defaults):
 
-```php
-<?php
-  if (strpos($_SERVER['HTTP_REFERER'], 'http://example.com/') !== 0)
-    session_destroy();
-```
+~~~html
+session.use_only_cookies = 1
+session.use_trans_sid = 0
+~~~
 
 ---
 
@@ -895,38 +947,9 @@ Gaining control of the user session by stealing the session id.
 
 # Preventing
 
-* Anti XSS measures
-* HttpOnly flag
-* HTTPS
-
----
-
-template:inverse
-name:sessionphp
-# Sessions in PHP
-
----
-
-# Sessions in PHP
-
-Set the session cookie parameters:
-
-* **Lifetime** - If 0, cookie is destroyed when browser closes. Otherwise the specifies the lifetime of the cookie in seconds.
-* **Path** - Path on the domain where the cookie will work.
-* **Domain** - Domain where the cookie will work (.example.com for all example.com subdomains).
-* **Secure** - If true cookie will only be sent over secure connections.
-* **HTTP Only** - If true the HttpOnly flag is sent to the browser (the cookie cannot be accessed through client side script).
-
-```php
-void session_set_cookie_params ( int $lifetime [, string $path
-[, string $domain [, bool $secure = false [, bool $httponly = false ]]]] )
-```
-
-```php
-session_set_cookie_params (0, '/site_dir/', 'http://www.example.com/, true, true);
-session_start();
-session_regenerate_id(true);
-```
+* Preventing XSS attacks.
+* Setting the HTTPOnly flag in the session cookie.
+* Always using HTTPS.
 
 ---
 
@@ -938,10 +961,9 @@ name: dos
 
 # Denial of Service
 
-Denial-of-service (DoS) or distributed denial-of-service (DDoS) attack is an attempt to make a machine or network resource unavailable to its intended users.
+Denial-of-service (DoS) or distributed denial-of-service (DDoS) attacks are attempts to make a machine or network resource unavailable to its intended users.
 
-There are [many ways](http://en.wikipedia.org/wiki/Denial-of-service_attack#Methods_of_attack) to make a service unavailable for legitimate users by manipulating network packets,
-programming, logical, or resources handling vulnerabilities, among others.
+There are [many ways](http://en.wikipedia.org/wiki/Denial-of-service_attack#Methods_of_attack) to make a service unavailable for legitimate users by manipulating network packets, programming, logical, or resources handling vulnerabilities, among others.
 
 ---
 
