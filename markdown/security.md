@@ -566,14 +566,14 @@ function generate_random_token() {
 
 ```php
 session_start();
-if (!isset($_SESSION['csrf_token'])) {
+if (!isset($_SESSION['csrf'])) {
   $_SESSION['csrf']) = generate_random_token();
 }
 ```
 
 ```php
 <form action="transferfunds.php">
-  <input type="hidden" name="csrf" value="<?=$_SESSION['csrf_token'])?>">
+  <input type="hidden" name="csrf" value="<?=$_SESSION['csrf'])?>">
 </form>
 ```
 
