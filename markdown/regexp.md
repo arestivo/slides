@@ -80,7 +80,8 @@ Used in:
 
 * [Online Regular Expression Tester](http://regex101.com/)
 * [Regular Expressions Tutorial](http://www.regular-expressions.info/tutorial.html)
-* [Regex Golf](https://regex.alf.nu/)
+* [Regex Golf](https://alf.nu/RegexGolf)
+* [Regex Crossword](https://regexcrossword.com/)
 * [Mail RFC822 Regexp](http://ex-parrot.com/~pdw/Mail-RFC822-Address.html)
 
 ---
