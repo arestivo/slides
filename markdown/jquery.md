@@ -101,7 +101,7 @@ template: inverse
 The easiest way to import the jQuery library into an HTML document is to use the jQuery CDN (Content Delivery Network).
 
 ```html
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 ```
 
 Alternatively, you can download the library and include it locally.
