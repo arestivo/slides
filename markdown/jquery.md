@@ -586,6 +586,17 @@ template: inverse
 
 # Ajax
 
+
+* Asynchronous *JavaScript* + *XML*.
+* Not a technology in itself, but a term coined in 2005 by Jesse James Garrett, that describes an approach to using a number of existing technologies: namely the *XMLHttpRequest* object.
+
+
+![](../assets/jquery/ajax.png)
+
+---
+
+# Ajax
+
 There are several functions that make using Ajax in jQuery very easy.
 
 The *ajax()* function is the most configurable one:
