@@ -418,7 +418,7 @@ name:javascript
 
 # XPath in Javascript
 
-The *document.evaluate* function can be used to select elements using XPath expressions.
+The [document.evaluate](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_using_XPath_in_JavaScript) function can be used to select elements using XPath expressions.
 
 This allows us to select nodes that cannot be selected using a single CSS selector.
 
@@ -435,11 +435,60 @@ let iterator = document.evaluate(
 while (true) {
   let node = iterator.iterateNext();
   if (node == null) break;
-  node.style.color = 'red';
+  console.log(node);
 }
 ~~~
 
 For example, the code above selects all *unordered lists* that contain *links*.
+
+---
+
+# Type Result
+
+XPath expressions can result in a variety of result types. Using [XPathResult](https://developer.mozilla.org/en-US/docs/Web/API/XPathResult) we can select which one we want:
+
+.small[
+* **ANY_TYPE** 	- whatever type naturally results from evaluation of the expression
+* **NUMBER_TYPE** - a result containing a single number
+* **STRING_TYPE** - a result containing a single string
+* **BOOLEAN_TYPE** - a result containing a single boolean value
+* **UNORDERED_NODE_ITERATOR_TYPE** 	- an unordered node-set containing all the nodes matching the expression
+* **ORDERED_NODE_ITERATOR_TYPE** 	- an ordered node-set containing all the nodes matching the expression
+* **UNORDERED_NODE_SNAPSHOT_TYPE** 	- an unordered node-set containing snapshots of all the nodes matching the expression
+* **ORDERED_NODE_SNAPSHOT_TYPE** 	- an ordered node-set containing snapshots of all the nodes matching the expression
+* **ANY_UNORDERED_NODE_TYPE** - a result node-set containing any single node that matches the expression
+* **FIRST_ORDERED_NODE_TYPE** - a result node-set containing the first node in the document that matches the expression
+]
+
+
+---
+
+# Helper function
+
+One problem wit using this method is that the nodes cannot be modified as you iterate over the result.
+
+You can use this simple helper function to overcome that problem (or just use *ORDERED_NODE_SNAPSHOT_TYPE*):
+
+~~~javascript
+function getElementsByXPath(xpath, context = document)
+{
+  let nodes = [];
+  let query = document.evaluate(xpath, context,
+      null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
+  for (let i = 0, length=query.snapshotLength; i<length; ++i) {
+    nodes.push(query.snapshotItem(i));
+  }
+  return nodes;
+}
+~~~
+
+Using it:
+
+~~~javascript
+let nodes = getElementsByXPath('//a/ancestor::ul');
+for (let i = 0; i < nodes.length; i++)
+  nodes[i].style.color = 'green';
+~~~
 
 ---
 
