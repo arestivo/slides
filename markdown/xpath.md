@@ -31,6 +31,7 @@ name:index
 1. [Predicates](#predicates)
 1. [Abbreviations](#abbreviations)
 1. [Examples](#examples)
+1. [In Javascript](#javascript)
 1. [Evaluator](#evaluator)
 ]
 
@@ -368,7 +369,7 @@ name:examples
 | **book[1]** | selects the first *book* child of the context node
 | **para[last()]** | selects the last *para* child of the context node
 | ***/para** | selects all *book* grandchildren of the context node
-| **/books/book[2]/authors[1]** | selects the first author of the second book of the root books element 
+| **/books/book[2]/authors[1]** | selects the first author of the second book of the root books element
 
 ---
 
@@ -406,6 +407,39 @@ name:examples
 | **book[title and @lang]** | selects the *book* children of the context node that have both one or more title *children* and an attribute named *lang*
 | **book[not(@lang)]** | selects the *book* children of the context node that do not have an attribute named *lang*
 | **book[count(descendant::author) > 1]** | selects the *book* children of the context node that have more than one descendants *author*
+
+---
+
+template:inverse
+name:javascript
+#XPath in Javascript
+
+---
+
+# XPath in Javascript
+
+The *document.evaluate* function can be used to select elements using XPath expressions.
+
+This allows us to select nodes that cannot be selected using a single CSS selector.
+
+~~~javascript
+iterator = document.evaluate(
+  '//a/ancestor::ul',     // the xpath expression
+  document,               // the context node
+  null,                   // a namespace resolver or null
+  XPathResult.ANY_TYPE,   // the type of result we are looking for
+  null                    // where the result should be stored
+                          // or null to return a new result
+);
+
+while (true) {
+  let node = iterator.iterateNext();
+  if (node == null) break;
+  node.style.color = 'red';
+}
+~~~
+
+For example, this code selects all *unordered lists* that contain *links*.
 
 ---
 
