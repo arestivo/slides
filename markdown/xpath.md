@@ -439,7 +439,7 @@ while (true) {
 }
 ~~~
 
-For example, this code selects all *unordered lists* that contain *links*.
+For example, the code above selects all *unordered lists* that contain *links*.
 
 ---
 
