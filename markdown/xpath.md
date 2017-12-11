@@ -423,7 +423,7 @@ The *document.evaluate* function can be used to select elements using XPath expr
 This allows us to select nodes that cannot be selected using a single CSS selector.
 
 ~~~javascript
-iterator = document.evaluate(
+let iterator = document.evaluate(
   '//a/ancestor::ul',     // the xpath expression
   document,               // the context node
   null,                   // a namespace resolver or null
