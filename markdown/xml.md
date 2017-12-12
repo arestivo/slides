@@ -51,14 +51,14 @@ name:intro
 
 # XML
 
-* E**x**tensible **M**arkup **L**anguage (XML) 
+* E**x**tensible **M**arkup **L**anguage (XML)
 * A **markup language** that defines a set of rules for encoding documents in a
   format which is both human-readable and machine-readable.
 * It is **extensible** because it is not a fixed format like HTML (which is a
   single, predefined markup language).
-* XML is a metalanguage which lets you design your own markup languages for 
+* XML is a metalanguage which lets you design your own markup languages for
   limitless different types of documents.
-  
+
 ---
 
 # SGML
@@ -83,7 +83,6 @@ name:intro
 
 template: inverse
 name: xml
-
 # XML
 
 ---
@@ -104,9 +103,9 @@ Processing instructions allow documents to contain instructions for applications
 
 Since **XML 1.1**, all XML documents must start with a processing instruction (prolog) indicating the XML version. If not, the document is considered to be **XML 1.0**.
 
-```xml
+~~~xml
 <?xml version="1.1" encoding="utf-8"?>
-```
+~~~
 
 The encoding is **utf-8** by default.
 
@@ -114,13 +113,13 @@ The encoding is **utf-8** by default.
 
 # Comments
 
-Comments start with a ```<!--``` and end with ```-->```.
+Comments start with a `<!--` and end with `-->`.
 
-```xml
+~~~xml
 <!-- This is a comment -->
-```
+~~~
 
-Comments cannot contain double hyphens (```--```).
+Comments cannot contain double hyphens (`--`).
 
 ---
 
@@ -128,33 +127,33 @@ Comments cannot contain double hyphens (```--```).
 
 CDATA sections are used to escape blocks of text containing characters which would otherwise be recognized as markup.
 
-They begin with the string ```<![CDATA[``` and end with the string ```]]>```.
+They begin with the string `<![CDATA[` and end with the string `]]>`.
 
-```xml
+~~~xml
 <![CDATA[
   <warning>These tags are not markup</warning>
-]]> 
-```
+]]>
+~~~
 
 ---
 
 # Elements
 
 * Elements are defined by a **start tag** and an **end tag**.
-* All elements **must be closed**. 
+* All elements **must be closed**.
 * All elements opened inside an element must be closed **before** the **parent** element is **closed**.
 * Element names are case sensitive. The element **start tag** must match the element **end tag** case.
-* Empty elements can use a ```/``` in the end instead of a closing tag.
+* Empty elements can use a `/` in the end instead of a closing tag.
 
-```xml
+~~~xml
 <?xml version="1.1"?>
 <message>
 	<to>Mr. John Doe</to>
 	<from>Ms. Jane Doe</from>
 	<text>How are you?</text>
 	<private/> <!-- this is an empty element -->
-</message>	
-```
+</message>
+~~~
 
 ---
 
@@ -164,14 +163,14 @@ They begin with the string ```<![CDATA[``` and end with the string ```]]>```.
 * Attributes only appear in element **start** tags (or empty element tags).
 * Attributes must be single or double **quoted**.
 
-```xml
+~~~xml
 <?xml version="1.1"?>
 <message date="2014-12-03" private="yes">
 	<to>Mr. John Doe</to>
 	<from>Ms. Jane Doe</from>
 	<text>How are you?</text>
-</message>	
-```
+</message>
+~~~
 
 Attributes should be used for **metadata**.
 
@@ -208,11 +207,11 @@ Model that defines the structure of a valid XML document:
 
 **Document Type Declaration** used to associate DTD to XML document:
 
-```xml
+~~~xml
 <?xml version="1.1"?>
 <!DOCTYPE message SYSTEM "message.dtd">
-<message>Hello, world!</message> 
-```
+<message>Hello, world!</message>
+~~~
 
 ---
 
@@ -249,7 +248,7 @@ An alternative to XML Schemas:
 # Example
 ##XML
 
-```xml
+~~~xml
 <addressBook>
   <card>
     <name>John Smith</name>
@@ -260,28 +259,28 @@ An alternative to XML Schemas:
     <email>fb@example.net</email>
   </card>
 </addressBook>
-```
+~~~
 
 ---
 
 # Example
 ## DTD
 
-```xml
+~~~xml
 <!DOCTYPE addressBook [
 <!ELEMENT addressBook (card*)>
 <!ELEMENT card (name, email)>
 <!ELEMENT name (#PCDATA)>
 <!ELEMENT email (#PCDATA)>
 ]>
-```
+~~~
 
 ---
 
 # Example
 ## XSD
 
-```xml
+~~~xml
 <xs:schema elementFormDefault="qualified">
   <xs:element name="addressBook">
     <xs:complexType>
@@ -298,14 +297,14 @@ An alternative to XML Schemas:
     </xs:complexType>
   </xs:element>
 </xs:schema>
-```
+~~~
 
 ---
 
 # Example
 ## Relax NG
 
-```xml
+~~~xml
 <element name="addressBook" xmlns="http://relaxng.org/ns/structure/1.0">
   <zeroOrMore>
     <element name="card">
@@ -318,7 +317,7 @@ An alternative to XML Schemas:
     </element>
   </zeroOrMore>
 </element>
-```
+~~~
 
 ---
 
@@ -330,32 +329,32 @@ name: namespaces
 
 # Motivation
 
-A **single XML** document should be able to contain elements and attributes that are 
+A **single XML** document should be able to contain elements and attributes that are
 defined for and used by **multiple** software modules.
 
 ---
 
 # Binding
 
-* An XML **namespace** is identified by a **URI** reference. 
-* To declare a **default** namespace the attribute ```xmlns``` is used. A default namespace declaration applies to all unprefixed element names within its scope.
-* To declare a **prefixed** namespace an attribute of the form ```xmlns:prefix``` is used. Such a namespace declaration applies to all element and attribute names within its scope whose prefix matches that specified in the declaration.
-* The prefix **xml** is by definition bound to the namespace name ```http://www.w3.org/XML/1998/namespace```.
-* The prefix **xmlns** is used only to declare namespace bindings and is by definition bound to the namespace name ```http://www.w3.org/2000/xmlns/```.
+* An XML **namespace** is identified by a **URI** reference.
+* To declare a **default** namespace the attribute `xmlns` is used. A default namespace declaration applies to all unprefixed element names within its scope.
+* To declare a **prefixed** namespace an attribute of the form `xmlns:prefix` is used. Such a namespace declaration applies to all element and attribute names within its scope whose prefix matches that specified in the declaration.
+* The prefix **xml** is by definition bound to the namespace name `http://www.w3.org/XML/1998/namespace`.
+* The prefix **xmlns** is used only to declare namespace bindings and is by definition bound to the namespace name `http://www.w3.org/2000/xmlns/`.
 
 ---
 
 # Example
 ##Namespace
 
-```xml
+~~~xml
 <?xml version="1.0"?>
 <bk:book xmlns:bk='urn:loc.gov:books'
          xmlns:isbn='urn:ISBN:0-395-36341-6'>
     <bk:title>Cheaper by the Dozen</bk:title>
     <isbn:number>1568491379</isbn:number>
 </bk:book>
-```
+~~~
 
 ---
 
@@ -363,7 +362,7 @@ defined for and used by **multiple** software modules.
 
 The **scope** of a namespace declaration extends from the beginning of the **start-tag** in which it appears to the end of the corresponding **end-tag**.
 
-```xml
+~~~xml
 <?xml version="1.0"?>
 <!-- initially, the default namespace is "books" -->
 <book xmlns='urn:loc.gov:books'
@@ -377,7 +376,7 @@ The **scope** of a namespace declaration extends from the beginning of the **sta
       </p>
     </notes>
 </book>
-```
+~~~
 
 ---
 
@@ -406,7 +405,7 @@ Used in several other technologies like **XSL** and **XSD**.
 
 #XQuery
 
-A **query** and **functional** programming language that is designed to query and transform 
+A **query** and **functional** programming language that is designed to query and transform
 collections of structured and unstructured data, usually in the form of **XML**.
 
 ---
@@ -430,5 +429,3 @@ name: applications
 * SOAP - Simple Object Access Protocol
 * WSDL - Web Service Description Language
 * UDDI - Universal Description Discovery and Integration
-
-
