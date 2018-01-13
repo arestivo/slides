@@ -368,7 +368,7 @@ name:examples
 | **@*** | selects all the attributes of the context node
 | **book[1]** | selects the first *book* child of the context node
 | **para[last()]** | selects the last *para* child of the context node
-| ***/para** | selects all *book* grandchildren of the context node
+| ***/para** | selects all *para* grandchildren of the context node
 | **/books/book[2]/authors[1]** | selects the first author of the second book of the root books element
 
 ---
@@ -391,8 +391,8 @@ name:examples
 
 |||
 |-:|-|
-| **book[@lang="eng"]** | selects all *book* children of the context node that have a *lang* attribute with value *en*
-| **book[@lang="eng"][5]** | selects the fifth *book* child of the context node that has a *lang* attribute with value *en*
+| **book[@lang="en"]** | selects all *book* children of the context node that have a *lang* attribute with value *en*
+| **book[@lang="en"][5]** | selects the fifth *book* child of the context node that has a *lang* attribute with value *en*
 | **book[5][@lang="en"]** | selects the fifth *book* child of the context node if that child has a *lang* attribute with value *en*
 | **book[title="XPath"]** | selects the *book* children of the context node that have one or more title children with string-value equal to *XPath*
 | **book[title]** | selects the *book* children of the context node that have one or more *title* children
@@ -465,7 +465,7 @@ XPath expressions can result in a variety of result types. Using [XPathResult](h
 
 # Helper function
 
-One problem wit using this method is that the nodes cannot be modified as you iterate over the result.
+One problem with using this method is that the nodes cannot be modified as you iterate over the result.
 
 You can use this simple helper function to overcome that problem (or just use *ORDERED_NODE_SNAPSHOT_TYPE*):
 
