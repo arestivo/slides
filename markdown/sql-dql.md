@@ -689,7 +689,7 @@ SELECT * FROM employee;
 
 ```sql
 SELECT * FROM employee JOIN 
-              employee AS supervisor ON employee.sup_id = supervidor.id;
+              employee AS supervisor ON employee.sup_id = supervisor.id;
 ```
 
 .smaller.sqltable[
