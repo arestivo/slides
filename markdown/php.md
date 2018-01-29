@@ -955,8 +955,8 @@ This declaration may include an initialization, but this initialization must be 
 
 ```php
 class Car {
-  private plate = '12-34-AB';
-  private driver = 'John Doe';
+  private $plate = '12-34-AB';
+  private $driver = 'John Doe';
 }
 ```
 
@@ -970,8 +970,8 @@ However, due to the dynamic typed nature of PHP, to access these properties the 
 
 ```php
 class Car {
-  private plate;
-  private driver = 'John Doe';
+  private $plate;
+  private $driver = 'John Doe';
 
   public function getDriver() {
     return $this->driver; // return $driver would have returned null
@@ -1005,8 +1005,8 @@ The constructor method is always called **__construct** and can receive any numb
 
 ```php
 class Car {
-  private plate;
-  private driver;
+  private $plate;
+  private $driver;
 
   public function __construct($driver, $plate) {
     $this->driver = $driver;
@@ -1040,7 +1040,7 @@ The static keyword allows us to define static properties and methods that are sh
 
 ```php
 class Car {
-  static public mile = 1.609344; //km
+  static public $mile = 1.609344; //km
   // ...
 }
 
@@ -1062,7 +1062,7 @@ There are three special keywords that are used to access properties or methods f
 
 ```php
 class Car {
-  static private mile = 1.609344; //km
+  static private $mile = 1.609344; //km
 
   public function __construct($driver, $plate) {
     parent::__construct($driver, $plate);
@@ -1120,8 +1120,8 @@ When inheriting from an abstract class, all methods marked abstract in the paren
 
 ```php
 abstract class Car {
-  private plate;
-  private driver = 'John Doe';
+  private $plate;
+  private $driver = 'John Doe';
 
   public function getDriver() {
     return $this->driver;
@@ -1146,8 +1146,8 @@ interface Car {
 }
 
 class RaceCar implements Car {
-  private plate;
-  private driver;
+  private $plate;
+  private $driver;
 
   public function getDriver() {
     return $this->driver;
@@ -1169,8 +1169,8 @@ If the class itself is being defined final then it cannot be extended.
 
 ```php
 final class RaceCar implements Car {
-  private plate;
-  private driver;
+  private $plate;
+  private $driver;
 
   public function getDriver() {
     return $this->driver;
