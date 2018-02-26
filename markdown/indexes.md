@@ -14,6 +14,7 @@ class: left, middle
 
 template:inverse
 # Database Performace
+## Indexes
 <a href="http://www.fe.up.pt/~arestivo">André Restivo</a>
 
 ---
