@@ -23,7 +23,8 @@ name:index
 # Index
 
 .indexlist[
-1. [Introduction](#intro)
+1. [Physical Schema](#schema)
+1. [Storage](#storage)
 1. [Sequential Files](#sequential)
 1. [Indexes](#indexes)
 1. [Ordered Indexes](#ordered)
@@ -37,8 +38,27 @@ name:index
 ---
 
 template:inverse
-name:intro
-# Introduction
+name:schema
+# Physical Schema
+
+---
+
+# Physical Schema
+
+**Logical Schema**: A design-centric database structure built to meet your business requirements.
+
+**Physical Schema**: How data is to be represented and stored.
+
+  * How are tables stored? Using files? With what structure?
+  * What datatypes are we going to use and how are they stored?
+  * How triggers should be implemented?
+  * How can we make sure queries are fast? derived attributes + triggers, indexes, ...
+
+---
+
+template:inverse
+name:storage
+# Storage
 
 ---
 
