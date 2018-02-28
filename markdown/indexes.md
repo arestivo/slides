@@ -13,8 +13,7 @@ class: left, middle
 ---
 
 template:inverse
-# Database Performace
-## Indexes
+# Indexes
 <a href="http://www.fe.up.pt/~arestivo">André Restivo</a>
 
 ---
@@ -25,8 +24,11 @@ name:index
 
 .indexlist[
 1. [Introduction](#intro)
+1. [Sequential Files](#sequential)
 1. [Indexes](#indexes)
 1. [Ordered Indexes](#ordered)
+1. [Primary Indexes](#primary)
+1. [Secondary Indexes](#secondary)
 1. [B+ Tree](#btree)
 1. [Hash Indexes](#hash)
 1. [PostgreSQL](#postgresql)
@@ -40,12 +42,36 @@ name:intro
 
 ---
 
+# Hard Disk
+
+![](../assets/indexes/harddisk.jpg)
+
+---
+
 # Blocks
 
-* Data is read or written from the hard disk a whole block at a time.
+* Data is read or written from the **hard disk** a whole block at a time.
 * Each block can contain several tuples.
+* Blocks are not necessarly sequential.
 
+.diagram[
 ![](../assets/indexes/blocks.svg)
+]
+
+---
+
+# Performance
+
+* Biggest obstacle to database performance is **hard disk access**.
+
+* Hard disk is accessed **block by block**.
+
+* Block fetch requires about 5 to 10 milliseconds (10<sup>-3</sup>), versus about 100 nanoseconds (10<sup>-9</sup>) for memory access.
+
+* It is important to **minimize** the number of blocks accessed.
+
+* On many different operations:
+  * search, insert, delete, update, sort, ranges, ...
 
 ---
 
@@ -66,37 +92,23 @@ Some important indicators:
 
 ---
 
-# Performance
+# Running Example
 
-* Biggest obstacle to database performance is **hard disk access**.
-
-* Hard disk is accessed **block by block**.
-
-* Block fetch requires about 5 to 10 milliseconds (10<sup>-3</sup>), versus about 100 nanoseconds (10<sup>-9</sup>) for memory access.
-
-* It is important to **minimize** the number of blocks accessed.
-
-* On many different operations: search, insert, delete, update, sort, ranges, ...
-
----
-
-# Example
-
-.pull-right[
+.diagram[
 ![](../assets/indexes/example1.svg)
 ]
 
-* **t** = 30000 tuples
-* **B** = 1024 bytes
-* **T** = 100 bytes
-* **bfr** = 1024 / 100 = 10 tuples/block
-* **b** = 30000 / 10 = 3000 blocks
+---
+
+template:inverse
+name:sequential
+# Sequential Files
 
 ---
 
 # Unordered Sequential File
 
-.pull-right[
+.pull-right.diagram[
 ![](../assets/indexes/unordered.svg)
 ]
 
@@ -114,7 +126,7 @@ Some important indicators:
 
 # Ordered Sequential File
 
-.pull-right[
+.pull-right.diagram[
 ![](../assets/indexes/ordered.svg)
 ]
 
@@ -131,6 +143,12 @@ Some important indicators:
 
 ---
 
+# A Useful Metaphor
+
+![](../assets/indexes/phonebook.jpg)
+
+---
+
 template:inverse
 name:indexes
 # Indexes
@@ -141,9 +159,15 @@ name:indexes
 
 * Mechanisms used to speed up data access.
 * An index file typically consists of entries having a **search-key** and a **pointer**.
+
+.diagram[
+![](../assets/indexes/searchkey.svg)
+]
+
 * Index files are typically much smaller than the original file.
 * Two basic kinds: **ordered** and **hashed**.
 * Index evaluation: genericity, performance and overhead.
+
 
 ---
 
@@ -155,42 +179,49 @@ name:ordered
 
 # Ordered Indexes
 
-In a ordered index, entries are sorted by their **search-key**.
+In a ordered index, entries (in the index) are sorted by their **search-key**.
 
-* Primary indexes: In a ordered file, an index having a **search-key** in the same order as the file. Only one per file. Also called **clustering index**.
+* **Primary indexes**:
+  <br><br>An index having a *search-key* in the **same order** as the file.
+  <br>**Only one** per file.
+  <br>Also called **clustering index**.
 
-* Secondary indexes: An index having a **search-key** in a different order as the file. Many per file are possible.
+* **Secondary indexes**:
+  <br><br>An index having a **search-key** in a different order as the file.
+  <br>**Many** per file are possible.
 
 ---
 
-# Dense or Sparse
+template:inverse
+name:primary
+# Primary
+## Ordered Indexes
+---
+
+# Dense Primary Indexes
 
 **Dense** indexes have **one index entry** for each **search-key value** in the indexed file.
 
-.pull-left[
-Dense index: file ordered by key
-![](../assets/indexes/dense1.svg)
-]
-
-
-.pull-right[
-Dense index: file ordered by non-key
-![](../assets/indexes/dense2.svg)
+.diagram.large[
+![](../assets/indexes/dense.svg)
 ]
 
 ---
 
-# Dense or Sparse
+# Sparse Primary Indexes
 
 **Sparse** indexes contain entries for **only some** search-key
-values. Only applicable when entries are ordered on search-key.
+values.
+
+Normally one entry per block.
 
 * Advantages: Less space and less maintenance.
-* Disadvantages: Slower than dense indexes.
+* Disadvantages: Only applicable when entries are ordered on search-key.
 
-**Trade-off**: One entry per block.
-
+.short[
 ![](../assets/indexes/sparse.svg)
+]
+
 
 ---
 
@@ -209,7 +240,7 @@ values. Only applicable when entries are ordered on search-key.
 ]
 
 .pull-left[
-**Sparse** Index
+**Sparse** Index (one entry per block)
 
 * **t<sub>i</sub>**: 3000 (same as b)
 * **T<sub>i</sub>**: 15 bytes (9 + 6)
@@ -227,13 +258,21 @@ But search isn't everything...
 
 ---
 
+template:inverse
+name:secondary
+# Secondary
+## Ordered Indexes
+
+---
+
 # Secondary Indexes
 
 * Always have to be dense.
-* Entries point to a bucket of pointers to the actual tuples.
+* In non-key indexes, entries point to a bucket of pointers to the actual tuples.
 
+.diagram[
 ![](../assets/indexes/secondary.svg)
-
+]
 
 ---
 
@@ -243,10 +282,11 @@ If an index does not fit in memory, access can become expensive.
 
 Solution is to keep primary index (inner index) on disk and construct a sparse index on it (outer index).
 
-If even outer index is too large to fit in main memory, yet
-another level of index can be created, and so on.
+If even outer index is too large to fit in main memory, yet another level of index can be created, and so on.
 
+.short[
 ![](../assets/indexes/multilevel.svg)
+]
 
 ---
 
@@ -262,7 +302,7 @@ another level of index can be created, and so on.
 
 
 
-Search: **4** blocks
+Search: **4** blocks (**3** if outer index kept in memory)
 
 One for each index + 1 for the block containing the tuple.
 
@@ -281,11 +321,19 @@ Uses a tree-like data structure where each tree node has:
 * **q** pointers to another node
 * **q – 1** values
 
+.tiny[
+![](../assets/indexes/treenode.svg)
+]
+
 The last level nodes (leafs) have:
 
 * **q – 1** pointers to tuples/blocks
 * **q – 1** values
 * **1** pointer to the next leaf node
+
+.tiny[
+![](../assets/indexes/leafnode.svg)
+]
 
 Allows searching, sorting, range search.
 
@@ -322,7 +370,7 @@ Search: **5** blocks.
 # B+ Tree vs Ordered Indexes
 
 Ordered Indexes:
-  * performance degrades as file grows.
+  * performance degrades as file changes.
   * periodic reorganization of entire file is required.
 
 B+ Trees:
@@ -345,15 +393,11 @@ name:hash
 
 # Hash Indexes
 
-* A bucket is a unit of storage containing one or more tuples (typically a block).
-* We obtain the bucket of a tuple directly from its search
--key value using a *hash* function.
-* Hash function is a function from the set of all search-key values
-K to the set of all bucket addresses B.
-* Tuples with different search-key values may be mapped to the
-same bucket; thus entire bucket has to be searched sequentially to
-locate a tuple.
-* Buckets can overflow: link buckets together.
+* A **bucket** is a unit of storage containing one or more tuples (typically a block).
+* We obtain the bucket of a tuple directly from its search-key value using a **hash** function.
+* Hash function is a function from the set of all **search-key** values (K) to the set of all **bucket** addresses (B).
+* Tuples with different search-key values may be mapped to the same bucket; thus entire bucket has to be searched **sequentially** to locate a tuple.
+* Buckets can **overflow**: link buckets together.
 
 ---
 
@@ -368,7 +412,7 @@ locate a tuple.
 
 ---
 
-# Example
+# Example Simple Hash Function
 
 Consider we have 10 buckets.
 
@@ -385,15 +429,17 @@ int h(string word) {
 
 h(john) = 3; h(carl) = 0; h(gustafsson) = 1; ...
 
+Real hash functions are, obviously, more complex than this.
+
 ---
 
 # Hash Indexes
 
-* The overflow buckets of a given bucket are chained together in a linked list.
+* The overflow buckets of a given bucket are chained together in a **linked list**.
 
-* Hash indexes are always secondary indices.
+* Hash indexes are always **secondary** indexes.
 
-* Hash Indexes do not allow sorting or range searches.
+* Hash Indexes **do not allow sorting or range** searches.
 
 ![](../assets/indexes/buckets.svg)
 
@@ -401,14 +447,13 @@ h(john) = 3; h(carl) = 0; h(gustafsson) = 1; ...
 
 template:inverse
 name:postgresql
-# Indexes in PostgreSQL
+# Ordered Indexes in PostgreSQL
 
 ---
 
-# Indexes in PostgreSQL
+# Ordered Indexes in PostgreSQL
 
-* PostgreSQL provides several index types: B-tree, Hash, GiST and GIN.
-* Hash indexes are not recommended at the moment (or ever).
+PostgreSQL provides several index types: B-tree, Hash, GiST and GIN.
 
 ~~~sql
 CREATE INDEX name ON table (column); -- btree by default
