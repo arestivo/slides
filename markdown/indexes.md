@@ -63,7 +63,7 @@ name:intro
 # Performance
 
 * Biggest obstacle to database performance is **hard disk access**.
-
+page/
 * Hard disk is accessed **block by block**.
 
 * Block fetch requires about 5 to 10 milliseconds (10<sup>-3</sup>), versus about 100 nanoseconds (10<sup>-9</sup>) for memory access.
@@ -300,7 +300,7 @@ If even outer index is too large to fit in main memory, yet another level of ind
 
 --
 
-
+&nbsp;
 
 Search: **4** blocks (**3** if outer index kept in memory)
 
