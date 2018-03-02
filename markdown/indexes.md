@@ -50,9 +50,9 @@ name:schema
 **Physical Schema**: How data is to be represented and stored.
 
   * How are tables stored? Using files? With what structure?
-  * What datatypes are we going to use and how are they stored?
-  * How triggers should be implemented?
-  * How can we make sure queries are fast? derived attributes + triggers, indexes, ...
+  * What datatypes are we going to use and how should they be stored?
+  * What triggers should be implemented?
+  * How can we make sure queries have a good performance? denormalization, derived attributes + triggers, indexes, ...
 
 ---
 
@@ -64,7 +64,9 @@ name:storage
 
 # Hard Disk
 
+.diagram[
 ![](../assets/indexes/harddisk.jpg)
+]
 
 ---
 
@@ -72,7 +74,7 @@ name:storage
 
 * Data is read or written from the **hard disk** a whole block at a time.
 * Each block can contain several tuples.
-* Blocks are not necessarly sequential.
+* Blocks are not necessarily sequential.
 
 .diagram[
 ![](../assets/indexes/blocks.svg)
@@ -428,7 +430,9 @@ name:hash
 * An ideal hash function is **uniform**: each bucket is assigned the same number of search-key values (from all possible values).
 * An ideal hash function is **random**: each bucket will have the same number of tuples (whatever tuples exist).
 
+.diagram[
 ![](../assets/indexes/hash.svg)
+]
 
 ---
 
@@ -461,19 +465,21 @@ Real hash functions are, obviously, more complex than this.
 
 * Hash Indexes **do not allow sorting or range** searches.
 
+.short[
 ![](../assets/indexes/buckets.svg)
+]
 
 ---
 
 template:inverse
 name:postgresql
-# Ordered Indexes in PostgreSQL
+# Indexes in PostgreSQL
 
 ---
 
-# Ordered Indexes in PostgreSQL
+# Creating Indexes
 
-PostgreSQL provides several index types: B-tree, Hash, GiST and GIN.
+PostgreSQL support both B-tree and Hash index types:
 
 ~~~sql
 CREATE INDEX name ON table (column); -- btree by default
@@ -491,7 +497,9 @@ An index can be defined on more than one column of a table.
 CREATE INDEX name ON table (column_a, column_b);
 ~~~
 
-Works well on queries searching for values in columns a and b simultanously and just on column a; but not just on column b.
+Works well on queries searching for values in columns *a* and *b* simultaneously or just on column *a*; but not just on column *b*.
+
+For example, a phone book is index on (*last name*, *other names*) making it easy to look for *John Doe* but not for *John*.
 
 ---
 
@@ -503,7 +511,9 @@ Indexes can also be used to enforce uniqueness of a column's value, or the uniqu
 CREATE UNIQUE INDEX name ON table (column);
 ~~~
 
-Unique indexes are automatically created on unique and primary key constraints.
+Unique indexes are **automatically** created on unique and primary key constraints.
+
+In fact primary and unique keys are enforced by these automatic unique indexes.
 
 ---
 
@@ -515,7 +525,13 @@ An index column need not be just a column of the underlying table, but can be a 
 CREATE INDEX idx_name ON employees (lower(name));
 ~~~
 
-This can be used to enforce constraints that are not definable as simple unique constraints:
+This index would be automatically used in this query:
+
+~~~sql
+SELECT * FROM employees WHERE lower(name) = 'john';
+~~~
+
+This can also be used to enforce constraints that are not definable as simple unique constraints:
 
 ~~~sql
 CREATE UNIQUE INDEX idx_mail ON employees (lower(email));
@@ -533,8 +549,136 @@ One reason for using a partial index is to avoid indexing common values.
 CREATE INDEX idx_type ON employees (type) WHERE type <> 'normal';
 ~~~
 
+Would be automatically used in this query:
+
+~~~sql
+SELECT * FROM employees WHERE type <> 'normal';
+~~~
+
 Another possible use for partial indexes is to enforce constraints in a subset of the table:
 
 ~~~sql
 CREATE UNIQUE INDEX idx_mail ON employees (mail) WHERE type <> 'admin';
 ~~~
+
+---
+
+# Clustering
+
+PostgreSQL does not support primary indexes but the *CLUSTER* command can be used to
+reorder a table based on one &mdash; and only one &mdash; index.
+
+~~~sql
+CLUSTER table_name USING index_name;
+~~~
+
+Clustering is a one-time operation: when the table is subsequently updated, the changes are not clustered.
+
+---
+
+# Generalized Indexes in PostgreSQL
+
+Besides Hash and B-tree, PostgreSQL also provides several other index types:
+
+* GiST - Generalized Inverted Seach Tree:
+  * **Lossy**. May produce false positives.
+  * Works by hashing components of the data into a single bit.
+  * Best for **dynamic** data. Faster to update.
+
+* GIN - Generalized Inverted Index:
+  * Faster than GiST and handles large ammounts of different data better.
+  * Best for **static** data. Slower to update.
+
+Both these indexes are able to implement arbitrary indexing schemes.
+
+They can be used for Full Text Search (FTS), geometric and spatial data, ...
+
+---
+
+template:inverse
+name:fts
+# Full Text Search
+
+---
+
+# Why not just ILIKE?
+
+When we execute a query like this one:
+
+~~~sql
+SELECT * FROM employee WHERE name ILIKE 'john%';
+~~~
+
+A B-tree index can be used to speed up the query. But for this one:
+
+~~~sql
+SELECT * FROM employee WHERE name ILIKE '%john%';
+~~~
+
+* There is no way in which a normal index can help us.
+
+* Think of it as trying to find all people having *john* in their name in a phone book.
+
+* We need to index each word individually.
+
+---
+
+# Lexemes and the *tsvector* type
+
+  * FTS is based on [lexemes](https://glossary.sil.org/term/lexeme).
+  * A *tsvector* value is a sorted list of distinct lexemes.
+
+~~~sql
+SELECT to_tsvector('english', 'The quick brown fox jumps over the lazy dog')
+~~~
+
+~~~txt
+'brown':3 'dog':9 'fox':4 'jump':5 'lazi':8 'quick':2
+~~~
+
+  * The *to_tsvector* function **normalizes** words into lexemes, removes **duplicates**, removes **stop words** and records the **position** of each lexeme.
+
+---
+
+# Searching using *tsqueries*
+
+  * A *tsquery* value stores lexemes that are to be searched for.
+  * Lexemes can be combined using the boolean operators & (AND), | (OR), and ! (NOT):
+
+~~~sql
+SELECT to_tsquery('english', 'jumping & dog');
+~~~
+
+~~~txt
+'jump' & 'dog'
+~~~
+
+  * The function *plainto_tsquery* simplifies this operation:
+
+~~~sql
+SELECT plainto_tsquery('english', 'the jumping dog'); -- same result
+~~~
+
+---
+
+# Matching *tsqueries* to *tsvectors*
+
+The @@ operator is used to assert if a *tsvector* matches a *tsquery*:
+
+.small[
+~~~sql
+SELECT title
+FROM posts
+WHERE to_tsvector('english', title || ' ' || body) @@ plainto_tsquery('english', 'jumping dog');
+~~~
+]
+
+---
+
+template:inverse
+name:fts
+# Choosing Indexes
+
+---
+
+# Why cluster?
