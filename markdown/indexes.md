@@ -35,6 +35,7 @@ name:index
 1. [PostgreSQL](#postgresql)
 1. [Full Text Search](#fts)
 1. [Database Tuning](#tuning)
+1. [Examples](#examples)
 1. [Choosing Indexes](#choosing)
 ]
 
@@ -881,7 +882,13 @@ EXPLAIN ANALYZE <query>
 
 ---
 
-# Example
+template:inverse
+name:examples
+# Examples
+
+---
+
+# Example 1
 
 Consider the following database:
 
@@ -891,7 +898,7 @@ Consider the following database:
 
 ---
 
-# Example
+# Example 1
 
 And the following query that selects *all users that ordered more than one product costing 100*:
 
@@ -911,7 +918,7 @@ Notice that we added the EXPLAIN clause in the beggining.
 
 ---
 
-# Example
+# Example 1
 
 The result is a tree structure showing the plan as idealized by PostgreSQL:
 
@@ -923,7 +930,7 @@ Cost is measured, generically, in blocks read from the disk.
 
 ---
 
-# Example
+# Example 1
 
 Luckily, there are some tools that can helps us understand these plans easier:
 
@@ -934,17 +941,17 @@ So let's try it again with *PEV*.
 
 ---
 
-# Example
+# Example 1
 
 Much better. But it seems PostgreSQL is loosing a lot of time joining the *contains* and *products* table.
 
 .diagram[
-![](../assets/indexes/pev1.png)
+[![](../assets/indexes/pev1.png)](http://tatiyants.com/pev/#/plans/plan_1520277187863)
 ]
 
 ---
 
-# Example
+# Example 1
 
 Why is this happening?
 
@@ -960,17 +967,17 @@ CREATE INDEX contains_product_idx ON contains USING btree (p_id);
 
 ---
 
-# Example
+# Example 1
 
 From *200ms* to *14ms* by just creating the right index.
 
 .diagram[
-![](../assets/indexes/pev2.png)
+[![](../assets/indexes/pev2.png)](http://tatiyants.com/pev/#/plans/plan_1520277376167)
 ]
 
 ---
 
-# Example
+# Example 1
 
 Now most of the time is spent looking for the products with the desired price.
 
@@ -981,12 +988,58 @@ CREATE INDEX product_price_idx ON products USING btree (price);
 ~~~
 
 ---
-# Example
+# Example 1
 
 Not as dramatic as before but still some improvement. Remember, indexes have theirs costs (slower updates, space, ...).
 
 .diagram[
-![](../assets/indexes/pev3.png)
+[![](../assets/indexes/pev3.png)](http://tatiyants.com/pev/#/plans/plan_1520277712160)
+]
+
+---
+
+# Example 2
+
+Now consider this other query that selects *all orders containing product with ids between 200 and 300*:
+
+~~~sql
+EXPLAIN SELECT o_id
+FROM contains
+WHERE p_id > 200 AND p_id < 300
+~~~
+
+---
+
+# Example 2
+
+We already have an index on the *p_id* column so the query should be pretty fast:
+
+.diagram[
+[![](../assets/indexes/pev4.png)](http://tatiyants.com/pev/#/plans/plan_1520303182683)
+]
+
+---
+
+# Example 2
+
+But we can do better.
+
+Because the index on *p_id* is not clustered, it means most blocks read have only a few wanted rows.
+
+If we try clustering the index:
+
+~~~sql
+CLUSTER contains USING contains_product_idx;
+~~~
+
+---
+
+# Example 2
+
+We get the same data in fewer blocks and end up getting our results faster:
+
+.diagram[
+[![](../assets/indexes/pev5.png)](http://tatiyants.com/pev/#/plans/plan_1520303205189)
 ]
 
 ---
