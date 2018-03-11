@@ -30,13 +30,14 @@ name:index
 1. [Ordered Indexes](#ordered)
 1. [Primary Indexes](#primary)
 1. [Secondary Indexes](#secondary)
-1. [B+ Tree](#btree)
+1. [B+ Tree Indexes](#btree)
 1. [Hash Indexes](#hash)
 1. [PostgreSQL](#postgresql)
 1. [Full Text Search](#fts)
 1. [Database Tuning](#tuning)
 1. [Examples](#examples)
 1. [Choosing Indexes](#choosing)
+1. [Denormalization](#denormalization)
 ]
 
 ---
@@ -1260,7 +1261,7 @@ name:denormalization
 # Denormalization
 
 * A strategy used on a **previously normalized** database to increase performance.
-* Denormalization is the process of trying to improve performance of a database by adding **redundant** copies of data or by chosing **alternative** 3NF schemas.
+* Denormalization is the process of trying to improve performance of a database by adding **redundant** copies of data or by chosing **alternative** 3NF (or even lower NFs) schemas.
 * Redundant data should be kept consistent. For example, using triggers.
 
 ---
