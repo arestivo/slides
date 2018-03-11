@@ -49,14 +49,14 @@ name:schema
 
 # Physical Schema
 
-**Logical Schema**: A design-centric database structure built to meet your business requirements.
+**Logical Schema**: A **design-centric** database structure built to meet your business requirements.
 
 **Physical Schema**: How data is to be represented and stored.
 
-  * How are tables stored? Using files? With what structure?
-  * What datatypes are we going to use and how should they be stored?
-  * What triggers should be implemented?
-  * How can we make sure queries have a good performance? denormalization, derived attributes + triggers, indexes, ...
+  * How are tables **stored**? Using files? With what structure?
+  * What **datatypes** are we going to use and how should they be stored?
+  * What **triggers** should be implemented?
+  * How can we make sure queries have a good performance? **denormalization**, **derived** attributes + **triggers**, **indexes**, ...
 
 ---
 
@@ -76,9 +76,9 @@ name:storage
 
 # Blocks
 
-* Data is read or written from the **hard disk** a whole block at a time.
-* Each block can contain several tuples.
-* Blocks are not necessarily sequential.
+* Data is read or written from the hard disk a **whole block** at a time.
+* Each block can contain **several tuples**.
+* Table blocks are **not** necessarily **sequential**.
 
 .diagram[
 ![](../assets/indexes/blocks.svg)
@@ -88,13 +88,13 @@ name:storage
 
 # Performance
 
-* Biggest obstacle to database performance is **hard disk access**.
-page/
+* Biggest database performance bottleneck is having too many **I/O operations**.
+
 * Hard disk is accessed **block by block**.
 
-* Block fetch requires about 5 to 10 milliseconds (10<sup>-3</sup>), versus about 100 nanoseconds (10<sup>-9</sup>) for memory access.
+* Block fetch requires about 5 to 10 **milliseconds** (10<sup>-3</sup>), versus about 100 **nanoseconds** (10<sup>-9</sup>) for memory access.
 
-* It is important to **minimize** the number of blocks accessed.
+* It is important to **minimize** the number of blocks fetched.
 
 * On many different operations:
   * search, insert, delete, update, sort, ranges, ...
@@ -113,8 +113,8 @@ Typically B >= T
 
 Some important indicators:
 
-* Blocking Factor: **bfr** = B / T
-* Block Number: **b** = t / bfr
+* Blocking Factor: **bfr** = B / T (how many tuples in each block)
+* Block Number: **b** = t / bfr (how many blocks to store all tuples)
 
 ---
 
@@ -138,9 +138,9 @@ name:sequential
 ![](../assets/indexes/unordered.svg)
 ]
 
-* File has no special order between tuples.
-* Inserting and updating is very fast.
-* Searching and ordering very slow.
+* File has **no special order** between tuples.
+* Inserting and updating is very **fast**.
+* Searching and ordering very **slow**.
 
 --
 
@@ -157,8 +157,8 @@ name:sequential
 ]
 
 * File **ordered** by **primary key**.
-* Inserting and updating is slow. Unless sequentially or some space wasted.
-* Searching and ordering very slow except on primary key.
+* Inserting and updating can be **slow**. Unless sequentially or some space is wasted.
+* Searching and ordering very **slow** except on primary key.
 
 --
 
@@ -169,21 +169,21 @@ name:sequential
 
 ---
 
-# A Useful Metaphor
-
-![](../assets/indexes/phonebook.jpg)
-
----
-
 template:inverse
 name:indexes
 # Indexes
 
 ---
 
+# A Useful Metaphor
+
+![](../assets/indexes/phonebook.jpg)
+
+---
+
 # Indexes
 
-* Mechanisms used to speed up data access.
+* Mechanisms used to **speed up** data access.
 * An index file typically consists of entries having a **search-key** and a **pointer**.
 
 .diagram[
@@ -220,8 +220,8 @@ In a ordered index, entries (in the index) are sorted by their **search-key**.
 
 template:inverse
 name:primary
-# Primary
-## Ordered Indexes
+# Primary Indexes
+
 ---
 
 # Dense Primary Indexes
@@ -239,10 +239,10 @@ name:primary
 **Sparse** indexes contain entries for **only some** search-key
 values.
 
-Normally one entry per block.
+Normally **one entry per block**.
 
-* Advantages: Less space and less maintenance.
-* Disadvantages: Only applicable when entries are ordered on search-key.
+* Advantages: Less **space** and less **maintenance**.
+* Disadvantages: Only applicable when entries are **ordered on search-key**.
 
 .short[
 ![](../assets/indexes/sparse.svg)
@@ -286,15 +286,14 @@ But search isn't everything...
 
 template:inverse
 name:secondary
-# Secondary
-## Ordered Indexes
+# Secondary Indexes
 
 ---
 
 # Secondary Indexes
 
-* Always have to be dense.
-* In non-key indexes, entries point to a bucket of pointers to the actual tuples.
+* **Always** have to be **dense**.
+* In non-key indexes, entries point to a **bucket of pointers** to the actual tuples.
 
 .diagram[
 ![](../assets/indexes/secondary.svg)
@@ -304,11 +303,11 @@ name:secondary
 
 # Multi-Level Indexes
 
-If an index does not fit in memory, access can become expensive.
+If an index does **not fit in memory**, access can become **expensive**.
 
-Solution is to keep primary index (inner index) on disk and construct a sparse index on it (outer index).
+Solution is to keep a first index (**inner** index) on disk and construct a sparse index on it (**outer** index).
 
-If even outer index is too large to fit in main memory, yet another level of index can be created, and so on.
+If even outer index is too large to fit in main memory, yet **another level** of index can be created, and so on.
 
 .short[
 ![](../assets/indexes/multilevel.svg)
@@ -373,7 +372,7 @@ Allows searching, sorting, range search.
 
 # B+ Tree Indexes
 
-* Use partially full blocks to speed insertions and deletions.
+* Use **partially full blocks** to speed insertions and deletions.
 
 * When a level is too full, create a new level.
 
@@ -396,17 +395,17 @@ Search: **5** blocks.
 # B+ Tree vs Ordered Indexes
 
 Ordered Indexes:
-  * performance degrades as file changes.
-  * periodic reorganization of entire file is required.
+  * **performance degrades** as file changes.
+  * periodic **reorganization** of entire file is required.
 
 B+ Trees:
-  * automatically reorganizes itself with small local changes
-  * reorganization of entire file is not required
-  * extra insertion and deletion overhead, space overhead.
+  * automatically reorganizes itself with **small local changes**.
+  * **reorganization** of entire file is **not required**.
+  * extra insertion and **deletion overhead**, **space overhead**.
 
 Summary:
 
-* Advantages of B+ Trees outweigh disadvantages.
+* Advantages of B+ Trees **outweigh** disadvantages.
 * B+ Trees are used extensively.
 
 ---
@@ -421,7 +420,7 @@ name:hash
 
 * A **bucket** is a unit of storage containing one or more tuples (typically a block).
 * We obtain the bucket of a tuple directly from its search-key value using a **hash** function.
-* Hash function is a function from the set of all **search-key** values (K) to the set of all **bucket** addresses (B).
+* Hash function is a function from the set of all **search-key** values to the set of all **bucket** addresses.
 * Tuples with different search-key values may be mapped to the same bucket; thus entire bucket has to be searched **sequentially** to locate a tuple.
 * Buckets can **overflow**: link buckets together.
 
@@ -440,7 +439,7 @@ name:hash
 
 ---
 
-# Example Simple Hash Function
+# Example: Simple Hash Function
 
 Consider we have 10 buckets.
 
@@ -457,7 +456,7 @@ int h(string word) {
 
 h(john) = 3; h(carl) = 0; h(gustafsson) = 1; ...
 
-Real hash functions are, obviously, more complex than this.
+Real hash functions are, obviously, **more complex** than this.
 
 ---
 
@@ -483,13 +482,15 @@ name:postgresql
 
 # Creating Indexes
 
-PostgreSQL support both B-tree and Hash index types:
+PostgreSQL supports both B+ Tree and Hash indexes:
 
 ~~~sql
 CREATE INDEX name ON table (column); -- btree by default
 CREATE INDEX name ON table USING btree (column);
 CREATE INDEX name ON table USING hash (column);
 ~~~
+
+PostgreSQL does not support primary indexes. All indexes are secondary and thus, sparse.
 
 ---
 
@@ -503,7 +504,7 @@ CREATE INDEX name ON table (column_a, column_b);
 
 Works well on queries searching for values in columns *a* and *b* simultaneously or just on column *a*; but not just on column *b*.
 
-For example, a phone book is index on (*last name*, *other names*) making it easy to look for *John Doe* but not for *John*.
+For example, a phone book is indexed on (*last name*, *other names*) making it easy to look for *John Doe* but not for *John*.
 
 ---
 
@@ -517,13 +518,13 @@ CREATE UNIQUE INDEX name ON table (column);
 
 Unique indexes are **automatically** created on unique and primary key constraints.
 
-In fact primary and unique keys are enforced by these automatic unique indexes.
+In fact, primary and unique keys are **enforced** by these automatic unique indexes.
 
 ---
 
 # Indexes on Expressions
 
-An index column need not be just a column of the underlying table, but can be a function computed from one or more columns of the table.
+An index column need not be just a column of the underlying table, but can be a **function** computed from one or more columns of the table.
 
 ~~~sql
 CREATE INDEX idx_name ON employees (lower(name));
@@ -545,7 +546,7 @@ CREATE UNIQUE INDEX idx_mail ON employees (lower(email));
 
 # Partial Indexes
 
-A partial index is an index built over a subset of a table.
+A partial index is an index built over a **subset** of a table.
 
 One reason for using a partial index is to avoid indexing common values.
 
@@ -570,15 +571,16 @@ CREATE UNIQUE INDEX idx_mail ON employees (mail) WHERE type <> 'admin';
 # Clustering
 
 PostgreSQL does not support primary indexes but the *CLUSTER* command can be used to
-reorder a table based on one &mdash; and only one &mdash; index.
+reorder a table based on one &mdash; **and only one** &mdash; index.
 
 ~~~sql
 CLUSTER table_name USING index_name;
 ~~~
 
-Clustering is a one-time operation: when the table is subsequently updated, the changes are not clustered.
+Clustering is a **one-time** operation: when the table is subsequently updated, the changes are not clustered.
 
 If needed, clustering can be set to run periodically using [cron](https://en.wikipedia.org/wiki/Cron).
+PostgreSQL remembers which indexes were clustered, so a single CLUSTER command with **no parameters** is enough.
 
 ---
 
@@ -595,7 +597,7 @@ Besides Hash and B-tree, PostgreSQL also provides several other index types:
   * Faster than GiST and handles large ammounts of different data better.
   * Best for **static** data. Slower to update.
 
-Both these indexes are able to implement arbitrary indexing schemes.
+Both these indexes are able to implement **arbitrary** indexing schemes.
 
 They can be used for Full Text Search (FTS), geometric and spatial data, ...
 
@@ -615,7 +617,7 @@ When we execute a query like this one:
 SELECT * FROM employee WHERE name ILIKE 'john%';
 ~~~
 
-A B-tree index can be used to speed up the query. But for this one:
+A B+ Tree index can be used to speed up the query. But for this one:
 
 ~~~sql
 SELECT * FROM employee WHERE name ILIKE '%john%';
@@ -648,7 +650,7 @@ SELECT to_tsvector('english', 'The quick brown fox jumps over the lazy dog')
 
 # Searching using *tsqueries*
 
-  * A *tsquery* value stores lexemes that are to be searched for.
+  * A *tsquery* value stores the *lexemes* that we want to search.
   * Lexemes can be combined using the boolean operators & (AND), | (OR), and ! (NOT):
 
 ~~~sql
@@ -694,9 +696,9 @@ WHERE (to_tsvector('english', title) || to_tsvector('english', body)) @@ plainto
 
 # FTS weights
 
-Sometimes we want to give more importance to some especific fiels.
+Sometimes we want to give more **importance** to some specific fields.
 
-We can use the *setweight* to attach a weight to a certain *ts_vector*.
+We can use the *setweight* to attach a **weight** to a certain *ts_vector*.
 
 Weights go from 'A' (more important) to 'D' (less important).
 
@@ -722,7 +724,7 @@ As you can see, we can concatente *tsvectors* directly.
 # Ranking FTS results
 
 
-The *ts_rank* and *ts_rank_cd* functions, return a score for each returned row for a certain matchesb
+The *ts_rank* and *ts_rank_cd* functions, return a **score** for each returned row for a certain match
 between a *tsquery* and *tsvector*.
 
 .small[
@@ -753,9 +755,9 @@ ts_rank([ weights float4[], ] vector tsvector, query tsquery [, normalization in
 
 # Pre-calculate FTS
 
-For performance reasons, we should consider adding a column to tables where FTS is to be performed containg the *ts_vector* values of each row.
+For **performance** reasons, we should consider adding a column to tables where FTS is to be performed containg the *ts_vector* values of **each row**.
 
-This column should be updated whenever a row changes or is inserted. This can be done easily using triggers:
+This column should be updated whenever a row changes or is inserted. This can be done easily using a **trigger**:
 
 ~~~sql
 CREATE FUNCTION post_search_update() RETURNS TRIGGER AS $$
@@ -866,9 +868,9 @@ When executing a query, PostgreSQL:
 
 # Analyzing Plans
 
-After identifying a problematic query, we might want to understand how *PostgreSQL* is executing it.
+After identifying a **problematic query**, we might want to understand how *PostgreSQL* is executing it.
 
-For that we can use the EXPLAIN command that displays the execution plan that the PostgreSQL planner generates for the supplied statement:
+For that we can use the EXPLAIN command that displays the **execution plan** that the PostgreSQL planner generates for the supplied statement:
 
 ~~~sql
 EXPLAIN <query>
@@ -914,7 +916,7 @@ HAVING COUNT(*) > 1
 ORDER BY COUNT(*) DESC
 ~~~
 
-Notice that we added the EXPLAIN clause in the beggining.
+Notice that we added the EXPLAIN clause in the beginning.
 
 ---
 
@@ -943,7 +945,7 @@ So let's try it again with *PEV*.
 
 # Example 1
 
-Much better. But it seems PostgreSQL is loosing a lot of time joining the *contains* and *products* table.
+Much better. But it seems PostgreSQL is **losing** a lot of time **joining** the *contains* and *products* table.
 
 .diagram[
 [![](../assets/indexes/pev1.png)](http://tatiyants.com/pev/#/plans/plan_1520277187863)
@@ -978,7 +980,7 @@ From **200ms** to **14ms** by just creating the right index.
 
 # Example 1
 
-Now most of the time is spent looking for the products with the desired price.
+Now most of the time is spent **looking for the products** with the **desired price**.
 
 Let's try creating another index:
 
@@ -989,7 +991,7 @@ CREATE INDEX product_price_idx ON products USING btree (price);
 ---
 # Example 1
 
-Not as dramatic as before but still some improvement. Remember, indexes have theirs costs (slower updates, space, ...).
+Not as dramatic as before but still some improvement. Remember, indexes have theirs **costs** (slower updates, space, ...).
 
 .diagram[
 [![](../assets/indexes/pev3.png)](http://tatiyants.com/pev/#/plans/plan_1520277712160)
@@ -1021,9 +1023,9 @@ We already have an index on the *p_id* column so the query should be pretty fast
 
 # Example 2
 
-But we can do better. Because the index on *p_id* is not clustered, it means most blocks have only a few wanted rows.
+But we can do better. Because the index on *p_id* is not clustered, it means most blocks have only **a few** wanted rows.
 
-If we try clustering the index, a much lower number of blocks has to be read:
+If we try clustering the index, a much **lower number of blocks** has to be read:
 
 ~~~sql
 CLUSTER contains
@@ -1039,7 +1041,7 @@ USING contains_product_idx;
 
 # Example 2
 
-We get the same data in fewer blocks and end up getting our results faster:
+We get the **same data** in **fewer blocks** and end up getting our results faster:
 
 .diagram[
 [![](../assets/indexes/pev5.png)](http://tatiyants.com/pev/#/plans/plan_1520303205189)
@@ -1049,7 +1051,7 @@ We get the same data in fewer blocks and end up getting our results faster:
 
 # Example 3
 
-We now have a single table containing all Wikipedia titles:
+We now have a single table containing **all** Wikipedia titles:
 
 ~~~txt
 wikipedia (id, title)
@@ -1112,6 +1114,43 @@ It now takes only **600 ms**. Creating the index took **52 minutes** and used **
 
 ---
 
+# Statistics
+
+When calculating the ideal plan for a certain query, PostgreSQL relies on some **key statistics** collected about the columns in the database:
+
+  * The fraction of the column's entries that are null.
+  * The number of distinct *non null* data values in the column.
+  * Numerical statistics including histograms of the column values.
+
+To force PostgreSQL to update these statistics when can use the ANALYZE command:
+
+~~~sql
+ANALYZE [table] [(column1, column2, ...)]
+~~~
+
+ANALYZE analyzes all tables by default but we can choose to analyze only one table or only some columns.
+
+It's important to keep these statistics updated (use a *cron* job).
+
+---
+
+# Vacuum
+
+* In PostgreSQL, tuples that are deleted or obsoleted by an update are not physically removed from their table.
+* The VACUUM command **reclaims** this storage by making available for reuse.
+* The VACUUM FULL command **reclaims** this storage by rewriting the entire contents of the table into a new disk file with no extra space.
+* It's important to do VACUUM periodically, especially on frequently updated tables.
+
+~~~sql
+VACUUM [FULL] [ANALYZE] [table] [(column1, column2, ...)]
+~~~
+
+* VACUUM reorganizes all tables by default but we can choose to reorganize only one table or only some columns.
+* We can VACUUM and ANALYZE tables at the same time.
+* VACUUM FULL is slow and requires an exclusive lock making it not recommended for production.
+
+---
+
 template:inverse
 name:choosing
 # Choosing Indexes
@@ -1165,25 +1204,27 @@ We then start describing each one of the most important queries:
 
 # Cardinality
 
-The uniqueness of data values contained in a particular column. The lower the cardinality, the more duplicate values in the column. Examples:
+The **uniqueness** of data values contained in a particular column. The lower the cardinality, the more duplicate values in the column. Examples:
 
   * **high** cardinality - primary key
   * **medium** cardinality - last name in a customer table
   * **low** cardinality - boolean column
 
 Cardinality is used by the PostgreSQL *planner*, amongst other statistics, to estimate the number of rows returned by a WHERE clause. This is
-then used to decide if indexes should be used.
+then used to decide if, and what, indexes should be used.
 
 ---
 
 # When to Cluster?
 
-  * To reduce the number of block reads.
+  * To **reduce** the number of block reads:
     * When the number of tuples to be read is high enough and there are many tuples per block.
     * Normally on **medium** cardinality columns in tables with small tuples.
-  * To allow sequential reading of blocks.
+  * To allow **sequential** reading of blocks:
     * Normally on range searches or **low** cardinality columns.
     * Specially in hard-disks (not important on SSD).
+
+Clustering is useful whenever **many tuples** are to be retrieved, but **not too many**.
 
 ---
 
@@ -1211,13 +1252,79 @@ then used to decide if indexes should be used.
 ---
 
 template:inverse
-name:choosing
-# Advanced Optimization Techniques
+name:denormalization
+# Denormalization
 
 ---
 
-Analyze
-Vacuum
-Materialized Views
-Statistics
-BRIN Indexes
+# Denormalization
+
+* A strategy used on a **previously normalized** database to increase performance.
+* Denormalization is the process of trying to improve performance of a database by adding **redundant** copies of data or by chosing **alternative** 3NF schemas.
+* Redundant data should be kept consistent. For example, using triggers.
+
+---
+
+# Example
+
+Adding a redundant **total** column to the *orders* table to prevent having to calculate it everytime.
+
+![](../assets/indexes/denormalization.png)
+
+---
+
+# Keeping Data consistent
+
+~~~sql
+CREATE OR REPLACE FUNCTION calculate_total(order_id integer)
+RETURNS trigger AS $$
+BEGIN
+  UPDATE orders
+  SET total = (SELECT SUM(quantity * price)
+               FROM products JOIN
+                    contains ON p_id = id
+               WHERE o_id = order_id)
+  WHERE id = order_id;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+~~~
+
+~~~sql
+CREATE TRIGGER contains_ins_upd
+AFTER INSERT or UPDATE
+ON contains
+FOR EACH ROW
+EXECUTE PROCEDURE calculate_total(NEW.order_id);
+~~~
+
+Another trigger is needed for UPDATE or DELETE using OLD.order_id as the parameter.
+
+---
+
+# Materialized Views
+
+An **alternative** to denormalization is the usage of materialized views.
+
+A materialized view **stores** the result of a query in a table and can be **refreshed** as needed.
+
+~~~sql
+CREATE MATERIALIZED VIEW orders_total AS
+SELECT orders.*, SUM(quantity * price)
+FROM orders JOIN
+     contains ON orders.id = o_id JOIN
+     products ON products.id = p_id
+GROUP BY orders.id
+~~~
+
+~~~sql
+REFRESH MATERIALIZED VIEW orders_total
+~~~
+
+---
+
+template: inverse
+
+&ldquo; Premature optimization is the root of all evil. &rdquo;
+
+&mdash; Donald Knuth
