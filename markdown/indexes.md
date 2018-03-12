@@ -764,11 +764,11 @@ This column should be updated whenever a row changes or is inserted. This can be
 CREATE FUNCTION post_search_update() RETURNS TRIGGER AS $$
 BEGIN
   IF TG_OP = 'INSERT' THEN
-    new.search = to_tsvector('english', NEW.title);
+    NEW.search = to_tsvector('english', NEW.title);
   END IF;
   IF TG_OP = 'UPDATE' THEN
       IF NEW.name <> OLD.name THEN
-        new.search = to_tsvector('english', NEW.title);
+        NEW.search = to_tsvector('english', NEW.title);
       END IF;
   END IF;
   RETURN NEW;
@@ -949,7 +949,7 @@ So let's try it again with *PEV*.
 Much better. But it seems PostgreSQL is **losing** a lot of time **joining** the *contains* and *products* table.
 
 .diagram[
-[![](../assets/indexes/pev1.png)](http://tatiyants.com/pev/#/plans/plan_1520277187863)
+![](../assets/indexes/pev1.png)
 ]
 
 ---
@@ -974,7 +974,7 @@ CREATE INDEX contains_product_idx ON contains USING btree (p_id);
 From **200ms** to **14ms** by just creating the right index.
 
 .diagram[
-[![](../assets/indexes/pev2.png)](http://tatiyants.com/pev/#/plans/plan_1520277376167)
+![](../assets/indexes/pev2.png)
 ]
 
 ---
@@ -995,7 +995,7 @@ CREATE INDEX product_price_idx ON products USING btree (price);
 Not as dramatic as before but still some improvement. Remember, indexes have theirs **costs** (slower updates, space, ...).
 
 .diagram[
-[![](../assets/indexes/pev3.png)](http://tatiyants.com/pev/#/plans/plan_1520277712160)
+![](../assets/indexes/pev3.png)
 ]
 
 ---
@@ -1017,7 +1017,7 @@ WHERE p_id > 200 AND p_id < 300
 We already have an index on the *p_id* column so the query should be pretty fast:
 
 .diagram[
-[![](../assets/indexes/pev4.png)](http://tatiyants.com/pev/#/plans/plan_1520303182683)
+![](../assets/indexes/pev4.png)
 ]
 
 ---
@@ -1045,7 +1045,7 @@ USING contains_product_idx;
 We get the **same data** in **fewer blocks** and end up getting our results faster:
 
 .diagram[
-[![](../assets/indexes/pev5.png)](http://tatiyants.com/pev/#/plans/plan_1520303205189)
+![](../assets/indexes/pev5.png)
 ]
 
 ---
@@ -1076,7 +1076,7 @@ WHERE title ILIKE '%oil%painting%'
 We get **174 rows** in **54 seconds**:
 
 .diagram[
-[![](../assets/indexes/pev6.png)](http://tatiyants.com/pev/#/plans/plan_1520518104361)
+![](../assets/indexes/pev6.png)
 ]
 
 ---
@@ -1094,7 +1094,7 @@ WHERE to_tsvector('english', title) @@
 The query returns **158 rows** in **4 minutes**. The added time is due to having to calculate *ts_vectors* for all rows:
 
 .diagram[
-[![](../assets/indexes/pev7.png)](http://tatiyants.com/pev/#/plans/plan_1520519583436)
+![](../assets/indexes/pev7.png)
 ]
 
 ---
@@ -1110,7 +1110,7 @@ CREATE INDEX search_idx ON wikipedia USING GIST (to_tsvector('english', title));
 It now takes only **600 ms**. Creating the index took **52 minutes** and used **1708 MB** but you only have to do it once:
 
 .diagram[
-[![](../assets/indexes/pev8.png)](http://tatiyants.com/pev/#/plans/plan_1520509928622)
+![](../assets/indexes/pev8.png)
 ]
 
 ---
