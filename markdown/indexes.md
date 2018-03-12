@@ -146,8 +146,8 @@ name:sequential
 --
 
 * Searching:
-  * Keys: b / 2 = **500** blocks
-  * Non-keys: b = **1000** blocks
+  * Keys: b / 2 = **1500** blocks
+  * Non-keys: b = **3000** blocks
 
 ---
 
@@ -165,8 +165,8 @@ name:sequential
 
 * Searching:
   * Primary Keys: log<sub>2</sub>b  = **12** blocks
-  * Other Keys: b / 2 = **500** blocks
-  * Non-keys: b = **1000** blocks
+  * Other Keys: b / 2 = **1500** blocks
+  * Non-keys: b = **3000** blocks
 
 ---
 
