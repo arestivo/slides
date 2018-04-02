@@ -378,7 +378,7 @@ public void render(float delta) {
 }
 ~~~
 
-Delta is The time in seconds since the last render.
+Delta is the time in seconds since the last render.
 
 ---
 
