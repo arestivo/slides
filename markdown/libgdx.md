@@ -77,7 +77,7 @@ Can be used in many different ways as it does not force a specific design on you
 
 * The setup app creates a different project for each selected platform plus a *Core* project where you will write the bulk of your code.
 
-* In order to share assets between the different projects, only one assets folder is created. 
+* In order to share assets between the different projects, only one assets folder is created.
 
 * If you select *Android* as a supported platform, this folder will be located in the *Android* project.
 
@@ -108,7 +108,7 @@ The Gdx class provides a unified interface to all the supported platforms:
 
 # Core Modules
 
-Core modules are not only used by the app being developed, but also by the internal LibGDX code. 
+Core modules are not only used by the app being developed, but also by the internal LibGDX code.
 
 ![](../assets/libgdx/libgdx-modules.svg)
 
@@ -136,7 +136,7 @@ public class Main {
       cfg.useGL30 = false;
       cfg.width = 480;
       cfg.height = 320;
-		
+
       new LwjglApplication(new MyGame(), cfg);
    }
 }
@@ -250,10 +250,10 @@ name:2dgraphics
 
 # SpriteBatch
 
-* It is very common to draw a texture mapped to rectangular geometry. 
-* It is also very common to draw the same texture or various regions of that texture **many times**. 
-* It would be **inefficient** to send each rectangle one at a time to the GPU to be drawn. 
-* Instead, many rectangles for the same texture can be described and sent to the GPU **all at once**. 
+* It is very common to draw a texture mapped to rectangular geometry.
+* It is also very common to draw the same texture or various regions of that texture **many times**.
+* It would be **inefficient** to send each rectangle one at a time to the GPU to be drawn.
+* Instead, many rectangles for the same texture can be described and sent to the GPU **all at once**.
 
 This is what the SpriteBatch class does.
 
@@ -270,7 +270,7 @@ public class SpriteBatch implements Batch {
 
 # Texture
 
-The Texture class decodes an image file and loads it into GPU memory. 
+The Texture class decodes an image file and loads it into GPU memory.
 
 ~~~java
 public class Texture extends GLTexture {
@@ -299,18 +299,18 @@ The *TextureRegion* class describes a rectangle inside a texture and is useful f
 
 ~~~java
 public class TextureRegion {
-  public TextureRegion (TextureRegion region, 
-    int x, int y, 
+  public TextureRegion (TextureRegion region,
+    int x, int y,
     int width, int height);
-	
+
   public void setRegion (int x, int y, int width, int height);
 
-  public static TextureRegion[][] split (Texture texture, 
+  public static TextureRegion[][] split (Texture texture,
       int tileWidth, int tileHeight);
 }
 ~~~
 
-The *split* method is an helper method that splits a *Texture* into *TextureRegion*s according to a tile width and height. 
+The *split* method is an helper method that splits a *Texture* into *TextureRegion*s according to a tile width and height.
 
 ---
 
@@ -363,6 +363,7 @@ public class AssetManager implements Disposable {
 To render our *Screen* we can do something like:
 
 ~~~java
+// In our screen class:
 public void render(float delta) {
     super.render(delta);
 
@@ -376,6 +377,8 @@ public void render(float delta) {
     game.getBatch().end();
 }
 ~~~
+
+Delta is The time in seconds since the last render.
 
 ---
 
@@ -405,8 +408,8 @@ public static int WORLD_WIDTH = 100; // Arbitrary world size (e.g. meters)
 public static int WORLD_HEIGHT = 50;
 
 // The ammount of world we want to show in our screen
-public static int VIEWPORT_WIDTH = 50; 
-public static int VIEWPORT_HEIGHT = 25; // Can be calculated from screen ratio 
+public static int VIEWPORT_WIDTH = 50;
+public static int VIEWPORT_HEIGHT = 25; // Can be calculated from screen ratio
 
 // How to transform from pixels to our unit
 public static int PIXEL_TO_METER = .05f;
@@ -510,7 +513,7 @@ Bodies can be of three types:
 BodyDef bodyDef = new BodyDef();
 bodyDef.type = BodyDef.BodyType.DynamicBody;
 
-bodyDef.angle = (float) (Math.PI / 4); // radians 
+bodyDef.angle = (float) (Math.PI / 4); // radians
 bodyDef.position.set(10f, 5f);         // meters
 bodyDef.linearVelocity.set(5f, 0f);    // meters/s
 bodyDef.angularVelocity.set(Math.PI);  // PI radians/s
@@ -587,9 +590,9 @@ rectangle.setAsBox(1f, 0.5f);
 
 # Updating the world
 
-* To update our simulation we need to tell our world to step. 
-* Stepping updates the world objects through time. 
-* The best place to call our step function is at the end of our *render* loop. 
+* To update our simulation we need to tell our world to step.
+* Stepping updates the world objects through time.
+* The best place to call our step function is at the end of our *render* loop.
 
 ~~~java
 public final class World implements Disposable {
@@ -638,7 +641,7 @@ But normally, to move things around, we will apply forces or impulses to a body.
 public class Body {
   public void applyForce (Vector2 force, Vector2 point, boolean wake); // Newtons
   public void applyForceToCenter (Vector2 force, boolean wake);        // Newtons
-  public void applyLinearImpulse (Vector2 impulse, Vector2 point, boolean wake); 
+  public void applyLinearImpulse (Vector2 impulse, Vector2 point, boolean wake);
   //Newtons*second
 }
 ~~~
@@ -743,7 +746,7 @@ Scene2d is a 2D scene graph for building applications and UIs using a hierarchy 
 * Each actor draws in its own un-rotated and unscaled coordinate system where 0,0 is the bottom left corner.
 * Hit (touch, mouse) detection of rotated and scaled actors.
 * Routing of input and other events to the appropriate actor.
-* Action system for easy manipulation of actors over time. 
+* Action system for easy manipulation of actors over time.
 
 ---
 
@@ -776,8 +779,8 @@ Many types of viewports can be used:
 
 # StrechViewport
 
-* The *StretchViewport* supports working with a virtual screen size. 
-* The virtual viewport will always be stretched to fit the screen. 
+* The *StretchViewport* supports working with a virtual screen size.
+* The virtual viewport will always be stretched to fit the screen.
 * No black bars, but the aspect ratio may not be the same.
 
 ![](../assets/libgdx/libgdx-stretch.svg)
@@ -786,8 +789,8 @@ Many types of viewports can be used:
 
 # FitViewport
 
-* The *FitViewport* supports working with a virtual screen size. 
-* It will always maintain the aspect ratio of the virtual screen size, while scaling it as much as possible to fit the screen. 
+* The *FitViewport* supports working with a virtual screen size.
+* It will always maintain the aspect ratio of the virtual screen size, while scaling it as much as possible to fit the screen.
 * One disadvantage with this strategy is that there may appear black bars.
 
 ![](../assets/libgdx/libgdx-fit.svg)
@@ -796,7 +799,7 @@ Many types of viewports can be used:
 
 # FillViewport
 
-* The *FillViewport* supports working with a virtual screen size. 
+* The *FillViewport* supports working with a virtual screen size.
 * Keeps the aspect ratio of the virtual screen size.
 * It will always fill the whole screen.
 * Parts of the viewport might be cut off.
@@ -809,7 +812,7 @@ Many types of viewports can be used:
 
 * The *ScreenViewport* does not have a constant virtual screen size.
 * It will always match the window size.
-* No scaling happens and no black bars appear. 
+* No scaling happens and no black bars appear.
 * A player with a bigger screen might see more of the game, than a player with a smaller screen size.
 
 ![](../assets/libgdx/libgdx-screen.svg)
@@ -830,7 +833,7 @@ public class Actor {
 
 ---
 
-#Group 
+#Group
 
 The Group class is an actor that may have child actors.
 
@@ -871,10 +874,10 @@ LibGDX has a set of predefined actors ready to be used:
 
 # Events
 
-*Stage* is an *InputProcessor*. When it receives input events, it fires them on the appropriate actors. 
+*Stage* is an *InputProcessor*. When it receives input events, it fires them on the appropriate actors.
 
 Events are propagated in two phases:
-* The *capture* phase from the root down to the target actor. 
+* The *capture* phase from the root down to the target actor.
 * And the *normal* phase from the target up to the root.
 
 ~~~java
@@ -898,7 +901,7 @@ public ClickListener () {
   public void touchUp(InputEvent e, float x, float y, int pointer, int button);
 
   public void clicked(InputEvent e, float x, float y);
-  
+
   public int getTapCount();
 }
 ~~~
@@ -924,7 +927,7 @@ public ActorGestureListener () {
 
   public void zoom (InputEvent e, float initialDistance, float distance);
 
-  public void pinch (InputEvent e, Vector2 iPointer1, Vector2 iPointer2, 
+  public void pinch (InputEvent e, Vector2 iPointer1, Vector2 iPointer2,
                                    Vector2 pointer1, Vector2 pointer2);
 }
 ~~~
@@ -1083,8 +1086,8 @@ name:sound
 
 LibGDX supports two main types of sound:
 
-* **Music**: represents a streamed audio file. The interface supports pausing, resuming and so on. 
-* **Sound** a short audio clip that can be played numerous times in parallel. 
+* **Music**: represents a streamed audio file. The interface supports pausing, resuming and so on.
+* **Sound** a short audio clip that can be played numerous times in parallel.
 
 ~~~java
 Sound sound = Gdx.audio.newSound(Gdx.files.internal("kick.wav"));
@@ -1162,7 +1165,7 @@ To create a animation we start by getting a texture and spliting it into *Textur
 ~~~java
   Texture texture = game.getAssetManager().get("animation.png
   TextureRegion[][] thrustRegion = TextureRegion.split(
-    texture, 
+    texture,
     texture.getWidth() / 5,    // 5 columns
     texture.getHeight() / 3);  // 3 lines
 ~~~
@@ -1174,13 +1177,13 @@ To create a animation we start by getting a texture and spliting it into *Textur
 # Frames
 
 We then need to transform the resulting bi-dimensional array
-into a uni-dimensional array. The easiest way to do it, is 
+into a uni-dimensional array. The easiest way to do it, is
 to use the *System.arraycopy* method:
 
 ~~~java
 public static void arraycopy(
-  Object src, int srcPos, 
-  Object dest, int destPos, 
+  Object src, int srcPos,
+  Object dest, int destPos,
   int length);
 ~~~
 
@@ -1272,4 +1275,3 @@ branch on this example project:
 https://github.com/arestivo/AsteroidArena/tree/sprites
 
 https://github.com/arestivo/AsteroidArena/tree/physics
-
