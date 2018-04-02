@@ -499,9 +499,9 @@ In *Box2D* the physical objects are called bodies.
 
 Bodies can be of three types:
 
-* **Dynamic**: move around and are affected by forces and other dynamic, kinematic and static objects.
-* **Static**: do not move and are not affected by forces.
-* **Kinematic**: do not react to forces, but have the ability to move.
+* **Dynamic**: move around and are affected by forces and other dynamic, kinematic and static objects (example: hero, enemies, ...).
+* **Static**: do not move and are not affected by forces (but affect dynamic objects (examples: ground, platform, wall, ...).
+* **Kinematic**: do not react to forces, but have the ability to move (example: a moving plaform).
 
 ---
 
