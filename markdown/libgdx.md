@@ -403,6 +403,8 @@ name:camera
 * Every device has a different screen size and ratio.
 * This means that we cannot think in terms of pixels to define the size of our objects.
 
+A sugestion for dealing with this problem:
+
 ~~~java
 public static int WORLD_WIDTH = 100; // Arbitrary world size (e.g. meters)
 public static int WORLD_HEIGHT = 50;
@@ -414,7 +416,7 @@ public static int VIEWPORT_HEIGHT = 25; // Can be calculated from screen ratio
 // How to transform from pixels to our unit
 public static int PIXEL_TO_METER = .05f;
 
-float ratio = ((float) Gdx.graphics.getHeight() / (float) Gdx.graphics.getWidth());
+float ratio = ((float)Gdx.graphics.getHeight() / (float)Gdx.graphics.getWidth());
 
 ~~~
 
