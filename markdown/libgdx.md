@@ -484,8 +484,8 @@ The *World* class manages all physics entities using [Box2D](http://box2d.org/).
 ~~~java
 public final class World implements Disposable {
   public World (Vector2 gravity, boolean doSleep);
-	public Body createBody (BodyDef def);
-	public void destroyBody (Body body);
+  public Body createBody (BodyDef def);
+  public void destroyBody (Body body);
 }
 ~~~
 
