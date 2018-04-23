@@ -249,7 +249,6 @@ Normally **one entry per block**.
 ![](../assets/indexes/sparse.svg)
 ]
 
-
 ---
 
 # Dense or Sparse
@@ -491,7 +490,7 @@ CREATE INDEX name ON table USING btree (column);
 CREATE INDEX name ON table USING hash (column);
 ~~~
 
-PostgreSQL does not support primary indexes. All indexes are secondary and thus, sparse.
+PostgreSQL does not support primary indexes. All indexes are secondary and thus, dense.
 
 ---
 
@@ -692,7 +691,6 @@ WHERE (to_tsvector('english', title) || to_tsvector('english', body)) @@ plainto
 ~~~
 ]
 
-
 ---
 
 # FTS weights
@@ -838,7 +836,6 @@ One such tool is [pgBadger](http://dalibo.github.io/pgbadger/) (a sucessor to th
 # Fouine vs Badger
 
 ![](../assets/indexes/badgerfouine.jpg)
-
 
 ---
 
@@ -1036,7 +1033,6 @@ USING contains_product_idx;
 .diagram.smaller[
 ![](../assets/indexes/clustering.svg)
 ]
-
 
 ---
 
