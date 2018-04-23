@@ -85,6 +85,48 @@ name:intro
 
 template:inverse
 name:singleton
+
+# Keep 'em Separated
+
+![](../assets/gamepatterns/three_pieces.jpg)
+
+---
+
+# Motivation
+
+Applications normally have a **data model** and a **user interface**.
+
+In some cases, the application displays the **same data in different ways**.
+
+User interface logic tends to **change** more frequently, be more **device-dependent** and be harder to **test** than business logic.
+
+The way in which data is **presented** to the user should be **independent** from the data **representation**.
+
+---
+
+# Model View Controller (MVC)
+
+There are [several different](http://homepage.lnu.se/staff/daweaa/papers/2014WICSA.pdf) interpretations of what constitutes a MVC architecture.
+
+The most important aspect is that the model represents the data, and does nothing else. The model does **not** depend on the controller or the view.
+
+The controller can either serve as **glue** between the model and the view or just be a **bridge** between user interaction and the model.
+
+![](../assets/gamepatterns/mvc.svg)
+
+---
+
+# Implementation
+
+In the [AsteroidArena](https://github.com/arestivo/AsteroidArena) example, when the render method of the view is called is gets the data to be rendered from the model, advances the simulation by calling the controller and passes it any user inputs. The controller updates the model accordingly.
+
+![](../assets/gamepatterns/asteroid-mvc.svg)
+
+---
+
+template:inverse
+name:singleton
+
 # One to rule them All 
 
 ![](../assets/gamepatterns/one.jpg)
@@ -233,7 +275,7 @@ Three similar patterns:
 
 ---
 
-# Implementation
+# Factory: Implementation
 
 ~~~java
 for (AsteroidModel asteroid : asteroids) {
@@ -251,7 +293,7 @@ for (AsteroidModel asteroid : asteroids) {
 
 ---
 
-# Implementation
+# Factory Method: Implementation
 
 ~~~java
 public abstract class EntityView{
@@ -266,6 +308,8 @@ public abstract class EntityView{
   public abstract Sprite createSprite(AsteroidArena game);
 }
 ~~~
+
+Also an instance of the [Template Method](https://sourcemaking.com/design_patterns/template_method) pattern.
 
 ---
 
@@ -559,7 +603,6 @@ Allow an object to alter its behavior when its internal state changes. The objec
 [State Pattern](https://sourcemaking.com/design_patterns/state), [State Pattern in Games](http://gameprogrammingpatterns.com/state.html)
 ]
 
-
 ---
 
 template:inverse
@@ -611,7 +654,6 @@ The game logic/physics step is the one that is most vulnerable to hardware chang
 .right.small[
 [Game Loop Pattern](http://gameprogrammingpatterns.com/game-loop.html), [Fix your Timestep](http://gafferongames.com/game-physics/fix-your-timestep/)
 ]
-
 
 ---
 
