@@ -321,6 +321,34 @@ Also an instance of the [Template Method](https://sourcemaking.com/design_patter
 
 ---
 
+# Abstract Factory : Example 
+
+~~~java
+class A {
+    private Factory factory;
+
+    public A(Factory factory) {
+        this.factory = factory;
+    }
+
+    public void doSomething() {
+        Foo f = factory.makeFoo();
+        f.something();
+    }
+}
+
+interface Factory {
+    Foo makeFoo();
+    Bar makeBar();
+}
+~~~
+
+~~~java
+new A(new NiceFactory()).doSomething();
+~~~
+
+---
+
 template:inverse
 name:flyweight
 # The Forest for the Trees
