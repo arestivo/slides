@@ -683,13 +683,18 @@ while (true)
 
 # Game Loop
 
-The game logic/physics step is the one that is most vulnerable to hardware changes.
+Sometimes, our processor isn't fast enough to render as much frames as desired.
+
+The game logic/physics step is the one that is most vulnerable to these hardware changes. 
+
+By removing the rendering from the update loop, we can simulate as often as we want and render when possible.
 
 ![](../assets/gamepatterns/loop3.svg)
 
 .right.small[
 [Game Loop Pattern](http://gameprogrammingpatterns.com/game-loop.html), [Fix your Timestep](http://gafferongames.com/game-physics/fix-your-timestep/)
 ]
+
 
 ---
 
