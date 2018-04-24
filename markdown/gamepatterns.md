@@ -306,6 +306,15 @@ public abstract class EntityView{
 
   public abstract Sprite createSprite(AsteroidArena game);
 }
+
+public class MediumAsteroidView extends EntityView{
+    @Override
+    public Sprite createSprite(AsteroidArena game) {
+        Texture texture = game.getAssetManager().get("asteroid-medium.png");
+
+        return new Sprite(texture, texture.getWidth(), texture.getHeight());
+    }
+}
 ~~~
 
 Also an instance of the [Template Method](https://sourcemaking.com/design_patterns/template_method) pattern.
