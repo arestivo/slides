@@ -185,7 +185,7 @@ public abstract class ApplicationAdapter implements ApplicationListener {
 
 # Game
 
-A *Game* is an *ApplicationListener* that supports multiple screens. You can create multiple screens and switch between em using *setScreen*. Game events are delegated to the current screen.
+A *Game* is an *ApplicationListener* that supports multiple screens. You can create multiple screens and switch between them using *setScreen*. Game events are delegated to the current screen.
 
 ~~~java
 public abstract class Game implements ApplicationListener {
@@ -230,7 +230,6 @@ public abstract class ScreenAdapter implements Screen {
 
 }
 ~~~
-
 
 ---
 
@@ -617,7 +616,6 @@ https://github.com/arestivo/BouncingBalls/tree/physics
 https://github.com/arestivo/BouncingBalls/tree/ground
 
 In particular the [BouncingScreen](https://github.com/arestivo/BouncingBalls/blob/physics/core/src/com/aor/bouncing/BouncingScreen.java) (physics) and [BouncingScreen](https://github.com/arestivo/BouncingBalls/blob/ground/core/src/com/aor/bouncing/BouncingScreen.java) (ground) classes.
-
 
 ---
 
