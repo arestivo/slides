@@ -64,10 +64,9 @@ name:intro
 # Game Development Design Patterns
 
 * What this presentation is about
-
 * Writing maintanable code
-
 * Writing efficient code
+* Writing testable code
 
 ---
 
