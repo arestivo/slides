@@ -73,7 +73,7 @@ name:intro
 # References
 
 
-* Design Patterns: Elements of Reusable Object-Oriented Software, GoF, 1994
+* [Design Patterns](https://en.wikipedia.org/wiki/Design_Patterns): Elements of Reusable Object-Oriented Software, GoF, 1994
 
 * [Game Programming Patterns](http://gameprogrammingpatterns.com/contents.html), Robert (Bob) Nystrom
 
