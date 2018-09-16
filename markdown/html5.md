@@ -62,8 +62,8 @@ template:normal
 
 
 # History
-* 1992: **HTML 1.0**, Tim Berners-Lee original proposal
-* 1993: **HTML+**, Dave Raggett's competing standard
+* 1989-92: **HTML 1.0**, Tim Berners-Lee original [proposal](https://www.w3.org/History/1989/proposal.html)
+* 1993: **HTML+**, Dave Raggett's [competing standard](https://www.w3.org/MarkUp/HTMLPlus/htmlplus_1.html)
 * 1994: **HTML 2.0**, tables, file upload, ... (IETF)
 * 1995: Non-standard Netscape features
 * 1996: Competing Netscape and Internet Explorer features
@@ -151,13 +151,13 @@ template:inverse
 name:resources
 # Resources
 * References:
-  * http://www.w3.org/TR/html-markup/
-  * http://developer.mozilla.org/en-US/docs/Web/HTML/Element
-  * WHATWG Living Standard <br> https://html.spec.whatwg.org/multipage/
+  * [W3C Standard](http://www.w3.org/TR/html-markup/)
+  * [WHATWG Living Standard](https://html.spec.whatwg.org/multipage/)
+  * [Mozilla Developer Network (MDN) Reference](http://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 * Books:
-  * http://diveintohtml5.info/
+  * [Dive into HTML 5](http://diveinto.html5doctor.com/)
 * Tutorials:
-  * http://docs.webplatform.org/wiki/html/tutorials
+  * https://webplatform.github.io/docs/html/tutorials/
   * http://www.htmldog.com/guides/html/
   * http://html5tutorial.info/
 
@@ -379,6 +379,7 @@ A table is organized using rows (tr) that contain data cells (td).
 
 ```html
 <table>
+  <caption>Just some letters</caption>
   <tr>
     <td>A</td><td>B</td><td>C</td>
   </tr>
@@ -390,6 +391,8 @@ A table is organized using rows (tr) that contain data cells (td).
 
 ![](../assets/html5/table1.png)
 
+A table can have an optional *caption*.
+
 ---
 
 # Headers
@@ -400,7 +403,7 @@ Some data cells can be headers (**th** instead of **td**)
 ```html
 <table>
   <tr>
-    <th>A</th><th>B</th><th>C</th>
+    <th scope="col">A</th><th scope="col">B</th><th scope="col">C</th>
   </tr>
   <tr>
     <td>D</td><td>E</td><td>F</td>
@@ -408,6 +411,8 @@ Some data cells can be headers (**th** instead of **td**)
 </table>
 ```
 ![](../assets/html5/table2.png)
+
+Table headers can have an optional **scope** attribute that indicates the cells the attribute relates to. Values for this attribute can be **col** or **row**.
 
 ---
 
@@ -466,6 +471,29 @@ Cells can be merged horizontally or vertically
 
 ---
 
+# Column Groups
+
+So that we don't have to repeat the same information for each cell in a column, we can define column groups using the **colgroup** and **col** tags. 
+
+```html
+<table>
+  <colgroup>
+    <col span="2" class="first">
+    <col>
+  </colgroup>
+  <tr>
+    <td>A</td><td>B</td><td>C</td>
+  </tr>
+  <tr>
+    <td>D</td><td>E</td><td>F</td>
+  </tr>
+</table>
+```
+
+Mainly used to set the *class* of each column. We will talk about classes later on.
+
+---
+
 template:inverse
 name:forms
 # Forms
@@ -482,8 +510,7 @@ Forms allow users to enter data that is sent to a server for processing
 
 # Action and Method
 
-* **action**: the web page that receives and processes the form results
-* **method**: either **get** (values are sent in the URL) or **post** (values are sent inside the HTTP header)
+The **form** tag defines a form that can contain controls.
 
 ```html
 <form action="save.php" method="get">
@@ -491,20 +518,18 @@ Forms allow users to enter data that is sent to a server for processing
 </form>
 ```
 
----
-
-template:inverse
-# Form Controls
+* **action**: the web page that receives and processes the form results
+* **method**: either **get** (values are sent in the URL) or **post** (values are sent inside the HTTP header)
 
 ---
 
 # Form Controls
 
-Three main types of form controls
+Three main types of form controls:
 
-* **input** Several types of user editable fields
-* **textarea** A big editable text field
-* **select** A dropdown list
+* **input**: Several types of user editable fields;
+* **textarea**: A big editable text field;
+* **select**: A dropdown list.
 
 ---
 
@@ -533,7 +558,7 @@ An input field can vary in many ways, depending on the **type** attribute.
 * **required**: input must be filled out (boolean)
 * **disabled**: input is disabled (boolean)
 
-**Boolean**: If the attribute is present, its value must either be the empty string or a value that is an ASCII case-insensitive match for the attribute's canonical name, with no leading or trailing whitespace.
+**Boolean** attributes: If the attribute is present, its value must either be the empty string or a value that is an ASCII case-insensitive match for the attribute's canonical name, with no leading or trailing whitespace.
 
 ```html
 <input type="text" name="address" required="required" disabled>
@@ -676,7 +701,7 @@ Dropdown boxes that allow users to select options from a list.
 ```html
 <select name="fruit">
   <option value="orange">Orange</option>
-  <option value="banana">Banana</option>
+  <option value="banana" selected>Banana</option>
   <option value="tomato">Tomato</option>
   <option value="apple">Apple</option>
 </select>
@@ -684,6 +709,7 @@ Dropdown boxes that allow users to select options from a list.
 
 * **value**: The value sent to the server
 * **content**: The text presented to the user
+* **selected** (boolean): The option is the selected one
 
 ![](../assets/html5/select.png)
 
@@ -698,7 +724,7 @@ Options in select controls can be grouped to make selecting them easier.
 <select name="food">
   <optgroup label="Fruits">
     <option value="orange">Orange</option>
-    <option value="banana">Banana</option>
+    <option value="banana" selected>Banana</option>
   </optgroup>
   <optgroup label="Vegetables">
     <option value="lettuce">Lettuce</option>
@@ -771,15 +797,15 @@ Text areas also allow the common attributes **name**, **disabled**, **readonly**
 # Field Set
 
 * Allows grouping inputs in larger forms.
-* Legend is the name of the group.
+* The **legend** tag contains the title of the group.
 
 ```html
 <form>
   <fieldset>
     <legend>Personal data:</legend>
-    Name: <input type="text"><br>
-    Email: <input type="text"><br>
-    Date of birth: <input type="text">
+    <label>Name: <input type="text"></label>
+    <label>Email: <input type="text"></label>
+    <label>Date of birth: <input type="text"></label>
   </fieldset>
 </form>
 ```
@@ -879,7 +905,7 @@ Most important character entities:
 * Double quote sign (&quot;): &amp;quot;
 * Non-breaking space (&nbsp;): &amp;nbsp;
 
-Other character entities: http://dev.w3.org/html5/html-author/charref
+[Other character entities](http://dev.w3.org/html5/html-author/charref) | [Character entity search](http://www.amp-what.com/unicode/search/arrow) 
 
 ---
 
@@ -969,15 +995,15 @@ Div is a generic **block** tag that can be used to define sections of a website:
 
 **header**
 
-> represents a group of introductory or navigational aids. It may contain some heading elements but also other elements like a logo, wrapped section's header, a search form, and so on.
+Represents a group of introductory or navigational aids. It may contain some heading elements but also other elements like a logo, wrapped section's header, a search form, and so on. Many different elements can contain the **header** tag: body, section, article, form, ....
 
 **nav**
 
-> represents a section of a page that links to other pages or to parts within the page: a section with navigation links.
+Represents a section of a page that links to other pages or to parts within the page: a section with navigation links.
 
 **aside**
 
-> represents a section of the page with content connected tangentially to the rest, which could be considered separate from that content. These sections are often represented as sidebars or inserts.
+Represents a section of the page with content connected tangentially to the rest, which could be considered separate from that content. These sections are often represented as sidebars or inserts.
 
 ---
 
@@ -985,15 +1011,15 @@ Div is a generic **block** tag that can be used to define sections of a website:
 
 **section**
 
-> represents a generic section of a document, i.e., a thematic grouping of content, typically with a heading.
+Represents a generic section of a document, i.e., a thematic grouping of content, typically with a heading (**header**).
 
 **article**
 
-> represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable, e.g., in syndication. Each *article* should be identified, typically by including a heading as a child.
+Represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable, e.g., in syndication. Each *article* should be identified, typically by including a heading (**header**) as a child.
 
 **footer**
 
-> represents a footer for its nearest sectioning content or sectioning root element. A footer typically contains information about the author of the section, copyright data or links to related documents.
+Represents a footer for its nearest sectioning content or sectioning root element. A footer typically contains information about the author of the section, copyright data or links to related documents. Many different elements can contain the **footer** tag: body, section, article, form, ....
 
 ---
 
@@ -1025,7 +1051,7 @@ Div is a generic **block** tag that can be used to define sections of a website:
       </section>
     </div>
     <footer>
-      Copyright: Mad Scientists News 2014
+      Copyright: Mad Scientists News 2018
     </footer>
   </body>
 </html>
@@ -1048,7 +1074,7 @@ A **canvas** is an empty rectangle that can be used to draw on the fly using *ja
 <canvas width="?" height="?"></canvas>
 ```
 
-Some <a href="http://davidwalsh.name/canvas-demos">examples</a>
+Some <a href="https://developer.mozilla.org/en-US/docs/Web/Demos_of_open_web_technologies">examples</a>
 
 ---
 
@@ -1056,17 +1082,17 @@ Some <a href="http://davidwalsh.name/canvas-demos">examples</a>
 
 * **S**calable **V**ector **G**raphics.
 * SVG images can be created and edited with any text editor.
-* SVG images can be searched, indexed, scripted, and compressed.
-* SVG images are scalable.
-* SVG images can be printed with high quality at any resolution.
-* SVG images are zoomable without degradation.
+* SVG images can be searched, indexed, scripted, and **compressed**.
+* SVG images are **scalable**.
+* SVG images can be printed with high quality at **any resolution**.
+* SVG images are **zoomable** without degradation.
 
 ---
 
 # SVG Example
 
 ```html
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="190">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200" height="200">
   <polygon
         points="100,10 40,180 190,60 10,60 160,180"
         style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;"
@@ -1075,7 +1101,7 @@ Some <a href="http://davidwalsh.name/canvas-demos">examples</a>
 ```
 
 <center>
-  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="190" height="190" style="display:block; margin: 0 auto;">
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200" height="200" style="display:block; margin: 0 auto;">
     <polygon
           points="100,10 40,180 190,60 10,60 160,180"
           style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;">
