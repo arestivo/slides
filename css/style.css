@@ -211,63 +211,66 @@ del {
   padding:12px;
   border-radius:.5em;
 }
+.box_info p:first-of-type, .box_success p:first-of-type, .box_warning p:first-of-type, .box_error p:first-of-type, .box_example p:first-of-type, .box_regexp p:first-of-type{
+  display: inline;
+}
 .box_info:before {
-    content: "\f05a";
-    padding-right: 1em;
-    font-family: FontAwesome;
+  content: "\f05a";
+  padding-right: 1em;
+  font-family: FontAwesome;
 }
 .box_info {
-    color: #00529B;
-    background-color: #BDE5F8;
+  color: #00529B;
+  background-color: #BDE5F8;
 }
 .box_regexp:before {
-    content: "\f002";
-    padding-right: 1em;
-    font-family: FontAwesome;
+  content: "\f002";
+  padding-right: 1em;
+  font-family: FontAwesome;
 }
 .box_regexp {
-    color: #00529B;
-    background-color: #BDE5F8;
+  color: #00529B;
+  background-color: #BDE5F8;
 }
 .box_regexp strong {
-    color: red;
-    background-color: #DFF2BF;
+  color: red;
+  background-color: #DFF2BF;
 }
 .box_success:before {
-    content: "\f05d";
-    padding-right: 1em;
-    font-family: FontAwesome;
+  content: "\f05d";
+  padding-right: 1em;
+  font-family: FontAwesome;
 }
 .box_success {
-    color: #4F8A10;
-    background-color: #DFF2BF;
+  color: #4F8A10;
+  background-color: #DFF2BF;
 }
 .box_example:before {
-    content: "\f044";
-    padding-right: 1em;
-    font-family: FontAwesome;
+  content: "\f044";
+  padding-right: 1em;
+  font-family: FontAwesome;
 }
 .box_example {
-    color: #4F8A10;
-    background-color: #DFF2BF;
+  color: #4F8A10;
+  background-color: #DFF2BF;
 }
 .box_warning:before {
-    content: "\f06a";
-    padding-right: 1em;
-    font-family: FontAwesome;
+  content: "\f06a";
+  padding-right: 1em;
+  font-family: FontAwesome;
 }
 .box_warning {
-    color: #9F6000;
-    background-color: #FEEFB3;
+  color: #9F6000;
+  background-color: #FEEFB3;
 }
 .box_error:before {
-    content: "\f057";
-    padding-right: 1em;
-    font-family: FontAwesome;
+  content: "\f057";
+  padding-right: 1em;
+  font-family: FontAwesome;
 }
 .box_error {
-    color: #D8000C;
-    background-color: #FFBABA;
+  color: #D8000C;
+  background-color: #FFBABA;
 }
 
 code.has-jax {
@@ -297,7 +300,6 @@ code.has-jax {
   max-height: 15em;
   border: none;
 }
-
 
 .tiny img {
   max-height: 2.5em;
