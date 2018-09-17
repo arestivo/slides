@@ -525,11 +525,12 @@ The **form** tag defines a form that can contain controls.
 
 # Form Controls
 
-Three main types of form controls:
+Four main types of form controls:
 
 * **input**: Several types of user editable fields;
 * **textarea**: A big editable text field;
 * **select**: A dropdown list.
+* **button**: A generic button.
 
 ---
 
@@ -691,6 +692,21 @@ The same as a text field but it does not show on the browser. We'll find what th
 ```html
 <input type="submit" value="Send">
 ```
+
+The form will be submitted using the *method* and *action* defined in the **form** tag.
+
+---
+
+# Button
+
+An alternative way of creating a button inside a form is by using the **button** tag.
+
+```html
+<button formaction="login.php" formmethod="post">Login</button>
+<button formaction="register.php" formmethod="post">Register</button>
+```
+
+This way you can have different buttons with **different** actions and methods.
 
 ---
 
@@ -950,6 +966,8 @@ We can create an anchor to an element with a specific **id** within a page:
 ```html
 <a href="anotherpage.html#introduction">Another page</a>
 ```
+
+You can think of the **id** as the name of the element and the **class** as its type.
 
 ---
 

@@ -273,6 +273,12 @@ del {
   background-color: #FFBABA;
 }
 
+.html_example {
+  border: 1px solid;
+  text-align: center;
+  padding: 1em;
+}
+
 code.has-jax {
 	font: inherit;
 	font-size: 100%;
