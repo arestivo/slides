@@ -95,11 +95,11 @@ Source: http://www.w3counter.com/trends
 ---
 
 # HTML Elements
+
 * HTML is composed of a **tree** of HTML elements.
 * Elements can contain other elements and/or **text**.
-* Defined using **tags**.
-* Can also have **attributes**.
-* Browsers display each tag using a predefined style that can be changed using CSS.
+* They are defined using **tags** and can have **attributes**.
+* Browsers display each tag using a **predefined** style that can be changed using CSS.
 
 ---
 
