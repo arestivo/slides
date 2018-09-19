@@ -543,7 +543,7 @@ An input field can vary in many ways, depending on the **type** attribute.
 
 <input type="password" name="password">
 
-<input type="e-mail" name="email">
+<input type="email" name="email">
 ```
 
 
@@ -581,7 +581,7 @@ An input field can vary in many ways, depending on the **type** attribute.
   * **tel**: input value is a telephone number
   * **search**: input value is used to perform a search
   * **url**: input value is an URL
-  * **e-mail**: input value is used an e-mail
+  * **email**: input value is used an e-mail
 * **value**: the initial value
 
 ---
