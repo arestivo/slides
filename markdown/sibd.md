@@ -11,7 +11,7 @@ class: left, middle
 ---
 
 template:inverse
-# SIBD
+# SIBD / ESIN
 <a href="http://www.fe.up.pt/~arestivo">André Restivo</a>
 
 ---
