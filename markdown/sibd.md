@@ -26,7 +26,7 @@ After completing this course you should be able to:
 * Make **SQL** queries to relational databases
 * Create and validate **HTML 5** documents
 * Layout HTML 5 documents using **CSS**
-* Create a dinamic **web application** using PHP and relational databases
+* Create an **information system** implemented as a dynamic **web application** using PHP and relational databases
 
 ---
 
@@ -44,6 +44,8 @@ After completing this course you should be able to:
 ---
 
 # Project
+
+Implementation of an information system as a web application.
 
 ![Project Diagram](../assets/web/project.svg)
 
@@ -63,5 +65,5 @@ After completing this course you should be able to:
 
 * To obtain frequency, students may not exceed the maximum number allowed of missed classes. Attendance will be registered in practice sessions.
 * It is necessary to obtain a minimum of **8 (out of 20)** in both the exam and the distributed evaluation component.
-* Distributed evaluation referes to the implementation of a information system project.
+* Distributed evaluation refers to the implementation of a information system project.
 * Final mark = 0.5 * Exam + 0.5 * Project
