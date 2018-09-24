@@ -774,7 +774,7 @@ Options in select controls can be grouped to make selecting them easier.
 A text input field for larger texts.
 
 ```html
-<textarea rows="4" cols="50">
+<textarea name="description" rows="4" cols="50">
 This is an input field that allows
 the user to input several lines of text.
 This is the default value for that input.
