@@ -196,8 +196,9 @@ name:document
 * All HTML documents have a **html** root tag.
 * They all contain a **head** and **body** sections.
 * The head section must contain a **title** tag.
+* The html tag *should* contain a **lang** [attribute](https://www.w3.org/International/articles/language-tags/index.en) (e.g. "pt-PT" or "en-US").
 ```html
-<html>
+<html lang="en-US">
    <head>
      <title>Title</title>
    </head>
