@@ -690,14 +690,14 @@ p {
 ```
 
 ![](../assets/css3/serif-sansserif.jpg)
----
-# Typography Humor
 
-![](../assets/css3/ishottheserif.jpg)
 ---
 # Web Safe Fonts
 
+* To ensure that websites look the same across different platforms we should use *web safe* fonts like: Arial, Helvetica, Times New Roman, Times, Courier New or Courier.
+
 * You can specify several fonts. The browser will try to use the first and continue down the list if it doesn't exist.
+
 * Start with the font you want and gradually fall back to platform defaults and finally generic defaults:
 
 ```css
@@ -707,7 +707,24 @@ p {
 ```
 
 ---
-# Boldness
+# Remote Fonts
+
+* The *@font-face* rule specifies a custom font with which to display text.
+* The font can be loaded from a remote server making it possible to use all kind of fonts.
+
+```css
+@font-face {
+  font-family: "Open Sans";
+  src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
+       url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
+}
+```
+
+* An easier way to provide remote fonts is to use Google's fonts service: https://fonts.google.com/
+
+---
+
+# Font Weight
 
 You can specify the weight of the font using the font-weight property. Values can be **normal**, **bold**, **bolder**, **lighter** or values from **100** to **900**.
 
@@ -717,7 +734,7 @@ p.introduction {
 }
 ```
 ---
-# Style
+# Font Style
 
 The font-style property allows you to specify if the font style should be italic. Values can be **normal**, **italic**, or **oblique**.
 
@@ -727,7 +744,7 @@ span.author {
 }
 ```
 ---
-# Size
+# Font Size
 
 To define the font size you use the **font-size** property.
 
@@ -811,7 +828,7 @@ Elements all live inside a box. They can have a **border**, some space between t
 
 # Display
 
-There are 40 different possible values for the **display** property. For now, we will concentrate on only four of them: **none**, **inline**, **block** and **inline-block**.
+There are 41 different possible values for the **display** property. For now, we will concentrate on only four of them: **none**, **inline**, **block** and **inline-block**.
 
 https://developer.mozilla.org/en-US/docs/Web/CSS/display
 
@@ -820,11 +837,11 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/display
 # Block Elements
 
 * Block elements are laid out one after the other, **vertically**.
+* Respect **any** margins and padding.
 * If no **width** is set, they will **expand** naturally to **fill** their parent container.
-* They can have **margins** and/or **padding**.
 * If no **height** is set, they will **expand** naturally to **fit** their child elements and content.
 
-Examples: p, div, h1-h6
+Examples: p, div, h1-h6, section, article, header, footer, ...
 
 ```css
 img {
@@ -836,17 +853,18 @@ img {
 
 # Blocks
 
-<img src="../assets/css3/css-block-boxes.png" style="padding: 10px;">
+![blocks example](../assets/css3/blocks.svg)
 
 ---
 
 # Inline Elements
 
-* **Do not force** any **line changes**.
-* **Ignore top** and **bottom margin** settings, but will **apply left** and **right margins**, and **any padding**.
-* Will **ignore** the **width** and **height** properties.
+* Respect **left** and **right** margins and padding, but **not** top & bottom.
+* **Cannot** have a width and height set.
+* **Allow** other elements to sit to their left and right.
+* Can break from one line to the next if there is no more space.
 
-Examples: img, span, strong
+Examples: img, span, strong, a, em, ...
 
 ```css
 span {
@@ -870,9 +888,8 @@ span {
 
 # Inline-Block Elements
 
-Inline elements that **do not ignore** the **width** and **height** properties.
-
-Block elements that will be flowed with surrounding content as if they were single inline boxes.
+* Inline elements that **behave** as block elements.
+* Block elements that **stack** horizontally. 
 
 ```css
 span {
@@ -890,7 +907,7 @@ span {
 
 # Display None
 
-* Setting the **display** property to none, **removes** the element from the page.
+* Setting the **display** property to none, **removes** the element from the page completely.
 * Different from making it invisible (with the *visibility* attribute).
 
 ```css
@@ -914,7 +931,7 @@ h1 {
 ```
 
 * **Auto** A suitable margin is calculated by the browser (useful for centering).
-* **Percentage** Calculated with respect to the width of the generated containing block (event for top/bottom).
+* **Percentage** Calculated with respect to the width of the generated containing block (even for top/bottom).
 
 ---
 
