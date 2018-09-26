@@ -44,6 +44,7 @@ name:index
 1. [Grid](#grid)
 1. [Precedence](#precedence)
 1. [Responsive Design](#responsive)
+1. [Vars](#vars)
 1. [Vendor Prefixes](#prefix)
 1. [Validation](#validation)
 ]
@@ -2031,6 +2032,56 @@ Specificity Calculator: [http://specificity.keegan.st](http://specificity.keegan
  * **author**: The CSS rules defined by the page developer
  * **user**: User defined preferences
  * **default**: Browser defaults
+
+---
+
+template:inverse
+name:vars
+# CSS Vars
+
+---
+
+# CSS Vars
+
+* Entities that contain specific values to be reused throughout a document.
+* Set using custom property notation:
+
+```var
+body {
+  --main-bg-color: blue;
+  --default-margin: 1em;
+}
+```
+
+* Accessed using the *var()* function:
+
+```css
+body header {
+  margin: var(--default-margin);
+}
+```
+
+---
+
+# CSS Vars Inheritance
+
+* CSS vars can be inherited. 
+* If no value is set for a var on a given element, the value of its parent is used.
+
+```html
+<section>
+  <header>
+    <h1>Title</h1>     <!-- red -->
+    <h2>Sub-title</h2> <!-- blue -->
+  </header>
+</section>
+```
+
+```css
+section { --text-color: blue; }
+h1 { --text-color: red; }
+header * { color: var(--text-color); } /* what if the asterisk is removed? */
+```
 
 ---
 
