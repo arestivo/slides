@@ -41,7 +41,7 @@ name:index
 1. [Transitions](#transitions)
 1. [Positioning](#positioning)
 1. [Flexbox](#flexbox)
-1. [Grid](#flexbox)
+1. [Grid](#grid)
 1. [Precedence](#precedence)
 1. [Responsive Design](#responsive)
 1. [Vendor Prefixes](#prefix)
