@@ -1535,11 +1535,13 @@ name:flexbox
 
 # Flexbox
 
-A direction agnostic alternative to the box model layout model.
+* A direction agnostic alternative to the box model layout model.
 
-Flexbox provides block level arrangement of parent and child elements that are flexible to adapt to display size.
+* Flexbox provides block level arrangement of **parent** and **child** elements that are **flexible** to adapt to display size.
 
-It does not use floats, nor do the flex container's margins collapse with the margins of its contents.
+* Flexbox items **cannot** be floated. 
+  
+* The flex container's margins **do not collapse** with the margins of its contents.
 
 https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
@@ -1617,7 +1619,7 @@ We can change the directon of the main axis by changing the *flex-direction* pro
 # Flex Wrap
 
 The *flex-wrap* property allows us to specify how items should
-wrap when changing lines: **no-wrap**, **wrap**, **wrap-reverse**
+wrap when changing lines: **nowrap**, **wrap**, **wrap-reverse**. The default is **nowrap**.
 
 ```css
 .container {
@@ -1631,7 +1633,7 @@ wrap when changing lines: **no-wrap**, **wrap**, **wrap-reverse**
 
 # Justify Content
 
-The *justify-content* property defines the alignment along the **main** axis allowing the distribution of extra space: **flex-start**, **flex-end**, **center**, **space-around**, **space-between**, **space-evenly**.
+The *justify-content* property defines the alignment along the **main** axis allowing the distribution of extra space: **flex-start**, **flex-end**, **center**, **space-around**, **space-between**, **space-evenly**. The default is **flex-start**.
 
 ```css
 .container {
@@ -1645,7 +1647,7 @@ The *justify-content* property defines the alignment along the **main** axis all
 
 # Align Items
 
-The *align-items* property defines the default behaviour for how flex items are laid out along the **cross** axis on the current line: **flex-start**, **flex-end**, **center**, **baseline**, **stretch**.
+The *align-items* property defines the default behaviour for how flex items are laid out along the **cross** axis on the current line: **flex-start**, **flex-end**, **center**, **baseline**, **stretch**. The default is **stretch**.
 
 ```css
 .container {
@@ -1673,7 +1675,7 @@ The **order** property alters the order in which a flex item is layed out in its
 
 # Grow and Shrink
 
-The *flex-grow* and *flex-shrink* properties define the ability for a flex item to grow, if there is extra space, or shrink, if there isn't enough. They accept a unitless value that serves as a proportion.
+The *flex-grow* and *flex-shrink* properties define the ability for a flex item to grow, if there is extra space, or shrink, if there isn't enough. They accept a unitless value that serves as a proportion. The default is **1** for both properties.
 
 ```css
 .item {
@@ -1689,6 +1691,24 @@ The *flex-grow* and *flex-shrink* properties define the ability for a flex item 
 
 ---
 
+# Align Self
+
+Allows the alignment specified by align-items to be overridden for individual flex items. The default value is **auto** meaning that items follow the alignment specified by align-items.
+
+```css
+.container {
+  align-items: flex-start;
+}
+
+.item:nth-child(2) {
+  align-self: center;
+}
+```
+
+All items are aligned as **flex-start** except the second one that is **center**-aligned.
+
+---
+
 template: inverse
 name:grid
 # Grid
@@ -1697,9 +1717,9 @@ name:grid
 
 # Grid
 
-A grid layout enables us to align elements into **columns** and **rows**.
+* A grid layout enables us to align elements into **columns** and **rows**.
 
-A grid container's child elements could position themselves so they actually overlap and layer.
+* A grid container's child elements can position themselves so they **overlap** and **layer**.
 
 ![](../assets/css3/grid-1.svg)
 
@@ -1989,7 +2009,7 @@ div {
   color: green;
 }
 
-p {
+div p {
   color: red;
 }
 ```
@@ -1999,7 +2019,9 @@ p {
 ## Calculating Specificity
 
 * The specificity of a rule is defined as 4 values (a, b, c, d).
+  
 * Each one of them is incremented when a certain type of selector is used:
+
  * **d**: Element, Pseudo Element
  * **c**: Class, Pseudo class, Attribute
  * **b**: Id
