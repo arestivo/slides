@@ -93,6 +93,8 @@ p {            /* selector */
 }
 ```
 
+Together, selectors and properties define CSS **rules**.
+
 ---
 
 template: inverse
@@ -1494,7 +1496,7 @@ Floats go right or left until they find another float or the parent container.
 
 ```css
 #b1, #b2 { float: left; }
-# b1 { clear: both; }
+#b1 { clear: both; }
 ```
 ---
 # Ordering
@@ -1633,7 +1635,7 @@ The *justify-content* property defines the alignment along the **main** axis all
 
 ```css
 .container {
-  justify-content: flex-startxb;
+  justify-content: flex-start;
 }
 ```
 
