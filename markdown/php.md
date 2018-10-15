@@ -1600,6 +1600,54 @@ The **include_once** statement is identical to include except PHP will check if 
 The **require_once** statement is identical to require except PHP will check if the file has already been included.
 
 ---
+
+# Relative Includes
+
+In PHP, includes are relative to the **file requested** by the browser, not the file that contains the include command. This means that:
+
+```php
+  b/Y.php // file requested by the browser
+  b/Z.php // file included by Y.php
+
+  //Y.php only needs to do: include('Z.php')
+```
+
+But:
+
+```php
+  a/X.php // file requested by the browser
+  b/Y.php // file included by X.php
+  b/Z.php // file included by Y.php
+
+  //X.php needs to do: include('../b/Y.php')
+  //Y.php needs to do: include('../b/Z.php')
+```
+
+---
+
+# Magic Constants (for files)
+
+To make including files in PHP easier, we can use the following **magic constants**:
+
+```php
+__FILE__ // The full path and filename of the current file.
+__DIR__ // The folder of the current file.
+```
+
+And the following function that returns the folder of a file:
+
+```php
+string dirname ( string $path [, int $levels = 1 ] )
+```
+
+For example:
+
+```php
+dirname(__FILE__) // same as __DIR__
+dirname(__DIR__) // returns the parent folder of the current file
+```
+
+---
 template:inverse
 name:json
 # JSON
