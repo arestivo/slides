@@ -210,7 +210,7 @@ function foo() {
 
 let bar = 10;
 foo();
-console.log(bar);
+console.log(bar); // 1234
 ~~~
 
 ---
@@ -275,7 +275,7 @@ When comparing values belonging to different types, they are converted to number
 ```javascript
 1 == "1";    // 1 == 1 -> true
 0 == false;  // 0 == 0 -> true
-"0" == true; // 0 == 1 -> true
+"0" == true; // 0 == 1 -> false
 "" == false; // 0 == 0 -> true
 Boolean("0") == false; // 1 == 0 -> false
 Boolean("0") == true;  // 1 == 1 -> true
@@ -428,7 +428,7 @@ function add(num1, num2) {
   console.log(num1 + num2);
 }
 
-add(1, 2);
+add(1, 2); // 3
 ```
 
 * Primitive parameters are passed to functions by value.
@@ -445,7 +445,7 @@ function add(num1, num2) {
   return num1 + num2;
 }
 
-console.log(add(1, 2));
+console.log(add(1, 2)); // 3
 ```
 
 A function with an empty *return* or no *return* at all, returns **undefined**.
@@ -622,11 +622,11 @@ In *Javascript*, the **this** keyword (current context) behaves unlike in almost
 * In the global execution context, **this** refers to the *global object* or *window*.
 * Inside a function it depends on how the function was called.
 
-  * Simple function call (undefined in strict mode).
-  * Using *apply* or *call* (*this* is the first argument).
-  * Object method (the object method was called from)
-  * Arrow functions (retains the enclosing context)
-  * Browser Events (the object that fired the event)
+  * Simple function call (**undefined** in strict mode).
+  * Using *apply* or *call* (*this* is the **first** argument).
+  * Object method (the object the method was **called** from)
+  * Arrow functions (**retains** the enclosing context)
+  * Browser Events (the object that **fired** the event)
 
 ---
 
@@ -686,7 +686,7 @@ let foo = {
 }
 
 foo.bar1()();  // Object { bar1: bar1(), bar2: bar2() }
-foo.bar2()();  // Undefined
+foo.bar2()();  // Undefined (or window if not using strict)
 ~~~
 
 ---
@@ -710,12 +710,15 @@ console.log(person['age']); // 45
 
 # For ... in
 
-* The **for...in** statement iterates a specified variable over all its properties.
+* The **for...in** statement iterates a specified variable over all of its properties.
 * For each distinct property, JavaScript executes the specified statements.
 
 ```javascript
 for (let foo in person)
   console.log(foo + " = " + person[foo]);
+
+// name = John Doe
+// age = 45
 ```
 
 ---
@@ -1404,11 +1407,12 @@ A function that handles an event can receive a parameter representing the event 
 
 ```javascript
 function handleEvent(event) {
+  alert('You shall not pass!');
   event.preventDefault();
 }
 
-let menu = document.getElementById("menu");
-menu.addEventListener("click", handleEvent, false);
+let link = document.querySelector("a");
+link.addEventListener('click', handleEvent);
 ```
 
 Depending on its type, the event can have different properties and methods: [Reference](https://developer.mozilla.org/en/docs/Web/API/Event#DOM_Event_interface)
@@ -1444,9 +1448,9 @@ document.querySelector('p').addEventListener('click', function(event){
 .small[
 Clicking on the paragraph:
 ~~~html
-P - P
-ARTICLE - P
-SECTION - P
+Bubble: P - P
+Bubble: ARTICLE - P
+Bubble: SECTION - P
 ~~~
 ]
 
