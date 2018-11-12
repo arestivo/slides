@@ -35,6 +35,7 @@ name:index
 1. [Advanced Functions](#advanced-functions)
 1. [Advanced Arrays](#advanced-arrays)
 1. [Timers](#timers)
+1. [Data Attributes](#data)
 1. [jQuery](#jQuery)
 ]
 
@@ -2007,6 +2008,28 @@ The return value is an *id* that can be used to cancel the timer:
 ~~~javascript
   window.clearInterval(id)
 ~~~
+
+---
+
+name:data
+template: inverse
+#Data Attributes (not really JS)
+
+---
+
+# HTML5 Data Attributes
+
+HTML5 data-* attributes allow us to store extra information on standard, semantic HTML elements without using hacks.
+
+This can be useful, for example, to store the id of a certain database tuple to be used in an Ajax call.
+
+```html
+  <ul>
+    <li data-id="1">Apple</li>
+    <li data-id="2">Banana</li>
+    <li data-id="3">Pear</li>
+  </ul>
+```
 
 ---
 
