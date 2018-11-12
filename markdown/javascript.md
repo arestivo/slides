@@ -1523,13 +1523,13 @@ template: inverse
 
 XMLHttpRequest makes sending HTTP requests very easy.
 
-  * Method: **get** or **post**.
-  * Url: The URL to fetch.
-  * Async: if false, execution will stop while waiting for response.
-
 ```javascript
 void open(method, url, async)
 ```
+
+  * Method: **get** or **post**.
+  * Url: The URL to fetch.
+  * Async: if false, execution will stop while waiting for response.
 
 Example:
 
@@ -1870,7 +1870,7 @@ The *map()* method can be used on other types of *array like* objects:
 var ascii = Array.prototype.map.call('John', function(letter) {
   return letter.charCodeAt(0)
 })
-console.log(ascii) // 74, 111, 104, 110
+console.log(ascii) // [74, 111, 104, 110]
 ~~~
 
 Simpler:
@@ -1879,7 +1879,7 @@ Simpler:
 var ascii = [].map.call('John', function(letter) {
   return letter.charCodeAt(0)
 })
-console.log(ascii) // 74, 111, 104, 110
+console.log(ascii) // [74, 111, 104, 110]
 ~~~
 
 A more useful example:
@@ -1896,7 +1896,7 @@ console.log(values) // an array with all the number input values
 
 # Reduce
 
-The *reduce()* method applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value.
+The *reduce()* method applies a function against an accumulator (starting at 0 by default) and each element in the array (from left to right) to reduce it to a single value.
 
 ~~~javascript
 let numbers = [4, 8, 15, 16, 23, 42]
@@ -1910,6 +1910,12 @@ Or with arrow functions:
 
 ~~~javascript
 [4, 8, 15, 16, 23, 42].reduce( (c, n) => c + n ) // 108
+~~~
+
+We can initialize the accumulator adding a second parameter:
+
+~~~javascript
+[4, 8, 15, 16, 23, 42].reduce( (c, n) => c + n, 10 ) // 118
 ~~~
 
 ---
@@ -1930,6 +1936,36 @@ let array2 = Array.prototype.slice.call(paragraphs)
 let array3 = [].slice.call(paragraphs)
 let array4 = [...paragraphs] // the ECMAScript 2015 spread operator
 ~~~
+
+---
+
+# Spread Operator
+
+The spread operator allows an iterable, such as an array or string, to be expanded in places where zero or more arguments are expected.
+
+```javascript
+function sum(x, y, z) {
+  return x + y + z
+}
+
+const numbers = [1, 2, 3]
+
+console.log(sum(...numbers))
+```
+
+Other examples:
+
+```javascript
+[...document.querySelectorAll('input')] // all inputs as an array
+
+function sum(...args) { // sum any number of args
+  let sum = 0
+  for (let i = 0; i < args.length; i++)
+    sum += args[i]
+  return sum
+}
+sum (1,2,3) // 6
+```
 
 ---
 
