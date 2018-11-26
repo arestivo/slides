@@ -567,7 +567,7 @@ function generate_random_token() {
 ```php
 session_start();
 if (!isset($_SESSION['csrf'])) {
-  $_SESSION['csrf']) = generate_random_token();
+  $_SESSION['csrf'] = generate_random_token();
 }
 ```
 
@@ -867,7 +867,7 @@ boolean password_verify ( string $password , string $hash )
   $stmt = $db->prepare('SELECT * FROM users WHERE username = ?');
   $stmt->execute(array($username));
   $user = $stmt->fetch();
-  if ($user !== false && password_verify($password, $user['password'], )) {
+  if ($user !== false && password_verify($password, $user['password'])) {
     $_SESSION['username'] = $username;
   }  
 ```
