@@ -251,7 +251,7 @@ Content-Type: application/x-www-form-urlencoded
 name=John%20Doe&username=johndoe
 ```
 
-HTTP 1.1 **requires** the Host field.
+HTTP 1.1 **requires** the Host header.
 
 ---
 
@@ -287,8 +287,8 @@ A idempotent method is a method where the side-effects on the server of several 
 requests with the method are the same as the side-effects of one single request.
 
 * **HEAD** and **GET** are also idempotent.
-* **PUT** used to upload a new resource on the server. If the resource already exists and is different, it is replaced; if it does not exist, it is created.
-* **DELETE** used to remove a resource from the server.
+* **PUT** requests that the enclosed entity be stored under the supplied URI.
+* **DELETE** used to delete the resource identified by the URI.
 
 These methods are optional.
 
@@ -296,10 +296,12 @@ These methods are optional.
 
 # Other Methods
 
-* **POST**: used to trigger an action on the server. It has side-effects and can be used to modify a database.
+* **POST**: used to request that the server accept the entity enclosed in the request as a new subordinate of the resource identified by the URI.
 * **OPTIONS**, **TRACE**, **CONNECT** and **PATCH**.
 
 These methods are optional.
+
+[All methods](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)
 
 ---
 
@@ -416,6 +418,8 @@ name: codes
 * **502 Bad Gateway** - The server, while acting as a gateway or proxy, received an invalid response from the upstream server it accessed in attempting to fulfill the request.
 * **503 Service Unavailable** - The server is currently unable to handle the request due to a temporary overloading or maintenance of the server.
 
+[All response codes](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)
+
 ---
 
 template: inverse
@@ -514,6 +518,8 @@ Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT
 Location: http://www.w3.org/pub/WWW/People.html
 Set-Cookie: session_id=7f...11; Domain=foo.com; Path=/; Expires=Wed, 13 ... GMT;
 ```
+
+[All header fields](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)
 
 ---
 
