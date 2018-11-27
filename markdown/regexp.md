@@ -338,7 +338,7 @@ Do you write **color** our **colour**s?
 
 ---
 
-# Repetion quantifiers
+# Repetition quantifiers
 
 Repetition **quantifiers** allow the preceding token to repeat:
 
@@ -353,14 +353,14 @@ Repetition **quantifiers** allow the preceding token to repeat:
 My phone number is **12345**.
 ]
 
-The **question mark**(?) is also a repetion **quantifier** that allows the token to repeat 0 or 1 times.
+The **question mark**(?) is also a repetition **quantifier** that allows the token to repeat 0 or 1 times.
 
 
 ---
 
 # Custom Repetitions
 
-Using **curly brackets**({}) we can specify the maximum and minimum number of repetions:
+Using **curly brackets**({}) we can specify the maximum and minimum number of repetitions:
 
 Repeat exactly 9 times:
 
@@ -589,7 +589,7 @@ name: lookaround
 
 #Positive lookahead
 
-Using **?=** we can matche something followed by something else: 
+Using **?=** we can match something followed by something else: 
 
 ```html
 (cat|dog)(?=s)
@@ -605,7 +605,7 @@ My dog is not like other **dog**s.
 
 #Negative lookahead
 
-Using **?!** we can matche something followed by something else: 
+Using **?!** we can match something followed by something else: 
 
 ```html
 (cat|dog)(?!s)
@@ -627,7 +627,7 @@ All the cats are smarter than my **cat**.
 (?<=is)land
 ```
 
-Matches *land* if preceeded by *is*:
+Matches *land* if preceded by *is*:
 
 .box_regexp[
 England is part of an is**land**.
@@ -643,7 +643,7 @@ England is part of an is**land**.
 (?<!some)thing
 ```
 
-Matches *thing* if it is not preceeded by *some*:
+Matches *thing* if it is not preceded by *some*:
 
 .box_regexp[
 There is something about this **thing**.
@@ -664,7 +664,7 @@ name: nfa
 * each of its transitions is **uniquely** determined by its **source** state and **input** symbol, and
 * reading an input symbol is **required** for each state transition.
 
-Nondeterministic Finite Automaton don't need to obey these restrictions.
+Non-deterministic Finite Automaton don't need to obey these restrictions.
 
 Regular expressions can [easily](https://www.youtube.com/watch?v=RYNN-tb9WxI) be transformed into NFAs. And NFA can [easily](https://www.youtube.com/watch?v=taClnxU-nao) be transformed into DFAs.
 
@@ -705,7 +705,7 @@ name: php
 # Patterns
 
 * PHP uses Perl-Compatible Regular Expressions (PCRE)
-* In PHP, patterns must be delimited by either **forwardslashes** (/), **hash** signs (#) or **tildes** (~).
+* In PHP, patterns must be delimited by either **forward-slashes** (/), **hash** signs (#) or **tildes** (~).
 
 ```php
 /ab|c/
@@ -834,8 +834,8 @@ name: javascript
 
 # Patterns
 
-* In javascript, patterns must be delimited by **forwardslashes** (/).
-* This means that the forwardslashes must be **escaped** inside the pattern.
+* In javascript, patterns must be delimited by **forward-slashes** (/).
+* This means that the forward-slashes must be **escaped** inside the pattern.
 * You may add modifiers after the ending delimiter:
 
 The **g** modifier is used to perform a global match (find all matches).
