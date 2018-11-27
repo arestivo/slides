@@ -104,7 +104,7 @@ a
 I **a**te an apple.
 ]
 
-You can tell the processor to match all occurrences if needed.
+You can tell the processor to **match all occurrences** if needed.
 
 .box_regexp[
 I **a**te **a**n **a**pple.
@@ -169,6 +169,8 @@ A character class, or set, matches **only one** out of several characters.
 ```text
 gr[ae]y
 ```
+
+Matching all occurrences:
 
 .box_regexp[
 **gray** or **grey**
@@ -527,9 +529,9 @@ name: backreferences
 
 Backreferences can be used to match the same text twice.
 
-Some regular expression processor use \n to reference captured groups while other use $n.
+Some regular expression processor use **\n** to reference captured groups while other use **$n**.
 
-Number with at least 3 digits and where the first number is the same as the last.
+Number with at least 3 digits and where the first number is the same as the last:
 
 ```html
 ([0-9])[0-9]+\1
@@ -587,7 +589,7 @@ name: lookaround
 
 #Positive lookahead
 
-Matches something followed by something else.
+Using **?=** we can matche something followed by something else: 
 
 ```html
 (cat|dog)(?=s)
@@ -603,7 +605,7 @@ My dog is not like other **dog**s.
 
 #Negative lookahead
 
-Matches something not followed by something else.
+Using **?!** we can matche something followed by something else: 
 
 ```html
 (cat|dog)(?!s)
@@ -619,7 +621,7 @@ All the cats are smarter than my **cat**.
 
 #Positive lookbehind
 
-Tells the processor to temporarily **step backwards** in the string and check if the text inside the lookbehind can be **matched** there.
+**?<=** tells the processor to temporarily **step backwards** in the string and check if the text inside the lookbehind can be **matched** there.
 
 ```perl
 (?<=is)land
@@ -635,7 +637,7 @@ England is part of an is**land**.
 
 #Negative lookbehind
 
-Tells the processor to temporarily **step backwards** in the string and check if the text inside the lookbehind **cannot** be matched there.
+**?<!** Tells the processor to temporarily **step backwards** in the string and check if the text inside the lookbehind **cannot** be matched there.
 
 ```perl
 (?<!some)thing
