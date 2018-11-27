@@ -666,7 +666,7 @@ Nondeterministic Finite Automaton don't need to obey these restrictions.
 
 Regular expressions can [easily](https://www.youtube.com/watch?v=RYNN-tb9WxI) be transformed into NFAs. And NFA can [easily](https://www.youtube.com/watch?v=taClnxU-nao) be transformed into DFAs.
 
-http://hackingoff.com/compilers/regular-expression-to-nfa-dfa
+https://cyberzhg.github.io/toolbox/nfa2dfa
 
 ---
 
