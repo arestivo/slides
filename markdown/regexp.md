@@ -808,7 +808,7 @@ Using the **preg_match** function, we can easily validate data using regular exp
 
 ```php
 function is_phone_number($element) {
-	return !preg_match ("/^\d{9}|\d{3}-\d{3}-\d{3}$/", $element);
+	return preg_match ("/^\d{9}|\d{3}-\d{3}-\d{3}$/", $element);
 }
 ```
 
