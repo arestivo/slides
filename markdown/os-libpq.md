@@ -199,7 +199,8 @@ returns some results.
 
 ~~~cpp
 PGresult* getEmployees(int dep_id) {
-  string query = "SELECT id, name FROM employee WHERE dep_id = " + intToStr(dep_id);
+  string query = "SELECT id, name FROM employee WHERE dep_id = " 
+      + intToStr(dep_id);
   PGresult *res = PQexec(conn, query.c_str());
   if (PQresultStatus(res) != PGRES_TUPLES_OK) {
     cout << PQresultErrorMessage(res) << endl;
@@ -270,7 +271,8 @@ SQL injection is a code injection technique, used to attack data-driven applicat
 Consider the following code:
 
 ~~~cpp
-strin query = "SELECT emp_id, emp_name FROM employee WHERE emp_name= '" + name + "'";
+string query = "SELECT emp_id, emp_name FROM employee WHERE emp_name= '" 
+              + name + "'";
 PQexec (conn , query.c_str());
 ~~~
 
@@ -347,6 +349,6 @@ SET search_path TO myschema
 As this is a SQL command, to use it in *libpq* we just have to do:
 
 ~~~cpp
-PGconn *conn = PQconnectdb("host='dbm.fe.up.pt' user='USERNAME' password='PASSWORD'");
+PGconn *conn = PQconnectdb("host='dbm.fe.up.pt' user='USR' password='PWD'");
 PQexec(conn, "SET search_path TO myschema");
 ~~~

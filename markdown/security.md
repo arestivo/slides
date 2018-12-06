@@ -304,20 +304,20 @@ Cross-Site Scripting (XSS) attacks are a type of **injection**, in which **malic
 
 ```php
 <?php
-  $stmt = $dbh->prepare("INSERT INTO comment VALUES (DEFAULT, ?, ?, ?)");
-  $stmt->execute(array($_POST['post_id'], $_POST['text'], $_SESSION['username']));
+ $stmt = $dbh->prepare("INSERT INTO comment VALUES (DEFAULT, ?, ?, ?)");
+ $stmt->execute(array($_POST['postid'], $_POST['text'], $_SESSION['username']));
 ?>
 ```
 
 ```php
 <?php
-  $stmt = $dbh->prepare("SELECT * FROM comment WHERE post_id = ?");
-  $stmt->execute(array($_POST['post_id']));
-  $comments = $stmt->fetchAll();
+ $stmt = $dbh->prepare("SELECT * FROM comment WHERE postid = ?");
+ $stmt->execute(array($_POST['postid']));
+ $comments = $stmt->fetchAll();
 
-  foreach($comments as $comment) {
+ foreach($comments as $comment) {
     echo "<div class=\"comment\">" . $comment['text'] . "</div>";
-  }
+ }
 ?>
 ```
 

@@ -192,18 +192,18 @@ if (sockfd < 0) cout << "Error creating socket" << endl;
 # Binding to Port
 
 ~~~cpp
-int bind(int sockfd,                  -- the socket to bind
-         const struct sockaddr *addr, -- the address to bind to
-         socklen_t addrlen);          -- address length
+int bind(int sockfd,                  // the socket to bind
+         const struct sockaddr *addr, // the address to bind to
+         socklen_t addrlen);          // address length
 ~~~
 
 Example:
 
 ~~~cpp
-bzero((char *) &serv_addr, sizeof(serv_addr)); -- clean address
-serv_addr.sin_family = AF_INET;                -- IP address
-serv_addr.sin_addr.s_addr = INADDR_ANY;        -- Accept from any
-serv_addr.sin_port = htons(port);              -- host byte order to net byte order
+bzero((char *) &serv_addr, sizeof(serv_addr));// clean address
+serv_addr.sin_family = AF_INET;               // IP address
+serv_addr.sin_addr.s_addr = INADDR_ANY;     // Accept from any
+serv_addr.sin_port = htons(port);           // host byte order to net byte order
 
 int res = bind(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr));
 if (res < 0) cout << "Error binding socket" << endl;
@@ -230,16 +230,19 @@ listen(sockfd, 5);
 # Accepting Connections
 
 ~~~cpp
-int accept(int sockfd,               -- socket to accept connections
-           struct sockaddr *addr,    -- client address
-           socklen_t *addrlen);      -- client address size
+int accept(int sockfd,               // socket to accept connections
+           struct sockaddr *addr,    // client address
+           socklen_t *addrlen);      // client address size
 ~~~
 
 Example:
 
 ~~~cpp
 cli_addr_length = sizeof(cli_addr);
-int clientsockfd = accept(sockfd, (struct sockaddr *) &cli_addr, &cli_addr_length);
+int clientsockfd = accept(sockfd, 
+  (struct sockaddr *) &cli_addr, 
+  &cli_addr_length
+);
 ~~~
 
 Program waits for client. After client connects, *clientsockfd* becomes the socket descriptor to be used for this client.

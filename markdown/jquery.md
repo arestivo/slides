@@ -143,7 +143,7 @@ template: inverse
 The jQuery function is capable of selecting elements from the DOM using CSS selectors as well as some non-standard selectors.
 
 ```javascript
-$("p") // Selects all paragraphs
+$("p")                       // Selects all paragraphs
 $("#foo");                   // Element with id foo
 $(".bar");                   // All elements with class bar
 $("input[name='username']"); // Based on attributes
@@ -161,18 +161,18 @@ As the **jQuery** function returns a **jQuery** object, it is possible to easily
 Each one of this functions allow an optional selector to further filter the results.
 
 ```javascript
-$("article").children();       // All children of articles
-$("article").children("p");    // All paragraphs that are children of articles
-$("article").find("p");        // All paragraphs that are descendant of articles
+$("article").children();      // All children of articles
+$("article").children("p");   // All paragraphs that are children of articles
+$("article").find("p");       // All paragraphs that are descendant of articles
 
-$("article").siblings();       // All article siblings
-$("#menu").next();             // The next sibling of the menu.
-$("#menu").nextAll();          // The next siblings of the menu
-$("#menu").nextAll("section"); // The next siblings of the menu that are sections
-// Also see prev() and prevAll()
+$("article").siblings();      // All article siblings
+$("#menu").next();            // The next sibling of the menu.
+$("#menu").nextAll();         // The next siblings of the menu
+$("#menu").nextAll("section");// The next siblings of the menu that are sections
+                              // Also see prev() and prevAll()
 
-$("input").parent("article");  // All articles that have input children
-$("input").parents("article"); // All articles that have input descendants
+$("input").parent("article"); // All articles that have input children
+$("input").parents("article");// All articles that have input descendants
 
 ```
 
@@ -306,10 +306,10 @@ $("input#username").val("johndoe"); // Change the value of the username input
 The *text()* and *html()* functions can be used to get and manipulate the text and html contents of elements.
 
 ```javascript
-$("p").text();                // Get the combined text of all paragraphs
-$("p").text("Hello world!");  // Set the text of all paragraphs
-$("#menu").html("<ul></ul>"); // Set the html content of the menu
-$(".important").html();       // Get the html content of the first important element
+$("p").text();               //Get the combined text of all paragraphs
+$("p").text("Hello world!"); //Set the text of all paragraphs
+$("#menu").html("<ul></ul>");//Set the html content of the menu
+$(".important").html();      //Get the html content of the 1st important element
 
 ```
 

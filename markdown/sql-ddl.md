@@ -741,9 +741,9 @@ CREATE TABLE employee (
 );
 ```
 
-.box_info[If a department with id 1 is deleted, all employess with department id equal to 1 will start having a null department number.]
+.box_info.small[If a department with id 1 is deleted, all employess with department id equal to 1 will start having a null department number.]
 
-.box_info[If a department with id 1 is updated to id 2, all employess with department id equal to 1 will start having a department number equal to 2.]
+.box_info.small[If a department with id 1 is updated to id 2, all employess with department id equal to 1 will start having a department number equal to 2.]
 
 ---
 

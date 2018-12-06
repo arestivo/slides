@@ -914,22 +914,22 @@ For more complex touch events.
 
 ~~~java
 public ActorGestureListener () {
-  public void touchDown (InputEvent e, float x, float y, int pointer, int button);
+ public void touchDown(InputEvent e, float x, float y, int pointer, int button);
 
-  public void touchUp (InputEvent e, float x, float y, int pointer, int button);
+ public void touchUp(InputEvent e, float x, float y, int pointer, int button);
 
-  public void tap (InputEvent e, float x, float y, int count, int button);
+ public void tap(InputEvent e, float x, float y, int count, int button);
 
-  public boolean longPress (Actor actor, float x, float y);
+ public boolean longPress(Actor actor, float x, float y);
 
-  public void fling (InputEvent e, float velocityX, float velocityY, int button);
+ public void fling(InputEvent e, float velocityX, float velocityY, int button);
 
-  public void pan (InputEvent e, float x, float y, float deltaX, float deltaY);
+ public void pan(InputEvent e, float x, float y, float deltaX, float deltaY);
 
-  public void zoom (InputEvent e, float initialDistance, float distance);
+ public void zoom(InputEvent e, float initialDistance, float distance);
 
-  public void pinch (InputEvent e, Vector2 iPointer1, Vector2 iPointer2,
-                                   Vector2 pointer1, Vector2 pointer2);
+ public void pinch(InputEvent e, Vector2 iPointer1, Vector2 iPointer2,
+                                 Vector2 pointer1, Vector2 pointer2);
 }
 ~~~
 

@@ -258,7 +258,12 @@ g++ thread.cpp -o thread -pthread
 Threads are created by the *pthread_create* function:
 
 ~~~cpp
-int pthread_create(pthread_t *thread, *attr, void* (*function)(void *), void* arg);
+int pthread_create(
+  pthread_t *thread, 
+  *attr, 
+  void* (*function)(void *), 
+  void* arg
+);
 ~~~
 
 This functions receives:

@@ -642,8 +642,8 @@ An input field can vary in many ways, depending on the **type** attribute.
 
 
 ```html
-<input type="checkbox" name="vehicle" value="Bike">I have a bike
-<input type="checkbox" name="vehicle" value="Car" checked="checked" >I have a car
+<input type="checkbox" name="vehicle" value="Bike">Ride a bike
+<input type="checkbox" name="vehicle" value="Car" checked="checked" >Drive a car
 <!-- user can select several -->
 
 <input type="radio" name="gender" value="male" checked="checked">Male

@@ -1,5 +1,6 @@
 PRINCE='/home/arestivo/Apps/prince/bin/prince'
 PHANTOM='/home/arestivo/Apps/phantomjs/bin/phantomjs'
+export OPENSSL_CONF=~/bin/etc/openssl.cnf 
 cd pdf
 rm *.html
 rm -Rf output
