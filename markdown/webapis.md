@@ -48,6 +48,8 @@ Most of these APIs are still under **heavy development**. Some have been discont
 
 [MDN List of Web APIs](https://developer.mozilla.org/en-US/docs/Web/API)
 
+But first we must talk about *Promises*...
+
 ---
 
 template: inverse
@@ -78,7 +80,7 @@ let promise = new Promise(function(resolve, reject) {
 
 # Consuming
 
-When the promise resolves we can use *then* and *catch* to consume it:
+When the promise *resolves*, or is *rejected*, we can use *then* and *catch* to consume it:
 
 ```javascript
 promise.then(function(result){
