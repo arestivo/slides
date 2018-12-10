@@ -2,8 +2,8 @@ body {
   font-family: 'MerriWeather';
   --main-color: #222;
   --highlight-color: #FC4A1A;
-  --light-bg-color: #FFF;
-  --box-bg-color: #FFF;
+  --light-bg-color: #fef9f8;
+  --box-bg-color: #fef9f8;
 }
 
 .remark-slide-content {
@@ -90,7 +90,7 @@ code {
 }
 
 .inverse {
-  background: #272822;
+  background: #190702;
   color: #CCCCCC;
   text-shadow: 0 0 20px #333;
 }
