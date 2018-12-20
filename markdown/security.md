@@ -507,6 +507,7 @@ Read more:
 * [OWASP XSS Prevention Cheat Sheet](http://goo.gl/rXJXg2)
 * [OWASP DOM Based XSS Prevention Cheat Sheet](https://www.owasp.org/index.php/DOM_based_XSS_Prevention_Cheat_Sheet)
 * [OWASP XSS Filter Evasion Cheat Sheet](https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet)
+* [A comprehensive tutorial on cross-site scripting](https://excess-xss.com/)
 
 ---
 
