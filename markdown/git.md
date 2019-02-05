@@ -24,7 +24,11 @@ name:index
 
 .indexlist[
 1. [Introduction](#intro)
-1. [Local](#local)
+1. [Git Basics](#basics)
+1. [Branching](#branching)
+1. [Remotes](#remotes)
+2. [Servers](#servers)
+3. [Workflows](#workflows)
 ]
 
 ---
@@ -109,12 +113,18 @@ Git as a **local** VCS
 
 ---
 
+template:inverse
+name:basics
+# Git Basics
+
+---
+
 # Basics
 
 **Snapshots**:
   * Does not store versions of a file only by their differences. 
   * Instead it saves them as a series of **snapshots**.
-  * If files have not changed, it does not store them again.
+  * If files have not changed, it does not store them again (link).
 
 **Local**: Most Git operations are **local**.
 
@@ -169,7 +179,7 @@ The **staging area** (or **index**) is a file in your Git directory that stores 
 
 # Add
 
-The [add](https://git-scm.com/docs/git-add) operation can be used to:
+The [add](https://git-scm.com/docs/git-add) command can be used to:
   1. Track a file that is currently **not tracked** by Git.
   2. Add a file that has been **modified** to the staging area.
 
@@ -178,7 +188,7 @@ $ echo "hello git" > README    # File is created
 $ git add README               # File is now tracked and staged
 ```
 
-You can use the **--all** flag to stage **all untracked or modified** files.
+You can use the **--all** or **-A** flag to stage all untracked **or** modified files.
 
 ```bash
 $ echo "hello git" > README    # File is created
@@ -189,7 +199,7 @@ $ git add --all                # File is now tracked and staged
 
 # Commit
 
-The [commit](https://git-scm.com/docs/git-commit) operation records a new snapshot to the repository:
+The [commit](https://git-scm.com/docs/git-commit) command records a new snapshot to the repository:
 
 ```bash
 $ echo "hello git" > README    # File is created
@@ -197,9 +207,9 @@ $ git add README               # File is now tracked and staged
 $ git commit                   # Commits the file
 ```
 
-After running commit, Git will open your [predefined](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration) text editor so that you can write a small commit message (or you can use the **-m** flag).
+After running commit, Git will open your [predefined](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration) text editor so that you can write a small commit message (or use the **--message** or **-m** flag).
 
-The **-a** flag automatically stages any tracked and modified files:
+The **--all** or **-a** flag automatically stages any tracked **and** modified files:
 
 ```bash
 $ echo "goodbye git" > README      # Already tracked file is modified
@@ -209,6 +219,33 @@ $ git commit -a -m "Edited README" # Stages and commits the file
 ---
 
 # Status
+
+The [status](https://git-scm.com/docs/git-status) command can be used to determine which files are in which state:
+
+```bash
+$ echo "hello git" > README    # File is created
+$ git status                   # Asking for file status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        README
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+The **--short** (or **-s**) flag can be used to get a more concise output:
+
+```bash
+$ git status --short            # Asking for file status
+?? README
+$ git add README                # File is now tracked and staged
+$ git status --short            # Asking for file status
+A  README
+```
 
 ---
 
