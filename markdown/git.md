@@ -80,11 +80,11 @@ Advantages:
 * Everyone knows what everyone is doing.
 * **Fine grained control** over who can do what.
 
-Disadvantages
+Disadvantages:
 
 * Single point of **failure**.
 * Needs constant **connectivity**.
-* Needs **backups**.
+* Backups are **mandatory**.
 
 ---
 
@@ -111,14 +111,17 @@ Git as a **local** VCS
 
 # Basics
 
-* Snapshots:
+**Snapshots**:
   * Does not store versions of a file only by their differences. 
   * Instead it saves them as a series of **snapshots**.
   * If files have not changed, it does not store them again.
-* Local operations: Most Git operations are **local**
-* Integrity: 
+
+**Local**: Most Git operations are **local**.
+
+**Integrity**: 
   * Everything in Git is *checksummed* (**SHA-1**) before it is stored.
   * Everything is then **referred** to by that **checksum**.
+  * Checksum example: <code>7e16b5527c77ea58bac36dddda6f5b444f32e81b</code>
 
 ---
 
@@ -164,19 +167,56 @@ The **staging area** (or **index**) is a file in your Git directory that stores 
 
 ---
 
-# Status
-
----
-
 # Add
+
+The [add](https://git-scm.com/docs/git-add) operation can be used to:
+  1. Track a file that is currently **not tracked** by Git.
+  2. Add a file that has been **modified** to the staging area.
+
+```bash
+$ echo "hello git" > README    # File is created
+$ git add README               # File is now tracked and staged
+```
+
+You can use the **--all** flag to stage **all untracked or modified** files.
+
+```bash
+$ echo "hello git" > README    # File is created
+$ git add --all                # File is now tracked and staged
+```
 
 ---
 
 # Commit
 
+The [commit](https://git-scm.com/docs/git-commit) operation records a new snapshot to the repository:
+
+```bash
+$ echo "hello git" > README    # File is created
+$ git add README               # File is now tracked and staged
+$ git commit                   # Commits the file
+```
+
+After running commit, Git will open your [predefined](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration) text editor so that you can write a small commit message (or you can use the **-m** flag).
+
+The **-a** flag automatically stages any tracked and modified files:
+
+```bash
+$ echo "goodbye git" > README      # Already tracked file is modified
+$ git commit -a -m "Edited README" # Stages and commits the file
+```
+
+---
+
+# Status
+
 ---
 
 # Rm
+
+---
+
+# Log
 
 ---
 
@@ -185,22 +225,22 @@ The **staging area** (or **index**) is a file in your Git directory that stores 
 A file can be partially staged:
 
 ```bash
-echo "some text" > README    # File is modified
-git add README               # Modifications are staged
-echo "another text" > README # File is modified again
+$ echo "some text" > README    # File is modified
+$ git add README               # Modifications are staged
+$ echo "another text" > README # File is modified again
 ```
 
 1) Commiting again would only commit the initial staged edits:
 
 ```bash
-git commit                   # File now still has changes
-git add README               # Staging those changes
-git commit                   # File is now unmodified
+$ git commit                   # File now still has changes
+$ git add README               # Staging those changes
+$ git commit                   # File is now unmodified
 ```
 
 2) Or we could only commit once:
 
 ```bash
-git add README               # Staging the new changes
-git commit                   # Commiting both changes at once
+$ git add README               # Staging the new changes
+$ git commit                   # Commiting both changes at once
 ```
