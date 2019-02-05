@@ -24,6 +24,7 @@ name:index
 
 .indexlist[
 1. [Introduction](#intro)
+1. [Local](#local)
 ]
 
 ---
@@ -110,9 +111,20 @@ Git as a **local** VCS
 
 # Basics
 
-* Snapshots
-* Local operations
-* Integrity
+* Snapshots:
+  * Does not store versions of a file only by their differences. 
+  * Instead it saves them as a series of **snapshots**.
+  * If files have not changed, it does not store them again.
+* Local operations: Most Git operations are **local**
+* Integrity: 
+  * Everything in Git is *checksummed* (**SHA-1**) before it is stored.
+  * Everything is then **referred** to by that **checksum**.
+
+---
+
+# Snapshots
+
+![](../assets/git/file-versions.svg)
 
 ---
 
@@ -152,33 +164,6 @@ The **staging area** (or **index**) is a file in your Git directory that stores 
 
 ---
 
-# Partially Staged Files
-
-A file can be partially staged:
-
-```bash
-cat "some text" > README    # File is modified
-git add README              # Modifications are staged
-cat "another text" > README # File is modified again
-```
-
-1) Commiting again would only commit the initial staged edits:
-
-```bash
-git commit                  # File now still has changes
-git add                     # Staging those changes
-git commit                  # File is now unmodified
-```
-
-2) Or we could only commit once:
-
-```bash
-git add                     # Staging the new changes
-git commit                  # Commiting both changes at once
-```
-
----
-
 # Status
 
 ---
@@ -188,3 +173,34 @@ git commit                  # Commiting both changes at once
 ---
 
 # Commit
+
+---
+
+# Rm
+
+---
+
+# Partially Staged Files
+
+A file can be partially staged:
+
+```bash
+echo "some text" > README    # File is modified
+git add README               # Modifications are staged
+echo "another text" > README # File is modified again
+```
+
+1) Commiting again would only commit the initial staged edits:
+
+```bash
+git commit                   # File now still has changes
+git add README               # Staging those changes
+git commit                   # File is now unmodified
+```
+
+2) Or we could only commit once:
+
+```bash
+git add README               # Staging the new changes
+git commit                   # Commiting both changes at once
+```
