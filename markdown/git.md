@@ -291,3 +291,9 @@ $ git commit                   # File is now unmodified
 $ git add README               # Staging the new changes
 $ git commit                   # Commiting both changes at once
 ```
+
+---
+
+# Cast Test
+
+<asciinema-player src="../assets/git/init.cast" cols="95" rows="20"></asciinema-player>

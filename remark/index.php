@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="../css/examples.css">
     <link rel="stylesheet" href="../css/remark.search.css">
     <link rel="stylesheet" href="../css/print.css" media="print">
+    <link rel="stylesheet" href="../css/asciinema-player.css" />
   	<link rel="icon" type="image/ico" href="../images/favicon.ico">
   </head>
   <body>
@@ -32,6 +33,7 @@
     <script src="../script/jquery-2.2.4.min.js" type="text/javascript"></script>
     <script src="../script/mark.min.js" type="text/javascript"></script>
     <script src="../script/remark.search.js" type="text/javascript"></script>
+    <script src="../script/asciinema-player.js" type="text/javascript" defer></script>
 
     <script type="text/javascript">
       var hljs = remark.highlighter.engine;
