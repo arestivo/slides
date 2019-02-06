@@ -25,10 +25,11 @@ name:index
 .indexlist[
 1. [Introduction](#intro)
 1. [Git Basics](#basics)
-1. [Branching](#branching)
-1. [Remotes](#remotes)
-2. [Servers](#servers)
-3. [Workflows](#workflows)
+2. [Local](#local)
+3. [Branching](#branching)
+4. [Remotes](#remotes)
+5. [Servers](#servers)
+6. [Workflows](#workflows)
 ]
 
 ---
@@ -107,13 +108,6 @@ Examples: [Git](https://git-scm.com/), [Mercurial](https://www.mercurial-scm.org
 ---
 
 template:inverse
-name:local
-# Local Git
-Git as a **local** VCS
-
----
-
-template:inverse
 name:basics
 # Git Basics
 
@@ -122,9 +116,9 @@ name:basics
 # Basics
 
 **Snapshots**:
-  * Does not store versions of a file only by their differences. 
-  * Instead it saves them as a series of **snapshots**.
-  * If files have not changed, it does not store them again (link).
+  * Does **not** store only the differences between versions of a file. 
+  * Instead, it saves them as a series of **snapshots**.
+  * But, if files have not changed, it does not store them again (**link**).
 
 **Local**: Most Git operations are **local**.
 
@@ -137,25 +131,11 @@ name:basics
 
 # Snapshots
 
+* Each version (**commit**) is a snapshot containing all files.
+* Files can be **links** to previous versions.
+* All objects (files, commits, ...) have an **hash** identifier.
+
 ![](../assets/git/file-versions.svg)
-
----
-
-# Create a Repository
-
-Enter a local directory, currently not under version control:
-
-```bash
-cd project
-```
-
-And turn it into a Git repository:
-
-```bash
-git init
-```
-
-This will create an hidden *.git* subdirectory containing all of your necessary repository files.
 
 ---
 
@@ -177,11 +157,36 @@ The **staging area** (or **index**) is a file in your Git directory that stores 
 
 ---
 
+template:inverse
+name:local
+# Local Git
+Git as a **local** VCS
+
+---
+
+# Create a Repository
+
+Enter a local directory, currently not under version control:
+
+```bash
+cd project
+```
+
+And turn it into a Git repository:
+
+```bash
+git init
+```
+
+This will create an hidden *.git* subdirectory containing all of your necessary repository files.
+
+---
+
 # Add
 
 The [add](https://git-scm.com/docs/git-add) command can be used to:
-  1. Track a file that is currently **not tracked** by Git.
-  2. Add a file that has been **modified** to the staging area.
+  1. **Track** and **stage** a file that is currently **not tracked** by Git.
+  2. Stage a file that has been **modified**.
 
 ```bash
 $ echo "hello git" > README    # File is created
