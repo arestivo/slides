@@ -129,21 +129,23 @@ name:basics
 
 ---
 
-# Snapshots
+# Versions
 
-* Each version (**commit**) is a snapshot containing all files.
-* Files can be **links** to previous versions.
-* All objects (files, commits, ...) have an **hash** identifier.
+Each version (aka a **commit**) is a snapshot of that version files.
+
+If not changed, files are just **links** to a previous version.
+
+All objects (files, commits, ...) have an **hash** identifier.
 
 ![](../assets/git/file-versions.svg)
 
 ---
 
-# Git Sections
+# Git Areas
 
 The **Git directory** is where Git stores the metadata and object database for your project.
 
-The **working tree** is a single checkout of one version of the project. 
+The **working tree** is a single **checkout** of one version of the project. 
 
 The **staging area** (or **index**) is a file in your Git directory that stores information about what will go into your next commit.
 
@@ -152,6 +154,9 @@ The **staging area** (or **index**) is a file in your Git directory that stores 
 ---
 
 # File States
+
+Files can be in different states:
+* Untracked files have not been added to Git.
 
 ![](../assets/git/file-states.svg)
 
