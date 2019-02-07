@@ -26,7 +26,7 @@ name:index
 1. [Introduction](#intro)
 1. [Git Basics](#basics)
 2. [Local](#local)
-3. [Branching](#branching)
+3. [Branches](#branches)
 4. [Remotes](#remotes)
 5. [Servers](#servers)
 6. [Workflows](#workflows)
@@ -155,8 +155,7 @@ The **staging area** (or **index**) is a file in your Git directory that stores 
 
 # File States
 
-Files can be in different states:
-* Untracked files have not been added to Git.
+Files in the working directory can be in different states:
 
 ![](../assets/git/file-states.svg)
 
@@ -219,7 +218,7 @@ $ git commit                   # Commits the file
 
 After running commit, Git will open your [predefined](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration) text editor so that you can write a small commit message (or use the **--message** or **-m** flag).
 
-The **--all** or **-a** flag automatically stages any tracked **and** modified files:
+The **--all** or **-a** flag automatically stages any **modified** (tracked) files:
 
 ```bash
 $ echo "goodbye git" > README      # Already tracked file is modified
@@ -242,6 +241,7 @@ No commits yet
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
 
+
         README
 
 nothing added to commit but untracked files present (use "git add" to track)
@@ -259,11 +259,33 @@ A  README
 
 ---
 
-# Rm
+# Status
 
----
+Notice that the **git status -s** command consists of two columns for each file.
 
-# Log
+```bash
+$ echo "hello git" > README      # File is created
+$ git status -s
+?? README                        # File is untracked
+```
+
+The first column has information about the **staging area** and the second one about
+the **working directory**. In this case the file is untracked on both.
+
+```bash
+$ git add README                 # Modifications are staged
+$ git status -s
+A  README                        # File added to staging area
+```
+
+Now the file has been added in the staging area.
+
+```bash
+$ git commit -m "Added README"   # Commiting changes
+$ git status -s
+```
+
+Now the file has been commited and is unmodified.
 
 ---
 
@@ -275,25 +297,206 @@ A file can be partially staged:
 $ echo "some text" > README    # File is modified
 $ git add README               # Modifications are staged
 $ echo "another text" > README # File is modified again
+$ git status -s
+AM README                      # Added to staging area and modified
 ```
 
 1) Commiting again would only commit the initial staged edits:
 
 ```bash
-$ git commit                   # File now still has changes
+$ git commit                   # Commiting initial edit
+$ git status -s
+ M README                      # File now still has changes
 $ git add README               # Staging those changes
-$ git commit                   # File is now unmodified
+M  README
+$ git commit                   # Commiting following edits
 ```
 
-2) Or we could only commit once:
+2) We can also only commit once:
 
 ```bash
-$ git add README               # Staging the new changes
+$ git add README               # Staging following changes
+$ git status -s
+A  README                      # All changes staged
 $ git commit                   # Commiting both changes at once
 ```
 
 ---
 
-# Cast Test
+# Remove
 
-<asciinema-player src="../assets/git/init.cast"></asciinema-player>
+If you delete a file from your working area, it will appear as a change that needs to be staged in order to be reflected in the repository:
+
+```bash
+$ rm README                       # File is removed from working directory
+$ git status -s
+ D README                         # File removed in working tree
+$ git add README                  # File removal is staged
+$ git status -s
+D  README                         # File removed in staging area
+$ git commit -m "Removed README"  # File removal is committed
+```
+
+The **git rm** command simplifies this operation by removing the file from the working directory and staging that change at the same time.
+
+```bash
+$ git rm README                   # Removed from working directory and staged
+$ git status -s
+D  README                         # File removed in staging area
+$ git commit -m "Removed README"  # File removal is committed
+```
+
+---
+
+# History
+
+The **log** command allows you to see the **commit history** of a repository.
+
+```bash
+$ git log
+commit 41138ac70c5b32239c0000824d8d64315cb50d84 (HEAD -> master)
+Author: User <user@email.com>
+Date:   Thu Feb 7 09:55:36 2019 +0000
+
+    Modified README
+
+commit 5621668b7f21c4a06385e123d6ee20d1beb6fa1d
+Author: User <user@email.com>
+Date:   Thu Feb 7 09:55:15 2019 +0000
+
+    Added README
+```
+
+* We can see by **whom** and **when** each commit was made.
+* We can see the commit **message**.
+* And also the **hash** of each commit.
+
+---
+
+# Simplified History
+
+The **--oneline** flag produces a simplified version of the log.
+
+```bash
+$ git log --oneline
+41138ac (HEAD -> master) Modified README
+5621668 Added README
+```
+
+We can also limit the number of entries to be shown.
+
+```bash
+$ git log --oneline -1
+41138ac (HEAD -> master) Modified README
+```
+
+---
+
+# Patches
+
+The **--patch** (or **--p**) flag  shows the difference (the [patch](http://savannah.gnu.org/projects/patch/) output) introduced in each commit.
+
+```bash
+$ git log -1 -p
+commit 41138ac70c5b32239c0000824d8d64315cb50d84 (HEAD -> master)
+Author: User <user@email.com>
+Date:   Thu Feb 7 09:55:36 2019 +0000
+
+    Modified README
+
+diff --git a/README b/README
+index 7b57bd2..2e24352 100644
+--- a/README
++++ b/README
+@@ -1 +1 @@
+-some text
++another text
+```
+
+The output is rather intimidating but it allows you to see what changed in each commit.
+
+---
+
+template:inverse
+name:branches
+# Branches
+
+---
+
+# Commits
+
+As we have seen before, files are stored as **blobs** and identified by an **hash**.
+
+Versions (or commits) are just a **snapshot**, also identified by an **hash**, pointing to a series of blobs.
+
+![](../assets/git/commits.svg)
+
+Each commit contains the author’s **name** and **email** address, the **message** that was typed, and pointers to the commit (or commits) that directly came before this commit (its **parent** or parents).
+
+---
+
+# Commits
+
+In this specific example we have 3 commits:
+
+1. **3523e920** - The initial commit where a README file was added.
+1. **70aca513** - A second commit where a LICENSE file was added.
+1. **f4d54ef1** - A third commit where the README file was modified.
+
+![](../assets/git/commits.svg)
+
+From now on, we will use a simplified version of this commit tree:
+
+![](../assets/git/commits-simplified.svg)
+
+
+---
+
+# Branches
+
+A **branch** in Git is simply a lightweight movable **pointer** to one of these commits. 
+
+The **default** branch name in Git is *master*. 
+
+As you start making commits, you’re given a *master* branch that points to the **last** commit you made. 
+
+![](../assets/git/branch-master.svg)
+
+Every time you commit, the *current* branch pointer moves **forward** **automatically**.
+
+---
+
+# Head
+
+Git uses a special pointer called HEAD that always points to your current branch.
+
+![](../assets/git/branch-head.svg)
+
+And now this makes a little bit more sense:
+
+```bash
+$ git log --oneline
+f4d54ef (HEAD -> master) Modified README
+70aca51 Added LICENSE
+3523e92 Added README
+```
+
+---
+
+# Creating Branches
+
+To create a branch we use the **branch** command:
+
+```bash
+git branch testing
+```
+
+This only creates the branch, it does not move the HEAD:
+
+![](../assets/git/branch-testing.svg)
+
+```bash
+$ git branch
+* master
+  testing
+```
