@@ -485,18 +485,47 @@ f4d54ef (HEAD -> master) Modified README
 
 # Creating Branches
 
-To create a branch we use the **branch** command:
+To create a branch we use the **branch** command. This only creates the branch, it does not move the HEAD:
 
 ```bash
 git branch testing
 ```
 
-This only creates the branch, it does not move the HEAD:
-
 ![](../assets/git/branch-testing.svg)
+
+The **branch** command can also show the current local branches.
 
 ```bash
 $ git branch
-* master
+* master                  # The asterisk (*) represents the HEAD
   testing
 ```
+
+---
+
+# Checkout
+
+To change to another branch we can use the **checkout** command:
+
+```bash
+$ git checkout testing
+  master
+* testing
+```
+
+![](../assets/git/branch-checkout.svg)
+
+---
+
+# Moving the HEAD
+
+If we create a new commit now:
+
+```bash
+$ echo "license testing" > LICENSE
+git commit -a -m "LICENSE testing"
+```
+
+We can see that only the current branch, the one pointed by the HEAD, moved:
+
+![](../assets/git/branch-checkout-commit.svg)
