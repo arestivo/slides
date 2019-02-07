@@ -294,32 +294,35 @@ Now the file has been commited and is unmodified.
 A file can be partially staged:
 
 ```bash
-$ echo "some text" > README    # File is modified
-$ git add README               # Modifications are staged
-$ echo "another text" > README # File is modified again
+$ echo "some text" > README     # File is modified
+$ git add README                # Modifications are staged
+$ echo "another text" >> README # File is modified again
 $ git status -s
-AM README                      # Added to staging area and modified
+AM README                       # Added to staging area and modified
 ```
 
+.small[
+  
 1) Commiting again would only commit the initial staged edits:
 
 ```bash
-$ git commit                   # Commiting initial edit
+$ git commit -m "Added some text"      # Commiting initial edit
 $ git status -s
- M README                      # File now still has changes
-$ git add README               # Staging those changes
+ M README                              # File now still has changes
+$ git add README                       # Staging those changes
 M  README
-$ git commit                   # Commiting following edits
+$ git commit -m "Added another text"   # Commiting following edits
 ```
 
 2) We can also only commit once:
 
 ```bash
-$ git add README               # Staging following changes
+$ git add README                               # Staging following changes
 $ git status -s
-A  README                      # All changes staged
-$ git commit                   # Commiting both changes at once
+A  README                                      # All changes staged
+$ git commit -m "Added some and another text"  # Commiting both changes at once
 ```
+]
 
 ---
 
@@ -408,8 +411,8 @@ diff --git a/README b/README
 index 7b57bd2..2e24352 100644
 --- a/README
 +++ b/README
-@@ -1 +1 @@
--some text
+@@ -1 +1,2 @@
+ some text
 +another text
 ```
 
@@ -440,8 +443,8 @@ Each commit contains the author’s **name** and **email** address, the **messag
 In this specific example we have 3 commits:
 
 1. **3523e920** - The initial commit where a README file was added.
-1. **70aca513** - A second commit where a LICENSE file was added.
-1. **f4d54ef1** - A third commit where the README file was modified.
+2. **70aca513** - A second commit where a LICENSE file was added.
+3. **f4d54ef1** - A third commit where the README file was modified.
 
 ![](../assets/git/commits.svg)
 
@@ -515,6 +518,8 @@ $ git checkout testing
 
 ![](../assets/git/branch-checkout.svg)
 
+HEAD now points to testing.
+
 ---
 
 # Moving the HEAD
@@ -522,10 +527,103 @@ $ git checkout testing
 If we create a new commit now:
 
 ```bash
-$ echo "license testing" > LICENSE
-git commit -a -m "LICENSE testing"
+$ echo "more license info" >> LICENSE
+git commit -a -m "Testing LICENSE"
 ```
 
-We can see that only the current branch, the one pointed by the HEAD, moved:
-
 ![](../assets/git/branch-checkout-commit.svg)
+
+We can see that **only the current branch**, the one pointed by the HEAD, **moved**.
+
+---
+
+# Checkout
+
+If we **checkout** the *master* branch again, two things happen:
+
+```bash
+$ git checkout master
+```
+
+1. The HEAD moves to the commit pointed by the **master** branch.
+2. Our files are reverted to the snapshot that **master** points to.
+
+![](../assets/git/branch-checkout-master.svg)
+
+This means we are now working on top of a version that has **already been changed**. Any changes we make will create a **divergent history**.
+
+---
+
+# Divergent Histories
+
+Now that we are back to our master branch, lets do some more changes:
+
+```bash
+$ git checkout master
+$ echo "license looks better this way" >> LICENSE
+git commit -a -m "Better LICENSE"
+```
+
+![](../assets/git/branch-divergent-history.svg)
+
+Now we have two divergent histories that have to be **merged** together.
+
+---
+
+# Merging
+
+Merging is done by using the merge command:
+
+```bash
+$ git checkout master
+$ git merge testing
+```
+
+Git merges the **identified** branch **into** the **current** branch.
+
+Git uses **two main strategies** to merge branches:
+  * Fast-forward merge: when there is **no divergent** work
+  * Three-way merge: when there is **divergent** work
+
+---
+
+# Fast-forward Merge
+
+When you merge one commit with a commit that can be reached by following the first commit’s history because there is **no divergent work** to merge together, Git just **moves the branch pointer forward**.
+
+```bash
+$ git checkout master
+$ git merge testing
+```
+
+![](../assets/git/branch-fast-forward.svg)
+
+
+---
+
+# Three-way Merge
+
+When the commit on the branch you’re on **isn’t a direct ancestor** of the branch you’re merging in, Git uses the **two** snapshots pointed to by the **branch tips** and the **common ancestor** of the two to create **a new commit**.
+
+```bash
+$ git checkout master
+$ git merge testing
+```
+
+![](../assets/git/branch-three-way.svg)
+
+---
+
+# Deleting Branches
+
+If you do not need a branch any longer, you can just delete it.
+
+Deleting a branch leaves all commits alone and only deletes the pointer.
+
+```bash
+$ git branch -d testing
+```
+
+---
+
+# Conflicts
