@@ -938,15 +938,25 @@ name:workflows
 
 ---
 
-There are endless different ways to use Git. 
+# Workflows
+
+There are endless different ways to use Git. For example:
+
+* Having **feature branches** for each new feature.
+* Having **release branches** where releases can be maintained. 
+* Hot fix branches to quickly patch production releases. 
 
 ---
 
 # Git Flow
 
+Git Flow is one way, but not the only one, of using git.
+
 .smaller[
 ![](../assets/git/git-flow.svg)
 ]
+
+What's important is that you are consistent in the way you use Git.
 
 ---
 
@@ -960,11 +970,11 @@ name:more
 
 Things we haven't talked about:
 
-* Tags - Unmovable branches really. Useful for marking releases.
-* Rebase - A different and cleaner way to merge.
-* Hooks - IFTTT for Git.
-* Blame - Who broke the code?
-* Bisect - Finding a bad commit.
-* Stash - Save these changes for later.
-* Pull requests - Please take my changes...
+* [Tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging) - Really just unmovable branches. Useful for marking releases.
+* [Rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) - A different and cleaner way to merge.
+* [Hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) - IFTTT for Git.
+* [Blame](https://git-scm.com/docs/git-blame) - Who broke the code?
+* [Bisect](https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git) - Finding a bad commit.
+* [Stash](https://git-scm.com/book/en/v1/Git-Tools-Stashing) - Save these changes for later.
+* [Pull requests](https://help.github.com/articles/about-pull-requests/) - Please take my code...
 * And so much more...
