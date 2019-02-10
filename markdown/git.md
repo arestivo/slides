@@ -28,8 +28,9 @@ name:index
 2. [Local](#local)
 3. [Branches](#branches)
 4. [Remotes](#remotes)
-5. [Servers](#servers)
+4. [Reverting](#reverting)
 6. [Workflows](#workflows)
+6. [More](#more)
 ]
 
 ---
@@ -491,7 +492,7 @@ f4d54ef (HEAD -> master) Modified README
 To create a branch we use the **branch** command. This only creates the branch, it does not move the HEAD:
 
 ```bash
-git branch testing
+$ git branch testing
 ```
 
 ![](../assets/git/branch-testing.svg)
@@ -518,7 +519,12 @@ $ git checkout testing
 
 ![](../assets/git/branch-checkout.svg)
 
-HEAD now points to testing.
+
+We can also create and checkout a new branch using the **--b** flag: 
+
+```bash
+$ git checkout -b testing
+```
 
 ---
 
@@ -627,3 +633,338 @@ $ git branch -d testing
 ---
 
 # Conflicts
+
+If you changed the **same part** of the **same file** differently in the two branches you’re merging, Git **won’t be able** to merge them cleanly:
+
+```bash
+$ git merge testing
+Auto-merging README
+CONFLICT (content): Merge conflict in README
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+You can use the **status** command to see which files have conflicts:
+
+```bash
+$ git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+
+        both modified:   README
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+---
+
+# Resolving Conflicts
+
+Editing the file with conflicts we can see the conflict:
+
+```txt
+This is a README file
+<<<<<<< HEAD
+This was added in the master branch
+=======
+This was added in the testing branch
+>>>>>>> testing
+```
+
+To solve it we just have to edit the file:
+
+```txt
+This is a README file
+This was added in the master branch
+This was added in the testing branch
+```
+
+And commit the merge:
+
+```bash
+$ git commit
+```
+
+---
+
+template:inverse
+name:remotes
+# Remotes
+
+---
+
+# Remotes
+
+Remote repositories are **versions** of your project that are hosted **elsewhere** (another folder, the local network, the internel, ...).
+
+You can push and pull data to and from remotes but first you need to learn how to configure them properly.
+
+---
+
+# Cloning
+
+The easiest way to end up with a remote, is to **clone** another repository.
+
+```bash
+$ git clone https://example.com/test-repository
+Cloning into 'test-repository'...
+remote: Enumerating objects: 129, done.
+remote: Counting objects: 100% (129/129), done.
+remote: Compressing objects: 100% (73/73), done.
+remote: Total 129 (delta 54), reused 115 (delta 44), pack-reused 0
+Receiving objects: 100% (129/129), 46.90 KiB | 565.00 KiB/s, done.
+Resolving deltas: 100% (54/54), done.
+```
+
+To list our remotes (the verbose **-v** flag gives us some info about the URL):
+
+```bash
+$ git remote -v
+origin  https://example.com/test-repository (fetch)
+origin  https://example.com/test-repository (push)
+```
+
+We can see that git named our remote **origin** and set it up for both **fetching** and **pushing** data.
+
+---
+
+# Protocols
+
+Git can use **four** major network protocols to transfer data to and from **remotes**:
+
+* **Local** - Useful if you have access to a shared mounted directory.
+* **Git** - A special daemon that comes packaged with Git. SSH but without authentication or encryption.
+* **SSH** - The most commonly used protocol.
+* **HTTP** - Easiest to setup for read-only scenarios but very slow.
+
+---
+
+# Adding Remotes
+
+Besides the origin remote from where we cloned our project, we can add more remotes:
+
+```bash
+git remote add john http://john-laptop.org/test-repository
+```
+
+In this example, we added a new remote and gave it the alias *john*:
+
+
+```bash
+$ git remote -v
+origin  https://example.com/test-repository (fetch)
+origin  https://example.com/test-repository (push)
+john  http://john-laptop.org/test-repository (fetch)
+john  http://john-laptop.org/test-repository (push)
+```
+
+---
+
+# Fetching
+
+Fetching pulls down all the data from a remote project that you don’t have yet. 
+
+After fetching, you will also have references to all the branches from that remote.
+
+```bash
+$ git fetch origin
+```
+
+.smaller[
+![](../assets/git/remote-fetch.svg)
+]
+
+Fetching **only downloads** the data to your local repository. It doesn’t automatically merge it with any of your work or modify what you’re currently working on. 
+
+---
+
+# Tracking Branches
+
+Tracking branches are local branches that have a **direct relationship** to a remote branch.
+
+When you clone a repository, it generally **automatically** creates a **master** branch that tracks **origin/master**.
+
+You can set up other tracking branches:
+
+```bash
+$ git checkout --track origin/feature # creates a local feature branch
+                                    # that tracks origin/feature
+```
+
+---
+
+# Pulling
+
+If your current branch is set up to **track** a remote branch, you can use the **git pull** command to automatically **fetch** and then **merge** that remote branch into your current branch.
+
+```bash
+$ git pull origin master # fetches and merges origin/master
+```
+
+.smaller[
+![](../assets/git/remote-pull.svg)
+]
+
+This fetches data from the server you originally cloned from and automatically tries to merge it into the code you are currently working on.
+
+```bash
+$ git pull # uses default values for current local branch 
+```
+
+---
+
+# Pushing
+
+Pushes local modifications to a remote. Only fast-forward merges are allowed so you might need to fetch and merge locally first.
+
+```bash
+$ git pull # or git pull origin master
+$ echo "some changes" >> README
+$ git commit -a -m "Made some changes"
+$ git push # or git push origin master
+```
+
+.smaller[
+![](../assets/git/remote-push.svg)
+]
+
+
+With the **-u** flag, it also sets the local branch to track the remote branch.
+
+---
+
+# Git Hosts
+
+Some free (for **open** source, **education** and **small** projects) git hosts you can use:
+
+* [GitHub](https://github.com/)
+* [BitBucket](https://bitbucket.org/)
+* [GitLab](https://gitlab.com/)
+* [SourceForge](https://sourceforge.net/)
+
+---
+
+template:inverse
+name:reverting
+# Reverting
+
+---
+
+# Reset 
+
+The **reset** command resets the current branch HEAD to a certain commit.
+
+These are some of the many different modes it can operate under:
+
+* **--soft** - Does not touch the index<sup>1</sup> file or the working tree at all.
+* **--hard** - Resets the index and working tree.
+* **--mixed** - Resets the index but not the working tree (**default mode**).
+
+<sup>1</sup> The staging area.
+---
+
+# Local unstaged changes
+
+If you haven't staged or commited the changes you want to revert you can:
+
+```bash
+$ git checkout -- README # undo changes to a single file
+```
+
+```bash  
+$ git reset --hard       # discard all local changes
+```
+
+---
+
+# Staged but uncommited changes
+
+If you have staged the changes you want to revert but haven't commited them yet, you can:
+
+```bash
+$ git reset HEAD <file>  # unstage changes to a single file
+```
+
+```bash
+$ git reset # unstage all changes
+```
+
+---
+
+# Commited but not pushed
+
+If you have already commited the changes you want to revert but haven't pushed them to a remote yet, you can find the *commit-id* you want to revert to and:
+
+```bash
+$ git reset --hard <commit-id>
+```
+
+---
+
+# Commited and already pushed
+
+You should try, **really hard**, to never rewrite public history.
+
+For that reason, if you want to revert a file that was already pushed, your best bet is to use revert:
+
+```bash
+$ git revert <commit-id>
+```
+
+This will introduce the changes needed to revert the ones done by the commit without deleting the commit from history.
+
+---
+
+# Relative commits
+
+The ~(tilde) and ^(caret) symbols are used to point to a position relative to a specific commit.
+
+* COMMIT^ refers to the previous commit to COMMIT.
+* COMMIT^^ refers to the previous commit to COMMIT^.
+* COMMIT~2 refers to two commit previous to COMMIT.
+* And so on...
+
+![](../assets/git/commit-relative.svg)
+
+---
+
+template:inverse
+name:workflows
+# Workflows
+
+---
+
+There are endless different ways to use Git. 
+
+---
+
+# Git Flow
+
+.smaller[
+![](../assets/git/git-flow.svg)
+]
+
+---
+
+template:inverse
+name:more
+# More
+
+---
+
+# More stuff
+
+Things we haven't talked about:
+
+* Tags - Unmovable branches really. Useful for marking releases.
+* Rebase - A different and cleaner way to merge.
+* Hooks - IFTTT for Git.
+* Blame - Who broke the code?
+* Bisect - Finding a bad commit.
+* Stash - Save these changes for later.
+* Pull requests - Please take my changes...
+* And so much more...
