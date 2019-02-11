@@ -25,7 +25,10 @@ name:index
 .indexlist[
 1. [Introduction](#intro)
 1. [Basics](#basics)
+1. [Input/Output](#io)
+1. [Arrays](#arrays)
 1. [Classes](#classes)
+1. [Strings](#strings)
 ]
 
 ---
@@ -55,10 +58,10 @@ name:intro
 
 # Java Editions
 
-* **Java Card** - Smart cards and similar small memory footprint devices. 
-* **Java ME** - Micro Edition for embedded and mobile devices (IoT).
-* **Java SE** - Standard Edition for regular Java applications. Mainly desktop and command-line apps.
-* **Java EE** - Enterprise Edition for enterprise-oriented applications and servlets. Mainly large-scale web-oriented applications.
+* **Java Card** - Smart **cards** and similar small memory footprint devices. 
+* **Java ME** - Micro Edition for **embedded** and **mobile** devices (IoT).
+* **Java SE** - Standard Edition for regular Java applications. Mainly **desktop** and command-line apps.
+* **Java EE** - Enterprise Edition for enterprise-oriented applications and servlets. Mainly large-scale **web**-oriented applications.
 
 ---
 
@@ -162,13 +165,137 @@ int i = 10;
 
 # Conditional Blocks
 
+Java has all the conditional blocks you would expect from a [C-family](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) programming language:
+
+```java
+if (condition) {      // Curly brackets when more than one statement
+  doSomething();      
+  doSomethingElse();
+} else 
+  doAnotherThing();
+```
+
+And also:
+
+```java
+switch (variable) {                 // variable must be of the correct type 
+  case 1: doSomething();
+    break;                          // don't forget the break
+  case 2: doSomethingElse();
+    break;
+  default: doSomethingDefault();
+    break;
+}
+```
+
 ---
 
 # Loop Blocks
 
+Loop blocks are also the expected ones. The **while-loop**:
+
+```java
+while (condition) {
+  doSomething();
+}
+```
+
+Also a **do-while** variant:
+```java
+do {
+  doSomething();          // executed at leat once
+} while (condition);
+```
+
+And, of course, the **for-loop**:
+```java
+for (int i = 0; i < 10; i++) {
+  doSomething(i);         // i from 0 to 9
+}
+```
+
+---
+
+# Operators
+
+Arithmetic and boolean operators are also very similar to other C-family languages:
+
+* Assignment: <code>= += -= *=  /=</code>
+* Numerical: <code> + - * / % ++ -- </code>
+* Relational: <code>== != < > <=  >=</code>
+* Boolean: <code>&& || !</code>
+* Bitwise: <code>& | ^ ~ << >> >>></code>
+* Tertiary: <code>?:</code>
+* Type casting: <code>(type) </code>
+
+Be careful with the <code>==</code> operator. It compares primitive types by value; but **compares objects by reference**.
+
+---
+
+# Standard Input and Output
+
+Writing to the screen can be accomplished using one of two methods: 
+
+```java
+System.out.print("Hello world");
+System.out.println("Hello world");  // also changes line
+```
+
+Reading from the keyboard can be done using the **Scanner** class from *java.util* package:
+
+```java
+Scanner scanner = new Scanner(System.in); // Instantiating a new Scanner object
+String line = scanner.nextLine();         // Reading a line
+System.out.println(line);                 // Printing out the line
+int number = scanner.nextInt();           // We can also read primitive types
+```
+
+---
+
+# Naming Conventions
+
+* *Class* and *interface* names should be nouns with the first letter of each internal word capitalized &mdash; **PoliceCar**.
+* *Methods* should be verbs, with the first letter of each internal word capitalized (except for the first one) &mdash; **turnSirenOn()**.
+* *Variables* are in mixed case with a lowercase first letter &mdash; **String carPlate;**.
+* The names of variables declared class *constants* should be all uppercase with words separated by underscores &mdash; **static final int MAX_SIZE = 10**.
+* The prefix of a unique *package* name is always written in all-lowercase ASCII letters and should be one of the top-level domain names: com, edu, gov, mil, net, org... Subsequent components of the package name vary according to an organization's own internal naming conventions &mdash; **com.lpoo.util**.
+
 ---
 
 # Strings
+
+* In Java Strings are immutable, so they cannot be modified once created.
+* String are a class defined in the *java.lang* package (more on that later):
+
+```java
+import java.lang.String;
+```
+
+The <code>+</code> operator concatenates strings:
+
+```java
+String hello = "Hello";
+String world = "World";
+String sentence = hello + " " + world;
+```
+
+---
+
+# Hello World
+
+In Java, everything must belong to a class.
+
+That means our customary Hello World example looks like this:
+
+```java
+public class HelloWorld {
+  public static void main(String[] args) { // when we run a class this method
+    System.out.println("Hello, World");    // runs first
+  }
+}
+```
+
+Don't worry too much about the syntax for now.
 
 ---
 
@@ -178,16 +305,53 @@ name:classes
 
 ---
 
-template: inverse
-name:io
-# Input and Output
+# Arrays
+
+In Java, an **array** is an **object**. This object has a given type for the contained primitive types or objects (int, char, String, ...). 
+
+An array can be declared in several ways: 
+
+```java
+int[] array;  // recommended
+int array[];  // identical but less used
+```
+
+These arrays have been declared but haven't been instantiated yet:
+
+```java
+array = new int[10];                              // 10 default elements 
+array = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // works anywhere
+int[] other = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};    // only works in the declaration
+```
 
 ---
 
-# Name Conventions
+# Using Arrays
+
+The size of an array can be obtained by using the **length** attribute:
+
+```java
+for (int i = 0; i < array.lenght; i++)
+  System.out.println(array[i]);  // getting the value at index i
+```
+
+A simpler way of achieving the same result is:
+
+```java
+for (int element : array)       // element must be the same type
+{                               // as the array internal values
+  System.out.println(element);
+}
+```
 
 ---
 
 template: inverse
 name:classes
 # Classes
+
+---
+
+template: inverse
+name:strings
+# Strings
