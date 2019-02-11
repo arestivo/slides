@@ -162,6 +162,10 @@ table td{
   font-size: 0.8em;
 }
 
+.simple table td {
+  background-color: white;
+}
+
 table td:first-child {
   color: black;
   white-space: nowrap;
