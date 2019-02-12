@@ -398,7 +398,7 @@ $ git log --oneline -1
 
 # Patches
 
-The **--patch** (or **--p**) flag  shows the difference (the [patch](http://savannah.gnu.org/projects/patch/) output) introduced in each commit.
+The **--patch** (or **-p**) flag  shows the difference (the [patch](http://savannah.gnu.org/projects/patch/) output) introduced in each commit.
 
 ```bash
 $ git log -1 -p
@@ -520,7 +520,7 @@ $ git checkout testing
 ![](../assets/git/branch-checkout.svg)
 
 
-We can also create and checkout a new branch using the **--b** flag: 
+We can also create and checkout a new branch using the **-b** flag: 
 
 ```bash
 $ git checkout -b testing

@@ -272,10 +272,6 @@ Names should follow the standard naming convention:
 * In Java Strings are immutable, so they cannot be modified once created.
 * String are a class defined in the *java.lang* package (more on that later):
 
-```java
-import java.lang.String;
-```
-
 The <code>+</code> operator concatenates strings:
 
 ```java
@@ -287,7 +283,9 @@ String sentence = hello + " " + world;
 To compare strings we must use the equals method:
 
 ```java
-
+if (hello.equals(world)) {  // hello == world would compare the references
+  doSomething(i); 
+}
 ```
 
 ---
@@ -390,5 +388,65 @@ name:classes
 ---
 
 template: inverse
+name:packages
+# Packages
+
+---
+
+template: inverse
+name:bignum
+# Large Numbers
+
+---
+
+template: inverse
 name:strings
 # Strings
+
+---
+
+template: inverse
+name:exceptions
+# Exceptions
+
+---
+
+template: inverse
+name:io
+# Input and Output
+
+---
+
+template: inverse
+name:collections
+# Collections
+
+---
+
+template: inverse
+name:threads
+# Multi Threading
+
+---
+
+template: inverse
+name:generics
+# Generics
+
+---
+
+template: inverse
+name:annotations
+# Annotations
+
+---
+
+template: inverse
+name:reflection
+# Reflection
+
+---
+
+template: inverse
+name:javafx
+# Java FX
