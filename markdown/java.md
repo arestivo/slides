@@ -25,10 +25,9 @@ name:index
 .indexlist[
 1. [Introduction](#intro)
 1. [Basics](#basics)
-1. [Input/Output](#io)
-1. [Arrays](#arrays)
-1. [Classes](#classes)
-1. [Strings](#strings)
+2. [Arrays](#arrays)
+3. [Classes](#classes)
+4. [Strings](#strings)
 ]
 
 ---
@@ -252,13 +251,19 @@ int number = scanner.nextInt();           // We can also read primitive types
 
 ---
 
-# Naming Conventions
+# Naming Convention
 
-* *Class* and *interface* names should be nouns with the first letter of each internal word capitalized &mdash; **PoliceCar**.
-* *Methods* should be verbs, with the first letter of each internal word capitalized (except for the first one) &mdash; **turnSirenOn()**.
-* *Variables* are in mixed case with a lowercase first letter &mdash; **String carPlate;**.
-* The names of variables declared class *constants* should be all uppercase with words separated by underscores &mdash; **static final int MAX_SIZE = 10**.
-* The prefix of a unique *package* name is always written in all-lowercase ASCII letters and should be one of the top-level domain names: com, edu, gov, mil, net, org... Subsequent components of the package name vary according to an organization's own internal naming conventions &mdash; **com.lpoo.util**.
+Names should follow the standard naming convention:
+
+.simple[
+| Type | Form | Capitalization | Example |
+|------|------|----------------|---------|
+| Class or Interface | Noun | First word letter capitalized | PoliceCar |
+| Methods | Verb | First word letter capitalized (except first one) | turnSirenOn() |
+| Variables | &mdash; | First word letter capitalized (except first one) | carPlate |
+| Constants | &mdash; | Uppercase with underscores separating words | MAX_SPEED |
+| Packages | &mdash; | Starting with top-level domain, lowercase separated by periods | com.lpoo.util |
+]
 
 ---
 
@@ -277,6 +282,12 @@ The <code>+</code> operator concatenates strings:
 String hello = "Hello";
 String world = "World";
 String sentence = hello + " " + world;
+```
+
+To compare strings we must use the equals method:
+
+```java
+
 ```
 
 ---
@@ -316,13 +327,15 @@ int[] array;  // recommended
 int array[];  // identical but less used
 ```
 
-These arrays have been declared but haven't been instantiated yet:
+These arrays have been declared but haven't been instantiated yet. We can do it in a few different ways:
 
 ```java
 array = new int[10];                              // 10 default elements 
 array = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // works anywhere
 int[] other = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};    // only works in the declaration
 ```
+
+The default value depends on the data type. For objects it's **null**, for numeric types it's **0**, for booleans is **false** and for chars it's **'\u0000'** (whose decimal equivalent is 0).
 
 ---
 
@@ -335,13 +348,37 @@ for (int i = 0; i < array.lenght; i++)
   System.out.println(array[i]);  // getting the value at index i
 ```
 
-A simpler way of achieving the same result is:
+A simpler way of looping over an array is:
 
 ```java
 for (int element : array)       // element must be the same type
 {                               // as the array internal values
   System.out.println(element);
 }
+```
+
+---
+
+# Multidimensional Arrays
+
+Arrays can have more than one dimension:
+
+```java
+int[][] array = {{  0,  1,  2,  3,  4 },
+                 {  5,  6,  7,  8,  9 },
+                 { 10, 11, 12, 13, 14 }};
+System.out.println(array[0][3]); // 3
+System.out.println(array[1][4]); // 9
+```
+
+Sub-arrays can even have different lengths:
+
+```java
+int[][] array = {{       0       },
+                 {    1, 2, 3    },
+                 { 4, 5, 6, 7, 8 }};
+System.out.println(array[0].length); // 1
+System.out.println(array[1].length); // 3
 ```
 
 ---
