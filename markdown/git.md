@@ -562,7 +562,7 @@ This means we are now working on top of a version that has **already been change
 
 # Divergent Histories
 
-Now that we are back to our master branch, lets do some more changes:
+Now that we are back to our master branch, let's do some more changes:
 
 ```bash
 $ git checkout master
@@ -699,7 +699,7 @@ name:remotes
 
 # Remotes
 
-Remote repositories are **versions** of your project that are hosted **elsewhere** (another folder, the local network, the internel, ...).
+Remote repositories are **versions** of your project that are hosted **elsewhere** (another folder, the local network, the internet, ...).
 
 You can push and pull data to and from remotes but first you need to learn how to configure them properly.
 
