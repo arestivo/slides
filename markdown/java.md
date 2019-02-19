@@ -25,9 +25,13 @@ name:index
 .indexlist[
 1. [Introduction](#intro)
 1. [Basics](#basics)
-2. [Arrays](#arrays)
-3. [Classes](#classes)
-4. [Strings](#strings)
+1. [Arrays](#arrays)
+1. [OOP](#oop)
+1. [Classes](#classes)
+1. [Objects](#objects)
+1. [Inheritance](#inheritance)
+1. [Exceptions](#exceptions)
+1. [Collections](#collections)
 ]
 
 ---
@@ -269,10 +273,10 @@ Names should follow the standard naming convention:
 
 # Strings
 
-* In Java Strings are immutable, so they cannot be modified once created.
-* String are a class defined in the *java.lang* package (more on that later):
+* In Java Strings are **immutable**, so they cannot be modified once created.
+* String are a class defined in the *java.lang* **package** (more on that later):
 
-The <code>+</code> operator concatenates strings:
+The <code>+</code> operator **concatenates** strings:
 
 ```java
 String hello = "Hello";
@@ -280,7 +284,7 @@ String world = "World";
 String sentence = hello + " " + world;
 ```
 
-To compare strings we must use the equals method:
+String are objects, so to compare them we **must** use the **equals** method:
 
 ```java
 if (hello.equals(world)) {  // hello == world would compare the references
@@ -292,9 +296,9 @@ if (hello.equals(world)) {  // hello == world would compare the references
 
 # Hello World
 
-In Java, everything must belong to a class.
+In Java, **everything** must **belong** to a **class**.
 
-That means our customary Hello World example looks like this:
+That means our customary **Hello World** example looks like this:
 
 ```java
 public class HelloWorld {
@@ -342,11 +346,11 @@ The default value depends on the data type. For objects it's **null**, for numer
 The size of an array can be obtained by using the **length** attribute:
 
 ```java
-for (int i = 0; i < array.lenght; i++)
+for (int i = 0; i < array.length; i++)
   System.out.println(array[i]);  // getting the value at index i
 ```
 
-A simpler way of looping over an array is:
+A simpler way of **looping** over an array is:
 
 ```java
 for (int element : array)       // element must be the same type
@@ -359,7 +363,7 @@ for (int element : array)       // element must be the same type
 
 # Multidimensional Arrays
 
-Arrays can have more than one dimension:
+Arrays can have more than one **dimension**:
 
 ```java
 int[][] array = {{  0,  1,  2,  3,  4 },
@@ -369,7 +373,7 @@ System.out.println(array[0][3]); // 3
 System.out.println(array[1][4]); // 9
 ```
 
-Sub-arrays can even have different lengths:
+Sub-arrays can even have **different** lengths:
 
 ```java
 int[][] array = {{       0       },
@@ -382,14 +386,679 @@ System.out.println(array[1].length); // 3
 ---
 
 template: inverse
+name:oop
+# OOP
+
+---
+
+# Abstractions
+
+* All programming languages provide **abstractions**:
+  
+  * **Assembly** is an abstraction of **machine-code**.
+  * **Imperative** programming is an abstraction of **assembly**.
+  * But they all force us to think about the structure of the **machine** and not the structure of the **problem**.
+
+<hr>
+
+* **OOP** provides an abstraction where **elements** of the problem are **objects** in the solution space.
+* **OOP** allows you to describe the problem in terms of the **problem**, rather than in terms of the **computer** where the solution will run.
+
+---
+
+# Objects
+
+**Alan Kay**<sup>1</sup> on the five pillars of *Smalltalk*:
+
+1. **Everything** is an object.
+2. A program is a bunch of objects telling each other
+what to do by sending **messages**.
+3. Each object has its own **memory** made up of **other
+objects**.
+4. Every object has a **type**.
+5. All objects of a particular type can receive the **same
+messages**.
+
+"An object has state, behavior and identity" &mdash; **Grady Booch**<sup>2</sup>, 1994.
+
+"An object is characterized by a number of operations and a state which remembers the effect of these operations" &mdash; **Ivar Jacobson**<sup>2</sup>, 1996.
+
+.footnote[1&#46; Inventor of the Smalltalk language. <br>2. Two of the developers of UML (together with James Rumbaugh).]
+
+---
+
+# Classes
+
+* All **objects**, while being **unique**, are also part of a **class** of objects that have **characteristics** and **behaviors** in common.
+* Objects that are identical &mdash; **except** for their **state** &mdash; are grouped together into **classes of objects**.
+* Classes **extend** the programming language by adding new **data types**.
+
+<hr>
+
+* Each class is defined by its **interface**.
+* The **interface** determines the **requests** that you can make for a particular
+object.
+* An object **provides services** and can use **other objects'** services to accomplish it.
+
+---
+
+# Object Oriented Pillars (A PIE)
+
+Data **A**bstraction
+* Hiding all but the relevant data about an object in order to **reduce complexity** and **increase efficiency**.
+
+**P**olymorphism
+* Different types can **share** the same **interface**.
+
+**I**nheritance
+* Classes **inherit** properties from their **super class**.
+
+**E**ncapsulation
+* **Internal** state and behavior is **hidden**. Only **interface** is **public**.
+
+---
+
+template: inverse
 name:classes
 # Classes
+
+---
+
+# Classes in Java
+
+* In Java, public a classes must be declared in a file with the **same name** but with a **.java** extension. 
+* This means that a Java file can have, at most, **one** public class.
+* For example, inside a file called **Light.java** you could have:
+
+```java
+public class Light {
+  // ...
+}
+```
+
+* As this is a **public** class, it can be accessed from anywhere.
+
+---
+
+# Fields
+
+* Objects store data inside **fields** (also called *member variables*)
+* Each object keeps its **own** storage for its fields.
+* **Ordinary** fields are **not shared** among objects.
+
+```java
+public class Light {
+  private boolean isOn = false;
+  private int level = 100;
+}
+```
+
+* Usually, fields should be made **private** so they can be accessed only from inside the object they belong to.
+* Objects from other classes can access them using the class *public interface* (methods).
+
+---
+
+# Methods
+
+* Methods are how we **communicate** with objects. 
+* When we **invoke** or **call** a method we are asking the object to carry out a **task**.
+* Each method has a **name**, input **parameters**, a **return** type and a **visibility**.
+
+```java
+public class Light {
+  public void turnOn() {
+    this.isOn = true;
+  }
+
+  public void turnOff() {
+    this.isOn = false;
+  }
+
+  public void setLevel(int level) {
+    this.level = level;
+  }
+}
+```
+
+---
+
+# Visibility
+
+For a **class**:
+
+.small[
+* **public**: can be referenced anywhere in the **application**.
+* **protected**: can be referenced only in the **package**.
+* **private**: only in **nested** classes, can be accessed only in the **outer** class.
+]
+
+For a **variable**:
+
+.small[
+* **public**: can be referenced anywhere in the **application**.
+* **protected**: can be referenced only in **sub-classes** and in the same **package**.
+* **package** (no modifier): can be referenced only in the same **package**.
+* **private**: can be accessed only in the **class** it is defined in.
+]
+
+For a **method**:
+
+.small[
+* **public**: can be called anywhere in the **application**.
+* **protected**: can be called only in **sub-classes** and in the same package.
+* **package** (no modifier): can be called only in the same **package**.
+* **private**: can be called only in the **class** it is defined in.
+]
+
+---
+
+# Keyword *this*
+
+* **this** is a reference to the current object &mdash; the object whose method or constructor is being called. 
+* You can treat the reference just like any other **object reference**. 
+
+<hr>
+
+* If you are calling a method from **within** another method of the **same**
+class, you **do not** need to use *this*.
+* If you are referring to a field from **within** a method of the **same**
+class, you **do not** need to use *this*. But you should, for **readability** purposes (and sometimes to avoid **ambiguity**).
+
+---
+
+# Constructor
+
+* Constructors are special methods that are used to create **new objects**.
+* Constructors have the **same name** as the class.
+* Constructors **do not** have a explicit return type &mdash; they **implicitly** return the type they are constructing.
+* Constructors can be **overloaded**.
+
+```java
+public class Light {
+  public Light() {
+    this.isOn = false;
+    this.level = 50;
+  }
+
+  public Light(int level) {
+    this.isOn = false;
+    this.level = level;
+  }
+}
+```
+
+---
+
+# Constructor Chaining
+
+* Within a constructor, you can use the **this** keyword to invoke **another** constructor in the **same** class.
+* This has to be the **first statement** of the constructor.
+
+```java
+public class Light {
+  public Light() {
+    this(50);
+  }
+
+  public Light(int level) {
+    this.isOn = false;
+    this.level = level;
+  }
+}
+```
+
+---
+
+# Setters and Getters
+
+* Object fields are usually kept **private** to improve **encapsulation**.
+
+* It is common to provide public **setter** and **getter** methods to access and modify the value of a private field.
+
+```java
+public class Light {
+    private boolean isOn;
+    private int level;
+
+    // ...
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+}
+```
+
+---
+
+# Static 
+
+* **Static fields** belong to the class instead of a specific object.
+* **Static methods** can only access the static context of the class.
+
+```java
+public class Light {
+  private static int MAX_LEVEL = 100; 
+
+  public static int getMaximumLevel() {
+    return Light.MAX_LEVEL;
+  }
+}
+```
+
+```java
+System.out.println(Light.getMaximumLevel()); // no need for an object
+```
+
+
+---
+
+template: inverse
+name:objects
+# Objects
+
+---
+
+# Objects
+
+When a **primitive type** variable is declared, its value is **stored** directly in its **memory** location.
+
+```java
+int a = 5, b; // if a field, b is initialized with a default value of 0.
+```
+
+![](../assets/java/oop-objects-primitive.svg)
+
+When an **object** is declared, it only contains a reference to the actual object.
+
+```java
+Light light; // if a field, light is initialized with a default value of null. 
+```
+
+![](../assets/java/oop-objects-object.svg)
+
+---
+
+# Instantiation
+
+To create a new object, we just have to call its constructor using the **new** keyword:
+
+```java
+Light light = new Light();
+Light another = light;
+```
+
+![](../assets/java/oop-objects-new.svg)
+
+
+---
+
+# Cloning
+
+If we need to have two instances of the same object, we must use the **clone()** method.
+
+```java
+Light light = new Light();
+Light another = light.clone();
+```
+
+![](../assets/java/oop-objects-clone.svg)
+
+---
+
+# Final
+
+* The **final** keyword, allows us to declare **fields** and **variables** that **cannot be changed**.
+* This only applies to the variable itself, so in the case of objects we can modify the **object** but not its **reference**.
+* Can be used together with **static** to create **global constants**.
+
+```java
+final Light light = new Light();
+light.setLevel(50);
+light = new Light(); // error
+```
+
+```java
+final int level = 50;
+level = level + 10; // error
+```
+
+```java
+public class Light {
+  private final static int MAX_LEVEL = 100; 
+}
+```
+
+---
+
+# Parameters
+
+**Objects** are passed to methods by **reference**; while **primitive** variables are passed by **value**.
+
+```java
+private void change(int a, Light light) {
+  a = a + 10;
+  light.setLevel(80);
+}
+
+public void doSomething() {
+  int a = 10;
+  Light light = new Light(); // level = 50
+
+  change (a, light);
+
+  System.out.println(a); // 10
+  System.out.println(light.getLevel()); // 80
+}
+```
+
+---
+
+template: inverse
+name:inheritance
+# Inheritance
+
+---
+
+# Inheritance
+
+* The mechanism of **basing** a class (or object) upon another class (or object), retaining a **similar** implementation.
+* Inheritance should be used to establish a **is-a** relationship between classes.
+
+<hr>
+
+* In Java, inheritance is **class-based**.
+* In Java, there is **no multiple-inheritance**.
+* In Java, if unspecified, all classes are based on the root **Object** class.
+
+---
+
+# Extends
+
+* The **extends** keywords allows a class to define a **different** superclass, inheriting all methods and fields from it.
+* The **super** keyword allows calling a **constructor** from the superclass.
+* You can **only** extend **one** class.
+
+.small[
+**Tip:** You don't have to provide any constructors for your class, but you must be careful when doing this. The compiler automatically provides a no-argument, default constructor for any class without constructors. This default constructor will call the no-argument constructor of the superclass. In this situation, the compiler will complain if the superclass doesn't have a no-argument constructor so you must verify that it does.
+]
+
+---
+
+# Extends
+
+```java
+public class Shape {
+    private String color;
+
+    public Shape(String color) {
+        this.color = color;
+    }
+}
+
+public class Rectangle extends Shape {
+    private int x1, x2, y1, y2;
+
+    public Rectangle(int x1, int x2, int y1, int y2, String color) {
+        super(color);
+
+        this.x1 = x1;
+        this.x2 = x2;
+        this.y1 = y1;
+        this.y2 = y2;
+    }
+}
+```
+
+---
+
+# Overriding
+
+Java allows classes to **override** superclass methods, providing that:
+* The access modifier (visibility) for an overriding method can allow **more**, but **not less**, access than the overridden method.
+* **Final** methods can not be overridden.
+* **Static** methods can not be overridden.
+* **Private** methods can not be overridden.
+* The overriding method must have **same return type** (or **subtype**).
+
+We can call a parent class method using the **super** keyword.
+
+```java
+public class Animal {
+  public void talk() { System.out.println("Animal says:"); }
+  public final void eat() { /* ... */ }
+}
+public class Dog extends Animal {
+  public void talk() { 
+    super.talk();
+    System.out.println("Woof!"); 
+  }
+}
+```
+
+---
+
+# Abstract Classes
+
+* **Abstract** classes cannot be instantiated but can be **extended**:
+
+* They are used to:
+ 
+  * Define **methods** which can be **used** by the inheriting subclass.
+  * Define abstract methods which the inheriting subclass **must implement**.
+  * Provide a **common interface** for their subclasses.
+
+```java
+public abstract class Animal {
+    public abstract void talk();
+}
+public class Dog extends Animal {
+    // This method must be implemented or the 
+    // class must be declared abstract.
+    public void talk() {
+        System.out.println("Woof!");
+    }
+}
+```
+
+---
+
+# Interfaces
+
+* Java does not allow multiple-inheritance but it has **interfaces**.
+* An interface is like a **fully abstract** class (only abstract methods).
+* A class can implement **several interfaces**.
+* Interfaces can be used in order to achieve **polymorphism**.
+
+```java
+public interface Runner { public void run();  }
+public interface Walker { public void walk(); }
+public interface Eater  { public void eat();  }
+
+public abstract class Animal implements Eater, Walker{
+    public abstract void talk();
+}
+
+public class Dog extends Animal implements Runner {
+    public void talk() {  } // all these
+    public void eat()  {  } // methods
+    public void run()  {  } // be
+    public void walk() {  } // implemented
+}
+```
+
+---
+
+# Polymorphism
+
+In Java, a variable of a given type may be **assigned** a value of **any subtype**, and a method with a parameter of a given type may be **invoked** with an argument of **any subtype** of that type.
+
+```java
+public void race(Runner r1, Runner r2) { /* ... */ }
+
+public void main() {
+  Dog d1 = new Dog();
+  Runner d2 = new Dog();
+
+  race (d1, d2);
+}
+```
+
+---
+
+# Polymorphism
+
+In Java, the method to be called is decided at **runtime**, based on the runtime type of the object.
+
+```java
+public class Animal{
+    public void talk() { System.out.println("Hello!"); };
+}
+
+public class Dog extends Animal {
+    public void talk() { System.out.println("Woof!");  }
+}
+
+public class Cat extends Animal {
+    public void talk() { System.out.println("Meow!");  }
+}
+
+public void main() {
+    Animal a1 = new Animal(); a1.talk(); // Hello
+    Animal a2 = new Dog(); a2.talk();    // Dog
+    Animal a3 = new Cat(); a3.talk();    // Cat
+}
+
+```
+
+---
+
+# 
+
+---
+
+template: inverse
+name:garbage
+# Garbage Collection
+
+---
+
+# Garbage Collection
+
+* Automatic **garbage collection** is the process of looking at **heap** memory, identifying which objects are in use and which are not, and deleting the unused objects.
+* An **in use** object, or a referenced object, means that some part of your program still maintains a pointer to that object.
+* In Java, this process is done automatically so developers do not have to worry about **memory leaks**. [Or do they](https://stackify.com/memory-leaks-java/)?
 
 ---
 
 template: inverse
 name:packages
 # Packages
+
+---
+
+# Packages
+
+* A **package** contains a **group** of classes, **organized** together under a single **namespace**.
+* Classes in the same package can access each other's package-private and protected members.
+* The package that a class belongs to is specified with the package keyword (first statement):
+
+```java
+package com.example;
+```
+
+* To use a class from another package we must first import it:
+
+```java
+import com.example.HelloWorld;
+import com.example.*; // imports all classes from the package
+```
+
+Packages are **stored** in the form of structured **directories**. For example: package "*com.example*" would be stored in directory "*com/example*".
+
+---
+
+template: inverse
+name:exceptions
+# Exceptions
+
+---
+
+# Exceptions
+
+* When an error occurs within a method, the method creates an **exception** object and hands it off to the runtime system.
+* The runtime system attempts to find something to handle it by following the ordered list of methods that had been called to get to the method where the error occurred.
+
+```java
+public void someCode() {
+  throw new VeryBadThingHappenedException(reason);
+}
+
+public void moreCode() {
+  someCode();
+}
+
+public void code() {
+  try {
+    moreCode();
+  } catch (VeryBadThingHappenedException e) {
+    // do something about the error
+  }
+}
+```
+
+---
+
+template: inverse
+name:collections
+# Collections
+
+---
+
+# Collections
+
+* A **Collection** is a **group** of individual objects represented as a **single unit**. 
+
+* Java provides the **Collection Framework** which defines several classes and interfaces to represent a group of objects as a single unit.
+
+* The Collection interface (**java.util.Collection**) and Map interface (**java.util.Map**) are the two main interfaces of Java Collection classes.
+
+---
+
+# Collection Classes
+
+* **Set** : Doesn't allow duplicates: HashSet (Hashing based), TreeSet (balanced
+BST based; implements SortedSet)...
+
+* **List** : Can contain duplicates and elements are ordered: LinkedList (linked list based), ArrayList (dynamic array based), Stack, Vector, ...
+
+* **Queue** : Typically order elements in FIFO order: LinkedList, PriorityQueue (not in FIFO order)...
+
+* **Deque** : Elements can be inserted and removed at both ends: ArrayDeque, LinkedList...
+
+* **Map** : Contains Key value pairs. Doesn't allow duplicates: HashMap and TreeMap (implements SortedMap).
+
+---
+
+# Parameterized Collections
+
+* Java Collections are **parameterized** (more about this later). 
+* This means that we can define the type of data that the collection will **store**.
+
+```java
+  List<Animal> animals = new ArrayList<>();
+  animals.add(new Dog());
+  animals.add(new Cat());
+```
+
+```java
+  for (Animal animal : animals) {
+    animal.talk();
+  }
+```
 
 ---
 
@@ -406,20 +1075,8 @@ name:strings
 ---
 
 template: inverse
-name:exceptions
-# Exceptions
-
----
-
-template: inverse
 name:io
 # Input and Output
-
----
-
-template: inverse
-name:collections
-# Collections
 
 ---
 
