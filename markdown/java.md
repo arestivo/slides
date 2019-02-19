@@ -936,10 +936,6 @@ public void main() {
 
 ---
 
-# 
-
----
-
 template: inverse
 name:garbage
 # Garbage Collection
