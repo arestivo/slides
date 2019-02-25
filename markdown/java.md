@@ -1005,6 +1005,27 @@ public int hashCode() {
 ## To String
 
 
+Another useful method from the **Object** class is the **toString()** method. This method returns a representation of any **Object** as a **String**. The default implementation is not very useful:
+
+```java
+System.out.println(new Point(1, 2)); // Point@3e2
+```
+
+But we can **override** it and make it **better**:
+
+```java
+@Override
+public String toString() {
+    return "Point (" + x + ", " + y + ")";
+}
+```
+
+So that we get:
+
+```java
+System.out.println(new Point(1, 2)); // Point (1, 2)
+```
+
 ---
 
 template: inverse
