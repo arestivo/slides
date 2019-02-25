@@ -767,9 +767,52 @@ public void doSomething() {
 
 # Equals
 
+As we have seen with **Strings**, when we want to compare objects we shouldn't use the **==** operator as it will only return true if the two objects are the same (have the same reference).
+
+We should instead **override** the **equals(Object)** methods from the **Object** class.
+
+The **correct** way to do so looks something like:
+
+```java
+@Override
+public boolean equals(Object o) {
+  if (this == o) return true;                   // are the references equal
+  if (o == null) return false;                  // is the other object null
+  if (getClass() != o.getClass()) return false; // both objects the same class
+
+  Point p = (Point) o;                          // cast the other object
+  return x == p.getX() && y == p.getY();        // actual comparison
+}
+```
+
+
+
 ---
 
-# Hash
+# Hash Code
+
+Another important method is the **hashCode()** method. This method should return the **same value** for **two objects** that are **equal**. So normally, when overriding the **equals(Object)** method you should also override the **hashCode()** method.
+
+You can see the **hash code** at work in the **HashSet** data structure (which we will see in detail later on):
+
+*  When an element is **added**, the **hash code** is used to decide in which **bucket** it should be **stored**.
+  
+*  When **searching** for an object, we only need to compare it (using **equals(Object)**) with objects in the same bucket.
+
+---
+
+# Hash Code Implementation
+
+To implement the **hashCode()** method, we should use a **subset** of the fields that are used in **equals(Object)**.
+
+A possible implementation would be:
+
+```java
+@Override
+public int hashCode() {
+  return Objects.hash(x, y);
+}
+```
 
 ---
 
@@ -1192,6 +1235,45 @@ animals.remove(0);                  // Removing element at position 0
 animals.remove(cat);                // Removing the cat
 
 animals.clear();                    // Removing all elements
+```
+
+---
+
+# Set
+
+Some examples on how to use **sets**:
+
+```java
+Set<Point> points = new HashSet<Point>();
+
+points.add(new Point(1, 2));       // returns true
+points.add(new Point(1, 2));       // returns false
+
+System.out.println(points.size()); // prints 1
+
+points.contains(new Point(2, 3));  // returns false
+points.contains(new Point(1, 2));  // returns true
+```
+
+---
+
+# Map
+
+Some examples on how to use **maps**:
+
+```java
+Map<String, Point> locations = new HashMap<String, Point>();
+
+locations.put("John", new Point(1, 2));
+locations.put("Mary", new Point(2, 4));
+
+locations.get("John");                   // returns Point (1, 2)
+locations.get("Carl");                   // returns null
+
+locations.remove("Mary");
+
+locations.containsKey("John");           // returns true;
+locations.containsKey("Mary");           // returns false;
 ```
 
 ---
