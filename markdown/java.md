@@ -698,14 +698,22 @@ Light another = light;
 
 # Cloning
 
-If we need to have two instances of the same object, we must use the **clone()** method.
+If we need to have two instances of the same object, we must use the **clone()** method. To use clone, our class must implement the **Cloneable** interface and override the **clone()** method making it **public**.
+
+![](../assets/java/oop-objects-clone.svg)
 
 ```java
+public class Light implements Cloneable{
+  @Override
+  public Object clone() throws CloneNotSupportedException {
+    return super.clone();
+  }
+}
+
 Light light = new Light();
 Light another = light.clone();
 ```
 
-![](../assets/java/oop-objects-clone.svg)
 
 ---
 
@@ -754,6 +762,14 @@ public void doSomething() {
   System.out.println(light.getLevel()); // 80
 }
 ```
+
+---
+
+# Equals
+
+---
+
+# Hash
 
 ---
 
@@ -959,21 +975,36 @@ name:packages
 # Packages
 
 * A **package** contains a **group** of classes, **organized** together under a single **namespace**.
-* Classes in the same package can access each other's package-private and protected members.
-* The package that a class belongs to is specified with the package keyword (first statement):
+* Classes in the **same package** can access each other's **package-private** and **protected** members.
+* The package that a class belongs to is specified with the **package** keyword (first statement):
 
 ```java
 package com.example;
 ```
 
-* To use a class from another package we must first import it:
+Packages are **stored** in the form of structured **directories**. For example: package "*com.example*" would be stored in directory "*com/example*".
+
+---
+
+# Importing
+
+To use a class from another package we must first import it:
 
 ```java
 import com.example.HelloWorld;
 import com.example.*; // imports all classes from the package
+
+// ...
+  HelloWorld hw = new HelloWorld();
 ```
 
-Packages are **stored** in the form of structured **directories**. For example: package "*com.example*" would be stored in directory "*com/example*".
+It is important to understand that **import** is simply used by the compiler to let you name your classes by their **unqualified** name.
+
+**Without** the import statement this would still be valid:
+
+```java
+com.example.HelloWorld hw = new com.example.HelloWorld();
+```
 
 ---
 
@@ -985,15 +1016,40 @@ name:exceptions
 
 # Exceptions
 
-* When an error occurs within a method, the method creates an **exception** object and hands it off to the runtime system.
-* The runtime system attempts to find something to handle it by following the ordered list of methods that had been called to get to the method where the error occurred.
+* When an error occurs within a method, the flow of execution of the program stops immediately, the method creates an **Exception** object and hands it off to the **runtime system**.
+* The **runtime system** attempts to find something to **handle** it by following the **ordered list of methods** that have been called to get to the method where the error occurred.
 
 ```java
 public void someCode() {
-  throw new VeryBadThingHappenedException(reason);
+  HelloWorld hw = null;
+  hw.hello();              // Not a good idea!
 }
 
 public void moreCode() {
+  someCode();
+}
+
+public void code() {
+  try {
+    moreCode();
+  } catch (NullPointerException e) {
+    // do something about the error
+  }
+}
+```
+
+---
+
+# Throw
+
+The **throw** keyword is used to **explicitly** throw an exception (any sub-class of **Throwable**) from a method or any block of code. User defined exceptions typically extend **Exception** class.
+
+```java
+public void someCode() throws VeryBadThingHappenedException {
+  throw new VeryBadThingHappenedException("Boom!");
+}
+
+public void moreCode() throws VeryBadThingHappenedException {
   someCode();
 }
 
@@ -1005,6 +1061,57 @@ public void code() {
   }
 }
 ```
+
+---
+
+# Throws
+
+If the **compiler** thinks there is **a chance** of rising an exception inside a method, then it will force us to either: 1) **catch** that exception, or 2) **declare** that we will **throw** that exception. 
+
+```java
+public void someCode() throws VeryBadThingHappenedException {
+  throw new VeryBadThingHappenedException("Boom!");
+}
+
+public void moreCode() throws VeryBadThingHappenedException {
+  someCode();
+}
+```
+
+In this example, the **moreCode()** method is calling a method that **throws** an Exception, so it has to **throw** it also or **catch** it.
+
+---
+
+# Finally
+
+* The **finally** block always executes when the a try block exits. 
+
+* This ensures that the **finally** block is executed even if an **unexpected** exception occurs or an accidental return statement is added.
+  
+* Putting **cleanup code** in a **finally** block is always a **good practice**, even when no exceptions are anticipated.
+
+```java
+public void code() {
+  try {
+    moreCode();
+  } catch (VeryBadThingHappenedException e) {
+    // do something about the error
+  } finally {
+    // clean up code
+  }
+}
+```
+
+---
+
+# Throw or Catch
+
+The decision between **throwing** an exception and **catching** it might be an hard one:
+
+* Methods should **catch** an exception if they can **handle** it locally.
+* Methods should **throw** an exception if there is **nothing** they can do about it.
+
+Catching an exception and **doing nothing** about it, besides printing the stack trace, is **always a bad idea**.
 
 ---
 
@@ -1041,8 +1148,9 @@ BST based; implements SortedSet)...
 
 # Parameterized Collections
 
-* Java Collections are **parameterized** (more about this later). 
-* This means that we can define the type of data that the collection will **store**.
+Java Collections are **parameterized** (using **Generics** &mdash; more about this later). 
+
+This means that we can define the **type of data** that the collection will **store**.
 
 ```java
   List<Animal> animals = new ArrayList<>();
@@ -1054,6 +1162,36 @@ BST based; implements SortedSet)...
   for (Animal animal : animals) {
     animal.talk();
   }
+```
+
+Notice that we used **List** instead of **ArrayList** to declare the variable. **List** is the **interface** that all lists **implement** and **ArrayList** is a **concrete instantiation** of that interface.
+
+This is the "*Return the most specific type, accept the most generic type*" **principle**.
+
+
+---
+
+# List
+
+Some examples on how to use **lists**:
+
+```java
+Dog dog = new Dog();
+Cat cat = new Cat();
+
+List<Animal> animals = new ArrayList<>();
+
+animals.add(dog); animals.add(cat); // Adding some animals
+
+for (Animal animal : animals)       // Looping over the collection
+  animal.talk();
+
+animals.get(0).talk();              // Element at position 0 (dog)
+
+animals.remove(0);                  // Removing element at position 0
+animals.remove(cat);                // Removing the cat
+
+animals.clear();                    // Removing all elements
 ```
 
 ---
