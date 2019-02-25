@@ -30,6 +30,9 @@ name:index
 1. [Classes](#classes)
 1. [Objects](#objects)
 1. [Inheritance](#inheritance)
+1. [Methods to Override](#override)
+1. [Garbage Collection](#garbage)
+1. [Packages](#packages)
 1. [Exceptions](#exceptions)
 1. [Collections](#collections)
 ]
@@ -313,7 +316,7 @@ Don't worry too much about the syntax for now.
 ---
 
 template: inverse
-name:classes
+name:arrays
 # Arrays
 
 ---
@@ -765,57 +768,6 @@ public void doSomething() {
 
 ---
 
-# Equals
-
-As we have seen with **Strings**, when we want to compare objects we shouldn't use the **==** operator as it will only return true if the two objects are the same (have the same reference).
-
-We should instead **override** the **equals(Object)** methods from the **Object** class.
-
-The **correct** way to do so looks something like:
-
-```java
-@Override
-public boolean equals(Object o) {
-  if (this == o) return true;                   // are the references equal
-  if (o == null) return false;                  // is the other object null
-  if (getClass() != o.getClass()) return false; // both objects the same class
-
-  Point p = (Point) o;                          // cast the other object
-  return x == p.getX() && y == p.getY();        // actual comparison
-}
-```
-
-
-
----
-
-# Hash Code
-
-Another important method is the **hashCode()** method. This method should return the **same value** for **two objects** that are **equal**. So normally, when overriding the **equals(Object)** method you should also override the **hashCode()** method.
-
-You can see the **hash code** at work in the **HashSet** data structure (which we will see in detail later on):
-
-*  When an element is **added**, the **hash code** is used to decide in which **bucket** it should be **stored**.
-  
-*  When **searching** for an object, we only need to compare it (using **equals(Object)**) with objects in the same bucket.
-
----
-
-# Hash Code Implementation
-
-To implement the **hashCode()** method, we should use a **subset** of the fields that are used in **equals(Object)**.
-
-A possible implementation would be:
-
-```java
-@Override
-public int hashCode() {
-  return Objects.hash(x, y);
-}
-```
-
----
-
 template: inverse
 name:inheritance
 # Inheritance
@@ -992,6 +944,66 @@ public void main() {
 }
 
 ```
+
+---
+
+template: inverse
+name:override
+# Methods to Override
+
+---
+
+# Equals
+
+As we have seen with **Strings**, when we want to compare objects we shouldn't use the **==** operator as it will only return true if the two objects are the same (have the same reference).
+
+We should instead **override** the **equals(Object)** methods from the **Object** class.
+
+The **correct** way to do so looks something like:
+
+```java
+@Override
+public boolean equals(Object o) {
+  if (this == o) return true;                   // are the references equal
+  if (o == null) return false;                  // is the other object null
+  if (getClass() != o.getClass()) return false; // both objects the same class
+
+  Point p = (Point) o;                          // cast the other object
+  return x == p.getX() && y == p.getY();        // actual comparison
+}
+```
+
+---
+
+# Hash Code
+
+Another important method is the **hashCode()** method. This method should return the **same value** for **two objects** that are **equal**. So normally, when overriding the **equals(Object)** method you should also override the **hashCode()** method.
+
+You can see the **hash code** at work in the **HashSet** data structure (which we will see in detail later on):
+
+*  When an element is **added**, the **hash code** is used to decide in which **bucket** it should be **stored**.
+  
+*  When **searching** for an object, we only need to compare it (using **equals(Object)**) with objects in the same bucket.
+
+---
+
+# Hash Code Implementation
+
+To implement the **hashCode()** method, we should use a **subset** of the fields that are used in **equals(Object)**.
+
+A possible implementation would be:
+
+```java
+@Override
+public int hashCode() {
+  return Objects.hash(x, y);
+}
+```
+
+---
+
+## To String
+
 
 ---
 
