@@ -47,7 +47,7 @@ A **process** to evaluate the **quality** and **functionality** of a software sy
 
 * Does the software meet the specified **requirements**, both **functional** and **non-functional**?
 
-* Are there any **defects** (aka bugs)?
+* Are there any **defects** (*aka* bugs)?
 
 Software testing comes in **many forms** and can be done at **different levels** of the software development cycle.
 
