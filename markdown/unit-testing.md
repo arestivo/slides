@@ -215,11 +215,11 @@ Message is an **optional message** specifying why the test failed.
 
 # Set Up and Tear Down
 
-The **@Before** and **@After** annotations allows us to define methods that run before each test method. 
+The **@Before** and **@After** annotations allows us to define methods that run **before** or **after** each test method. 
 
 These can be used to **setup** and **dispose** of any **data**/**classes** that are used by all tests, thus simplifying the **Arrange** phase.
 
-There are also **@BeforeClass** and **@AfterClass** annotations that define methods that should be run only once for the entire class. These might help when test methods share a computationally expensive setup.
+There are also **@BeforeClass** and **@AfterClass** annotations that define methods that should be run only **once** for the **entire class**. These might help when test methods share a computationally **expensive** setup.
 
 ```java
 import org.junit.Test;
@@ -404,8 +404,7 @@ dependencies {
 Creating **stubs** with **Mockito** is very simple:
 
 ```java
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import org.mockito.Mockito;
 
 public class DogFinderTest {
   private DogDatabase mockDatabase;
