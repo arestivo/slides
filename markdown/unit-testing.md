@@ -27,6 +27,7 @@ name:index
 1. [Introduction](#intro)
 2. [Unit Testing](#unit-testing)
 3. [JUnit](#junit)
+4. [Test Isolation](#isolation)
 4. [Mockito](#mockito)
 5. [Test Coverage](#coverage)
 6. [Mutation Testing](#mutation)
@@ -113,9 +114,9 @@ There are several **advantages** to unit tests:
 
 ---
 
-# F.I.R.S.T.
+# FIRST
 
-The [F.I.R.S.T.](https://github.com/ghsukumar/SFDC_Best_Practices/wiki/F.I.R.S.T-Principles-of-Unit-Testing) principles of unit testing:
+The [FIRST](https://github.com/ghsukumar/SFDC_Best_Practices/wiki/F.I.R.S.T-Principles-of-Unit-Testing) principles of unit testing:
 
 * **Fast** - Units tests should be **fast** so we can run them often.
 * **Isolated** / **Independent** - Only test **one unit** at a time. Only test **one thing** at a time. **Order** of tests should **not matter**. 
@@ -185,7 +186,7 @@ import org.junit.Test;
 public class TestDog {
     @Test
     public void testDogName() {
-        Dog dog = new Dog("Max");
+        Dog dog = new Dog("Max", "German Shepherd");
         
         assertEquals("Max", dog.getName());
     }
@@ -214,6 +215,167 @@ Message is an **optional message** specifying why the test failed.
 
 # Set Up and Tear Down
 
+The **@Before** and **@After** annotations allows us to define methods that run before each test method. 
+
+These can be used to **setup** and **dispose** of any **data**/**classes** that are used by all tests, thus simplifying the **Arrange** phase.
+
+There are also **@BeforeClass** and **@AfterClass** annotations that define methods that should be run only once for the entire class. These might help when test methods share a computationally expensive setup.
+
+```java
+import org.junit.Test;
+
+public class TestDog {
+    private DogDatabase database;
+
+    @Before
+    public void connectToDatabase() {
+      database = new DogDatabase();
+    }
+
+    @Test
+    public void testDogRetrieval() { /* ... */ }
+}
+```
+
+---
+
+template: inverse
+name:isolation
+# Test Isolation
+
+---
+
+# Test Isolation
+
+One of the key features of **unit testing**, is that of test isolation. The whole point of **unit tests** is to **reduce the scope** of the system under test to a **small subset** that can be tested in isolation.
+
+Most of the times this can be difficult without **changing our design**. For example, consider the following **class** and **test**:
+
+<div style="display: flex; justify-content: space-around">
+.small[
+```java
+public class DogFinder {
+  private database = new DogDatabase();
+ 
+  public List<Dog> dogFinder(String breed) {
+    List<Dog> allDogs = database.getAllDogs();
+    List<Dog> breedDogs = new ArrayList<>();
+
+    for (Dog dog : allDogs)
+      if (dog.getBreed().equals(breed))
+        breedDogs.add(dog);
+
+    return breedDogs;
+  }
+}
+```
+]
+.small[
+```java
+import org.junit.Test;
+
+public class TestDogFinder {
+    @Test
+    public void testDogRetrieval() { 
+      DogFinder finder = new DogFinder();
+      List<Dog> dogs = finder.findBreed("Border Collie");
+      for (Dog dog : dogs)
+        if (dog.getBreed().equals("Border Collie"));
+          fail("Got dog from wrong breed!");
+    }
+}
+```
+]
+</div>
+
+Any test on the **DogFinder** class will depend on the **DogDatabase** class.
+
+---
+
+# Dependency Injection
+
+One way to achieve **test isolation**, is to use **Dependency Injection**. With this technique, **classes** no longer **depend** on other classes but **on interfaces**. The **concrete instantiation** of each interface is **injected** into the class by a third-party class (the **Assembler**). 
+
+![](../assets/unit-testing/dependency-injection.svg)
+
+---
+
+# Show me the Code
+
+
+<div style="display: flex; justify-content: space-around">
+.small[
+```java
+public interface IDogDatabase {
+    public List<Dog> getAllDogs() throws Exception;
+}
+```
+]
+.small[
+```java
+public class SQLDogDatabase implements IDogDatabase {
+    @Override
+    public List<Dog> getAllDogs() throws Exception { /* ... */ }
+}
+```
+]
+</div>
+
+```java
+public class DogFinder {
+    private IDogDatabase database;
+
+    public DogFinder(IDogDatabase database) {
+        this.database = database;
+    }
+
+    public List<Dog> findBreed(String breed) throws Exception {
+      /* Same code as in previous example */
+    }
+}
+```
+
+.small[
+```java
+public class Application {
+    public static void main(String[] args) {
+        try {
+            new DogFinder(new SQLDogDatabase()).findBreed("Border Collie");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+]
+
+---
+
+# And now the Test
+
+```java
+public class DogFinderTest {
+  class StubDatabase implements IDogDatabase {
+    @Override
+    public List<Dog> getAllDogs() throws Exception {
+      List<Dog> dogs = new ArrayList<>();
+      dogs.add(new Dog("Border Collie", "Iris"));
+      dogs.add(new Dog("Border Collie", "Floyd"));
+      dogs.add(new Dog("German Shepherd", "Max"));
+      return dogs;
+    }
+  }
+
+
+  @Test
+  public void findBreed() throws Exception {
+    DogFinder finder = new DogFinder(new MockDatabase());
+    List<Dog> dogs = finder.findBreed("Border Collie");
+    assertEquals("Didn't receive the expected number of dogs", 2, dogs.size());
+  }
+}
+```
+
 ---
 
 template: inverse
@@ -224,16 +386,125 @@ name:mockito
 
 # Mockito
 
+A simpler way to create **Mocks** and **Stubs** is to use a specialized framework like **Mockito**.
+
+If we are using **Gradle**, the only thing we have to do to be able to use **Mockito** is add the **dependency** in our **"build.gradle"** file:
+
+```bash
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.24.5'
+}
+```
+
+---
+
+# Mockito Stubs
+
+Creating **stubs** with **Mockito** is very simple:
+
+```java
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+public class DogFinderTest {
+  private DogDatabase mockDatabase;
+
+  @Before
+  public void setUp() throws Exception {
+    List<Dog> dogs = new ArrayList<>();
+    dogs.add(new Dog("Border Collie", "Iris"));
+    dogs.add(new Dog("Border Collie", "Floyd"));
+    dogs.add(new Dog("German Shepherd", "Max"));
+
+    mockDatabase = Mockito.mock(DogDatabase.class);   // really a stub
+    when(mockDatabase.getAllDogs()).thenReturn(dogs); // with canned answers
+  }
+
+  @Test
+  public void findBreed() throws Exception {
+    DogFinder finder = new DogFinder(mockDatabase);
+    List<Dog> dogs = finder.findBreed("Border Collie");
+    assertEquals("Didn't receive the expected number of dogs", 2, dogs.size());
+  }
+}
+```
+
+---
+
+# When and Then
+
+The **when** and **then\*** keywords allows to configure **Mockito stubs** to return **canned answers** very [easily](https://www.baeldung.com/mockito-behavior):
+
+```java
+mockDatabase = Mockito.mock(DogDatabase.class);  // still a stub
+when(mockDatabase.isConnected()).thenReturn(true);
+when(mockDatabase.runSQL(null)).thenThrow(NullPointerException.class);
+```
+
+When the method returns void, the syntax is slightly different:
+
+```java
+ArrayList mockList = Mockito.mock(ArrayList.class);
+doThrow(NullPointerException.class).when(mockList).clear();
+```
+
+---
+
+# Verify
+
+Until now we have been doing **state testing**. If we want to do **behavior testing** we need to use **mocks**, and **Mockito**, as the name implies, can [help us](https://www.baeldung.com/mockito-verify) with that.
+
+```java
+@Test
+public void findBreedCallsDatabaseOnlyOnce() throws Exception {
+  DogFinder finder = new DogFinder(mockDatabase);
+  List<Dog> dogs = finder.findBreed("Border Collie");
+
+  // Verify if the getAllDogs methods was called only once
+  Mockito.verify(mockDatabase, times(1)).getAllDogs();
+}
+```
+
 ---
 
 template: inverse
 name:coverage
-# Test Coverage
+# Code Coverage
 
 ---
 
-# Test Coverage
+# Code Coverage
 
+* Measures the **number** of **code lines** **covered** by the **test cases**. 
+
+* Reports the **total** number of lines in the code and **number** of lines **executed** by tests. 
+
+* The **degree** to which the source code of a program is exercised when a **test suite** runs. 
+
+* The **higher** the code **coverage**, the **lower** the chance of having undetected software **bugs**. 
+
+But, code coverage doesn't tell the **whole story**...
+
+---
+
+# Code Coverage Problems
+
+* **High** coverage numbers are **too easy** to reach (we don't even need **asserts**).
+  
+* **Good testing practices** should result in **high coverage**. The inverse is not true.
+
+So **why** do code **coverage** analysis:
+
+* It helps us **find** **untested** parts of our source code that should be tested but are not.
+
+---
+
+# Code Coverage in IntelliJ
+
+In **IntelliJ** you can **run** your **tests with coverage** to get a **percentage** of code covered per **class** and/or **package**, for **all test suites** or just for **a few**. 
+
+You also get **indicators** throughout your code showing which lines are tested and which are not. 
 ---
 
 template: inverse
@@ -243,3 +514,62 @@ name:coverage
 ---
 
 # Mutation Testing
+
+A type of **software testing** where we **mutate** (change) certain statements in the **source code** and **check** if the test cases are able to **find** the errors.
+
+The **goal** is to assess the **quality** of the **test cases** which should be **robust** enough to **fail mutant code**.
+
+In the mutation testing **lingo**, **tests** are trying to **kill** as many **mutants** as possible (optimally 100% of them).
+
+---
+
+# PIT Mutation Testing
+
+**PIT** is a mutation testing system, providing gold standard test coverage for **Java**.
+
+With **Gradle**, installing **PIT** for your project in **IntelliJ** is as easy as adding this second line to your **plugins** section in your **"build.gradle"**:
+
+```bash
+plugins {
+    id 'java'
+    id 'info.solidsoft.pitest' version '1.4.0'
+}
+```
+
+PIT can be configured directly in your **"build.gradle"** using the same [command line parameters](http://pitest.org/quickstart/commandline/) as the command line version uses:
+
+```bash
+pitest {
+  targetClasses = ['com.example.*']
+}
+```
+
+---
+
+# Target Classes
+
+By default, PIT uses the group defined in the **"build.gradle"** file to automatically infer the **targetClasses** parameter. For example, if your **"build.gradle"** file has:
+
+```bash
+group 'com.example'
+```
+
+Then it will **automatically** **infer** the following:
+
+```bash
+pitest {
+  targetClasses = ['com.example.*']
+}
+```
+
+---
+
+# Running Mutation Tests
+
+PIT will **automatically** generate a **Gradle** **task** called **"pitest"**. So you can **run mutations** tests simply by doing:
+
+```bash
+./gradlew pitest
+```
+
+**Reports** will be created under **"build/reports/pitest/<timestamp>/"** in **HTML** format by default.
