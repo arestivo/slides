@@ -508,7 +508,7 @@ You also get **indicators** throughout your code showing which lines are tested 
 ---
 
 template: inverse
-name:coverage
+name:mutation
 # Mutation Testing
 
 ---
@@ -518,6 +518,8 @@ name:coverage
 A type of **software testing** where we **mutate** (change) certain statements in the **source code** and **check** if the test cases are able to **find** the errors.
 
 The **goal** is to assess the **quality** of the **test cases** which should be **robust** enough to **fail mutant code**.
+
+![](../assets/unit-testing/pit.svg)
 
 In the mutation testing **lingo**, **tests** are trying to **kill** as many **mutants** as possible (optimally 100% of them).
 
