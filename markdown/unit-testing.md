@@ -29,7 +29,7 @@ name:index
 3. [JUnit](#junit)
 4. [Test Isolation](#isolation)
 4. [Mockito](#mockito)
-5. [Test Coverage](#coverage)
+5. [Code Coverage](#coverage)
 6. [Mutation Testing](#mutation)
 ]
 
@@ -105,7 +105,7 @@ name:unit-testing
 
 Testing **individual units** of a software system in order to **validate** if they perform as designed.
 
-There are several **advantages** to unit tests:
+There are sTesteveral **advantages** to unit tests:
 
 * Increases **confidence** in **changing**/**maintaining** code.
 * In order to make unit testing **possible**, codes need to be **modular**, which makes them more **reusable**. Good unit testing **promotes** good code.
@@ -572,4 +572,4 @@ PIT will **automatically** generate a **Gradle** **task** called **"pitest"**. S
 ./gradlew pitest
 ```
 
-**Reports** will be created under **"build/reports/pitest/<timestamp>/"** in **HTML** format by default.
+**Reports** will be created under **"build/reports/pitest/&lt;timestamp&gt;/"** in **HTML** format by default.
