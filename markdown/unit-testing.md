@@ -79,7 +79,7 @@ In **white-box** testing, the design of the test cases is **based** on the **int
 
 * **System Testing** -  the **complete software system** is **deployed** and **tested** to evaluate its **compliance** with the specified **requirements**.
 
-* **Acceptance Testing** - the complete system is tested for acceptability to evaluate if it is compliant with the business requirements and acceptable for delivery.
+* **Acceptance Testing** - the complete system is tested for **acceptability** to evaluate if it is **compliant** with the business **requirements** and acceptable for **delivery**.
 
 ---
 
