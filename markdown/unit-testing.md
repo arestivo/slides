@@ -174,11 +174,11 @@ name:junit
 
 **JUnit** is a **testing framework** for **Java** specialized in **unit tests**.
 
-A **JUnit** test is a **method** contained in a **class** which is **only used** for **testing**.
+A **JUnit** test is a **method**, contained in a **class**, which is **only used** for **testing**.
 
-**JUnit** tests most have the **@Test** annotation.
+A **JUnit** test must have the **@Test** annotation.
 
-A simple test class looks like this:
+A simple **test class** looks like this:
 
 ```java
 import org.junit.Test;
