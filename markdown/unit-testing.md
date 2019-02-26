@@ -14,7 +14,7 @@ class: left, middle
 
 template:inverse
 # Unit Testing
-## For Java &mdash; Using JUnit
+## For Java, Using JUnit
 <a href="http://www.fe.up.pt/~arestivo">André Restivo</a>
 
 ---
@@ -25,11 +25,11 @@ name:index
 
 .indexlist[
 1. [Introduction](#intro)
-1. [Unit Testing](#unit-testing)
-1. [JUnit](#junit)
-1. [Mockito](#mockito)
-1. [Test Coverage](#coverage)
-1. [Mutation Testing](#mutation)
+2. [Unit Testing](#unit-testing)
+3. [JUnit](#junit)
+4. [Mockito](#mockito)
+5. [Test Coverage](#coverage)
+6. [Mutation Testing](#mutation)
 ]
 
 ---
