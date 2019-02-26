@@ -105,11 +105,11 @@ name:unit-testing
 
 Testing **individual units** of a software system in order to **validate** if they perform as designed.
 
-There are sTesteveral **advantages** to unit tests:
+There are several **advantages** to unit tests:
 
 * Increases **confidence** in **changing**/**maintaining** code.
 * In order to make unit testing **possible**, codes need to be **modular**, which makes them more **reusable**. Good unit testing **promotes** good code.
-* Development becomes **faster** as the whole system does not need to be started to test newly written code.
+* Development becomes **faster** as system, as a whole, does not need to be run to test newly written code.
 * When a test fails we know **which unit** is the **culprit**.
 
 ---
@@ -118,7 +118,7 @@ There are sTesteveral **advantages** to unit tests:
 
 The [FIRST](https://github.com/ghsukumar/SFDC_Best_Practices/wiki/F.I.R.S.T-Principles-of-Unit-Testing) principles of unit testing:
 
-* **Fast** - Units tests should be **fast** so we can run them often.
+* **Fast** - Unit tests should be **fast** so we can run them often.
 * **Isolated** / **Independent** - Only test **one unit** at a time. Only test **one thing** at a time. **Order** of tests should **not matter**. 
 * **Repeatable** - Results should be deterministic and not depend on the environment (time, available data, random values, ...).
 * **Self-validating** - No manual checking necessary.
@@ -160,7 +160,7 @@ Test doubles are pretend objects that help reduce complexity and verify code ind
 
 * **Behavior Testing**: specify **which methods** are to be invoked, thus verifying not that the ending state is correct, but that the **sequence of steps** performed was **correct**.
 
-**Mocks** are used for **behavior** testing.
+**Spies and Mocks** are usually needed for **behavior** testing.
 
 ---
 
@@ -257,7 +257,7 @@ Most of the times this can be difficult without **changing our design**. For exa
 public class DogFinder {
   private database = new DogDatabase();
  
-  public List<Dog> dogFinder(String breed) {
+  public List<Dog> findBreed(String breed) {
     List<Dog> allDogs = database.getAllDogs();
     List<Dog> breedDogs = new ArrayList<>();
 
@@ -280,7 +280,7 @@ public class TestDogFinder {
       DogFinder finder = new DogFinder();
       List<Dog> dogs = finder.findBreed("Border Collie");
       for (Dog dog : dogs)
-        if (dog.getBreed().equals("Border Collie"));
+        if (!dog.getBreed().equals("Border Collie"));
           fail("Got dog from wrong breed!");
     }
 }
