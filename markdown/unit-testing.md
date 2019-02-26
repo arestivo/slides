@@ -14,7 +14,7 @@ class: left, middle
 
 template:inverse
 # Unit Testing
-## For Java &mdash; JUnit
+## For Java &mdash; Using JUnit
 <a href="http://www.fe.up.pt/~arestivo">André Restivo</a>
 
 ---
