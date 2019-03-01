@@ -693,7 +693,7 @@ To create a new object, we just have to call its constructor using the **new** k
 
 ```java
 Light light = new Light();
-Light another = light;
+Light another = light;      // this only copies the reference
 ```
 
 ![](../assets/java/oop-objects-new.svg)
