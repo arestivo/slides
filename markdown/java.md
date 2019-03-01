@@ -435,16 +435,16 @@ messages**.
 # Object Oriented Pillars (A PIE)
 
 Data **A**bstraction: 
-> Hiding **all but** the **relevant** data about an object in order to **reduce complexity** and **increase efficiency**.
+> Clear separation between the **public interface** of a data type, and its concrete implementation.
 
 **P**olymorphism:
-> **Different objects** can respond to the **same message** with **different behaviors**. A **single symbol** can **represent** a **multitude** of **different types**.
+> A **single symbol** can **represent** a **multitude** of **different types**.
 
 **I**nheritance:
 > Objects can **inherit** **properties** and **behaviors** from **other** objects.
 
-**E**ncapsulation:
-> **Internal** state and behavior is **hidden** and can only be accessed through a **public interface**.
+**E**ncapsulation (2 different concepts):
+> A mechanism that: (1) allows restrictions to some of the objects components (2) facilitates the bundling of data with the operations on that data.
 
 ---
 
@@ -471,7 +471,7 @@ object.
 
 # Classes in Java
 
-* In Java, public a classes must be declared in a file with the **same name** but with a **.java** extension. 
+* In Java, public classes must be declared in a file with the **same name** but with a **.java** extension. 
 * This means that a Java file can have, at most, **one** public class.
 * For example, inside a file called **Light.java** you could have:
 
