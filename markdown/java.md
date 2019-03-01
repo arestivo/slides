@@ -444,7 +444,7 @@ Data **A**bstraction:
 > Objects can **inherit** **properties** and **behaviors** from **other** objects.
 
 **E**ncapsulation (2 different concepts):
-> A mechanism that: (1) allows restrictions to some of the objects components (2) facilitates the bundling of data with the operations on that data.
+> A mechanism that: (1) allows **restricting access** to some of the **object's components** (2) facilitates the **bundling** of **data** with the **operations** on that data.
 
 ---
 
