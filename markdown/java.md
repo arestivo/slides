@@ -447,17 +447,17 @@ object.
 
 # Object Oriented Pillars (A PIE)
 
-Data **A**bstraction
-* Hiding all but the relevant data about an object in order to **reduce complexity** and **increase efficiency**.
+Data **A**bstraction: 
+> Hiding **all but** the **relevant** data about an object in order to **reduce complexity** and **increase efficiency**.
 
-**P**olymorphism
-* Different types can **share** the same **interface**.
+**P**olymorphism:
+> **Different objects** can respond to the **same message** with **different behaviors**. A **single symbol** can **represent** a **multitude** of **different types**.
 
-**I**nheritance
-* Classes **inherit** properties from their **super class**.
+**I**nheritance:
+> Objects can **inherit** **properties** and **behaviors** from **other** objects.
 
-**E**ncapsulation
-* **Internal** state and behavior is **hidden**. Only **interface** is **public**.
+**E**ncapsulation:
+> **Internal** state and behavior is **hidden** and can only be accessed through a **public interface**.
 
 ---
 
