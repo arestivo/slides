@@ -396,16 +396,18 @@ name:oop
 
 # Abstractions
 
-* All programming languages provide **abstractions**:
+All programming languages provide **abstractions**:
   
-  * **Assembly** is an abstraction of **machine-code**.
-  * **Imperative** programming is an abstraction of **assembly**.
-  * But they all force us to think about the structure of the **machine** and not the structure of the **problem**.
+* **Assembly** is an abstraction of **machine-code**.
+* **Imperative** programming is an abstraction of **assembly**.
+
+But they force us to think about the structure of the **machine** and not the structure of the **problem**.
 
 <hr>
 
-* **OOP** provides an abstraction where **elements** of the problem are **objects** in the solution space.
-* **OOP** allows you to describe the problem in terms of the **problem**, rather than in terms of the **computer** where the solution will run.
+**OOP** provides an abstraction where **elements** of the problem are **objects** in the solution space.
+
+**OOP** allows you to describe the problem in terms of the **problem**, rather than in terms of the **computer** where the solution will run.
 
 ---
 
@@ -430,21 +432,6 @@ messages**.
 
 ---
 
-# Classes
-
-* All **objects**, while being **unique**, are also part of a **class** of objects that have **characteristics** and **behaviors** in common.
-* Objects that are identical &mdash; **except** for their **state** &mdash; are grouped together into **classes of objects**.
-* Classes **extend** the programming language by adding new **data types**.
-
-<hr>
-
-* Each class is defined by its **interface**.
-* The **interface** determines the **requests** that you can make for a particular
-object.
-* An object **provides services** and can use **other objects'** services to accomplish it.
-
----
-
 # Object Oriented Pillars (A PIE)
 
 Data **A**bstraction: 
@@ -464,6 +451,21 @@ Data **A**bstraction:
 template: inverse
 name:classes
 # Classes
+
+---
+
+# Classes
+
+* All **objects**, while being **unique**, are also part of a **class** of objects that have **characteristics** and **behaviors** in common.
+* Objects that are identical &mdash; **except** for their **state** &mdash; are grouped together into **classes of objects**.
+* Classes **extend** the programming language by adding new **data types**.
+
+<hr>
+
+* Each class is defined by its **interface**.
+* The **interface** determines the **requests** that you can make for a particular
+object.
+* An object **provides services** and can use **other objects'** services to accomplish it.
 
 ---
 
