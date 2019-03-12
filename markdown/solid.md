@@ -54,7 +54,7 @@ Even when software design **starts** as a **pristine work of art**, portraying t
 
 * It starts with a **small hack** but the overall beauty of the design is still there.
 
-* The hacks start **accumulating**, each one another nail in the coffin.
+* The hacks start **accumulating**, each one another **nail** in the **coffin**.
 
 * The code **eventually** becomes an incredibly **hard to maintain** mess.
 
@@ -340,7 +340,7 @@ Or, in other words, **derived methods should expect no more and provide no less*
 
 * Clients should be **categorized** by their **type**, and **interfaces** for **each type** of client should be **created**.
 
-* If **two or more** different client types **need** the **same method**, the method should be **added** to **both** of their interfaces
+* If **two or more** different client types **need** the **same method**, the method should be **added** to **both** of their interfaces.
 
 
 ---
@@ -363,15 +363,15 @@ And
 
 > **Abstractions** should **not depend** on **details**. **Details** should **depend** on **abstractions**.
 
-* We are **not just** change **the direction** of the dependency.
-* 
+* We are **not just** changing **the direction** of the dependency.
+  
 * We are **splitting** the **dependency** by putting an **abstraction** in the **middle**.
 
 ---
 
 # Why?
 
-Concrete things change a lot, abstract things change much less frequently.
+**Concrete** things change a **lot**, **abstract** things change much **less** frequently.
 
 ![](../assets/solid/dip.svg)
 
@@ -447,13 +447,13 @@ name:other
 
 > Depend in the direction of stability.
 
-* **Stable** means "**hard** to **change**", while **unstable** means "**easy** to **change**".
+* **Stable** means "**hard** to **change**" (many clients), while **unstable** means "**easy** to **change**".
 
 * Modules that are "**hard to change**" should **not depend** on modules that are "**easy to change**". 
   
 * The reason is that it makes the "**easy to change**" module "**harder to change**" because of the **impact** on the depending module.
 
-* You need "**easy to change**" packages, or your software cannot change easily.
+* You need "**easy to change**" packages, or your software **cannot change easily**.
 
 ---
 
