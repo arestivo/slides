@@ -98,7 +98,7 @@ For example:
 
 # Attribute Default Value
 
-Default values can be specified (optionally) in the attribute list section by using the following notation:
+**Default** values can be specified (**optionally**) in the attribute list section by using the following **notation**:
 
   > name : attribute type = default value
 
@@ -124,13 +124,13 @@ For example:
 
 # Operation Parameters
 
-When an operation has parameters, they are put inside parentheses.
+When an **operation** has **parameters**, they are put inside **parentheses**.
 
-Each parameter uses the format:
+Each parameter uses the **format**:
 
  > parameter name : parameter type
 
-They can also have a optional "in" or "out" marking specifying if the parameter is an input or output parameter.
+They can also have a **optional** "in" or "out" marking specifying if the parameter is an **input** or **output** parameter.
 
 For example:
 
@@ -146,9 +146,9 @@ name:inheritance
 
 # Inheritance
 
-The ability of one class (child class) to inherit the identical functionality of another class (super class), and then add new functionality of its own.
+The ability of one class (child class) to **inherit** the identical **functionality** of another class (super class), and then **add** **new** **functionality** of its own.
 
-Inheritance is indicated by a solid line with a closed, unfilled arrowhead pointing at the super class.
+Inheritance is indicated by a **solid line** with a **closed**, **unfilled** arrowhead **pointing** at the **super** **class**.
 
 ![](../assets/uml-classes/inheritance.svg)
 
@@ -156,11 +156,11 @@ Inheritance is indicated by a solid line with a closed, unfilled arrowhead point
 
 # Abstract classes and operations
 
-Abstract operations are operations where the class only provided the operation signature and not it's code.
+**Abstract** operations are operations where the class only provides the operation **signature** and **not it's code**.
 
 > They are represented in *italic*.
 
-Abstract classes are classes that contain abstract operations and, therefore, cannot be instantiated.
+**Abstract** classes are classes that **contain** **abstract** operations and, therefore, cannot be instantiated.
 
 ![](../assets/uml-classes/abstract.svg)
 
@@ -187,7 +187,7 @@ At either end of the line, you place a **role** name and a **multiplicity** valu
 
 # Multiplicity
 
-Some examples of possible multiplicities:
+Some examples of possible **multiplicities**:
 
 .simple[
 | Multiplicity 	| Option 	| Cardinality                             	|
@@ -207,7 +207,7 @@ Some examples of possible multiplicities:
 
 In a uni-directional association, **two classes** are **related**, but **only one** class **knows** that the relationship exists.
 
-A uni-directional association is drawn as a solid line with an open arrowhead pointing to the known class. 
+A uni-directional association is drawn as a **solid line** with an **open** **arrowhead** pointing to the **known** class. 
 
 ![](../assets/uml-classes/uni-directional.svg)
 
@@ -280,3 +280,4 @@ name:aggregation
 * To represent a composition aggregation we use an **filled diamond** shape on the **parent**'s association **end**.
 
 ![](../assets/uml-classes/composition.svg)
+
