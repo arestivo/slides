@@ -850,7 +850,7 @@ Sometimes we realize that our database isn't performing as well as we expected.
 Are our indexes the correct ones? To help us answer this question, a query log
 analyzer tool is invaluable.
 
-One such tool is [pgBadger](http://dalibo.github.io/pgbadger/) (a sucessor to the older, and discontinued, [pgFouine](http://pgfoundry.org/projects/pgfouine/)).
+One such tool is [pgBadger](https://pgbadger.darold.net/) (a sucessor to the older, and discontinued, [pgFouine](http://pgfoundry.org/projects/pgfouine/)).
 
 ![](../assets/indexes/pgbadger.png)
 
