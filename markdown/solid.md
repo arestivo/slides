@@ -176,7 +176,7 @@ If a module assumes more than one responsibility, then:
 
 ![](../assets/solid/srp-modem.svg)
 
-* If the application is **not changing** in ways that cause the the two
+* If the application is **not changing** in ways that cause the two
 responsibilities to **change at different times**, then there is **no need to separate them**.
 
 * It is **not wise** to apply the SRP if there is **no symptom** (needless complexity).
