@@ -45,37 +45,26 @@ name:introduction
 
 # Patterns
 
-<div class="simple">
-  <table>
-    <tr><td>
-       <ul>
-        <li>Hello</li>
-       </ul>
-    </td><td>
-    <img src="../assets/patterns/pattern-language.jpg" width="250px">
-    </td>
-  </table>
-</div>
+Patterns originated as an **architectural** concept by Christopher **Alexander** (1977/78).</li>
+<img src="../assets/patterns/pattern-language.jpg" width="250px">
 
 ---
 
 # (Software) Design Patterns
 
-<div class="simple">
-  <table>
-    <tr><td>
-       <ul>
-        <li>Hello</li>
-       </ul>
-    </td><td>
-    <img src="../assets/patterns/design-patterns.jpg" width="250px">
-    </td>
-  </table>
-</div>
+Design patterns gained popularity in computer science after the book Design Patterns: Elements of Reusable Object-Oriented Software was published in 1994 by the so-called "Gang of Four".
+
+<img src="../assets/patterns/design-patterns.jpg" width="250px">
 
 ---
 
-# Types of Patterns
+# Design Pattern
+
+A **general**, **reusable** solution to a **commonly** occurring problem within a given **context** in software design.
+
+It is **not** a **finished design** that can be transformed directly into source code.
+
+It is a **description** or **template** for **how** to **solve** a problem that can be **used** in **many** different situations.
 
 ---
 
@@ -102,6 +91,8 @@ The twenty-three design patterns described by the Gang of Four:
 ---
 
 # Documentation
+
+The documentation for a design pattern describes the context in which the pattern is used, the forces within the context that the pattern seeks to resolve, and the suggested solution.
 
 .simple[
 |                                 | |
