@@ -35,6 +35,9 @@ name:index
 
 # Reference
 
+* Gamma, Erich, et al. "Design Patterns: Elements of Reusable Object-Oriented Software." (1994).
+* [Source Making](https://sourcemaking.com/design_patterns/)
+
 ---
 
 template: inverse
@@ -52,7 +55,7 @@ Patterns originated as an **architectural** concept by Christopher **Alexander**
 
 # (Software) Design Patterns
 
-Design patterns gained popularity in computer science after the book Design Patterns: Elements of Reusable Object-Oriented Software was published in 1994 by the so-called "Gang of Four".
+Design patterns gained popularity in computer science after the book **"Design Patterns: Elements of Reusable Object-Oriented Software"** was published in **1994** by the so-called **"Gang of Four"**.
 
 <img src="../assets/patterns/design-patterns.jpg" width="250px">
 
