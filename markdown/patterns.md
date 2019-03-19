@@ -93,3 +93,24 @@ name:factory-method
 
 ---
 
+# Composite
+
+> "Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions uniformly."
+
+# Motivation
+
+![](../assets/patterns/composite-motivation.svg)
+
+---
+
+# Applicability
+
+# Consequences
+
+---
+
+# Structure
+
+---
+
+# Variations
