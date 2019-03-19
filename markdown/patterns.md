@@ -24,7 +24,7 @@ name:index
 
 .indexlist[
 1. [Introduction](#introduction)
-2. [Factory Method](#factory-method)
+2. [Composite](#composite)
 ]
 
 ---
@@ -84,3 +84,12 @@ Factory methods eliminate the need to bind application-specific classes into you
 * **Creator** might **not be abstract** and provide a **default implementation** for the **FactoryMethod**.
 * **Factory Method** might take a **parameter** specifying the **type of product** to create.
 * Using **Generics/Templates** to avoid *subclassing* the **Creator**.
+
+---
+
+template: inverse
+name:factory-method
+# Composite
+
+---
+
