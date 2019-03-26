@@ -37,6 +37,7 @@ name:index
 
 * Gamma, Erich, et al. "Design Patterns: Elements of Reusable Object-Oriented Software." (1994).
 * [Source Making](https://sourcemaking.com/design_patterns/)
+* [Refactoring Guru](https://refactoring.guru)
 
 ---
 
