@@ -33,7 +33,7 @@ name:index
 # Reference
 
 * Fowler, Martin. [Refactoring: improving the design of existing code](https://scholar.google.pt/scholar?q=Refactoring%3A+Improving+the+Design+of+Existing+Code). Addison-Wesley Professional, 2018.
-* Kerievsky, Joshua. Refactoring to patterns. Pearson Deutschland GmbH, 2005.
+* Kerievsky, Joshua. [Refactoring to patterns](https://scholar.google.pt/scholar?q=Refactoring+to+Patterns). Pearson Deutschland GmbH, 2005.
 * [Refactoring Guru](https://refactoring.guru)
   
 ---
