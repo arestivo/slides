@@ -218,6 +218,8 @@ void printOwing() {
 }
 ~~~
 
+Can be used to eliminate: Duplicate Code, Long Method, Feature Envy, Switch Statements, Message Chains, Comments and Data Class.
+
 --
 
 To
