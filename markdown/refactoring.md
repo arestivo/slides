@@ -218,11 +218,9 @@ void printOwing() {
 }
 ~~~
 
-Can be used to eliminate: Duplicate Code, Long Method, Feature Envy, Switch Statements, Message Chains, Comments and Data Class.
-
 --
 
-To
+Refactored into:
 
 ~~~java
 void printOwing() {
@@ -235,6 +233,8 @@ void printDetails(double outstanding) {
   System.out.println("amount: " + outstanding);
 }
 ~~~
+
+Can be used to eliminate: **Duplicate Code**, **Long Method**, **Feature Envy**, **Switch Statements**, **Message Chains**, **Comments** and **Data Class**.
 
 ---
 
@@ -254,7 +254,7 @@ class PizzaDelivery {
 
 --
 
-To
+Refactored into:
 
 ~~~java
 class PizzaDelivery {
@@ -264,6 +264,8 @@ class PizzaDelivery {
   }
 }
 ~~~
+
+Can be used to eliminate: **Speculative Generality**.
 
 ---
 
@@ -282,7 +284,7 @@ void renderBanner() {
 
 --
 
-To
+Refactored into:
 
 ~~~java
 void renderBanner() {
@@ -295,6 +297,8 @@ void renderBanner() {
   }
 }
 ~~~
+
+Can be used to eliminate: **Comment**.
 
 ---
 
@@ -309,7 +313,7 @@ System.out.println(temp);
 
 --
 
-To
+Refactored into:
 
 ~~~java
 final double perimeter = 2 * (height + width);
@@ -353,7 +357,7 @@ else {
 
 --
 
-To
+Refactored into:
 
 ~~~java
 if (isSummer(date)) {
@@ -363,6 +367,8 @@ else {
   charge = winterCharge(quantity);
 }
 ~~~
+
+Can be used to eliminate: **Long Method**.
 
 ---
 
@@ -381,7 +387,7 @@ else {
 
 --
 
-To
+Refactored into:
 
 ~~~java
 if (isSpecialDeal()) {
@@ -392,6 +398,8 @@ else {
 }
 send();
 ~~~
+
+Can be used to eliminate: **Duplicate Code**.
 
 ---
 
@@ -456,7 +464,7 @@ else {
 
 --
 
-To
+Refactored into:
 
 ~~~java
 class NullCustomer extends Customer {
@@ -473,6 +481,8 @@ customer = (order.customer != null) ?
 
 plan = customer.getPlan();
 ~~~
+
+Can be used to eliminate: **Switch Statements** and **Temporary Field**.
 
 ---
 
