@@ -202,6 +202,7 @@ If a class only delegates work to another class, why does it exist at all?
 template: inverse
 name:refactorings
 # Refactorings
+## Just Some Examples
 
 ---
 
