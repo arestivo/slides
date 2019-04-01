@@ -29,6 +29,11 @@ name:index
 1. [Command](#command)
 1. [Observer](#observer)
 1. [Strategy](#strategy)
+1. [State](#state)
+1. [Adapter](#adapter)
+1. [Decorator](#decorator)
+1. [Singleton](#singleton)
+1. [Abstract Factory](#abstract-factory)
 ]
 
 ---
@@ -362,9 +367,20 @@ name:adapter
 
 ---
 
+template: inverse
+name:decorator
+# Decorator
+
+---
 
 template: inverse
 name:singleton
 # Singleton
+
+---
+
+template: inverse
+name:abstract-factory
+# Abstract Factory
 
 ---
