@@ -361,9 +361,75 @@ name:state
 
 ---
 
+#State
+
+> "Allow an object to alter its behavior when its internal state changes. The object will appear to change its class."
+
+# Motivation
+
+![](../assets/patterns/state-motivation.svg)
+
+---
+
+# Applicability
+
+Use the **state** pattern when:
+
+* an object behavior depends on its state, and it must change that state in run-time.
+* operations have large, multipart conditional statements that depend on one or more enumerated constants.
+
+# Consequences
+
+* Localizes and partitions behavior for different states.
+* Makes state transitions explicit.
+
+---
+
+# Structure
+
+![](../assets/patterns/state-structure.svg)
+
+---
+
+# Variations
+
+* Who defines the criteria for state transitions? More flexible solution is to let the states define the transitions.
+* When are state objects created and destroyed? Easier to create and destroy when state changes. Better to only create them once and never destroy them. 
+
+---
+
 template: inverse
 name:adapter
 # Adapter
+
+---
+
+# Adapter
+
+> "Convert the interface of a class into another interface clients expect. Adapter lets classes work together that couldn't otherwise because of incompatible interfaces."
+
+# Motivation
+
+![](../assets/patterns/adapter-motivation.svg)
+
+---
+
+# Applicability
+
+Use the **adapter** pattern when:
+
+* you want to use an existing class, and the interface does not match the one you need.
+* you want to create a reusable class that work with unforseen classes.
+
+---
+
+# Structure
+
+![](../assets/patterns/adapter-structure.svg)
+
+Two different alternatives:
+* **Class adapter**: Using multiple inheritance (if available).
+* **Object adapter**: Using composition.
 
 ---
 
@@ -373,14 +439,78 @@ name:decorator
 
 ---
 
+# Decorator
+
+> "Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality."
+
+# Motivation
+
+![](../assets/patterns/decorator-motivation.svg)
+
+---
+
+# Applicability
+
+Use the **decorator** pattern when:
+
+* to add responsibilities for **individual** objects dynamically and transparently.
+* for responsibilities that can be withdrawn.
+* when extension by subclassing is impractical (many different combinations 🠒 explosion of subclasses).
+
+# Consequences
+
+* More flexible than static inheritance.
+* Avoids classes with too many features and responsibilities.
+* Lots of little objects.
+
+---
+
+# Structure
+
+![](../assets/patterns/decorator-structure.svg)
+
+> "Changing the object guts (Strategy) versus changing the object skin (Decorator)".
+
+---
+
 template: inverse
 name:singleton
 # Singleton
 
 ---
 
-template: inverse
-name:abstract-factory
-# Abstract Factory
+# Singleton
+
+> "Ensure a class only has one instance and provide a global point to acess it."
+
+# Applicability
+
+Use the **singleton** pattern when:
+
+* there must be exactly one instance of a class.
+* when the sole instance must be extensible by subclassing.
 
 ---
+
+# Consequences
+
+The **singleton** pattern is considered an [anti-pattern](https://www.michaelsafyan.com/tech/design/patterns/singleton):
+* The assumption that there will ever be only one instance is often broken during a project's lifetime.
+* Makes it very difficult to test code.
+* Difficult to implement correctly when taking multi-threading into account.
+
+# What to use instead
+
+* Instantiate a single instance and propagate it to places that use the object as a parameter.
+
+---
+
+# Structure
+
+![](../assets/patterns/singleton-structure.svg)
+
+# Variations
+
+When to create the unique instance?
+  * At application start.
+  * When instance() is called for the first time.
