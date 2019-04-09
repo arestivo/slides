@@ -565,11 +565,9 @@ public class Observable<T> {
 ~~~java
 public class Light extends Observable<Light> {
     private boolean turnedOn;
-    private List<Observer<Light>> observers;
 
     public Light(boolean turnedOn) {
         this.turnedOn = turnedOn;
-        this.observers = new ArrayList<>();
     }
 
     public boolean isTurnedOn() {

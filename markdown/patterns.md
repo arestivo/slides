@@ -34,6 +34,7 @@ name:index
 1. [Decorator](#decorator)
 1. [Singleton](#singleton)
 1. [Abstract Factory](#abstract-factory)
+1. [Architectural Patterns](#architectural-patterns)
 ]
 
 ---
@@ -514,3 +515,50 @@ The **singleton** pattern is considered an [anti-pattern](https://www.michaelsaf
 When to create the unique instance?
   * At application start.
   * When instance() is called for the first time.
+
+---
+
+template: inverse
+name:abstract-factory
+# Abstract-Factory
+
+---
+
+# Abstract-Factory
+
+> "Provide an interface for creating families of related or dependent objects without specifying the concrete classes."
+
+# Motivation
+
+![](../assets/patterns/abstract-factory-motivation.svg)
+
+---
+
+# Applicability
+
+Use the **asbtract factory** pattern when:
+
+* a system should be independent from how its products are created, composed and represented.
+* a system should be configurable with one or more families of products.
+* a family of products is designed to work together and you need to reinforce this constraint.
+
+# Consequences
+
+* It isolates concrete classes.
+* It makes exchanging product families easy.
+* It promotes consistency among products.
+* Supporting new types of products is difficult.
+
+---
+
+# Structure
+
+![](../assets/patterns/abstract-factory-structure.svg)
+
+---
+
+template: inverse
+name:architectural-patterns
+# Architectural Patterns
+
+---
