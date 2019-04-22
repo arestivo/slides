@@ -35,6 +35,7 @@ name:index
 1. [Packages](#packages)
 1. [Exceptions](#exceptions)
 1. [Collections](#collections)
+1. [Threads](#threads)
 ]
 
 ---
@@ -1314,14 +1315,268 @@ locations.containsKey("Mary");           // returns false;
 ---
 
 template: inverse
-name:bignum
-# Large Numbers
+name:threads
+# Threads
 
 ---
 
-template: inverse
-name:strings
-# Strings
+# Processes
+
+Multitasking is a method to allow **multiple processes** to share processors and other system resources.
+
+![](../assets/java/processes.svg)
+
+
+
+---
+
+# Threads
+
+A process may be made up of **multiple threads** of execution that execute instructions concurrently.
+
+![](../assets/java/threads.svg)
+
+Threads are **lightweight processes** that have their own **stack** but have access to **shared data**.
+
+---
+
+# Why threads?
+
+Until now, all our code has been running in a **single main thread**.
+
+But what happens if we need to block to read data from some source but still want our state and view to be updated?
+
+~~~java
+public void run() {
+  while (true) {
+    draw();                         // Draws the current game state
+    processKey(screen.readInput()); // "Read input" blocks waiting for a key
+                                    // to be pressed.
+    doStep();                       // Makes our game move forward
+                                    // e.g. enemies move
+  }
+}
+~~~
+
+---
+
+# Threads in Java (1)
+
+There are two different ways to create a new thread in Java.
+
+**1)** Extend the **Thread** class and override the **run()** method:
+
+~~~java
+public class GameUpdater extends Thread {
+  @Override
+  public void run() {
+    // Do something
+  }
+}
+
+new GameUpdater().start();
+~~~
+
+Or just:
+
+~~~java
+new Thread() {
+  @Override
+  public void run() {
+    // Do something
+  }
+}.start();
+~~~
+
+---
+
+# Threads in Java (2)
+
+There are two different ways to create a new thread in Java.
+
+**2)** Implement the **Runnable** interface and start a **Thread** with it:
+
+~~~java
+class GameUpdater implements Runnable {
+  @Override
+  public void run() {
+    // do something
+  }
+}
+
+new Thread(new GameUpdater()).start();
+~~~
+
+Or just:
+
+~~~java
+new Thread(new Runnable() {
+  @Override
+  public void run() {
+    // do something
+  }
+}).start();
+~~~
+
+---
+
+# Thread Class
+
+The thread class has a series of useful methods:
+
+* **void start()** - Causes this thread to **begin** execution; the Java Virtual Machine calls the **run** method of this thread.
+* **static Thread currentThread()** - Returns a **reference** to the **currently** executing **thread** object.
+* **long getId()** - Returns the **identifier** of this Thread.
+* **void join()** - **Waits** for this thread to **die**.
+* **boolean isAlive() and isInterrupted()** - Tests whether this thread is **alive** or has been **interrupted**.
+* **static Thread interrupted()** - Checks if current thread has been interrupted and **resets flag**.
+
+---
+
+# Interrupt
+
+A thread **cannot order** another thread to stop. It has to **ask nicely**:
+
+~~~java
+  Thread t = new Thread() {
+    @Override
+    public void run() {
+      while (true) {
+        System.out.println("I'm alive!");
+        if (isInterrupted()) break;
+      }
+    }
+  };
+
+  t.start();
+  // Sometime later
+  t.interrupt();
+~~~
+
+---
+
+# Sleep
+
+The **Thread.sleep()** method can be used to pause the execution of current thread for specified time in milliseconds.
+
+If the thread is interrupted during that time, an Exception is raised:
+
+~~~java
+Thread t = new Thread() {
+  @Override
+  public void run() {
+    while (true) {
+      System.out.println("I'm alive!");
+      try {
+        Thread.sleep(100);
+      } catch (InterruptedException e) {
+        System.out.println("Interrupted");
+        break;
+      }
+      if (isInterrupted()) break;
+    }
+  }
+};
+~~~
+
+---
+
+# Multi-Threading
+
+Multi-threading programming can be **tricky**!
+
+~~~java
+class Model {
+  int a = 0, b = 0;
+  public void increment() { a++; b++; }
+}
+
+class View {
+  public void draw(Model model) {
+    System.out.println(model.a + " - " + model.b);
+  }
+}
+~~~
+
+~~~java
+Model m = new Model(); View v = new View();
+
+new Thread() {
+  public void run() { while (true) { m.increment(); } }
+}.start();
+
+new Thread() {
+  // This will not always print two equal values
+  public void run() { while (true) v.draw(m); }    
+}.start();
+~~~
+
+---
+
+# Synchronized Blocks
+
+* To make threads play nice with each other, we can use **synchronized** blocks.
+
+* Synchronized blocks use a mechanism known as **monitor locks** (or intrinsic locks). 
+
+* A **synchronized block** uses an object as a **lock**. 
+  
+* **No** two threads can **enter** a **synchronized** block if using the **same** **object** as a lock.
+
+---
+
+# Synchronized Block Example
+
+Each loop is synchronized on the **same object**. 
+
+So, **v.draw()** will never be called while **m.increment()** is being executed.
+
+~~~java
+Model m = new Model(); View v = new View();
+
+new Thread() {
+  public void run() { 
+    while (true)
+      synchronized (m) { m.increment(); } 
+  }
+}.start();
+
+new Thread() {
+  public void run() { 
+    while (true) 
+      synchronized (m) { v.draw(m); }
+  }
+}.start();
+~~~
+
+---
+
+# Synchronized Methods
+
+When a **synchronized method** is called, it **automatically** acquires the **intrinsic lock** for that **method's object** and **releases** it when the method **returns**. 
+
+~~~java
+  class Model {
+    int a = 0, b = 0;
+    public synchronized void increment() { a++; b++; }
+    public synchronized void draw() { System.out.println(a + " - " + b); }
+  }
+
+  Model m = new Model();
+
+  new Thread() {
+    public void run() {
+      while (true) { m.increment(); }
+    }
+  }.start();
+
+
+  new Thread() {
+    public void run() {
+      while (true) { m.draw(); }
+    }
+  }.start();
+~~~
 
 ---
 
@@ -1331,21 +1586,119 @@ name:io
 
 ---
 
-template: inverse
-name:threads
-# Multi Threading
+# Streams
+
+All fundamental I/O in Java is based on **streams**. 
+
+A stream represents a **flow** of **data** with a **writer** at one end and a **reader** at the other. 
 
 ---
 
-template: inverse
-name:generics
-# Generics
+# Abstract Streams
+
+* **InputStream** and **OutputStream** are the basic **abstract** input and output stream for **unstructured bytes**.
+* All other byte streams are built on top of these two classes.
+
+<hr>
+
+* **Reader** and **Writer** are the basic **abstract** input and output stream for **unicode chars**.
+* All other character stream are built on top of these two classes.
+
+---
+
+# File Streams
+
+**FileInputStream**, **FileOutputStream**, **FileReader** and **FileWriter** are
+implementations of **InputStream**, **OutputStream**, **Reader**, and **Writer** that read from and write to files on the local filesystem.
+
+The **File** class represents a file in the local filesystem.
+
+**Examples**:
+
+~~~java
+FileInputStream fos = new FileInputStream(new File("level10.lvl"));
+int b = fos.read();
+~~~
+
+~~~java
+FileReader fr = new FileReader(new File("level10.lvl"))
+char c = (char) fos.read();
+~~~
+
+---
+
+# Bridge Streams
+
+* **InputStreamReader** and **OutputStreamWriter** are classes that convert bytes to characters and vice versa.
+* **DataInputStream** and **DataOutputStream** are specialized stream filters that add the ability to read and write primitive types.
+* **ObjectInputStream** and **ObjectOutputStream** are stream filters that are capable of writing serialized Java objects and reconstructing them.
+
+**Example**:
+
+~~~java
+DataOutputStream dos = new DataOutputStream(
+  new FileOutputStream( new File( "highscore.txt" ) )
+);
+dos.writeChars("HighScore");
+dos.writeInt(1000);
+dos.flush();
+dos.close();
+~~~
+
+---
+
+# Buffered Streams
+
+**BufferedInputStream**, **BufferedOutputStream**, **BufferedReader** and **BufferedWriter** add buffering capabilities to other streams. This increases efficiency.
+
+**Example**:
+
+~~~java
+DataOutputStream dos = new DataOutputStream(
+  new BufferedOutputStream(
+    new FileOutputStream( new File( "highscore.txt" ) )
+  )
+);
+dos.writeChars("HighScore");
+dos.writeInt(1000);
+dos.flush();
+dos.close();
+~~~
+
+---
+
+# Resources
+
+Resources are pieces of data that **are part**, and can be **accessed**, from within a Java application.
+
+When you create a **Java Gradle** project in **IntelliJ**, a folder for *resources* will be created inside both the **main** and **test** *src* folders.
+
+To access them you can do something like this:
+
+~~~java
+private static List<String> readLines(int levelNumber) throws IOException {
+  URL resource = RoomLoader.class.getResource("/rooms/" + levelNumber + ".lvl");
+  BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
+
+  List<String> lines = new ArrayList<>();
+  for (String line; (line = br.readLine()) != null; )
+      lines.add(line);
+
+  return lines;
+}
+~~~
 
 ---
 
 template: inverse
 name:annotations
 # Annotations
+
+---
+
+template: inverse
+name:strings
+# Strings
 
 ---
 
@@ -1358,3 +1711,4 @@ name:reflection
 template: inverse
 name:javafx
 # Java FX
+
