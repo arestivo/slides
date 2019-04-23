@@ -562,3 +562,40 @@ name:architectural-patterns
 # Architectural Patterns
 
 ---
+
+# Architectural Patterns
+
+An **Architectural style** is responsible for how we should organize our code (monolithic, pipes and filters, plugins, microservices, ...).
+
+**Architectural patterns** are patterns that deal with the architectural style of software.
+
+Some examples:
+
+* Model-View-Controller (commonly used in GUIs)
+* Pipe-Filter (pipes guide data from filter to filter)
+* Broker (message queues e.g. RabbitMQ)
+* ...
+
+---
+
+# Model-View-Controller (MVC)
+
+An architectural pattern commonly used for developing user interfaces that divides an application into **three** parts.
+
+![](../assets/patterns/mvc.svg)
+
+* The **model** only represents the **data**.
+* The **view** **displays** the **model** data, and sends user **actions** to the **controller**.
+* The **controller** provides **model** data to the **view**, and **interprets** user **actions**.
+
+---
+
+# MVC Variants
+
+There are several variants to the MVC pattern and even the MVC hasn't got a single interpretation:
+
+* **HMVC** - Hierarchical Model-View-Controller: Each visual component has its own MVC model.
+
+* **MVVM** - Model-View-ViewModel: Uses a ViewModel as a binder between the model and the view.
+
+* **MVP** - Model-View-Presenter: The Presenter sits in the middle of the View and the Model mediating the actions between them.

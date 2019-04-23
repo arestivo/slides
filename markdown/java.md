@@ -36,6 +36,7 @@ name:index
 1. [Exceptions](#exceptions)
 1. [Collections](#collections)
 1. [Threads](#threads)
+2. [Input/Output](#io)
 ]
 
 ---
@@ -1527,7 +1528,7 @@ new Thread() {
 
 # Synchronized Block Example
 
-Each loop is synchronized on the **same object**. 
+Each loop is synchronized on the **same object** (the Model **m**). 
 
 So, **v.draw()** will never be called while **m.increment()** is being executed.
 
@@ -1576,6 +1577,36 @@ When a **synchronized method** is called, it **automatically** acquires the **in
       while (true) { m.draw(); }
     }
   }.start();
+~~~
+
+---
+
+# Wait and Notify
+
+Sometimes we need a thread to wait until something happens.
+
+The **Object.wait()** method, pauses a thread until another thread calls **Object.notify()** on the same object.
+
+Calls to wait and notify must be **synchronized**.
+
+~~~java
+Thread thread = new Thread() {
+  @Override
+  public synchronized void run() {
+    try {
+      wait();
+      // Do something
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
+};
+
+thread.start();
+// Sometime later
+synchronized (thread) {
+  thread.notify();
+}
 ~~~
 
 ---
