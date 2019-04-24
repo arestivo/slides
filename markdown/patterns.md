@@ -83,19 +83,19 @@ It is a **description** or **template** for **how** to **solve** a problem that 
 The twenty-three design patterns described by the Gang of Four:
 
 .simple[
-| Creational 	       | Structural 	 | Behavioral 	           |
-|--------------------|---------------|-------------------------|
-| Abstract Factory   | Adapter       | Chain of Responsibility |
-| Builder            | Bridge        | **Command**             |
-| **Factory Method** | **Composite** | Interpreter             |
-| Prototype          | Decorator     | Iterator                |
-| Singleton          | Facade        | Mediator                |
-|                    | Flyweight     | Memento                 |
-|                    | Proxy         | **Observer**            |
-|                    |               | State                   |
-|                    |               | **Strategy**            |
-|                    |               | Template Method         |
-|                    |               | Visitor                 |
+| Creational 	         | Structural 	 | Behavioral 	           |
+|----------------------|---------------|-------------------------|
+| **Abstract Factory** | **Adapter**   | Chain of Responsibility |
+| Builder              | Bridge        | **Command**             |
+| **Factory Method**   | **Composite** | Interpreter             |
+| Prototype            | **Decorator** | Iterator                |
+| Singleton            | Facade        | Mediator                |
+|                      | Flyweight     | Memento                 |
+|                      | Proxy         | **Observer**            |
+|                      |               | **State**               |
+|                      |               | **Strategy**            |
+|                      |               | Template Method         |
+|                      |               | Visitor                 |
 ]
 
 ---
