@@ -28,7 +28,7 @@ name:index
 1. [Components](#components)
 1. [Layouts](#layouts)
 1. [Events](#events)
-1. [Custom Components](#custom)
+1. [Graphics](#graphics)
 ]
 
 ---
@@ -465,8 +465,8 @@ KeyboardFocusManager
 ---
 
 template: inverse
-name:custom
-# Custom Components
+name:graphics
+# Graphics
 
 ---
 
