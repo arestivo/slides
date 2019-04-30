@@ -1737,9 +1737,3 @@ template: inverse
 name:reflection
 # Reflection
 
----
-
-template: inverse
-name:javafx
-# Java FX
-
