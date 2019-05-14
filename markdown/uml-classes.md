@@ -45,15 +45,15 @@ name:introduction
 
 In UML, there are two basic categories of diagrams: 
   
-* **Structure** diagrams show the static structure of the system being modeled: class, component, and or object diagrams.
+* **Structure** diagrams show the static structure of the system being modeled: **class**, *component*, *deployment*, *object* diagrams, ...
 
-* **Behavioral** diagrams show the dynamic behavior between the objects in the system: activity, use case, and sequence diagrams.
+* **Behavioral** diagrams show the dynamic behavior between the objects in the system: *activity*, *use case*, *communication*, *state machine*, *sequence* diagrams, ...
 
 ---
 
 # Class Diagrams
 
-Class diagrams show the classes of the system, their relationships (including inheritance, aggregation, and association), and the operations and attributes of the classes. 
+Class diagrams show the **classes** of the system, their **relationships** (including inheritance, aggregation, and association), and the **operations** and **attributes** of the classes. 
 
 Class diagrams are used for different purposes: 
   
