@@ -248,7 +248,6 @@ Sequence diagrams can be drawn inside frames so that we can give them a name (an
 
 ![](../assets/uml-sequence/frames.svg)
 
-
 ---
 
 # Gates
