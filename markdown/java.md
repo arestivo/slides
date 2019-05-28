@@ -1718,22 +1718,3 @@ private static List<String> readLines(int levelNumber) throws IOException {
   return lines;
 }
 ~~~
-
----
-
-template: inverse
-name:annotations
-# Annotations
-
----
-
-template: inverse
-name:strings
-# Strings
-
----
-
-template: inverse
-name:reflection
-# Reflection
-
