@@ -428,7 +428,7 @@ However, this does not work:
 
 ~~~java
 List<?> zebras = new ArrayList<>();
-zebras.add(new Zebra); // add (<?>) in List cannot be applied
+zebras.add(new Zebra()); // add (<?>) in List cannot be applied
 ~~~
 
 A list of **"unknowns"** is still a list of something. 
