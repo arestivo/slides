@@ -942,9 +942,9 @@ public class Cat extends Animal {
 }
 
 public void main() {
-    Animal a1 = new Animal(); a1.talk(); // Hello
-    Animal a2 = new Dog(); a2.talk();    // Dog
-    Animal a3 = new Cat(); a3.talk();    // Cat
+    Animal a1 = new Animal(); a1.talk(); // Hello!
+    Animal a2 = new Dog(); a2.talk();    // Woof!
+    Animal a3 = new Cat(); a3.talk();    // Meow!
 }
 
 ```
