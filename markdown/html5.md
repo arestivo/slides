@@ -1185,7 +1185,7 @@ You can define metadata for your document inside the head tag.
 ```html
 <head>
   <meta name="?" content="?">
-<head>
+</head>
 ```
 
 * **name:**
@@ -1203,7 +1203,9 @@ You can define metadata for your document inside the head tag.
 Defining the character set used by the document.
 
 ```html
-<meta charset="utf-8">
+<head>
+  <meta charset="utf-8">
+</head>
 ```
 
 * **UTF-8** Character encoding for Unicode (recommended)
