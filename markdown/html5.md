@@ -52,11 +52,11 @@ template:normal
 
 # What is it?
 
-* **H**yper **T**ext **M**arkup **L**anguage
-* Markup language used to create web pages
-* Written using HTML **elements**
-* **Not** for design or presentation
-* Structure and semantics
+* **H**yper **T**ext **M**arkup **L**anguage;
+* Markup language used to create web pages;
+* Written using HTML **elements**;
+* **Not** for design or presentation;
+* All about structure and semantics.
 
 ---
 
@@ -96,9 +96,9 @@ Source: http://www.w3counter.com/trends
 
 # HTML Elements
 
-* HTML is composed of a **tree** of HTML elements.
-* Elements can contain other elements and/or **text**.
-* They are defined using **tags** and can have **attributes**.
+* HTML is composed of a **tree** of HTML elements;
+* Elements can contain other elements and/or **text**;
+* They are defined using **tags** and can have **attributes**;
 * Browsers display each tag using a **predefined** style that can be changed using CSS.
 
 ---
