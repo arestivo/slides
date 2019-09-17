@@ -171,8 +171,8 @@ name:document
 
 # Tree Structure
 
-* HTML elements form a **tree** like structure.
-* Some HTML elements can have children. Those have **start** and **end** tags.
+* HTML elements form a **tree** like structure;
+* Some HTML elements can have children. Those have **start** and **end** tags;
 * HTML elements that do not allow children only have an opening tag.
 
 ---
@@ -195,7 +195,7 @@ name:document
 
 * All HTML documents have a **html** root tag.
 * They all contain a **head** and **body** sections.
-* The head section must contain a **title** tag.
+* The head section *must* contain a **title** tag.
 * The html tag *should* contain a **lang** [attribute](https://www.w3.org/International/articles/language-tags/index.en) (e.g. "pt-PT" or "en-US").
 ```html
 <html lang="en-US">
