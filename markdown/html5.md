@@ -1151,9 +1151,9 @@ name:doctype
 
 # Document Type
 
-* The Document Type declaration is **not** an HTML tag
-* It must be the first thing on your document
-* It tells the browser which HTML version you are using
+* The Document Type declaration is **not** an HTML tag;
+* It must be the first thing on your document;
+* It tells the browser which HTML version you are using;
 * For HTML 5 just use:
 
 ```html
