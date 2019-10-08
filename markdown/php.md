@@ -13,7 +13,7 @@ class: left, middle
 ---
 
 template:inverse
-# PHP 5
+# PHP
 <a href="http://www.fe.up.pt/~arestivo">André Restivo</a>
 
 ---
@@ -997,7 +997,7 @@ An object will always be created unless the object has a constructor defined tha
 
 # Constructors
 
-PHP 5 allows developers to declare constructor methods for classes.
+PHP allows developers to declare constructor methods for classes.
 
 Classes which have a constructor method call this method on each newly-created object.
 
