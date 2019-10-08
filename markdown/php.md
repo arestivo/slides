@@ -104,7 +104,7 @@ becomes
 * It also has a shortcut syntax, where you can immediately follow the opening tag with an equals sign.
 
 ```php
-echo 'Hello World';
+<?php echo 'Hello World'; ?>
 ```
 
 ```php
