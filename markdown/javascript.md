@@ -122,7 +122,6 @@ template: inverse
 
 * Tutorials:
   * [The Modern Javascript Tutorial](http://javascript.info)
-  * [jQuery: Javascript 101](http://learn.jquery.com/javascript-101/)
   * [Javascript Style Guide](https://github.com/airbnb/javascript)
 
 ---
