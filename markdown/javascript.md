@@ -793,7 +793,7 @@ sayHello.goodBye()                           //Goodbye
 Functions can be used to create new objects using the **new** keyword.
 
 ```javascript
-function Person (name, age, car) {
+function Person(name, age, car) {
   this.name = name
   this.age = age
   this.car = car
