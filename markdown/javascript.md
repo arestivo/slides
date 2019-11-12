@@ -1849,7 +1849,7 @@ The *map()* method creates a new array with the results of calling a provided fu
 
 ~~~javascript
 let numbers = [4, 8, 15, 16, 23, 42]
-var doubled = numbers.map(function(n) {return n * 2})
+let doubled = numbers.map(function(n) {return n * 2})
 console.log(doubled) // 8, 16, 30, 32, 46, 84
 ~~~
 
@@ -1868,7 +1868,7 @@ console.log(doubled) // 8, 16, 30, 32, 46, 84
 The *map()* method can be used on other types of *array like* objects:
 
 ~~~javascript
-var ascii = Array.prototype.map.call('John', function(letter) {
+let ascii = Array.prototype.map.call('John', function(letter) {
   return letter.charCodeAt(0)
 })
 console.log(ascii) // [74, 111, 104, 110]
@@ -1877,7 +1877,7 @@ console.log(ascii) // [74, 111, 104, 110]
 Simpler:
 
 ~~~javascript
-var ascii = [].map.call('John', function(letter) {
+let ascii = [].map.call('John', function(letter) {
   return letter.charCodeAt(0)
 })
 console.log(ascii) // [74, 111, 104, 110]
@@ -1886,8 +1886,8 @@ console.log(ascii) // [74, 111, 104, 110]
 A more useful example:
 
 ~~~javascript
-var inputs = document.querySelectorAll('input[type=number]')
-var values = [].map.call(inputs, function(input) {
+let inputs = document.querySelectorAll('input[type=number]')
+let values = [].map.call(inputs, function(input) {
   return input.value
 })
 console.log(values) // an array with all the number input values
