@@ -2126,7 +2126,7 @@ getSomeData()
 
 # Async Functions
 
-An **async** function is a function which operates asynchronously (via the evento loop), using an **implicit** *Promise* to return its result.
+An **async** function is a function which operates asynchronously (via the event loop), using an **implicit** *Promise* to return its result.
 
 An **async** function always returns a *promise*. If the code returns a *non-promise*, then JavaScript automatically wraps it into a resolved *promise* with that value.
 
