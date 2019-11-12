@@ -35,6 +35,7 @@ name:index
 1. [Advanced Functions](#advanced-functions)
 1. [Advanced Arrays](#advanced-arrays)
 1. [Timers](#timers)
+1. [Promises](#promises)
 1. [Data Attributes](#data)
 1. [jQuery](#jQuery)
 ]
@@ -2007,6 +2008,172 @@ The return value is an *id* that can be used to cancel the timer:
 ~~~javascript
   window.clearInterval(id)
 ~~~
+
+---
+
+name:promises
+template: inverse
+#Promises
+## Async, Await and the Event Loop
+
+---
+
+# Event Loop
+
+JavaScript is **single-threaded**!
+
+That means there is always only one thread running, which has a **call stack**.
+
+But there can be a multitude of event callbacks waiting to be executed in the **event queue**.
+
+![](../assets/javascript/event-loop.svg)
+
+```javascript
+button.addEventListener('click', function() {
+  foo()
+})
+```
+
+---
+
+# Asynchronous 
+
+So how do asynchronous calls (e.g., Ajax) work?
+
+Asynchronous calls are **delegated** to the **browser** (web apis) and run in a separate thread.
+
+When the call **returns**, the browser **injects** a call into the **event queue**.
+
+![](../assets/javascript/webapis.svg)
+
+---
+
+# Promises
+
+A *promise* represents the eventual result of an asynchronous operation. 
+
+A *promise* may be in one of 3 possible states: **fulfilled**, **rejected**, or **pending**.
+
+A *promise* can be used to return asynchronously from an synchronous function. This can save us from [Callback Hell](http://callbackhell.com/).
+
+```javascript
+let promise = new Promise(function(resolve, reject) {
+  /* Very long operation */
+  if (ok)
+    resolve(result)
+  else
+    reject(error)
+})
+```
+
+---
+
+# Consuming
+
+When the *promise* *resolves*, or is *rejected*, we can use *then* and *catch* to consume it:
+
+```javascript
+promise.then(function(result){
+  alert('Ok')
+}).catch(function(error)){
+  alert('Error')
+}
+```
+
+---
+
+# Example
+
+Transforming a **synchronous** *XMLHttpRequest* into a *promise*:
+
+```javascript
+function getSomeData() {
+  return new Promise(function(resolve, reject) {
+    let request = new XMLHttpRequest()
+    request.open("get", "getdata.php", false) // synchronous
+    request.send()
+    if (request.status === 200) resolve(request.response)
+    else reject(request.statusText)
+  })
+}
+```
+
+```javascript
+getSomeData().then(alert).catch(alert)
+```
+
+---
+
+# Chaining
+
+*Promises* can be chained, making successive calls to asynchronous functions much easier:
+
+```javascript
+getSomeData()
+  .then(function(result){
+    return getMoreDataBasedOn(result) // also returns a promise
+  })
+  .then(function(result){
+    return getEvenMoreDataBasedOn(result)
+  })
+  .then(function(result){
+    alert(result)
+  })
+  .catch(alert) // catches any error in the chain
+```
+
+---
+
+# Async Functions
+
+An **async** function is a function which operates asynchronously, using an **implicit** *Promise* to return its result.
+
+An **async** function always returns a *promise*. If the code returns a *non-promise*, then JavaScript automatically wraps it into a resolved *promise* with that value.
+
+```javascript
+async function getSomeData() {
+  let request = new XMLHttpRequest()
+  request.open("get", "getdata.php", false) // synchronous
+  request.send()
+  if (request.status === 200) 
+    return request.response
+  else
+    throw(new Error('Error getting data'))
+}
+```
+
+---
+
+# Await
+
+The keyword *await* makes JavaScript wait until a *promise* settles and returns its result.
+
+```javascript
+async function doSomething() {
+  let result = await getSomeData() // returns a promise
+  console.log(result)
+}
+```
+
+The keyword *await* can only be used inside *async* functions.
+
+---
+
+# Promise.all
+
+The *Promise.all(&lt;promises&gt;)* method returns a single *Promise* that resolves when all of the *promises* in the argument have resolved. It rejects with the reason of the first *promise* that rejects.
+
+```javascript
+async function doSomething() {
+  let promise1 = getSomeData()
+  let promise2 = getEvenMoreData()
+  Promise.all([promise1, promise2]).then(function(results) {
+    console.log(values)
+  })
+}
+```
+
+The result is an array with the results of each one of the *promises*
 
 ---
 

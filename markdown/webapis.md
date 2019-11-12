@@ -55,7 +55,7 @@ But first we must talk about *Promises*...
 ---
 
 template: inverse
-name: clipboard
+name: promises
 # Promises
 
 ---
@@ -190,7 +190,7 @@ The result is an array with the results of each one of the *promises*
 ---
 
 template: inverse
-name: clipboard
+name: permissions
 # Permissions
 
 ---
