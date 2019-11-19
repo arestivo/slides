@@ -884,10 +884,10 @@ The current default algorithm is **bcrypt**.
 * Do **not** apply short or no length, character set, or encoding restrictions on the entry or storage of credentials.
 * Design password storage **assuming** eventual compromise.
 
-[OWASP Authentication Cheat Sheet](https://www.owasp.org/index.php/Authentication_Cheat_Sheet)
+[OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
 
 
-[OWASP Password Storage Cheat Sheet](https://www.owasp.org/index.php/Password_Storage_Cheat_Sheet)
+[OWASP Password Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html)
 
 ---
 
