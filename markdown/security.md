@@ -864,7 +864,7 @@ boolean password_verify ( string $password , string $hash )
 ```
 
 ```php
-<?phpsession.use_only_cookies
+<?php
   $stmt = $db->prepare('SELECT * FROM users WHERE username = ?');
   $stmt->execute(array($username));
   $user = $stmt->fetch();
