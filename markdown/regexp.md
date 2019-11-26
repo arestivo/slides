@@ -605,13 +605,13 @@ My dog is not like other **dog**s.
 
 #Negative lookahead
 
-Using **?!** we can match something followed by something else: 
+Using **?!** we can match something **not** followed by something else: 
 
 ```html
 (cat|dog)(?!s)
 ```
 
-Matches *cat* or *dog* if not followed by an *s*:
+Matches *cat* or *dog* if **not** followed by an *s*:
 
 .box_regexp[
 All the cats are smarter than my **cat**.
@@ -643,7 +643,7 @@ England is part of an is**land**.
 (?<!some)thing
 ```
 
-Matches *thing* if it is not preceded by *some*:
+Matches *thing* if it is **not** preceded by *some*:
 
 .box_regexp[
 There is something about this **thing**.
@@ -687,6 +687,9 @@ name: html
 # In HTML
 
 ---
+
+
+# Form Validation
 
 In HTML, input elements have a pattern attribute that can contain a regular expression pattern specifying the allowed values of the field.
 
