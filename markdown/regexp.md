@@ -202,7 +202,7 @@ A **caret**(^) after the opening square bracket negates the character class.
 [^A-Za-f]
 ```
 
-This matches all letters except those in uppercase and from *a* to *f*.
+This matches all letters except those in uppercase and from 'a' to 'f'.
 
 .box_regexp[
 T**h**e cat is inside the box.
@@ -261,7 +261,7 @@ Anchors can be used to specify the position of the matched string.
 
 * The **caret**(^) matches the position before the first character in the string.
 * The **dollar sign**($) matches right after the last character in the string.
-* We can use both anchors to validate a string.
+* We can use both anchors to validate a complete string.
 
 ```perl
 boys$
@@ -579,7 +579,7 @@ name: lookaround
 
 # Lookahead and lookbehind
 
-**Lookahead** and **lookbehind** are **zero-length** **assertions** (just like the start and end of line and word boundaries)
+**Lookahead** and **lookbehind** are **zero-length** **assertions** (just like the start and end of line, and word boundaries)
 
 * These are also called **lookaround** assertions.
 * They match characters but then **give up the match** without consuming the characters.
