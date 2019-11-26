@@ -791,7 +791,7 @@ mixed preg_replace ( mixed $pattern , mixed $replacement , mixed $subject )
 
 The [preg_replace](http://php.net/manual/en/function.preg-replace.php) function, searches *subject* for matches to *pattern* and replaces them with *replacement*.
 
-* The replacement can contain backreferences in the form $n or ${n}.
+The replacement can contain backreferences in the form $n or ${n}.
 
 ```php
 <?php
@@ -909,7 +909,7 @@ console.log('My zip code is 4100-122'.search(/(\d{4})(?:-(\d{3}))?/));
 str.replace(regexp, replacement)
 ```
 
-* The replacement can contain backreferences in the form $n.
+The replacement can contain backreferences in the form $n.
 
 ```javascript
 console.log('dog are dog'.replace(/(cat|dog)/, 'my $1s'));
