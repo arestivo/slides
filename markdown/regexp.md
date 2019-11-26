@@ -186,7 +186,7 @@ You can use an hyphen to specify ranges in a character class.
 [0-9a-fA-F]
 ```
 
-This matches all digits from 0 to 9 and all letters (both in lowercase and uppercase).
+This matches all digits from '0' to '9' and all letters from 'a' to 'f' (both in lowercase and uppercase).
 
 .box_regexp[
 Th**e** cat is inside the box.
