@@ -55,13 +55,14 @@ name:intro
 
 # History
 
-* **1991** HTTP/0.9 - Only GET method
-* **1992-96** HTTP/1.0 - Files of different types. HEAD and POST.
-* **1995-97** HTTP/1.1 - Reuse connections. Host header.
+* **HTTP/0.9** (1991) Only **GET** method
+* **HTTP/1.0** (1992&ndash;96) Files of different types. **HEAD** and **POST**.
+* **HTTP/1.1** (1995&ndash;97) Reuse connections. **Host** header.
 
 Since then, the **HTTP 1.1** protocol evolved by adding new headers.
 
-* **2014-15/** HTTP/2.0 - A major revision of the HTTP network protocol.
+* **HTTP/2.0** (2014&ndash;15) A major revision of the **HTTP** network protocol.
+* **HTTP/3** (2019&ndash;) Or just **H3**, a HTTP mapping over **QUIC** (a general-purpose transport layer network protocol designed by Jim Roskind at Google).
 
 ---
 
@@ -91,7 +92,7 @@ name: urls
 resource **identifiers** [RFC2141](http://tools.ietf.org/html/rfc2141).
 
 ![](../assets/http/urn.png)
-Source: RFC3986
+Source: [RFC3986](https://tools.ietf.org/html/rfc3986)
 
 ---
 
@@ -116,12 +117,12 @@ name: httpurl
 
 # HTTP URL
 
-Every HTTP URL consists of the following, in the given order:
+Every **HTTP URL** consists of the following, in the given order:
 
-* the **scheme** name (or protocol)
-* a colon, two slashes
+* the **scheme** name (or protocol, *i.e.*, http or https)
+* a colon (:), two slashes (//)
 * a **host** (domain name or IP address)
-* optionally a colon followed by a **port** number
+* optionally a colon (:) followed by a **port** number
 * the full **path** of the resource
 * optionally a **query** string
 * optionally a **fragment** identifier
@@ -151,7 +152,7 @@ Every HTTP URL consists of the following, in the given order:
 
 # Port
 
-* The **default port** for an HTTP server on a computer is port **80**.
+* The **default port** for a HTTP server on a computer is port **80**.
 * Others are also normally used: 8080, 8000.
 * The port number can be **omitted** from the URL if it is the default one.
 
@@ -163,7 +164,7 @@ Every HTTP URL consists of the following, in the given order:
 
 * The full path of the resource.
 * A sequence of segments separated by slashes.
-* **May** resemble or map exactly to a file system path but not necessarly.
+* **May** resemble or map exactly to a file system path **but not necessarily**.
 
 .box_info[/somewhere/on/this/server.php]
 
@@ -198,7 +199,7 @@ name: session
 
 # Session
 
-An HTTP session consists of three phases:
+A **HTTP** session consists of three phases:
 
 * The client establishes a TCP **connection**.
 * The client sends its **request** and then waits for the answer.
@@ -236,7 +237,7 @@ The final block is the optional **data block**. Its separated from the headers b
 A **GET** request:
 
 ```http
-GET / HTTP/1.1
+GET /search.php?name=john HTTP/1.1
 Host: www.example.com
 Accept-Language: pt
 ```
@@ -264,7 +265,7 @@ name: methods
 
 # Methods
 
-* The request method indicates the action to be performed by the server.
+* The request method indicates the **action** to be performed by the server.
 * The HTTP/1.1 standard defines **nine** methods.
 * Other standards can add extra methods.
 
@@ -272,7 +273,7 @@ name: methods
 
 # Safe Methods
 
-A safe method is a method that doesn't have any side-effects on the server:
+A **safe** method is a method that **doesn't have** any **side-effects** on the server:
 
 * **GET**: used to retrieve information identified by the request URI.
 * **HEAD**: identical to GET but without the message body sent.
@@ -286,11 +287,12 @@ All HTTP servers must implements these methods.
 A idempotent method is a method where the side-effects on the server of several identical
 requests with the method are the same as the side-effects of one single request.
 
-* **HEAD** and **GET** are also idempotent.
 * **PUT** requests that the enclosed entity be stored under the supplied URI.
 * **DELETE** used to delete the resource identified by the URI.
 
-These methods are optional.
+These methods are **optional**.
+
+* **HEAD** and **GET** are also idempotent.
 
 ---
 
@@ -299,7 +301,7 @@ These methods are optional.
 * **POST**: used to request that the server accept the entity enclosed in the request as a new subordinate of the resource identified by the URI.
 * **OPTIONS**, **TRACE**, **CONNECT** and **PATCH**.
 
-These methods are optional.
+These methods are **optional**.
 
 [All methods](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)
 
@@ -343,6 +345,23 @@ Content-Length: 1354
 
 ---
 
+# Status Line
+
+The **status line** is the first line in the response message. 
+
+It consists of three items:
+
+* The HTTP **version number**.
+* A **status code**.
+* A **reason phrase** (a human-readable text that summarizes the meaning of the status code).
+
+```http
+HTTP/1.0 200 OK
+```
+
+
+---
+
 template: inverse
 name: codes
 
@@ -368,7 +387,7 @@ name: codes
 
 * **202 Accepted** - The request has been accepted for processing, but the processing has not been completed.
 * **204 No Content** - The server has fulfilled the request but does not need to return an entity-body.
-* **206 Partial Content** - The server has fulfilled the partial GET request for the resource. The request MUST have included a Range header field.
+* **206 Partial Content** - The server has fulfilled the partial GET request for the resource. The request MUST have included a *Range* **header**.
 
 ---
 
@@ -376,7 +395,7 @@ name: codes
 
 ## Redirect
 
-* **301 Moved Permanently** - The requested resource has been assigned a new permanent URI and any future references to this resource should use one of the returned URIs. The new permanent URI should be given by the Location field in the response.
+* **301 Moved Permanently** - The requested resource has been assigned a new permanent URI and any future references to this resource should use one of the returned URIs. The new permanent URI should be given by the *Location* **header** in the response.
 * **304 Not Modified** - If the client has performed a conditional GET request and access is allowed, but the document has not been modified.
 
 ---
@@ -386,7 +405,7 @@ name: codes
 ## Client Error
 
 * **400 Bad Request** - The request could not be understood by the server due to malformed syntax.
-* **401 Unauthorized** - The request requires user authentication. The response MUST include a WWW-Authenticate header field containing a challenge applicable to the requested resource.
+* **401 Unauthorized** - The request requires user authentication. The response **must** include a *WWW-Authenticate* **header** containing a challenge applicable to the requested resource.
 * **403 Forbidden** - The server understood the request, but is refusing to fulfill it. Authorization will not help and the request should not be repeated.
 
 ---
@@ -395,18 +414,20 @@ name: codes
 
 ## Client Error
 
-* **404 Not Found** - The server has not found anything matching the Request-URI.
-* **405 Method Not Allowed** - The method specified in the request is not allowed for the resource identified by the URI. The response must include an allow header containing a list of valid methods.
+* **404 Not Found** - The server has not found anything matching the requested URL.
+* **405 Method Not Allowed** - The method specified in the request is not allowed for the resource identified by the URI. The response must include an *Allow* **header** containing a list of valid methods.
 * **408 Request Timeout** - The client did not produce a request within the time that the server was prepared to wait.
 
 ---
 
 # Some Response Codes
 
-* **418 I'm a teapot** - "Any attempt to brew coffee with a teapot should result in the error
+**418 I'm a teapot** - "Any attempt to brew coffee with a teapot should result in the error
    code "418 I'm a teapot". The resulting entity body MAY be short and stout." -- [RFC2324](https://tools.ietf.org/html/rfc2324)
 
 <img src="../assets/http/teapot.svg" style="width:30%; border: none">
+
+> This error is a reference to Hyper Text Coffee Pot Control Protocol which was an April Fools' joke in 1998.
 
 ---
 
@@ -430,12 +451,12 @@ name: headers
 
 # Client Headers
 
-* **Accept**	Content-Types that are acceptable for the response.
-* **Accept-Charset**	Character sets that are acceptable.
-* **Accept-Encoding**	List of acceptable encodings.
+* **Accept**	Content-Types that are acceptable for the response <br> (text/html, image/jpeg, ...).
+* **Accept-Charset**	Character sets that are acceptable <br> (utf-8, iso-8859-1, ...).
+* **Accept-Encoding**	List of acceptable encodings <br> (gzip, deflate, ...).
 * **Accept-Language**	List of acceptable human languages for response.
-* **Connection**	What type of connection the user-agent would prefer.
-* **Cookie**	An HTTP cookie previously sent by the server with Set-Cookie.
+* **Connection**	What type of connection the user-agent would prefer <br> (keep-alive, ...).
+* **Cookie**	A HTTP cookie previously sent by the server with **Set-Cookie**.
 * **Content-Length**	The length of the request body in octets (8-bit bytes).
 
 ---
@@ -443,9 +464,9 @@ name: headers
 # Client Headers
 
 * **Content-Type**	The MIME type of the body of the request (used with POST and PUT requests).
-* **Date**	The date and time that the message was sent.
-* **Host**	The domain name of the server (for virtual hosting), and the TCP port number on which the server is listening. The port number may be omitted if the port is the standard port for the service requested. Mandatory since HTTP/1.1.
-* **If-Modified-Since**	Allows a 304 Not Modified to be returned if content is unchanged.
+* **Date**	The date and time that the message was sent. <br> <small>Date: &lt;day-name&gt;, &lt;day&gt; &lt;month&gt; &lt;year&gt; &lt;hour&gt;:&lt;minute&gt;:&lt;second&gt; GMT</small>
+* **Host**	The **domain name** of the server (for virtual hosting), and the TCP **port number** on which the server is listening. The port number may be omitted if the port is the standard port for the service requested. Mandatory since HTTP/1.1.
+* **If-Modified-Since**	Allows a **304 Not Modified** to be returned if content is unchanged.
 * **Range**	Request only part of an entity. Bytes are numbered from 0.
 * **User-Agent**	The user agent string of the user agent.
 
@@ -476,10 +497,10 @@ User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/21.0
 # Server Headers
 
 * **Accept-Ranges**	What partial content range types this server supports.
-* **Allow**	Valid actions for a specified resource. To be used for a 405 Method not allowed.
-* **Cache-Control**	Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds.
+* **Allow**	Valid actions for a specified resource. To be used for a **405 Method not allowed**.
+* **Cache-Control**	Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds. <br> (max-age=&lt;seconds&gt;, no-cache)
 * **Content-Encoding**	The type of encoding used on the data.
-* **Content-Language**	The language the content is in.
+* **Content-Language**	The language the content is in. <br> (pt-PT, en-US, ...)
 * **Content-Length**	The length of the response body in octets (8-bit bytes)
 
 ---
@@ -493,7 +514,7 @@ User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:12.0) Gecko/20100101 Firefox/21.0
 * **Expires**	Gives the date/time after which the response is considered stale.
 * **Last-Modified**	The last modified date for the requested object.
 * **Location**	Used in redirection, or when a new resource has been created.
-* **Set-Cookie**	An HTTP cookie.
+* **Set-Cookie**	A HTTP cookie.
 
 > The Multipurpose Internet Mail Extensions (MIME) type is a standardized way to indicate the nature and format of a document.
 
@@ -516,7 +537,7 @@ Content-Type: text/html; charset=utf-8
 Expires: Thu, 01 Dec 1994 16:00:00 GMT
 Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT
 Location: http://www.w3.org/pub/WWW/People.html
-Set-Cookie: session_id=7f...11; Domain=foo.com; Path=/; Expires=Wed, 13 ... GMT;
+Set-Cookie: session_id=7f...; Domain=foo.com; Path=/; Expires=Wed, 13 ... GMT;
 ```
 
 [All header fields](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)
@@ -550,25 +571,25 @@ First described by Roy T. Fielding in his [PhD thesis](http://www.ics.uci.edu/~f
 
 # Resource Based
 
-* Things (resources) instead of actions.
-* Individual resources are identified in requests using URIs as resource identifiers.
-* When a client holds a representation of a resource, including any metadata attached, it has enough information to modify or delete the resource on the server.
+* Things (**resources**) instead of **actions**. <br> <small>*employee.php* instead of *getemployee.php/saveemployee.php*</small>
+* Individual resources are **identified** in requests using **URIs** as resource identifiers.
+* When a client holds a representation of a resource, including any metadata attached, it has **enough information** to **modify** or **delete** the resource on the server.
 
 ---
 
 # Stateless
 
 
-* Communication must be stateless in nature.
-* Each request from client to server must contain all of the information necessary to understand the request, and cannot take advantage of any stored context on the server.
-* Session state is therefore kept entirely on the client.
+* Communication must be **stateless** in nature.
+* Each request from client to server must contain **all of the necessary information** to understand the request, and cannot take advantage of any stored context on the server.
+* Session **state** is therefore kept **entirely on the client**.
 
 ---
 
 # Cacheable
 
 * Data within a response to a request should be implicitly or explicitly labeled as **cacheable** or **non-cacheable**.
-* If a response is cacheable, then a client cache is given the right to reuse that response data for later, equivalent requests.
+* If a response is cacheable, then a client cache is **given the right to reuse** that response data for later, equivalent requests.
 
 ---
 
