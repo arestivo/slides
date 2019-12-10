@@ -2179,6 +2179,23 @@ The result is an array with the results of each one of the *promises*
 
 ---
 
+# XMLHTTPRequest with Promises
+
+The commands fetch() and json() return promises:
+
+```javascript
+
+const request = async () => {
+    const response = await fetch('https://example.com/');
+    const json = await response.json();
+    console.log(json);
+}
+
+request();
+```
+
+---
+
 name:data
 template: inverse
 #Data Attributes (not really JS)
