@@ -387,7 +387,7 @@ self.onmessage = function(event) {
 
 # Service Workers
 
-Act as proxy servers that sit between web applications, the browser, and the network (when available).
+Act as proxy servers that sit between web applications, the browser, and the network (when available). They include features like push notifications and background sync. 
 
 ```javascript
 navigator.serviceWorker.register('service-worker.js');
