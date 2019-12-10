@@ -13,7 +13,7 @@ class: left, middle
 ---
 
 template:inverse
-# HTML 5
+# HTML
 <a href="http://www.fe.up.pt/~arestivo">André Restivo</a>
 
 ---
