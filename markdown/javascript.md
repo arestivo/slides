@@ -2179,7 +2179,7 @@ The result is an array with the results of each one of the *promises*
 
 ---
 
-# XMLHTTPRequest with Promises
+# Ajax with Promises
 
 The commands fetch() and json() return promises:
 
