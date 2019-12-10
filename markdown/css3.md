@@ -13,7 +13,7 @@ class: left, middle
 ---
 
 template:inverse
-# CSS 3
+# CSS
 <a href="http://www.fe.up.pt/~arestivo">André Restivo</a>
 
 ---
