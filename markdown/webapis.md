@@ -406,8 +406,6 @@ self.addEventListener('activate', function(event) {
 
 // Listen for network requests from the main document
 self.addEventListener('fetch', function(event) {
-  console.log(`Fetch`)
-
   caches.match(event.request).then(function(response){
     console.log('Response: ' + response)
     return response || fetch(event.request)
