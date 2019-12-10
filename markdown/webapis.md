@@ -30,6 +30,7 @@ name:index
 1. [GeoLocation](#geolocation)
 1. [Web Storage](#webstorage)
 1. [Web Sockets](#websockets)
+1. [Web Workers](#workers)
 1. [Other APIs](#other)
 ]
 
@@ -49,143 +50,6 @@ Most of these APIs are still under **heavy development**. Some have been discont
 
 [W3 APIs Current Status](https://www.w3.org/standards/techs/js#w3c_all) | 
 [MDN List of Web APIs](https://developer.mozilla.org/en-US/docs/Web/API)
-
-But first we must talk about *Promises*...
-
----
-
-template: inverse
-name: promises
-# Promises
-
----
-
-# Promises
-
-A *promise* represents the eventual result of an asynchronous operation. 
-
-A *promise* may be in one of 3 possible states: **fulfilled**, **rejected**, or **pending**.
-
-A *promise* can be used to return asynchronously from an synchronous function. This can save us from [Callback Hell](http://callbackhell.com/).
-
-```javascript
-let promise = new Promise(function(resolve, reject) {
-  /* Very long operation */
-  if (ok)
-    resolve(result)
-  else
-    reject(error)
-})
-```
-
----
-
-# Consuming
-
-When the *promise* *resolves*, or is *rejected*, we can use *then* and *catch* to consume it:
-
-```javascript
-promise.then(function(result){
-  alert('Ok')
-}).catch(function(error)){
-  alert('Error')
-}
-```
-
----
-
-# Example
-
-Transforming a **synchronous** *XMLHttpRequest* into a *promise*:
-
-```javascript
-function getSomeData() {
-  return new Promise(function(resolve, reject) {
-    let request = new XMLHttpRequest()
-    request.open("get", "getdata.php", false) // synchronous
-    request.send()
-    if (request.status === 200) resolve(request.response)
-    else reject(request.statusText)
-  })
-}
-```
-
-```javascript
-getSomeData().then(alert).catch(alert)
-```
-
----
-
-# Chaining
-
-*Promises* can be chained, making successive calls to asynchronous functions much easier:
-
-```javascript
-getSomeData()
-  .then(function(result){
-    return getMoreDataBasedOn(result) // also returns a promise
-  })
-  .then(function(result){
-    return getEvenMoreDataBasedOn(result)
-  })
-  .then(function(result){
-    alert(result)
-  })
-  .catch(alert) // catches any error in the chain
-```
-
----
-
-# Async Functions
-
-An **async** function is a function which operates asynchronously, using an **implicit** *Promise* to return its result.
-
-An **async** function always returns a *promise*. If the code returns a *non-promise*, then JavaScript automatically wraps it into a resolved *promise* with that value.
-
-```javascript
-async function getSomeData() {
-  let request = new XMLHttpRequest()
-  request.open("get", "getdata.php", false) // synchronous
-  request.send()
-  if (request.status === 200) 
-    return request.response
-  else
-    throw(new Error('Error getting data'))
-}
-```
-
----
-
-# Await
-
-The keyword *await* makes JavaScript wait until a *promise* settles and returns its result.
-
-```javascript
-async function doSomething() {
-  let result = await getSomeData() // returns a promise
-  console.log(result)
-}
-```
-
-The keyword *await* can only be used inside *async* functions.
-
----
-
-# Promise.all
-
-The *Promise.all(&lt;promises&gt;)* method returns a single *Promise* that resolves when all of the *promises* in the argument have resolved. It rejects with the reason of the first *promise* that rejects.
-
-```javascript
-async function doSomething() {
-  let promise1 = getSomeData()
-  let promise2 = getEvenMoreData()
-  Promise.all([promise1, promise2]).then(function(results) {
-    console.log(values)
-  })
-}
-```
-
-The result is an array with the results of each one of the *promises*
 
 ---
 
@@ -226,7 +90,9 @@ navigator.permissions.query({ name: "geolocation" }).then(({ state }) => {
 })
 ```
 
-The result can be **granted** (the user already granted us the permission), **denied** (the user denied the permission) or **prompt** (the use hasn't been asked yet).
+The result can be **granted** (the user already granted us the permission), **denied** (the user denied the permission, forever) or **prompt** (the use hasn't been asked yet). 
+
+In this last case we can **try using** the desired Web API and the **browser will ask** the user for the necessary permission.
 
 ---
 
@@ -251,7 +117,7 @@ The Clipboard API allows developers to:
 
 # Examples
 
-Reading from the clipboard:
+Reading from the clipboard (not all browsers allow this):
 
 ```javascript
 navigator.clipboard.readText().then(
@@ -307,13 +173,9 @@ let geoSettings = {
 
 navigator.permissions.query({name:'geolocation'}).then(function(result) {
   if (result.state == 'granted') {
-    navigator.geolocation.getCurrentPosition(revealPosition, 
-                                             positionDenied, 
-                                             geoSettings);
+    navigator.geolocation.getCurrentPosition(success, denied, settings);
   } else if (result.state == 'prompt') {
-    navigator.geolocation.getCurrentPosition(revealPosition, 
-                                             positionDenied, 
-                                             geoSettings);
+    navigator.geolocation.getCurrentPosition(success, denied, settings);
   } else if (result.state == 'denied') {
     console.log('Already denied')
   }
@@ -330,12 +192,12 @@ navigator.permissions.query({name:'geolocation'}).then(function(result) {
 Getting the coordinates:
 
 ```javascript
-function revealPosition(position) {
+function success(position) {
   console.log(`Latitude: ${position.coords.latitude}`)
   console.log(`Longitude: ${position.coords.longitude}`)
 }
 
-function positionDenied() {
+function denied() {
   console.log('GeoLocation denied')
 }
 ```
@@ -393,7 +255,7 @@ console.log(localStorage.getItem('theme')
 To delete data from storage, we can use the *removeItem* method:
 
 ```javascript
-storage.removeItem('theme')
+localStorage.removeItem('theme')
 ```
 
 ---
@@ -487,6 +349,69 @@ And every time a message is received from the server a *message* event is fired:
 ```javascript
 conn.addEventListener('message', function(e) {
   console.log(e.data)
+})
+```
+
+---
+
+template: inverse
+name: workers
+# Web Workers
+
+---
+
+# Web Workers
+
+Make it possible to run a script operation in a background thread separate from the main execution thread of a web application. 
+
+```javascript
+const worker = new Worker('web-worker.js');
+
+worker.postMessage(20)
+
+worker.onmessage = function(event) {
+  console.log(`Main received ${event.data}`);
+}
+```
+
+On *web-worker.js*:
+
+```javascript
+self.onmessage = function(event) {
+  console.log(`Worker received ${event.data}`);
+  self.postMessage(event.data * 10);
+}
+```
+
+---
+
+# Service Workers
+
+Act as proxy servers that sit between web applications, the browser, and the network (when available).
+
+```javascript
+navigator.serviceWorker.register('service-worker.js');
+```
+
+On *service-worker.js*:
+
+```javascript
+self.addEventListener('install', function(event) {
+  console.log('Install')
+})
+
+self.addEventListener('activate', function(event) {
+  console.log('Activate')
+})
+
+// Listen for network requests from the main document
+self.addEventListener('fetch', function(event) {
+  console.log(`Fetch`)
+
+  caches.match(event.request).then(function(response){
+    console.log('Response: ' + response)
+    return response || fetch(event.request)
+  })
 })
 ```
 
