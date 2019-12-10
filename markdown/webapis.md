@@ -13,7 +13,7 @@ class: left, middle
 ---
 
 template:inverse
-# HTML 5 APIs
+# Web APIs
 <a href="http://www.fe.up.pt/~arestivo">André Restivo</a>
 
 ---
@@ -42,7 +42,7 @@ name:intro
 
 ---
 
-# HTML5 Web APIs
+# Web APIs
 
 In addition to describing HTML5 elements, the HTML 5 specification also introduces a set of *application programming interfaces* (APIs), that can be used by developers in their websites.
 
