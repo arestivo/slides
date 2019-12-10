@@ -24,9 +24,8 @@ name:index
 
 .indexlist[
 1. [Introduction](#intro)
-1. [Promises](#promises)
-1. [Permissions](#permissions)
-1. [Clipboard](#clipboard)
+2. [Permissions](#permissions)
+3. [Clipboard](#clipboard)
 1. [GeoLocation](#geolocation)
 1. [Web Storage](#webstorage)
 1. [Web Sockets](#websockets)
