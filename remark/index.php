@@ -32,25 +32,28 @@
     <script src="../script/remark.min.js" type="text/javascript"></script>
     <script src="../script/jquery-2.2.4.min.js" type="text/javascript"></script>
     <script src="../script/mark.min.js" type="text/javascript"></script>
-    <script src="../script/remark.search.js" type="text/javascript" defer></script>
+    <script src="../script/remark.search.js" type="text/javascript"></script>
     <script src="../script/asciinema-player.js" type="text/javascript" defer></script>
 
     <script type="text/javascript">
-      var hljs = remark.highlighter.engine;
+      const hljs = remark.highlighter.engine;
     </script>
 
     <script type="text/javascript">
-      var slideshow = remark.create({
+      const slideshow = remark.create({
           highlightStyle: '<?=$style?$style:"default"?>',
           highlightLines: false,
           highlightSpans: false,
           sourceUrl: '../markdown/<?=$slides?>.md'
         }) ;
 
-      window.addEventListener('load', function() {
-        RemarkSearch.create();
-      });
+      function initialize_search() {
+        if (document.querySelector('.remark-slides-area') != null) {
+          RemarkSearch.create();
+        } else setTimeout(initialize_search, 100)
+      }
 
+      setTimeout(initialize_search, 100);
     </script>
 
     <script>
