@@ -26,11 +26,11 @@ name:index
 1. [Introduction](#intro)
 2. [Permissions](#permissions)
 3. [Clipboard](#clipboard)
-1. [GeoLocation](#geolocation)
-1. [Web Storage](#webstorage)
-1. [Web Sockets](#websockets)
-1. [Web Workers](#workers)
-1. [Other APIs](#other)
+4. [GeoLocation](#geolocation)
+5. [Web Storage](#webstorage)
+6. [Web Sockets](#websockets)
+7. [Web Workers](#workers)
+8. [Other APIs](#other)
 ]
 
 ---
