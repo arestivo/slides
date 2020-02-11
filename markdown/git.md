@@ -43,7 +43,7 @@ name:intro
 
 # Version Control Systems (VCS)
 
-A system that records changes to a file or set of files over time.
+A system that **records changes** to a file or set of files **over time**.
 
 ![](../assets/git/version-control.svg)
 
@@ -60,8 +60,8 @@ AKA Source Control Management (**SCM**)
 
 # Local VCS
 
-* Local VCS use a simple database that keeps all changes to files under revision control.
-* Most store only the differences between files instead of copies of each version.
+* Local VCS use a **simple database** that keeps all changes to files under revision control.
+* Most store only the **differences** between files instead of copies of each version.
 * Examples: [RCS](https://www.gnu.org/software/rcs/)
 
 ![](../assets/git/local-vcs.svg)
@@ -72,7 +72,7 @@ AKA Source Control Management (**SCM**)
 # Centralized VCS
 
 * A **single server** that contains all the versioned files.
-* Computers can **checkout** a particular file version.
+* Users can **checkout** a particular file version.
 * Examples: [CVS](http://cvs.nongnu.org/), [Subversion](https://subversion.apache.org/)
 
 ![](../assets/git/centralized-vcs.svg)
@@ -124,7 +124,7 @@ name:basics
 **Local**: Most Git operations are **local**.
 
 **Integrity**: 
-  * Everything in Git is *checksummed* (**SHA-1**) before it is stored.
+  * Everything in Git is *checksummed* ([SHA-1](https://en.wikipedia.org/wiki/SHA-1)) before it is stored.
   * Everything is then **referred** to by that **checksum**.
   * Checksum example: <code>7e16b5527c77ea58bac36dddda6f5b444f32e81b</code>
 
@@ -144,7 +144,7 @@ All objects (files, commits, ...) have an **hash** identifier.
 
 # Git Areas
 
-The **Git directory** is where Git stores the metadata and object database for your project.
+The **Git directory** (.git) is where Git stores the metadata and object database for your project.
 
 The **working tree** is a single **checkout** of one version of the project. 
 
@@ -279,14 +279,14 @@ $ git status -s
 A  README                        # File added to staging area
 ```
 
-Now the file has been added in the staging area.
+Now the file has been **added** in the staging area.
 
 ```bash
 $ git commit -m "Added README"   # Commiting changes
 $ git status -s
 ```
 
-Now the file has been commited and is unmodified.
+Now the file has been **commited** and is **unmodified**.
 
 ---
 
@@ -304,7 +304,7 @@ AM README                       # Added to staging area and modified
 
 .small[
   
-1) Commiting again would only commit the initial staged edits:
+1) Commiting again would **only** commit the initial staged edits:
 
 ```bash
 $ git commit -m "Added some text"      # Commiting initial edit
@@ -315,7 +315,7 @@ M  README
 $ git commit -m "Added another text"   # Commiting following edits
 ```
 
-2) We can also only commit once:
+2) We could also **add** the new modifications first and only **commit** once:
 
 ```bash
 $ git add README                               # Staging following changes
@@ -398,7 +398,7 @@ $ git log --oneline -1
 
 # Patches
 
-The **--patch** (or **-p**) flag  shows the difference (the [patch](http://savannah.gnu.org/projects/patch/) output) introduced in each commit.
+The **--patch** (or **-p**) flag  shows the difference (the [patch](http://www.gnu.org/software/diffutils/manual/diffutils.html) output) introduced in each commit.
 
 ```bash
 $ git log -1 -p
@@ -472,7 +472,7 @@ Every time you commit, the *current* branch pointer moves **forward** **automati
 
 # Head
 
-Git uses a special pointer called HEAD that always points to your current branch.
+Git uses a special pointer called **HEAD** that **always** points to your **current branch**.
 
 ![](../assets/git/branch-head.svg)
 
@@ -509,7 +509,7 @@ $ git branch
 
 # Checkout
 
-To change to another branch we can use the **checkout** command:
+To **change** to another branch we can use the **checkout** command:
 
 ```bash
 $ git checkout testing
@@ -520,7 +520,7 @@ $ git checkout testing
 ![](../assets/git/branch-checkout.svg)
 
 
-We can also create and checkout a new branch using the **-b** flag: 
+We can also **create and checkout** a new branch using the **-b** flag: 
 
 ```bash
 $ git checkout -b testing
@@ -534,7 +534,7 @@ If we create a new commit now:
 
 ```bash
 $ echo "more license info" >> LICENSE
-git commit -a -m "Testing LICENSE"
+$ git commit -a -m "Testing LICENSE"
 ```
 
 ![](../assets/git/branch-checkout-commit.svg)
@@ -578,7 +578,7 @@ Now we have two divergent histories that have to be **merged** together.
 
 # Merging
 
-Merging is done by using the merge command:
+Merging is done by using the **merge** command:
 
 ```bash
 $ git checkout master
@@ -622,9 +622,9 @@ $ git merge testing
 
 # Deleting Branches
 
-If you do not need a branch any longer, you can just delete it.
+If you do not need a branch any longer, you can just **delete** it.
 
-Deleting a branch leaves all commits alone and only deletes the pointer.
+Deleting a branch leaves all commits alone and only **deletes the pointer**.
 
 ```bash
 $ git branch -d testing
@@ -720,7 +720,7 @@ name:remotes
 
 Remote repositories are **versions** of your project that are hosted **elsewhere** (another folder, the local network, the internet, ...).
 
-You can push and pull data to and from remotes but first you need to learn how to configure them properly.
+You can **push** and **pull** data to and from remotes but first you need to learn how to configure them properly.
 
 ---
 
@@ -764,7 +764,7 @@ Git can use **four** major network protocols to transfer data to and from **remo
 
 # Adding Remotes
 
-Besides the origin remote from where we cloned our project, we can add more remotes:
+Besides the **origin** remote from where we **cloned** our project, we can **add** more remotes:
 
 ```bash
 git remote add john http://john-laptop.org/test-repository
@@ -785,9 +785,9 @@ john  http://john-laptop.org/test-repository (push)
 
 # Fetching
 
-Fetching pulls down all the data from a remote project that you don’t have yet. 
+Fetching **gets** all the data from a **remote** project that you don’t have yet. 
 
-After fetching, you will also have references to all the branches from that remote.
+After fetching, you will also have **references** to all the **branches** from that remote.
 
 ```bash
 $ git fetch origin
@@ -811,7 +811,7 @@ You can set up other tracking branches:
 
 ```bash
 $ git checkout --track origin/feature # creates a local feature branch
-                                    # that tracks origin/feature
+                                      # that tracks origin/feature
 ```
 
 ---
@@ -888,7 +888,7 @@ These are some of the many different modes it can operate under:
 
 # Local unstaged changes
 
-If you haven't staged or commited the changes you want to revert you can:
+If you **haven't staged or commited** the changes you want to revert you can:
 
 ```bash
 $ git checkout -- README # undo changes to a single file
@@ -902,7 +902,7 @@ $ git reset --hard       # discard all local changes
 
 # Staged but uncommited changes
 
-If you have staged the changes you want to revert but haven't commited them yet, you can:
+If you have **staged the changes** you want to revert but **haven't commited** them yet, you can:
 
 ```bash
 $ git reset HEAD <file>  # unstage changes to a single file
@@ -916,7 +916,7 @@ $ git reset # unstage all changes
 
 # Commited but not pushed
 
-If you have already commited the changes you want to revert but haven't pushed them to a remote yet, you can find the *commit-id* you want to revert to and:
+If you have **already commited** the changes you want to revert but **haven't pushed** them to a remote yet, you can find the *commit-id* you want to revert to and:
 
 ```bash
 $ git reset --hard <commit-id>
@@ -928,23 +928,23 @@ $ git reset --hard <commit-id>
 
 You should try, **really hard**, to never rewrite public history.
 
-For that reason, if you want to revert a file that was already pushed, your best bet is to use revert:
+For that reason, if you want to revert a file that was already pushed, your best bet is to use **revert**:
 
 ```bash
 $ git revert <commit-id>
 ```
 
-This will introduce the changes needed to revert the ones done by the commit without deleting the commit from history.
+This will **introduce the changes** needed to revert the ones done by the commit **without deleting the commit** from history.
 
 ---
 
 # Relative commits
 
-The ~(tilde) and ^(caret) symbols are used to point to a position relative to a specific commit.
+The ~(tilde) and ^(caret) symbols are used to point to a position **relative** to a specific commit.
 
-* COMMIT^ refers to the previous commit to COMMIT.
-* COMMIT^^ refers to the previous commit to COMMIT^.
-* COMMIT~2 refers to two commit previous to COMMIT.
+* COMMIT^ refers to the **previous** commit to COMMIT.
+* COMMIT^^ refers to the **previous** commit to COMMIT^.
+* COMMIT~2 refers to **two commits** before to COMMIT.
 * And so on...
 
 ![](../assets/git/commit-relative.svg)
@@ -969,13 +969,13 @@ There are endless different ways to use Git. For example:
 
 # Git Flow
 
-Git Flow is one way, but not the only one, of using git.
+[Git Flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) is one way, but not the only one, of using git.
 
 .smaller[
 ![](../assets/git/git-flow.svg)
 ]
 
-What's important is that you are consistent in the way you use Git.
+What's important is that you, and your team, are **consistent** in the way you use Git.
 
 ---
 
@@ -990,7 +990,7 @@ name:more
 Things we haven't talked about:
 
 * [Tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging) - Really just unmovable branches. Useful for marking releases.
-* [Rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) - A different and cleaner way to merge.
+* [Rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) - A different way to merge.
 * [Hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) - IFTTT for Git.
 * [Blame](https://git-scm.com/docs/git-blame) - Who broke the code?
 * [Bisect](https://git-scm.com/book/en/v2/Git-Tools-Debugging-with-Git) - Finding a bad commit.
