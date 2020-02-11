@@ -32,7 +32,7 @@
     <script src="../script/remark.min.js" type="text/javascript"></script>
     <script src="../script/jquery-2.2.4.min.js" type="text/javascript"></script>
     <script src="../script/mark.min.js" type="text/javascript"></script>
-    <script src="../script/remark.search.js" type="text/javascript"></script>
+    <script src="../script/remark.search.js" type="text/javascript" defer></script>
     <script src="../script/asciinema-player.js" type="text/javascript" defer></script>
 
     <script type="text/javascript">
