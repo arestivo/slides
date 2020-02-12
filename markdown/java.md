@@ -60,7 +60,7 @@ name:intro
   * General-purpose 
   * Object-oriented (class-based)
   * Automatic memory management
-  * Write-once Run-everywhere
+  * Write-once / Run-everywhere
 
 ---
 
@@ -236,7 +236,9 @@ Arithmetic and boolean operators are also very similar to other C-family languag
 * Tertiary: <code>?:</code>
 * Type casting: <code>(type) </code>
 
-Be careful with the <code>==</code> operator. It compares primitive types by value; but **compares objects by reference**.
+.box_warning[
+Be careful with the == operator. It compares primitive types by value; but **compares objects by reference**.
+]
 
 ---
 
