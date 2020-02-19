@@ -491,7 +491,7 @@ public class Light {
 
 # Fields
 
-* Objects store data inside **fields** (also called *member variables*)
+* Objects store data inside **fields** (also called *member variables*).
 * Each object keeps its **own** storage for its fields.
 * **Ordinary** fields are **not shared** among objects.
 
