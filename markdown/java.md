@@ -563,7 +563,7 @@ For a **method**:
 
 # Keyword *this*
 
-* **this** is a reference to the current object &mdash; the object whose method or constructor is being called. 
+* **this** is a reference to the current object &mdash; the object whose method or constructor is currently running. 
 * You can treat the reference just like any other **object reference**. 
 
 <hr>
