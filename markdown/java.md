@@ -546,7 +546,7 @@ For a **variable**:
 .small[
 * **public**: can be referenced anywhere in the **application**.
 * **protected**: can be referenced only in **sub-classes** and in the same **package**.
-* **package** (no modifier --- default): can be referenced only in the same **package**.
+* **package** (no modifier / default): can be referenced only in the same **package**.
 * **private**: can be accessed only in the **class** it is defined in.
 ]
 
