@@ -902,7 +902,7 @@ public abstract class Animal implements Eater, Walker{
 public class Dog extends Animal implements Runner {
     public void talk() {  } // all these
     public void eat()  {  } // methods
-    public void run()  {  } // be
+    public void run()  {  } // have to be
     public void walk() {  } // implemented
 }
 ```
