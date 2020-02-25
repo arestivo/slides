@@ -255,7 +255,7 @@ Most of the times this can be difficult without **changing our design**. For exa
 .small[
 ```java
 public class DogFinder {
-  private database = new DogDatabase();
+  private DogDatabase database = new DogDatabase();
  
   public List<Dog> findBreed(String breed) {
     List<Dog> allDogs = database.getAllDogs();
@@ -280,7 +280,7 @@ public class TestDogFinder {
       DogFinder finder = new DogFinder();
       List<Dog> dogs = finder.findBreed("Border Collie");
       for (Dog dog : dogs)
-        if (!dog.getBreed().equals("Border Collie"));
+        if (!dog.getBreed().equals("Border Collie"))
           fail("Got dog from wrong breed!");
     }
 }
@@ -340,7 +340,8 @@ public class DogFinder {
 public class Application {
     public static void main(String[] args) {
         try {
-            new DogFinder(new SQLDogDatabase()).findBreed("Border Collie");
+            DogFinder finder = new DogFinder(new SQLDogDatabase());
+            finder.findBreed("Border Collie");
         } catch (Exception e) {
             e.printStackTrace();
         }
