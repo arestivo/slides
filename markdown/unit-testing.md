@@ -14,7 +14,7 @@ class: left, middle
 
 template:inverse
 # Unit Testing
-## For Java, Using JUnit
+## For Java, Using JUnit, Mockito, and PIT
 <a href="http://www.fe.up.pt/~arestivo">André Restivo</a>
 
 ---
