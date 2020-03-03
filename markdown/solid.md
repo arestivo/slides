@@ -81,7 +81,7 @@ name:symptoms
 * The **tendency** for software to be **difficult** to **change**.
 * Every **change** causes a **cascade** of subsequent **changes**.
   
-When software behaves this way, managers **fear** to allow engineers to **fix** non-critical **problems**.
+When software behaves this way, managers **fear** to allow engineers to **fix** non-critical **problems** (as they may disappear for long periods of time).
 
 ---
 
