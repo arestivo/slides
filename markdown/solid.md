@@ -127,7 +127,7 @@ name:causes
 
 * Often **changes** are **urgent**, and **hacks** are **used** to make them; even if it **deviates** from the original design.
 
-Changing requirements should **not** be **a surprise** and blaming them is the **easy way out**:
+Changing requirements should **not** be **a surprise**, and blaming them is the **easy way out**:
 
 * The **system design** must be **resilient** to these changes from the start.
 
