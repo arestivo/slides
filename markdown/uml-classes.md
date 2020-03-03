@@ -235,7 +235,7 @@ name:interfaces
 
 * The **combination** of all **public** **methods** and **properties** of an **object**.
 
-* Interfaces can also be seen as **contracts** that other classes must fulfil.
+* Interfaces can also be seen as **contracts** that other classes must fulfil (or realize).
 
 In UML, an interface is depicted just like a **class** but with a **«interface» keyword**.
 
