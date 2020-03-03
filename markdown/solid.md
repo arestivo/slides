@@ -110,7 +110,7 @@ Viscosity of the **design**:
   * The **design** preserving methods are **harder** to employ than the **hacks**.
 
 Viscosity of the **environment**:
-  * The development environment is **slow** and **inefficient** (long compilet times, complicated and long check in procedures, ...).
+  * The development environment is **slow** and **inefficient** (long compile times, complicated and long check in procedures, ...).
   * Developers end up choosing solutions that require **as few changes** as possible, **regardless** of whether the **design** is **preserved**.
 
 ---
