@@ -156,11 +156,11 @@ Inheritance is indicated by a **solid line** with a **closed**, **unfilled** arr
 
 # Abstract classes and operations
 
-**Abstract** operations are operations where the class only provides the operation **signature** and **not it's code**.
+**Abstract operations** are operations where the class only provides the operation **signature** and **not it's code**.
 
-> They are represented in *italic*.
+**Abstract classes** are classes that **contain** **abstract** operations and, therefore, cannot be instantiated.
 
-**Abstract** classes are classes that **contain** **abstract** operations and, therefore, cannot be instantiated.
+> They are **both** represented in *italic*.
 
 ![](../assets/uml-classes/abstract.svg)
 
