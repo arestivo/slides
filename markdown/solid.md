@@ -106,7 +106,7 @@ Software ends up being **rewritten**.
 # Viscosity
 
 Viscosity of the **design**: 
-  * There is **more than one** way to make a change: preserving the **design** and **hacks**.
+  * There is **more than one** way to make a change: preserving the **design**, and **hacks**.
   * The **design** preserving methods are **harder** to employ than the **hacks**.
 
 Viscosity of the **environment**:
