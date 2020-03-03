@@ -190,15 +190,15 @@ At either end of the line, you place a **role** name and a **multiplicity** valu
 Some examples of possible **multiplicities**:
 
 .simple[
-| Multiplicity 	| Option 	| Cardinality                             	|
-|--------------	|--------	|-----------------------------------------	|
-| 0..0         	| 0      	| Collection must be empty                	|
-| 0..1         	|        	| No instances or one instance            	|
-| 1..1         	| 1      	| Exactly one instance                    	|
-| 0..*         	| *      	| Zero or more instances                  	|
-| 1..*         	|        	| At least one instance                   	|
-| 5..5         	| 5      	| Exactly 5 instances                     	|
-| m..n         	|        	| At least m but no more than n instances 	|
+| Multiplicity 	| Shorthand 	| Cardinality                             	|
+|--------------	|-----------	|-----------------------------------------	|
+| 0..0         	| 0         	| Collection must be empty                	|
+| 0..1         	|           	| No instances or one instance            	|
+| 1..1         	| 1         	| Exactly one instance                    	|
+| 0..*         	| *         	| Zero or more instances                  	|
+| 1..*         	|           	| At least one instance                   	|
+| 5..5         	| 5         	| Exactly 5 instances                     	|
+| m..n         	|           	| At least m but no more than n instances 	|
 ]
 
 ---
