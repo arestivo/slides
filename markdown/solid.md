@@ -466,3 +466,28 @@ name:other
 * So it should be made **abstract** so that it can be **extended** when necessary. 
   
 * A package that is **not used** by other packages can be "**changed easily**", so it can remain **concrete**.
+
+---
+
+template: inverse
+name:other
+# An Example
+
+---
+
+# Bad Design
+
+![](../assets/solid/bad-design.svg)
+
+---
+
+# Violated Principles
+
+![](../assets/solid/violated-principles.svg)
+
+
+---
+
+# Solid Design
+
+![](../assets/solid/solid-design.svg)
