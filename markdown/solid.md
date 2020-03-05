@@ -285,10 +285,10 @@ public class Rectangle {
 
 public class Square extends Rectangle {
   public void setWidth(double width) {
-    this.width = width; this.height = height;
+    this.width = width; this.height = width;
   }
   public void setHeight(double height) {
-    this.width = width; this.height = height;
+    this.width = height; this.height = height;
   }
 }
 ~~~
