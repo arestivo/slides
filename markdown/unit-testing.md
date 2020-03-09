@@ -370,7 +370,7 @@ public class DogFinderTest {
 
   @Test
   public void findBreed() throws Exception {
-    DogFinder finder = new DogFinder(new MockDatabase());
+    DogFinder finder = new DogFinder(new StubDatabase());
     List<Dog> dogs = finder.findBreed("Border Collie");
     assertEquals("Didn't receive the expected number of dogs", 2, dogs.size());
   }
