@@ -13,7 +13,7 @@ class: left, middle
 ---
 
 template:inverse
-# Database Performance
+# Database Tuning
 ## PostgreSQL
 <a href="http://www.fe.up.pt/~arestivo">André Restivo</a>
 
