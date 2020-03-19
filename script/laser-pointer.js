@@ -1,3 +1,9 @@
+const laserListener = (event) => {
+  const svg = document.querySelector('svg.pointer')
+  svg.style.left = `${event.clientX - 5}px`
+  svg.style.top = `${event.clientY - 5}px`
+}
+
 const laserOn = () => {
   document.body.setAttribute('style', 'cursor: none;')
 
@@ -17,18 +23,16 @@ const laserOn = () => {
   document.body.appendChild(svg)
   svg.appendChild(pointer)
   
-  document.addEventListener('mousemove', (event) => {
-    const svg = document.querySelector('svg.pointer')
-    svg.style.left = `${event.clientX - 5}px`
-    svg.style.top = `${event.clientY - 5}px`
-  })
+  pointer.addEventListener('click', laserOff) 
+
+  document.addEventListener('mousemove', laserListener)
 }
 
 const laserOff = () => {
   document.body.removeAttribute('style')
   const svg = document.querySelector('svg.pointer')
   document.body.removeChild(svg)
-  document.removeEventListener('mousemove')
+  document.removeEventListener('mousemove', laserListener)
 }
 
 const laserToggle = () => {
