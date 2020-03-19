@@ -34,10 +34,7 @@
     <script src="../script/mark.min.js" type="text/javascript"></script>
     <script src="../script/remark.search.js" type="text/javascript"></script>
     <script src="../script/asciinema-player.js" type="text/javascript" defer></script>
-    
-    <?php if (isset($_GET['pointer'])) { ?> }
     <script src="../script/laser-pointer.js" type="text/javascript" defer></script>
-    <?php } ?>
 
     <script type="text/javascript">
       const hljs = remark.highlighter.engine;
@@ -54,6 +51,7 @@
       function initialize_search() {
         if (document.querySelector('.remark-slides-area') != null) {
           RemarkSearch.create();
+          document.querySelector('#laser').addEventListener('click', laserToggle)
         } else setTimeout(initialize_search, 100)
       }
 
