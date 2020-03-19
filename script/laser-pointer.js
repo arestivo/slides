@@ -1,0 +1,25 @@
+const radius = 10
+
+document.body.setAttribute('style', 'cursor: none;')
+
+const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+svg.setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:xlink', 'http://www.w3.org/1999/xlink')
+svg.classList.add('pointer')
+svg.setAttribute('style', 'z-index: 20; position: absolute; width: 10px; height: 10px; filter: blur(1px);')
+svg.setAttribute('preserveAspectRatio', 'xMidYMid meet')
+svg.setAttribute('viewBox', '0 0 10 10')
+
+const pointer = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+pointer.setAttributeNS(null, 'cx', 5)
+pointer.setAttributeNS(null, 'cy', 5)
+pointer.setAttributeNS(null, 'r', 5)
+pointer.setAttributeNS(null, 'style', 'position:absolute; fill: red; stroke: red; stroke-width: 1px' )
+
+document.body.appendChild(svg)
+svg.appendChild(pointer)
+
+document.addEventListener('mousemove', (event) => {
+  const svg = document.querySelector('svg.pointer')
+  svg.style.left = `${event.clientX - 5}px`
+  svg.style.top = `${event.clientY - 5}px`
+})
