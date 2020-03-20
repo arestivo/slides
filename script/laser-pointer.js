@@ -14,24 +14,24 @@ const paragraphListener = (event) => {
 }
 
 const paragraphFocusOn = () => {
-  const paragraphs = document.querySelectorAll('li')
+  const items = document.querySelectorAll('li,p')
 
-  paragraphs.forEach((paragraph) => {
-    paragraph.style.color = '#888'
-    paragraph.addEventListener('mouseenter', paragraphListener)
-    paragraph.addEventListener('mouseleave', paragraphListener)
+  items.forEach((item) => {
+    item.style.color = '#888'
+    item.addEventListener('mouseenter', paragraphListener)
+    item.addEventListener('mouseleave', paragraphListener)
   })
 
   state.paragraph = true
 }
 
 const paragraphFocusOff = () => {
-  const paragraphs = document.querySelectorAll('li')
+  const items = document.querySelectorAll('li,p')
 
-  paragraphs.forEach((paragraph) => {
-    paragraph.style.color = null
-    paragraph.removeEventListener('mouseenter', paragraphListener)
-    paragraph.removeEventListener('mouseleave', paragraphListener)
+  items.forEach((item) => {
+    item.style.color = null
+    item.removeEventListener('mouseenter', paragraphListener)
+    item.removeEventListener('mouseleave', paragraphListener)
   })
 
   state.paragraph = false
