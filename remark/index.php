@@ -53,6 +53,7 @@
           RemarkSearch.create();
           document.querySelector('#laser').addEventListener('click', laserToggle)
           document.addEventListener('keyup', (e) => { if (e.key == 'l') laserToggle() })
+          document.addEventListener('keyup', (e) => { if (e.key == 'x') paragraphFocusToggle() })
         } else setTimeout(initialize_search, 100)
       }
 

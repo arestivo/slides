@@ -1,10 +1,43 @@
+const state = { laser : false, paragraph : false }
+
 const laserListener = (event) => {
   const svg = document.querySelector('svg.pointer')
   svg.style.left = `${event.clientX - 5}px`
   svg.style.top = `${event.clientY - 5}px`
 }
 
-const laserOn = () => {
+const paragraphListener = (event) => {
+  if (event.type == 'mouseenter')
+    event.target.style.color = null
+  if (event.type == 'mouseleave')
+    event.target.style.color = "#888"
+}
+
+const paragraphFocusOn = () => {
+  const paragraphs = document.querySelectorAll('li')
+
+  paragraphs.forEach((paragraph) => {
+    paragraph.style.color = '#888'
+    paragraph.addEventListener('mouseenter', paragraphListener)
+    paragraph.addEventListener('mouseleave', paragraphListener)
+  })
+
+  state.paragraph = true
+}
+
+const paragraphFocusOff = () => {
+  const paragraphs = document.querySelectorAll('li')
+
+  paragraphs.forEach((paragraph) => {
+    paragraph.style.color = null
+    paragraph.removeEventListener('mouseenter', paragraphListener)
+    paragraph.removeEventListener('mouseleave', paragraphListener)
+  })
+
+  state.paragraph = false
+}
+
+const laserOn = (event) => {
   document.body.setAttribute('style', 'cursor: none;')
 
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
@@ -26,18 +59,21 @@ const laserOn = () => {
   pointer.addEventListener('click', laserOff) 
 
   document.addEventListener('mousemove', laserListener)
+
+  state.laser = true
+
+  if (event) event.preventDefault()
 }
 
 const laserOff = () => {
   document.body.removeAttribute('style')
   const svg = document.querySelector('svg.pointer')
-  document.body.removeChild(svg)
+
+  if (svg) document.body.removeChild(svg)
   document.removeEventListener('mousemove', laserListener)
+
+  state.laser = false
 }
 
-const laserToggle = () => {
-  const svg = document.querySelector('svg.pointer')
-
-  if (svg == undefined) laserOn()
-  else laserOff()
-}
+const laserToggle = () => !state.laser ? laserOn() : laserOff()
+const paragraphFocusToggle = () => !state.paragraph ? paragraphFocusOn() : paragraphFocusOff()
