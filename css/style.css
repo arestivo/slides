@@ -5,6 +5,9 @@ body {
   --light-bg-color: #fef9f8;
   --box-bg-color: #fef9f8;
 }
+body.laser {
+  cursor: url(../images/laser.png), auto;
+}
 
 .remark-slide-content {
   background-color: var(--light-bg-color);
