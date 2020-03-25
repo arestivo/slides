@@ -157,6 +157,10 @@ img {
     padding-right: 1em;
 }
 
+.noheader table th {
+  display: none;
+}
+
 table td{
   padding: 0.5em;
   background-color: #373832;
