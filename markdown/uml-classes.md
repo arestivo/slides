@@ -33,6 +33,7 @@ name:index
 1. [Associations](#associations)
 1. [Interfaces](#interfaces)
 1. [Aggregation](#aggregation)
+1. [Dependency](#dependency)
 ]
 
 ---
@@ -283,3 +284,18 @@ name:aggregation
 
 ![](../assets/uml-classes/composition.svg)
 
+---
+
+template: inverse
+name:dependency
+# Dependency
+
+---
+
+# Dependency
+
+Represents a **dependency** between two elements of a UML diagram (e.g., classes). 
+
+Important when we want to show that **changes** to an element **may impact** another one; even when there is no association (as in an attribute referencing the other class) between them.
+
+![](../assets/uml-classes/dependency.svg)
