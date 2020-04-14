@@ -385,7 +385,7 @@ For this reason, Java **generics are invariant**. We can deal with this problem 
 ~~~java
 List<Zebra> zebras = new ArrayList<>();
 List<Zebra> theSameZebras = zebras; // Ok.
-List<Animal> animals = zebras; // Incompatible types.
+List<Animal> animals = zebras; // Incompatible types (compile-time error).
 ~~~
 
 ---
