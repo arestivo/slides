@@ -378,7 +378,9 @@ This will throw an **exception** at **runtime**, as the **animals** array is sti
 
 With generic types, due to something called **"type erasure"**, Java has no way of knowing at runtime the type information of the type parameters.
 
-Because of this, **generics are invariant**.
+Due to historical reasons, arrays are **covariant** but we have to deal with runtime exceptions.
+
+For this reason, **generics are invariant**. We can deal with this problem in a more sophisticated way using **wildcards**.
 
 ~~~java
 List<Zebra> zebras = new ArrayList<>();
