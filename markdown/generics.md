@@ -381,9 +381,9 @@ With generic types, due to something called **"type erasure"**, Java has no way 
 Because of this, **generics are invariant**.
 
 ~~~java
-ArrayList<Zebra> zebras = new ArrayList<>();
-ArrayList<Zebra> theSameZebras = zebras; // Ok.
-ArrayList<Animal> animals = zebras; // Incompatible types.
+List<Zebra> zebras = new ArrayList<>();
+List<Zebra> theSameZebras = zebras; // Ok.
+List<Animal> animals = zebras; // Incompatible types.
 ~~~
 
 ---
@@ -399,9 +399,9 @@ name:wildcards
 Instead of a **type variable** like **&lt;T&gt;**, we can use a wildcard like **&lt;?&gt;** to represent an unknown type:
 
 ~~~java
-ArrayList<Zebra> zebras = new ArrayList<>();
-ArrayList<Zebra> theSameZebras = zebras; // Ok.
-ArrayList<?> animals = zebras;
+List<Zebra> zebras = new ArrayList<>();
+List<Zebra> theSameZebras = zebras; // Ok.
+List<?> animals = zebras;
 ~~~
 
 Or create a method that receives a list of **"unknowns"**.
@@ -455,7 +455,7 @@ A list of animals or any supertype (lower-bounded):
 List<? super Animal> animals = new ArrayList<>();
 ~~~
 
-Upper-bounded wildcards are **variant**, while lower-bounded wildcards are **contravariant**. 
+Upper-bounded wildcards are **covariant**, while lower-bounded wildcards are **contravariant**. 
 
 ---
 
