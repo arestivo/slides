@@ -538,7 +538,7 @@ public interface Observer<T> {
 # Generic Observable Class
 
 ~~~java
-public class Observable<T> {
+public abstract class Observable<T> {
     private List<Observer<T>> observers;
 
     public Observable() {
