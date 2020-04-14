@@ -376,11 +376,11 @@ This will throw an **exception** at **runtime**, as the **animals** array is sti
 
 # Generics
 
-With generic types, due to something called **"type erasure"**, Java has no way of knowing at runtime the type information of the type parameters.
+Due to something called **"type erasure"**, Java has no way of knowing at runtime the type information of the type parameters.
 
-Due to historical reasons, arrays are **covariant** but we have to deal with runtime exceptions.
+For historical reasons, arrays are **covariant** but we have to deal with runtime exceptions.
 
-For this reason, **generics are invariant**. We can deal with this problem in a more sophisticated way using **wildcards**.
+For this reason, Java **generics are invariant**. We can deal with this problem in a more sophisticated way using **wildcards**.
 
 ~~~java
 List<Zebra> zebras = new ArrayList<>();
