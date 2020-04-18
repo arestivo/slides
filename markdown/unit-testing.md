@@ -451,6 +451,8 @@ ArrayList mockList = Mockito.mock(ArrayList.class);
 doThrow(NullPointerException.class).when(mockList).clear();
 ```
 
+[When/Then Cookbook](https://www.baeldung.com/mockito-behavior)
+
 ---
 
 # Verify
@@ -467,6 +469,8 @@ public void findBreedCallsDatabaseOnlyOnce() throws Exception {
   Mockito.verify(mockDatabase, times(1)).getAllDogs();
 }
 ```
+
+[Verify CookBook](https://www.baeldung.com/mockito-verify)
 
 ---
 
