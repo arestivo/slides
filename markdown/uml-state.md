@@ -29,10 +29,10 @@ name:index
 .indexlist[
 1. [Introduction](#introduction)
 1. [Basic Components](#basic)
-1. [Pseudo States](#pseudostates)
 1. [Composite States](#composite)
-2. [History State](#history)
-3. [Concurrent Regions](#concurrent)
+1. [Pseudo States](#pseudostates)
+1. [History State](#history)
+1. [Concurrent Regions](#concurrent)
 ]
 
 ---
