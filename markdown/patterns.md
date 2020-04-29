@@ -538,7 +538,7 @@ name:abstract-factory
 
 # Applicability
 
-Use the **asbtract factory** pattern when:
+Use the **abstract factory** pattern when:
 
 * a system should be independent from how its products are created, composed and represented.
 * a system should be configurable with one or more families of products.
