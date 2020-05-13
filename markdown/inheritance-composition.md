@@ -487,3 +487,4 @@ name:delegation
 * Monkey Patching (Javascript, Python, ...)
 * Traits and Mixins (Scala, Ruby, ...)
 * Extension Methods (C#, Kotlin, ...)
+* Type Classes (Haskell, Scala, Rust)
