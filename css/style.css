@@ -357,6 +357,11 @@ code.has-jax {
   margin: .1em;
 }
 
+.inline-code {
+  font-family: 'Ubuntu Mono';
+  color: #FC4A1A;
+}
+
 .badge {
   font-size: 0.2em;
   border: 1px solid;
