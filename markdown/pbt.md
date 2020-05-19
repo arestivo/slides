@@ -229,4 +229,123 @@ In this report we can see the number of test runs for this property (.inline-cod
 
 ---
 
-# 
+# Configuring Runs
+
+We can change some configuration parameters for each test:
+
+```java
+@Property(tries = 2000, 
+          seed="259083988309207343", 
+          afterFailure = AfterFailureMode.RANDOM_SEED)
+public void testDoubleReverse(@ForAll List<Integer> list) {
+  assert(reverseList(reverseList(list)).equals(list));
+}
+```
+
+---
+
+# Shrinking
+
+The advantage of using arbitraries instead of just using random data generators, is that arbitraries know how to **shrink**:
+
+```java
+@Property
+public void testDifferenceAssociativity(
+    @ForAll int a, 
+    @ForAll int b, 
+    @ForAll int c) {
+  assert((a - b) - c == a - (b - c));
+}
+```
+
+```
+                              |-------------------jqwik-------------------
+tries = 1                     | # of calls to property
+checks = 1                    | # of not rejected calls
+generation-mode = RANDOMIZED  | parameters are randomly generated
+after-failure = PREVIOUS_SEED | use the previous seed
+seed = -1077203421743176744   | random seed to reproduce generated values
+sample = [0, 0, -1]
+original-sample = [-304, -133, -84]
+```
+
+This allows us to find smaller examples that are easier to understand.
+
+---
+
+# An Hero example...
+
+Testing if the arena bounds are correctly checked:
+
+```java
+@Property
+public void testArenaBounds(@ForAll @IntRange(min = 1, max = 100) int width,
+                            @ForAll @IntRange(min = 1, max = 100) int height,
+                            @ForAll int x,
+                            @ForAll int y) {
+  Arena arena = new Arena(width, height, null);
+
+  assert(x >= 0 || !arena.isInBounds(new Position(x, y)));
+  assert(y >= 0 || !arena.isInBounds(new Position(x, y)));
+  assert(x < arena.getWidth() || !arena.isInBounds(new Position(x, y)));
+  assert(y < arena.getHeight() || !arena.isInBounds(new Position(x, y)));
+}
+```
+
+---
+
+# ...or two!
+
+Testing if the hero never leaves the arena:
+
+```java
+@Property
+public void testMovingBounds(@ForAll List<ArenaView.ACTION> actions) 
+    throws IOException {
+  
+  Hero hero = new Hero(new Position(2, 2));
+  Arena arena = new Arena(5, 5, hero);
+  ArenaViewMock view = new ArenaViewMock(actions);
+  GameController controller = new GameController(arena, view);
+
+  while (view.hasMoreActions()) {
+    controller.step();
+
+    assert (hero.getPosition().getX() >= 0);
+    assert (hero.getPosition().getY() >= 0);
+
+    assert (hero.getPosition().getX() < arena.getWidth());
+    assert (hero.getPosition().getY() < arena.getHeight());
+  }
+}
+```
+
+---
+
+# Mocking for PBT
+
+In this second example we had to create a specialized **mock** for the .inline-code[ArenaView] class:
+
+```java
+public class ArenaViewMock extends ArenaView {
+  private List<ACTION> actions;
+
+  public ArenaViewMock(List<ACTION> actions) 
+      throws IOException {
+    super(null, null);
+    this.actions = actions;
+  }
+
+  @Override
+  public ACTION getAction() throws IOException {
+    ACTION action = actions.get(0);
+    actions.remove(0);
+    return action;
+  }
+
+  @Override
+  public void draw() throws IOException { // Do nothing }
+
+  public boolean hasMoreActions() { return actions.size() > 0; }
+}
+```
