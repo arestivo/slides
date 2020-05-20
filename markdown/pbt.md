@@ -208,11 +208,7 @@ So nice things:
 
 * The **small-scope hypothesis** claims that **most inconsistent models have counterexamples within _small bounds_**;
 * Think about most bugs you find in code that involves integers:
-  * **Zero** tends to be problematic...
-
---
-
-  * So does **-1** and **1**...
+  * **Zero** tends to be problematic... So does **-1** and **1**...
 
 --
 
