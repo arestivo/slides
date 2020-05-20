@@ -151,7 +151,7 @@ Let's think about sum. What can you tell us that are true for all sums without t
 
 --
 
-* Summing .inline-code[a] with .inline-code[b] is the same as summing .inline-code[a-1] with .inline-code[b+1]: <br>.inline-code[a + b = (a-1) + (a+1)]
+* Summing .inline-code[a] with .inline-code[b] is the same as summing .inline-code[a-1] with .inline-code[b+1]: <br>.inline-code[a + b = (a-1) + (b+1)]
 
 --
 
