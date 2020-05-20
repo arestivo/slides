@@ -15,7 +15,7 @@ class: left, middle
 ---
 
 template:inverse
-# Property Based Testing
+# Property-Based Testing
 ## Using jqwik for Java
 <a href="http://www.fe.up.pt/~arestivo">André Restivo</a> /
 <a href="http://hugosereno.eu">Hugo Sereno</a>
@@ -132,10 +132,10 @@ class: top
 
 template: inverse
 name:pbt
-# Property-Based testing 
+# Property-Based Testing 
 
 ---
-# Property-Based testing 
+# Property-Based Testing 
 
 > ... also known as the art of specifying the constraints of the outcome and asking the computer to find out if our code complies. 
 
