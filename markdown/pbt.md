@@ -227,7 +227,7 @@ So nice things:
 --
 
 * PBT frameworks call this **biased** search, and considers it for you;
-* It is up to the Arbitrary to define their **bias**;
+* It is up to the Arbitrary to define their **bias**.
 
 ---
 
