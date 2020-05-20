@@ -143,7 +143,7 @@ Let's think about sum. What can you tell us that are true for all sums without t
 
 --
 
-* Summing .inline-code[a] with 0 (or to 0), is the same as doing nothing: <br>.inline-code[a + 0 = 0 + a = 0]
+* Summing .inline-code[a] with 0 (or to 0), is the same as doing nothing: <br>.inline-code[a + 0 = 0 + a = a]
 
 --
 
