@@ -233,7 +233,7 @@ So nice things:
 
 # Shrinking
 
-Imagine testing if your Hero can walk out of the arena.
+Imagine testing if your *hero* can walk out of the *arena*.
 
 If we do a **random search**, we might end up with a counter example that is similar do this:
 
