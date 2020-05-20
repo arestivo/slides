@@ -27,15 +27,253 @@ name:index
 # Index
 
 .indexlist[
-1. [Introduction](#intro)
-2. [jqwik](#jqwik)
+1. [Testing 101](#testing)
+1. [Property Based Testing](#pbt)
+1. [jqwik](#jqwik)
 ]
 
 ---
 
+template:inverse
+name:testing
+# Testing 101
+
+---
+
+# The Novice Programmer
+
+Everyone likes to reimplement stuff from scratch; in that spirit, let us code our own sum function:
+
+~~~java
+public int mySum(int a, int b) {
+  int accumulator = a;
+  while(b > 0) {
+    a++;
+    b--;
+  }
+  return accumulator;
+}
+~~~
+
+How should one proceed to test it? Many will write something like this:
+
+~~~java
+@Test
+public int mySumTest() {
+  assertEquals(2, sum(1, 1)); 
+  assertEquals(4, sum(2, 2)); 
+  assertEquals(8, sum(4, 4)); 
+}
+~~~
+
+Everything is awesome! All tests are passing!...
+
+---
+
+# The Lurking Bug
+
+There's indeed a bug in the implementation. Look at the code very carefully:
+
+~~~java
+public int mySum(int a, int b) {
+  int accumulator = a;
+  while(b > 0) {
+    a++;
+    b--;
+  }
+  return accumulator;
+}
+~~~
+
+What happens when you try something like `mySum(2, -3)`?
+
+~~~raw
+Expected -1; got 2.
+~~~
+
+---
+
+# The Intermediate Programmer
+
+*But that is stupid! Why don't we use the *`+`* operator?* — an older student.
+
+~~~java
+public int mySum(int a, int b) {
+  return a + b;
+}
+~~~
+
+*... and proceed to test for a range!* — the same older student.
+
+~~~java
+@Test
+public int mySumTest() {
+  for (int a = 0; a < 1000; a++)
+    for (int b = 0; b < 1000; b++)
+      assertEquals(a + b, sum(a, b)); 
+}
+~~~
+
+---
+
+class: center
+class: top
+
+![](../assets/pbt/batman.png)
+
+---
+
+# The problem of testing
+
+* ... we test what we know. Because if we knew what we didn't know, we would do it right.
+* ... so how can we test what we don't know?
+
+---
+
 template: inverse
-name:intro
-# Introduction
+name:pbt
+# Property-Based testing 
+
+---
+# Property-Based testing 
+
+> ... also known as the art of specifying the constraints of the outcome and asking the computer to find out if our code complies. 
+
+Let's think about sum. What can you tell us that are true for all sums without testing for a specific sum?
+
+--
+
+* Summing .inline-code[a] with 0 (or to 0), is the same as doing nothing: <br>.inline-code[a + 0 = 0 + a = 0]
+
+--
+
+* Summing .inline-code[a] with .inline-code[b] is the same as summing .inline-code[b] with .inline-code[a]: <br>.inline-code[a + b = b + a]
+
+--
+
+* Summing .inline-code[a] with .inline-code[b] is the same as summing .inline-code[a-1] with .inline-code[b+1]: <br>.inline-code[a + b = (a-1) + (a+1)]
+
+--
+
+* Summing .inline-code[a] with .inline-code[b] and then with .inline-code[c] is the same as: <br>.inline-code[a + (b + c) = (a + b) + c]
+
+---
+
+# Challenge
+
+Suppose you don't have access to the .inline-code[+] operator. How can we implement a test that uses the above properties to verify if our sum is working?
+
+---
+
+# So what is PBT?
+
+* ... usage of Arbitraries;
+* ... usage of Statistics to cover the search space and provide confidence;
+* ... usage of Properties to specify the external behavior of our system and search for counter-examples;
+
+So nice things:
+
+* ... Reproducibility (via paths and seeds);
+* ... Shrinking (smallest cases that reproduce the bug).
+
+---
+
+# Arbitraries
+
+* An **Arbitrary** is a **random generator** of a particular class (or primitive); 
+* If you recall discrete mathematics, it's the equivalent of saying:
+  * _for a given x, where x is a natural number_
+* In code, we can think of .inline-code[x] an object of .inline-code[Arbitrary<Integer>];
+
+--
+
+* Most frameworks provide us .inline-code[Arbitrary<T>] for several **common cases**:
+  * Numbers (.inline-code[Integers], .inline-code[Double]...)
+  * Booleans
+  * Collections (.inline-code[ArrayList], .inline-code[HashSet]...)
+
+--
+
+* You can also define your own Arbitraries, either by:
+  * **Mapping built-in** Arbitraries;
+  * Creating them from **scratch**.
+
+--
+
+* There are things that make an Arbitrary more useful than being **merely a random generator**, which is (next slide)... 
+
+---
+
+# ... Statistics
+
+* The **small-scope hypothesis** claims that **most inconsistent models have counterexamples within _small bounds_**;
+* Think about most bugs you find in code that involves integers:
+  * **Zero** tends to be problematic...
+
+--
+
+  * So does **-1** and **1**...
+
+--
+
+  * -128, 129, 256, 32769, -32768, 65536... why?
+
+--
+
+  * And **Infinity** and **-Infinity**...
+* So, while you would need to **cover all the space** to gain **perfect knowledge**, in practice, a **small number** of instances of certain Arbitraries are responsible for most bugs;
+* Can you think of .inline-code[ArrayList]'s that usually triggers buggy code?
+
+--
+
+  * The **empty list**!
+
+--
+
+* PBT frameworks call this **biased** search, and considers it for you;
+* It is up to the Arbitrary to define their **bias**;
+
+---
+
+# Shrinking
+
+If we do a **random search**, we might end up with a counter example that is similar do this
+
+```
+[UP, DOWN, LEFT, LEFT, LEFT, UP, LEFT, UP, DOWN, DOWN, LEFT, LEFT, UP, LEFT, UP, DOWN, 
+LEFT, LEFT, LEFT, UP, LEFT, UP, DOWN, DOWN, LEFT, LEFT, UP, LEFT, UP, DOWN, LEFT, LEFT, 
+LEFT, UP, LEFT, UP, DOWN, DOWN, LEFT, LEFT, UP, LEFT, UP, DOWN, LEFT, LEFT, LEFT, UP, 
+LEFT, UP, DOWN, DOWN, LEFT, LEFT, UP, LEFT, UP, DOWN, LEFT, LEFT, LEFT, UP, LEFT, UP, 
+DOWN, DOWN, LEFT, LEFT, UP, LEFT, UP, DOWN, LEFT, LEFT, LEFT, UP, LEFT, UP, DOWN, DOWN, 
+LEFT, LEFT, UP, LEFT, UP, DOWN, LEFT, LEFT, LEFT, UP, LEFT, UP, DOWN, DOWN, LEFT, LEFT]
+```
+
+Can we do **better** (what is better?)
+
+---
+
+# Shrinking (Part II)
+
+* **Short Answer:** Yes;
+* **Long Answer:** Yes, but it's _not easy_, though the frameworks usually help.
+
+--
+
+The trick relies in **shrinking**. Once you've **found something** that produces **a counter-example**, you can attempt to **mutate** it in order to find a **smaller** counter-example:
+
+* It's easier if you think about numbers. Imagine that a bug triggers with **negative numbers**; as soon as the computer finds that -5234153245 leads to an error, it can **try to shrink it**. 
+
+--
+
+* How can we **shrink a number**? What about **decreasing its magnitude**? Does -5234153245/2=-2617076622 also produces a counter example? **Yes**.
+
+--
+
+* If you apply **shrinking strategies recursively**, you'll eventually reach -1. Which is a much nicer counter-example to deal with :)
+
+--
+
+Can you think of **strategies** to shrink an .inline-code[ArrayList]?
 
 ---
 
@@ -45,25 +283,36 @@ name:intro
 
 ---
 
+# jqwik
+
+The main purpose of **jqwik** is to bring **Property-Based Testing** (PBT) to the **JVM**.
+
+A **property** is supposed to describe a **generic invariant** or **post-condition** of your code, given some **precondition**.
+
+**jqwik** will then try to **generate** many **value sets** that fulfill the precondition hoping that one of the generated sets can **falsify** a **wrong assumption**.
+
+[jqwik documentation](https://jqwik.net/docs/current/user-guide.html)
+
+---
+
 # Gradle
 
-To use jqwik, you just need to add the following to your build.gradle:
+To use **jqwik**, you just need to add the following to your build.gradle:
 
 ```
 test {
     useJUnitPlatform {
-        includeEngines 'jqwik'
+        includeEngines ('junit-jupiter', 'jqwik')
     }
-
-    include '**/*Test.class'
 }
 
 dependencies {
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.6.2'
     testCompile group: 'net.jqwik', name: 'jqwik', version: '1.2.7'
 }
 ```
 
-**Notice** that we are defining that our tests are inside classes with a name ending in **Test**.
+**Notice** that we need to use JUnit5 instead of JUnit4.
 
 ---
 
@@ -114,21 +363,21 @@ Sometimes we want to constrain the generated parameters. For example, the follow
 
 ```java
 @Property
-public void testReverseChangesList(@ForAll List<Integer> list) {
-  assert(!reverseList(list).equals(list));
+public void testDivision(@ForAll int number) {
+  assertEquals(1, number / number);
 }
 ```
 
-Does not hold for some lists (*e.g.*, empty and single-element), so we can use the .inline-code[@Size] annotation to constrain the generated lists:
+Does not work if the number is zero, so we can use the .inline-code[@Positive] annotation to constrain the number:
 
 ```java
 @Property
-public void testReverseChangesList(@ForAll @Size(min = 2) List<Integer> list) {
-  assert(!reverseList(list).equals(list));
+public void testDivision(@ForAll @Positive int number) {
+  assertEquals(1, number / number);
 }
 ```
 
-There are still some edges cases that will not hold, can you find them?
+Maybe this should also work for negative numbers!
 
 ---
 
@@ -162,28 +411,26 @@ private int sum(List<Integer> list) {
 }
 ```
 
-This property does not hold, why? Also, try fixing the .inline-code[testReverseChangesList()] test.
+This property does not hold, why?
 
 ---
 
 # Arbitrary
 
-If the default generators are not enough, we can use the .inline-code[@Provide] annotation and .inline-code[Arbitrary] class to create new generators:
+If the **default generators** are **not enough**, we can use the .inline-code[@Provide] annotation and .inline-code[Arbitrary] class to create **new generators**:
+
+
+Fixing the .inline-code[testDivision] test:
 
 ```java
-@Property void testWithPrimes(@ForAll("primeNumbers") int prime) {
-  // do some testing using prime
+@Property
+public void testDivision(@ForAll("notZero") int number) {
+  assertEquals(1, number / number);
 }
 
 @Provide
-Arbitrary<Integer> primeNumbers() {
-  return Arbitraries.integers().greaterOrEqual(2).filter(n -> isPrime(n));
-}
-
-private boolean isPrime(Integer n) {
-  for(int i=2;i<=Math.sqrt(n);i+=2)
-    if(n%i==0) return false;
-  return true;
+Arbitrary<Integer> notZero() {
+  return Arbitraries.integers().filter(n -> n != 0);
 }
 ```
 
@@ -207,6 +454,31 @@ Arbitrary<String> carPlates() {
     Arbitraries.strings().numeric().ofLength(2),
     Arbitraries.strings().numeric().ofLength(2)
   ).as((s1, s2, s3) -> s1.toUpperCase() + "-" + s2  + "-" + s3);
+}
+```
+
+---
+
+# Another Arbitrary Example
+
+A prime number cannot be divided by any(?) other number:
+
+```java
+@Provide
+Arbitrary<Integer> primeNumbers() {
+  return Arbitraries.integers().greaterOrEqual(2).filter(n -> isPrime(n));
+}
+
+private boolean isPrime(Integer n) {
+  for(int i=2;i<=Math.sqrt(n);i++)
+    if(n%i==0) return false;
+  return true;
+}
+
+@Property void testWithPrimes(
+    @ForAll @IntRange(min = 2) int number, 
+    @ForAll("primeNumbers") int prime) {
+  assert(prime == number || prime % number != 0);
 }
 ```
 
