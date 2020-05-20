@@ -233,7 +233,9 @@ So nice things:
 
 # Shrinking
 
-If we do a **random search**, we might end up with a counter example that is similar do this
+Imagine testing if your Hero can walk out of the arena.
+
+If we do a **random search**, we might end up with a counter example that is similar do this:
 
 ```
 [UP, DOWN, LEFT, LEFT, LEFT, UP, LEFT, UP, DOWN, DOWN, LEFT, LEFT, UP, LEFT, UP, DOWN, 
