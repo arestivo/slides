@@ -242,7 +242,7 @@ public class Square extends Shape {
 ~~~
 
 ~~~java
-public class Square extends Circle {
+public class Circle extends Shape {
     public void draw() {
         //...
     }
