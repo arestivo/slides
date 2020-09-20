@@ -56,7 +56,7 @@ template:normal
 * Markup language used to create web pages;
 * Written using HTML **elements**;
 * **Not** for design or presentation;
-* All about structure and semantics.
+* All about structure and **semantics**.
 
 ---
 
