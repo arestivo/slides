@@ -53,10 +53,10 @@ template:normal
 # What is it?
 
 * **H**yper **T**ext **M**arkup **L**anguage;
-* Markup language used to create web pages;
+* **Markup** language used to create **web pages**;
 * Written using HTML **elements**;
 * **Not** for design or presentation;
-* All about structure and **semantics**.
+* All about **structure** and **semantics**.
 
 ---
 
