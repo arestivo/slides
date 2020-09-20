@@ -101,6 +101,11 @@ Source: http://www.w3counter.com/trends
 * They are defined using **tags** and can have **attributes**;
 * Browsers display each tag using a **predefined** style that can be changed using CSS.
 
+<hr>
+
+* **HTML** tells the browser how the document is **structured**;
+* **CSS** tells the browser how it should be **displayed**.
+
 ---
 
 # Tags
@@ -151,7 +156,6 @@ template:inverse
 name:resources
 # Resources
 * References:
-  * [W3C Standard](http://www.w3.org/TR/html-markup/)
   * [WHATWG Living Standard](https://html.spec.whatwg.org/multipage/)
   * [Mozilla Developer Network (MDN) Reference](http://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 * Books:
@@ -172,12 +176,14 @@ name:document
 # Tree Structure
 
 * HTML elements form a **tree** like structure;
-* Some HTML elements can have children. Those have **start** and **end** tags;
-* HTML elements that do not allow children only have an opening tag.
+* **Some** HTML elements can have **children**. Those have **start** and **end** tags;
+* HTML elements that **do not allow children** only have an **opening** tag.
 
 ---
 
 # Example
+
+Partial HTML document tree:
 
 ![](../assets/html5/tree.png)
 ```html
@@ -191,21 +197,23 @@ name:document
 ---
 
 
-# Basic Document
+# The Most Basic Document
 
 * All HTML documents have a **html** root tag.
 * They all contain a **head** and **body** sections.
 * The head section *must* contain a **title** tag.
 * The html tag *should* contain a **lang** [attribute](https://www.w3.org/International/articles/language-tags/index.en) (e.g. "pt-PT" or "en-US").
 ```html
-<html lang="en-US">
-   <head>
-     <title>Title</title>
-   </head>
-   <body>
-   </body>
-</html>
+  <html lang="en-US">
+      <head>
+        <title>Title</title>
+      </head>
+      <body>
+      </body>
+  </html>
 ```
+
+There's still something missing in this example... But we'll get there!
 
 ---
 
@@ -215,6 +223,19 @@ name:basic
 
 ---
 
+# Paragraphs and Line Breaks
+
+```html
+<p>This is a paragraph.</p> <!-- this is a comment btw -->
+<p>
+This is another paragraph<br> <!-- br is an empty tag -->
+with a line break.
+</p>
+```
+
+![](../assets/html5/paragraphs.png)
+
+---
 
 # Headings
 
@@ -223,7 +244,7 @@ name:basic
 
 ```html
 <h1>Title</h1> <!-- only one per document -->
-<h2>Subtitle</h2> <!-- this is a comment btw -->
+<h2>Subtitle</h2>
 <h3>Section</h3>
 <h4>Sub-section</h4>
 <h5>Each one less important...</h5>
@@ -236,21 +257,6 @@ template:inverse
 # Example
 
 ![](../assets/html5/headings.png)
-
----
-
-
-# Paragraphs and Line Breaks
-
-```html
-<p>This is a paragraph.</p>
-<p>
-This is another paragraph<br> <!-- empty tag -->
-with a line break.
-</p>
-```
-
-![](../assets/html5/paragraphs.png)
 
 ---
 
@@ -286,10 +292,17 @@ The **width** and **height** attributes are optional and should not be used to r
 
 ---
 
-# Common Attributes
+# Some Common Attributes
+
+* **id**: Identifies a unique element. The value of id can be used by CSS and scripting languages to reference that element. The value of the id attribute **must be unique**.
+* **class**: Identifies a class of elements. Any number of elements **can have the same value**. Elements can have **several classes** separated by *whitespace*.
+
+<hr>
 
 * **hidden**: Specifies that an element is not yet, or is no longer, relevant.
 * **accesskey**: Specifies a shortcut key to activate/focus an element.
+* **title**: Adds a title to an element. Many browsers will display the value of this attribute when the element is hovered-over or is in focus.
+
 
 ---
 
@@ -1003,7 +1016,7 @@ Div is a generic **block** tag that can be used to define sections of a website:
 
 * Semantic tags tell the browser something about what's inside them.
 * Tags like **div** and **span** tell nothing!
-* HTML 5 brings a whole new set of semantic tags to replace commonly used div blocks.
+* HTML 5 brings a whole new set of semantic tags to **replace** commonly used div blocks.
 
 
 ![](../assets/html5/semantics.png)
@@ -1059,16 +1072,16 @@ Represents a footer for its nearest sectioning content or sectioning root elemen
         <ul>
       </nav>
     </header>
-    <div id="main">
+    <main>
       <section id="news">
-        <h2>News</h2>
+        <header><h2>News</h2></header>
         <article>
           <h3>Great news everyone!</h3>
           <p>...</p>  
           <footer>Author: Hubert J. Farnsworth</footer>
         </article>
       </section>
-    </div>
+    </main>
     <footer>
       Copyright: Mad Scientists News 2018
     </footer>
@@ -1152,9 +1165,9 @@ name:doctype
 # Document Type
 
 * The Document Type declaration is **not** an HTML tag;
-* It must be the first thing on your document;
-* It tells the browser which HTML version you are using;
-* For HTML 5 just use:
+* It **must** be the **first** thing on your document;
+* It tells the browser which **HTML version** you are using;
+* For **HTML 5** just use:
 
 ```html
 <!DOCTYPE html>
@@ -1200,7 +1213,7 @@ You can define metadata for your document inside the head tag.
 
 # Character Set
 
-Defining the character set used by the document.
+Defining the [character encoding](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/) used by the document.
 
 ```html
 <head>
