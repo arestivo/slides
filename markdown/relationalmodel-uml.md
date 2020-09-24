@@ -497,7 +497,7 @@ Played (#name &rarr; Team, <u>#year &rarr; Season</u>, <u>#id &rarr; Player</u>,
 
 ---
 
-# Generalizations (method #1)
+# Inheritance (method #1)
 
 ![](../assets/uml/generalization.svg)
 
@@ -510,7 +510,7 @@ Played (#name &rarr; Team, <u>#year &rarr; Season</u>, <u>#id &rarr; Player</u>,
 .small.relational_example[
 Person (<u>num</u>, name, type)
 
-Doctor (<u>#num &rarr; Person</u>, speciality)
+Doctor (<u>#num &rarr; Person</u>, specialty)
 
 Patient (<u>#num &rarr; Person</u>, ensurance)
 
@@ -520,7 +520,7 @@ Appointment (<u>id</u>, #numd &rarr; Doctor [NN], #nump &rarr; Patient [NN], dat
 
 ---
 
-# Generalizations (method #2)
+# Inheritance (method #2)
 
 ![](../assets/uml/generalization.svg)
 
@@ -529,7 +529,7 @@ Appointment (<u>id</u>, #numd &rarr; Doctor [NN], #nump &rarr; Patient [NN], dat
 * Can become complex if generic class has many attributes and associations.
 
 .small.relational_example[
-Doctor (<u>num</u>, name, speciality)
+Doctor (<u>num</u>, name, specialty)
 
 Patient (<u>num</u>, name, ensurance)
 
@@ -539,16 +539,16 @@ Appointment (<u>id</u>, #numd &rarr; Doctor [NN], #nump &rarr; Patient [NN], dat
 
 ---
 
-# Generalizations (method #3)
+# Inheritance (method #3)
 
 ![](../assets/uml/generalization.svg)
 
-* Needs extra code to ensure an appointment is between a doctor and a patient, only doctors have a speciality and patients an ensurance;
+* Needs extra code to ensure an appointment is between a doctor and a patient, only doctors have a specialty and patients an ensurance;
 * Easy to ensure disjoint generalization;
 * Can become complex if specialized classes have many attributes and associations.
 
 .small.relational_example[
-Person (<u>num</u>, name, speciality, ensurance, type)
+Person (<u>num</u>, name, specialty, ensurance, type)
 
 Appointment (<u>id</u>, #numd &rarr; Person [NN], #nump &rarr; Person [NN], date)
 
@@ -556,14 +556,14 @@ Appointment (<u>id</u>, #numd &rarr; Person [NN], #nump &rarr; Person [NN], date
 
 ---
 
-# Generalizations (method #4)
+# Inheritance (method #4)
 
 ![](../assets/uml/generalization.svg)
 
 Same as previous but for overlapped generalizations.
 
 .small.relational_example[
-Person (<u>num</u>, name, speciality, ensurance, isdoctor, ispatient)
+Person (<u>num</u>, name, specialty, ensurance, isdoctor, ispatient)
 
 Appointment (<u>id</u>, #numd &rarr; Person [NN], #nump &rarr; Person [NN], date)
 
@@ -587,11 +587,11 @@ name: example
 # Solution
 
 .relational_example[
-Speciality (<u>cod</u>, name)
+Specialty (<u>cod</u>, name)
 
 Person (<u>num</u>, name, address)
 
-Doctor (<u>#num &rarr; Person</u>, phone, #cod &rarr; Speciality)
+Doctor (<u>#num &rarr; Person</u>, phone, #cod &rarr; Specialty)
 
 Patient (<u>#num &rarr; Person</u>, birth_date)
 
