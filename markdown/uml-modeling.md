@@ -397,3 +397,16 @@ name: example2
 template: inverse
 name: redundancy
 # Redundancy
+
+---
+
+# Redundancy
+
+* When the **same piece of data** is stored in **two or more separate places** in the database.
+* For example, when storing a piece of data that can be **calculated** from other data.
+* This can lead to **inconsistencies** in the database.
+
+![](../assets/uml-database/redundancy.svg)
+
+* Sometimes redundancy is by design; for **performance** reasons.
+* Database [normalization](https://web.fe.up.pt/~arestivo/presentation/normalization/) can be used to solve redundancy problems.
