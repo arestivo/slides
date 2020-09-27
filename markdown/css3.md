@@ -2029,6 +2029,7 @@ div p {
 ---
 ## Specificity Examples
 
+* *: - (0,0,0,0)
 * p: 1 element – (0,0,0,1)
 * div: 1 element – (0,0,0,1)
 * \#sidebar: 1 id – (0,1,0,0)
