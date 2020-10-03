@@ -29,6 +29,7 @@ name:index
 1. [Basics](#basics)
 1. [Strings](#strings)
 1. [Lists](#lists)
+1. [Control Structures](#control)
 ]
 
 ---
@@ -447,7 +448,7 @@ if number == 10:
 
 # Else
 
-We can use the <code>else</code> statement to execute code when the condition in the <code>if</code> statement is false:
+We can use the <code>else</code> statement to **execute** code when the **condition** in the <code>if</code> statement is **false**:
 
 ~~~python
 number = int(input('Write a number: '))
@@ -461,7 +462,7 @@ else:
 
 # Else If
 
-If we have more than one condition, we can use the <code>elif</code> statement:
+If we have **more than one** condition, we can use the <code>elif</code> statement:
 
 ~~~python
 number = int(input('Write a number: '))
@@ -479,7 +480,7 @@ else:
 
 # While Loop
 
-The <code>while</code> loop works just like the <code>if</code> statement, but it executes until the condition is false:
+The <code>while</code> **loop** works just like the <code>if</code> statement, but it executes **until** the **condition** is **false**:
 
 ~~~python
 number = 10
@@ -493,7 +494,7 @@ while number > 0:
 
 # For Loop
 
-The <code>for</code> loop iterates over the items of any sequence (a list or a string):
+The <code>for</code> loop **iterates** over the **items** of **any** **sequence** (a list or a string):
 
 ~~~python
 numbers = [1, 2, 4, 8, 16]
@@ -513,8 +514,8 @@ for c in text:
 
 # Range
 
-* The range function generates arithmetic progressions.
-* It is useful when you want to iterate over a sequence of numbers:
+* The range function **generates** arithmetic **progressions**.
+* It is useful when you want to **iterate** over a **sequence** of **numbers**:
 
 ~~~python
 for n in range(5):
