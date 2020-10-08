@@ -1193,6 +1193,3 @@ con.close()
 The values **are only written** if you <code>commit</code> to the database.
 
 You should always **close the connection** when not needed anymore.
-
-
----
