@@ -34,7 +34,7 @@ name:index
 1. [Functions](#functions)
 1. [Modules](#modules)
 1. [Files](#files)
-1. [Databases](#databases)
+1. [PostgreSQL](#postgresql)
 ]
 
 ---
@@ -969,8 +969,230 @@ name:files
 
 ---
 
+# Opening
+
+To **open** a **file** we use the <code>open(filename, mode)</code> function. This returns an **object**.
+
+~~~python
+f = open('somefile.txt', 'w')
+~~~
+
+* <code>filename</code> represents the **name** of the file to open.
+* <code>mode</code> can be:
+  * <code>r</code> - only for **reading**.
+  * <code>w</code> - only for **writing** (existing data will be **erased**).
+  * <code>a</code> - only for **writing** (data will be **appended**).
+  * <code>r+</code> - for **reading** and **writing**.
+
+The default is <code>r</code>.
+
+---
+
+# Reading
+
+The easier way to **read** **data** from files is using the <code>with</code> keyword:
+
+~~~python
+with open('somefile.txt') as f:
+  data = f.read()
+
+print(data)
+~~~
+
+This **reads** the **entire** **contents** of the **file** into the <code>data</code> variable.
+
+If we do not use the <code>with</code> keyword, then we **must** **close** the file after we are done with it:
+
+~~~python
+f = open('somefile.txt')
+data = f.read()
+f.close()
+
+print(data)
+~~~
+
+---
+
+# Readline
+
+We can also read a file **line by line** using the <code>readline</code> function:
+
+~~~python
+f = open('somefile.txt')
+
+for line in f:
+  print(line)
+
+f.close()
+~~~
+
+We can also read **all the lines** into a **list** using the <code>readlines</code> function:
+
+~~~python
+f = open('somefile.txt')
+
+lines = f.readlines()
+print(lines)
+
+f.close()
+~~~
+
+---
+
+# Writing
+
+The <code>write</code> function **writes** the **contents** of **string** to the **file**, returning the **number of characters** written:
+
+~~~python
+f = open('somefile.txt', 'w')
+
+f.write('Some text\n')
+f.write('More text\n')
+
+f.close()
+~~~
+
+---
+
+# CSV
+
+* **CSV** stands for *Comma Separated Values* a common way to **store data** in **simple text** files.
+* To **read** and **write** CSV files easily we can use the <code>csv</code> module.
+
+~~~python
+import csv
+~~~
+
+---
+
+# Reading CSV
+
+The <code>reader</code> function returns a CSV **reader object** from an already **opened** file:
+
+~~~python
+import csv
+
+with open('values.csv') as f:
+  reader = csv.reader(f)
+  for row in reader:
+    print(row)
+~~~
+
+The reader can be **looped** just like a list.
+
+---
+
+# Writing CSV
+
+The <code>writer</code> function returns a CSV **writer object** from an already **opened** file:
+
+~~~python
+import csv
+
+values = []
+values.append([1, 'John', 42])
+values.append([2, 'Mary', 38])
+
+with open('values.csv', 'w') as f:
+  writer = csv.writer(f)
+  for value in values:
+    writer.writerow(value)
+~~~
+
+The <code>writerow</code> function writes **one row** to the file.
+
+We can also use the <code>writerows</code> function to write **many** at the same time.
+
+~~~python
+with open('values.csv', 'w') as f:
+  writer = csv.writer(f)
+  writer.writerows(values)
+~~~
+
+---
+
 template: inverse
-name:databases
-# Databases
+name:postgresql
+# PostgreSQL
+
+---
+
+# Psycopg2
+
+To connect to a PostgreSQL database we first need to install the [psycopg2](https://www.psycopg.org/) module:
+
+~~~python
+sudo pip3 install psycopg2
+~~~
+
+You can also try installing only the binary:
+
+~~~python
+pip3 install psycopg2-binary
+~~~
+
+---
+
+# Connecting
+
+We then can use the <code>connect</code> function to **connect** to the database:
+
+~~~python
+import psycopg2 
+
+con = psycopg2.connect(
+  database="username",             # your database is the same as your username
+  user="username",                 # your username
+  password="password",             # your password
+  host="dbm.fe.up.pt",             # the database host
+  options='-c search_path=schema'  # use the schema you want to connect to
+)
+~~~
+
+The <code>connect</code> function **returns** a **connection object**.
+
+---
+
+# Retrieving Data
+
+* To **retrieve data** from the database, we first must create a **cursor**.
+* Then, we can **execute** a **query** using the <code>execute</code> function.
+* Finally, **data** can be **retrieved** using the <code>fetchone</code> function:
+
+~~~python
+id = int(input('Employee ID: '))
+
+cur = con.cursor()
+cur.execute(f'SELECT * FROM employee WHERE id_emp = {id}')
+employee = cur.fetchone()
+
+print(employee)
+~~~
+
+The <code>fetchone</code> function returns a **tuple** representing the fetched row or <code>None</code>.
+
+You can also use the <code>fetchall</code> function that returns a **list** of tuples or <code>[]</code>.
+
+---
+
+# Writing Data
+
+To **insert, update or delete** data, just use the <code>execute</code> function to run a <code>INSERT</code>, <code>UPDATE</code> or <code>DELETE</code> query:
+
+~~~python
+id = input('Department Id: ')
+name = input('Department Name: ')
+
+cur = con.cursor()
+cur.execute(f"INSERT INTO department VALUES ({id}, '{name}')")
+
+con.commit()
+con.close()
+~~~
+
+The values **are only written** if you <code>commit</code> to the database.
+
+You should always **close the connection** when not needed anymore.
+
 
 ---
