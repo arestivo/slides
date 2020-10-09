@@ -43,8 +43,8 @@ name:index
 1. [Flexbox](#flexbox)
 1. [Grid](#grid)
 1. [Precedence](#precedence)
-1. [Responsive Design](#responsive)
 1. [Vars](#vars)
+1. [Responsive Design](#responsive)
 1. [Vendor Prefixes](#prefix)
 1. [Validation](#validation)
 ]
