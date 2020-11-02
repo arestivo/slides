@@ -962,6 +962,26 @@ console.log(years.0)  // Syntax error
 
 ---
 
+# Array Looping
+
+You can use a **for** loop to iterate over array elements:
+
+```javascript
+let years = [1990, 1991, 1992, 1993]
+for (let i = 0; i < years.length; i++)
+  console.log(years[i])
+```
+
+Or you can use a **for..of** loop:
+
+```javascript
+let years = [1990, 1991, 1992, 1993]
+for (const year of years)
+  console.log(year)
+```
+
+---
+
 # Array prototype
 
 By changing the Array prototype we can add methods and properties to all arrays.
@@ -1054,9 +1074,50 @@ try {
   // code to try
 }
 catch (e) {
-   // statements to handle any exceptions
+  // statements to handle any exceptions
 }
 ```
+
+---
+
+# Finally
+
+The **finally** block executes regardless of whether an exception is thrown. 
+
+```javascript
+try {
+  // code to try
+}
+catch (e) {
+  // statements to handle any exceptions
+}
+finally {
+  // runs after the try and catch even if no exception is thrown on catched
+}
+```
+
+
+---
+
+# Catch a specific type of Exception
+
+To distinguish between different types of exceptions we can use **instanceof**:
+
+```javascript
+try {
+  // code to try
+}
+catch (e) {
+  if (e instanceof DatabaseError) {
+    // statements to handle DatabaseError exceptions
+  } else if (e instanceof SomethingElseError) {
+    // statements to handle SomethingElseError exceptions
+  } else {
+    // statements to handle other exceptions
+  }
+}
+```
+
 
 ---
 
@@ -1205,6 +1266,8 @@ article.innerHTML = '<h1>' + title + '</h1><p>' + intro + '</p>'
 console.log(article.outerHTML)
 ~~~
 
+The returned **article** variable is a subclass of the [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement) class.
+
 ~~~html
 <article class="post">
   <h1>Some Title</h1>
@@ -1212,7 +1275,7 @@ console.log(article.outerHTML)
 </article>
 ~~~
 
-This **does not insert** the element anywhere in the *document*.
+The variable still **has not been inserted** anywhere in the *document*.
 
 ---
 
@@ -1337,12 +1400,22 @@ console.log(article.firstElementChild.textContent)             // 'Title'
 * Items in a Node List can be accessed by index like in an array:
 
 ```javascript
-  let elements = document.getElementsByTagName("p")
-  for (let i = 0; i < elements.length; i++) {
-    let element = elements[i]
-    // do something with the element
-  }
+let paragraphs = document.getElementsByTagName("p")
+for (let i = 0; i < paragraphs.length; i++) {
+  let paragraph = paragraphs[i]
+  // do something with the paragraph
+}
 ```
+
+Or using a **for..of** loop:
+
+```javascript
+let paragraphs = document.getElementsByTagName("p")
+for (const paragraph of paragraphs) {
+  // do something with the element
+}
+```
+
 
 ---
 
