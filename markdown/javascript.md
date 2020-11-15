@@ -2241,7 +2241,7 @@ The *Promise.all(&lt;promises&gt;)* method returns a single *Promise* that resol
 async function doSomething() {
   let promise1 = getSomeData()
   let promise2 = getEvenMoreData()
-  Promise.all([promise1, promise2]).then(function(results) {
+  Promise.all([promise1, promise2]).then(function(values) {
     console.log(values)
   })
 }
