@@ -1946,18 +1946,14 @@ console.log(doubled) // 8, 16, 30, 32, 46, 84
 The *map()* method can be used on other types of *array like* objects:
 
 ~~~javascript
-let ascii = Array.prototype.map.call('John', function(letter) {
-  return letter.charCodeAt(0)
-})
+let ascii = Array.prototype.map.call('John', letter => letter.charCodeAt(0))
 console.log(ascii) // [74, 111, 104, 110]
 ~~~
 
 Simpler:
 
 ~~~javascript
-let ascii = [].map.call('John', function(letter) {
-  return letter.charCodeAt(0)
-})
+let ascii = [].map.call('John', letter => letter.charCodeAt(0))
 console.log(ascii) // [74, 111, 104, 110]
 ~~~
 
@@ -1965,9 +1961,7 @@ A more useful example:
 
 ~~~javascript
 let inputs = document.querySelectorAll('input[type=number]')
-let values = [].map.call(inputs, function(input) {
-  return input.value
-})
+let values = [].map.call(inputs, input => input.value)
 console.log(values) // an array with all the number input values
 ~~~
 
