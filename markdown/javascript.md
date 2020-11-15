@@ -666,8 +666,10 @@ let foo = {
   }
 }
 foo.bar()          // Object { bar: bar() }
+
 let bar = foo.bar
 bar()              // Undefined
+
 bar.apply('foo')   // foo
 ~~~
 
