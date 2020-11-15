@@ -665,6 +665,7 @@ let foo = {
     console.log(this)
   }
 }
+
 foo.bar()          // Object { bar: bar() }
 
 let bar = foo.bar
