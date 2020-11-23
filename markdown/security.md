@@ -71,7 +71,7 @@ Reference: [Open Web Application Security Project](https://www.owasp.org/)
 * Using Components with Known Vulnerabilities
 * Unvalidated Redirects and Forwards
 
-[OWASP Top 10 - 2013](https://www.owasp.org/index.php/Top_10_2013-Table_of_Contents)
+[OWASP Top 10 - 2013](https://owasp.org/www-pdf-archive/OWASP_Top_10_-_2013.pdf)
 
 ---
 
@@ -88,7 +88,7 @@ Reference: [Open Web Application Security Project](https://www.owasp.org/)
 * Using Components with Known Vulnerabilities
 * Insufficient Logging & Monitoring
 
-[OWASP Top 10 - 2017](https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf)
+[OWASP Top 10 - 2017](https://github.com/OWASP/Top10/raw/master/2017/OWASP%20Top%2010-2017%20(en).pdf)
 
 ---
 
