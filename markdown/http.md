@@ -427,7 +427,7 @@ name: codes
 **418 I'm a teapot** - "Any attempt to brew coffee with a teapot should result in the error
    code "418 I'm a teapot". The resulting entity body MAY be short and stout." -- [RFC2324](https://tools.ietf.org/html/rfc2324)
 
-<img src="../assets/http/teapot.svg" style="width:30%; border: none">
+<img src="../assets/http/teapot.png" style="width:30%; border: none">
 
 > This error is a reference to Hyper Text Coffee Pot Control Protocol which was an April Fools' joke in 1998.
 
