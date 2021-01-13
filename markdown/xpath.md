@@ -346,9 +346,9 @@ name:abbreviations
 |||
 |-:|-|
 | **child::** | Can be omitted from a location step. In effect, child is the **default axis**.
-| **//e**	| Abbreviation for descendant-or-self::e.
-| **./e**	| Abbreviation for self::e.
-| **../e**	| Abbreviation for parent::e.
+| **//e**	| Abbreviation for descendant::e.
+| **.**	  | Abbreviation for self::node().
+| **..**	| Abbreviation for parent::node().
 | **@e**	| Abbreviation for attribute::e.
 
 ---
