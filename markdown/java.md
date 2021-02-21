@@ -127,7 +127,7 @@ Primitive type are the most basic data types in Java.
 |short|16|-2<sup>15</sup>|2<sup>15</sup>-1|From +32,767 to -32,768|
 |int|32|-2<sup>31</sup>|2<sup>31</sup>-1|From +2,147,483,647 to -2,147,483,648|
 |long|64|-2<sup>63</sup>|2<sup>63</sup>-1|From +9,223,372,036,854,775,807 to -9,223,372,036,854,775,808|
-|float|32|2<sup>-149</sup>|(2-2-23)·2<sup>127</sup>|From 3.402,823,5 E+38 to 1.4 E-45|
+|float|32|2<sup>-149</sup>|(2-2<sup>-23</sup>)·2<sup>127</sup>|From 3.402,823,5 E+38 to 1.4 E-45|
 |double|64|2<sup>-1074</sup>|(2-2<sup>-52</sup>)·2<sup>1023</sup>|From 1.797,693,134,862,315,7 E+308 to 4.9 E-324|
 |boolean|&mdash;|&mdash;|&mdash;|false, true|
 |void|&mdash;|&mdash;|&mdash;|&mdash;|
