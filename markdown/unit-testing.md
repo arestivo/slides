@@ -111,14 +111,14 @@ There are several **advantages** to unit tests:
 
 * Increases **confidence** in **changing**/**maintaining** code.
 * In order to make unit testing **possible**, codes need to be **modular**, which makes them more **reusable**. Good unit testing **promotes** good code.
-* Development becomes **faster** as system, as a whole, does not need to be run to test newly written code.
+* Development becomes **faster** as the whole system does not need to be run to test newly written code.
 * When a test fails we know **which unit** is the **culprit**.
 
 ---
 
 # FIRST
 
-The [FIRST](https://github.com/ghsukumar/SFDC_Best_Practices/wiki/F.I.R.S.T-Principles-of-Unit-Testing) principles of unit testing:
+The [FIRST](https://github.com/tekguard/Principles-of-Unit-Testing) principles of unit testing:
 
 * **Fast** - Unit tests should be **fast** so we can run them often.
 * **Isolated** / **Independent** - Only test **one unit** at a time. Only test **one thing** at a time. **Order** of tests should **not matter**. 
@@ -183,14 +183,14 @@ A **JUnit** test must have the **@Test** annotation.
 A simple **test class** looks like this:
 
 ```java
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class TestDog {
     @Test
     public void testDogName() {
         Dog dog = new Dog("Max", "German Shepherd");
-        
-        assertEquals("Max", dog.getName());
+        Assertions.assertEquals("Max", dog.getName());
     }
 }
 ```
@@ -199,17 +199,17 @@ public class TestDog {
 
 # Asserts
 
-**JUnit** provides a series of **assert methods** to help test for certain **conditions**:
+**JUnit** provides a series of **assert methods** (as static methods of the *Assertions* class) to help test for certain **conditions**:
 
 * **fail**([message]) - Fails the test.
-* **assertTrue**([message,] condition)
-* **assertFalse**([message,] condition)
-* **assertEquals**([message,] expected, actual)
-* **assertEquals**([message,] expected, actual, tolerance)
-* **assertNull**([message,] object)
-* **assertNotNull**([message,] object)
-* **assertSame**([message,] expected, actual)
-* **assertNotSame**([message,] expected, actual)
+* **assertTrue**(condition[, message])
+* **assertFalse**(condition[, message])
+* **assertEquals**(expected, actual[, message])
+* **assertEquals**(expected, actual[, tolerance][, message])
+* **assertNull**(object[, message])
+* **assertNotNull**(object[, message])
+* **assertSame**(expected, actual[, message])
+* **assertNotSame**(expected, actual[, message])
 
 Message is an **optional message** specifying why the test failed.
 
@@ -217,25 +217,26 @@ Message is an **optional message** specifying why the test failed.
 
 # Set Up and Tear Down
 
-The **@Before** and **@After** annotations allows us to define methods that run **before** or **after** each test method. 
+The **@BeforeEach** and **@AfterEach** annotations allows us to define methods that run **before** or **after** each test method. 
 
 These can be used to **setup** and **dispose** of any **data**/**classes** that are used by all tests, thus simplifying the **Arrange** phase.
 
 There are also **@BeforeClass** and **@AfterClass** annotations that define methods that should be run only **once** for the **entire class**. These might help when test methods share a computationally **expensive** setup.
 
 ```java
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class TestDog {
+import java.util.List;
+
+public class DogTest {
     private DogDatabase database;
 
-    @Before
-    public void connectToDatabase() {
-      database = new DogDatabase();
-    }
+    @BeforeEach
+    public void connectToDatabase() { database = new DogDatabase(); }
 
     @Test
-    public void testDogRetrieval() { /* ... */ }
+    public void testFindByBreed() { List<Dog> dogs = database.getAllDogs(); }
 }
 ```
 
@@ -249,7 +250,7 @@ name:isolation
 
 # Test Isolation
 
-One of the key features of **unit testing**, is that of test isolation. The whole point of **unit tests** is to **reduce the scope** of the system under test to a **small subset** that can be tested in isolation.
+One of the key features of **unit testing**, is that of test isolation. The whole point of **unit tests** is to **reduce the scope** of the system under test (SUT) to a **small subset** that can be tested in isolation.
 
 Most of the times this can be difficult without **changing our design**. For example, consider the following **class** and **test**:
 
@@ -274,16 +275,14 @@ public class DogFinder {
 ]
 .small[
 ```java
-import org.junit.Test;
-
-public class TestDogFinder {
+public class DogFinderTest {
     @Test
-    public void testDogRetrieval() { 
-      DogFinder finder = new DogFinder();
-      List<Dog> dogs = finder.findBreed("Border Collie");
-      for (Dog dog : dogs)
-        if (!dog.getBreed().equals("Border Collie"))
-          fail("Got dog from wrong breed!");
+    public void testFindByBreed() {
+        DogFinder finder = new DogFinder();
+        List<Dog> dogs = finder.findBreed("Border Collie");
+        for (Dog dog : dogs)
+            if (!dog.getBreed().equals("Border Collie"))
+                Assertions.fail("Got dog from wrong breed!");
     }
 }
 ```
@@ -296,20 +295,21 @@ Any test on the **DogFinder** class will depend on the **DogDatabase** class.
 
 # Dependency Injection
 
-One way to achieve **test isolation**, is to use **Dependency Injection**. With this technique, **classes** no longer **depend** on other classes but **on interfaces**. The **concrete instantiation** of each interface is **injected** into the class by a third-party class (the **Assembler**). 
+One way to achieve **test isolation**, is to use **Dependency Injection**. 
+
+With this technique, **classes** no longer **depend** on other classes but **on interfaces**. The **concrete instantiation** of each interface is **injected** into the class by a third-party class (the **Assembler**). 
 
 ![](../assets/unit-testing/dependency-injection.svg)
 
 ---
 
-# Show me the Code
-
+# Dependency Injection Example
 
 <div style="display: flex; justify-content: space-around">
 .small[
 ```java
 public interface IDogDatabase {
-    public List<Dog> getAllDogs() throws Exception;
+    public List<Dog> getAllDogs();
 }
 ```
 ]
@@ -317,7 +317,7 @@ public interface IDogDatabase {
 ```java
 public class SQLDogDatabase implements IDogDatabase {
     @Override
-    public List<Dog> getAllDogs() throws Exception { /* ... */ }
+    public List<Dog> getAllDogs() { /* ... */ }
 }
 ```
 ]
@@ -331,7 +331,7 @@ public class DogFinder {
         this.database = database;
     }
 
-    public List<Dog> findBreed(String breed) throws Exception {
+    public List<Dog> findBreed(String breed) {
       /* Same code as in previous example */
     }
 }
@@ -341,12 +341,8 @@ public class DogFinder {
 ```java
 public class Application {
     public static void main(String[] args) {
-        try {
-            DogFinder finder = new DogFinder(new SQLDogDatabase());
-            finder.findBreed("Border Collie");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        DogFinder finder = new DogFinder(new SQLDogDatabase());
+        finder.findBreed("Border Collie");
     }
 }
 ```
@@ -354,13 +350,15 @@ public class Application {
 
 ---
 
-# And now the Test
+# Stub Example
+
+Using a **stub** to **isolate** *DogFinderTest* class from *DogDatabase*.
 
 ```java
 public class DogFinderTest {
   class StubDatabase implements IDogDatabase {
     @Override
-    public List<Dog> getAllDogs() throws Exception {
+    public List<Dog> getAllDogs() {
       List<Dog> dogs = new ArrayList<>();
       dogs.add(new Dog("Border Collie", "Iris"));
       dogs.add(new Dog("Border Collie", "Floyd"));
@@ -371,10 +369,14 @@ public class DogFinderTest {
 
 
   @Test
-  public void findBreed() throws Exception {
-    DogFinder finder = new DogFinder(new StubDatabase());
-    List<Dog> dogs = finder.findBreed("Border Collie");
-    assertEquals("Didn't receive the expected number of dogs", 2, dogs.size());
+  public void testFindByBreed() {
+      DogFinder finder = new DogFinder(new StubDatabase());
+
+      List<Dog> dogs = finder.findBreed("Border Collie");
+      for (Dog dog : dogs)
+          Assertions.assertEquals("Border Collie", dog.getBreed());
+
+      Assertions.assertEquals(2, finder.findBreed("Border Collie").size());
   }
 }
 ```
@@ -394,10 +396,10 @@ A simpler way to create **Mocks** and **Stubs** is to use a specialized framewor
 If we are using **Gradle**, the only thing we have to do to be able to use **Mockito** is add the **dependency** in our **"build.gradle"** file:
 
 ```bash
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.24.5'
-}
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+  testImplementation('org.mockito:mockito-core:3.7.7')
 ```
 
 ---
@@ -407,28 +409,29 @@ dependencies {
 Creating **stubs** with **Mockito** is very simple:
 
 ```java
-import org.mockito.Mockito;
+import org.mockito.Mockito; //...
 
 public class DogFinderTest {
-  private DogDatabase mockDatabase;
+    private IDogDatabase stubDatabase;
 
-  @Before
-  public void setUp() throws Exception {
-    List<Dog> dogs = new ArrayList<>();
-    dogs.add(new Dog("Border Collie", "Iris"));
-    dogs.add(new Dog("Border Collie", "Floyd"));
-    dogs.add(new Dog("German Shepherd", "Max"));
+    @BeforeEach
+    public void setUp() throws Exception {
+        List<Dog> dogs = new ArrayList<>();
+        dogs.add(new Dog("Iris","Border Collie"));
+        dogs.add(new Dog("Floyd", "Border Collie"));
+        dogs.add(new Dog("Max", "German Shepherd"));
 
-    mockDatabase = Mockito.mock(DogDatabase.class);   // really a stub
-    when(mockDatabase.getAllDogs()).thenReturn(dogs); // with canned answers
-  }
+        // A stub with canned answers
+        stubDatabase = Mockito.mock(IDogDatabase.class);          
+        Mockito.when(stubDatabase.getAllDogs()).thenReturn(dogs);
+    }
 
-  @Test
-  public void findBreed() throws Exception {
-    DogFinder finder = new DogFinder(mockDatabase);
-    List<Dog> dogs = finder.findBreed("Border Collie");
-    assertEquals("Didn't receive the expected number of dogs", 2, dogs.size());
-  }
+    @Test
+    public void findBreed() throws Exception {
+        DogFinder finder = new DogFinder(stubDatabase);
+        List<Dog> dogs = finder.findBreed("Border Collie");
+        Assertions.assertEquals(2, dogs.size());
+    }
 }
 ```
 
@@ -439,16 +442,16 @@ public class DogFinderTest {
 The **when** and **then\*** keywords allows to configure **Mockito stubs** to return **canned answers** very [easily](https://www.baeldung.com/mockito-behavior):
 
 ```java
-mockDatabase = Mockito.mock(DogDatabase.class);  // still a stub
-when(mockDatabase.isConnected()).thenReturn(true);
-when(mockDatabase.runSQL(null)).thenThrow(NullPointerException.class);
+stubDatabase = Mockito.mock(DogDatabase.class);
+Mockito.when(stubDatabase.isConnected()).thenReturn(true);
+Mockito.when(stubDatabase.runSQL(null)).thenThrow(NullPointerException.class);
 ```
 
-When the method returns void, the syntax is slightly different:
+When the method returns *void*, the syntax is slightly different:
 
 ```java
-ArrayList mockList = Mockito.mock(ArrayList.class);
-doThrow(NullPointerException.class).when(mockList).clear();
+ArrayList stubList = Mockito.mock(ArrayList.class);
+Mockito.doThrow(NullPointerException.class).when(stubList).clear();
 ```
 
 [When/Then Cookbook](https://www.baeldung.com/mockito-behavior)
@@ -462,11 +465,10 @@ Until now we have been doing **state testing**. If we want to do **behavior test
 ```java
 @Test
 public void findBreedCallsDatabaseOnlyOnce() throws Exception {
-  DogFinder finder = new DogFinder(mockDatabase);
-  List<Dog> dogs = finder.findBreed("Border Collie");
-
-  // Verify if the getAllDogs methods was called only once
-  Mockito.verify(mockDatabase, times(1)).getAllDogs();
+    DogFinder finder = new DogFinder(stubDatabase);
+    List<Dog> dogs = finder.findBreed("Border Collie");
+    // Verify if the getAllDogs methods was called only once
+    Mockito.verify(stubDatabase, Mockito.times(1)).getAllDogs();
 }
 ```
 
@@ -510,6 +512,10 @@ So **why** do code **coverage** analysis:
 
 In **IntelliJ** you can **run** your **tests with coverage** to get a **percentage** of code covered per **class** and/or **package**, for **all test suites** or just for **a few**. 
 
+```bash
+Right Click on Test Class -> More Run/Debug -> Run ... with Coverage
+```
+
 You also get **indicators** throughout your code showing which lines are tested and which are not. 
 ---
 
@@ -544,11 +550,11 @@ plugins {
 }
 ```
 
-PIT can be configured directly in your **"build.gradle"** using the same [command line parameters](http://pitest.org/quickstart/commandline/) as the command line version uses:
+PIT can be configured directly in your **"build.gradle"** using the same [command line parameters](http://pitest.org/quickstart/commandline/) as the command line version uses. For example, this enables JUnit 5 support:
 
 ```bash
 pitest {
-  targetClasses = ['com.example.*']
+  junit5PluginVersion = '0.12'
 }
 ```
 
