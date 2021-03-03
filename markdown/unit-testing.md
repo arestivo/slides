@@ -186,7 +186,7 @@ A simple **test class** looks like this:
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class TestDog {
+public class DogTest {
     @Test
     public void testDogName() {
         Dog dog = new Dog("Max", "German Shepherd");
@@ -230,10 +230,10 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 public class DogTest {
-    private DogDatabase database;
+    private SQLDogDatabase database;
 
     @BeforeEach
-    public void connectToDatabase() { database = new DogDatabase(); }
+    public void connectToDatabase() { database = new SQLDogDatabase(); }
 
     @Test
     public void testFindByBreed() { List<Dog> dogs = database.getAllDogs(); }
@@ -258,7 +258,7 @@ Most of the times this can be difficult without **changing our design**. For exa
 .small[
 ```java
 public class DogFinder {
-  private DogDatabase database = new DogDatabase();
+  private SQLDogDatabase database = new SQLDogDatabase();
  
   public List<Dog> findBreed(String breed) {
     List<Dog> allDogs = database.getAllDogs();
@@ -289,7 +289,7 @@ public class DogFinderTest {
 ]
 </div>
 
-Any test on the **DogFinder** class will depend on the **DogDatabase** class.
+Any test on the **DogFinder** class will depend on the **SQLDogDatabase** class.
 
 ---
 
@@ -308,14 +308,14 @@ With this technique, **classes** no longer **depend** on other classes but **on 
 <div style="display: flex; justify-content: space-around">
 .small[
 ```java
-public interface IDogDatabase {
+public interface DogDatabase {
     public List<Dog> getAllDogs();
 }
 ```
 ]
 .small[
 ```java
-public class SQLDogDatabase implements IDogDatabase {
+public class SQLDogDatabase implements DogDatabase {
     @Override
     public List<Dog> getAllDogs() { /* ... */ }
 }
@@ -325,9 +325,9 @@ public class SQLDogDatabase implements IDogDatabase {
 
 ```java
 public class DogFinder {
-    private IDogDatabase database;
+    private DogDatabase database;
 
-    public DogFinder(IDogDatabase database) {
+    public DogFinder(DogDatabase database) {
         this.database = database;
     }
 
@@ -352,11 +352,11 @@ public class Application {
 
 # Stub Example
 
-Using a **stub** to **isolate** *DogFinderTest* class from *DogDatabase*.
+Using a **stub** to **isolate** *DogFinderTest* class from *SQLDogDatabase*.
 
 ```java
 public class DogFinderTest {
-  class StubDatabase implements IDogDatabase {
+  class StubDogDatabase implements DogDatabase {
     @Override
     public List<Dog> getAllDogs() {
       List<Dog> dogs = new ArrayList<>();
@@ -370,7 +370,7 @@ public class DogFinderTest {
 
   @Test
   public void testFindByBreed() {
-      DogFinder finder = new DogFinder(new StubDatabase());
+      DogFinder finder = new DogFinder(new StubDogDatabase());
 
       List<Dog> dogs = finder.findBreed("Border Collie");
       for (Dog dog : dogs)
@@ -412,7 +412,7 @@ Creating **stubs** with **Mockito** is very simple:
 import org.mockito.Mockito; //...
 
 public class DogFinderTest {
-    private IDogDatabase stubDatabase;
+    private DogDatabase stubDogDatabase;
 
     @BeforeEach
     public void setUp() throws Exception {
@@ -422,13 +422,13 @@ public class DogFinderTest {
         dogs.add(new Dog("Max", "German Shepherd"));
 
         // A stub with canned answers
-        stubDatabase = Mockito.mock(IDogDatabase.class);          
-        Mockito.when(stubDatabase.getAllDogs()).thenReturn(dogs);
+        stubDogDatabase = Mockito.mock(DogDatabase.class);          
+        Mockito.when(stubDogDatabase.getAllDogs()).thenReturn(dogs);
     }
 
     @Test
     public void findBreed() throws Exception {
-        DogFinder finder = new DogFinder(stubDatabase);
+        DogFinder finder = new DogFinder(stubDogDatabase);
         List<Dog> dogs = finder.findBreed("Border Collie");
         Assertions.assertEquals(2, dogs.size());
     }
@@ -442,9 +442,9 @@ public class DogFinderTest {
 The **when** and **then\*** keywords allows to configure **Mockito stubs** to return **canned answers** very [easily](https://www.baeldung.com/mockito-behavior):
 
 ```java
-stubDatabase = Mockito.mock(DogDatabase.class);
-Mockito.when(stubDatabase.isConnected()).thenReturn(true);
-Mockito.when(stubDatabase.runSQL(null)).thenThrow(NullPointerException.class);
+stubDogDatabase = Mockito.mock(DogDatabase.class);
+Mockito.when(stubDogDatabase.isConnected()).thenReturn(true);
+Mockito.when(stubDogDatabase.runSQL(null)).thenThrow(NullPointerException.class);
 ```
 
 When the method returns *void*, the syntax is slightly different:
@@ -465,10 +465,10 @@ Until now we have been doing **state testing**. If we want to do **behavior test
 ```java
 @Test
 public void findBreedCallsDatabaseOnlyOnce() throws Exception {
-    DogFinder finder = new DogFinder(stubDatabase);
+    DogFinder finder = new DogFinder(stubDogDatabase);
     List<Dog> dogs = finder.findBreed("Border Collie");
     // Verify if the getAllDogs methods was called only once
-    Mockito.verify(stubDatabase, Mockito.times(1)).getAllDogs();
+    Mockito.verify(stubDogDatabase, Mockito.times(1)).getAllDogs();
 }
 ```
 

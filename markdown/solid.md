@@ -176,7 +176,9 @@ If a module assumes more than one responsibility, then:
 
 # When to (or not to) use?
 
-![](../assets/solid/srp-modem.svg)
+<img src="../assets/solid/srp-modem.svg" width="75%">
+
+> Gather together the things that change for the same reasons. Separate those things that change for different reasons &mdash; [Uncle Bob, 2014](https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html)
 
 * If the application is **not changing** in ways that cause the two
 responsibilities to **change at different times**, then there is **no need to separate them**.
@@ -187,9 +189,10 @@ responsibilities to **change at different times**, then there is **no need to se
 
 # Hiding Difficult Decisions
 
-> Parnas, D.L., 1972. **On the criteria to be used in decomposing systems into modules**. Communications of the ACM, 15(12), pp.1053-1058.
 
-“We have tried to demonstrate by these examples that it is almost always incorrect to begin the decomposition of a system into modules on the basis of a flowchart. We propose instead that one begins with a list of **difficult design decisions** or design decisions which are **likely to change**. Each module is then designed to **hide such a decision from the others**.”
+> “We have tried to demonstrate by these examples that it is almost always incorrect to begin the decomposition of a system into modules on the basis of a flowchart. We propose instead that one begins with a list of **difficult design decisions** or design decisions which are **likely to change**. Each module is then designed to **hide such a decision from the others**.” 
+ 
+&mdash; Parnas, D.L., 1972. **On the criteria to be used in decomposing systems into modules**. Communications of the ACM, 15(12), pp.1053-1058.
 
 ---
 
