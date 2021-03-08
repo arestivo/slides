@@ -829,7 +829,7 @@ CREATE INDEX search_idx ON posts USING GIN (search);
 CREATE INDEX search_idx ON posts USING GIST (search);
 ~~~
 
-**Note**: We could also used a index on a *ts_vector* expression directly.
+**Note**: We could also use an index on a *ts_vector* expression directly.
 
 Which type to use?
 
