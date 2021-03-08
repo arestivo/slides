@@ -288,7 +288,7 @@ Normally **one entry per block**.
 * **t<sub>i</sub>**: 30000 (same as t)
 * **T<sub>i</sub>**: 15 bytes (9 + 6)
 * **bfr<sub>i</sub>**: 68 tuples/block (1024 / 15)
-* **b<sub>i</sub>**: 442 blocks (30000 / 68)
+* **b<sub>i</sub>**: 441 blocks (30000 / 68)
 ]
 
 .pull-left[
@@ -297,7 +297,7 @@ Normally **one entry per block**.
 * **t<sub>i</sub>**: 3000 (same as b)
 * **T<sub>i</sub>**: 15 bytes (9 + 6)
 * **bfr<sub>i</sub>**: 68 tuples/block (1024 / 15)
-* **b<sub>i</sub>**: 45 blocks (3000 / 68)
+* **b<sub>i</sub>**: 44 blocks (3000 / 68)
 ]
 
 --
