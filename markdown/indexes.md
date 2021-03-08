@@ -427,7 +427,7 @@ Ordered Indexes:
 B+ Trees:
   * automatically reorganizes itself with **small local changes**.
   * **reorganization** of entire file is **not required**.
-  * extra insertion and **deletion overhead**, **space overhead**.
+  * extra **insertion** and **deletion** overhead; **space** overhead.
 
 Summary:
 
