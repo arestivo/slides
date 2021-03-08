@@ -760,7 +760,7 @@ SELECT
     setweight(to_tsvector('english', 'An English language pangram. A sentence that contains
                                      all of the letters of the alphabet.'), 'B'),
     plainto_tsquery('english', 'jumping dog')
-  )could
+  )
 ~~~
 ]
 
