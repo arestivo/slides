@@ -302,9 +302,9 @@ Normally **one entry per block**.
 
 --
 
-Search on **dense**: log<sub>2</sub>442 + 1 = **10** blocks
+Search on **dense**: log<sub>2</sub>441 + 1 = **10** blocks
 
-Search on **sparse**: log<sub>2</sub>45 + 1 = **7** blocks
+Search on **sparse**: log<sub>2</sub>44 + 1 = **7** blocks
 
 But search isn't everything...
 
