@@ -546,7 +546,7 @@ With **Gradle**, installing **PIT** for your project in **IntelliJ** is as easy 
 ```bash
 plugins {
     id 'java'
-    id 'info.solidsoft.pitest' version '1.4.6'
+    id 'info.solidsoft.pitest' version '1.6.0'
 }
 ```
 
