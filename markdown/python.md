@@ -961,7 +961,7 @@ def distance(p1, p2):
 print(distance((0,0), (1,1))) # 1.4142135623730951
 ~~~
 
-Other modules: [psycopg2](https://www.psycopg.org/), [matplotlib](https://matplotlib.org/), [numpy](https://numpy.org/)
+Other modules: [psycopg2](https://www.psycopg.org/), [matplotlib](https://matplotlib.org/), [numpy](https://numpy.org/), [sci-kit](https://scikit-learn.org/stable/), [pandas](https://pandas.pydata.org/)
 
 ---
 
