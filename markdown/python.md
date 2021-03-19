@@ -290,7 +290,7 @@ name:lists
 
 # Mutating Lists
 
-Unlike **strings**, which are **immutable**, strings **can be changed**:
+Unlike **strings**, which are **immutable**, lists **can be changed**:
 
 ~~~python
 >>> squares = [1, 4, 10, 16, 25]
