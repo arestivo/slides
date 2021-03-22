@@ -399,7 +399,7 @@ If we are using **Gradle**, the only thing we have to do to be able to use **Moc
   testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
   testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 
-  testImplementation('org.mockito:mockito-core:3.7.7')
+  testImplementation 'org.mockito:mockito-core:3.7.7'
 ```
 
 ---
