@@ -663,5 +663,5 @@ Can be used to eliminate: **Duplicate Code**.
 
 * **Collapse Hierarchy** You have a class hierarchy in which a subclass is practically the same as its superclass.
 * **Form Template Method** Your subclasses implement algorithms that contain similar steps in the same order.
-**Replace Inheritance with Delegation** You have a subclass that uses only a portion of the methods of its superclass (or it’s not possible to inherit superclass data).
+* **Replace Inheritance with Delegation** You have a subclass that uses only a portion of the methods of its superclass (or it’s not possible to inherit superclass data).
 * **Replace Delegation with Inheritance** A class contains many simple methods that delegate to all methods of another class.
