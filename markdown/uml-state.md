@@ -30,10 +30,11 @@ name:index
 1. [Introduction](#introduction)
 1. [Basic Components](#basic)
 1. [Composite States](#composite)
-1. [Pseudo States](#pseudostates)
-1. [History State](#history)
-1. [Concurrent Regions](#concurrent)
 ]
+
+<!--1. [Pseudo States](#pseudostates)
+1. [History State](#history)
+1. [Concurrent Regions](#concurrent)-->
 
 ---
 
@@ -166,32 +167,35 @@ It is also possible to have named alternative exit points.
 ![](../assets/uml-state/exit-point.svg)
 
 
----
+<!--
+
+-
 
 template: inverse
 name:pseudostates
 # Pseudostates
 
----
+-
 
 # Choice Pseudostate
 
 A choice pseudo-state allows you to split a transition into multiple outgoing paths, each one with its own guard condition.
 
----
+-
 
 # Junction Pseudostate
 
----
+-
 
 template: inverse
 name:history
 # History
 
----
+-
 
 template: inverse
 name:concurrent
 # Concurrent
 
----
+-
+-->
