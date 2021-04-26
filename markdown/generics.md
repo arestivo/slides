@@ -403,7 +403,8 @@ Instead of a **type variable** like **&lt;T&gt;**, we can use a wildcard like **
 ~~~java
 List<Zebra> zebras = new ArrayList<>();
 List<Zebra> theSameZebras = zebras; // Ok.
-List<?> animals = zebras;
+List<Animal> animals = zebras; // Incompatible Types.
+List<?> moreAnimals = zebras; // Ok.
 ~~~
 
 Or create a method that receives a list of **"unknowns"**.
