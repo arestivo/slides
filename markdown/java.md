@@ -1704,7 +1704,7 @@ dos.close();
 
 # Resources
 
-Resources are pieces of data that **are part**, and can be **accessed**, from within a Java application.
+Resources are pieces of data that **are part** of &mdash; and can be **accessed** from &mdash; a Java application.
 
 When you create a **Java Gradle** project in **IntelliJ**, a folder for *resources* will be created inside both the **main** and **test** *src* folders.
 
