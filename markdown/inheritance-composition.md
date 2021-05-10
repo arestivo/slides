@@ -485,6 +485,6 @@ name:delegation
 # Other Methods
 
 * Monkey Patching (Javascript, Python, ...)
-* Traits and Mixins (Scala, Ruby, ...)
-* Extension Methods (C#, Kotlin, ...)
+* [Traits and Mixins](https://www.baeldung.com/scala/class-composition-mixins) (Scala, Ruby, ...)
+* [Extension Methods](https://kotlinlang.org/docs/extensions.html) (C#, Kotlin, ...)
 * Type Classes (Haskell, Scala, Rust)
