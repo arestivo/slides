@@ -29,7 +29,10 @@ name:index
 .indexlist[
 1. [Testing 101](#testing)
 1. [Property Based Testing](#pbt)
-1. [jqwik](#jqwik)
+2. [Arbitraries](#arbitraries)
+3. [Statistics](#statistics)
+4. [Shrinking](#shrinking)
+5. [jqwik](#jqwik)
 ]
 
 ---
@@ -173,8 +176,14 @@ Suppose you don't have access to the .inline-code[+] operator. How can we implem
 
 So nice things:
 
-* ... Reproducibility (via paths and seeds);
+* ... Reproducibility (via seeds);
 * ... Shrinking (smallest cases that reproduce the bug).
+
+---
+
+template: inverse
+name:arbitraries
+# Arbitraries
 
 ---
 
@@ -204,6 +213,11 @@ So nice things:
 
 ---
 
+template: inverse
+name:statistics
+# Statistics
+
+---
 # ... Statistics
 
 * The **small-scope hypothesis** claims that **most inconsistent models have counterexamples within _small bounds_**;
@@ -231,6 +245,11 @@ So nice things:
 
 ---
 
+template: inverse
+name:shrinking
+# Shrinking
+
+---
 # Shrinking
 
 Imagine testing if your *hero* can walk out of the *arena*.
@@ -276,7 +295,7 @@ Can you think of **strategies** to shrink an .inline-code[ArrayList]?
 ---
 
 template: inverse
-name:intro
+name:jqwik
 # jqwik
 
 ---
