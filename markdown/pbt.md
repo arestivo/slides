@@ -111,8 +111,8 @@ public int mySum(int a, int b) {
 ~~~java
 @Test
 public int mySumTest() {
-  for (int a = 0; a < 1000; a++)
-    for (int b = 0; b < 1000; b++)
+  for (int a = -100; a < 100; a++)
+    for (int b = -100; b < 100; b++)
       assertEquals(a + b, sum(a, b)); 
 }
 ~~~
