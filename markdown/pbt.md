@@ -51,7 +51,7 @@ Everyone likes to reimplement stuff from scratch; in that spirit, let us code ou
 public int mySum(int a, int b) {
   int accumulator = a;
   while(b > 0) {
-    a++;
+    accumulator++;
     b--;
   }
   return accumulator;
@@ -81,7 +81,7 @@ There's indeed a bug in the implementation. Look at the code very carefully:
 public int mySum(int a, int b) {
   int accumulator = a;
   while(b > 0) {
-    a++;
+    accumulator++;
     b--;
   }
   return accumulator;
