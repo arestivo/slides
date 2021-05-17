@@ -192,7 +192,7 @@ name:arbitraries
 * An **Arbitrary** is a **random generator** of a particular class (or primitive); 
 * If you recall discrete mathematics, it's the equivalent of saying:
   * _for a given x, where x is a natural number_
-* In code, we can think of .inline-code[x] an object of .inline-code[Arbitrary<Integer>];
+* In code, we can think of .inline-code[x] as an object of .inline-code[Arbitrary<Integer>];
 
 --
 
