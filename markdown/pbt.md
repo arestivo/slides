@@ -305,12 +305,10 @@ test {
 }
 
 dependencies {
-    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.6.2'
-    testCompile group: 'net.jqwik', name: 'jqwik', version: '1.2.7'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testImplementation 'net.jqwik:jqwik:1.5.1'
 }
 ```
-
-**Notice** that we need to use JUnit5 instead of JUnit4.
 
 ---
 
