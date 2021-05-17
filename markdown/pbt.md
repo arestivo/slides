@@ -514,7 +514,7 @@ public void testDoubleReverse(@ForAll List<Integer> list) {
 
 # Shrinking
 
-The advantage of using arbitraries instead of just using random data generators, is that arbitraries know how to **shrink**:
+One advantage of using arbitraries instead of just using random data generators, is that arbitraries know how to **shrink**:
 
 ```java
 @Property
@@ -568,52 +568,38 @@ Testing if the hero never leaves the arena:
 
 ```java
 @Property
-public void testMovingBounds(@ForAll List<ArenaView.ACTION> actions) 
-    throws IOException {
-  
-  Hero hero = new Hero(new Position(2, 2));
-  Arena arena = new Arena(5, 5, hero);
-  ArenaViewMock view = new ArenaViewMock(actions);
-  GameController controller = new GameController(arena, view);
+void allArenasAreClosed(
+    @ForAll @IntRange(min = 3, max = 50) int width, 
+    @ForAll @IntRange(min = 3, max = 50) int height, 
+    @ForAll List<GUI.@From("moveActions") ACTION> actions) {
 
-  while (view.hasMoreActions()) {
-    controller.step();
+  RandomArenaBuilder rab = new RandomArenaBuilder(width, height, 0);
+  Arena arena = rab.createArena();
+  HeroController controller = new HeroController(arena);
 
-    assert (hero.getPosition().getX() >= 0);
-    assert (hero.getPosition().getY() >= 0);
-
-    assert (hero.getPosition().getX() < arena.getWidth());
-    assert (hero.getPosition().getY() < arena.getHeight());
+  for (GUI.ACTION action : actions) {
+    controller.step(null, action, 100);
+    assert (controller.getModel().getHero().getPosition().getX() > 0);
+    assert (controller.getModel().getHero().getPosition().getY() > 0);
+    assert (controller.getModel().getHero().getPosition().getX() < width - 1);
+    assert (controller.getModel().getHero().getPosition().getY() < height - 1);
   }
 }
 ```
 
 ---
 
-# Mocking for PBT
+# Custom Arbitrary
 
-In this second example we had to create a specialized **mock** for the .inline-code[ArenaView] class:
+In this second example, we created a custom arbitrary that return only movement actions:
 
 ```java
-public class ArenaViewMock extends ArenaView {
-  private List<ACTION> actions;
-
-  public ArenaViewMock(List<ACTION> actions) 
-      throws IOException {
-    super(null, null);
-    this.actions = actions;
-  }
-
-  @Override
-  public ACTION getAction() throws IOException {
-    ACTION action = actions.get(0);
-    actions.remove(0);
-    return action;
-  }
-
-  @Override
-  public void draw() throws IOException { // Do nothing }
-
-  public boolean hasMoreActions() { return actions.size() > 0; }
+@Provide
+Arbitrary<GUI.ACTION> moveActions() {
+  return Arbitraries.of(
+    GUI.ACTION.UP, 
+    GUI.ACTION.RIGHT, 
+    GUI.ACTION.DOWN, 
+    GUI.ACTION.LEFT);
 }
 ```
