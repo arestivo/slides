@@ -180,7 +180,7 @@ A person’s age can be calculated from that person’s birth date.
 # Unique Attributes
 
 * Some attributes do not allow repeated values.
-* We will represent these with a not null stereotype («unique»).
+* We will represent these with a unique stereotype («unique»).
 
 .box_example[
 Two different cars cannot have the same plate number. If we know the
