@@ -193,7 +193,7 @@ Hello World
 
 * Strings can span **multiple lines** when using <code>"""</code> or <code>'''</code>.
 * This can be useful when writing **lots of text**.
-* Line **breaks are included** in the final string, but this can be **avoided** by adding a <code>/</code> at the end of the line.
+* Line **breaks are included** in the final string, but this can be **avoided** by adding a <code>\</code> at the end of the line.
 
 ~~~python
 >>> message = '''Hello World. \
