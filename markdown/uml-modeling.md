@@ -144,7 +144,7 @@ The UML representation of a class is a **rectangle** containing **three** **comp
 For databases we use **only two** of these: 
 
 * The **name** of the class.
-* And a list of **attributes** (with and optional domain).
+* And a list of **attributes** (with an optional domain).
 
 ![](../assets/uml-database/class.svg)
 
