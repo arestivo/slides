@@ -452,7 +452,7 @@ name = input('What is your name? ')
 print('Hello ' + name + '!')
 ~~~
 
-And even use **cast** anything into a string using <code>str</code>:
+And even **cast** anything into a string using <code>str</code>:
 
 ~~~python
 width = int(input('Width: '))
