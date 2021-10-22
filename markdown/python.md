@@ -134,7 +134,7 @@ Division **always** returns a ```float```. For **floor division** use ```//```.
 2
 ~~~
 
-The <code>**</code> operator is used to calculate **powers**:
+The &ast;&ast; operator is used to calculate **powers**:
 
 ~~~python
 >>> 2**4
