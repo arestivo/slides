@@ -1,5 +1,5 @@
 body {
-  font-family: 'MerriWeather';
+  font-family: 'Lustria';
   --main-color: #222;
   --highlight-color: #FC4A1A;
   --light-bg-color: #fef9f8;
@@ -15,8 +15,8 @@ body.laser {
 }
 
 h1, h2, h3 {
-  font-family: 'Oswald';
-  font-weight: 400;
+  font-family: 'Poppins';
+  font-weight: 200;
   margin-bottom: 0;
 }
 
@@ -35,6 +35,9 @@ li {
   text-align: left;
   margin:0 10px 10px 0;
 }
+li li:first-child {
+  margin-top: 10px;
+}
 a, a > code {
   color: var(--highlight-color);
   text-decoration: none;
@@ -47,7 +50,7 @@ code {
 .relational_example {
   background: #e7e8e2;
   border-radius: 5px;
-  font-family: 'Ubuntu Mono';
+  font-family: 'Fira Code';
   white-space: no-wrap;
   line-height: 1em;
   padding: .5em;
@@ -63,7 +66,7 @@ code {
   line-height: 1em;
 }
 
-.remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+.remark-code, .remark-inline-code { font-family: 'Fira Code'; }
 .remark-code-line-highlighted     { background-color: #373832; }
 .pull-left {
   float: left;
@@ -198,7 +201,7 @@ blockquote p {
 .relation table td:first-child { border: none; }
 .relation table td .pk { border-right: 1px solid black; padding: 10px 5px;}
 
-.sqltable table    { font-family: "Ubuntu Mono"; border-collapse: collapse}
+.sqltable table    { font-family: "Fira Code"; border-collapse: collapse}
 .sqltable table td { padding: 0.5em; background-color: white; color: black; border: 1px solid black; border-radius: 0;}
 .sqltable table th { padding: 0.5em; background-color: #EEE; color: black; border: 1px solid black; border-radius: 0; text-align: center;}
 .sqltable.smaller td,.sqltable.smaller th {
@@ -349,7 +352,7 @@ code.has-jax {
 
 .code {
   display: inline-block;
-  font-family: 'Ubuntu Mono';
+  font-family: 'Fira Code';
   font-size: .8em;
   background-color: var(--box-bg-color);
   padding: .2em;
@@ -358,7 +361,7 @@ code.has-jax {
 }
 
 .inline-code {
-  font-family: 'Ubuntu Mono';
+  font-family: 'Fira Code';
   color: #FC4A1A;
 }
 
