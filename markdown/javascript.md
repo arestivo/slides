@@ -1,7 +1,7 @@
 name: inverse
 layout: true
 class: center, middle, inverse
-.indexlink[[<i class="fa fa-arrow-circle-o-up"></i>](#) [<i class="fa fa-list-ul"></i>](#index) [<i class="fa fa-tint"></i>](../change-color.php)[<i class="fa fa-file-pdf-o"></i>](download)]
+.indexlink[[<i class="fa fa-arrow-circle-o-up"></i>](#) [<i class="fa fa-list-ul"></i>](#index) [<i class="fa fa-tint"></i>](../change-color.php)]
 
 
 ---
@@ -9,13 +9,13 @@ class: center, middle, inverse
 name: normal
 layout: true
 class: left, middle
-.indexlink[[<i class="fa fa-arrow-circle-o-up"></i>](#) [<i class="fa fa-list-ul"></i>](#index) [<i class="fa fa-tint"></i>](../change-color.php)[<i class="fa fa-file-pdf-o"></i>](download)]
+.indexlink[[<i class="fa fa-arrow-circle-o-up"></i>](#) [<i class="fa fa-list-ul"></i>](#index) [<i class="fa fa-tint"></i>](../change-color.php)]
 
 
 ---
 
 template:inverse
-# Javascript
+# JavaScript
 <a href="http://www.fe.up.pt/~arestivo">André Restivo</a>
 
 ---
@@ -50,11 +50,13 @@ name:intro
 
 ---
 
-# Javascript
+# JavaScript
 
-  * *Javascript* is a **prototype-based**, **dynamic**, **object-oriented**, **imperative** and **functional** language.
-  * In *Javascript*, functions are considered **first-class** citizens.
-  * Most commonly used as part of web browsers as a **client-side** scripting language.
+  * *JavaScript* is a **dynamic**, **imperative** and **functional** language.
+  * In *JavaScript*, functions are considered **first-class** citizens.
+  * It is also **object-oriented**, but **prototype-based** (not class-based).
+  * Most commonly used as a **client-side** scripting language (in browsers).
+  * But can also be used as a **general purpose** language.
 
 ---
 
@@ -68,29 +70,22 @@ name:intro
   * Ecma International released the first version of the specification in **1997**.
   * Nowadays JavaScript is a trademark of the **Oracle** Corporation.
   * But JavaScript is officially managed by the **Mozilla** Foundation.
-  * *ECMAScript 6* or *ECMAScript 2015* introduced lots of new features.
 
 ---
 
 # Console
 
-* Modern browsers all have a *Javascript* console that can be used to log messages from within web pages.
+* Modern browsers all have a *JavaScript* console that can be used to log messages from within web pages.
 * It can also be used to inspect variables, evaluate expressions and just plain experimentation.
 * The specifics of how it works vary from browser to browser, but there is a *defacto* set of features that are typically provided.
 
-* The **console.log(msg)** function outputs a message to the console.
-* Other debug level are possible like **console.info(msg)**, **console.warn(msg)** and **console.error(msg)**.
-* Browsers allow filtering messages depending on their level.
-
----
-
-# Alert
-
-The alert function opens a popup window with some text.
-
+* The **console.log(msg)** function outputs a message to the console:
 ```javascript
-alert("Hello world!")
+console.log('Hello World')
 ```
+* Other debug level are possible: 
+  * **console.info(msg)**, **console.warn(msg)** and **console.error(msg)**.
+  * Browsers allow filtering messages depending on their level.
 
 ---
 
@@ -102,11 +97,39 @@ alert("Hello world!")
 'use strict'
 ```
 
-Some changes:
+Some of those changes:
 
-* No more global undeclared variables.
-* No more declaring variables with **var**.
+* **No more** global undeclared variables.
+* **No more** declaring variables with **var**.
 * Some warnings are now errors.
+
+---
+
+# Automatic Semicolons
+
+Statements are separated by semicolons:
+
+```javascript
+console.log(123); console.log('abc');
+```
+
+But if they are separated by a line break:
+
+```javascript
+console.log(123);
+console.log('abc');
+```
+
+The semicolon can be ommited:
+
+```javascript
+console.log(123)
+console.log('abc')
+```
+
+.box_warning[
+  This is true in most cases!
+]
 
 ---
 
@@ -115,17 +138,17 @@ template: inverse
 
 
 * Reference:
-  * [MDN Javascript Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)
+  * [MDN JavaScript Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)
   * [EcmaScript Reference](http://ecma-international.org/ecma-262/5.1/)
   * [MDN DOM Reference](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
 
 * Resources:
-  * [MDN Javascript Resources](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+  * [MDN JavaScript Resources](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
   * [JS Fiddle](http://jsfiddle.net/)
 
 * Tutorials:
-  * [The Modern Javascript Tutorial](http://javascript.info)
-  * [Javascript Style Guide](https://github.com/airbnb/javascript)
+  * [The Modern JavaScript Tutorial](http://javascript.info)
+  * [JavaScript Style Guide](https://github.com/airbnb/javascript)
 
 ---
 
@@ -138,27 +161,30 @@ name:variables
 
 # Variables
 
-* JavaScript is a loosely typed or a dynamic language. That means you don't have to declare the type of a variable ahead of time.
-* The type will get determined automatically while the program is being processed.
+* JavaScript is a *loosely/weakly* and *dynamically* typed language. 
+* That means that:
+  * values have types; variables do not.
+  * types are checked at runtime.
 * Variables are declared using the **let** command.
 * Variable names must contain only letters, digits, $ and _ (and not start with a digit).
 
 ```javascript
-let bar = 10
-bar = 'John Doe'
-bar = true
+let bar = 10       // bar initialized with a number
+bar = 'John Doe'   // bar now has a string
+bar = true         // and now a boolean
 ```
 
 ```javascript
-let foo = 10, bar
-bar = 'John Doe'
+let foo = 10, bar  // declaring two variables at once
+bar = 'John Doe'   // bar was undefined 
 ```
 
 ---
 
 # Constants
 
-* Constants behave exactly the same way as variables except they can't be changed.
+* Constants behave exactly the same way as variables.
+* Except they can't be changed.
 * Constants are declared using the **const** command.
 
 ```javascript
@@ -166,20 +192,23 @@ const bar = 10
 bar = 20        // TypeError: invalid assignment to const `bar'
 ```
 
+.box_info[
+Always prefer **const**; only use **let** if you have to reassign the variable.
+]
+
 ---
 
 # Var
 
 In older scripts you might find variables declared using **var** instead of **let**.
 
-They have a different behavior than variables declared with **let**:
-
 * They have no block scope (only function scope).
-* Are processed when a function starts
+* Are processed when a function starts.
+* **And should not be used!**
 
 ~~~javascript
 if (true) {
-  var bar = "1234"
+  var bar = '1234'
   console.log(bar)      // 1234
 }
 
@@ -188,7 +217,7 @@ console.log(bar)        // 1234
 
 ~~~javascript
 function foo() {
-  bar = "1234"
+  bar = '1234'
   console.log(bar)     //1234
   var bar
 }
@@ -198,13 +227,10 @@ function foo() {
 
 # Not declaring variables
 
-* It might seem that declaring variables in *Javascript* is *optional* but that is not the case.
-
+* Declaring variables in *JavaScript* might seem *optional*, but that is **not the case**.
 * When you use a variable without declaring it, that variable will bubble up until if finds a variable declared with the same name.
-
 * If it doesn't it attaches itself to the *window* or *global* object.
-
-* This might have unforeseen and hard to debug consequences.
+* This might have unforeseen and hard to debug consequences:
 
 ~~~javascript
 function foo() {
@@ -225,6 +251,7 @@ The standard defines the following data types:
   * Number (**double**-precision 64-bit)
   * String (**text**ual data - single or double quoted)
   * Boolean (**true** or **false**)
+  * BigInt (**numbers** of arbitrary length)
   * Null (only one possible value: case sensitive **null**)
   * Undefined (has **not** been **assigned** a value)
 
@@ -235,36 +262,46 @@ The standard defines the following data types:
 Strings can be defined equally using single or double quotes:
 
 ```javascript
-  let firstname = 'John'
-  let lastname = "Doe"
+const firstname = 'John'
+const lastname = "Doe"
 ```
 
 We can also use *backticks*. With *backticks*, expressions inside *${...}* are evaluated and the result becomes a part of the string.
 
 ```javascript
-  alert( `Hello, ${firstname} ${lastname}!` ) // Hello, John Doe!
-  alert( `The result is ${1 + 2}` )           // The result is 3
+console.log(`Hello, ${firstname} ${lastname}!`)
+// Hello, John Doe!
+
+console.log(`The result is ${1 + 2}`)
+// The result is 3
 ```
 
 ---
 
 # The + Operator
 
-The plus (+) operator sums numbers, but if one of the operands is a string, it converts the other one into a string and concatenates the two:
+The plus (+) operator sums numbers, but if one of the operands is a string, 
+it converts the other one into a string and concatenates the two:
 
 ```javascript
 console.log(11 + 31)   // 42
-console.log("11" + 31) // "1131"
-console.log(11 + "31") // "1131"
+console.log('11' + 31) // '1131'
+console.log(11 + '31') // '1131'
 ```
 
-Most of the time, operators and functions automatically convert a value to the right type (type conversion). You can still use the *String*, *Number* and *Boolean* functions to manually convert a value:
+---
+
+# Type Conversions
+
+Most of the time, operators and functions automatically convert a value to the right type (type conversion). 
+
+You can still use the *String*, *Number* and *Boolean* functions to manually convert a value:
 
 ```javascript
-  let a = 0
-  let b = Boolean(a) // false
-  let c = String(a)  // "0"
-  let d = String(b)  // "false"
+const a = 0
+const b = Boolean(a) // false
+const c = String(a)  // '0'
+const d = String(b)  // 'false'
 ```
 
 ---
@@ -276,12 +313,12 @@ When comparing values belonging to different types, they are converted to number
 **Examples:**
 
 ```javascript
-1 == "1"    // 1 == 1 -> true
+1 == '1'    // 1 == 1 -> true
 0 == false  // 0 == 0 -> true
-"0" == true // 0 == 1 -> false
-"" == false // 0 == 0 -> true
-Boolean("0") == false // 1 == 0 -> false
-Boolean("0") == true  // 1 == 1 -> true
+'0' == true // 0 == 1 -> false
+'' == false // 0 == 0 -> true
+Boolean('0') == false // 1 == 0 -> false
+Boolean('0') == true  // 1 == 1 -> true
 ```
 
 ---
@@ -301,8 +338,8 @@ All other values, including objects evaluate to true.
 Be careful with the Boolean object:
 
 ```javascript
-let foo = new Boolean(false)
-let bar = Boolean(false)
+const foo = new Boolean(false)
+const bar = Boolean(false)
 if (foo) // evaluates to true
 if (bar) // evaluates to false
 ```
@@ -317,7 +354,7 @@ if (bar) // evaluates to false
 
 ```javascript
 0 === 0     // true
-0 === "0"   // false
+0 === '0'   // false
 0 === false // false
 ```
 
@@ -434,8 +471,8 @@ function add(num1, num2) {
 add(1, 2) // 3
 ```
 
-* Primitive parameters are passed to functions by value.
-* Non-primitive parameters (objects) are passed by reference.
+* **Primitive** parameters are passed to functions by **value**.
+* **Non-primitive** parameters (objects) are passed by **reference**.
 
 ---
 
@@ -455,7 +492,7 @@ A function with an empty *return* or no *return* at all, returns **undefined**.
 
 ---
 
-# Default values
+# Default Values
 
 * If a parameter expected by a function is not passed, it becomes **undefined**.
 * Unless we declare a default value for that parameter.
@@ -469,14 +506,13 @@ function bar() {
 }
 
 function foo(var1, var2 = 1234, var3 = bar()) {
-  console.log(var1)
-  console.log(var2)
-  console.log(var3)
+  console.log(var1, var2, var3)
 }
 
-foo(10, 20)    // 10 20 1
-foo(10)        // 10 1234 2
-foo()          // undefined 1234 3
+foo(10, 20, 30) // 10 20 30
+foo(10, 20)     // 10 20 1
+foo(10)         // 10 1234 2
+foo()           // undefined 1234 3
 ```
 
 ---
@@ -486,7 +522,7 @@ foo()          // undefined 1234 3
 Another way to declare a function is the following:
 
 ~~~javascript
-let foo = function() {
+const foo = function() {
   console.log('bar')
 }
 ~~~
@@ -502,7 +538,7 @@ function foo() {
 Functions are just another datatype stored in variables. We can even copy them or display them in the console:
 
 ~~~javascript
-let bar = foo
+const bar = foo
 bar()
 console.log(foo)
 ~~~
@@ -518,7 +554,7 @@ function foo(i) {
   console.log('bar = ' + i)
 }
 
-function executeNTimes(f, n) {
+function executeNTimes(f, n) { // Executes function f, n times
   for (let i = 0; i < n; i++)
     f(i)
 }
@@ -534,7 +570,7 @@ executeNTimes(foo(), 3) // this is a common mistake
 A more compact way of declaring functions:
 
 ~~~javascript
-let foo = function(var1, var2) {
+const foo = function(var1, var2) {
   return var1 + var2
 }
 ~~~
@@ -542,16 +578,17 @@ let foo = function(var1, var2) {
 Is the same as:
 
 ~~~javascript
-let foo = (var1, var2) => var1 + var2
+const foo = (var1, var2) => var1 + var2
 ~~~
 
 Using the function from the previous slide:
 
 ~~~javascript
 executeNTimes((i) => console.log(i * i), 3)  // 0 1 4
+executeNTimes(i => console.log(i * i), 3)    // Even simpler
 ~~~
 
-Multi-line arrow functions are possible using a code-block **{...}**.
+Multi-line arrow functions are also possible using a code-block **{...}**.
 
 ---
 
@@ -573,9 +610,10 @@ template: inverse
 
 
 ```javascript
-let person = { name: 'John Doe', age: 45 }
+const person = { name: 'John Doe', age: 45 }
 person.job = 'Driver'
-console.log(person) // Object { name: "John Doe", age: 45, job: "Driver" }
+console.log(person) 
+// Object { name: 'John Doe', age: 45, job: 'Driver' }
 ```
 
 ---
@@ -587,13 +625,15 @@ console.log(person) // Object { name: "John Doe", age: 45, job: "Driver" }
 * You can use the **this** keyword within a method to refer to the current object.
 
 ```javascript
-let person = { name: "John Doe",
-               age: 45,
-               car: {make: "Honda", model: "Civic"},
-               print: function() {
-                 console.log(this.name + " is " + this.age + " years old!")
-               }
-             }
+const person = 
+  { 
+    name: 'John Doe',
+    age: 45,
+    car: {make: 'Honda', model: 'Civic'},
+    print: function() {
+      console.log(`${this.name} is ${this.age} years old!`)
+    }
+  }
 person.print() // John Doe is 45 years old!
 ```
 
@@ -604,28 +644,50 @@ person.print() // John Doe is 45 years old!
 We can also assign a method to an object:
 
 ```javascript
-let person = { name: "John Doe",
-               age: 45,
-               car: {make: "Honda", model: "Civic"},
-             }
+const person = 
+  { name: 'John Doe',
+    age: 45,
+    car: {make: 'Honda', model: 'Civic'},
+  }
 
 person.print = function() {
-  console.log(this.name + " is " + this.age + " years old!")
+  console.log(`${this.name} is ${this.age} years old!`)
 }
 
 person.print() // John Doe is 45 years old!
+```
+.box_warning[
+  Did we just change a constant???
+]
+
+---
+
+# Constant Objects
+
+Like other types, constant objects cannot be reassigned:
+
+```javascript
+const person = { name: 'John Doe' }
+person = { name: 'Jane Doe' } // Error!
+```
+
+But we can change what's inside them:
+
+```javascript
+const person = { name: 'John Doe' }
+person.name = 'Jane Doe'
 ```
 
 ---
 
 # This
 
-In *Javascript*, the **this** keyword (current context) behaves unlike in almost any other language.
+In *JavaScript*, the **this** keyword (current context) behaves unlike in almost any other language.
 
 * In the global execution context, **this** refers to the *global object* or *window*.
 * Inside a function it depends on how the function was called.
 
-  * Simple function call (**undefined** in strict mode).
+  * Simple function call (**undefined**).
   * Using *apply* or *call* (*this* is the **first** argument).
   * Object method (the object the method was **called** from)
   * Arrow functions (**retains** the enclosing context)
@@ -816,7 +878,7 @@ person.print() // John Doe is 45 years old!
 
 # Prototype
 
-* Each *Javascript* function has an internal **prototype** property that is initialized as a nearly empty object.
+* Each *JavaScript* function has an internal **prototype** property that is initialized as a nearly empty object.
 * When the **new** operator is used on a constructor function, a new object derived from its prototype is created. The function is then executed having the new object as its context.
 * We can change the prototype of a function by changing the **prototype property** directly.
 
@@ -883,7 +945,7 @@ When we read a property from an object, and it’s missing, JavaScript will auto
 
 # Inheritance
 
-Inheritance can be emulated in *Javascript* by changing the prototype chain.
+Inheritance can be emulated in *JavaScript* by changing the prototype chain.
 
 ```javascript
 function Person(name) {
@@ -1138,9 +1200,9 @@ template: inverse
 
 ---
 
-# Javascript on HTML Documents
+# JavaScript on HTML Documents
 
-*Javascript* can be embedded directly into an HTML document:
+*JavaScript* can be embedded directly into an HTML document:
 
 ```html
 <script>
@@ -1160,9 +1222,9 @@ The closing *tag* is mandatory.
 
 # Script tag position
 
-As *Javascript* is capable of changing the HTML structure of a document, whenever the browser finds a **script** tag, it first fetches and runs that script and only then resumes loading the page.
+As *JavaScript* is capable of changing the HTML structure of a document, whenever the browser finds a **script** tag, it first fetches and runs that script and only then resumes loading the page.
 
-Most *Javascript* scripts don't change the document until it is fully loaded but the browser does not know this. For that reason, it was recommended that **script** tags were placed at the bottom of the **body**.
+Most *JavaScript* scripts don't change the document until it is fully loaded but the browser does not know this. For that reason, it was recommended that **script** tags were placed at the bottom of the **body**.
 
 Modern browsers support the async and defer attributes, so scripts can safely be placed in the **head** of the document:
 
@@ -1182,7 +1244,7 @@ Modern browsers support the async and defer attributes, so scripts can safely be
 
 The [Document](https://developer.mozilla.org/en/docs/Web/API/Document) object represents an HTML document.
 
-You can access the current document in *Javascript* using the **global** variable **document**.
+You can access the current document in *JavaScript* using the **global** variable **document**.
 
 Some Document **properties**:
 
@@ -1359,7 +1421,7 @@ Consider the following HTML:
 </article>
 ~~~
 
-And the following *Javascript*:
+And the following *JavaScript*:
 
 ~~~javascript
 let article = document.getElementById('article')
@@ -1460,7 +1522,7 @@ document.getElementById("mybutton").onclick = function(event) { ... }
 
 # Add Event Handler
 
-On modern browsers, the *Javascript* function **addEventListener** should be used to handle events.
+On modern browsers, the *JavaScript* function **addEventListener** should be used to handle events.
 
 ```javascript
 element.addEventListener(type, listener[, useCapture = false])
@@ -1486,7 +1548,7 @@ A function that handles an event can receive a parameter representing the event 
 
 ```javascript
 function handleEvent(event) {
-  alert('You shall not pass!')
+  console.log('You shall not pass!')
   event.preventDefault()
 }
 
@@ -1645,15 +1707,15 @@ function updateProgress (event) {
 }
 
 function transferComplete(event) {
-  alert("The transfer is complete.")
+  console.log("The transfer is complete.")
 }
 
 function transferFailed(event) {
-  alert("An error occurred while transferring the file.")
+  console.log("An error occurred while transferring the file.")
 }
 
 function transferCanceled(event) {
-  alert("The transfer has been canceled by the user.")
+  console.log("The transfer has been canceled by the user.")
 }
 ```
 ]
@@ -1693,7 +1755,7 @@ request.send(encodeForAjax({id: 1, name: 'John'}))
 
 If you use XMLHttpRequest to get the content of a remote **XML** document, the responseXML property will be a DOM Object containing a parsed XML document, which can be hard to manipulate and analyze.
 
-If you use **JSON**, it is very easy to parse the response as JSON is already in *Javascript Object Notation*.
+If you use **JSON**, it is very easy to parse the response as JSON is already in *JavaScript Object Notation*.
 
 ```javascript
 JSON.parse('{}')              // {}
@@ -1768,9 +1830,9 @@ bar() // 123
 
 # Closures and Events
 
-Closures are the reason code like this works in *Javascript*:
+Closures are the reason code like this works in *JavaScript*:
 
-~~~Javascript
+~~~JavaScript
 let paragraphs = document.querySelectorAll('p')
 for (let i = 0; i < paragraphs.length; i++)
   paragraphs[i].addEventListener('click', function() {
@@ -2053,7 +2115,7 @@ template: inverse
 The *window* object has a function (*setTimeout*) that sets a timer which executes a function, or specified piece of code, once it expires:
 
 ~~~javascript
-  let id = window.setTimeout(function() {alert('Yay!')}, 5000)
+  let id = window.setTimeout(function() {console.log('Yay!')}, 5000)
 ~~~
 
 The return value is an *id* that can be used to cancel the timer:
@@ -2146,9 +2208,9 @@ When the *promise* *resolves*, or is *rejected*, we can use *then* and *catch* t
 
 ```javascript
 promise.then(function(result){
-  alert('Ok')
+  console.log('Ok')
 }).catch(function(error)){
-  alert('Error')
+  console.log('Error')
 }
 ```
 
@@ -2171,7 +2233,7 @@ function getSomeData() {
 ```
 
 ```javascript
-getSomeData().then(alert).catch(alert)
+getSomeData().then(console.log).catch(alert)
 ```
 
 ---
@@ -2189,9 +2251,9 @@ getSomeData()
     return getEvenMoreDataBasedOn(result)
   })
   .then(function(result){
-    alert(result)
+    console.log(result)
   })
-  .catch(alert) // catches any error in the chain
+  .catch(console.log) // catches any error in the chain
 ```
 
 ---
@@ -2298,13 +2360,13 @@ template: inverse
 
 # jQuery
 
-**jQuery** is a *Javascript* library that solves several different problems:
+**jQuery** is a *JavaScript* library that solves several different problems:
 
   * Inadequacy of the *Javscript* DOM.
   * Browser compatibility issues.
-  * Verbosity of some *Javascript* commands.
+  * Verbosity of some *JavaScript* commands.
 
-Most of these have been mitigated by recent advances in the *Javascript* standard.
+Most of these have been mitigated by recent advances in the *JavaScript* standard.
 
 ---
 
@@ -2312,7 +2374,7 @@ Most of these have been mitigated by recent advances in the *Javascript* standar
 
 * *jQuery* defines a function/object called *$* (yes, the dollar sign).
 * This function is responsible for selecting and filtering elements, traversing and modifying the DOM, ...
-* Elements selected are returned nested inside a *$* object making it harder to mix *jQuery* with plain *Javascript* code.
+* Elements selected are returned nested inside a *$* object making it harder to mix *jQuery* with plain *JavaScript* code.
 
 Example:
 
@@ -2322,7 +2384,7 @@ $('p').click(function() {
 })
 ~~~
 
-In plain Javascript this would be:
+In plain JavaScript this would be:
 
 ~~~javascript
 let paragraphs = document.querySelectorAll('p')
@@ -2363,4 +2425,4 @@ $('p').css('color', 'red').css('background-color', 'blue')
 
 Smaller and simpler alternatives like: http://zeptojs.com/ (25Kb)
 
-Just use plain Javascript: https://plainjs.com/
+Just use plain JavaScript: https://plainjs.com/
