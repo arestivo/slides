@@ -75,10 +75,10 @@ Supported **paradigms**:
 
 The infamous *Hello World* example:
 
-~~~python
+```python
 >>> print("Hello World")
 Hello World
-~~~
+```
 
 ---
 
@@ -92,12 +92,12 @@ name:basics
 
 Starting the python **interpreter** depends on your operating system. After starting it, you will be greeted by something similar to:
 
-~~~python
+```python
 Python 3.7.3 (default, Jul 25 2020, 13:03:44) 
 [GCC 8.3.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> 
-~~~
+```
 
 To exit just type "*exit()*" or press "*Ctrl-D*".
 
@@ -107,7 +107,7 @@ To exit just type "*exit()*" or press "*Ctrl-D*".
 
 You can use the python interpreter as a **calculator** by using the <code>+</code>, <code>-</code>, <code>*</code> , and <code>/</code> operators:
 
-~~~python
+```python
 >>> 2 + 2
 4
 >>> 50 - 5 * 6
@@ -116,7 +116,7 @@ You can use the python interpreter as a **calculator** by using the <code>+</cod
 5.0
 >>> 8 / 5
 1.6
-~~~
+```
 
 ---
 
@@ -127,19 +127,19 @@ You can use the python interpreter as a **calculator** by using the <code>+</cod
 
 Division **always** returns a ```float```. For **floor division** use ```//```.
 
-~~~python
+```python
 >>> 8/4
 2.0
 >>> 8//4
 2
-~~~
+```
 
 The &ast;&ast; operator is used to calculate **powers**:
 
-~~~python
+```python
 >>> 2**4
 16
-~~~
+```
 
 ---
 
@@ -149,7 +149,7 @@ The &ast;&ast; operator is used to calculate **powers**:
 * You can think about a variable as a **box** with a **name** where you can **store** values.
 * To assign a value to a variable, we use the assignment operator <code>=</code>.
 
-~~~python
+```python
 >>> width = 10
 >>> height = 20
 >>> width * height
@@ -157,7 +157,7 @@ The &ast;&ast; operator is used to calculate **powers**:
 >>> area = width * height
 >>> print(area)
 200
-~~~
+```
 
 ---
 
@@ -173,19 +173,19 @@ name:strings
 * Strings can be enclosed in **single** or **double** quotes.
 * Strings can be **concatenated** using the <code>+</code> operator.
 
-~~~python
+```python
 >>> hello = "Hello"
 >>> world = 'World'
 >>> print (hello + ' ' + world)
 Hello World
-~~~
+```
 
 * The <code>len(string)</code> built-in function return the **length** of a string.
 
-~~~python
+```python
 >>> print (len('Python'))
 6
-~~~
+```
 
 ---
 
@@ -195,12 +195,12 @@ Hello World
 * This can be useful when writing **lots of text**.
 * Line **breaks are included** in the final string, but this can be **avoided** by adding a <code>\</code> at the end of the line.
 
-~~~python
+```python
 >>> message = '''Hello World. \
 This is a lot of text!'''
 >>> print(message)
 Hello World. This is a lot of text!
-~~~
+```
 
 ---
 
@@ -217,13 +217,13 @@ We can **extract part** of a string (*slicing* and *indexing*) using:
 
 # Examples
 
-~~~txt
+```txt
  P  y   t   h   o   n
  0  1   2   3   4   5
 -6 -5  -4  -3  -2  -1
-~~~
+```
 
-~~~python
+```python
 >>> p = 'Python'
 >>> p[0]
 'P'
@@ -237,7 +237,7 @@ We can **extract part** of a string (*slicing* and *indexing*) using:
 'ython'
 >>> p[:4]
 'Pyth'
-~~~
+```
 
 ---
 
@@ -245,19 +245,19 @@ We can **extract part** of a string (*slicing* and *indexing*) using:
 
 You can **cast** values from one type to another (if they are compatible):
 
-~~~python
+```python
 >>> number = 10
 >>> text = str(number)
 >>> text
 '10'
-~~~
+```
 
-~~~python
+```python
 >>> text = '10'
 >>> number = int(number)
 >>> number
 10
-~~~
+```
 
 ---
 
@@ -274,7 +274,7 @@ name:lists
 * Just like strings, lists are a **sequence** type and can be **sliced** and **indexed**.
 * The <code>len()</code> function can also be used with lists.
 
-~~~python
+```python
 >>> l = [1, 2, 3, 10, 15]
 >>> l[0]
 1
@@ -284,7 +284,7 @@ name:lists
 10
 >>> len(l)
 5
-~~~
+```
 
 ---
 
@@ -292,7 +292,7 @@ name:lists
 
 Unlike **strings**, which are **immutable**, lists **can be changed**:
 
-~~~python
+```python
 >>> squares = [1, 4, 10, 16, 25]
 >>> squares[2] = 9
 >>> squares
@@ -300,7 +300,7 @@ Unlike **strings**, which are **immutable**, lists **can be changed**:
 >>> squares.append(36)
 >>> squares
 [1, 4, 9, 16, 25, 36]
-~~~
+```
 
 ---
 
@@ -308,7 +308,7 @@ Unlike **strings**, which are **immutable**, lists **can be changed**:
 
 We can also **replace** entire **slices**:
 
-~~~python
+```python
 >>> numbers = [1, 2, 3, 4, 5, 6]
 >>> numbers[2:5] = [10, 11]
 >>> numbers
@@ -316,7 +316,7 @@ We can also **replace** entire **slices**:
 >>> numbers[2:] = []
 >>> numbers
 [1, 2]
-~~~
+```
 
 ---
 
@@ -324,14 +324,14 @@ We can also **replace** entire **slices**:
 
 It is also possible to have lists of **other data types**: 
 
-~~~python
+```python
 >>> colors
 ['red', 'green', 'blue']
-~~~
+```
 
 Including **lists of lists**:
 
-~~~python
+```python
 >>> odds = [1, 3, 5]
 >>> evens = [2, 4, 6]
 >>> numbers = [odds, evens]
@@ -341,7 +341,7 @@ Including **lists of lists**:
 [1, 3, 5]
 >>> numbers[1][2]
 6
-~~~
+```
 
 ---
 
@@ -352,14 +352,14 @@ Including **lists of lists**:
 * A tuple consists of a number of values separated by **commas**.
 * If the tuple is a part of a larger expression, parenthesis are necessary:
 
-~~~python
+```python
 >>> numbers = 1, 2, 3
 >>> numbers = (1, 2, 3) # does the same thing
 >>> numbers[0]
 1
 >>> numbers
 (1, 2, 3)
-~~~
+```
 
 ---
 
@@ -367,20 +367,20 @@ Including **lists of lists**:
 
 Enables you to **assign more than one** variable at a time using **tuples**:
 
-~~~python
+```python
 width, height = 10, 5
 area = width * height
 print(area) # 50
-~~~
+```
 
 This is very handy when we want to **swap** two values:
 
-~~~python
+```python
 a = 10
 b = 20
 a, b = b, a
 print (a, b) # 20 10
-~~~
+```
 
 ---
 
@@ -391,7 +391,7 @@ print (a, b) # 20 10
 * A pair of **braces** creates an **empty** dictionary: <code>{}</code>.
 * The <code>del</code> statement, removes a pair from the dictionary.
 
-~~~python
+```python
 telephones = { 'john': 1234, 'mary': 5555 }
 print(telephones)
 
@@ -400,15 +400,15 @@ print(telephones)
 
 del telephones['john']
 print(telephones)
-~~~
+```
 
 This prints:
 
-~~~bash
+```bash
 {'john': 1234, 'mary': 5555}
 {'john': 1234, 'mary': 5555, 'carl': 9876}
 {'mary': 5555, 'carl': 9876}
-~~~
+```
 
 ---
 
@@ -424,7 +424,7 @@ name:input-output
 * The **prompt** argument is **optional**.
 * This function **always** **returns** a **string**, but we can **cast** it to **another** type.
 
-~~~python
+```python
 >>> text = input('Write some text: ')
 Write some text: text
 >>> a = int(input('First number: '))
@@ -433,7 +433,7 @@ First number: 5
 Second number: 8
 >>> a + b
 13
-~~~
+```
 
 ---
 
@@ -441,25 +441,25 @@ Second number: 8
 
 We already have seen that the <code>print</code> statement can be used to **output text** to the **screen**:
 
-~~~python
+```python
 print('Hello World')
-~~~
+```
 
 We can also **concatenate** strings to create dynamic outputs:
 
-~~~python
+```python
 name = input('What is your name? ')
 print('Hello ' + name + '!')
-~~~
+```
 
 And even **cast** anything into a string using <code>str</code>:
 
-~~~python
+```python
 width = int(input('Width: '))
 height = int(input('Height: '))
 area = width * height
 print('The area is ' + str(area))
-~~~
+```
 
 ---
 
@@ -469,12 +469,12 @@ print('The area is ' + str(area))
 * These are just strings that **start** with an <code>f</code> **before** the **opening quote**.
 * That can contain variables inside **curly brackets**.
 
-~~~python
+```python
 width = int(input('Width: '))
 height = int(input('Height: '))
 area = width * height
 print(f'The area is {area}')
-~~~
+```
 
 ---
 
@@ -495,16 +495,16 @@ name:control
 
 From now on we will use **scripts** instead of typing our code directly in the editor. For example:
 
-~~~python
+```python
 number = int(input('Type a number: '))
 print ('You have chosen ' + str(number))
-~~~
+```
 
 Try writing some code into a file called <code>example.py</code>, and then run:
 
-~~~bash
+```bash
 python3 example.py
-~~~
+```
 
 ---
 
@@ -513,7 +513,7 @@ python3 example.py
 Boolean conditions return a <code>bool</code> value (**True** or **False**).
 * Conditions can be **simple**:
   
-~~~python
+```python
 >>> 1 == 1 # Equality
 True
 >>> 1 > 2  # Greater than
@@ -524,16 +524,16 @@ False
 True
 >>> len('Python') == 6
 True
-~~~
+```
 
 * Or **complex** using the <code>and</code>, <code>or</code>, and <code>not</code> logical operators:
 
-~~~python
+```python
 >>> 1 == 1 and 2 > 5
 False
 >>> not(1 == 1) or 4 < 5
 True
-~~~
+```
 
 ---
 
@@ -541,16 +541,16 @@ True
 
 The <code>if</code> statement **only executes** its code if the **condition** evaluates to **True**:
 
-~~~python
+```python
 number = int(input('Write a number: '))
 if number > 10: print ('number is larger than 10')
-~~~
+```
 
 * You can use a **code block** to execute **more than one** instruction inside an <code>if</code>.
 * Python uses **indentation** for blocks, instead of curly braces.
 * You can use **spaces** or **tabs**, but do **not mix** them.
 
-~~~python
+```python
 number = int(input('Write a number: '))
 
 if number > 10: print ('number is larger than 10')
@@ -560,7 +560,7 @@ if number < 10: print ('number is lower than 10')
 if number == 10:
   print ('number is exactly')
   print ('TEN!!!')
-~~~
+```
 
 ---
 
@@ -568,13 +568,13 @@ if number == 10:
 
 We can use the <code>else</code> statement to **execute** code when the **condition** in the <code>if</code> statement is **false**:
 
-~~~python
+```python
 number = int(input('Write a number: '))
 if number > 10: 
   print ('number is larger than 10')
 else: 
   print ('number is not larget than 10')
-~~~
+```
 
 ---
 
@@ -582,7 +582,7 @@ else:
 
 If we have **more than one** condition, we can use the <code>elif</code> statement:
 
-~~~python
+```python
 number = int(input('Write a number: '))
 
 if number > 10: 
@@ -592,7 +592,7 @@ elif number < 10:
 else:
   print ('number is exactly')
   print ('TEN!!!')
-~~~
+```
 
 ---
 
@@ -600,17 +600,17 @@ else:
 
 The <code>while</code> **loop** works just like the <code>if</code> statement, but it executes **until** the **condition** is **false**:
 
-~~~python
+```python
 number = 10
 
 while number > 0:
   print(number)
   number = number - 1 # or number-- 
-~~~
+```
 
 This prints:
 
-~~~python
+```python
 10
 9
 8
@@ -621,7 +621,7 @@ This prints:
 3
 2
 1
-~~~
+```
 
 ---
 
@@ -629,21 +629,21 @@ This prints:
 
 The <code>for</code> loop **iterates** over the **items** of **any** **sequence** (a list or a string):
 
-~~~python
+```python
 numbers = [1, 2, 4, 8, 16]
 
 for n in numbers:
   print(n)
-~~~
+```
 
 This prints <code>1 2 4 8 16</code> in separate lines.
 
-~~~python
+```python
 text = "Python"
 
 for c in text:
   print(c)
-~~~
+```
 
 This prints <code>P y t h o n</code> in separate lines.
 
@@ -654,7 +654,7 @@ This prints <code>P y t h o n</code> in separate lines.
 * The range function **generates** arithmetic **progressions**.
 * It is useful when you want to **iterate** over a **sequence** of **numbers**:
 
-~~~python
+```python
 for n in range(5):
   print(n) # 0 1 2 3 4
 
@@ -663,7 +663,7 @@ for n in range(5, 10):
 
 for n in range(10, 20, 3):
   print(n) # 10 13 16 19
-~~~
+```
 
 ---
 
@@ -672,14 +672,14 @@ for n in range(10, 20, 3):
 * Loop statements may **also** have an <code>else</code> clause.
 * It is executed when the loop **terminates**: through exhaustion (for), or when the condition becomes false (while).
 
-~~~python
+```python
 for n in range(0, 5):
   print(n)
 else: 
   print ('Finished')
-~~~
+```
 
-~~~python
+```python
 number = 0
 
 while number < 10:
@@ -687,7 +687,7 @@ while number < 10:
   number = number + 1 # or number++
 else: 
   print ('Finished')
-~~~
+```
 
 ---
 
@@ -695,21 +695,21 @@ else:
 
 Inside loops, the <code>continue</code> statement allows us to **terminate** the **current iteration** and start the next one.
 
-~~~python
+```python
 for n in range(0, 10):
   if n % 2 == 0: continue
   print(n)
-~~~
+```
 
 In this example, the second line verifies if the variable <code>n</code> is **even**. If it is, it **skips** to the next iteration without printing it:
 
-~~~bash
+```bash
 1
 3
 5
 7
 9
-~~~
+```
 
 ---
 
@@ -717,23 +717,23 @@ In this example, the second line verifies if the variable <code>n</code> is **ev
 
 Inside loops, the <code>break</code> statement exits the loop without executing the <code>else</code> statement (if it exists).
 
-~~~python
+```python
 for n in range(0, 10):
   if n == 5: break
   print(n)
 else:
   print('Finished!')
-~~~
+```
 
 In this example, the second line verifies if the variable <code>n</code> **equals** <code>5</code>. If it does, it **exits** the loop without executing the <code>else</code> block:
 
-~~~bash
+```bash
 0
 1
 2
 3
 4
-~~~
+```
 
 ---
 
@@ -741,21 +741,21 @@ In this example, the second line verifies if the variable <code>n</code> **equal
 
 Looping over **dictionaries** (key and value):
 
-~~~python
+```python
 telephones = { 'john': 1234, 'mary': 5555 }
 
 for (k, v) in telephones.items():
   print (k, v)
-~~~
+```
 
 Looping over **lists** (index and value):
 
-~~~python
+```python
 colors = ['blue', 'red', 'green']
 
 for (i, v) in enumerate(colors):
   print (i, v)
-~~~
+```
 
 ---
 
@@ -770,14 +770,14 @@ name:functions
 * A function is a **block** of **organized**, **reusable** code that is used to **perform** a **single**, related action.
 * In python we define functions using the <code>def</code> statement:
 
-~~~python
+```python
 def greet(name):
   print(f'Hello {name}') 
 
 name = input('What is your name? ')
 
 greet(name)
-~~~
+```
 
 ---
 
@@ -786,7 +786,7 @@ greet(name)
 * Functions can receive **arguments** (or parameters).
 * These act as **variables** that are **automatically assigned** when the function is **called**.
 
-~~~python
+```python
 def calculate_area(w, h):
   area = w * h
   print(f'Area: {area}') 
@@ -795,14 +795,14 @@ width = int(input('Width: '))
 height = int(input('Height: '))
 
 calculate_area(width, height)
-~~~
+```
 
 * Notice that the name of the received arguments **does not need** to be the **same** as the variables that are passed into the function.
 * Of course, we can also call the function using **literals**:
 
-~~~python
+```python
 calculate_area(5, 8)
-~~~
+```
 
 ---
 
@@ -810,13 +810,13 @@ calculate_area(5, 8)
 
 Global variables (*declared outside functions*) can be accessed **everywhere**:
 
-~~~python
+```python
 def print_s():
   print(s) 
 
 s = input('Write something: ')
 print_s()
-~~~
+```
 
 * Notice that the function **does not** receive any **arguments**.
 * This is **not recommended** as it makes reusing the function **harder**.
@@ -827,7 +827,7 @@ print_s()
 
 Variables created inside a function stay inside the function:
 
-~~~python
+```python
 def calculate_area(w, h):
   area = w * h
 
@@ -836,7 +836,7 @@ height = int(input('Height: '))
 
 calculate_area(width, height)
 print(f'Area: {area}')  # ERROR!!!
-~~~
+```
 
 We **cannot** access the <code>area</code> variable as it **only exists inside** the <code>calculate_area</code> function.
 
@@ -847,7 +847,7 @@ We **cannot** access the <code>area</code> variable as it **only exists inside**
 * Functions can **return** values.
 * The <code>return</code> statement **returns** a value and **stops** the function.
 
-~~~python
+```python
 def calculate_area(w, h):
   area = w * h
   return area
@@ -858,7 +858,7 @@ height = int(input('Height: '))
 area = calculate_area(width, height)
 
 print(f'Area: {area}')
-~~~
+```
 
 By **default**, python functions return the special value <code>None</code>
 
@@ -868,7 +868,7 @@ By **default**, python functions return the special value <code>None</code>
 
 A function that calculates the **Fibonacci** sequence up to a **certain value** and **returns** the result as a **list**:
 
-~~~python
+```python
 def fibonacci(n):
   result = []
   a, b = 0, 1
@@ -880,7 +880,7 @@ def fibonacci(n):
   return result
 
 print(fibonacci(100)) # [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
-~~~
+```
 
 ---
 
@@ -888,7 +888,7 @@ print(fibonacci(100)) # [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
 
 Some function **arguments** can have **default** values:
 
-~~~python
+```python
 def fibonacci(n = 10, a = 0, b = 1):
   result = []
 
@@ -901,7 +901,7 @@ def fibonacci(n = 10, a = 0, b = 1):
 print(fibonacci(100))        # [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
 print(fibonacci(100, 5, 10)) # [5, 10, 15, 25, 40, 65]
 print(fibonacci())           # [0, 1, 1, 2, 3, 5, 8]
-~~~
+```
 
 Notice that the arguments with default values must be the **last** in the list.
 
@@ -919,7 +919,7 @@ A module is a file containing Python definitions and statements. The file name i
 
 In file *fib.py*:
 
-~~~python
+```python
 def fibonacci(n):
   result = []
   a, b = 0, 1
@@ -929,15 +929,15 @@ def fibonacci(n):
     a, b = b, a+b
   
   return result
-~~~
+```
 
 In **another** file:
 
-~~~python
+```python
 import fib
 
 print(fib.fibonacci(10))
-~~~
+```
 
 
 ---
@@ -952,14 +952,14 @@ The [Python Standard Library](https://docs.python.org/3/library/) contains many 
 * [csv](https://docs.python.org/3/library/csv.html) - Read and write CSV files.
 * [random](https://docs.python.org/3/library/random.html) − Pseudo random variables.
 
-~~~python
+```python
 import math
 
 def distance(p1, p2):
   return math.sqrt((p1[0]-p2[0])**2 + (p1[1]-p2[1])**2)
 
 print(distance((0,0), (1,1))) # 1.4142135623730951
-~~~
+```
 
 Other modules: [psycopg2](https://www.psycopg.org/), [matplotlib](https://matplotlib.org/), [numpy](https://numpy.org/), [sci-kit](https://scikit-learn.org/stable/), [pandas](https://pandas.pydata.org/)
 
@@ -975,9 +975,9 @@ name:files
 
 To **open** a **file** we use the <code>open(filename, mode)</code> function. This returns an **object**.
 
-~~~python
+```python
 f = open('somefile.txt', 'w')
-~~~
+```
 
 * <code>filename</code> represents the **name** of the file to open.
 * <code>mode</code> can be:
@@ -994,24 +994,24 @@ The default is <code>r</code>.
 
 The easier way to **read** **data** from files is using the <code>with</code> keyword:
 
-~~~python
+```python
 with open('somefile.txt') as f:
   data = f.read()
 
 print(data)
-~~~
+```
 
 This **reads** the **entire** **contents** of the **file** into the <code>data</code> variable.
 
 If we do not use the <code>with</code> keyword, then we **must** **close** the file after we are done with it:
 
-~~~python
+```python
 f = open('somefile.txt')
 data = f.read()
 f.close()
 
 print(data)
-~~~
+```
 
 ---
 
@@ -1019,25 +1019,25 @@ print(data)
 
 We can also read a file **line by line** using the <code>readline</code> function:
 
-~~~python
+```python
 f = open('somefile.txt')
 
 for line in f:
   print(line)
 
 f.close()
-~~~
+```
 
 We can also read **all the lines** into a **list** using the <code>readlines</code> function:
 
-~~~python
+```python
 f = open('somefile.txt')
 
 lines = f.readlines()
 print(lines)
 
 f.close()
-~~~
+```
 
 ---
 
@@ -1045,14 +1045,14 @@ f.close()
 
 The <code>write</code> function **writes** the **contents** of **string** to the **file**, returning the **number of characters** written:
 
-~~~python
+```python
 f = open('somefile.txt', 'w')
 
 f.write('Some text\n')
 f.write('More text\n')
 
 f.close()
-~~~
+```
 
 ---
 
@@ -1061,9 +1061,9 @@ f.close()
 * **CSV** stands for *Comma Separated Values* a common way to **store data** in **simple text** files.
 * To **read** and **write** CSV files easily we can use the <code>csv</code> module.
 
-~~~python
+```python
 import csv
-~~~
+```
 
 ---
 
@@ -1071,14 +1071,14 @@ import csv
 
 The <code>reader</code> function returns a CSV **reader object** from an already **opened** file:
 
-~~~python
+```python
 import csv
 
 with open('values.csv') as f:
   reader = csv.reader(f)
   for row in reader:
     print(row)
-~~~
+```
 
 The reader can be **looped** just like a list.
 
@@ -1088,7 +1088,7 @@ The reader can be **looped** just like a list.
 
 The <code>writer</code> function returns a CSV **writer object** from an already **opened** file:
 
-~~~python
+```python
 import csv
 
 values = []
@@ -1099,17 +1099,17 @@ with open('values.csv', 'w') as f:
   writer = csv.writer(f)
   for value in values:
     writer.writerow(value)
-~~~
+```
 
 The <code>writerow</code> function writes **one row** to the file.
 
 We can also use the <code>writerows</code> function to write **many** at the same time.
 
-~~~python
+```python
 with open('values.csv', 'w') as f:
   writer = csv.writer(f)
   writer.writerows(values)
-~~~
+```
 
 ---
 
@@ -1123,15 +1123,15 @@ name:postgresql
 
 To connect to a PostgreSQL database we first need to install the [psycopg2](https://www.psycopg.org/) module:
 
-~~~python
+```python
 sudo pip3 install psycopg2
-~~~
+```
 
 You can also try installing only the binary:
 
-~~~python
+```python
 pip3 install psycopg2-binary
-~~~
+```
 
 ---
 
@@ -1139,7 +1139,7 @@ pip3 install psycopg2-binary
 
 We then can use the <code>connect</code> function to **connect** to the database:
 
-~~~python
+```python
 import psycopg2 
 
 con = psycopg2.connect(
@@ -1149,7 +1149,7 @@ con = psycopg2.connect(
   host="dbm.fe.up.pt",             # the database host
   options='-c search_path=schema'  # use the schema you want to connect to
 )
-~~~
+```
 
 The <code>connect</code> function **returns** a **connection object**.
 
@@ -1161,7 +1161,7 @@ The <code>connect</code> function **returns** a **connection object**.
 * Then, we can **execute** a **query** using the <code>execute</code> function.
 * Finally, **data** can be **retrieved** using the <code>fetchone</code> function:
 
-~~~python
+```python
 id = int(input('Employee ID: '))
 
 cur = con.cursor()
@@ -1169,7 +1169,7 @@ cur.execute(f'SELECT * FROM employee WHERE id_emp = {id}')
 employee = cur.fetchone()
 
 print(employee)
-~~~
+```
 
 The <code>fetchone</code> function returns a **tuple** representing the fetched row or <code>None</code>.
 
@@ -1181,7 +1181,7 @@ You can also use the <code>fetchall</code> function that returns a **list** of t
 
 To **insert, update or delete** data, just use the <code>execute</code> function to run a <code>INSERT</code>, <code>UPDATE</code> or <code>DELETE</code> query:
 
-~~~python
+```python
 id = input('Department Id: ')
 name = input('Department Name: ')
 
@@ -1190,7 +1190,7 @@ cur.execute(f"INSERT INTO department VALUES ({id}, '{name}')")
 
 con.commit()
 con.close()
-~~~
+```
 
 The values **are only written** if you <code>commit</code> to the database.
 

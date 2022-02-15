@@ -409,10 +409,10 @@ $name = preg_replace ("/[^a-zA-Z\s]/", '', $_GET['name']);
 
 When showing untrusted data encode it first using [htmlspecialchars()](http://php.net/manual/en/function.htmlspecialchars.php) or [htmlentities()](http://php.net/manual/en/function.htmlentities.php):
 
-~~~php
+```php
 <?=htmlentities($post['text'])?>     // encodes all characters
 <?=htmlspecialchars($post['text'])?> // encodes only special chars
-~~~
+```
 
 So that this:
 
@@ -434,9 +434,9 @@ Becomes this:
 
 When using untrusted data to create URLs encode it first using [urlencode()](http://php.net/manual/en/function.urlencode.php):
 
-~~~php
+```php
 <a href="http://example.com/search.php?q=<?=urlencode($_GET['q'])?>">
-~~~
+```
 
 So that this:
 
@@ -492,9 +492,9 @@ Not enough in all locations; use context aware encoders. For example: [OWASP ESA
 * Preventing all XSS flaws is hard.
 * To mitigate the impact of an XSS flaw on your site, set the *HTTPOnly* flag on your session cookie using [session-set-cookie-params](http://php.net/manual/en/function.session-set-cookie-params.php) before starting your session:
 
-~~~php
+```php
 session_set_cookie_params(0, '/', 'www.fe.up.pt', true, true);
-~~~
+```
 
 ---
 
@@ -561,11 +561,11 @@ These methods **DO NOT WORK**
 
 # Preventing
 
-~~~php
+```php
 function generate_random_token() {
   return bin2hex(openssl_random_pseudo_bytes(32));
 }
-~~~
+```
 
 ```php
 session_start();
@@ -925,10 +925,10 @@ Regenerate the session id in each request (or each n requests):
 
 Make sure the following are set in your *php.ini* file (both are the defaults):
 
-~~~html
+```html
 session.use_only_cookies = 1
 session.use_trans_sid = 0
-~~~
+```
 
 ---
 

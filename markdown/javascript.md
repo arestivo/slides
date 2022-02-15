@@ -91,7 +91,9 @@ console.log('Hello World')
 
 # Strict Mode
 
-*ECMAScript 5* brought some big changes. To opt-in for those changes, scripts (or functions) must start with:
+*ECMAScript 5* brought some big changes. 
+
+To opt-in for those changes, scripts (or functions) must start with:
 
 ```javascript
 'use strict'
@@ -139,7 +141,7 @@ template: inverse
 
 * Reference:
   * [MDN JavaScript Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)
-  * [EcmaScript Reference](http://ecma-international.org/ecma-262/5.1/)
+  * [ECMAScript Reference](http://ecma-international.org/ecma-262/5.1/)
   * [MDN DOM Reference](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
 
 * Resources:
@@ -206,22 +208,22 @@ In older scripts you might find variables declared using **var** instead of **le
 * Are processed when a function starts.
 * **And should not be used!**
 
-~~~javascript
+```javascript
 if (true) {
   var bar = '1234'
   console.log(bar)      // 1234
 }
 
 console.log(bar)        // 1234
-~~~
+```
 
-~~~javascript
+```javascript
 function foo() {
   bar = '1234'
   console.log(bar)     //1234
   var bar
 }
-~~~
+```
 
 ---
 
@@ -232,7 +234,7 @@ function foo() {
 * If it doesn't it attaches itself to the *window* or *global* object.
 * This might have unforeseen and hard to debug consequences:
 
-~~~javascript
+```javascript
 function foo() {
   bar = 1234
 }
@@ -240,7 +242,7 @@ function foo() {
 let bar = 10
 foo()
 console.log(bar) // 1234
-~~~
+```
 
 ---
 
@@ -521,27 +523,27 @@ foo()           // undefined 1234 3
 
 Another way to declare a function is the following:
 
-~~~javascript
+```javascript
 const foo = function() {
   console.log('bar')
 }
-~~~
+```
 
 This has the same effect as:
 
-~~~javascript
+```javascript
 function foo() {
   console.log('bar')
 }
-~~~
+```
 
 Functions are just another datatype stored in variables. We can even copy them or display them in the console:
 
-~~~javascript
+```javascript
 const bar = foo
 bar()
 console.log(foo)
-~~~
+```
 
 ---
 
@@ -549,7 +551,7 @@ console.log(foo)
 
 Functions can be passed as parameters to other functions.
 
-~~~javascript
+```javascript
 function foo(i) {
   console.log('bar = ' + i)
 }
@@ -561,7 +563,7 @@ function executeNTimes(f, n) { // Executes function f, n times
 
 executeNTimes(foo, 3)   // bar = 1 bar = 2 bar = 3
 executeNTimes(foo(), 3) // this is a common mistake
-~~~
+```
 
 ---
 
@@ -569,26 +571,43 @@ executeNTimes(foo(), 3) // this is a common mistake
 
 A more compact way of declaring functions:
 
-~~~javascript
+```javascript
 const foo = function(var1, var2) {
   return var1 + var2
 }
-~~~
+```
 
 Is the same as:
 
-~~~javascript
+```javascript
 const foo = (var1, var2) => var1 + var2
-~~~
+```
 
 Using the function from the previous slide:
 
-~~~javascript
+```javascript
 executeNTimes((i) => console.log(i * i), 3)  // 0 1 4
 executeNTimes(i => console.log(i * i), 3)    // Even simpler
-~~~
+```
 
 Multi-line arrow functions are also possible using a code-block **{...}**.
+
+---
+
+# Arrow Functions Limitations
+
+* Should not be used as methods (no this binding, more on this later).
+* Can not be used as constructors.
+* Not ideal to use with call, apply and bind (more on this later).
+* Cannot use *yield*.
+* Multiline arrow functions must have a return statement:
+
+```javascript
+const sum = (a, b) => {
+  const result = a + b
+  return result
+}
+```
 
 ---
 
@@ -601,17 +620,16 @@ template: inverse
 # Objects
 
 * JavaScript is designed on a simple **object-based** paradigm.
-
-* An object is a collection of **properties**, and a property is an association between a name and a value.
-
+* An object is a collection of **properties**.
+* A property is just an association between a **name** and a **value**.
 * A property's value can be a function, in which case the property is known as a **method**.
-
 * JavaScript is a **prototype-based** language and **does not** have a class statement (or does it?).
-
 
 ```javascript
 const person = { name: 'John Doe', age: 45 }
+
 person.job = 'Driver'
+
 console.log(person) 
 // Object { name: 'John Doe', age: 45, job: 'Driver' }
 ```
@@ -680,92 +698,61 @@ person.name = 'Jane Doe'
 
 ---
 
-# This
+# Getter and Setters
 
-In *JavaScript*, the **this** keyword (current context) behaves unlike in almost any other language.
+*Setter* and *getters*, accessor properties, are functions that execute on 
+getting and setting a value, but behave like regular properties.
 
-* In the global execution context, **this** refers to the *global object* or *window*.
-* Inside a function it depends on how the function was called.
-
-  * Simple function call (**undefined**).
-  * Using *apply* or *call* (*this* is the **first** argument).
-  * Object method (the object the method was **called** from)
-  * Arrow functions (**retains** the enclosing context)
-  * Browser Events (the object that **fired** the event)
-
----
-
-# This in functions
-
-Using **this** in simple functions:
-
-~~~javascript
-function bar(var1, var2) {
-  console.log(var1)
-  console.log(var2)
-  console.log(this)
+.small[
+```javascript
+const person = {
+    firstName: 'John',
+    lastName: 'Doe',
+    get fullName() {
+      return `${this.firstName} ${this.lastName}`
+    },
+    set fullName (name) {
+      const words = name.split(' ')
+      this.firstName = words[0]
+      this.lastName = words[1]
+    }
 }
 
-bar(10, 20)                 // 10 20 undefined
-bar.call('foo', 10, 20)     // 10 20 foo
-bar.apply('foo', [10, 20])  // 10 20 foo
-~~~
+person.fullName = 'John Doe'
+console.log(person.firstName)  // John
+console.log(person.lastName)   // Doe
+console.log(person.fullName)   // John Doe
 
-* **Call** and **apply** are an alternative ways to call functions.
-* Both receive the **context** as the **first** argument.
-* The remaining parameters are sent as regular parameters in call and as an array in apply.
-
----
-
-# This in methods
-
-Using **this** inside objects:
-
-~~~javascript
-let foo = {
-  bar() {
-    console.log(this)
-  }
-}
-
-foo.bar()          // Object { bar: bar() }
-
-let bar = foo.bar
-bar()              // Undefined
-
-bar.apply('foo')   // foo
-~~~
+person.firstName = 'Jane'
+console.log(person.fullName)   // Jane Doe
+```
+]
 
 ---
 
-# This in arrow functions
+# For ... in
 
-Using **this** inside arrow functions:
-
-~~~javascript
-let foo = {
-  bar1: function() {
-    return () => console.log(this)
-  },
-
-  bar2: function() {
-    return function(){return console.log(this)}
-  }
-}
-
-foo.bar1()()  // Object { bar1: bar1(), bar2: bar2() }
-foo.bar2()()  // Undefined (or window if not using strict)
-~~~
-
----
-
-# Objects as arrays
-
-* Properties of JavaScript objects can also be accessed or set using a bracket notation.
-* Objects can be seen as associative arrays, since each property is associated with a string value that can be used to access it.
+The **for...in** statement iterates over all properties of an object.
 
 ```javascript
-let person = new Object()  // Another way to define an empty object would be {}
+const person = { name: 'John Doe', age: 45 }
+
+for (let key in person)
+  console.log(`${key} = ${person[key]}`)
+
+// name = John Doe
+// age = 45
+```
+
+---
+
+# Objects as Arrays
+
+* Properties of objects can be accessed or set using a bracket notation.
+* Objects can be seen as **associative arrays**, since each property is associated with a string value that can be used to access it.
+
+```javascript
+const person = {}
 
 person['name'] = "John Doe"
 person['age'] = 45
@@ -776,198 +763,262 @@ console.log(person['age']) // 45
 
 ---
 
-# For ... in
-
-* The **for...in** statement iterates a specified variable over all of its properties.
-* For each distinct property, JavaScript executes the specified statements.
-
-```javascript
-for (let foo in person)
-  console.log(foo + " = " + person[foo])
-
-// name = John Doe
-// age = 45
-```
-
----
-
 # Almost Everything is an Object
 
 * In JavaScript, almost everything is an object.
-* All primitive types except null and undefined are treated as objects.
+* Even primitive types, except *null* and *undefined*, are temporarly *casted* into objects when treated as such.
 
 ```javascript
-let name = "John Doe"
-console.log(name.substring(0,4))
+const num = 10
+console.log(num.toExponential()) // 1e+1
+
+const name = "John Doe"
+console.log(name.substring(0,4)) // John
 ```
 
-* In this example, the primitive type is *cast* temporarily into a String object that is discarded afterwards.
+In this example, the primitive types are *cast* temporarily into Number and String objects that are discarded afterwards.
 
 ---
 
-# Getter and Setters
+# Even Functions are Objects
 
-* A **getter** is a method that gets the value of a specific property.
-* A **setter** is a method that sets the value of a specific property.
+They really are:
 
 ```javascript
-let person = {
-    firstName: 'John',
-    lastName: 'Doe',
-    get fullName() {
-        return this.firstName + ' ' + this.lastName
-    },
-    set fullName (name) {
-        let words = name.split(' ')
-        this.firstName = words[0]
-        this.lastName = words[1]
-    }
-}
+function foo() { console.log("Hello") }
+const bar = function() { console.log("Hello") }
+const baz = () => console.log("Hello")
 
-person.fullName = 'John Doe'
-console.log(person.firstName)  // John
-console.log(person.lastName)   // Doe
-console.log(person.fullName)   // John Doe
+foo(); bar(); baz() // Hello Hello Hello
+
+foo.info = "This function says hello!"
+bar.info = "This function says hello!"
+baz.info = "This function says hello!"
+
+console.log(foo.info)  // This function says hello!
+
+foo.goodBye = function() { console.log("Goodbye") }
+foo.goodBye() //Goodbye
 ```
 
 ---
 
-# Functions are objects
+name:this
+template: inverse
+#This
 
-When a function is created using the **function** keyword we are really defining an object.
+---
+
+# This
+
+In *JavaScript*, the **this** keyword (current context) behaves unlike in almost any other language.
+
+* In the global execution context, **this** refers to the *global object*:
+  * Or *window* if in a browser.
+* Inside a function it depends on how the function was called:
+  * Simple function call (**undefined**).
+  * Arrow functions (**retain** the enclosing context).
+  * Using *apply* or *call* (*this* is the **first** argument).
+  * Object method (the object the method was **called** from).
+  * Browser Events (the object that **fired** the event, more on this later).
+
+---
+
+# This in functions
+
+Using **this** in simple functions:
 
 ```javascript
-function sayHello() {
-  console.log("Hello")
+function bar(var1, var2) {
+  console.log(var1)
+  console.log(var2)
+  console.log(this)
 }
 
-sayHello()                                   //Hello
-sayHello.info = "This function says hello!"
-
-console.log(sayHello.info)                   //This functions says hello!
-
-sayHello.goodBye = function() {
-  console.log("Goodbye")
-}
-
-sayHello()                                   //Hello
-sayHello.goodBye()                           //Goodbye
+bar(10, 20)                 // 10 20 undefined
+bar.call('foo', 10, 20)     // 10 20 foo
+bar.apply('foo', [10, 20])  // 10 20 foo
 ```
+
+* **Call** and **apply** are an alternative ways to call functions 
+  that allow us to change the calling context (*this*).
+* Both receive the **context** as the **first** argument.
+* The remaining parameters are sent as **regular parameters** in *call* and as an **array** in *apply*.
+
+---
+
+# This in methods
+
+In methods, *this* contains the object the method was called from:
+
+```javascript
+const foo = {}
+
+foo.bar = function() { console.log(this) }
+foo.baz = () => console.log(this)
+
+foo.bar()     // Object { bar: f, baz: f }
+foo.baz()     // Window or Global
+
+const bar = foo.bar
+const baz = foo.baz
+
+bar()         // Window or Global
+baz()         // Window or Global
+```
+
+---
+
+name:prototypes
+template: inverse
+#Prototypes
 
 ---
 
 # Constructor functions
 
-Functions can be used to create new objects using the **new** keyword.
+Functions (not arrow functions) can be used to create new objects using the **new** keyword.
 
 ```javascript
-function Person(name, age, car) {
+function Person(name, age) {
   this.name = name
   this.age = age
-  this.car = car
   this.print = function() {
-    console.log(this.name + " is " + this.age + " years old!")
+    console.log(`${this.name} is ${this.age} years old!`)
   }
 }
 
-let john = new Person("John Doe", 45, {make: "Honda", model: "Civic"})
-person.print() // John Doe is 45 years old!
+const john = new Person("John Doe", 45)
+john.print() // John Doe is 45 years old!
 ```
+
+How does this work?
 
 ---
 
 # Prototype
 
 * Each *JavaScript* function has an internal **prototype** property that is initialized as a nearly empty object.
-* When the **new** operator is used on a constructor function, a new object derived from its prototype is created. The function is then executed having the new object as its context.
-* We can change the prototype of a function by changing the **prototype property** directly.
+* When the **new** operator is used on a constructor function, a new object derived from its prototype is created. 
+* The function is then executed having the new object as its context.
 
+```javascript
+function Person(name, age) {
+  this.name = name // this receives a nearly empty object
+  this.age = age   // based on the function's prototype
+  this.print = function() {
+    console.log(`${this.name} is ${this.age} years old!`)
+  }
+}
+
+const john = new Person("John Doe", 45)
+john.print() // John Doe is 45 years old!
+```
+
+---
+
+# Changing the Prototype
+
+We can inspect and change the prototype of a function:
+
+.small[
 ```javascript
 function Person(name) {
   this.name = name
 }
 
-let john = new Person("John Doe")
+console.log(Person.prototype)       // {constructor: f}
+
+const john = new Person("John Doe")
 Person.age = 45                     // Only changes the Person function/object
                                     // not its prototype.
-let jane = new Person("Jane Doe")
+const jane = new Person("Jane Doe")
 console.log(jane.age)               // undefined
 
 Person.prototype.age = 45           // Changes the prototype.
-let mary = new Person("Mary Doe")   // All objects constructed using the
-console.log(mary.age)  //45         // person constructor now have an age.
-console.log(jane.age)  //45         // Even if created before the change.
+
+const mary = new Person("Mary Doe") // All objects constructed using the
+console.log(mary.age)  //45            person constructor now have an age.
+console.log(jane.age)  //45            Even if created before the change.
 ```
+]
+
+How does this work?
 
 ---
 
-# Prototype
+# Prototype of Objects
 
-You can inspect the prototype of a function easily in the console.
+Every object has a prototype of the function that created them that can be accesses with **Object.getPrototypeOf(o)** and modified using **Object.settPrototypeOf(o, p)**.
 
 ```javascript
 function Person(name) {
   this.name = name
 }
 
-Person.prototype // Object {...}
-Person.prototype.saySomething = function (){console.log("Something")}
-Person.prototype // Object { saySomething: Person.prototype.saySomething(), ... }
+const john = new Person('John Doe')
 
-let john = new Person()
-john.saySomething()        // Something
-john.constructor           // function Person(name) { this.name = name; }
-john.constructor.prototype // Object { saySomething: Person.prototype.saySomething(), ... }
+console.log(Object.getPrototypeOf(john) === Person.prototype) 
+// returns true
+
+Object.setPrototypeOf(john, {}) 
+// changes the prototype of john to {}
 ```
 
 ---
 
-# Object \_\_proto\_\_
+# The Prototype Chain
 
-When a object is created using **new**, a **\_\_proto\_\_** property is initialized with the
-prototype of the function that created it.
+When we read a property from an object, and it’s missing, JavaScript will try taking it from the prototype of that object. 
 
-```javascript
-function Person(name) {
-  this.name = name
-}
-let john = new Person("John")
-
-Person.prototype.saySomething = function (){console.log("Something")}
-john.prototype     // undefined
-john.__proto__     // Object { saySomething: Person.prototype.saySomething(), ... }
-john.saySomething() // Something
-```
-
-When we read a property from an object, and it’s missing, JavaScript will automatically take it from the prototype using **\_\_proto\_\_**.
-
----
-
-# Inheritance
-
-Inheritance can be emulated in *JavaScript* by changing the prototype chain.
+And then from the prototype of that prototype, until it reachs *null*.
 
 ```javascript
 function Person(name) {
   this.name = name
 }
 
-Person.prototype.print = function() {console.log(this.name)}
+const john = new Person("John")
+
+Person.prototype.age = 45
+console.log(Object.getPrototypeOf(john))// Object { age: 45, ... }
+console.log(john.age)                   // 45
+```
+
+Because **john.age** does not exist, but **Object.getPrototypeOf(john).age** does.
+
+---
+
+# Prototype Inheritance
+
+Inheritance can be emulated with prototypes by changing the prototype chain.
+
+```javascript
+function Person(name) { this.name = name }
+
+Person.prototype.print = function() { console.log(this.name) }
 
 function Worker(name, job) {
   this.job = job
-  Person.call(this, name)
+  Person.call(this, name)  // super constructor with this
 }
 
 Worker.prototype = new Person
 Worker.prototype.print =
-  function() {console.log(this.name + " is a " + this.job)}
+  function() {console.log(`${this.name} is a ${this.job}`)}
 
-let mary = new Person("Mary")
+const mary = new Person("Mary")
 mary.print() // Mary
-let john = new Worker("John", "Builder")
+
+const john = new Worker("John", "Builder")
 john.print() // John is a Builder
 ```
+
+---
+
+name:classes
+template: inverse
+#Classes
 
 ---
 
@@ -1252,9 +1303,9 @@ Some Document **properties**:
   * **title** - contains the document title
   * **location** - a *location* object that can be assigned in order to change to another document
 
-~~~javascript
+```javascript
 document.location = 'http://www.google.com/'
-~~~
+```
 
 There is also another **global** variable that represents the browser called **window**.
 
@@ -1307,10 +1358,10 @@ Some common Element **methods**:
 
 We can also use the same methods we used with the *document* object to access element children:
 
-~~~javascript
+```javascript
   let article = document.getElementById('top-article')
   let intro = article.getElementsByTagName('p')[0]
-~~~
+```
 
 Other **methods**: **removeAttribute**, **hasAttribute**
 
@@ -1320,7 +1371,7 @@ Other **methods**: **removeAttribute**, **hasAttribute**
 
 The **createElement** method of the *document* object can be used to create new elements:
 
-~~~javascript
+```javascript
 let title = 'Some Title'
 let intro = 'This is a long introduction'
 
@@ -1329,16 +1380,16 @@ article.setAttribute('class', 'post')
 article.innerHTML = '<h1>' + title + '</h1><p>' + intro + '</p>'
 
 console.log(article.outerHTML)
-~~~
+```
 
 The returned **article** variable is a subclass of the [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement) class.
 
-~~~html
+```html
 <article class="post">
   <h1>Some Title</h1>
   <p>This is a long introduction</p>
 </article>
-~~~
+```
 
 The variable still **has not been inserted** anywhere in the *document*.
 
@@ -1414,28 +1465,28 @@ We have to be careful as not all nodes are elements (see [node type list](https:
 
 Consider the following HTML:
 
-~~~html
+```html
 <article id="article">
   <h1>Title</h1>
   <p>Some text</p>
 </article>
-~~~
+```
 
 And the following *JavaScript*:
 
-~~~javascript
+```javascript
 let article = document.getElementById('article')
 console.log(article.firstChild)                         // #text
 console.log(article.firstChild.textContent)             // '\n '
 console.log(article.firstChild.nextSibling)             // <h1>
 console.log(article.firstChild.nextSibling.textContent) // 'Title'
-~~~
+```
 
 ---
 
 # Traversing the DOM tree
 
-To solve this problem, the following properties have been added since *EcmaScript 6*:
+To solve this problem, the following properties have been added since *ECMAScript 6*:
 
 |||
 |-:|-|
@@ -1443,18 +1494,18 @@ To solve this problem, the following properties have been added since *EcmaScrip
 | **children**                                          | all children elements as a NodeList.
 | **previousElementSibling** and **nextElementSibling** | previous and next element siblings to this node.
 
-~~~html
+```html
 <article id="article">
   <h1>Title</h1>
   <p>Some text</p>
 </article>
-~~~
+```
 
-~~~javascript
+```javascript
 let article = document.getElementById('article')
 console.log(article.firstElementChild)                         // <h1>
 console.log(article.firstElementChild.textContent)             // 'Title'
-~~~
+```
 
 ---
 
@@ -1572,27 +1623,27 @@ To make sure that the original behavior is prevented, we can use the event.[prev
 
 Example where we add some events on all elements and print **this** and **event.target** tag names:
 
-~~~html
+```html
 <section> <article> <p>Text</p> </article> </section>
-~~~
+```
 
-~~~javascript
+```javascript
 document.querySelector('section').addEventListener('click', function(event){
   console.log('Bubble: ' + this.tagName + " - " + event.target.tagName)})
 document.querySelector('article').addEventListener('click', function(event){
   console.log('Bubble: ' + this.tagName + " - " + event.target.tagName)})
 document.querySelector('p').addEventListener('click', function(event){
   console.log('Bubble: ' + this.tagName + " - " + event.target.tagName)})
-~~~
+```
 ]
 
 .small[
 Clicking on the paragraph:
-~~~html
+```html
 Bubble: P - P
 Bubble: ARTICLE - P
 Bubble: SECTION - P
-~~~
+```
 ]
 
 To stop bubbling we use the event.[stopPropagation](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation) method.
@@ -1610,23 +1661,23 @@ Although rarely used, the **useCapture** parameter of the *addEventListener* met
 The previous example with some more capture events:
 
 .small[
-~~~javascript
+```javascript
 document.querySelector('section').addEventListener('click', function(event){
   console.log('Capture: ' + this.tagName + " - " + event.target.tagName)}, true) // notice the true in the end
 document.querySelector('article').addEventListener('click', function(event){
   console.log('Capture: ' + this.tagName + " - " + event.target.tagName)}, true)
 document.querySelector('p').addEventListener('click', function(event){
   console.log('Capture: ' + this.tagName + " - " + event.target.tagName)}, true)
-~~~
+```
 
-~~~html
+```html
 Capture: SECTION - P
 Capture: ARTICLE - P
 Capture: P - P
 Bubble: P - P
 Bubble: ARTICLE - P
 Bubble: SECTION - P
-~~~
+```
 ]
 
 ---
@@ -1636,13 +1687,13 @@ Bubble: SECTION - P
 As we want to be sure the DOM is completely loaded before adding events to any elements,
 we normally add any initialization code to the *load* event of the *window* element.
 
-~~~javascript
+```javascript
 window.addEventListener('load', function() {
   // initialization code goes here.
 })
-~~~
+```
 
-With *EcmaScript 6* and the *defer* attribute, this is no longer necessary.
+With *ECMAScript 6* and the *defer* attribute, this is no longer necessary.
 
 ---
 
@@ -1726,28 +1777,28 @@ function transferCanceled(event) {
 
 To send data to the server, we first must encode it properly:
 
-~~~javascript
+```javascript
 function encodeForAjax(data) {
   return Object.keys(data).map(function(k){
     return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
   }).join('&')
 }
-~~~
+```
 
 Sending it using **get**:
 
-~~~javascript
+```javascript
 request.open("get", "getdata.php?" + encodeForAjax({id: 1, name: 'John'}), true)
 request.send()
-~~~
+```
 
 Sending it using **post**:
 
-~~~javascript
+```javascript
 request.open("post", "getdata.php", true)
 request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
 request.send(encodeForAjax({id: 1, name: 'John'}))
-~~~
+```
 
 ---
 
@@ -1780,7 +1831,7 @@ template: inverse
 * The **apply()** method calls a function with a given *this* value, and arguments provided as an array.
 * The **call()** method calls a function with a given *this* value and arguments provided individually.
 
-~~~javascript
+```javascript
 function foo(bar1, bar2) {
   console.log(this)
   console.log(bar1)
@@ -1789,7 +1840,7 @@ function foo(bar1, bar2) {
 
 foo.apply('hello', ['john', 123] ) //hello john 123
 foo.call('hello', 'john', 123)     //hello john 123
-~~~
+```
 
 ---
 
@@ -1797,7 +1848,7 @@ foo.call('hello', 'john', 123)     //hello john 123
 
 The *bind()* method is similar to *call()* but returns a new function where *this* and any of the initial parameters are set to the provided values.
 
-~~~javascript
+```javascript
 function foo(bar1, bar2) {
   console.log(this)
   console.log(bar1)
@@ -1806,7 +1857,7 @@ function foo(bar1, bar2) {
 
 let foo2 = foo.bind('hello', 'john')
 foo2(123) //hello john 123
-~~~
+```
 
 ---
 
@@ -1814,7 +1865,7 @@ foo2(123) //hello john 123
 
 A closure is the combination of a function and the lexical environment within which that function was declared.
 
-~~~javascript
+```javascript
 function foo() {
   let number = 123
   return function bar() {
@@ -1824,7 +1875,7 @@ function foo() {
 
 bar = foo()
 bar() // 123
-~~~
+```
 
 ---
 
@@ -1832,13 +1883,13 @@ bar() // 123
 
 Closures are the reason code like this works in *JavaScript*:
 
-~~~JavaScript
+```JavaScript
 let paragraphs = document.querySelectorAll('p')
 for (let i = 0; i < paragraphs.length; i++)
   paragraphs[i].addEventListener('click', function() {
       console.log('I am paragraph #' + i)
   })
-~~~
+```
 
 Several functions were created in this code, and for each one of them, the variable **i** has a different value.
 
@@ -1848,7 +1899,7 @@ Several functions were created in this code, and for each one of them, the varia
 
 Sometimes we lose our *this*:
 
-~~~javascript
+```javascript
 class Foo {
     setup() {
       document.querySelector('h1').addEventListener('click', this.bar)
@@ -1862,15 +1913,15 @@ class Foo {
 
 let foo = new Foo()
 foo.setup()
-~~~
+```
 
 We can fix it using *bind*:
 
-~~~javascript
+```javascript
 setup() {
   document.querySelector('h1').addEventListener('click', this.bar.bind(this))
 }
-~~~
+```
 
 ---
 
@@ -1878,18 +1929,18 @@ setup() {
 
 Sometimes we might want to do this:
 
-~~~javascript
+```javascript
 document.querySelector('p.blue').addEventListener('click', changeColor('blue'))
 document.querySelector('p.red').addEventListener('click', changeColor('red'))
 
 function changeColor(color) {
   this.style.color = color
 }
-~~~
+```
 
 But it obviously doesn't work. A solution would be to create anonymous functions to create a closure:
 
-~~~javascript
+```javascript
 document.querySelector('p.blue').addEventListener('click', function(event) {
   changeColor('blue', event)}
 )
@@ -1900,7 +1951,7 @@ document.querySelector('p.red').addEventListener('click', function(event) {
 function changeColor(color, event) {
   event.target.style.color = color
 }
-~~~
+```
 
 ---
 
@@ -1908,7 +1959,7 @@ function changeColor(color, event) {
 
 Instead we can create partial functions using bind:
 
-~~~javascript
+```javascript
 let blue = document.querySelector('p.blue')
 blue.addEventListener('click', changeColor.bind(blue, 'blue'))
 
@@ -1918,7 +1969,7 @@ red.addEventListener('click', changeColor.bind(red, 'red'))
 function changeColor(color) {
   this.style.color = color
 }
-~~~
+```
 
 ---
 
@@ -1933,23 +1984,23 @@ template: inverse
 
 The *forEach()* method executes a provided function once for each array element.
 
-~~~javascript
+```javascript
 let numbers = [4, 8, 15, 16, 23, 42]
 numbers.forEach(function(value, index){
     console.log('Element #' + index + ' is ' + value)
 })
-~~~
+```
 
 The result would be:
 
-~~~html
+```html
 Element #0 is 4
 Element #1 is 8
 Element #2 is 15
 Element #3 is 16
 Element #4 is 23
 Element #5 is 42
-~~~
+```
 
 ---
 
@@ -1957,29 +2008,29 @@ Element #5 is 42
 
 The *filter()* method creates a new array with all elements that pass the test implemented by the provided function.
 
-~~~javascript
+```javascript
 let numbers = [4, 8, 15, 16, 23, 42]
 let even = numbers.filter(function(n) {return n % 2 == 0})
 console.log(even) // [ 4, 8, 16, 42 ]
-~~~
+```
 
 Or using arrow functions:
 
-~~~javascript
+```javascript
 let numbers = [4, 8, 15, 16, 23, 42]
 let even = numbers.filter(n => n % 2 == 0)
 console.log(even) // [ 4, 8, 16, 42 ]
-~~~
+```
 
 The alternative would be:
 
-~~~javascript
+```javascript
 let numbers = [4, 8, 15, 16, 23, 42]
 let even = []
 for (let i = 0; i < numbers.length; i++)
   if (numbers[i] % 2 == 0) even.push(numbers[i])
 console.log(even) // [ 4, 8, 16, 42 ]
-~~~
+```
 
 ---
 
@@ -1987,19 +2038,19 @@ console.log(even) // [ 4, 8, 16, 42 ]
 
 The *map()* method creates a new array with the results of calling a provided function on every element in the calling array.
 
-~~~javascript
+```javascript
 let numbers = [4, 8, 15, 16, 23, 42]
 let doubled = numbers.map(function(n) {return n * 2})
 console.log(doubled) // 8, 16, 30, 32, 46, 84
-~~~
+```
 
 Or using arrow functions:
 
-~~~javascript
+```javascript
 let numbers = [4, 8, 15, 16, 23, 42]
 let doubled = numbers.map(n => n * 2)
 console.log(doubled) // 8, 16, 30, 32, 46, 84
-~~~
+```
 
 ---
 
@@ -2007,25 +2058,25 @@ console.log(doubled) // 8, 16, 30, 32, 46, 84
 
 The *map()* method can be used on other types of *array like* objects:
 
-~~~javascript
+```javascript
 let ascii = Array.prototype.map.call('John', letter => letter.charCodeAt(0))
 console.log(ascii) // [74, 111, 104, 110]
-~~~
+```
 
 Simpler:
 
-~~~javascript
+```javascript
 let ascii = [].map.call('John', letter => letter.charCodeAt(0))
 console.log(ascii) // [74, 111, 104, 110]
-~~~
+```
 
 A more useful example:
 
-~~~javascript
+```javascript
 let inputs = document.querySelectorAll('input[type=number]')
 let values = [].map.call(inputs, input => input.value)
 console.log(values) // an array with all the number input values
-~~~
+```
 
 ---
 
@@ -2033,25 +2084,25 @@ console.log(values) // an array with all the number input values
 
 The *reduce()* method applies a function against an accumulator (starting at 0 by default) and each element in the array (from left to right) to reduce it to a single value.
 
-~~~javascript
+```javascript
 let numbers = [4, 8, 15, 16, 23, 42]
 let total = numbers.reduce(function(current, number) {
   return current + number
 })
 console.log(total) // 108
-~~~
+```
 
 Or with arrow functions:
 
-~~~javascript
+```javascript
 [4, 8, 15, 16, 23, 42].reduce( (c, n) => c + n ) // 108
-~~~
+```
 
 We can initialize the accumulator adding a second parameter:
 
-~~~javascript
+```javascript
 [4, 8, 15, 16, 23, 42].reduce( (c, n) => c + n, 10 ) // 118
-~~~
+```
 
 ---
 
@@ -2059,18 +2110,18 @@ We can initialize the accumulator adding a second parameter:
 
 Sometimes we need to convert an *array like* object (like *NodeList*) to a true array so that we can use these awesome new array functions.
 
-~~~javascript
+```javascript
 let paragraphs = document.querySelectorAll('p')
-~~~
+```
 
 There are several ways to achieve this:
 
-~~~javascript
+```javascript
 let array1 = Array.apply(null, paragraphs)
 let array2 = Array.prototype.slice.call(paragraphs)
 let array3 = [].slice.call(paragraphs)
 let array4 = [...paragraphs] // the ECMAScript 2015 spread operator
-~~~
+```
 
 ---
 
@@ -2114,15 +2165,15 @@ template: inverse
 
 The *window* object has a function (*setTimeout*) that sets a timer which executes a function, or specified piece of code, once it expires:
 
-~~~javascript
+```javascript
   let id = window.setTimeout(function() {console.log('Yay!')}, 5000)
-~~~
+```
 
 The return value is an *id* that can be used to cancel the timer:
 
-~~~javascript
+```javascript
   window.clearTimeout(id)
-~~~
+```
 
 ---
 
@@ -2130,18 +2181,18 @@ The return value is an *id* that can be used to cancel the timer:
 
 Another function (*setInterval*) executes executes a function, or specified piece of code, with a fixed time delay between each call.
 
-~~~javascript
+```javascript
   let counter = 1
   let id = window.setInterval(function() {
     console.log('Yay! ' + counter++)
   }, 1000)
-~~~
+```
 
 The return value is an *id* that can be used to cancel the timer:
 
-~~~javascript
+```javascript
   window.clearInterval(id)
-~~~
+```
 
 ---
 
@@ -2378,21 +2429,21 @@ Most of these have been mitigated by recent advances in the *JavaScript* standar
 
 Example:
 
-~~~javascript
+```javascript
 $('p').click(function() {
   console.log($(this).text())
 })
-~~~
+```
 
 In plain JavaScript this would be:
 
-~~~javascript
+```javascript
 let paragraphs = document.querySelectorAll('p')
 for (let i = 0; i < paragraphs.length; i++)
   paragraphs[i].addEventListener('click', function(){
     console.log(this.textContent)    
   })
-~~~
+```
 
 ---
 
@@ -2408,7 +2459,7 @@ for (let i = 0; i < paragraphs.length; i++)
 
 Roll your own:
 
-~~~javascript
+```javascript
 function $(selector) {
   return document.querySelectorAll(selector)
 }
@@ -2421,7 +2472,7 @@ NodeList.prototype.css = function(property, value) {
 }
 
 $('p').css('color', 'red').css('background-color', 'blue')
-~~~
+```
 
 Smaller and simpler alternatives like: http://zeptojs.com/ (25Kb)
 

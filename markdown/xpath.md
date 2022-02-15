@@ -424,7 +424,7 @@ The [document.evaluate](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
 
 This allows us to select nodes that cannot be selected using a single CSS selector.
 
-~~~javascript
+```javascript
 let iterator = document.evaluate(
   '//a/ancestor::ul',     // the xpath expression
   document,               // the context node
@@ -439,7 +439,7 @@ while (true) {
   if (node == null) break;
   console.log(node);
 }
-~~~
+```
 
 For example, the code above selects all *unordered lists* that contain *links*.
 
@@ -471,7 +471,7 @@ One problem with using this method is that the nodes cannot be modified as you i
 
 You can use this simple helper function to overcome that problem (or just use *ORDERED_NODE_SNAPSHOT_TYPE*):
 
-~~~javascript
+```javascript
 function getElementsByXPath(xpath, context = document)
 {
   let nodes = [];
@@ -482,15 +482,15 @@ function getElementsByXPath(xpath, context = document)
   }
   return nodes;
 }
-~~~
+```
 
 Using it:
 
-~~~javascript
+```javascript
 let nodes = getElementsByXPath('//a/ancestor::ul');
 for (let i = 0; i < nodes.length; i++)
   nodes[i].style.color = 'green';
-~~~
+```
 
 ---
 

@@ -80,7 +80,7 @@ Every application must have an AndroidManifest.xml file in its root directory.
 
 The manifest file provides essential information about your app to the Android system, which the system must have before it can run any of the app's code.
 
-~~~xml
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <manifest 
   xmlns:android="http://schemas.android.com/apk/res/android"
@@ -96,7 +96,7 @@ The manifest file provides essential information about your app to the Android s
     </activity>
   </application>
 </manifest>
-~~~
+```
 
 ---
 
@@ -151,14 +151,14 @@ Unlike desktop operating systems, the Android OS might decide that it needs more
 
 It is important to save any persistent state after the *onPause* event but before the *onStop* event. This can be done in the *onSaveInstanceState()* method.
 
-~~~java
+```java
 @Override
 public void onSaveInstanceState(Bundle savedInstanceState) {
   savedInstanceState.putString(STATE_USERNAME, username.getText().toString());
   savedInstanceState.putString(STATE_PASSWORD, password.getText().toString());
   super.onSaveInstanceState(savedInstanceState);
 }
-~~~
+```
 
 The activity can also be restarted due to a configuration change (e.g. screen rotation).
 
@@ -168,14 +168,14 @@ The activity can also be restarted due to a configuration change (e.g. screen ro
 
 After the application starts again we need to recover the save state. This can be done in the *onRestoreInstanceState()* method.
 
-~~~java
+```java
 @Override
 protected void onRestoreInstanceState(Bundle savedInstanceState) {
     super.onRestoreInstanceState(savedInstanceState);
     username.setText(savedInstanceState.getString(STATE_USERNAME));
     password.setText(savedInstanceState.getString(STATE_PASSWORD));
 }
-~~~
+```
 
 ---
 
@@ -195,13 +195,13 @@ The layout is described using XML.
 
 To assign a layout to an activity, one can use the *setContentView()* method inside the *onCreate()* method:
 
-~~~java
+```java
 @Override
 protected void onCreate(Bundle savedInstanceState) {
   super.onCreate(savedInstanceState);
   setContentView(R.layout.activity_list); // /res/layout/activity_list.xml
 }
-~~~
+```
 
 ---
 
@@ -253,10 +253,10 @@ Layouts are in fact also views. Can you spot the [design pattern](https://source
 
 Views can be inflated directly from a layout resource:
 
-~~~java
+```java
 LayoutInflater inflater = LayoutInflater.from(getContext());
 View view = inflater.inflate(R.layout.some_view, null);
-~~~
+```
 
 ---
 
@@ -282,7 +282,7 @@ Some important attributes:
 # Layout Example
 
 .small[
-~~~xml
+```xml
 <LinearLayout android:layout_width="match_parent" 
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -309,7 +309,7 @@ Some important attributes:
       android:layout_width="0dp" android:layout_height="wrap_content" />
   </LinearLayout>
 </LinearLayout>
-~~~
+```
 ]
 
 ---
@@ -318,10 +318,10 @@ Some important attributes:
 
 We can access our views in our activities using the *findViewById()* method:
 
-~~~java
+```java
   mUsername = (EditText) findViewById(R.id.edit_name);
   mPassword = (EditText) findViewById(R.id.edit_email);
-~~~
+```
 
 ---
 
@@ -335,14 +335,14 @@ name:mobile
 
 Each different view has a different set of events it can fire. To listen to these events we can use event listeners:
 
-~~~java
+```java
 buttonAdd.setOnClickListener(new View.OnClickListener() {
   @Override
   public void onClick(View v) {
       
   }
 });
-~~~
+```
 
 * Another [design pattern](https://sourcemaking.com/design_patterns/observer)?
 * Why is the view passed as a parameter?
@@ -371,7 +371,7 @@ A *RecyclerView* is a more recent and powerful form to display lists.
 
 # ListView Adapter
 
-~~~java
+```java
 public class PersonAdapter extends ArrayAdapter<Person> {
   public PersonAdapter(Context context, List<Person> items) {
       super(context, -1, items);
@@ -393,7 +393,7 @@ public class PersonAdapter extends ArrayAdapter<Person> {
     return convertView;
   }
 }
-~~~
+```
 
 ---
 
@@ -492,18 +492,18 @@ There are two primary forms of intents:
 
 To start an activity we must use an Intent:
 
-~~~java
+```java
   Intent intent = new Intent(getContext(), PersonActivity.class);
   intent.putExtra(PersonActivity.INTENT_PERSON, person);
   getContext().startActivity(intent);
-~~~
+```
 
 The activity that receives the intent can read it on the *onCreate()* method:
 
-~~~java
+```java
 Intent intent = getIntent();
 person = (Person) intent.getSerializableExtra(INTENT_PERSON);
-~~~
+```
 
 Do not forget to declare the activity in the *manifest*.
 
@@ -511,7 +511,7 @@ Do not forget to declare the activity in the *manifest*.
 
 # Intent Filters
 
-~~~java
+```java
 <activity android:name=".UrlActivity">
   <intent-filter>
     <action android:name="android.intent.action.VIEW" />
@@ -520,7 +520,7 @@ Do not forget to declare the activity in the *manifest*.
     <data android:host="www.person-app.com" android:scheme="http" />
   </intent-filter>
 </activity>
-~~~
+```
 
 ---
 

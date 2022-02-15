@@ -45,11 +45,11 @@ name:introduction
 
 Without generics, we would write code like this:
 
-~~~java
+```java
 List wordList = new ArrayList();
 wordList.add("ABCD"); 
 String word = wordList.get(0);
-~~~
+```
 
 Only to find the compiler complaining about that last line.
 
@@ -57,9 +57,9 @@ This happens because, unqualified Lists, store **Object**s. So, <code>wordList.g
 
 This means we need to cast it to a String first:
 
-~~~java
+```java
 String word = (String)wordList.get(0);
-~~~
+```
 
 ---
 
@@ -67,21 +67,21 @@ String word = (String)wordList.get(0);
 
 Without generics, the following code will throw a **ClassCastException**:
 
-~~~java
+```java
 List wordList = new ArrayList();
 wordList.add(123);
 String word = (String) wordList.get(0);
-~~~
+```
 
 It would be much nicer if we could detect this kind of bugs in **compile-time**.
 
 What generics provide is **Type-safety**:
 
-~~~java
+```java
 List<String> wordList = new ArrayList<>();
 wordList.add(123); // add (String) in List cannot be applied to (int)
 String word = wordList.get(0);
-~~~
+```
 
 Now, besides **not** needing the explicit **cast**, trying to add an integer to the list, results in a **compile-time** error.
 
@@ -100,9 +100,9 @@ name:type-variables
 
 Type variables are declared using the **diamond operator**:
 
-~~~java
+```java
 <T>
-~~~
+```
 
 ---
 
@@ -131,11 +131,11 @@ name:generic-methods
 
 Consider that we want to create a function that adds an **Array** of **String**s to a **List** of **String**s:
 
-~~~java
+```java
 public void stringArrayToList(String[] a, List<String> l) {
   for (String s : a) l.add(s);
 }
-~~~
+```
 
 Now imagine we want to extend this method to **all types** of objects.
 
@@ -145,11 +145,11 @@ Now imagine we want to extend this method to **all types** of objects.
 
  Without generics, we would do it like this:
 
-~~~java
+```java
 public void arrayToList(Object[] a, List l) {
   for (Object o : a) l.add(o);
 }
-~~~
+```
 
 Two problems: 
 * We can't guarantee in **compile-time** the type of the **Array**.
@@ -157,14 +157,14 @@ Two problems:
 
 So if we want to retrieve the values from the **List**, we have to cast them to **String** and risk a **ClassCastException**.
 
-~~~java
+```java
 String[] a = {"ABC", "DEF"}; List l = new ArrayList();
 
 arrayToList(a, l);
 
 for (Object s : l)
   System.out.println((String)s);
-~~~
+```
 
 ---
 
@@ -172,25 +172,25 @@ for (Object s : l)
 
 And even if we swear to always use parameterized **List**s:
 
-~~~java
+```java
 String[] a = {"ABC", "DEF"}; List<String> l = new ArrayList<>();
 
 arrayToList(a, l);
 
 for (String s : l)
   System.out.println(s);
-~~~
+```
 
 Something like this would still be possible:
 
-~~~java
+```java
 String[] a = {"ABC", "DEF"}; List<Integer> l = new ArrayList<>();
 
 arrayToList(a, l);
 
 for (Integer i : l)
   System.out.println(i);
-~~~
+```
 
 And we would get a **ClassCastException** again!
 
@@ -200,22 +200,22 @@ And we would get a **ClassCastException** again!
 
 Using generics, we can solve this problem by creating a parameterized function:
 
-~~~java
+```java
 public <T> void arrayToList(T[] a, List<T> l) {
     for (T o : a) l.add(o);
 }
-~~~
+```
 
 Notice how we declared that the function is **parameterized** by a **type variable** called **T**. Now we can call this method with any kind of **List** whose element type is a **supertype** of the element type of the **Array**.
 
-~~~java
+```java
 String[] a = {"ABC", "DEF"}; List<String> l = new ArrayList<>();
 
 arrayToList(a, l);
 
 for (String s : l)
     System.out.println(s);
-~~~
+```
 
 And if we try to use **incompatible** types for the **Array** and **List**, we will get a **compile-time** error.
 
@@ -233,7 +233,7 @@ We can define our **own classes** with generics type.
 
 A generic type is a **class** or **interface** that is **parameterized** over types:
 
-~~~java
+```java
 public class Box<T> {
   T something;
   
@@ -245,15 +245,15 @@ public class Box<T> {
       return this.something;
   }
 }
-~~~
+```
 
 Using it:
 
-~~~java
+```java
 Box<String> box = new Box<>();
 box.put("ABC");               // Only works with strings
 String something = box.get(); // Only returns strings
-~~~
+```
 
 ---
 
@@ -261,7 +261,7 @@ String something = box.get(); // Only returns strings
 
 We can also create classes that extend generic types:
 
-~~~java
+```java
 class NamedBox<T> extends Box<T> {
     String name;
     public void setName(String name) {
@@ -271,13 +271,13 @@ class NamedBox<T> extends Box<T> {
         return this.name;
     }
 }
-~~~
+```
 
 We can even create non-parameterized types based on parameterized types:
 
-~~~java
+```java
 class StringBox extends Box<String> { }
-~~~
+```
 
 ---
 
@@ -304,24 +304,24 @@ Variance refers to how **subtyping** between more **complex types** relates to s
 
 Basic Java types are **covariant**. So this is possible:
 
-~~~java
+```java
 abstract class Animal { }
 class Zebra extends Animal { }
 
 Zebra zebra = new Zebra();
 Animal animal = zebra;
-~~~
+```
 
 All Zebras are Animals. But this is not:
 
-~~~java
+```java
 abstract class Animal { }
 class Zebra extends Animal { }
 class Giraffe extends Animal { }
 
 Animal animal = new Giraffe(); // Ok.
 Zebra zebra = animal; // Incompatible types.
-~~~
+```
 
 Not all Animals are Zebras...
 
@@ -331,24 +331,24 @@ Not all Animals are Zebras...
 
 Arrays are also **covariant**. So this is possible:
 
-~~~java
+```java
 abstract class Animal { }
 class Zebra extends Animal { }
 
 Zebra[] zebras = new Zebra[10];
 Animal[] animals = zebras;
-~~~
+```
 
 All groups of Zebras are a group of Animals. But this is not:
 
-~~~java
+```java
 abstract class Animal { }
 class Zebra extends Animal { }
 class Giraffe extends Animal { }
 
 Animal[] animals = new Giraffe[10]; // Ok.
 Zebra[] zebras = animals; // Incompatible types.
-~~~
+```
 
 Not all groups of Animals are a group of Zebras.
 
@@ -358,7 +358,7 @@ Not all groups of Animals are a group of Zebras.
 
 But we need to be careful:
 
-~~~java
+```java
 abstract class Animal { }
 class Zebra extends Animal { }
 class Giraffe extends Animal { }
@@ -368,7 +368,7 @@ Animal[] animals = zebras;
 
 animals[0] = new Zebra(); // Ok
 animals[1] = new Giraffe(); // ArrayStoreException
-~~~
+```
 
 This will throw an **exception** at **runtime**, as the **animals** array is still just an array of zebras.
 
@@ -382,11 +382,11 @@ For historical reasons, **arrays are covariant** but we have to deal with runtim
 
 For this reason, Java **generics are invariant**. We can deal with this problem in a more sophisticated way using **wildcards**.
 
-~~~java
+```java
 List<Zebra> zebras = new ArrayList<>();
 List<Zebra> theSameZebras = zebras; // Ok.
 List<Animal> animals = zebras; // Incompatible types (compile-time error).
-~~~
+```
 
 ---
 
@@ -400,28 +400,28 @@ name:wildcards
 
 Instead of a **type variable** like **&lt;T&gt;**, we can use a wildcard like **&lt;?&gt;** to represent an unknown type:
 
-~~~java
+```java
 List<Zebra> zebras = new ArrayList<>();
 List<Zebra> theSameZebras = zebras; // Ok.
 List<Animal> animals = zebras; // Incompatible Types.
 List<?> moreAnimals = zebras; // Ok.
-~~~
+```
 
 Or create a method that receives a list of **"unknowns"**.
 
-~~~java
+```java
 public void printList (List<?> someList) {
   for (Object o : someList)
     System.out.println(o);
 }
-~~~
+```
 
 We can use it like this:
 
-~~~java
+```java
 List<Zebra> zebras = new ArrayList<>();
 printList(zebras);
-~~~
+```
 
 ---
 
@@ -429,10 +429,10 @@ printList(zebras);
 
 However, this does not work:
 
-~~~java
+```java
 List<?> zebras = new ArrayList<>();
 zebras.add(new Zebra()); // add (<?>) in List cannot be applied
-~~~
+```
 
 A list of **"unknowns"** is still a list of something. 
 
@@ -448,15 +448,15 @@ We can, however, use extends and super to create more flexible lists.
 
 A list of animals or any subtype (upper-bounded):
 
-~~~java
+```java
 List<? extends Animal> animals = new ArrayList<>();
-~~~
+```
 
 A list of animals or any supertype (lower-bounded):
 
-~~~java
+```java
 List<? super Animal> animals = new ArrayList<>();
-~~~
+```
 
 Upper-bounded wildcards are **covariant**, while lower-bounded wildcards are **contravariant**. 
 
@@ -466,7 +466,7 @@ Upper-bounded wildcards are **covariant**, while lower-bounded wildcards are **c
 
 **Covariant** types are **"read-only"** (kind of):
 
-~~~java
+```java
 List<? extends Animal> animals = new ArrayList<>();
 for (Animal a : animals)
     System.out.println(a);
@@ -474,20 +474,20 @@ animals.add(new Zebra());  // add (<? extends Animal>) in List 
                            // cannot be applied to (Zebra)
 ((List<Zebra>)animals).add(new Zebra()); // Ok. 
                                          // But we can get a ClassCastException
-~~~
+```
 
 We cannot be **certain** that the list is of **Zebras**. This is not a list of **Animals**, it is a list of some **"unknown"** Animal type.
 
 **Contravariant** types are **"write-only"** (kind of):
 
-~~~java
+```java
 List<? super Animal> animals = new ArrayList<>();
 animals.add(new Zebra());
 for (Animal a : animals)
     System.out.println(a); // Incompatible types.
 for (Object a : animals)
     System.out.println(a); // Ok. But we don't know the real type.
-~~~
+```
 
 ---
 
@@ -495,28 +495,28 @@ for (Object a : animals)
 
 If we don't care about the data inside a collection:
 
-~~~java
+```java
 public int getSize(Collection<?> collection) {
     return collection.size();
 }
-~~~
+```
 
 If we just need a list where we can put animals. Even if it is a List&lt;Object&gt;.
 
-~~~java
+```java
 public void addToList(Animal animal, List<? super Animal> list) {
     list.add(animal);
 }
-~~~
+```
 
 If we want to make sure the List contains animals. It can be a List&lt;Zebra&gt;.
 
-~~~java
+```java
 public void makeEat(List<? extends Animal> list) {
     for (Animal animal : list)
         animal.eat();
 }
-~~~
+```
 
 ---
 
@@ -528,17 +528,17 @@ name:observer-example
 
 # Generic Observer Interface
 
-~~~java
+```java
 public interface Observer<T> {
     public void changed(T observable);
 }
-~~~
+```
 
 ---
 
 # Generic Observable Class
 
-~~~java
+```java
 public abstract class Observable<T> {
     private List<Observer<T>> observers;
 
@@ -559,13 +559,13 @@ public abstract class Observable<T> {
             observer.changed(subject);
     }
 }
-~~~
+```
 
 ---
 
 # Light
 
-~~~java
+```java
 public class Light extends Observable<Light> {
     private boolean turnedOn;
 
@@ -582,13 +582,13 @@ public class Light extends Observable<Light> {
         this.notifyObservers(this);
     }
 }
-~~~
+```
 
 ---
 
 # Client
 
-~~~java
+```java
 public class Application {
     public static void main(String[] args) {
         Light light = new Light(false);
@@ -605,7 +605,7 @@ public class Application {
         light.setTurnedOn(true);
     }
 }
-~~~
+```
 
 ---
 
@@ -620,11 +620,11 @@ name:transformation-example
 
 Transforms one variable into another having the same type.
 
-~~~java
+```java
 interface Transformation<T> {
     public T execute(T argument);
 }
-~~~
+```
 
 ---
 
@@ -632,7 +632,7 @@ interface Transformation<T> {
 
 Does a series of transformations in sequence:
 
-~~~java
+```java
 public class TransformationLine<T> {
     private List<Transformation<T>> transformations;
 
@@ -651,13 +651,13 @@ public class TransformationLine<T> {
         return current;
     }
 }
-~~~
+```
 
 ---
 
 # Client
 
-~~~java
+```java
 TransformationLine<Integer> tl = new TransformationLine<>();
 
 tl.addTransformation(new Transformation<Integer>() {
@@ -682,4 +682,4 @@ tl.addTransformation(new Transformation<Integer>() {
 });
 
 System.out.println(tl.execute(10));
-~~~
+```

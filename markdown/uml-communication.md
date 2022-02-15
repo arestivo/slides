@@ -111,15 +111,15 @@ name:sequence
 
 The sequence expression is a dot (".") separated **list** of **sequence terms** followed by a colon (":") and **message name** after that:
 
-~~~bash
+```bash
 term1.term2.term3:message
-~~~
+```
 
 Each sequence term represents a **level** of procedural **nesting** within the **overall** interaction. Each sequence-term has the following syntax:
 
-~~~bash
+```bash
 integer [ name ] [ recurrence ] 
-~~~
+```
 
 ![](../assets/uml-communication/sequence.svg)
 

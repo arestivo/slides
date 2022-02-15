@@ -101,20 +101,20 @@ name:functions
 
 To create a function in PostgreSQL, we use the *CREATE FUNCTION* command:
 
-~~~sql
+```sql
 CREATE OR REPLACE FUNCTION <function_name>(<parameters>) 
 RETURNS <return_type> 
 AS '<function_code>' 
 LANGUAGE <language>;
-~~~
+```
 
 Example:
 
-~~~sql
+```sql
 CREATE FUNCTION clean_employees() RETURNS void AS '
   DELETE FROM employee WHERE salary < 0;
 ' LANGUAGE SQL;
-~~~
+```
 
 ---
 
@@ -124,11 +124,11 @@ Parameters to the function are referenced in the function body using the syntax 
 
 Example:
 
-~~~sql
+```sql
 CREATE FUNCTION disable_employee(integer) RETURNS void AS '
   UPDATE employee SET disabled = true WHERE id = $1;
 ' LANGUAGE SQL;
-~~~
+```
 
 ---
 
@@ -136,9 +136,9 @@ CREATE FUNCTION disable_employee(integer) RETURNS void AS '
 
 To delete a function, we use the *DROP FUNCTION* command:
 
-~~~sql
+```sql
 DROP FUNCTION disable_employee(integer);
-~~~
+```
 
 ---
 
@@ -146,19 +146,19 @@ DROP FUNCTION disable_employee(integer);
 
 Function parameters can be given alias (names) to increase readability:
 
-~~~sql 
+```sql 
 CREATE FUNCTION disable_employee(disabled_id integer) RETURNS void AS '
   UPDATE employee SET disabled = true WHERE id = disabled_id;
 ' LANGUAGE SQL;
-~~~
+```
 
 If the argument name is the same as any column name in the current SQL command within the function, the column name will take precedence. 
 
-~~~sql 
+```sql 
 CREATE FUNCTION disable_employee(id integer) RETURNS void AS '
   UPDATE employee SET disabled = true WHERE id = disable_employee.id;
 ' LANGUAGE SQL;
-~~~
+```
 
 ---
 
@@ -168,14 +168,14 @@ A function using SQL as its language can be composed of many SQL operations. The
 
 Example:
 
-~~~sql
+```sql
 -- Disables an employee and returns the total number
 -- of disabled employees in the database.
 CREATE FUNCTION disable_employee(integer) RETURNS void AS '
   UPDATE employee SET disabled = true WHERE id = $1;
   SELECT COUNT(*) FROM employees WHERE disabled = true;
 ' LANGUAGE SQL;
-~~~
+```
 
 ---
 
@@ -183,19 +183,19 @@ CREATE FUNCTION disable_employee(integer) RETURNS void AS '
 
 The body of a function is considered a SQL text block and so its defined inside single quotes. In this way, single quotes inside the function body must be escaped by doubling them.
 
-~~~sql
+```sql
 CREATE FUNCTION remove_empty() RETURNS void AS '
   DELETE FROM product WHERE description = '''';
 ' LANGUAGE SQL;
-~~~
+```
 
 This can make the code hard to read, but you can also use $$ as a delimiter to simplify the code:
 
-~~~sql
+```sql
 CREATE FUNCTION remove_empty() RETURNS void AS $$
   DELETE FROM product WHERE description = '';
 $$ LANGUAGE SQL;
-~~~
+```
 
 ---
 
@@ -209,13 +209,13 @@ name:functions
 
 To create a trigger in PostgreSQL we use the *CREATE TRIGGER* command:
 
-~~~sql
+```sql
 CREATE TRIGGER <name> { BEFORE | AFTER | INSTEAD OF } <event> [ OR ... ] }
 ON <table_name>
 [ FOR EACH { ROW | STATEMENT } ]
 [ WHEN ( <condition> ) ]
 EXECUTE PROCEDURE <function_name> ( <arguments> );
-~~~
+```
 
 * **Name**: Name of the trigger.
 * **When**: BEFORE, AFTER or INSTEAD OF the operation.
@@ -231,21 +231,21 @@ EXECUTE PROCEDURE <function_name> ( <arguments> );
 
 Run the *check_account_update* function *before* updating *each row* of the *accounts* table:
 
-~~~sql
+```sql
 CREATE TRIGGER check_update
 BEFORE UPDATE ON accounts
 FOR EACH ROW
 EXECUTE PROCEDURE check_account_update();
-~~~
+```
 
 Run the *update_orders_total* function *before* any row change in the *lines* table:
 
-~~~sql
+```sql
 CREATE TRIGGER update_orders
 BEFORE UPDATE or INSERT or DELETE ON lines
 FOR EACH ROW
 EXECUTE PROCEDURE update_orders_total();
-~~~
+```
 
 ---
 
@@ -253,9 +253,9 @@ EXECUTE PROCEDURE update_orders_total();
 
 To delete a trigger, we use the *DROP TRIGGER* command:
 
-~~~sql
+```sql
 DROP TRIGGER check_update;
-~~~
+```
 
 ---
 
@@ -266,19 +266,19 @@ In row-level triggers, the trigger condition and the executed function have acce
 * The NEW variable contains the updated or inserted row.
 * The OLD variable contains the row before being updated or deleted.
 
-~~~sql
+```sql
 CREATE TRIGGER check_product_on_sale
 BEFORE UPDATE ON products
 FOR EACH ROW
 WHEN NEW.price < OLD.price
 EXECUTE PROCEDURE make_product_on_sale();
-~~~
+```
 
-~~~sql
+```sql
 CREATE FUNCTION make_product_on_sale() RETURNS void AS $$
   UPDATE product SET on_sale = true WHERE id = NEW.id;
 $$ LANGUAGE SQL;
-~~~
+```
 
 ---
 
@@ -294,13 +294,13 @@ A procedural programming language supported by PostgreSQLthat closely resembles 
 
 The body of a PL/PgSQL function has the following format:
 
-~~~sql
+```sql
 [ DECLARE
    declarations ]
 BEGIN
     statements
 END
-~~~
+```
 
 ---
 
@@ -310,10 +310,10 @@ All variables used in a block must be declared in the declarations section of th
 
 PL/pgSQL variables can have any SQL data type, such as integer, varchar, and char.
 
-~~~sql
+```sql
 url varchar := 'http://mysite.com';
 user_id integer := 10;
-~~~
+```
 
 ---
 
@@ -321,15 +321,15 @@ user_id integer := 10;
 
 Variables can represent a tuple. If we want a variable to represent a tuple of a specific table we can use:
 
-~~~sql
+```sql
 employee employees%ROWTYPE;
-~~~
+```
 
 If we want to specify a tuple with no specific structure we can use the *RECORD* type:
 
-~~~sql
+```sql
 employee RECORD;
-~~~
+```
 
 ---
 
@@ -337,21 +337,21 @@ employee RECORD;
 
 Assignment can be done using the := operator where expression can be any SQL expression:
 
-~~~sql
+```sql
 variable := expression;
-~~~
+```
 
 SQL commands that do not return any rows can just be written as normal SQL commands:
 
-~~~sql
+```sql
 UPDATE employee SET disabled = true WHERE id = $1;
-~~~
+```
 
 To execute a single SELECT query and discard the result we must use the PERFORM command:
 
-~~~sql
+```sql
 PERFORM SELECT id, name FROM employees;
-~~~
+```
 
 ---
 
@@ -359,23 +359,23 @@ PERFORM SELECT id, name FROM employees;
 
 To assign the result of a select to a variable, we use the *INTO* operator:
 
-~~~sql
+```sql
 SELECT name INTO employee_name FROM employees WHERE id = $1;
-~~~ 
+``` 
 
 Into multiple variables:
 
-~~~sql
+```sql
 SELECT id, name INTO employee_id, employee_name 
 FROM employees WHERE id = $1;
-~~~ 
+``` 
 
 Into a record:
 
-~~~sql
+```sql
 SELECT * FROM employees INTO employee 
 FROM employees WHERE id = $1;
-~~~ 
+``` 
 
 If the query returns multiple rows, only the first one is assigned.
 
@@ -385,7 +385,7 @@ If the query returns multiple rows, only the first one is assigned.
 
 A function can return any expression (query result, variable, ...).
 
-~~~sql
+```sql
 CREATE FUNCTION get_employee_salary(integer) RETURNS numeric AS $$
 DECLARE
   employee_salary numeric;
@@ -394,7 +394,7 @@ BEGIN
   RETURN employee_salary;
 END
 $$ LANGUAGE plpgsql;
-~~~
+```
 
 ---
 
@@ -404,7 +404,7 @@ We can create conditional expressions using the IF, THEN and ELSE commands. A *E
 
 *IF-THEN* and *IF-THEN-ELSE* blocks always end with an *END IF*.
 
-~~~sql
+```sql
 IF type = 'admin' THEN
     disabled := false;
 ELSE
@@ -412,7 +412,7 @@ ELSE
         disabled := true;
     END IF;
 END IF;
-~~~
+```
 
 ---
 
@@ -420,12 +420,12 @@ END IF;
 
 After a SELECT query, we can test if the query did not return any rows:
 
-~~~sql
+```sql
 SELECT * INTO employee FROM employees WHERE id = $1;
 IF NOT FOUND THEN
   --- Id does not exist in the database
 END IF;
-~~~
+```
 
 ---
 
@@ -439,21 +439,21 @@ Simple loops can be created using the *LOOP*, *EXIT*, *CONTINUE*, *WHILE*, and *
 
 All loops end with a *END LOOP* statement:
 
-~~~sql
+```sql
 LOOP
   IF count > 0 THEN
     EXIT
   END IF;
   ...
 END LOOP; 
-~~~
+```
 
-~~~sql
+```sql
 LOOP
   EXIT WHEN count > 0; -- alternative to IF-THEN
   ...
 END LOOP; 
-~~~
+```
 
 ---
 
@@ -461,15 +461,15 @@ END LOOP;
 
 WHILE loops until a certain condition becomes false:
 
-~~~sql
+```sql
 WHILE count <= 0 LOOP
   ...
 END LOOP;
-~~~
+```
 
 And FOR loops over a range of values:
 
-~~~sql
+```sql
 FOR i IN 1..10 LOOP
     -- 1,2,3,4,5,6,7,8,9,10
 END LOOP;
@@ -481,7 +481,7 @@ END LOOP;
 FOR i IN REVERSE 10..1 BY 2 LOOP
     -- 10,8,6,4,2
 END LOOP;
-~~~
+```
 
 ---
 
@@ -489,19 +489,19 @@ END LOOP;
 
 Using a different type of *FOR* loop, you can iterate through the results of a query:
 
-~~~sql
+```sql
 FOR <target> IN <query> LOOP
     <statements>
 END LOOP
-~~~
+```
 
 Example:
 
-~~~sql
+```sql
 FOR e IN SELECT name, salary FROM employee LOOP
     total := total + e.salary;
 END LOOP
-~~~
+```
 
 ---
 
@@ -509,9 +509,9 @@ END LOOP
 
 The *RAISE* function can be used to signal any kind of errors or warnings:
 
-~~~sql
+```sql
 RAISE <level> '<format>' [, expressions];
-~~~
+```
 
 Levels can be: DEBUG, LOG, INFO, NOTICE, WARNING, and EXCEPTION. Exceptions is the only level that aborts the function.
 
@@ -519,16 +519,16 @@ Inside the format string, % is replaced by the next optional expression.
 
 Examples:
 
-~~~sql
+```sql
 RAISE EXCEPTION 'Expected positive price but received %', price
-~~~
+```
 
-~~~sql
+```sql
 SELECT * INTO employee FROM employees WHERE id = $1;
 IF NOT FOUND THEN
   RAISE EXCEPTION 'Employee % not found', $1
 END IF;
-~~~
+```
 
 ---
 

@@ -130,7 +130,7 @@ Normally we don't have to modify these classes unless we want to change some con
 
 Example **desktop** starter class:
 
-~~~java
+```java
 public class Main {
    public static void main(String[] args) {
       LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
@@ -142,7 +142,7 @@ public class Main {
       new LwjglApplication(new MyGame(), cfg);
    }
 }
-~~~
+```
 
 ---
 
@@ -150,7 +150,7 @@ public class Main {
 
 An *ApplicationListener* allows you to handle application events. This allows you to execute code during certain events within the game life-cycle.
 
-~~~java
+```java
 public interface ApplicationListener {
 
   public void create ();  // When the game is created
@@ -161,7 +161,7 @@ public interface ApplicationListener {
   public void dispose (); // When the games is closed
 
 }
-~~~
+```
 
 ---
 
@@ -175,13 +175,13 @@ public interface ApplicationListener {
 
 An abstract class that implements the *ApplicationListener* interface. Allows the developer to implement the *ApplicationListener* interface without overriding every method.
 
-~~~java
+```java
 public abstract class ApplicationAdapter implements ApplicationListener {
 
   /* ... */
 
 }
-~~~
+```
 
 ---
 
@@ -189,7 +189,7 @@ public abstract class ApplicationAdapter implements ApplicationListener {
 
 A *Game* is an *ApplicationListener* that supports multiple screens. You can create multiple screens and switch between them using *setScreen*. Game events are delegated to the current screen.
 
-~~~java
+```java
 public abstract class Game implements ApplicationListener {
 
   public void setScreen(Screen screen);
@@ -197,7 +197,7 @@ public abstract class Game implements ApplicationListener {
   /* ... */
 
 }
-~~~
+```
 
 ---
 
@@ -205,7 +205,7 @@ public abstract class Game implements ApplicationListener {
 
 Represents one of many application screens, such as a main menu, a settings menu, the game screen and so on.
 
-~~~java
+```java
 public interface Screen {
 
   public void	dispose();
@@ -217,7 +217,7 @@ public interface Screen {
   public void	show();
 
 }
-~~~
+```
 
 ---
 
@@ -225,13 +225,13 @@ public interface Screen {
 
 An abstract class that implements the *Screen* interface. Allows the developer to implement the *Screen* interface without overriding every method.
 
-~~~java
+```java
 public abstract class ScreenAdapter implements Screen {
 
   /* ... */
 
 }
-~~~
+```
 
 ---
 
@@ -258,14 +258,14 @@ name:2dgraphics
 
 This is what the SpriteBatch class does.
 
-~~~java
+```java
 public class SpriteBatch implements Batch {
   public void begin ();
   public void draw(Texture texture, float x, float y); // and many other like this
   public void end();
   public void dispose();
 }
-~~~
+```
 
 ---
 
@@ -273,23 +273,23 @@ public class SpriteBatch implements Batch {
 
 The Texture class decodes an image file and loads it into GPU memory.
 
-~~~java
+```java
 public class Texture extends GLTexture {
 
 }
-~~~
+```
 
 Loading a texture into memory:
 
-~~~java
+```java
 Texture heroTexture = new Texture (Gdx.files.internal("hero.png"));
-~~~
+```
 
 Textures should be disposed once they are not needed:
 
-~~~java
+```java
 heroTexture.dispose();
-~~~
+```
 
 ---
 
@@ -298,7 +298,7 @@ heroTexture.dispose();
 
 The *TextureRegion* class describes a rectangle inside a texture and is useful for drawing only a portion of the texture.
 
-~~~java
+```java
 public class TextureRegion {
   public TextureRegion (TextureRegion region,
     int x, int y,
@@ -309,7 +309,7 @@ public class TextureRegion {
   public static TextureRegion[][] split (Texture texture,
       int tileWidth, int tileHeight);
 }
-~~~
+```
 
 The *split* method is an helper method that splits a *Texture* into *TextureRegion*s according to a tile width and height.
 
@@ -319,7 +319,7 @@ The *split* method is an helper method that splits a *Texture* into *TextureRegi
 
 The *Sprite* class describes both a *texture region* and the *geometry* where it will be drawn.
 
-~~~java
+```java
 public class Sprite extends TextureRegion {
   public Sprite (TextureRegion region);
 
@@ -330,7 +330,7 @@ public class Sprite extends TextureRegion {
 
   public void draw (Batch batch);
 }
-~~~
+```
 
 ---
 
@@ -347,7 +347,7 @@ public class Sprite extends TextureRegion {
 * The AssetManager can manage our textures keeping only one copy of each in memory.
 * It also handles asynchronous loading.
 
-~~~java
+```java
 public class AssetManager implements Disposable {
 	public <T> void load (String fileName, Class<T> type);
 	public <T> T get (String fileName);
@@ -355,7 +355,7 @@ public class AssetManager implements Disposable {
 	public boolean update(); // true if finished loading
 	public void finishLoading (); // waits for all assets to load
 }
-~~~
+```
 
 ---
 
@@ -363,7 +363,7 @@ public class AssetManager implements Disposable {
 
 To render our *Screen* we can do something like:
 
-~~~java
+```java
 // In our screen class:
 public void render(float delta) {
     super.render(delta);
@@ -377,7 +377,7 @@ public void render(float delta) {
     game.getBatch().draw(texture, 100, 100);
     game.getBatch().end();
 }
-~~~
+```
 
 Delta is the time in seconds since the last render.
 
@@ -406,7 +406,7 @@ name:camera
 
 A sugestion for dealing with this problem:
 
-~~~java
+```java
 public static int WORLD_WIDTH = 100; // Arbitrary world size (e.g. meters)
 public static int WORLD_HEIGHT = 50;
 
@@ -419,7 +419,7 @@ public static int PIXEL_TO_METER = .05f;
 
 float ratio = ((float)Gdx.graphics.getHeight() / (float)Gdx.graphics.getWidth());
 
-~~~
+```
 
 ---
 
@@ -447,18 +447,18 @@ We would get:
 * The viewport into our game.
 * Implements a parallel (orthographic) projection.
 
-~~~java
+```java
 public class OrthographicCamera extends Camera {
   public OrthographicCamera (float viewportWidth, float viewportHeight);
   public void update (); // Updates the transformation matrix
 }
-~~~
+```
 
 Setting the camera position:
 
-~~~java
+```java
 camera.position.set(new Vector3(x, y, 0));
-~~~
+```
 
 ---
 
@@ -482,13 +482,13 @@ name:physics
 
 The *World* class manages all physics entities using [Box2D](http://box2d.org/).
 
-~~~java
+```java
 public final class World implements Disposable {
   public World (Vector2 gravity, boolean doSleep);
   public Body createBody (BodyDef def);
   public void destroyBody (Body body);
 }
-~~~
+```
 
 The world uses SI units (meters, Newtons, seconds, radians, ...)
 
@@ -512,7 +512,7 @@ Bodies can be of three types:
 
 * A body definition holds all the data needed to construct a rigid body. You can safely re-use body definitions.
 
-~~~java
+```java
 BodyDef bodyDef = new BodyDef();
 bodyDef.type = BodyDef.BodyType.DynamicBody;
 
@@ -522,7 +522,7 @@ bodyDef.linearVelocity.set(5f, 0f);    // meters/s
 bodyDef.angularVelocity.set(Math.PI);  // PI radians/s
 
 Body body = world.createBody(bodyDef);
-~~~
+```
 
 ---
 
@@ -531,7 +531,7 @@ Body body = world.createBody(bodyDef);
 * Each body is made up of one or more *fixtures*, which have a fixed position and orientation within the body.
 * Fixtures give bodies their shape, mass and properties.
 
-~~~java
+```java
 // Create shape
 CircleShape circle = new CircleShape();
 circle.setRadius(0.22f);       //22cm
@@ -545,7 +545,7 @@ fixtureDef.restitution = .5f;  // how bouncy is the fixture [0,1]
 
 // Attach ficture to body
 body.createFixture(fixtureDef);
-~~~
+```
 
 ---
 
@@ -564,10 +564,10 @@ There are 4 types of shapes that can be used to create fixtures:
 
 Circles have a radius:
 
-~~~java
+```java
 CircleShape circle = new CircleShape();
 circle.setRadius(0.11f);
-~~~
+```
 
 ---
 
@@ -576,18 +576,18 @@ circle.setRadius(0.11f);
  * Polygon shapes must be convex and can have 8 vertexes at most.
  * They can be combined to create more complex shapes.
 
-~~~java
+```java
 public class PolygonShape extends Shape {
   public void set (Vector2[] vertices);
 }
-~~~
+```
 
 Creating a rectangular shape is easy with the *setAsBox* method.
 
-~~~java
+```java
 PolygonShape rectangle = new PolygonShape();
 rectangle.setAsBox(1f, 0.5f);
-~~~
+```
 
 ---
 
@@ -597,7 +597,7 @@ rectangle.setAsBox(1f, 0.5f);
 * Stepping updates the world objects through time.
 * The best place to call our step function is at the end of our *render* loop.
 
-~~~java
+```java
 public final class World implements Disposable {
   public void step (
     float timeStep,          // time since last update
@@ -605,7 +605,7 @@ public final class World implements Disposable {
     int positionIterations); // accuracy for position constraints (2)
 }
 
-~~~
+```
 
 ---
 
@@ -625,11 +625,11 @@ In particular the [BouncingScreen](https://github.com/arestivo/BouncingBalls/blo
 
 We can change the position, angle and speed of a body directly:
 
-~~~java
+```java
   public void setTransform (Vector2 position, float angle); // meters, radians
   public void setLinearVelocity (Vector2 velocity);         // meters/second
   public void setAngularVelocity (float omega);             // radians/second
-~~~
+```
 
 ---
 
@@ -640,14 +640,14 @@ But normally, to move things around, we will apply forces or impulses to a body.
 * Forces act gradually over time to change the velocity of a body.
 * Impulses change a body's velocity immediately.
 
-~~~java
+```java
 public class Body {
   public void applyForce (Vector2 force, Vector2 point, boolean wake); // Newtons
   public void applyForceToCenter (Vector2 force, boolean wake);        // Newtons
   public void applyLinearImpulse (Vector2 impulse, Vector2 point, boolean wake);
   //Newtons*second
 }
-~~~
+```
 
 ![](../assets/libgdx/libgdx-force.svg)
 
@@ -660,12 +660,12 @@ Angular movement can also be controlled:
 * Torques act gradually over time to change the angular velocity of a body.
 * Impulses change a body's angular velocity immediately.
 
-~~~java
+```java
 public class Body {
 	public void applyTorque (float torque, boolean wake);          //Newton*meter
 	public void applyAngularImpulse (float impulse, boolean wake); //kg*m²/second
 }
-~~~
+```
 
 ![](../assets/libgdx/libgdx-torque.svg)
 
@@ -683,21 +683,21 @@ name:input
 
 In each step of our simulation we can check if some key of the keyboard has been pressed using the *Input* interface.
 
-~~~java
+```java
 public interface Input {
 	public boolean isKeyPressed (int key);
 	public boolean isKeyJustPressed (int key);
 }
-~~~
+```
 
 The Input interface also has keycodes for every key:
 
-~~~java
+```java
   Input.isKeyPressed( Input.Key.NUM_0 );
   Input.isKeyPressed( Input.Key.A );
   Input.isKeyPressed( Input.Key.LEFT );
   /* ... */
-~~~
+```
 
 ---
 
@@ -705,23 +705,23 @@ The Input interface also has keycodes for every key:
 
 We can also checked if the screen has been touched or clicked:
 
-~~~java
+```java
 public interface Input {
 	public boolean isTouched ();
 	public boolean justTouched ();
 }
-~~~
+```
 
 And get the touch coordinates:
 
-~~~java
+```java
 public interface Input {
 	public int getX ();
 	public int getY ();
 	public int getDeltaX ();
 	public int getDeltaY ();
 }
-~~~
+```
 
 ---
 
@@ -757,13 +757,13 @@ Scene2d is a 2D scene graph for building applications and UIs using a hierarchy 
 
 The *Stage* class has a camera, *SpriteBatch*, and a root group and handles drawing the actors and distributing input events.
 
-~~~java
+```java
 public class Stage extends InputAdapter implements Disposable {
   public Stage (Viewport viewport);
   public void act (float delta);
   public void draw ();
 }
-~~~
+```
 
 ---
 
@@ -826,13 +826,13 @@ Many types of viewports can be used:
 
 The Actor class is a node in the graph which has a position, rectangular size, origin, scale, rotation, and color.
 
-~~~java
+```java
 public class Actor {
 	public void draw (Batch batch, float parentAlpha);
 	public void act (float delta);
 	protected void setStage (Stage stage);
 }
-~~~
+```
 
 ---
 
@@ -840,12 +840,12 @@ public class Actor {
 
 The Group class is an actor that may have child actors.
 
-~~~java
+```java
 public class Group extends Actor {
 	public void addActor (Actor actor);
 	public boolean removeActor (Actor actor);
 }
-~~~
+```
 
 ---
 
@@ -861,11 +861,11 @@ LibGDX has a set of predefined actors ready to be used:
 * TextField - A single-line input field
 * Touchpad - A virtual joystick
 
-~~~java
+```java
   scoreLabel = new Label("0", new Label.LabelStyle(new BitmapFont(), null));
   scoreLabel.setColor(Color.WHITE);
   addActor(scoreLabel);
-~~~
+```
 
 ---
 
@@ -883,14 +883,14 @@ Events are propagated in two phases:
 * The *capture* phase from the root down to the target actor.
 * And the *normal* phase from the target up to the root.
 
-~~~java
+```java
 public class Actor {
 	public boolean addListener (EventListener listener);
 	public boolean removeListener (EventListener listener);
 	public void setTouchable (Touchable touchable);
 	public void setVisible (boolean visible);
 }
-~~~
+```
 
 ---
 
@@ -898,7 +898,7 @@ public class Actor {
 
 Listens to mouse and touch events.
 
-~~~java
+```java
 public ClickListener () {
   public void touchDown(InputEvent e, float x, float y, int pointer, int button);
   public void touchUp(InputEvent e, float x, float y, int pointer, int button);
@@ -907,14 +907,14 @@ public ClickListener () {
 
   public int getTapCount();
 }
-~~~
+```
 ---
 
 # ActorGestureListener
 
 For more complex touch events.
 
-~~~java
+```java
 public ActorGestureListener () {
  public void touchDown(InputEvent e, float x, float y, int pointer, int button);
 
@@ -933,7 +933,7 @@ public ActorGestureListener () {
  public void pinch(InputEvent e, Vector2 iPointer1, Vector2 iPointer2,
                                  Vector2 pointer1, Vector2 pointer2);
 }
-~~~
+```
 
 ---
 
@@ -953,20 +953,20 @@ In particular the [BouncingScreen](https://github.com/arestivo/BouncingBalls/blo
 
 * When a action finishes, the action is automatically removed from the actor.
 
-~~~java
+```java
 abstract public class Action {
 	abstract public boolean act (float delta);
 }
-~~~
+```
 
 Many actions are already implemented in libGDX but more can be added easily:
 
-~~~java
+```java
 MoveToAction action = new MoveToAction();
 action.setPosition(x, y);
 action.setDuration(duration);
 actor.addAction(action);
-~~~
+```
 
 Actions can be composed together to create more complex actions.
 
@@ -993,16 +993,16 @@ name:collisions
 To detect collisions between body in the physical world we can
 implement a *ContactListener* interface:
 
-~~~java
+```java
 public interface ContactListener {
 	public void beginContact (Contact contact);
 	public void endContact (Contact contact);
 }
-~~~
+```
 
 To use it, just set and implement the contact listener of the physical world:
 
-~~~java
+```java
 world.setContactListener(new ContactListener() {
   @Override
   public void beginContact(Contact contact) {
@@ -1012,7 +1012,7 @@ world.setContactListener(new ContactListener() {
   public void endContact(Contact contact) {
   }
 }
-~~~
+```
 
 ---
 
@@ -1021,16 +1021,16 @@ world.setContactListener(new ContactListener() {
 When a collision is detected, the ContactListener receives a
 Contact class with information about the contact. We can easily get the fixtures that collided:
 
-~~~java
+```java
 public class Contact {
 	public Fixture getFixtureA ();
 	public Fixture getFixtureB ();
 }
-~~~
+```
 
 And also the bodies:
 
-~~~java
+```java
 world.setContactListener(new ContactListener() {
     @Override
     public void beginContact(Contact contact) {
@@ -1038,7 +1038,7 @@ world.setContactListener(new ContactListener() {
       Body bodyB = contact.getFixtureB().getBody();
     }
 }
-~~~
+```
 
 The order of the fixtures (and bodies) is not guaranteed!
 
@@ -1048,24 +1048,24 @@ The order of the fixtures (and bodies) is not guaranteed!
 
 User data can be attached to a body to help identify the colliding bodies:
 
-~~~java
+```java
 public class Body {
 	public Object getUserData ();
 	public void setUserData (Object userData);
 }
-~~~
+```
 
 For example:
 
-~~~java
+```java
   body.setUserData(actor);
-~~~
+```
 
 And then:
 
-~~~java
+```java
   Actor actor = (Actor)body.getUserData();
-~~~
+```
 
 ---
 
@@ -1092,17 +1092,17 @@ LibGDX supports two main types of sound:
 * **Music**: represents a streamed audio file. The interface supports pausing, resuming and so on.
 * **Sound** a short audio clip that can be played numerous times in parallel.
 
-~~~java
+```java
 Sound sound = Gdx.audio.newSound(Gdx.files.internal("kick.wav"));
 Music music = Gdx.audio.newMusic(Gdx.files.internal("music.mp3"));
-~~~
+```
 
 All sounds and musics should be disposed when no longer needed:
 
-~~~java
+```java
 sound.dispose();
 music.dispose();
-~~~
+```
 
 ---
 
@@ -1111,17 +1111,17 @@ music.dispose();
 We can use the *AssetManager* to manage our sounds and musics just
 like we do with textures:
 
-~~~java
+```java
 assetManager.load("kick.wav", Sound.class);
 assetManager.load("music.mp3", Music.class);
-~~~
+```
 
 And then:
 
-~~~java
+```java
 Sound sound = assetManager.get("kick.wav");
 Music music = assetManager.get("music.mp3");
-~~~
+```
 
 ---
 
@@ -1129,16 +1129,16 @@ Music music = assetManager.get("music.mp3");
 
 To play a sound we can use
 
-~~~java
+```java
 public interface Sound extends Disposable {
   public long play ();
 	public long play (float volume); // Volume = [0,1]
 }
-~~~
+```
 
 To play a music:
 
-~~~java
+```java
 public interface Music extends Disposable {
   public void setVolume (float volume);
   public void setLooping (boolean isLooping);
@@ -1149,7 +1149,7 @@ public interface Music extends Disposable {
 
   public boolean isPlaying ();
 }
-~~~
+```
 
 ---
 
@@ -1165,13 +1165,13 @@ An animation consists of multiple frames which are shown in a sequence at set in
 
 To create a animation we start by getting a texture and spliting it into *TextureRegion*s:
 
-~~~java
+```java
   Texture texture = game.getAssetManager().get("animation.png
   TextureRegion[][] thrustRegion = TextureRegion.split(
     texture,
     texture.getWidth() / 5,    // 5 columns
     texture.getHeight() / 3);  // 3 lines
-~~~
+```
 
 ![](../assets/libgdx/sprite.png)
 
@@ -1183,19 +1183,19 @@ We then need to transform the resulting bi-dimensional array
 into a uni-dimensional array. The easiest way to do it, is
 to use the *System.arraycopy* method:
 
-~~~java
+```java
 public static void arraycopy(
   Object src, int srcPos,
   Object dest, int destPos,
   int length);
-~~~
+```
 
 Like this:
 
-~~~java
+```java
 TextureRegion[] frames = new TextureRegion[10];
 System.arraycopy(thrustRegion[0], 0, frames, 0, 10);
-~~~
+```
 
 ---
 
@@ -1203,22 +1203,22 @@ System.arraycopy(thrustRegion[0], 0, frames, 0, 10);
 
 We then create the animation:
 
-~~~java
+```java
   // 0.25 seconds per frame
   Animation animation = new Animation<TextureRegion>(.25f, frames);
-~~~
+```
 
 The current frame is a *TextureRegion* and we can get it
 like this:
 
-~~~java
+```java
 public class Animation {
 	public TextureRegion getKeyFrame (
     float stateTime, // current time
     boolean looping  // should the animation loop
   );
 }
-~~~
+```
 
 ---
 

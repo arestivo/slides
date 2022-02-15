@@ -284,26 +284,26 @@ name:cpp
 
 C / C++ (cstdlib)
 
-~~~c
+```c
 void* malloc (size_t size);
 void* realloc (void* ptr, size_t size);
 void free (void* ptr);
-~~~
+```
 
 C++
 
-~~~c
+```c
 void* operator new (std::size_t size) throw (std::bad_alloc);
 void* operator new[] (std::size_t size) throw (std::bad_alloc);
 void operator delete (void* ptr);
 void operator delete[] (void* ptr);
-~~~
+```
 
 
 ---
 
 # Examples
-~~~c
+```c
 int *data;
 
 data = (int*) malloc(4 * sizeof(int));
@@ -314,37 +314,37 @@ data = (int*) realloc(data, 5 * sizeof(int));
 /* do stuff with data */
 
 free(data);
-~~~
+```
 
 New C++ Operators:
 
-~~~cpp
+```cpp
 int *data;
 
 data = new int[3];
 delete[] data;
-~~~
+```
 
-~~~cpp
+```cpp
 int *data;
 
 data = new int;
 delete data;
-~~~
+```
 
 
 ---
 
 # Static Alocation
 
-~~~cpp
+```cpp
 void main() {
   int a[4];
 
   for (int i = 0; i < 4; i++)
     cin >> a[i]; // reads from stdin values: 1 3 5 7
 }
-~~~
+```
 
 .large[
 ![](../assets/memory/static.svg)
@@ -354,7 +354,7 @@ void main() {
 
 # Dynamic Alocation
 
-~~~cpp
+```cpp
 void main() {
   int n, *a;
   
@@ -366,7 +366,7 @@ void main() {
 
   free(a);
 }
-~~~
+```
 
 .large[
 ![](../assets/memory/dynamic.svg)
@@ -376,7 +376,7 @@ void main() {
 
 # Passing by Value
 
-~~~cpp
+```cpp
 int sum(int a, int b) {
   return a + b;
 }
@@ -386,7 +386,7 @@ void main() {
   cin >> x >> y; // reads from stdin values: 2 3 
   int z = sum (x, y);
 }
-~~~
+```
 
 .small[
 ![](../assets/memory/byvalue.svg)
@@ -396,7 +396,7 @@ void main() {
 
 # Passing by Pointer
 
-~~~cpp
+```cpp
 void sum(int a, int b, int* c) {
   *c = a + b;
 }
@@ -406,7 +406,7 @@ void main() {
   cin >> x >> y; // reads from stdin values: 2 3 
   sum (x, y, &z);
 }
-~~~
+```
 
 ![](../assets/memory/bypointer.svg)
 
@@ -414,7 +414,7 @@ void main() {
 
 # Passing by Reference
 
-~~~cpp
+```cpp
 void sum(int a, int b, int &c) {
   c = a + b;
 }
@@ -424,7 +424,7 @@ void main() {
   cin >> x >> y; // reads from stdin values: 2 3 
   sum (x, y, z);
 }
-~~~
+```
 
 ![](../assets/memory/byreference.svg)
 
@@ -432,7 +432,7 @@ void main() {
 
 # Passing by Reference and Pointer
 
-~~~cpp
+```cpp
 void create_array (int s,int* &b){
   b = (int *) malloc(s * sizeof(int));
 }
@@ -443,7 +443,7 @@ void main() {
   create_array(s, a);
   free(a);
 }
-~~~
+```
 
 .large[
 ![](../assets/memory/byreferencepointer.svg)

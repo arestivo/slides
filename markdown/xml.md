@@ -105,9 +105,9 @@ Processing instructions allow documents to contain instructions for applications
 
 Since **XML 1.1**, all XML documents must start with a processing instruction (prolog) indicating the XML version. If not, the document is considered to be **XML 1.0**.
 
-~~~xml
+```xml
 <?xml version="1.1" encoding="utf-8"?>
-~~~
+```
 
 The encoding is **utf-8** by default.
 
@@ -117,9 +117,9 @@ The encoding is **utf-8** by default.
 
 Comments start with a `<!--` and end with `-->`.
 
-~~~xml
+```xml
 <!-- This is a comment -->
-~~~
+```
 
 Comments cannot contain double hyphens (`--`).
 
@@ -131,11 +131,11 @@ CDATA sections are used to escape blocks of text containing characters which wou
 
 They begin with the string `<![CDATA[` and end with the string `]]>`.
 
-~~~xml
+```xml
 <![CDATA[
   <warning>These tags are not markup</warning>
 ]]>
-~~~
+```
 
 ---
 
@@ -147,7 +147,7 @@ They begin with the string `<![CDATA[` and end with the string `]]>`.
 * Element names are case sensitive. The element **start tag** must match the element **end tag** case.
 * Empty elements can use a `/` in the end instead of a closing tag.
 
-~~~xml
+```xml
 <?xml version="1.1"?>
 <message>
 	<to>Mr. John Doe</to>
@@ -155,7 +155,7 @@ They begin with the string `<![CDATA[` and end with the string `]]>`.
 	<text>How are you?</text>
 	<private/> <!-- this is an empty element -->
 </message>
-~~~
+```
 
 ---
 
@@ -165,14 +165,14 @@ They begin with the string `<![CDATA[` and end with the string `]]>`.
 * Attributes only appear in element **start** tags (or empty element tags).
 * Attributes must be single or double **quoted**.
 
-~~~xml
+```xml
 <?xml version="1.1"?>
 <message date="2014-12-03" private="yes">
 	<to>Mr. John Doe</to>
 	<from>Ms. Jane Doe</from>
 	<text>How are you?</text>
 </message>
-~~~
+```
 
 Attributes should be used for **metadata**.
 
@@ -209,11 +209,11 @@ Model that defines the structure of a valid XML document:
 
 **Document Type Declaration** used to associate DTD to XML document:
 
-~~~xml
+```xml
 <?xml version="1.1"?>
 <!DOCTYPE message SYSTEM "message.dtd">
 <message>Hello, world!</message>
-~~~
+```
 
 ---
 
@@ -250,7 +250,7 @@ An alternative to XML Schemas:
 # Example
 ##XML
 
-~~~xml
+```xml
 <addressBook>
   <card>
     <name>John Smith</name>
@@ -261,28 +261,28 @@ An alternative to XML Schemas:
     <email>fb@example.net</email>
   </card>
 </addressBook>
-~~~
+```
 
 ---
 
 # Example
 ## DTD
 
-~~~xml
+```xml
 <!DOCTYPE addressBook [
 <!ELEMENT addressBook (card*)>
 <!ELEMENT card (name, email)>
 <!ELEMENT name (#PCDATA)>
 <!ELEMENT email (#PCDATA)>
 ]>
-~~~
+```
 
 ---
 
 # Example
 ## XSD
 
-~~~xml
+```xml
 <xs:schema elementFormDefault="qualified">
   <xs:element name="addressBook">
     <xs:complexType>
@@ -299,14 +299,14 @@ An alternative to XML Schemas:
     </xs:complexType>
   </xs:element>
 </xs:schema>
-~~~
+```
 
 ---
 
 # Example
 ## Relax NG
 
-~~~xml
+```xml
 <element name="addressBook" xmlns="http://relaxng.org/ns/structure/1.0">
   <zeroOrMore>
     <element name="card">
@@ -319,7 +319,7 @@ An alternative to XML Schemas:
     </element>
   </zeroOrMore>
 </element>
-~~~
+```
 
 ---
 
@@ -349,14 +349,14 @@ defined for and used by **multiple** software modules.
 # Example
 ##Namespace
 
-~~~xml
+```xml
 <?xml version="1.0"?>
 <bk:book xmlns:bk='urn:loc.gov:books'
          xmlns:isbn='urn:ISBN:0-395-36341-6'>
     <bk:title>Cheaper by the Dozen</bk:title>
     <isbn:number>1568491379</isbn:number>
 </bk:book>
-~~~
+```
 
 ---
 
@@ -364,7 +364,7 @@ defined for and used by **multiple** software modules.
 
 The **scope** of a namespace declaration extends from the beginning of the **start-tag** in which it appears to the end of the corresponding **end-tag**.
 
-~~~xml
+```xml
 <?xml version="1.0"?>
 <!-- initially, the default namespace is "books" -->
 <book xmlns='urn:loc.gov:books'
@@ -378,7 +378,7 @@ The **scope** of a namespace declaration extends from the beginning of the **sta
       </p>
     </notes>
 </book>
-~~~
+```
 
 ---
 

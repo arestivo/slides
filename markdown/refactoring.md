@@ -235,7 +235,7 @@ These ones deal with **methods** and temporary **variables**.
 
 # 1. Composing Methods: Extract Method
 
-~~~java
+```java
 void printOwing() {
   printBanner();
 
@@ -243,13 +243,13 @@ void printOwing() {
   System.out.println("name: " + name);
   System.out.println("amount: " + getOutstanding());
 }
-~~~
+```
 
 --
 
 Refactored into:
 
-~~~java
+```java
 void printOwing() {
   printBanner();
   printDetails(getOutstanding());
@@ -259,7 +259,7 @@ void printDetails(double outstanding) {
   System.out.println("name: " + name);
   System.out.println("amount: " + outstanding);
 }
-~~~
+```
 
 Can be used to eliminate: **Duplicate Code**, **Long Method**, **Feature Envy**, **Switch Statements**, **Message Chains**, **Comments** and **Data Class**.
 
@@ -267,7 +267,7 @@ Can be used to eliminate: **Duplicate Code**, **Long Method**, **Feature Envy**,
 
 # 1. Composing Methods: Inline Method
 
-~~~java
+```java
 class PizzaDelivery {
   // ...
   int getRating() {
@@ -277,20 +277,20 @@ class PizzaDelivery {
     return numberOfLateDeliveries > 5;
   }
 }
-~~~
+```
 
 --
 
 Refactored into:
 
-~~~java
+```java
 class PizzaDelivery {
   // ...
   int getRating() {
     return numberOfLateDeliveries > 5 ? 2 : 1;
   }
 }
-~~~
+```
 
 Can be used to eliminate: **Speculative Generality**.
 
@@ -301,7 +301,7 @@ Can be used to eliminate: **Speculative Generality**.
 You have an expression that’s hard to understand.
 
 .small[
-~~~java
+```java
 void renderBanner() {
   if ((platform.toUpperCase().indexOf("MAC") > -1) &&
        (browser.toUpperCase().indexOf("IE") > -1) &&
@@ -310,7 +310,7 @@ void renderBanner() {
     // do something
   }
 }
-~~~
+```
 ]
 
 --
@@ -318,7 +318,7 @@ void renderBanner() {
 Refactored into:
 
 .small[
-~~~java
+```java
 void renderBanner() {
   final boolean isMacOs = platform.toUpperCase().indexOf("MAC") > -1;
   final boolean isIE = browser.toUpperCase().indexOf("IE") > -1;
@@ -328,7 +328,7 @@ void renderBanner() {
     // do something
   }
 }
-~~~
+```
 ]
 
 Can be used to eliminate: **Comment**.
@@ -337,25 +337,25 @@ Can be used to eliminate: **Comment**.
 
 # 1. Composing Methods: Split Temporary Variable
 
-~~~java
+```java
 double temp = 2 * (height + width);
 System.out.println(temp);
 
 temp = height * width;
 System.out.println(temp);
-~~~
+```
 
 --
 
 Refactored into:
 
-~~~java
+```java
 final double perimeter = 2 * (height + width);
 final double area = height * width;
 
 System.out.println(perimeter);
 System.out.println(area);
-~~~
+```
 
 ---
 
@@ -494,27 +494,27 @@ Helping with data handling by replacing primitives with rich class functionality
 
 # Decompose Conditional
 
-~~~java
+```java
 if (date.before(SUMMER_START) || date.after(SUMMER_END)) {
   charge = quantity * winterRate + winterServiceCharge;
 }
 else {
   charge = quantity * summerRate;
 }
-~~~
+```
 
 --
 
 Refactored into:
 
-~~~java
+```java
 if (isSummer(date)) {
   charge = summerCharge(quantity);
 }
 else {
   charge = winterCharge(quantity);
 }
-~~~
+```
 
 Can be used to eliminate: **Long Method**.
 
@@ -522,20 +522,20 @@ Can be used to eliminate: **Long Method**.
 
 # Introduce Null Object
 
-~~~java
+```java
 if (customer == null) {
   plan = BillingPlan.basic();
 }
 else {
   plan = customer.getPlan();
 }
-~~~
+```
 
 --
 
 Refactored into:
 
-~~~java
+```java
 class NullCustomer extends Customer {
   boolean isNull() {
     return true;
@@ -549,7 +549,7 @@ customer = (order.customer != null) ?
   order.customer : new NullCustomer();
 
 plan = customer.getPlan();
-~~~
+```
 
 Can be used to eliminate: **Switch Statements** and **Temporary Field**.
 
@@ -605,7 +605,7 @@ public double getPayAmount() {
 
 # Consolidate Duplicate Conditional Fragments
 
-~~~java
+```java
 if (isSpecialDeal()) {
   total = price * 0.95;
   send();
@@ -614,13 +614,13 @@ else {
   total = price * 0.98;
   send();
 }
-~~~
+```
 
 --
 
 Refactored into:
 
-~~~java
+```java
 if (isSpecialDeal()) {
   total = price * 0.95;
 }
@@ -628,7 +628,7 @@ else {
   total = price * 0.98;
 }
 send();
-~~~
+```
 
 Can be used to eliminate: **Duplicate Code**.
 

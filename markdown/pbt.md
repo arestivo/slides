@@ -47,7 +47,7 @@ name:testing
 
 Everyone likes to reimplement stuff from scratch; in that spirit, let us code our own sum function:
 
-~~~java
+```java
 public int mySum(int a, int b) {
   int accumulator = a;
   while(b > 0) {
@@ -56,18 +56,18 @@ public int mySum(int a, int b) {
   }
   return accumulator;
 }
-~~~
+```
 
 How should one proceed to test it? Many will write something like this:
 
-~~~java
+```java
 @Test
 public int mySumTest() {
   assertEquals(2, sum(1, 1)); 
   assertEquals(4, sum(2, 2)); 
   assertEquals(8, sum(4, 4)); 
 }
-~~~
+```
 
 Everything is awesome! All tests are passing!...
 
@@ -77,7 +77,7 @@ Everything is awesome! All tests are passing!...
 
 There's indeed a bug in the implementation. Look at the code very carefully:
 
-~~~java
+```java
 public int mySum(int a, int b) {
   int accumulator = a;
   while(b > 0) {
@@ -86,13 +86,13 @@ public int mySum(int a, int b) {
   }
   return accumulator;
 }
-~~~
+```
 
 What happens when you try something like `mySum(2, -3)`?
 
-~~~raw
+```raw
 Expected -1; got 2.
-~~~
+```
 
 ---
 
@@ -100,22 +100,22 @@ Expected -1; got 2.
 
 *But that is stupid! Why don't we use the *`+`* operator?* — an older student.
 
-~~~java
+```java
 public int mySum(int a, int b) {
   return a + b;
 }
-~~~
+```
 
 *... and proceed to test for a range!* — the same older student.
 
-~~~java
+```java
 @Test
 public int mySumTest() {
   for (int a = -100; a < 100; a++)
     for (int b = -100; b < 100; b++)
       assertEquals(a + b, sum(a, b)); 
 }
-~~~
+```
 
 ---
 

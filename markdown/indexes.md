@@ -471,14 +471,14 @@ Consider we have 10 buckets.
 
 An hash function that receives a string, calculates the binary representation of each character (a = 1, b = 2, ...) and returns the sum of those representations *modulo* 10.
 
-~~~cpp
+```cpp
 int h(string word) {
   int sum = 0;
   for (int i = 0; i < word.length(); i++)
     sum += word[i] - 'a';
   return sum % 10;
 }
-~~~
+```
 
 h(john) = 3; h(carl) = 0; h(gustafsson) = 1; ...
 
@@ -510,11 +510,11 @@ name:postgresql
 
 PostgreSQL supports both B+ Tree and Hash indexes:
 
-~~~sql
+```sql
 CREATE INDEX name ON table (column); -- btree by default
 CREATE INDEX name ON table USING btree (column);
 CREATE INDEX name ON table USING hash (column);
-~~~
+```
 
 PostgreSQL does not support primary indexes. All indexes are secondary and thus, dense.
 
@@ -524,9 +524,9 @@ PostgreSQL does not support primary indexes. All indexes are secondary and thus,
 
 An index can be defined on more than one column of a table.
 
-~~~sql
+```sql
 CREATE INDEX name ON table (column_a, column_b);
-~~~
+```
 
 Works well on queries searching for values in columns *a* and *b* simultaneously or just on column *a*; but not just on column *b*.
 
@@ -538,9 +538,9 @@ For example, a phone book is indexed on (*last name*, *other names*) making it e
 
 Indexes can also be used to enforce uniqueness of a column's value, or the uniqueness of the combined values of more than one column.
 
-~~~sql
+```sql
 CREATE UNIQUE INDEX name ON table (column);
-~~~
+```
 
 Unique indexes are **automatically** created on unique and primary key constraints.
 
@@ -552,21 +552,21 @@ In fact, primary and unique keys are **enforced** by these automatic unique inde
 
 An index column need not be just a column of the underlying table, but can be a **function** computed from one or more columns of the table.
 
-~~~sql
+```sql
 CREATE INDEX idx_name ON employees (lower(name));
-~~~
+```
 
 This index would be automatically used in this query:
 
-~~~sql
+```sql
 SELECT * FROM employees WHERE lower(name) = 'john';
-~~~
+```
 
 This can also be used to enforce constraints that are not definable as simple unique constraints:
 
-~~~sql
+```sql
 CREATE UNIQUE INDEX idx_mail ON employees (lower(email));
-~~~
+```
 
 ---
 
@@ -576,21 +576,21 @@ A partial index is an index built over a **subset** of a table.
 
 One reason for using a partial index is to avoid indexing common values.
 
-~~~sql
+```sql
 CREATE INDEX idx_type ON employees (type) WHERE type <> 'normal';
-~~~
+```
 
 Would be automatically used in this query:
 
-~~~sql
+```sql
 SELECT * FROM employees WHERE type <> 'normal';
-~~~
+```
 
 Another possible use for partial indexes is to enforce constraints in a subset of the table:
 
-~~~sql
+```sql
 CREATE UNIQUE INDEX idx_mail ON employees (mail) WHERE type <> 'admin';
-~~~
+```
 
 ---
 
@@ -599,9 +599,9 @@ CREATE UNIQUE INDEX idx_mail ON employees (mail) WHERE type <> 'admin';
 PostgreSQL does not support primary indexes but the *CLUSTER* command can be used to
 reorder a table based on one &mdash; **and only one** &mdash; index.
 
-~~~sql
+```sql
 CLUSTER table_name USING index_name;
-~~~
+```
 
 Clustering is a **one-time** operation: when the table is subsequently updated, the changes are not clustered.
 
@@ -639,15 +639,15 @@ name:fts
 
 When we execute a query like this one:
 
-~~~sql
+```sql
 SELECT * FROM employee WHERE name ILIKE 'john%';
-~~~
+```
 
 A B+ Tree index can be used to speed up the query. But for this one:
 
-~~~sql
+```sql
 SELECT * FROM employee WHERE name ILIKE '%john%';
-~~~
+```
 
 * There is no way in which a normal index can help us.
 
@@ -662,13 +662,13 @@ SELECT * FROM employee WHERE name ILIKE '%john%';
   * FTS is based on [lexemes](https://glossary.sil.org/term/lexeme).
   * A *tsvector* value is a sorted list of distinct lexemes.
 
-~~~sql
+```sql
 SELECT to_tsvector('english', 'The quick brown fox jumps over the lazy dog')
-~~~
+```
 
-~~~txt
+```txt
 'brown':3 'dog':9 'fox':4 'jump':5 'lazi':8 'quick':2
-~~~
+```
 
   * The *to_tsvector* function **normalizes** words into lexemes, removes **duplicates**, removes **stop words** and records the **position** of each lexeme.
 
@@ -679,19 +679,19 @@ SELECT to_tsvector('english', 'The quick brown fox jumps over the lazy dog')
   * A *tsquery* value stores the *lexemes* that we want to search.
   * Lexemes can be combined using the boolean operators & (AND), | (OR), and ! (NOT):
 
-~~~sql
+```sql
 SELECT to_tsquery('english', 'jumping & dog');
-~~~
+```
 
-~~~txt
+```txt
 'jump' & 'dog'
-~~~
+```
 
   * The function *plainto_tsquery* simplifies this operation:
 
-~~~sql
+```sql
 SELECT plainto_tsquery('english', 'the jumping dog'); -- same result
-~~~
+```
 
 ---
 
@@ -700,21 +700,21 @@ SELECT plainto_tsquery('english', 'the jumping dog'); -- same result
 The @@ operator is used to assert if a *tsvector* matches a *tsquery*:
 
 .small[
-~~~sql
+```sql
 SELECT title
 FROM posts
 WHERE to_tsvector('english', title || ' ' || body) @@ plainto_tsquery('english', 'jumping dog');
-~~~
+```
 ]
 
 **Note**: The || operator concatenates strings but it also concatenates *ts_vectors*.
 
 .small[
-~~~sql
+```sql
 SELECT title
 FROM posts
 WHERE (to_tsvector('english', title) || to_tsvector('english', body)) @@ plainto_tsquery('english', 'jumping dog');
-~~~
+```
 ]
 
 ---
@@ -728,19 +728,19 @@ We can use the *setweight* to attach a **weight** to a certain *ts_vector*.
 Weights go from 'A' (more important) to 'D' (less important).
 
 .small[
-~~~sql
+```sql
 SELECT
    setweight(to_tsvector('english', 'The quick brown fox jumps over the lazy dog'), 'A') ||
    setweight(to_tsvector('english', 'An English language pangram. A sentence that contains
                                      all of the letters of the alphabet.'), 'B')
-~~~
+```
 ]
 
-~~~txt
+```txt
 'alphabet':24B 'brown':3A 'contain':17B 'dog':9A 'english':11B
 'fox':4A 'jump':5A 'languag':12B  'lazi':8A 'letter':21B 'pangram':13B
 'quick':2A 'sentenc':15B
-~~~
+```
 
 As you can see, we can concatente *tsvectors* directly.
 
@@ -753,7 +753,7 @@ The *ts_rank* and *ts_rank_cd* functions, return a **score** for each returned r
 between a *tsquery* and *tsvector*.
 
 .small[
-~~~sql
+```sql
 SELECT
   ts_rank(
     setweight(to_tsvector('english', 'The quick brown fox jumps over the lazy dog'), 'A') ||
@@ -761,19 +761,19 @@ SELECT
                                      all of the letters of the alphabet.'), 'B'),
     plainto_tsquery('english', 'jumping dog')
   )
-~~~
+```
 ]
 
-~~~txt
+```txt
 0.9524299
-~~~
+```
 
 You can also change the weights of the *ts_vector* classes (A to D) and set how normalization, due to different document lengths, should be performed.
 
 .small[
-~~~sql
+```sql
 ts_rank([ weights float4[], ] vector tsvector, query tsquery [, normalization integer ])
-~~~
+```
 ]
 
 ---
@@ -784,7 +784,7 @@ For **performance** reasons, we should consider adding a column to tables where 
 
 This column should be updated whenever a row changes or is inserted. This can be done easily using a **trigger**:
 
-~~~sql
+```sql
 CREATE FUNCTION post_search_update() RETURNS TRIGGER AS $$
 BEGIN
   IF TG_OP = 'INSERT' THEN
@@ -798,7 +798,7 @@ BEGIN
   RETURN NEW;
 END
 $$ LANGUAGE 'plpgsql';
-~~~
+```
 
 ---
 
@@ -806,12 +806,12 @@ $$ LANGUAGE 'plpgsql';
 
 To select all posts containing *jumping* and *dog* we can use the following query:
 
-~~~sql
+```sql
 SELECT title
 FROM posts
 WHERE search @@ plainto_tsquery('english', 'jumping dog')
 ORDER BY ts_rank(search, plainto_tsquery('english', 'jumping dog')) DESC
-~~~
+```
 
 Considering that *search* is a pre-calculated column containing the *ts_vector* of the columns we want to search.
 
@@ -821,13 +821,13 @@ Considering that *search* is a pre-calculated column containing the *ts_vector* 
 
 To improve the performance of our full text searches, we can use GIN or GiST indexes:
 
-~~~sql
+```sql
 CREATE INDEX search_idx ON posts USING GIN (search);
-~~~
+```
 
-~~~sql
+```sql
 CREATE INDEX search_idx ON posts USING GIST (search);
-~~~
+```
 
 **Note**: We could also use an index on a *ts_vector* expression directly.
 
@@ -896,15 +896,15 @@ After identifying a **problematic query**, we might want to understand how *Post
 
 For that we can use the EXPLAIN command that displays the **execution plan** that the PostgreSQL planner generates for the supplied statement:
 
-~~~sql
+```sql
 EXPLAIN <query>
-~~~
+```
 
 Or EXPLAIN ANALYZE that causes the statement to be actually executed, not only planned.
 
-~~~sql
+```sql
 EXPLAIN ANALYZE <query>
-~~~
+```
 
 ---
 
@@ -928,7 +928,7 @@ Consider the following database:
 
 And the following query that selects *all users that ordered more than one product costing 100*:
 
-~~~sql
+```sql
 EXPLAIN SELECT users.name, COUNT(*)
 FROM orders JOIN
      contains ON orders.id = contains.o_id  JOIN
@@ -938,7 +938,7 @@ WHERE products.price = 100
 GROUP BY username, users.name
 HAVING COUNT(*) > 1
 ORDER BY COUNT(*) DESC
-~~~
+```
 
 Notice that we added the EXPLAIN clause in the beginning.
 
@@ -986,9 +986,9 @@ Why is this happening?
 
 An **index** on the *contains.p_id* column could help us minimize this cost.
 
-~~~sql
+```sql
 CREATE INDEX contains_product_idx ON contains USING btree (p_id);
-~~~
+```
 
 ---
 
@@ -1008,9 +1008,9 @@ Now most of the time is spent **looking for the products** with the **desired pr
 
 Let's try creating another index:
 
-~~~sql
+```sql
 CREATE INDEX product_price_idx ON products USING btree (price);
-~~~
+```
 
 ---
 # Example 1
@@ -1027,11 +1027,11 @@ Not as dramatic as before but still some improvement. Remember, indexes have the
 
 Now, let's consider this other query that selects *all orders containing product with ids between 200 and 300*:
 
-~~~sql
+```sql
 EXPLAIN SELECT o_id
 FROM contains
 WHERE p_id > 200 AND p_id < 300
-~~~
+```
 
 ---
 
@@ -1051,10 +1051,10 @@ But we can do better. Because the index on *p_id* is not clustered, it means mos
 
 If we try clustering the index, a much **lower number of blocks** has to be read:
 
-~~~sql
+```sql
 CLUSTER contains
 USING contains_product_idx;
-~~~
+```
 
 .diagram.smaller[
 ![](../assets/indexes/clustering.svg)
@@ -1076,9 +1076,9 @@ We get the **same data** in **fewer blocks** and end up getting our results fast
 
 We now have a single table containing **all** Wikipedia titles:
 
-~~~txt
+```txt
 wikipedia (id, title)
-~~~
+```
 
 The table has approximately **44 Million** rows and we want to search the table for some words.
 
@@ -1090,10 +1090,10 @@ The total table size on the hard disk is **2436 MB**. The primary key index occu
 
 If we try to search for *oil painting* using ILIKE:
 
-~~~sql
+```sql
 SELECT * FROM wikipedia
 WHERE title ILIKE '%oil%painting%'
-~~~
+```
 
 We get **174 rows** in **54 seconds**:
 
@@ -1107,11 +1107,11 @@ We get **174 rows** in **54 seconds**:
 
 If we try using *ts_vectors* and a *ts_query* with no indexes:
 
-~~~sql
+```sql
 SELECT * FROM wikipedia
 WHERE to_tsvector('english', title) @@
       to_tsquery('english', 'oil & painting')
-~~~
+```
 
 The query returns **158 rows** in **4 minutes**. The added time is due to having to calculate *ts_vectors* for all rows:
 
@@ -1125,9 +1125,9 @@ The query returns **158 rows** in **4 minutes**. The added time is due to having
 
 If we execute the same query but we add a GiST index first:
 
-~~~sql
+```sql
 CREATE INDEX search_idx ON wikipedia USING GIST (to_tsvector('english', title));
-~~~
+```
 
 It now takes only **600 ms**. Creating the index took **52 minutes** and used **1708 MB** but you only have to do it once:
 
@@ -1147,9 +1147,9 @@ When calculating the ideal plan for a certain query, PostgreSQL relies on some *
 
 To force PostgreSQL to update these statistics when can use the ANALYZE command:
 
-~~~sql
+```sql
 ANALYZE [table] [(column1, column2, ...)]
-~~~
+```
 
 ANALYZE analyzes all tables by default but we can choose to analyze only one table or only some columns.
 
@@ -1164,9 +1164,9 @@ It's important to keep these statistics updated (use a *cron* job).
 * The VACUUM FULL command **reclaims** this storage by rewriting the entire contents of the table into a new disk file with no extra space.
 * It's important to do VACUUM periodically, especially on frequently updated tables.
 
-~~~sql
+```sql
 VACUUM [FULL] [ANALYZE] [table] [(column1, column2, ...)]
-~~~
+```
 
 * VACUUM reorganizes all tables by default but we can choose to reorganize only one table or only some columns.
 * We can VACUUM and ANALYZE tables at the same time.
@@ -1217,11 +1217,11 @@ We then start describing each one of the most important queries:
 | Query frequency   | hundreds per hour                            |
 | SQL code                                                         |
 ]
-~~~sql
+```sql
  SELECT *                                                         
  FROM orders                                                      
  WHERE c_id = ?                                                   
-~~~
+```
 
 ---
 
@@ -1266,11 +1266,11 @@ Clustering is useful whenever **many tuples** are to be retrieved, but **not too
 |                     | executed many times, doesn't need range query support,         |
 |                     | cardinality is medium so it is a good candidate for clustering.|
 | SQL code                                                   |]
-~~~sql
+```sql
  SELECT *                                                         
  FROM orders                                                      
  WHERE c_id = ?                                                   
-~~~
+```
 
 ---
 
@@ -1298,7 +1298,7 @@ Adding a redundant **total** column to the *orders* table to prevent having to c
 
 # Keeping Data consistent
 
-~~~sql
+```sql
 CREATE OR REPLACE FUNCTION calculate_total(order_id integer)
 RETURNS trigger AS $$
 BEGIN
@@ -1311,15 +1311,15 @@ BEGIN
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
-~~~
+```
 
-~~~sql
+```sql
 CREATE TRIGGER contains_ins_upd
 AFTER INSERT or UPDATE
 ON contains
 FOR EACH ROW
 EXECUTE PROCEDURE calculate_total(NEW.order_id);
-~~~
+```
 
 Another trigger is needed for UPDATE or DELETE using OLD.order_id as the parameter.
 
@@ -1331,18 +1331,18 @@ An **alternative** to denormalization is the usage of materialized views.
 
 A materialized view **stores** the result of a query in a table and can be **refreshed** as needed.
 
-~~~sql
+```sql
 CREATE MATERIALIZED VIEW orders_total AS
 SELECT orders.*, SUM(quantity * price)
 FROM orders JOIN
      contains ON orders.id = o_id JOIN
      products ON products.id = p_id
 GROUP BY orders.id
-~~~
+```
 
-~~~sql
+```sql
 REFRESH MATERIALIZED VIEW orders_total
-~~~
+```
 
 ---
 

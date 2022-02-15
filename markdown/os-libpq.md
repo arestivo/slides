@@ -58,15 +58,15 @@ Documentation:
 
 To compile a program using libpq we must first include the following file:
 
-~~~cpp
+```cpp
 #include <postgresql/libpq-fe.h>
-~~~
+```
 
 And link the library when compiling:
 
-~~~bash
+```bash
 g++ libpq.cpp -o libpq -lpq
-~~~
+```
 
 ---
 
@@ -86,13 +86,13 @@ The *connection string* will contain all the necessary information about the dat
 
 The result will be a pointer to a PGconn variable representing the connection to the database.
 
-~~~cpp
+```cpp
 PGconn *PQconnectdb(const char *connection);
-~~~
+```
 
-~~~cpp
+```cpp
 PGconn *conn = PQconnectdb("host='dbm.fe.up.pt' user='USERNAME' password='PASSWORD'");
-~~~
+```
 
 ---
 
@@ -102,7 +102,7 @@ To verify if the connection was succesful, we start by verifying if the connecti
 
 After that, we should verify the status of the connection using the function *PQStatus*.
 
-~~~cpp
+```cpp
 if(!conn) {
   cout << "Failed to connect to Database" << endl;
   exit(-1);
@@ -113,7 +113,7 @@ if (PQstatus (conn) != CONNECTION_OK) {
   cout << PQerrorMessage(conn) << endl;
   exit(-1);
 }
-~~~
+```
 
 ---
 
@@ -121,9 +121,9 @@ if (PQstatus (conn) != CONNECTION_OK) {
 
 When the connection is no longer necessary, we should close it.
 
-~~~cpp
+```cpp
 PQfinish(conn);
-~~~
+```
 
 ---
 
@@ -139,18 +139,18 @@ To execute a query we use the PQexec function.
 
 This command receives a pointer to the connection being used and a string representing the query to be executed.
 
-~~~cpp
+```cpp
 PGresult *PQexec(PGconn *conn, const char *command);
-~~~
+```
 
-~~~cpp
+```cpp
 void deleteEmployee(int id) {
   string query = "DELETE FROM employee WHERE id = " + intToStr(id);
   PGresult *res = PQexec(conn, query.c_str());
 }
 
 
-~~~
+```
 
 ---
 
@@ -158,13 +158,13 @@ void deleteEmployee(int id) {
 
 We should verify if the query was successful using the *PQresultStatus* function.
 
-~~~cpp
+```cpp
 boolean deleteEmployee(int id) {
   string query = "DELETE FROM employee WHERE id = " + intToStr(id);
   PGresult *res = PQexec(conn, query.c_str());
   return PQresultStatus(res) == PGRES_COMMAND_OK;
 }
-~~~
+```
 
 ---
 
@@ -172,7 +172,7 @@ boolean deleteEmployee(int id) {
 
 If we want to know the error message we can use the *PQresultErrorMessage* function.
 
-~~~cpp
+```cpp
 boolean deleteEmployee(int id) {
   string query = "DELETE FROM employee WHERE id = " + intToStr(id);
   PGresult *res = PQexec(conn, query.c_str());
@@ -182,7 +182,7 @@ boolean deleteEmployee(int id) {
   }
   return true;
 }
-~~~
+```
 
 ---
 
@@ -199,7 +199,7 @@ For queries that return a result (i.e. SELECT), we also use the *PQexec* functio
 The main differences are in the way we verify if the query succeeded and that it
 returns some results.
 
-~~~cpp
+```cpp
 PGresult* getEmployees(int dep_id) {
   string query = "SELECT id, name FROM employee WHERE dep_id = " 
       + intToStr(dep_id);
@@ -210,7 +210,7 @@ PGresult* getEmployees(int dep_id) {
   }
   return res;
 }
-~~~
+```
 
 ---
 
@@ -218,19 +218,19 @@ PGresult* getEmployees(int dep_id) {
 
 To know how many lines were returned by the query, we use the *PQntuples* function.
 
-~~~cpp
+```cpp
 int PQntuples(const PGresult *res);
-~~~
+```
 
 To obtain a value from the results, we use the *PQgetvalue* using the line and column number to identify the desired result.
 
-~~~cpp
+```cpp
 char *PQgetvalue(const PGresult *res,
                  int row_number,
                  int column_number);
-~~~
+```
 
-~~~cpp
+```cpp
 PGresult* employees = getEmployees(5);
 
 if (employees != 0) {
@@ -241,7 +241,7 @@ if (employees != 0) {
          << endl;
   }
 }
-~~~
+```
 
 ---
 
@@ -251,11 +251,11 @@ Because *PQgetvalue* returns an empty string if a certain field contains a null 
 
 This function returns 1 if the value is null and 0 if it isn't.
 
-~~~cpp
+```cpp
 int PQgetisnull(const PGresult *res,
                 int row_number,
                 int column_number);
-~~~
+```
 
 ---
 
@@ -272,17 +272,17 @@ SQL injection is a code injection technique, used to attack data-driven applicat
 
 Consider the following code:
 
-~~~cpp
+```cpp
 string query = "SELECT emp_id, emp_name FROM employee WHERE emp_name= '" 
               + name + "'";
 PQexec (conn , query.c_str());
-~~~
+```
 
 What happens if the user inputs:
 
-~~~bash
+```bash
 ';DELETE FROM empregado;--
-~~~
+```
 
 ---
 
@@ -296,7 +296,7 @@ What happens if the user inputs:
 
 One way to prevent these kind of attacks is to use the *PQexecParams* function:
 
-~~~cpp
+```cpp
 PGresult *PQexecParams(
   PGconn *conn,
   const char *command,
@@ -306,7 +306,7 @@ PGresult *PQexecParams(
   const int *paramLengths,
   const int *paramFormats,
   int resultFormat);
-~~~
+```
 
 ---
 
@@ -314,7 +314,7 @@ PGresult *PQexecParams(
 
 Example usage of the *PQexecParams* function:
 
-~~~cpp
+```cpp
 const char *paramValues[1];
 paramValues[0] = "John";
 
@@ -326,7 +326,7 @@ res = PQexecParams(conn,
        NULL,    /* don't need param lengths since not binary */
        NULL,    /* default to all text params */
        0);      /* ask for text results */
-~~~
+```
 
 ---
 
@@ -344,13 +344,13 @@ If we are connecting to this particular schema we do not have to worry about set
 
 If we want to connect to a different schema, all we have to do is use the *SET* SQL command, specific to PostgreSQL, to do it:
 
-~~~sql
+```sql
 SET search_path TO myschema
-~~~
+```
 
 As this is a SQL command, to use it in *libpq* we just have to do:
 
-~~~cpp
+```cpp
 PGconn *conn = PQconnectdb("host='dbm.fe.up.pt' user='USR' password='PWD'");
 PQexec(conn, "SET search_path TO myschema");
-~~~
+```

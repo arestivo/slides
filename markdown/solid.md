@@ -210,7 +210,7 @@ responsibilities to **change at different times**, then there is **no need to se
 
 There can be **many** **different** types of shapes:
 
-~~~java
+```java
 public class Shape {
     enum TYPE {SQUARE, CIRCLE}
     private TYPE type;
@@ -222,7 +222,7 @@ public class Shape {
         }
     }
 }
-~~~
+```
 
 What **happens** when we want to **add another** shape?
 
@@ -230,27 +230,27 @@ What **happens** when we want to **add another** shape?
 
 # Solution: Dynamic Polymorphism
 
-~~~java
+```java
 public abstract class Shape {
     public void draw();
 }
-~~~
+```
 
-~~~java
+```java
 public class Square extends Shape {
     public void draw() {
         //...
     }
 }
-~~~
+```
 
-~~~java
+```java
 public class Circle extends Shape {
     public void draw() {
         //...
     }
 }
-~~~
+```
 
 ---
 
@@ -258,10 +258,10 @@ public class Circle extends Shape {
 
 Also known as **generics** (more on that later):
 
-~~~java
+```java
 List<String> listOfStrings;
 List<Shape> listOfShapes;
-~~~
+```
 
 **No need** to **rewrite** the *List* class to use it with a **different** type.
 
@@ -281,7 +281,7 @@ This might seem **obvious** at first, but many times its **hard to detect** that
 
 All **squares** are **rectangles** with **equal** **height** and **width**.
 
-~~~java
+```java
 public class Rectangle {
   public void setWidth(double width);
   public void setHeight(double height);
@@ -296,7 +296,7 @@ public class Square extends Rectangle {
     this.width = height; this.height = height;
   }
 }
-~~~
+```
 
 ---
 
@@ -304,23 +304,23 @@ public class Square extends Rectangle {
 
 A **client** should **rightfully** expect the following to **hold**:
 
-~~~java
+```java
 public void doSomething(Rectangle r) {
   r.setWidth(10);
   r.setHeight(20);
   assertEquals(200, r.getArea()); 
 }
-~~~
+```
 
 If this method really **needs** this to hold, then it has to **test** if the Rectangle is **really** a Rectangle:
 
-~~~java
+```java
 public void doSomething(Rectangle r) {
   if (!(r instanceof Square) {
     // ...
   }
 }
-~~~
+```
 
 And we are back at the **OCP** problem!
 

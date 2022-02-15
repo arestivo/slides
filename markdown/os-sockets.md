@@ -163,20 +163,20 @@ Reference: http://beej.us/guide/bgnet/output/html/singlepage/bgnet.html
 
 Includes needed to implement sockets in C/C++:
 
-~~~cpp
+```cpp
 #include <sys/types.h> 
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
-~~~
+```
 
 ---
 
 # Creating a Socket
 
-~~~cpp
+```cpp
 int socket(int domain, int type, int protocol);
-~~~
+```
 
 * Domain: AF_UNIX, AF_INET
 * Type: SOCK_STREAM, SOCK_DGRAM
@@ -184,24 +184,24 @@ int socket(int domain, int type, int protocol);
 
 Example:
 
-~~~cpp
+```cpp
 int sockfd = socket(AF_INET, SOCK_STREAM, 0);
 if (sockfd < 0) cout << "Error creating socket" << endl;
-~~~
+```
 
 ---
 
 # Binding to Port
 
-~~~cpp
+```cpp
 int bind(int sockfd,                  // the socket to bind
          const struct sockaddr *addr, // the address to bind to
          socklen_t addrlen);          // address length
-~~~
+```
 
 Example:
 
-~~~cpp
+```cpp
 bzero((char *) &serv_addr, sizeof(serv_addr));// clean address
 serv_addr.sin_family = AF_INET;               // IP address
 serv_addr.sin_addr.s_addr = INADDR_ANY;     // Accept from any
@@ -209,43 +209,43 @@ serv_addr.sin_port = htons(port);           // host byte order to net byte order
 
 int res = bind(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr));
 if (res < 0) cout << "Error binding socket" << endl;
-~~~
+```
 
 ---
 
 # Listen to Connections
 
-~~~cpp
+```cpp
 int listen(int sockfd, int backlog);
-~~~
+```
 
 The backlog argument defines the maximum length to which the queue of pending connections for sockfd may grow.
 
 Example:
 
-~~~cpp
+```cpp
 listen(sockfd, 5);
-~~~
+```
 
 ---
 
 # Accepting Connections
 
-~~~cpp
+```cpp
 int accept(int sockfd,               // socket to accept connections
            struct sockaddr *addr,    // client address
            socklen_t *addrlen);      // client address size
-~~~
+```
 
 Example:
 
-~~~cpp
+```cpp
 cli_addr_length = sizeof(cli_addr);
 int clientsockfd = accept(sockfd, 
   (struct sockaddr *) &cli_addr, 
   &cli_addr_length
 );
-~~~
+```
 
 Program waits for client. After client connects, *clientsockfd* becomes the socket descriptor to be used for this client.
 
@@ -253,19 +253,19 @@ Program waits for client. After client connects, *clientsockfd* becomes the sock
 
 # Read and Write
 
-~~~cpp
+```cpp
 ssize_t recv(int sockfd, void *buf, size_t len, int flags);
 ssize_t read(int fd, void *buf, size_t count);
-~~~
+```
 
 Returns the length of the message. 
 
 Some bytes may be discarded if they do not fit the buffer size.
 
-~~~cpp
+```cpp
 ssize_t send(int sockfd, const void *buf, size_t len, int flags);
 ssize_t write(int fd, const void *buf, size_t count); //flags 0
-~~~
+```
 
 Returns the number of characters sent.
 
@@ -275,15 +275,15 @@ Returns the number of characters sent.
 
 Clients use the connect function to connect to a server:
 
-~~~cpp
+```cpp
 int connect(int sockfd, 
             const struct sockaddr *addr,
             socklen_t addrlen);
-~~~
+```
 
 Example: 
 
-~~~cpp
+```cpp
 int sockfd = socket(AF_INET , SOCK_STREAM , 0);
 
 struct sockaddr_in server;
@@ -291,7 +291,7 @@ server.sin_addr.s_addr = inet_addr("127.0.0.1"); //include <arpa/inet.h>
 server.sin_family = AF_INET;
 server.sin_port = htons(2345);
 int res = connect(sockfd , (struct sockaddr *)&server , sizeof(server));
-~~~
+```
 
 ---
 
@@ -299,15 +299,15 @@ int res = connect(sockfd , (struct sockaddr *)&server , sizeof(server));
 
 Sockets must be closed so they can be reused:
 
-~~~cpp
+```cpp
 int close(int fd);
-~~~
+```
 
 Example:
 
-~~~cpp
+```cpp
 close(sockfd);
-~~~
+```
 
 ---
 

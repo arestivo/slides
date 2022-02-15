@@ -62,7 +62,7 @@ All fruits have a **weight** and a **color**.
 
 And we want something like this to be possible:
 
-~~~java
+```java
 public static void main(String[] args) {
     Fruit orange = new Orange(0.5);
     peelAndEat(orange);
@@ -73,7 +73,7 @@ private static void peelAndEat(Fruit fruit) {
     while (fruit.getPercentageEaten() != 1)
         fruit.eat(0.2);
 }
-~~~
+```
 
 ---
 
@@ -88,7 +88,7 @@ We can start by imagining that we need classes **similar** to this:
 
 # Code (Fruit)
 
-~~~java
+```java
 public class Fruit {
     private final double weight;
     private final String color;
@@ -106,13 +106,13 @@ public class Fruit {
         return color;
     }
 }
-~~~
+```
 
 ---
 
 # Code (Edible)
 
-~~~java
+```java
 public class Edible {
     private double percentageEaten;
 
@@ -129,13 +129,13 @@ public class Edible {
         return percentageEaten;
     }
 }
-~~~
+```
 
 ---
 
 # Code (Peelable)
 
-~~~java
+```java
 public class Peelable {
     private boolean peeled;
 
@@ -151,13 +151,13 @@ public class Peelable {
         this.peeled = true;
     }
 }
-~~~
+```
 
 ---
 
 # Code (Sliceable)
 
-~~~java
+```java
 public class Sliceable {
     private int pieces;
 
@@ -173,7 +173,7 @@ public class Sliceable {
         return pieces;
     }
 }
-~~~
+```
 
 ---
 
@@ -215,7 +215,7 @@ This can be done in different ways:
 
 Even if we could use *multiple inheritance*, this would not be possible:
 
-~~~java
+```java
 public static void main(String[] args) {
     Fruit orange = new Orange(0.5);
     peelAndEat(orange);
@@ -226,7 +226,7 @@ private static void peelAndEat(Fruit fruit) {
     while (fruit.getPercentageEaten() != 1)
         fruit.eat(0.2);
 }
-~~~
+```
 
 As **not all** fruits are **peelable** and **edible**.
 
@@ -262,7 +262,7 @@ As **each class** must provide their own **implementation** of methods declared 
 
 And we still **can't do** this:
 
-~~~java
+```java
 public static void main(String[] args) {
     Fruit orange = new Orange(0.5);
     peelAndEat(orange);
@@ -273,7 +273,7 @@ private static void peelAndEat(Fruit fruit) {
     while (fruit.getPercentageEaten() != 1)
         fruit.eat(0.2);
 }
-~~~
+```
 
 
 ---
@@ -306,7 +306,7 @@ As the number of interfaces that we want to implement grows, this quickly become
 
 But at least we can do this:
 
-~~~java
+```java
 public static void main(String[] args) {
     Orange orange = new Orange(0.5);
     peelAndEat(orange);
@@ -317,7 +317,7 @@ private static void peelAndEat(EdibleAndPeelableFruit fruit) {
     while (fruit.getPercentageEaten() != 1)
         fruit.eat(0.2);
 }
-~~~
+```
 
 ---
 
@@ -373,7 +373,7 @@ Instead of fruits inheriting from the *Edible*, *Peelable* and *Sliceable* base 
 
 # Composition Code
 
-~~~java
+```java
 public static void main(String[] args) {
   Orange orange = new Orange(0.5);
   peelAndEat(orange);
@@ -384,7 +384,7 @@ private static void peelAndEat(Fruit fruit) {
   while (fruit.getEdibleBehavior().getPercentageEaten() != 1)
       fruit.getEdibleBehavior().eat(0.2);
 }
-~~~
+```
 
 ---
 
@@ -392,7 +392,7 @@ private static void peelAndEat(Fruit fruit) {
 
 The behavior of fruits that are Edible:
 
-~~~java
+```java
 public class EdibleBehavior implements Edible {
   private double percentageEaten;
 
@@ -409,7 +409,7 @@ public class EdibleBehavior implements Edible {
     return percentageEaten;
   }
 }
-~~~
+```
 
 ---
 
@@ -417,7 +417,7 @@ public class EdibleBehavior implements Edible {
 
 Fruits can have different behaviors. One can be not to be Edible: 
 
-~~~java
+```java
 public class NotEdibleBehavior implements Edible {
   public void eat(double percentage) throws FruitNotEdibleBehavior {
     throw new FruitNotEdibleBehavior();
@@ -427,7 +427,7 @@ public class NotEdibleBehavior implements Edible {
     return 0;
   }
 }
-~~~
+```
 
 ---
 
@@ -435,7 +435,7 @@ public class NotEdibleBehavior implements Edible {
 
 An orange is Edible, Peelable but isn't Sliceable:
 
-~~~java
+```java
 public class Orange extends Fruit {
     Orange(double weight) {
         super(weight, "orange", 
@@ -444,7 +444,7 @@ public class Orange extends Fruit {
           new NotSliceableBehavior());
     }
 }
-~~~
+```
 
 ---
 

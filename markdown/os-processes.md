@@ -120,7 +120,7 @@ When executed it creates an exact copy of the current process. If succesful, it 
 * In the **parent** process: the process id of the child process
 * In the **child** process: zero (0)
 
-~~~cpp
+```cpp
 #include <unistd.h>
 #include <iostream>
 
@@ -132,7 +132,7 @@ int main() {
   else if (id > 0) cout << "Parent process (" << id << ")" << endl;
   else if (id == 0) cout << "Child process" << endl;
 }
-~~~
+```
 
 ---
 
@@ -140,14 +140,14 @@ int main() {
 
 The **wait** and **waitpid** functions are used to wait for state changes in a child of the calling process.
 
-~~~cpp
+```cpp
 pid_t wait(int *wstatus);
 pid_t waitpid(pid_t pid, int *wstatus, int options);
-~~~
+```
 
 State changes can be: terminated, stopped or resumed.
 
-~~~cpp
+```cpp
 #include <unistd.h>
 #include <iostream>
 #include <sys/wait.h>
@@ -164,7 +164,7 @@ int main() {
   }
   else if (id == 0) cout << "Child process" << endl;
 }
-~~~
+```
 
 ---
 
@@ -249,9 +249,9 @@ name:threads-cpp
 
 To compile a program in C or C++ using threads we must include the *pthread.h* header file and compile it using the following command:
 
-~~~bash
+```bash
 g++ thread.cpp -o thread -pthread
-~~~
+```
 
 ---
 
@@ -259,14 +259,14 @@ g++ thread.cpp -o thread -pthread
 
 Threads are created by the *pthread_create* function:
 
-~~~cpp
+```cpp
 int pthread_create(
   pthread_t *thread, 
   *attr, 
   void* (*function)(void *), 
   void* arg
 );
-~~~
+```
 
 This functions receives:
 * A thread identifier
@@ -282,9 +282,9 @@ Because the function has to have the same signature for all calls to *pthread_cr
 
 To wait for a thread to finish executing, we use the *pthread_join* function:
 
-~~~cpp
+```cpp
 int pthread_join(pthread_t thread, void **retval);
-~~~
+```
 
 The *thread_wait* function receives the thread identifier to wait for and an optional place to store the return value.
 
@@ -292,7 +292,7 @@ The *thread_wait* function receives the thread identifier to wait for and an opt
 
 # Example
 
-~~~cpp
+```cpp
 #include <pthread.h>
 #include <iostream>
 
@@ -318,7 +318,7 @@ int main() {
   
   return 0;
 }
-~~~
+```
 
 ---
 
@@ -352,7 +352,7 @@ executing its critical section at a given time.
 
 Two threads running at the same time and accessing the same data:
 
-~~~cpp
+```cpp
   int a = 100, b = 100;
 
   void transfer (int qty) {
@@ -364,7 +364,7 @@ Two threads running at the same time and accessing the same data:
     a = a + a * percentage;
     b = b + b * percentage;
   }
-~~~
+```
 
 What happens if two threads call the transfer and increase functions at the same time?
 
@@ -438,23 +438,23 @@ name:mutexes-cpp
 
 Mutexes are created and destroyed using the *pthread_mutex_init* and *pthread_mutex_destroy* functions.
 
-~~~cpp
+```cpp
 int pthread_mutex_init(pthread_mutex_t *mutex, *attr);
 int pthread_mutex_destroy(pthread_mutex_t *mutex);
-~~~
+```
 
 To use mutexes, we use the *pthread_mutex_lock* and *pthread_mutex_unlock* functions:
 
-~~~cpp
+```cpp
 int pthread_mutex_lock(pthread_mutex_t *mutex);
 int pthread_mutex_unlock(pthread_mutex_t *mutex);
-~~~
+```
 
 ---
 
 # Example
 
-~~~cpp
+```cpp
 
 pthread_mutex_t lock;
 
@@ -479,4 +479,4 @@ int main() {
 
   pthread_mutex_destroy(&lock);
 }
-~~~
+```

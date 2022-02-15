@@ -1351,7 +1351,7 @@ Until now, all our code has been running in a **single main thread**.
 
 But what happens if we need to block to read data from some source but still want our state and view to be updated?
 
-~~~java
+```java
 public void run() {
   while (true) {
     draw();                         // Draws the current game state
@@ -1361,7 +1361,7 @@ public void run() {
                                     // e.g. enemies move
   }
 }
-~~~
+```
 
 ---
 
@@ -1371,7 +1371,7 @@ There are two different ways to create a new thread in Java.
 
 **1)** Extend the **Thread** class and override the **run()** method:
 
-~~~java
+```java
 public class GameUpdater extends Thread {
   @Override
   public void run() {
@@ -1380,18 +1380,18 @@ public class GameUpdater extends Thread {
 }
 
 new GameUpdater().start();
-~~~
+```
 
 Or just:
 
-~~~java
+```java
 new Thread() {
   @Override
   public void run() {
     // Do something
   }
 }.start();
-~~~
+```
 
 ---
 
@@ -1401,7 +1401,7 @@ There are two different ways to create a new thread in Java.
 
 **2)** Implement the **Runnable** interface and start a **Thread** with it:
 
-~~~java
+```java
 class GameUpdater implements Runnable {
   @Override
   public void run() {
@@ -1410,18 +1410,18 @@ class GameUpdater implements Runnable {
 }
 
 new Thread(new GameUpdater()).start();
-~~~
+```
 
 Or just:
 
-~~~java
+```java
 new Thread(new Runnable() {
   @Override
   public void run() {
     // do something
   }
 }).start();
-~~~
+```
 
 ---
 
@@ -1442,7 +1442,7 @@ The thread class has a series of useful methods:
 
 A thread **cannot order** another thread to stop. It has to **ask nicely**:
 
-~~~java
+```java
   Thread t = new Thread() {
     @Override
     public void run() {
@@ -1456,7 +1456,7 @@ A thread **cannot order** another thread to stop. It has to **ask nicely**:
   t.start();
   // Sometime later
   t.interrupt();
-~~~
+```
 
 ---
 
@@ -1466,7 +1466,7 @@ The **Thread.sleep()** method can be used to pause the execution of current thre
 
 If the thread is interrupted during that time, an Exception is raised:
 
-~~~java
+```java
 Thread t = new Thread() {
   @Override
   public void run() {
@@ -1482,7 +1482,7 @@ Thread t = new Thread() {
     }
   }
 };
-~~~
+```
 
 ---
 
@@ -1490,7 +1490,7 @@ Thread t = new Thread() {
 
 Multi-threading programming can be **tricky**!
 
-~~~java
+```java
 class Model {
   int a = 0, b = 0;
   public void increment() { a++; b++; }
@@ -1501,9 +1501,9 @@ class View {
     System.out.println(model.a + " - " + model.b);
   }
 }
-~~~
+```
 
-~~~java
+```java
 Model m = new Model(); View v = new View();
 
 new Thread() {
@@ -1514,7 +1514,7 @@ new Thread() {
   // This will not always print two equal values
   public void run() { while (true) v.draw(m); }    
 }.start();
-~~~
+```
 
 ---
 
@@ -1536,7 +1536,7 @@ Each loop is synchronized on the **same object** (the Model **m**).
 
 So, **v.draw()** will never be called while **m.increment()** is being executed.
 
-~~~java
+```java
 Model m = new Model(); View v = new View();
 
 new Thread() {
@@ -1552,7 +1552,7 @@ new Thread() {
       synchronized (m) { v.draw(m); }
   }
 }.start();
-~~~
+```
 
 ---
 
@@ -1560,7 +1560,7 @@ new Thread() {
 
 When a **synchronized method** is called, it **automatically** acquires the **intrinsic lock** for that **method's object** and **releases** it when the method **returns**. 
 
-~~~java
+```java
   class Model {
     int a = 0, b = 0;
     public synchronized void increment() { a++; b++; }
@@ -1581,7 +1581,7 @@ When a **synchronized method** is called, it **automatically** acquires the **in
       while (true) { m.draw(); }
     }
   }.start();
-~~~
+```
 
 ---
 
@@ -1593,7 +1593,7 @@ The **Object.wait()** method, pauses a thread until another thread calls **Objec
 
 Calls to wait and notify must be **synchronized**.
 
-~~~java
+```java
 Thread thread = new Thread() {
   @Override
   public synchronized void run() {
@@ -1611,7 +1611,7 @@ thread.start();
 synchronized (thread) {
   thread.notify();
 }
-~~~
+```
 
 ---
 
@@ -1650,15 +1650,15 @@ The **File** class represents a file in the local filesystem.
 
 **Examples**:
 
-~~~java
+```java
 FileInputStream fos = new FileInputStream(new File("level10.lvl"));
 int b = fos.read();
-~~~
+```
 
-~~~java
+```java
 FileReader fr = new FileReader(new File("level10.lvl"))
 char c = (char) fos.read();
-~~~
+```
 
 ---
 
@@ -1670,7 +1670,7 @@ char c = (char) fos.read();
 
 **Example**:
 
-~~~java
+```java
 DataOutputStream dos = new DataOutputStream(
   new FileOutputStream( new File( "highscore.txt" ) )
 );
@@ -1678,7 +1678,7 @@ dos.writeChars("HighScore");
 dos.writeInt(1000);
 dos.flush();
 dos.close();
-~~~
+```
 
 ---
 
@@ -1688,7 +1688,7 @@ dos.close();
 
 **Example**:
 
-~~~java
+```java
 DataOutputStream dos = new DataOutputStream(
   new BufferedOutputStream(
     new FileOutputStream( new File( "highscore.txt" ) )
@@ -1698,7 +1698,7 @@ dos.writeChars("HighScore");
 dos.writeInt(1000);
 dos.flush();
 dos.close();
-~~~
+```
 
 ---
 
@@ -1710,7 +1710,7 @@ When you create a **Java Gradle** project in **IntelliJ**, a folder for *resourc
 
 To access them you can do something like this:
 
-~~~java
+```java
 private static List<String> readLines(int levelNumber) throws IOException {
   URL resource = RoomLoader.class.getResource("/rooms/" + levelNumber + ".lvl");
   BufferedReader br = new BufferedReader(new FileReader(resource.getFile()));
@@ -1721,4 +1721,4 @@ private static List<String> readLines(int levelNumber) throws IOException {
 
   return lines;
 }
-~~~
+```

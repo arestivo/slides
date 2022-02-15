@@ -154,7 +154,7 @@ Ensure a class has only one instance, and provide a global point of access to it
 
 # Implementation
 
-~~~java
+```java
 public class GameController {
   private static GameController instance;
 
@@ -164,16 +164,16 @@ public class GameController {
     return instance;
   }
 }
-~~~
+```
 
-~~~java
+```java
 public class GameView {
   public void render(float delta) {
     GameController.getInstance().update(delta);
     /* ... */
   }
 }
-~~~
+```
 
 ---
 
@@ -219,7 +219,7 @@ Define a one-to-many dependency between objects so that when **one** object chan
 
 # Implementation
 
-~~~java
+```java
 world.setContactListener(new ContactListener() {
   @Override
   public void beginContact(Contact contact) {
@@ -238,7 +238,7 @@ world.setContactListener(new ContactListener() {
   }
 });
 
-~~~
+```
 
 ---
 
@@ -276,13 +276,13 @@ Three similar patterns:
 
 # Factory: Implementation
 
-~~~java
+```java
 for (AsteroidModel asteroid : asteroids) {
   EntityView view = ViewFactory.makeView(game, asteroid);
   view.update(asteroid);
   view.draw(game.getBatch());
 }
-~~~
+```
 
 ---
 
@@ -294,7 +294,7 @@ for (AsteroidModel asteroid : asteroids) {
 
 # Factory Method: Implementation
 
-~~~java
+```java
 public abstract class EntityView{
   EntityView(AsteroidArena game) {
       sprite = createSprite(game);
@@ -315,7 +315,7 @@ public class MediumAsteroidView extends EntityView{
         return new Sprite(texture, texture.getWidth(), texture.getHeight());
     }
 }
-~~~
+```
 
 Also an instance of the [Template Method](https://sourcemaking.com/design_patterns/template_method) pattern.
 
@@ -323,7 +323,7 @@ Also an instance of the [Template Method](https://sourcemaking.com/design_patter
 
 # Abstract Factory : Example 
 
-~~~java
+```java
 class A {
     private Factory factory;
 
@@ -341,11 +341,11 @@ interface Factory {
     Foo makeFoo();
     Bar makeBar();
 }
-~~~
+```
 
-~~~java
+```java
 new A(new NiceFactory()).doSomething();
-~~~
+```
 
 ---
 
@@ -390,7 +390,7 @@ Each **flyweight** object is divided into two pieces: the state-dependent (extri
 
 # Implementation
 
-~~~java
+```java
 public class ViewFactory {
   private static Map<EntityModel.ModelType, EntityView> cache =
     new HashMap<EntityModel.ModelType, EntityView>();
@@ -406,15 +406,15 @@ public class ViewFactory {
       return cache.get(model.getType());
   }
 }
-~~~
+```
 
-~~~java
+```java
 for (AsteroidModel asteroid : asteroids) {
   EntityView view = ViewFactory.makeView(game, asteroid);
   view.update(asteroid);
   view.draw(game.getBatch());
 }
-~~~
+```
 
 ---
 
@@ -450,30 +450,30 @@ Improve **performance** and **memory** use by reusing objects from a fixed pool 
 
 Using the *LibGDX Pool* class:
 
-~~~java
+```java
 Pool<BulletModel> bulletPool = new Pool<BulletModel>() {
   @Override
   protected BulletModel newObject() {
       return new BulletModel(0, 0, 0);
   }
 };
-~~~
+```
 
 Using the pool:
 
-~~~java
+```java
 BulletModel bullet = bulletPool.obtain();
 
 bullet.setPosition(x, y);
 bullet.setRotation(rotation);
 
 bullets.add(bullet);
-~~~
+```
 
-~~~java
+```java
 bullets.remove(bullet);
 bulletPool.free(bullet);
-~~~
+```
 
 ---
 
@@ -525,18 +525,18 @@ The next example was adapted from [here](http://gameprogrammingpatterns.com/stat
 
 What's the problem with this code:
 
-~~~java
+```java
 if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
   hero.setVerticalVelocity(JUMP_VELOCITY);
   setSprite(JUMP_SPRITE);
 }
-~~~
+```
 
 ---
 
 # Motivation
 
-~~~java
+```java
 if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
   if (!jumping) {
     jumping = true;
@@ -544,7 +544,7 @@ if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
     setSprite(JUMP_SPRITE);
   }
 }
-~~~
+```
 
 Now lets add ducking!
 
@@ -554,7 +554,7 @@ Now lets add ducking!
 
 Spot the problem:
 
-~~~java
+```java
 if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
   /* Jump Code */
 }
@@ -566,13 +566,13 @@ if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
 if (Gdx.input.isKeyReleased(Input.Keys.DOWN)) {
     setSprite(STAND_SPRITE);
 }
-~~~
+```
 
 ---
 
 # Motivation
 
-~~~java
+```java
 if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
   if (!jumping && !ducking) {
   /* Jump Code */
@@ -590,7 +590,7 @@ if (Gdx.input.isKeyReleased(Input.Keys.DOWN)) {
     setSprite(STAND_SPRITE);
   }
 }
-~~~
+```
 
 Now the dive attack...
 
@@ -600,7 +600,7 @@ Now the dive attack...
 
 Bug hunting time:
 
-~~~java
+```java
 if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
   if (!jumping && !ducking) {
   /* Jump Code */
@@ -619,7 +619,7 @@ if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
 if (Gdx.input.isKeyReleased(Input.Keys.DOWN)) {
   /* Standing Code */
 }
-~~~
+```
 
 ---
 
@@ -666,7 +666,7 @@ Decouple the progression of game time from user input and processor speed.
 
 ![](../assets/gamepatterns/loop2.svg)
 
-~~~java
+```java
 while (true)
 {
   double start = getCurrentTime();
@@ -677,7 +677,7 @@ while (true)
 
   sleep(start + MS_PER_FRAME - getCurrentTime());
 }
-~~~
+```
 
 ---
 
@@ -741,7 +741,7 @@ name:update
 Our game needs enemies. Making an enemy go back and fourth is
 straightforward but keeps the game in an infinite loop.
 
-~~~java
+```java
 while (true)
 {
   for (double x = 0; x < 100; x++)
@@ -750,7 +750,7 @@ while (true)
   for (double x = 100; x > 0; x--)
     enemy.setX(x);
 }
-~~~
+```
 
 ---
 

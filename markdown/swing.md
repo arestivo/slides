@@ -81,7 +81,7 @@ name:swing
 
 # Hello World
 
-~~~java
+```java
 import javax.swing.*;
 
 public class Main {
@@ -100,7 +100,7 @@ public class Main {
     frame.setVisible(true);
   }
 }
-~~~
+```
 
 ---
 
@@ -116,7 +116,7 @@ name:components
 * **JCheckBox** A check box button that can be checked or not.
 * **JRadioButton** One of a group of radio buttons.
   
-~~~java
+```java
 JButton button = new JButton("Click Me");
 frame.getContentPane().add(button);
 
@@ -130,7 +130,7 @@ group.add(radioone);
 group.add(radiotwo);
 frame.getContentPane().add(radioone);
 frame.getContentPane().add(radiotwo);
-~~~
+```
 
 ![](../assets/swing/buttons.png)
 
@@ -142,7 +142,7 @@ frame.getContentPane().add(radiotwo);
 * **JTextField** and JPasswordField Visible and invisible single line text fields.
 * **JTextArea** Multiple line text field.
 
-~~~java
+```java
 JLabel label = new JLabel("Registration");
 frame.getContentPane().add(label);
 
@@ -154,7 +154,7 @@ frame.getContentPane().add(password);
 
 JTextArea details = new JTextArea("details");
 frame.getContentPane().add(details);
-~~~
+```
 
 ![](../assets/swing/textfields.png)
 
@@ -164,7 +164,7 @@ frame.getContentPane().add(details);
 
 A combination of a **drop-down** list and a single-line **editable** (or not) textbox.
 
-~~~java
+```java
 String[] choices = { "C", "C++", "C#", "Java", "PHP" };
 
 JComboBox combobox = new JComboBox(choices);
@@ -172,7 +172,7 @@ combobox.setEditable(true);
 combobox.setSelectedIndex(3);
 
 frame.getContentPane().add(combobox);
-~~~
+```
 
 ![](../assets/swing/combobox.png)
 
@@ -182,7 +182,7 @@ frame.getContentPane().add(combobox);
 
 A list of items the user can select from.
 
-~~~java
+```java
 String[] choices = { "C", "C++", "C#", "Java", "PHP" };
 
 JList<String> list = new JList(choices);
@@ -190,7 +190,7 @@ list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 list.setSelectedIndex(3);
 
 frame.getContentPane().add(list);
-~~~
+```
 
 ![](../assets/swing/list.png)
 
@@ -229,10 +229,10 @@ And that's why we need Layout Managers...
 * Each component has a method, called **getPreferredSize()**, that returns the preferred size of that component.
 * The **pack()** method packs the components within the parent container trying to maintain the components preferred sizes.
 
-~~~java
+```java
 frame.pack();
 frame.setVisible(true);
-~~~
+```
 
 ---
 
@@ -240,7 +240,7 @@ frame.setVisible(true);
 
 Puts components in a single row or column.
 
-~~~java
+```java
 frame.setLayout(
   new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS) // or X_AXIS
 ); 
@@ -252,7 +252,7 @@ JButton button3 = new JButton("Button 3");
 frame.getContentPane().add(button1);
 frame.getContentPane().add(button2);
 frame.getContentPane().add(button3);
-~~~
+```
 
 ![](../assets/swing/boxlayout.png)
 
@@ -264,7 +264,7 @@ Places components in up to **five** areas: top, bottom, left, right, and center.
 
 The center area is the default and may **stretch** both horizontally and vertically to fill any space left over. 
 
-~~~java
+```java
 frame.setLayout(new BorderLayout());
 
 JButton button1 = new JButton("Button 1");
@@ -274,7 +274,7 @@ JButton button3 = new JButton("Button 3");
 frame.getContentPane().add(button1, BorderLayout.NORTH);
 frame.getContentPane().add(button2, BorderLayout.CENTER);
 frame.getContentPane().add(button3, BorderLayout.SOUTH);
-~~~
+```
 
 ![](../assets/swing/borderlayout.png)
 
@@ -295,7 +295,7 @@ Uses a **GridBagConstraints** class to specify the position and layout if each c
 
 # Grid Bag Layout
 
-~~~java
+```java
 frame.setLayout(new GridBagLayout());
 
 JButton button1 = new JButton("Button 1");
@@ -314,7 +314,7 @@ gbc3.gridx = 1; gbc3.gridy = 1;
 frame.getContentPane().add(button1, gbc1);
 frame.getContentPane().add(button2, gbc2);
 frame.getContentPane().add(button3, gbc3);
-~~~
+```
 
 ![](../assets/swing/gridbaglayout.png)
 
@@ -324,7 +324,7 @@ frame.getContentPane().add(button3, gbc3);
 
 Panels are generic containers that can be used to create more complex layouts.
 
-~~~java
+```java
 frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
 JPanel panel1 = new JPanel();
@@ -339,7 +339,7 @@ JButton button3 = new JButton("Button 3"); panel2.add(button3);
 
 frame.getContentPane().add(panel1);
 frame.getContentPane().add(panel2);
-~~~
+```
 
 ![](../assets/swing/panels.png)
 
@@ -349,13 +349,13 @@ frame.getContentPane().add(panel2);
 
 A very simple and versatile layout manager that is not part of the Java Foundation Classes (**JFC**) but can be added to any Java project using **Gradle**:
 
-~~~java
+```java
 compile group: 'com.miglayout', name: 'miglayout-swing', version: '5.2'
-~~~
+```
 
 In a MigLayout, components are layed out in order using very [simple rules](http://www.migcalendar.com/miglayout/mavensite/docs/cheatsheet.html) that are passed using strings.
 
-~~~java
+```java
 frame.setLayout(new MigLayout("wrap 2"));
 
 JButton button1 = new JButton("Button 1");
@@ -365,7 +365,7 @@ JButton button3 = new JButton("Button 3");
 frame.getContentPane().add(button1, "span 2, grow");
 frame.getContentPane().add(button2);
 frame.getContentPane().add(button3);
-~~~
+```
 
 ![](../assets/swing/miglayout.png)
 
@@ -381,10 +381,10 @@ IntelliJ has a builtin **GUI designer** that simplifies the creation of graphica
 
 By default it sets the **modal** property to **true**, you probably want it set to **false**. To **open** the window just do:
 
-~~~java
+```java
 form.pack();
 form.setVisible(true);
-~~~
+```
 
 ---
 
@@ -423,7 +423,7 @@ These are some of the listeners you can use with Swing:
 
 When a user clicks a **button**:
 
-~~~java
+```java
 button.addActionListener(new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
@@ -431,18 +431,18 @@ button.addActionListener(new ActionListener() {
     }
 });
 
-~~~
+```
 
 When a user types in the **keyboard**:
 
-~~~java
+```java
 frame.getContentPane().addKeyListener(new KeyAdapter() {
     @Override
     public void keyTyped(KeyEvent keyEvent) {
         System.out.println(keyEvent.getKeyChar());
     }
 });
-~~~
+```
 
 ---
 
@@ -450,7 +450,7 @@ frame.getContentPane().addKeyListener(new KeyAdapter() {
 
 To capture all keyboard events in a window or frame:
 
-~~~java
+```java
 KeyEventDispatcher keyEventDispatcher = new KeyEventDispatcher() {
     @Override
     public boolean dispatchKeyEvent(final KeyEvent e) {
@@ -462,7 +462,7 @@ KeyEventDispatcher keyEventDispatcher = new KeyEventDispatcher() {
 KeyboardFocusManager
   .getCurrentKeyboardFocusManager()
   .addKeyEventDispatcher(keyEventDispatcher);
-~~~
+```
 
 ---
 
@@ -478,14 +478,14 @@ To create our own custom component, we can start by extending the **JComponent**
 
 Our custom component should also, at least, override the **getPreferredSize()** method so that layout managers can accommodate it:
 
-~~~java
+```java
 public class CustomComponent extends JComponent {
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(100, 100);
     }
 }
-~~~
+```
 
 ---
 
@@ -499,7 +499,7 @@ Instead we should override one of the following three methods (all of them calle
 * **paintBorder(Graphics graphics)** paints the component border.
 * **paintComponents(Graphics graphics)** calls paintComponent on this component children.
 
-~~~java
+```java
 public class MyComponent extends JComponent {
     @Override
     protected void paintComponent(Graphics graphics) {
@@ -510,7 +510,7 @@ public class MyComponent extends JComponent {
 
     // ...
 }
-~~~
+```
 
 ---
 
@@ -537,7 +537,7 @@ Some methods provided by the Graphics class:
 
 To draw images that come from IntelliJ resources:
 
-~~~java
+```java
 public void drawImage(String imageName, int x, int y) {
     URL resource = SwingWindow.class.getResource("/" + imageName);
     BufferedImage image = null;
@@ -546,4 +546,4 @@ public void drawImage(String imageName, int x, int y) {
         gamePanel.getGraphics().drawImage(image, x, y, null);
     } catch (IOException e) { }
 }
-~~~
+```
