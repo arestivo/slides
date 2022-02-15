@@ -30,16 +30,11 @@ name:index
 1. [Control Structures](#control)
 1. [Functions](#functions)
 1. [Objects](#objects)
+1. [This](#this)
+1. [Prototypes](#prototypes)
+1. [Classes](#classes)
 1. [Arrays](#arrays)
-1. [Exceptions](#exceptions)
-1. [DOM](#dom)
-1. [Ajax](#ajax)
-1. [Advanced Functions](#advanced-functions)
-1. [Advanced Arrays](#advanced-arrays)
-1. [Timers](#timers)
-1. [Promises](#promises)
-1. [Data Attributes](#data)
-1. [jQuery](#jQuery)
+1. [Error Handling](#exceptions)
 ]
 
 ---
