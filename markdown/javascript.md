@@ -983,6 +983,9 @@ const john = new Person("John")
 Person.prototype.age = 45
 console.log(Object.getPrototypeOf(john))// Object { age: 45, ... }
 console.log(john.age)                   // 45
+
+Object.setPrototypeOf(john, {})         // Changes the prototype
+console.log(john.age)                   // undefined
 ```
 
 Because **john.age** does not exist, but **Object.getPrototypeOf(john).age** does.
