@@ -81,14 +81,14 @@ Learn more: http://en.wikipedia.org/wiki/HTML#History
 template:inverse
 # Browser Wars
 
-![](../assets/html5/browserwars.png)
+![](assets/html5/browserwars.png)
 
 ---
 
 template:inverse
 # Browser Share
 
-![](../assets/html5/browsershare.png)
+![](assets/html5/browsershare.png)
 
 Source: http://www.w3counter.com/trends
 
@@ -185,7 +185,7 @@ name:document
 
 Partial HTML document tree:
 
-![](../assets/html5/tree.png)
+![](assets/html5/tree.png)
 ```html
 <body>
   <p id="first">Some <strong>text</strong></p>
@@ -233,7 +233,7 @@ with a line break.
 </p>
 ```
 
-![](../assets/html5/paragraphs.png)
+![](assets/html5/paragraphs.png)
 
 ---
 
@@ -256,7 +256,7 @@ with a line break.
 template:inverse
 # Example
 
-![](../assets/html5/headings.png)
+![](assets/html5/headings.png)
 
 ---
 
@@ -271,7 +271,7 @@ Anchors (or links) can be relative or absolute.
 <a href="http://www.google.com">Search</a>
 ```
 
-![](../assets/html5/anchors.png)
+![](assets/html5/anchors.png)
 
 ---
 
@@ -288,7 +288,7 @@ The **width** and **height** attributes are optional and should not be used to r
 <img src="dog.png" alt="A dog" width="300" height="200">
 ```
 
-![](../assets/html5/dog.jpg)
+![](assets/html5/dog.jpg)
 
 ---
 
@@ -322,7 +322,7 @@ name:lists
 </ol>
 ```
 
-![](../assets/html5/ordered.png)
+![](assets/html5/ordered.png)
 
 ---
 
@@ -337,7 +337,7 @@ name:lists
 </ul>
 ```
 
-![](../assets/html5/unordered.png)
+![](assets/html5/unordered.png)
 
 ---
 
@@ -357,7 +357,7 @@ name:lists
 </ul>
 ```
 
-![](../assets/html5/nested.png)
+![](assets/html5/nested.png)
 
 ---
 
@@ -377,7 +377,7 @@ name:lists
 </dl>
 ```
 
-![](../assets/html5/dlists.png)
+![](assets/html5/dlists.png)
 
 ---
 
@@ -403,7 +403,7 @@ A table is organized using rows (tr) that contain data cells (td).
 </table>
 ```
 
-![](../assets/html5/table1.png)
+![](assets/html5/table1.png)
 
 A table can have an optional *caption*.
 
@@ -424,7 +424,7 @@ Some data cells can be headers (**th** instead of **td**)
   </tr>
 </table>
 ```
-![](../assets/html5/table2.png)
+![](assets/html5/table2.png)
 
 Table headers can have an optional **scope** attribute that indicates the cells the attribute relates to. Values for this attribute can be **col** or **row**.
 
@@ -451,7 +451,7 @@ Cells can be merged horizontally or vertically
   </tr>
 </table>
 ```
-![](../assets/html5/table3.png)
+![](assets/html5/table3.png)
 
 ---
 
@@ -481,7 +481,7 @@ Cells can be merged horizontally or vertically
 </table>
 ```
 ]
-![](../assets/html5/table4.png)
+![](assets/html5/table4.png)
 
 ---
 
@@ -518,7 +518,7 @@ name:forms
 
 Forms allow users to enter data that is sent to a server for processing
 
-![](../assets/html5/form.jpg)
+![](assets/html5/form.jpg)
 
 ---
 
@@ -614,7 +614,7 @@ An input field can vary in many ways, depending on the **type** attribute.
 * **max**: the maximum value
 * **step**:  limits the increments at which a value can be set
 
-![](../assets/html5/numberpicker.png)
+![](assets/html5/numberpicker.png)
 
 ---
 
@@ -632,7 +632,7 @@ An input field can vary in many ways, depending on the **type** attribute.
   * **week**: control to select a week
 * **value**: the initial value according to: <a href="http://tools.ietf.org/html/rfc3339">RFC3339</a> .small[([obligatory XKCD](https://xkcd.com/1179/))]
 
-![](../assets/html5/datepicker.png)
+![](assets/html5/datepicker.png)
 
 ---
 
@@ -647,7 +647,7 @@ An input field can vary in many ways, depending on the **type** attribute.
   **color**: control to select a color
 * **value**: initial color in hexadecimal format
 
-![](../assets/html5/colorpicker.png)
+![](assets/html5/colorpicker.png)
 
 ---
 
@@ -665,7 +665,7 @@ An input field can vary in many ways, depending on the **type** attribute.
 <!-- name must be the same for each group -->
 ```
 
-![](../assets/html5/radiocheck.png)
+![](assets/html5/radiocheck.png)
 
 ---
 
@@ -681,7 +681,7 @@ Allows file uploading for storing or processing
 
 To use file uploading in a form, *method* must be **post** and *enctype* must be **multipart/form-data**
 
-![](../assets/html5/fileupload.png)
+![](assets/html5/fileupload.png)
 
 ---
 
@@ -693,7 +693,7 @@ To use file uploading in a form, *method* must be **post** and *enctype* must be
 
 The same as a text field but it does not show on the browser. We'll find what these are used for later...
 
-![](../assets/html5/hidden.jpg)
+![](assets/html5/hidden.jpg)
 
 ---
 
@@ -741,7 +741,7 @@ Dropdown boxes that allow users to select options from a list.
 * **content**: The text presented to the user
 * **selected** (boolean): The option is the selected one
 
-![](../assets/html5/select.png)
+![](assets/html5/select.png)
 
 ---
 
@@ -763,7 +763,7 @@ Options in select controls can be grouped to make selecting them easier.
 </select>
 ```
 
-![](../assets/html5/optiongroup.png)
+![](assets/html5/optiongroup.png)
 
 ---
 
@@ -795,7 +795,7 @@ Be careful about extra white space.
 </textarea>
 ```
 
-![](../assets/html5/textarea.png)
+![](assets/html5/textarea.png)
 
 Text areas also allow the common attributes **name**, **disabled**, **readonly** and **required**.
 
@@ -819,7 +819,7 @@ Text areas also allow the common attributes **name**, **disabled**, **readonly**
 </label>
 ```
 
-![](../assets/html5/label.png)
+![](assets/html5/label.png)
 
 ---
 
@@ -840,7 +840,7 @@ Text areas also allow the common attributes **name**, **disabled**, **readonly**
 </form>
 ```
 
-![](../assets/html5/fieldset.png)
+![](assets/html5/fieldset.png)
 
 ---
 
@@ -866,7 +866,7 @@ Text tags define portions of text as having a special meaning.
 <mark>highlighted</mark> <!-- Defines marked/highlighted text -->
 ```
 
-![](../assets/html5/texttags.png)
+![](assets/html5/texttags.png)
 
 ---
 
@@ -951,11 +951,11 @@ There are two major types of HTML elements according to the way they display on 
 
 * **Inline** elements occupy only the space they need and don't force line changes. Example: strong, a, ...
 
-![](../assets/html5/inline.png)
+![](assets/html5/inline.png)
 
 * **Block** elements, by default, use all the horizontal space they can get and force a line change before and after themselves. Example: p, h1, ...
 
-![](../assets/html5/block.png)
+![](assets/html5/block.png)
 
 ---
 
@@ -1019,7 +1019,7 @@ Div is a generic **block** tag that can be used to define sections of a website:
 * HTML 5 brings a whole new set of semantic tags to **replace** commonly used div blocks.
 
 
-![](../assets/html5/semantics.png)
+![](assets/html5/semantics.png)
 
 ---
 

@@ -34,7 +34,8 @@ name:index
 1. [Prototypes](#prototypes)
 1. [Classes](#classes)
 1. [Arrays](#arrays)
-1. [Error Handling](#exceptions)
+1. [Destructuring](#destructuring)
+1. [Error Handling](#error-handling)
 ]
 
 ---
@@ -47,7 +48,7 @@ name:intro
 
 # JavaScript
 
-  * *JavaScript* is a **dynamic**, **imperative** and **functional** language.
+  * *JavaScript* is a **dynamic**, **imperative** and **functional** ([ish](https://stackoverflow.com/questions/3962604/is-javascript-a-functional-programming-language)) language.
   * In *JavaScript*, functions are considered **first-class** citizens.
   * It is also **object-oriented**, but **prototype-based** (not class-based).
   * Most commonly used as a **client-side** scripting language (in browsers).
@@ -245,10 +246,10 @@ console.log(bar) // 1234
 
 The standard defines the following data types:
 
-  * Number (**double**-precision 64-bit)
-  * String (**text**ual data - single or double quoted)
+  * Number (**double**-precision 64-bit, *e.g.*, 10)
+  * String (**text**ual data &mdash; single or double quoted, *e.g.*, 'foo')
   * Boolean (**true** or **false**)
-  * BigInt (**numbers** of arbitrary length)
+  * BigInt (**numbers** of arbitrary length, *e.g.*, 123456789n)
   * Null (only one possible value: case sensitive **null**)
   * Undefined (has **not** been **assigned** a value)
 
@@ -366,6 +367,24 @@ Comparing anything with **null** and **undefined** returns false. Comparisons be
 
 ---
 
+# Type Of
+
+We can use the **typeof** function to check the type of a variable:
+
+```javascript
+console.log(typeof undefined)         // "undefined"
+console.log(typeof 0)                 // "number"
+console.log(typeof 10n)               // "bigint"
+console.log(typeof true)              // "boolean"
+console.log(typeof 'foo')             // "string"
+console.log(typeof new Boolean(true)) // "object"
+console.log(typeof Boolean(true))     // "boolean"
+console.log(typeof null)              // "object"
+console.log(typeof console.log)       // "function"
+```
+
+---
+
 name:control
 template: inverse
 # Control Structures
@@ -435,6 +454,19 @@ while (i <= 10) {
    i++
 } // 0 1 2 3 4 5 6 7 8 9 10
 ```
+
+---
+
+# Ternary Operator
+
+Like in other languages, we can use the conditional ternary operator:
+
+```javascript
+const best = value > best ? value : best
+```
+
+* This operator takes a condition and two values.
+* It returns the first value if the condition is true, and the second if it is false.
 
 ---
 
@@ -547,7 +579,7 @@ console.log(foo)
 
 # Functions as Parameters
 
-Functions can be passed as parameters to other functions.
+We can pass functions as parameters to other functions.
 
 ```javascript
 function foo(i) {
@@ -638,7 +670,7 @@ console.log(person)
 
 * Methods are properties of an object that happen to be functions.
 * Methods are defined the way normal functions are defined, except that they are assigned as the property of an object.
-* You can use the **this** keyword within a method to refer to the current object.
+* You can use the **this** keyword to refer to the current object within a method.
 
 ```javascript
 const person = 
@@ -1244,6 +1276,33 @@ console.log(john1.#compare(john2)) // error
 
 ---
 
+# Instance Of
+
+You can use the **instanceof** operator to check if an object belongs to a specific class:
+
+```javascript
+class Person {
+  constructor(name) { this.name = name }
+}
+
+class Worker extends Person {
+  constructor(name, job) {
+    super(name)
+    this.job = job
+  }
+}
+
+const john = new Person('John Doe')
+const jane = new Worker('Jane Doe', 'Builder')
+
+console.log(john instanceof Person) // true
+console.log(john instanceof Worker) // false
+console.log(jane instanceof Person) // true
+console.log(jane instanceof Worker) // true
+```
+
+---
+
 template: inverse
 name:arrays
 # Arrays
@@ -1344,83 +1403,162 @@ years.print() // This array has length 4
 
 ---
 
-name:exceptions
+name: destructuring
 template: inverse
-# Exceptions
+# Destructuring
+
+---
+
+# Array Destructuring
+
+Destructuring assignment allows us to split an array (or any iterable) into separate variables:
+
+```javascript
+const names = ['John', 'Doe']
+const [first, last] = names
+console.log(first) // John
+```
+
+It also works with fields (first, we split a string into an array):
+
+```javascript
+const person = {}
+[person.first, person.last] = 'John Doe'.split(' ') 
+console.log(person) // {first: 'John', last: 'Doe'}
+```
+
+Swap and [much more](https://javascript.info/destructuring-assignment):
+
+```javascript
+let a = 10, b = 5
+[b, a] = [a, b]
+console.log(a, b) // 5 10
+```
+
+---
+
+# The Rest
+
+After all elements are assigned, the remaining (or "the rest") can be assigned too, using the ellipsis operator (...):
+
+```javascript
+const numbers = [1, 2, 3, 5, 8]
+const [a, b, ...r] = numbers
+console.log(a)  // 1
+console.log(b)  // 2
+console.log(r)  // [3, 5, 8]
+```
+
+---
+
+# Destructuring Objects
+
+Destructuring also works with objects:
+
+```javascript
+const person = { first: 'John', last: 'Doe', age: 45 }
+const {first, last} = person
+console.log(first) // John
+```
+
+The order does not matter, and we can assign to variables with different names:
+
+```javascript
+const person = { first: 'John', last: 'Doe', age: 45 }
+const {age: a, first: f, last: l} = person
+console.log(a) // 45
+console.log(f) // John
+console.log(l) // Doe
+```
+
+---
+
+# Destructuring in Functions
+
+We can use destructuring when defining functions:
+
+```javascript
+function sum(...numbers) {
+  let sum = 0
+  for (const n of numbers)
+    sum += n
+  return sum
+}
+
+console.log(sum(1, 2, 3)) // 6
+```
+
+And even with objects:
+
+```javascript
+function print({first, last}) {
+  console.log(`${first} ${last}`)
+}
+
+print({first: 'John', last: 'Doe', age: 45}) // John Doe
+```
+
+
+---
+
+name: error-handling
+template: inverse
+# Error Handling
+
+---
+
+# Try ... Catch ... Finally
+
+* The **try** block contains statements to *try*.
+
+* The **catch** block contains code to deal with any exception thrown inside the **try** block.
+
+* The **finally** block executes regardless of whether an exception is thrown. Useful for cleanup operations (e.g., closing a connection).
+
+```javascript
+try {
+  doesThisFunctionExist() // it doesn't
+  console.log('I will not print')
+} catch (e) {
+  console.log(e)          // prints the not defined error   
+  throw new Error('burp') // uncaught exception
+} finally {
+  console.log('I always print')
+}
+
+console.log('I might not print')
+```
 
 ---
 
 # Throw
 
-* You can throw exceptions using the **throw** statement.
-* You can throw any expression.
-
-```javascript
-function UserException (message){
-  this.message = message
-  this.name = "UserException"
-}
-
-UserException.prototype.toString = function (){
-  return this.name + ": " + this.message
-}
-
-throw new UserException("Value too high")
-```
-
-```javascript
-throw "This is an error"
-```
-
----
-
-# Error Object
-
-If you are throwing your own exceptions, in order to take advantage of the name and message properties, you can use the **Error** constructor.
-
-```javascript
-throw new Error("This is an Error")
-```
-
----
-
-# Try ... Catch
-
-The **try...catch** statement marks a block of statements to try, and specifies a response, should an exception be thrown.
+You can throw exceptions using the **throw** statement. You can throw any expression.
 
 ```javascript
 try {
-  // code to try
-}
-catch (e) {
-  // statements to handle any exceptions
-}
-```
+  throw 'Whoops!'
+} catch (e) {
+  console.error(`e`) // Whoops!
+}```
 
----
-
-# Finally
-
-The **finally** block executes regardless of whether an exception is thrown. 
+If you are throwing your own exceptions, to take advantage of the name and message properties, you can use the **Error** constructor.
 
 ```javascript
 try {
-  // code to try
-}
-catch (e) {
-  // statements to handle any exceptions
-}
-finally {
-  // runs after the try and catch even if no exception is thrown on catched
+  throw new Error('Whoops!')
+} catch (e) {
+  console.error(`${e.name}: ${e.message}`) // Error: Whoops!
 }
 ```
 
+Or extend the **Error** class.
 
 ---
 
-# Catch a specific type of Exception
+# Dealing with different Exceptions
 
-To distinguish between different types of exceptions we can use **instanceof**:
+To distinguish between different types of exceptions, we can use **instanceof**:
 
 ```javascript
 try {
@@ -1429,10 +1567,9 @@ try {
 catch (e) {
   if (e instanceof DatabaseError) {
     // statements to handle DatabaseError exceptions
-  } else if (e instanceof SomethingElseError) {
+  } 
+  if (e instanceof SomethingElseError) {
     // statements to handle SomethingElseError exceptions
-  } else {
-    // statements to handle other exceptions
-  }
+  } 
 }
 ```
