@@ -39,6 +39,7 @@ name: index
 1. [Destructuring](#destructuring)
 1. [Map and Set](#map-set)
 1. [Error Handling](#error-handling)
+1. [Scope](#scope)
 1. [Asynchronous Code](#asynchronous)
 1. [JSON](#json)
 ]
@@ -132,7 +133,7 @@ console.log('abc')
 ```
 
 .box_warning[
-  This is true in most cases!
+  This is not always true!
 ]
 
 ---
@@ -844,10 +845,6 @@ foo.goodBye() //Goodbye
 
 ---
 
-# Closures
-
----
-
 name: this
 template: inverse
 
@@ -897,7 +894,7 @@ bar.apply('foo', [10, 20])  // 10 20 foo
 
 # Bind
 
-The bind method, allows us to fixate the this (or context of a function):
+The *bind* method allows us to fixate the *this* (or context of a function):
 
 It receives a *context*, and returns a new function where *this* is **that** *context*.
 
@@ -1140,11 +1137,11 @@ class Person {
 }
 ```
 
-What's really happening:
+What's happening:
 
 - A function named Person is being created. 
 - The function code is taken from the constructor method.
-- Class methods, such as *print*, are stored in Person.prototype.
+- Class methods, such as *print*, are stored in **Person.prototype**.
 
 We can then use the **new** operator on that function just as we did before:
 
@@ -1183,7 +1180,7 @@ console.log(Object.getPrototypeOf(john) === Worker.prototype)
 # Classes Basic Syntax
 
 * Classes can have **fields** (only very recently), **methods**, and a single **constructor**.
-* The *this* keyword refers to the object that called the method.
+* The *this* keyword refers to the object that has called the method.
 
 ```javascript
 class Person {
@@ -1553,6 +1550,89 @@ name: map-set
 
 ---
 
+# Map
+
+* A *Map* is a collection of key-value pairs that allows keys of any type (even objects).
+* You can **get**, **set**, and **delete** values from a Map.
+* You can also check (**has**) if a key exists in the Map.
+* And **clear** all values.  
+
+```javascript
+const map = new Map()
+
+map.set('name', 'John Doe')
+map.set('age', 45)
+map.set(10, 'it is a number')
+
+map.delete(10)
+
+console.log(map.has('name'))  // true
+console.log(map.has(10))      // false
+console.log(map.get('age'))   // 45
+
+map.clear()
+```
+
+---
+
+# Map Looping
+
+There are three ways to access all elements of a Map:
+
+- **.keys()** – returns an iterable for keys
+- **.values()** – returns an iterable for values
+- **.entries()** – returns an iterable for entries
+
+The **.entries()** method is the *default* when using **for ... of** loops:
+
+```javascript
+const map = new Map([['name', 'John Doe'], ['age', 45]])
+for (const [key, value] of map) 
+  console.log(`${key} = ${value}`)
+```
+
+We can also initialize a *Map* with an *iterable* of *key-value* pairs (like a nested *Array*).
+
+---
+
+# Set
+
+* A *Set* is a collection of values (of any type) that cannot contain repeated values.
+* You can **add**, and **delete** values from a Set.
+* You can also check (**has**) if a value exists in the Set.
+* And **clear** all values.  
+
+```javascript
+const set = new Set()
+
+set.add('John Doe')
+set.add('Jane Doe')
+
+console.log(set.size) // 2
+set.add('John Doe')
+console.log(set.size) // still 2
+
+set.delete('Jane Doe')
+
+console.log(set.has('John Doe'))  // true
+console.log(set.has('Jane Doe'))  // false
+```
+---
+
+# Set Looping
+
+We can loop over the elements in a Set using **for ... of** loops:
+
+```javascript
+const set = new Map(['John Doe', 'Jane Doe'])
+for (const element of set) 
+  console.log(element)
+```
+
+We can also initialize a *Set* with an *Array*.
+
+---
+
 name: error-handling
 template: inverse
 
@@ -1626,6 +1706,75 @@ catch (e) {
   } 
 }
 ```
+
+---
+
+name: scope
+template: inverse
+
+# Scope
+
+---
+
+# Code Blocks
+
+If a variable is defined inside a **code block**, it is only visible inside that code block:
+
+```javascript
+{
+  const name = 'John Doe'
+  console.log(name)       // John Doe
+}
+console.log(name)         // undefined
+```
+
+We can use this to create **nested functions** (functions are like any other type):
+
+```javascript
+function equal(a, b) {
+  function difference(a, b) { return b - a }
+  return difference(a, b) === 0
+}
+console.log(equal(10, 10)) // true
+difference(10, 10)         // error 
+```
+
+---
+
+# Lexical Environments
+
+When we have nested blocks, each one has a **Lexical Environment** 
+where local variables are stored.
+
+Each one of these environments has a **pointer** to the 
+lexical environment where it was created.
+
+```javascript
+function equal(a, b) {
+  function difference(a, b) { return b - a }
+  return difference(a, b) === 0
+}
+console.log(equal(10, 10)) // true
+difference(10, 10)         // error 
+```
+
+Like this: **difference** → **equal** → *global*
+
+---
+
+# Scope
+
+* When we reference a variable, it is **first** searched in
+  the current lexical environment. 
+* If it isn't found, it is searched in the **outer** lexical 
+  environment. This goes on until the global environment is reached.
+* That's why using variables that have not been declared
+  is a **bad idea**. They will bubble up until the global lexical
+  environment and become **global variables**.
+
+---
+
+# Closures
 
 ---
 
@@ -1770,7 +1919,7 @@ This might not seem much better, but *promises* still have some tricks left!
 
 # Returning Promises
 
-The idea behind *promises* is that, **instead** of using *callbacks* to transform *synchronous* into *asynchronous* code, an *asynchronous* function should return *promises* instead: 
+The idea behind *promises* is that, **instead** of using *callbacks* to transform *synchronous* into *asynchronous* code, *asynchronous* functions should return *promises* instead: 
 
 ```javascript
 function promiseFile(filename) {
@@ -1811,7 +1960,7 @@ promiseFile('file1.txt')
 ```
 
 * In fact, **.then** and **.catch** handlers always return *promises*.
-* If the code inside them does not, the result is wrapped in an automatically fulfilled *promise*.
+* If the code inside them returns something else, the result is wrapped in an automatically fulfilled *promise*.
 * This simplifies *promise chaining*. 
 
 ---
@@ -1833,7 +1982,7 @@ function promiseFile(filename) {
 ```
 ]
 
-It also happens in the promise handlers (**.then** and **.catch**). 
+It also happens in promise handlers (**.then** and **.catch**). 
 
 If we throw inside a **.then** handler, the control jumps to the nearest **.catch**.
 
@@ -1892,12 +2041,14 @@ getName().then(console.log) // John Doe
 
 # Await
 
-The keyword *await* makes *JavaScript* wait until a promise settles and returns its result.
+The keyword *await* makes *JavaScript* wait until a promise settles and returns its result:
 
 * *Await* only works inside *async* functions.
-* This uses the event loop mechanism; the code is suspended until the promise settles and a new call back is added to the *event queue*.
-* So, no CPU resources are wasted.
-* It's just a more elegant way to use sequential promises.
+* *Await* uses the event loop mechanism; the code is suspended until the 
+  promise settles and a new *callback* is added to the *event queue*.
+  This way, no CPU resources are wasted.
+
+It's just a more elegant way to use sequential promises:
 
 ```javascript
 async function foo() {
@@ -1923,6 +2074,8 @@ async function foo() {
 
 foo().catch(console.error)
 ```
+
+And we get *synchronous-like* code that behaves in a **non-blocking** manner. 
 
 ---
 template: inverse
