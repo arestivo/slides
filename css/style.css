@@ -135,7 +135,6 @@ img[src*="uml"]{
 img {
   display: block;
   margin: 5px auto;
-  background-color: var(--box-bg-color);
   padding: 10px;
   max-width: 90%;
 }

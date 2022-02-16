@@ -1663,6 +1663,10 @@ However:
 * These actions run in **separate** and **independent** processes. 
 * When they finish, they enter an *event queue*, waiting for their time to execute.
 
+.smaller[
+![](assets/javascript/event-loop.svg)
+]
+
 ---
 
 # The Event Loop
