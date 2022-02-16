@@ -187,7 +187,7 @@ Select elements by their tag name
 a
 ```
 
-<img src="../assets/css3/tree-element.png" style="padding: 5px">
+<img src="assets/css3/tree-element.png" style="padding: 5px">
 
 ---
 # Id Selector
@@ -198,7 +198,7 @@ Selects element by their id (#)
 #menu
 ```
 
-<img src="../assets/css3/tree-id.png" style="padding: 5px">
+<img src="assets/css3/tree-id.png" style="padding: 5px">
 
 ---
 # Class Selector
@@ -209,7 +209,7 @@ Selects element by their class (.)
 .introduction
 ```
 
-<img src="../assets/css3/tree-class.png" style="padding: 5px">
+<img src="assets/css3/tree-class.png" style="padding: 5px">
 
 ---
 
@@ -220,7 +220,7 @@ Selects all elements (*)
  *
 ```
 
-<img src="../assets/css3/tree-all.png" style="padding: 5px">
+<img src="assets/css3/tree-all.png" style="padding: 5px">
 
 ---
 
@@ -232,7 +232,7 @@ Selects all descendants (space)
 article a
 ```
 
-<img src="../assets/css3/tree-descendant.png" style="padding: 5px">
+<img src="assets/css3/tree-descendant.png" style="padding: 5px">
 
 ---
 
@@ -243,7 +243,7 @@ Selects all children (&gt;)
 aside > a
 ```
 
-<img src="../assets/css3/tree-child.png" style="padding: 5px">
+<img src="assets/css3/tree-child.png" style="padding: 5px">
 
 ---
 
@@ -255,7 +255,7 @@ Selects next sibling (+)
 .selected + li
 ```
 
-<img src="../assets/css3/tree-iafter.png" style="padding: 5px">
+<img src="assets/css3/tree-iafter.png" style="padding: 5px">
 
 ---
 
@@ -267,7 +267,7 @@ Selects next siblings (~)
 .selected ~ li
 ```
 
-<img src="../assets/css3/tree-after.png" style="padding: 5px">
+<img src="assets/css3/tree-after.png" style="padding: 5px">
 
 ---
 
@@ -279,7 +279,7 @@ Multiple selectors (,)
 .selected ~ li, p > a, #menu
 ```
 
-<img src="../assets/css3/tree-multiple.png" style="padding: 5px">
+<img src="assets/css3/tree-multiple.png" style="padding: 5px">
 
 ---
 
@@ -291,7 +291,7 @@ All these concepts can be combined to form powerful selectors
 aside#menu li.selected + li > a
 ```
 
-<img src="../assets/css3/tree-combinations.png" style="padding: 5px">
+<img src="assets/css3/tree-combinations.png" style="padding: 5px">
 
 ---
 
@@ -613,7 +613,7 @@ div {
 }
 ```
 
-![](../assets/css3/rem.png)
+![](assets/css3/rem.png)
 
 ---
 
@@ -634,7 +634,7 @@ div {
 }
 ```
 
-![](../assets/css3/em.png)
+![](assets/css3/em.png)
 
 ---
 
@@ -692,7 +692,7 @@ p {
 }
 ```
 
-![](../assets/css3/serif-sansserif.jpg)
+![](assets/css3/serif-sansserif.jpg)
 
 ---
 # Web Safe Fonts
@@ -787,7 +787,7 @@ Text can be aligned **left**, **right**, **center** or justified (**justify**) u
 }
 ```
 
-![](../assets/css3/text-align.png)
+![](assets/css3/text-align.png)
 
 ---
 
@@ -825,7 +825,7 @@ name:boxmodel
 
 Elements all live inside a box. They can have a **border**, some space between themselves and that border (**padding**) and some space between themselves and the next element (**margin**).
 
-<img src="../assets/css3/box-model.png" style="padding: 10px;">
+<img src="assets/css3/box-model.png" style="padding: 10px;">
 
 ---
 
@@ -856,7 +856,7 @@ img {
 
 # Blocks
 
-![blocks example](../assets/css3/blocks.svg)
+![blocks example](assets/css3/blocks.svg)
 
 ---
 
@@ -878,14 +878,14 @@ span {
 }
 ```
 
-![inline example](../assets/css3/inline.png)
+![inline example](assets/css3/inline.png)
 
 
 ---
 
 # Blocks and Inlines
 
-<img src="../assets/css3/css-normal-flow.png" style="padding: 10px;">
+<img src="assets/css3/css-normal-flow.png" style="padding: 10px;">
 
 ---
 
@@ -903,7 +903,7 @@ span {
 }
 ```
 
-![inline-block example](../assets/css3/inline-block.png)
+![inline-block example](assets/css3/inline-block.png)
 
 ---
 
@@ -988,7 +988,7 @@ Adjacent margins collapse in three different cases
 ---
 ## Margin Collapse Examples
 
-<img src="../assets/css3/margin-collapse.jpg" style="padding: 10px;">
+<img src="assets/css3/margin-collapse.jpg" style="padding: 10px;">
 ---
 
 template:inverse
@@ -1000,7 +1000,7 @@ name:border
 
 An element border is a line that separates the padding from the margin.
 
-<img src="../assets/css3/box-model.png" style="padding: 10px;">
+<img src="assets/css3/box-model.png" style="padding: 10px;">
 
 ---
 # Border Style
@@ -1017,7 +1017,7 @@ An element border is a line that separates the padding from the margin.
 ---
 ## Border Style Examples
 
-<img src="../assets/css3/border-style.png" style="padding: 10px;">
+<img src="assets/css3/border-style.png" style="padding: 10px;">
 ---
 # Border Width
 
@@ -1120,7 +1120,7 @@ div {
 #f { border-radius: 20px 0; background-color: fuchsia;}
 ```
 
-![](../assets/css3/radius.png)
+![](assets/css3/radius.png)
 
 ---
 
@@ -1308,7 +1308,7 @@ div {
 #f {transform: skew(30deg) rotate(30deg); background-color: fuchsia;}
 ```
 
-![](../assets/css3/transform.png)
+![](assets/css3/transform.png)
 
 
 ---
@@ -1387,7 +1387,7 @@ The **position** property allows the developer to alter the way an element is po
 * The default value.
 * The element keeps its place **in the document flow**.
 
-<img src="../assets/css3/position-static.png" style="padding: 10px;">
+<img src="assets/css3/position-static.png" style="padding: 10px;">
 
 ```css
 #b {
@@ -1402,7 +1402,7 @@ The **position** property allows the developer to alter the way an element is po
 * The element keeps its position **in the flow**.
 * But can be moved relatively to its static position using the properties: **top**, **right**, **bottom** and **left**.
 
-<img src="../assets/css3/position-relative.png" style="padding: 10px;">
+<img src="assets/css3/position-relative.png" style="padding: 10px;">
 
 ```css
 #b {
@@ -1420,7 +1420,7 @@ The **position** property allows the developer to alter the way an element is po
 * Can be positioned relatively to the **browser window**.
 * **Scrolling doesn't** change the element's **position**.
 
-<img src="../assets/css3/position-fixed.png" style="padding: 10px;">
+<img src="assets/css3/position-fixed.png" style="padding: 10px;">
 
 ```css
 #b {
@@ -1438,7 +1438,7 @@ The **position** property allows the developer to alter the way an element is po
 * **No longer a part of the flow** and scrolls with the page.
 * Can be positioned relatively to its **first non static parent**.
 
-<img src="../assets/css3/position-absolute.png" style="padding: 10px;">
+<img src="assets/css3/position-absolute.png" style="padding: 10px;">
 
 ```css
 #b {
@@ -1455,7 +1455,7 @@ The **position** property allows the developer to alter the way an element is po
 
 The **float** property removes an element from the document flow and shifts it to the **left** or to the **right** until it touches the edge of its containing box or another floated element.
 
-<img src="../assets/css3/float-left.png" style="padding: 10px;">
+<img src="assets/css3/float-left.png" style="padding: 10px;">
 
 ```css
 #b {
@@ -1467,7 +1467,7 @@ The **float** property removes an element from the document flow and shifts it t
 
 Text always flows around floated elements. This is useful to make text that flows around images.
 
-<img src="../assets/css3/float-text.png" style="padding: 10px;">
+<img src="assets/css3/float-text.png" style="padding: 10px;">
 
 ```css
 .article img {
@@ -1479,7 +1479,7 @@ Text always flows around floated elements. This is useful to make text that flow
 
 Floats go right or left until they find another float or the parent container.
 
-<img src="../assets/css3/float-multiple.png" style="padding: 10px;">
+<img src="assets/css3/float-multiple.png" style="padding: 10px;">
 
 ```css
 #b1, #b2 {
@@ -1492,7 +1492,7 @@ Floats go right or left until they find another float or the parent container.
 * The **clear** property indicates if an element can be next to floating elements that precede it or must be moved down.
 * Values can be **left**, **right** or **both**.
 
-<img src="../assets/css3/float-clear.png" style="padding: 10px;">
+<img src="assets/css3/float-clear.png" style="padding: 10px;">
 
 ```css
 #b1, #b2 { float: left; }
@@ -1549,7 +1549,7 @@ https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
 # Flexbox Vocabulary
 
-![](../assets/css3/flexbox-vocabulary.png)
+![](assets/css3/flexbox-vocabulary.png)
 
 ---
 
@@ -1582,7 +1582,7 @@ https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
 # Running Example
 
-![](../assets/css3/flexbox-example.png)
+![](assets/css3/flexbox-example.png)
 
 ---
 
@@ -1596,7 +1596,7 @@ Changing the *display* property of the container to *flex* transforms the contai
 }
 ```
 
-![](../assets/css3/flexbox-display.png)
+![](assets/css3/flexbox-display.png)
 
 By default the main axis is horizontal from left to right.
 
@@ -1612,7 +1612,7 @@ We can change the directon of the main axis by changing the *flex-direction* pro
 }
 ```
 
-![](../assets/css3/flexbox-example.png)
+![](assets/css3/flexbox-example.png)
 
 ---
 
@@ -1627,7 +1627,7 @@ wrap when changing lines: **nowrap**, **wrap**, **wrap-reverse**. The default is
 }
 ```
 
-![](../assets/css3/flexbox-wrap.png)
+![](assets/css3/flexbox-wrap.png)
 
 ---
 
@@ -1641,7 +1641,7 @@ The *justify-content* property defines the alignment along the **main** axis all
 }
 ```
 
-![](../assets/css3/flexbox-justify.png)
+![](assets/css3/flexbox-justify.png)
 
 ---
 
@@ -1655,7 +1655,7 @@ The *align-items* property defines the default behaviour for how flex items are 
 }
 ```
 
-![](../assets/css3/flexbox-align.png)
+![](assets/css3/flexbox-align.png)
 
 ---
 
@@ -1669,7 +1669,7 @@ The **order** property alters the order in which a flex item is layed out in its
 }
 ```
 
-![](../assets/css3/flexbox-order.png)
+![](assets/css3/flexbox-order.png)
 
 ---
 
@@ -1687,7 +1687,7 @@ The *flex-grow* and *flex-shrink* properties define the ability for a flex item 
 }
 ```
 
-![](../assets/css3/flexbox-grow.png)
+![](assets/css3/flexbox-grow.png)
 
 ---
 
@@ -1721,7 +1721,7 @@ name:grid
 
 * A grid container's child elements can position themselves so they **overlap** and **layer**.
 
-![](../assets/css3/grid-1.svg)
+![](assets/css3/grid-1.svg)
 
 https://css-tricks.com/snippets/css/complete-guide-grid/
 
@@ -1758,7 +1758,7 @@ https://css-tricks.com/snippets/css/complete-guide-grid/
 # Running Example
 
 
-![](../assets/css3/grid-example.png)
+![](assets/css3/grid-example.png)
 
 ---
 
@@ -1789,7 +1789,7 @@ Sizes can be defined as **auto**, a **length**, a **percentage** or a **fraction
 }
 ```
 
-![](../assets/css3/grid-templates.png)
+![](assets/css3/grid-templates.png)
 
 ---
 
@@ -1797,7 +1797,7 @@ Sizes can be defined as **auto**, a **length**, a **percentage** or a **fraction
 
 By default, grid lines are assigned numerical values.
 
-![](../assets/css3/grid-2.svg)
+![](assets/css3/grid-2.svg)
 
 ---
 
@@ -1865,7 +1865,7 @@ The *grid-area* property can be used as a shorthand for the four values at once:
 
 # Location Result
 
-![](../assets/css3/grid-location.png)
+![](assets/css3/grid-location.png)
 
 ---
 
@@ -1884,7 +1884,7 @@ When defining the grid template, we can assign names to the grid lines. A line c
 }
 ```
 
-![](../assets/css3/grid-3.svg)
+![](assets/css3/grid-3.svg)
 
 ---
 
@@ -2120,7 +2120,7 @@ name:responsive
 
 Responsive web design is a way of making websites that works effectively on both desktop browsers and the myriad of mobile devices on the market.
 
-![](../assets/css3/responsive.jpg)
+![](assets/css3/responsive.jpg)
 
 .footnote[
 http://foodsense.is/ image taken from http://designmodo.com/responsive-design-examples/
