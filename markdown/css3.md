@@ -60,7 +60,7 @@ name:intro
 # What are they?
 
 * **C**ascading **S**tyle **S**heets
-* A style sheet language used for describing the the look and formatting of a document written in a markup language (like HTML).
+* A style sheet language used for describing the look and formatting of a document written in a markup language (like HTML).
 * Based on two concepts: **selectors** and **properties**.
 
 ---
