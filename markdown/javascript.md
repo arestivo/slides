@@ -14,14 +14,16 @@ class: left, middle
 
 ---
 
-template:inverse
+template: inverse
 # JavaScript
+
 <a href="http://www.fe.up.pt/~arestivo">André Restivo</a>
 
 ---
 
 template: inverse
-name:index
+name: index
+
 # Index
 
 .indexlist[
@@ -35,13 +37,17 @@ name:index
 1. [Classes](#classes)
 1. [Arrays](#arrays)
 1. [Destructuring](#destructuring)
+1. [Map and Set](#map-set)
 1. [Error Handling](#error-handling)
+1. [Asynchronous Code](#asynchronous)
+1. [JSON](#json)
 ]
 
 ---
 
 template: inverse
-name:intro
+name: intro
+
 # Introduction
 
 ---
@@ -132,6 +138,7 @@ console.log('abc')
 ---
 
 template: inverse
+
 # Resources
 
 
@@ -385,8 +392,9 @@ console.log(typeof console.log)       // "function"
 
 ---
 
-name:control
+name: control
 template: inverse
+
 # Control Structures
 
 ---
@@ -466,7 +474,7 @@ const best = value > best ? value : best
 ```
 
 * This operator takes a condition and two values.
-* It returns the first value if the condition is true, and the second if it is false.
+* It returns the first value if the condition is true and the second if it is false.
 
 ---
 
@@ -485,8 +493,9 @@ for (let i = 0; i < 10; i++) {
 
 ---
 
-name:functions
+name: functions
 template: inverse
+
 # Functions
 
 ---
@@ -641,8 +650,9 @@ const sum = (a, b) => {
 
 ---
 
-name:objects
+name: objects
 template: inverse
+
 # Objects
 
 ---
@@ -834,9 +844,14 @@ foo.goodBye() //Goodbye
 
 ---
 
-name:this
+# Closures
+
+---
+
+name: this
 template: inverse
-#This
+
+# This
 
 ---
 
@@ -847,7 +862,7 @@ In *JavaScript*, the **this** keyword (current context) behaves unlike in almost
 * In the global execution context, **this** refers to the *global object*:
   * Or *window* if in a browser.
 * Inside a function it depends on how the function was called:
-  * Simple function call (**undefined**).
+  * Simple function call (**undefined** if in strict mode).
   * Arrow functions (**retain** the enclosing context).
   * Using *apply* or *call* (*this* is the **first** argument).
   * Object method (the object the method was **called** from).
@@ -855,11 +870,13 @@ In *JavaScript*, the **this** keyword (current context) behaves unlike in almost
 
 ---
 
-# This in functions
+# This in Functions
 
 Using **this** in simple functions:
 
 ```javascript
+'use strict'
+
 function bar(var1, var2) {
   console.log(var1)
   console.log(var2)
@@ -878,7 +895,32 @@ bar.apply('foo', [10, 20])  // 10 20 foo
 
 ---
 
-# This in methods
+# Bind
+
+The bind method, allows us to fixate the this (or context of a function):
+
+It receives a *context*, and returns a new function where *this* is **that** *context*.
+
+```javascript
+'use strict'
+
+function bar(var1, var2) {
+  console.log(var1)
+  console.log(var2)
+  console.log(this)
+}
+bar(1, 2) // 1 2 undefined
+
+const foo = bar.bind('baz')
+foo(1, 2) // 1 2 baz
+```
+
+.box_info[
+  This will prove very useful in future examples!
+]
+---
+
+# This in Methods
 
 In methods, *this* contains the object the method was called from:
 
@@ -902,7 +944,8 @@ baz()         // Window or Global
 
 name: prototypes
 template: inverse
-#Prototypes
+
+# Prototypes
 
 ---
 
@@ -1056,9 +1099,10 @@ john.print() // John is a Builder
 
 ---
 
-name:classes
+name: classes
 template: inverse
-#Classes
+
+# Classes
 
 ---
 
@@ -1304,7 +1348,8 @@ console.log(jane instanceof Worker) // true
 ---
 
 template: inverse
-name:arrays
+name: arrays
+
 # Arrays
 
 ---
@@ -1389,7 +1434,7 @@ years.some(e => e % 2 == 0) // true
 
 # Playing with the Array Prototype
 
-By changing the Array prototype, we can add methods and properties to all arrays.
+We can add methods and properties to all arrays by changing the Array prototype:
 
 ```javascript
 const years = [1990, 1991, 1992, 1993]
@@ -1405,6 +1450,7 @@ years.print() // This array has length 4
 
 name: destructuring
 template: inverse
+
 # Destructuring
 
 ---
@@ -1498,11 +1544,18 @@ function print({first, last}) {
 print({first: 'John', last: 'Doe', age: 45}) // John Doe
 ```
 
+---
+
+template: inverse
+name: map-set
+
+# Map and Set
 
 ---
 
 name: error-handling
 template: inverse
+
 # Error Handling
 
 ---
@@ -1573,3 +1626,302 @@ catch (e) {
   } 
 }
 ```
+
+---
+
+template: inverse
+name: asynchronous
+
+# Asynchronous Code
+## Callbacks and Promises
+
+---
+
+# JavaScript Engines
+
+* JavaScript code is executed by a **JavaScript Engine**.
+* Some notable examples: [V8](https://v8.dev/), [SpiderMonkey](https://spidermonkey.dev/), Nitro.
+* They provide a heap, a single call stack, and a way to run JavaScript code. 
+
+However:
+
+* JavaScript is a **single-threaded** language!<br><small>An *engine* does not provide a way to start new threads.</small>
+* There is also no way to do input/output.<br><small>e.g., networking, storage, graphics.</small>
+
+.box_warning[
+  So how can we get asynchronous code?
+]
+
+---
+
+# JavaScript Environments
+
+* **JavaScript Runtime Environment**s provide the necessary APIs to do I/O.<br>
+  <small>For example, both Chrome and Node.js use the same engine (V8) but provide very **different** environments.</small>
+* These environments also allow us to schedule **asynchronous** actions.<br>
+  <small>Actions that are independent of the main program flow.</small>
+* These actions run in **separate** and **independent** processes. 
+* When they finish, they enter an *event queue*, waiting for their time to execute.
+
+---
+
+# The Event Loop
+
+Consider the following code where **readFile** is an asynchronous function provided by some *runtime environment*:
+
+.small[
+```javascript
+const path = '/some/large/file/we/want/to/read.txt'
+
+readFile(path, function(error, content) {
+  if (error) handleError(error) // if there is an error, we handle it
+  else console.log(content)     // when the file is read, this is executed
+})
+```
+]
+
+The **event loop** is an endless loop, where the JavaScript *engine* **waits** for tasks, **executes** them and then **waits** for more tasks:
+
+* The **readFile** function asks the *environment* to read a file.<br><small>The environment returns imediately and starts reading the file in a separate process.</small>
+* When the *environment* finishes reading the file, the *callback* function is placed in an *event queue*.
+* Tasks in this *queue* are executed only when the *call stack* becomes empty.<br><small>In a FIFO order.</small>
+
+---
+
+# Callback Hell
+
+What happens if we need to read a series of files, one after the other?
+
+We will end up with code like this:
+
+```javascript
+readFile('file1.txt', function(error, content1) {
+  if (error) handleError(error)
+  else readFile('file2.txt', function(error, content2) {
+    if (error) handleError(error)
+    else readFile('file3.txt', function(error, content3) {
+      if (error) handleError(error)
+      else readFile('file4.txt', function(error, content4) {
+        if (error) handleError(error)
+        else console.log(content1, content2, content3, content4)
+      })
+    })
+  })
+})
+```
+
+This is called *callback hell* or the *pyramid of doom*!
+
+---
+
+# Why don't we use synchronous code?
+
+Imagine we had a different version of the **readFile** function that worked synchronously:
+
+```javascript
+const content1 = readFileSync('file1.txt')
+const content2 = readFileSync('file2.txt')
+const content3 = readFileSync('file3.txt')
+const content4 = readFileSync('file4.txt')
+```
+
+* This would be much nicer, but JavaScript is **single-threaded**. 
+* If these operations take a lot of time, the code will **hang** for the whole duration.
+
+---
+
+# Promises
+
+Promises solve this problem in a very elegant way.
+
+* A promise represents the **eventual result** of an **asynchronous** operation.
+* A promise may be in one of 3 possible states: **fulfilled**, **rejected**, or **pending**.
+* A Promise is an *object* that takes a **function** with two parameters, functions **resolve** and **reject**:
+
+```javascript
+const promise = new Promise(function(resolve, reject) {
+  const [error, content] = readFileSync('file.txt')
+  if (error) reject(error)
+  else resolve(content)
+})
+```
+
+---
+
+# Consuming
+
+When the *promise* *resolves* or is *rejected*, we can use **.then** and **.catch** to consume it:
+
+```javascript
+promise.then(function(content) {
+  console.log(content)
+}).catch(function(error) {
+  handleError(error)
+})
+```
+
+This might not seem much better, but *promises* still have some tricks left!
+
+---
+
+# Returning Promises
+
+The idea behind *promises* is that, **instead** of using *callbacks* to transform *synchronous* into *asynchronous* code, an *asynchronous* function should return *promises* instead: 
+
+```javascript
+function promiseFile(filename) {
+  return new Promise(function(resolve, reject)) {
+    const [error, content] = readFileSync('file.txt')
+    if (error) reject(error)
+    else resolve(content)
+  }
+}
+```
+
+This could then be used like this:
+
+```javascript
+promiseFile('file.txt')
+  .then(content => console.log(content))
+  .catch(error => console.error(error))
+```
+
+---
+
+# Promise Chaining
+
+If we return a *promise* from a **.then** handler, we can chain *promises*:
+
+```javascript
+promiseFile('file1.txt')
+  .then(content => {
+    console.log(content)
+    return promiseFile('file2.txt')
+  })
+  .then(content => {
+    console.log(content)
+    return promiseFile('file3.txt')
+  })
+  .then(console.log)    // this is not magic!
+  .catch(console.error) // one catch for all the errors"
+```
+
+* In fact, **.then** and **.catch** handlers always return *promises*.
+* If the code inside them does not, the result is wrapped in an automatically fulfilled *promise*.
+* This simplifies *promise chaining*. 
+
+---
+
+# Error Handling
+
+Promises have an implicit **try ... catch** block around their code.
+
+So, if **readFileSync** throws an error, we don't even need to call **reject**:
+
+.small[
+```javascript
+function promiseFile(filename) {
+  return new Promise(function(resolve, reject)) {
+    const content = readFileSync('file.txt') // throws an error if it fails
+    resolve(content)
+  }
+}
+```
+]
+
+It also happens in the promise handlers (**.then** and **.catch**). 
+
+If we throw inside a **.then** handler, the control jumps to the nearest **.catch**.
+
+.small[
+```javascript
+promiseFile('file1.txt')
+  .then(console.log)
+  .catch(console.error)                // error reading file1.text
+  .then(_ => promiseFile('file2.txt')) // needs to be a function
+  .then(console.log)
+  .catch(console.error)                // error reading file2.text
+  .then(_ => promiseFile('file3.txt'))
+  .then(console.log)
+  .catch(console.error)                // error reading file3.text
+```
+]
+
+---
+
+# Promise.all
+
+There is also an easy way to run several *promises* in parallel and **wait** for them **all**:
+
+```javascript
+Promise.all([promiseFile('file1.txt'), 
+             promiseFile('file2.txt'), 
+             promiseFile('file3.txt')])
+  .then(([c1, c2, c3]) => console.log(c1, c2, c3))
+  .catch(console.error)
+```
+
+* **Promise.all** receives an array of *promises*.
+* The **.then** handler is called when they all resolve.
+* If any of them *throw* an *error* (or call *reject*), then **.catch** is called.
+* We are using *destructuring* to receive all the results in separate variables.
+
+---
+
+# Async
+
+When we add the **async** keyword before a function declaration then that function always returns a promise:
+
+```javascript
+async function getName() {
+  return 'John Doe'
+}
+```
+
+So this is possible:
+
+```javascript
+getName().then(console.log) // John Doe
+```
+
+---
+
+# Await
+
+The keyword *await* makes *JavaScript* wait until a promise settles and returns its result.
+
+* *Await* only works inside *async* functions.
+* This uses the event loop mechanism; the code is suspended until the promise settles and a new call back is added to the *event queue*.
+* So, no CPU resources are wasted.
+* It's just a more elegant way to use sequential promises.
+
+```javascript
+async function foo() {
+  const name = await readFile('file.txt')
+}
+```
+
+If an error is thrown, the *promise* returned by the *async* function is **rejected**.
+
+---
+
+# Async/Await
+
+Putting it all together, we can write:
+
+```javascript
+async function foo() {
+  const c1 = await promiseFile('file1.txt')
+  const c2 = await promiseFile('file2.txt')
+  const c3 = await promiseFile('file3.txt')
+  console.log(c1, c2, c3)
+}
+
+foo().catch(console.error)
+```
+
+---
+template: inverse
+name: json
+
+# JSON
