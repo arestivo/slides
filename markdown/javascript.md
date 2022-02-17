@@ -311,6 +311,15 @@ const c = String(a)  // '0'
 const d = String(b)  // 'false'
 ```
 
+To convert from a string to a number, we can use the **parseInt** and **parseFloat** functions. Don't forget to specify the base:
+
+```javascript
+  console.log(parseFloat('123.4')) // 123.4
+  console.log(parseInt('123', 10)) // 123
+  console.log(parseInt('123', 8))  // 83
+  console.log(parseInt('0123'))    // 123 or 83 in some browsers
+```
+
 ---
 
 # Comparison
