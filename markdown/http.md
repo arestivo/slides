@@ -84,7 +84,7 @@ name: urls
 * A URI can be further classified as a locator (**URL**), a name (**URN**), or both.
 * URI components: scheme, authority, path, query, fragment
 
-![](../assets/http/uri.png)
+![](assets/http/uri.png)
 
 ---
 
@@ -93,7 +93,7 @@ name: urls
 **U**niform **R**esource **N**ames are intended to serve as **persistent**, **location-independent**,
 resource **identifiers** [RFC2141](http://tools.ietf.org/html/rfc2141).
 
-![](../assets/http/urn.png)
+![](assets/http/urn.png)
 Source: [RFC3986](https://tools.ietf.org/html/rfc3986)
 
 ---
@@ -427,7 +427,7 @@ name: codes
 **418 I'm a teapot** - "Any attempt to brew coffee with a teapot should result in the error
    code "418 I'm a teapot". The resulting entity body MAY be short and stout." -- [RFC2324](https://tools.ietf.org/html/rfc2324)
 
-<img src="../assets/http/teapot.png" style="width:30%; border: none">
+<img src="assets/http/teapot.png" style="width:30%; border: none">
 
 > This error is a reference to Hyper Text Coffee Pot Control Protocol which was an April Fools' joke in 1998.
 
@@ -643,7 +643,7 @@ Accept: text/html
 # Scenarios
 
 .smaller[
-![](../assets/http/rest.svg)
+![](assets/http/rest.svg)
 ]
 
 ---

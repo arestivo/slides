@@ -1037,7 +1037,7 @@ That means there is always only one thread running, which has a **call stack**.
 
 But there can be a multitude of event callbacks waiting to be executed in the **event queue**.
 
-![](../assets/javascript/event-loop.svg)
+![](assets/javascript/event-loop.svg)
 
 ```javascript
 button.addEventListener('click', function() {
@@ -1055,7 +1055,7 @@ Asynchronous calls are **delegated** to the **browser** (web apis) and run in a 
 
 When the call **returns**, the browser **injects** a call into the **event queue**.
 
-![](../assets/javascript/webapis.svg)
+![](assets/javascript/webapis.svg)
 
 ---
 

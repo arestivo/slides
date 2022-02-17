@@ -87,7 +87,7 @@ name:singleton
 
 # Keep 'em Separated
 
-![](../assets/gamepatterns/three_pieces.jpg)
+![](assets/gamepatterns/three_pieces.jpg)
 
 ---
 
@@ -111,7 +111,7 @@ The most important aspect is that the model represents the data, and does nothin
 
 The controller can either serve as **glue** between the model and the view or just be a **bridge** between user interaction and the model.
 
-![](../assets/gamepatterns/mvc.svg)
+![](assets/gamepatterns/mvc.svg)
 
 ---
 
@@ -119,7 +119,7 @@ The controller can either serve as **glue** between the model and the view or ju
 
 In the [AsteroidArena](https://github.com/arestivo/AsteroidArena) example, when the render method of the view is called is gets the data to be rendered from the model, advances the simulation by calling the controller and passes it any user inputs. The controller updates the model accordingly.
 
-![](../assets/gamepatterns/asteroid-mvc.svg)
+![](assets/gamepatterns/asteroid-mvc.svg)
 
 ---
 
@@ -128,7 +128,7 @@ name:singleton
 
 # One to rule them All 
 
-![](../assets/gamepatterns/one.jpg)
+![](assets/gamepatterns/one.jpg)
 
 ---
 
@@ -136,7 +136,7 @@ name:singleton
 
 Game needs **one, and only one**, instance of the GameModel, GameController and GameView classes. Theses classes are accessed in **several** different places of our code.
 
-![](../assets/gamepatterns/singleton-problem.svg)
+![](assets/gamepatterns/singleton-problem.svg)
 
 ---
 
@@ -144,7 +144,7 @@ Game needs **one, and only one**, instance of the GameModel, GameController and 
 
 Ensure a class has only one instance, and provide a global point of access to it.
 
-![](../assets/gamepatterns/singleton.svg)
+![](assets/gamepatterns/singleton.svg)
 
 .right.small[
 [Singleton Pattern](https://sourcemaking.com/design_patterns/singleton), [Singleton in Games](http://gameprogrammingpatterns.com/singleton.html)
@@ -195,7 +195,7 @@ template:inverse
 name:observer
 # I see You
 
-![](../assets/gamepatterns/iseeyou.jpg)
+![](assets/gamepatterns/iseeyou.jpg)
 
 ---
 
@@ -209,7 +209,7 @@ Events in the physics engine, like collisions, must be **reflected** in the game
 
 Define a one-to-many dependency between objects so that when **one** object changes state, all its **dependents** are **notified** and updated automatically.
 
-![](../assets/gamepatterns/observer.svg)
+![](assets/gamepatterns/observer.svg)
 
 .right.small[
 [Observer Pattern](https://sourcemaking.com/design_patterns/observer), [Observer in Games](http://gameprogrammingpatterns.com/observer.html)
@@ -246,7 +246,7 @@ template:inverse
 name:factory
 #Just gimme one with 4 wheels
 
-![](../assets/gamepatterns/factory.jpg)
+![](assets/gamepatterns/factory.jpg)
 
 ---
 
@@ -288,7 +288,7 @@ for (AsteroidModel asteroid : asteroids) {
 
 # Factory Method .badge[GoF] .badge[Pattern]
 
-![](../assets/gamepatterns/factory-method.svg)
+![](assets/gamepatterns/factory-method.svg)
 
 ---
 
@@ -353,7 +353,7 @@ template:inverse
 name:flyweight
 # The Forest for the Trees
 
-![](../assets/gamepatterns/foresttrees.jpg)
+![](assets/gamepatterns/foresttrees.jpg)
 
 ---
 
@@ -361,7 +361,7 @@ name:flyweight
 
 We need to maintain a lot of asteroid objects but maintaining a sprite and/or texture for each one of them is expensive.
 
-![](../assets/gamepatterns/flyweight-1.svg)
+![](assets/gamepatterns/flyweight-1.svg)
 
 ---
 
@@ -369,7 +369,7 @@ We need to maintain a lot of asteroid objects but maintaining a sprite and/or te
 
 Use sharing to support large numbers of fine-grained objects efficiently.
 
-![](../assets/gamepatterns/flyweight-2.svg)
+![](assets/gamepatterns/flyweight-2.svg)
 
 .right.small[
 [Flyweight Pattern](https://sourcemaking.com/design_patterns/flyweight), [Flyweight in Games](http://gameprogrammingpatterns.com/flyweight.html)
@@ -384,7 +384,7 @@ Each **flyweight** object is divided into two pieces: the state-dependent (extri
 * Intrinsic state is stored (shared) in the Flyweight object.
 * Extrinsic state is passed when operations are invoked.
 
-![](../assets/gamepatterns/flyweight.svg)
+![](assets/gamepatterns/flyweight.svg)
 
 ---
 
@@ -422,7 +422,7 @@ template:inverse
 name:pool
 # Reuse. Restore. Recycle.
 
-![](../assets/gamepatterns/recycle.jpg)
+![](assets/gamepatterns/recycle.jpg)
 
 ---
 
@@ -430,7 +430,7 @@ name:pool
 
 There are **never** a lot of *bullets* flying at one given moment; but they are created and destroyed at a very **high rate**. The cost of instantiating a class makes this prohibitive.
 
-![](../assets/gamepatterns/bullets.jpg)
+![](assets/gamepatterns/bullets.jpg)
 
 ---
 
@@ -438,7 +438,7 @@ There are **never** a lot of *bullets* flying at one given moment; but they are 
 
 Improve **performance** and **memory** use by reusing objects from a fixed pool instead of allocating and freeing them individually.
 
-![](../assets/gamepatterns/pool.svg)
+![](assets/gamepatterns/pool.svg)
 
 .right.small[
 [Object Pool Pattern](https://sourcemaking.com/design_patterns/object_pool), [Object Pool in Games](http://gameprogrammingpatterns.com/object-pool.html)
@@ -481,7 +481,7 @@ template:inverse
 name:strategy
 # Be Different
 
-![](../assets/gamepatterns/strategy.jpg)
+![](assets/gamepatterns/strategy.jpg)
 
 ---
 
@@ -497,7 +497,7 @@ Enemies can also **change** strategy depending on their current context.
 
 Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from the clients that use it.
 
-![](../assets/gamepatterns/strategy.svg)
+![](assets/gamepatterns/strategy.svg)
 
 .right.small[
 [Strategy Pattern](https://sourcemaking.com/design_patterns/strategy)
@@ -509,7 +509,7 @@ template:inverse
 name:state
 # Running while Jumping
 
-![](../assets/gamepatterns/running.jpg)
+![](assets/gamepatterns/running.jpg)
 
 ---
 
@@ -625,7 +625,7 @@ if (Gdx.input.isKeyReleased(Input.Keys.DOWN)) {
 
 # Maybe we are doing it wrong
 
-![](../assets/gamepatterns/state-example.svg)
+![](assets/gamepatterns/state-example.svg)
 
 ---
 
@@ -633,7 +633,7 @@ if (Gdx.input.isKeyReleased(Input.Keys.DOWN)) {
 
 Allow an object to alter its behavior when its internal state changes. The object will appear to change its class.
 
-![](../assets/gamepatterns/state.svg)
+![](assets/gamepatterns/state.svg)
 
 .right.small[
 [State Pattern](https://sourcemaking.com/design_patterns/state), [State Pattern in Games](http://gameprogrammingpatterns.com/state.html)
@@ -645,7 +645,7 @@ template:inverse
 name:loop
 # Groundhog Day
 
-![](../assets/gamepatterns/groundhog.jpg)
+![](assets/gamepatterns/groundhog.jpg)
 
 ---
 
@@ -655,7 +655,7 @@ You have a **loop** that controls your game logic but you have **no control** ov
 
 On a fast machine, that loop will spin so fast users won’t be able to see what’s going on. On a slow machine, the game will crawl. 
 
-![](../assets/gamepatterns/loop1.svg)
+![](assets/gamepatterns/loop1.svg)
 
 ---
 
@@ -664,7 +664,7 @@ On a fast machine, that loop will spin so fast users won’t be able to see what
 Decouple the progression of game time from user input and processor speed.
 
 
-![](../assets/gamepatterns/loop2.svg)
+![](assets/gamepatterns/loop2.svg)
 
 ```java
 while (true)
@@ -689,7 +689,7 @@ The game logic/physics step is the one that is most vulnerable to these hardware
 
 By removing the rendering from the update loop, we can simulate as often as we want and render when possible.
 
-![](../assets/gamepatterns/loop3.svg)
+![](assets/gamepatterns/loop3.svg)
 
 .right.small[
 [Game Loop Pattern](http://gameprogrammingpatterns.com/game-loop.html), [Fix your Timestep](http://gafferongames.com/game-physics/fix-your-timestep/)
@@ -702,7 +702,7 @@ template:inverse
 name:buffer
 # Make it Smooth
 
-![](../assets/gamepatterns/double.jpg)
+![](assets/gamepatterns/double.jpg)
 
 ---
 
@@ -716,7 +716,7 @@ When the game draws the world the users see, it does so **one piece at a time**.
 
 Instead of drawing directly into the screen, use an intermediate buffer instead; then swap the screen contents with the buffer instantaneously. 
 
-![](../assets/gamepatterns/buffer.svg)
+![](assets/gamepatterns/buffer.svg)
 
 * Done automatically by most game engines
 
@@ -732,7 +732,7 @@ template:inverse
 name:update
 # Time goes by
 
-![](../assets/gamepatterns/clock.jpg)
+![](assets/gamepatterns/clock.jpg)
 
 ---
 
@@ -758,7 +758,7 @@ while (true)
 
 The game world maintains a collection of objects. Each object implements an update method that simulates one frame of the object’s behavior. Each frame, the game updates every object in the collection.
 
-![](../assets/gamepatterns/update.svg)
+![](assets/gamepatterns/update.svg)
 
 ---
 
@@ -766,7 +766,7 @@ template:inverse
 name:component
 # Many Making One
 
-![](../assets/gamepatterns/component.jpg)
+![](assets/gamepatterns/component.jpg)
 
 ---
 
@@ -784,7 +784,7 @@ This leads to unmaintanable code very fast.
 
 Allow a single entity to span multiple domains without coupling the domains to each other.
 
-![](../assets/gamepatterns/component.svg)
+![](assets/gamepatterns/component.svg)
 
 .right.small[
 [Component Pattern](http://gameprogrammingpatterns.com/component.html)]

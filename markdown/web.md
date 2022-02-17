@@ -29,7 +29,7 @@ template:inverse
 
 A global system of interconnected **computer networks** that use the standard *Internet protocol suite* to link several **billion** devices worldwide.
 
-![](../assets/web/internet.png)
+![](assets/web/internet.png)
 
 ---
 
@@ -39,7 +39,7 @@ A system of interlinked **hypertext documents** that are accessed via the **Inte
 
 Also known as the World Wide Web or WWW.
 
-![](../assets/web/www.png)
+![](assets/web/www.png)
 
 ---
 
@@ -81,7 +81,7 @@ From the browser to the server and back
 
 What happens when you type http://www.google.com/ in the address bar of your browser?
 
-![](../assets/web/web1.png)
+![](assets/web/web1.png)
 
 ---
 
@@ -89,7 +89,7 @@ What happens when you type http://www.google.com/ in the address bar of your bro
 
 Computers are usually connected using other devices (such as routers)
 
-![](../assets/web/web2.png)
+![](assets/web/web2.png)
 
 ---
 
@@ -97,7 +97,7 @@ Computers are usually connected using other devices (such as routers)
 
 The Internet is a redundant network of networks that connects millions of hardware devices from laptops to servers.
 
-![](../assets/web/web3.png)
+![](assets/web/web3.png)
 
 ---
 
@@ -106,7 +106,7 @@ The Internet is a redundant network of networks that connects millions of hardwa
 * Each connected device has at least one IP (Internet Protocol) address.
 * Given an address, routers are able to calculate where they should send information to reach the desired device.
 
-![](../assets/web/web4.png)
+![](assets/web/web4.png)
 
 ---
 
@@ -134,7 +134,7 @@ The Internet is a redundant network of networks that connects millions of hardwa
 * ISPs are the organizations that connect users to the Internet.
 * The external IP address on each router is, most of the times, assigned by the ISP using DHCP.
 
-![](../assets/web/web5.png)
+![](assets/web/web5.png)
 
 ---
 
@@ -144,7 +144,7 @@ How do we go from www.google.com to 173.194.34.224?
 
 The **Domain Name System (DNS)** is a hierarchical distributed naming system for computers connected to the Internet.
 
-![](../assets/web/web6.png)
+![](assets/web/web6.png)
 
 ---
 
@@ -153,7 +153,7 @@ The **Domain Name System (DNS)** is a hierarchical distributed naming system for
 * DNS requests escalate the hierarchy until a DNS server has a record for the desired name.
 * If the root zone DNS does not have the record, the request goes down until it reaches the responsible zone DNS.
 
-![](../assets/web/web7.png)
+![](assets/web/web7.png)
 
 ---
 
@@ -206,7 +206,7 @@ template:inverse
 * The most common are HTML pages but they can also be images, style sheets, PDF files, ...
 * The browser is responsible for presenting them in the most convenient way to the user.
 
-![](../assets/web/web8.png)
+![](assets/web/web8.png)
 
 ---
 
@@ -235,14 +235,14 @@ An introduction
 template:inverse
 # Browser Wars
 
-![](../assets/html5/browserwars.png)
+![](assets/html5/browserwars.png)
 
 ---
 
 template:inverse
 # Browser Share
 
-![](../assets/html5/browsershare.png)
+![](assets/html5/browsershare.png)
 
 Source: http://www.w3counter.com/trends
 
@@ -279,4 +279,4 @@ Source: http://www.w3counter.com/trends
 
 # Result
 
-![](../assets/web/example.png)
+![](assets/web/example.png)

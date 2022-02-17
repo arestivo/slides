@@ -256,7 +256,7 @@ name: set
 
 # Union, Intersection and Difference
 
-![](../assets/sql/setoperators.png)
+![](assets/sql/setoperators.png)
 
 ---
 

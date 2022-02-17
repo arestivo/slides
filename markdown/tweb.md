@@ -66,7 +66,7 @@ After completing this course you should be able to:
 
 # Project
 
-![Project Diagram](../assets/web/project.svg)
+![Project Diagram](assets/web/project.svg)
 
 ---
 

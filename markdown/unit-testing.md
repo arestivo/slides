@@ -67,7 +67,7 @@ Automated testing is a **technique** where the **tester/developer** writes **scr
 
 In **black-box** testing, the actual **internal** structure of the item being tested is **unknown** or **not taken into consideration**.
 
-![](../assets/unit-testing/black-white-box.svg)
+![](assets/unit-testing/black-white-box.svg)
 
 In **white-box** testing, the design of the test cases is **based** on the **internal structure** of the system being tested, so that the **maximum number** of different **code paths** are **covered**.
 
@@ -299,7 +299,7 @@ One way to achieve **test isolation**, is to use **Dependency Injection**.
 
 With this technique, **classes** no longer **depend** on other classes but **on interfaces**. The **concrete instantiation** of each interface is **injected** into the class by a third-party class (the **Assembler**). 
 
-![](../assets/unit-testing/dependency-injection.svg)
+![](assets/unit-testing/dependency-injection.svg)
 
 ---
 
@@ -531,7 +531,7 @@ A type of **software testing** where we **mutate** (change) certain statements i
 
 The **goal** is to assess the **quality** of the **test cases** which should be **robust** enough to **fail mutant code**.
 
-![](../assets/unit-testing/pit.svg)
+![](assets/unit-testing/pit.svg)
 
 In the mutation testing **lingo**, **tests** are trying to **kill** as many **mutants** as possible (optimally 100% of them).
 

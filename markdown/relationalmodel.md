@@ -66,7 +66,7 @@ name: intro
 
 # Relation
 
-![](../assets/relationalmodel/relation.png)
+![](assets/relationalmodel/relation.png)
 
 ---
 
@@ -150,7 +150,7 @@ name: pks
 
 # Table with a Primary Key
 
-![](../assets/relationalmodel/primarykey.png)
+![](assets/relationalmodel/primarykey.png)
 
 ---
 
@@ -178,7 +178,7 @@ Example for an employee:
 
 # Double Primary Key
 
-![](../assets/relationalmodel/doubleprimarykey.png)
+![](assets/relationalmodel/doubleprimarykey.png)
 
 ---
 
@@ -219,7 +219,7 @@ name: uks
 
 ## Table with an Unique Key
 
-![](../assets/relationalmodel/uniquekey.png)
+![](assets/relationalmodel/uniquekey.png)
 
 ---
 
@@ -262,7 +262,7 @@ name:fks
 
 ## Table with a Foreign Key
 
-![](../assets/relationalmodel/foreignkey.png)
+![](assets/relationalmodel/foreignkey.png)
 
 ---
 
@@ -342,7 +342,7 @@ name: er-to-mr
 
 # Step 1. Entity to Relation
 
-![](../assets/relationalmodel/step1.png)
+![](assets/relationalmodel/step1.png)
 
 ---
 
@@ -357,7 +357,7 @@ name: er-to-mr
 
 Foreign key always in the **many** side
 
-![](../assets/relationalmodel/step2a.png)
+![](assets/relationalmodel/step2a.png)
 
 ---
 
@@ -365,7 +365,7 @@ Foreign key always in the **many** side
 
 If the **many** side has **total participation** in the relationship
 
-![](../assets/relationalmodel/step2b.png)
+![](assets/relationalmodel/step2b.png)
 
 ---
 
@@ -382,7 +382,7 @@ If the **many** side has **total participation** in the relationship
 
 When **none** of the entities has a total participation in the relationship choose either one. Normally we choose the one with less rows.
 
-![](../assets/relationalmodel/step3a.png)
+![](assets/relationalmodel/step3a.png)
 
 ---
 
@@ -390,7 +390,7 @@ When **none** of the entities has a total participation in the relationship choo
 
 When **one** of the entities has a total participation in the relationship choose that one.
 
-![](../assets/relationalmodel/step3b.png)
+![](assets/relationalmodel/step3b.png)
 
 ---
 
@@ -406,7 +406,7 @@ When **one** of the entities has a total participation in the relationship choos
 
 Always create a new relation with a double foreign key
 
-![](../assets/relationalmodel/step4.png)
+![](assets/relationalmodel/step4.png)
 
 ---
 
@@ -422,7 +422,7 @@ Always create a new relation with a double foreign key
 
 Always create a new relation with a double foreign key
 
-![](../assets/relationalmodel/step5.png)
+![](assets/relationalmodel/step5.png)
 
 ---
 

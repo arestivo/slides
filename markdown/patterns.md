@@ -58,7 +58,7 @@ name:introduction
 # Patterns
 
 Patterns originated as an **architectural** concept by Christopher **Alexander** (1977/78).</li>
-<img src="../assets/patterns/pattern-language.jpg" width="250px">
+<img src="assets/patterns/pattern-language.jpg" width="250px">
 
 ---
 
@@ -66,7 +66,7 @@ Patterns originated as an **architectural** concept by Christopher **Alexander**
 
 Design patterns gained popularity in computer science after the book **"Design Patterns: Elements of Reusable Object-Oriented Software"** was published in **1994** by the so-called **"Gang of Four"**.
 
-<img src="../assets/patterns/design-patterns.jpg" width="250px">
+<img src="assets/patterns/design-patterns.jpg" width="250px">
 
 ---
 
@@ -134,7 +134,7 @@ name:factory-method
 
 A framework for applications that can present multiple documents to the user.
 
-![](../assets/patterns/factory-method-motivation.svg)
+![](assets/patterns/factory-method-motivation.svg)
 
 ---
 
@@ -154,7 +154,7 @@ Factory methods eliminate the need to bind application-specific classes into you
 
 # Structure
 
-![](../assets/patterns/factory-method-structure.svg)
+![](assets/patterns/factory-method-structure.svg)
 
 ---
 
@@ -180,7 +180,7 @@ name:composite
 
 A graphics application where shapes can be composed into groups.
 
-![](../assets/patterns/composite-motivation.svg)
+![](assets/patterns/composite-motivation.svg)
 
 ---
 
@@ -201,7 +201,7 @@ Use the **composite** pattern when:
 
 # Structure
 
-![](../assets/patterns/composite-structure.svg)
+![](assets/patterns/composite-structure.svg)
 
 ---
 
@@ -226,7 +226,7 @@ name:command
 
 # Motivation
 
-![](../assets/patterns/command-motivation.svg)
+![](assets/patterns/command-motivation.svg)
 
 ---
 
@@ -251,7 +251,7 @@ Use the **command** pattern when:
 
 # Structure
 
-![](../assets/patterns/command-structure.svg)
+![](assets/patterns/command-structure.svg)
 
 
 ---
@@ -276,7 +276,7 @@ name:observer
 
 # Motivation
 
-![](../assets/patterns/observer-motivation.svg)
+![](assets/patterns/observer-motivation.svg)
 
 ---
 
@@ -298,7 +298,7 @@ Use the **observer** pattern when:
 
 # Structure
 
-![](../assets/patterns/observer-structure.svg)
+![](assets/patterns/observer-structure.svg)
 
 ---
 
@@ -323,7 +323,7 @@ name:strategy
 
 # Motivation
 
-![](../assets/patterns/strategy-motivation.svg)
+![](assets/patterns/strategy-motivation.svg)
 
 ---
 
@@ -347,7 +347,7 @@ Use the **strategy** pattern when:
 
 # Structure
 
-![](../assets/patterns/strategy-structure.svg)
+![](assets/patterns/strategy-structure.svg)
 
 ---
 
@@ -370,7 +370,7 @@ name:state
 
 # Motivation
 
-![](../assets/patterns/state-motivation.svg)
+![](assets/patterns/state-motivation.svg)
 
 ---
 
@@ -390,7 +390,7 @@ Use the **state** pattern when:
 
 # Structure
 
-![](../assets/patterns/state-structure.svg)
+![](assets/patterns/state-structure.svg)
 
 ---
 
@@ -413,7 +413,7 @@ name:adapter
 
 # Motivation
 
-![](../assets/patterns/adapter-motivation.svg)
+![](assets/patterns/adapter-motivation.svg)
 
 ---
 
@@ -428,7 +428,7 @@ Use the **adapter** pattern when:
 
 # Structure
 
-![](../assets/patterns/adapter-structure.svg)
+![](assets/patterns/adapter-structure.svg)
 
 Two different alternatives:
 * **Class adapter**: Using multiple inheritance (if available).
@@ -448,7 +448,7 @@ name:decorator
 
 # Motivation
 
-![](../assets/patterns/decorator-motivation.svg)
+![](assets/patterns/decorator-motivation.svg)
 
 ---
 
@@ -470,7 +470,7 @@ Use the **decorator** pattern when:
 
 # Structure
 
-![](../assets/patterns/decorator-structure.svg)
+![](assets/patterns/decorator-structure.svg)
 
 > "Changing the object guts (Strategy) versus changing the object skin (Decorator)".
 
@@ -510,7 +510,7 @@ The **singleton** pattern is considered an [anti-pattern](https://www.michaelsaf
 
 # Structure
 
-![](../assets/patterns/singleton-structure.svg)
+![](assets/patterns/singleton-structure.svg)
 
 # Variations
 
@@ -532,7 +532,7 @@ name:abstract-factory
 
 # Motivation
 
-![](../assets/patterns/abstract-factory-motivation.svg)
+![](assets/patterns/abstract-factory-motivation.svg)
 
 ---
 
@@ -555,7 +555,7 @@ Use the **abstract factory** pattern when:
 
 # Structure
 
-![](../assets/patterns/abstract-factory-structure.svg)
+![](assets/patterns/abstract-factory-structure.svg)
 
 ---
 
@@ -584,7 +584,7 @@ Some examples:
 
 An architectural pattern commonly used for developing user interfaces that divides an application into **three** parts.
 
-![](../assets/patterns/mvc.svg)
+![](assets/patterns/mvc.svg)
 
 * The **model** only represents the **data**.
 * The **view** **displays** the **model** data, and sends user **actions** to the **controller**.

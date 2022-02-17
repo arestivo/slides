@@ -146,7 +146,7 @@ For databases we use **only two** of these:
 * The **name** of the class.
 * And a list of **attributes** (with an optional domain).
 
-![](../assets/uml-database/class.svg)
+![](assets/uml-database/class.svg)
 
 ---
 
@@ -161,7 +161,7 @@ For databases we use **only two** of these:
 A person’s age can be calculated from that person’s birth date.
 ]
 
-![](../assets/uml-database/derived.svg)
+![](assets/uml-database/derived.svg)
 
 ---
 
@@ -173,7 +173,7 @@ A person’s age can be calculated from that person’s birth date.
 * Some attributes might **not allow null** values.
 * We will represent these with a not null stereotype («not null»).
 
-![](../assets/uml-database/notnull.svg)
+![](assets/uml-database/notnull.svg)
 
 ---
 
@@ -187,7 +187,7 @@ Two different cars cannot have the same plate number. If we know the
 plate number we can identify the car it belongs to.
 ]
 
-![](../assets/uml-database/unique.svg)
+![](assets/uml-database/unique.svg)
 
 ---
 
@@ -208,7 +208,7 @@ A car belongs to a person.
 
 * **Never** use an attribute of another class to *mimic* an association.
 
-![](../assets/uml-database/wrong_association.svg)
+![](assets/uml-database/wrong_association.svg)
 
 
 ---
@@ -220,8 +220,8 @@ A car belongs to a person.
 
 **Some Examples**:
 
-![](../assets/uml-database/association1.svg)
-![](../assets/uml-database/association2.svg)
+![](assets/uml-database/association1.svg)
+![](assets/uml-database/association2.svg)
 
 
 ---
@@ -251,7 +251,7 @@ Some examples of possible **multiplicities**:
 * This is represented with an **association class**.
 * This is common in *many-to-many* associations.
 
-![](../assets/uml-database/association-class.svg)
+![](assets/uml-database/association-class.svg)
 
 * A **student** has a **grade** in a **course** he is enrolled to.
 * It is **not** an attribute of the student; a student has many grades.
@@ -267,7 +267,7 @@ Some examples of possible **multiplicities**:
 * In an aggregation relationship, the **child** class instance **can outlive** its **parent** class.
 * To represent an aggregation we use an **unfilled diamond** shape on the parent's association end.
 
-![](../assets/uml-database/association-aggregation.svg)
+![](assets/uml-database/association-aggregation.svg)
 
 ---
 
@@ -277,7 +277,7 @@ Some examples of possible **multiplicities**:
 * In an composition aggregation relationship, the child class instance **cannot outlive** its parent class.
 * To represent a composition aggregation we use an **filled diamond** shape on the parent's association end.
 
-![](../assets/uml-database/association-composition.svg)
+![](assets/uml-database/association-composition.svg)
 
 This means that we **do not want** to have **courses** in our database **without** a **department**.
 
@@ -287,7 +287,7 @@ This means that we **do not want** to have **courses** in our database **without
 
 * Qualified associations define an **attribute** that is used to **distinguish** between the associated instance.
 
-![](../assets/uml-database/association-qualified.svg)
+![](assets/uml-database/association-qualified.svg)
 
 * In this example, a club can have **many members**, but **only one for each number**. 
 * The members can belong to **many clubs** and there is no restriction on their number. A member can have the same number in two different clubs.
@@ -299,7 +299,7 @@ This means that we **do not want** to have **courses** in our database **without
 * It is possible to have associations between **more than two** classes.
 * These can also have **association** classes.
 
-![](../assets/uml/ternary.svg)
+![](assets/uml/ternary.svg)
 
 * In this case, a team can have different players in each season.
 
@@ -309,7 +309,7 @@ This means that we **do not want** to have **courses** in our database **without
 
 * To define the **multiplicity** in a ternary association, simply **fix two** of the classes, and think about the multiplicity of those two when combined with the other.
 
-![](../assets/uml/ternary-one.svg)
+![](assets/uml/ternary-one.svg)
 
 * In this case, a player **cannot play** in more than **one team** in the **same season**.
 * If we **fix** the **player** and **season**, there can only be **one team** associated with them.
@@ -322,7 +322,7 @@ This means that we **do not want** to have **courses** in our database **without
 * A **ternary** association can always be seen in terms of **binary** associations.
 * If it **can not** then it **is not** a ternary association.
 
-![](../assets/uml-database/association-ternary-binary.svg)
+![](assets/uml-database/association-ternary-binary.svg)
 
 ---
 
@@ -350,7 +350,7 @@ project should also be stored.
 
 # Solution
 
-![](../assets/uml-database/solution-company.svg)
+![](assets/uml-database/solution-company.svg)
 
 ---
 
@@ -366,7 +366,7 @@ name: inheritance
 * Represents a "**is-a**" relationship. Do not use simply because two classes share the same data fields.
 * Inheritance is indicated by a **solid line** with a **closed**, **unfilled** **arrowhead** pointing at the super class.
 
-![](../assets/uml-database/inheritance.svg)
+![](assets/uml-database/inheritance.svg)
 
 ---
 
@@ -390,7 +390,7 @@ name: example2
 
 # Solution
 
-![](../assets/uml/example.svg)
+![](assets/uml/example.svg)
 
 ---
 
@@ -406,7 +406,7 @@ name: redundancy
 * For example, when storing a piece of data that can be **calculated** from other data.
 * This can lead to **inconsistencies** in the database.
 
-![](../assets/uml-database/redundancy.svg)
+![](assets/uml-database/redundancy.svg)
 
 * Sometimes redundancy is by design; for **performance** reasons.
 * Database [normalization](https://web.fe.up.pt/~arestivo/presentation/normalization/) can be used to solve redundancy problems.

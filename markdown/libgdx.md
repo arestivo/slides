@@ -70,7 +70,7 @@ Can be used in many different ways as it does not force a specific design on you
 # Setup App
 
 .smaller[
-![](../assets/libgdx/libgdx-project-setup.png)
+![](assets/libgdx/libgdx-project-setup.png)
 ]
 
 ---
@@ -112,7 +112,7 @@ The Gdx class provides a unified interface to all the supported platforms:
 
 Core modules are not only used by the app being developed, but also by the internal LibGDX code.
 
-![](../assets/libgdx/libgdx-modules.svg)
+![](assets/libgdx/libgdx-modules.svg)
 
 ---
 
@@ -167,7 +167,7 @@ public interface ApplicationListener {
 
 # Life Cycle
 
-![](../assets/libgdx/lifecycle.svg)
+![](assets/libgdx/lifecycle.svg)
 
 ---
 
@@ -238,7 +238,7 @@ public abstract class ScreenAdapter implements Screen {
 # Proposed Usage
 
 .large[
-![](../assets/libgdx/application-uml.svg)
+![](assets/libgdx/application-uml.svg)
 ]
 
 ---
@@ -336,7 +336,7 @@ public class Sprite extends TextureRegion {
 
 # Texture Classes
 
-![](../assets/libgdx/libgdx-sprite.svg)
+![](assets/libgdx/libgdx-sprite.svg)
 
 ---
 
@@ -649,7 +649,7 @@ public class Body {
 }
 ```
 
-![](../assets/libgdx/libgdx-force.svg)
+![](assets/libgdx/libgdx-force.svg)
 
 ---
 
@@ -667,7 +667,7 @@ public class Body {
 }
 ```
 
-![](../assets/libgdx/libgdx-torque.svg)
+![](assets/libgdx/libgdx-torque.svg)
 
 [More on Box2D](https://github.com/libgdx/libgdx/wiki/box2d)
 
@@ -786,7 +786,7 @@ Many types of viewports can be used:
 * The virtual viewport will always be stretched to fit the screen.
 * No black bars, but the aspect ratio may not be the same.
 
-![](../assets/libgdx/libgdx-stretch.svg)
+![](assets/libgdx/libgdx-stretch.svg)
 
 ---
 
@@ -796,7 +796,7 @@ Many types of viewports can be used:
 * It will always maintain the aspect ratio of the virtual screen size, while scaling it as much as possible to fit the screen.
 * One disadvantage with this strategy is that there may appear black bars.
 
-![](../assets/libgdx/libgdx-fit.svg)
+![](assets/libgdx/libgdx-fit.svg)
 
 ---
 
@@ -807,7 +807,7 @@ Many types of viewports can be used:
 * It will always fill the whole screen.
 * Parts of the viewport might be cut off.
 
-![](../assets/libgdx/libgdx-fill.svg)
+![](assets/libgdx/libgdx-fill.svg)
 
 ---
 
@@ -818,7 +818,7 @@ Many types of viewports can be used:
 * No scaling happens and no black bars appear.
 * A player with a bigger screen might see more of the game, than a player with a smaller screen size.
 
-![](../assets/libgdx/libgdx-screen.svg)
+![](assets/libgdx/libgdx-screen.svg)
 
 ---
 
@@ -871,7 +871,7 @@ LibGDX has a set of predefined actors ready to be used:
 
 # Usage
 
-![](../assets/libgdx/libgdx-stage.svg)
+![](assets/libgdx/libgdx-stage.svg)
 
 ---
 
@@ -1173,7 +1173,7 @@ To create a animation we start by getting a texture and spliting it into *Textur
     texture.getHeight() / 3);  // 3 lines
 ```
 
-![](../assets/libgdx/sprite.png)
+![](assets/libgdx/sprite.png)
 
 ---
 
@@ -1256,7 +1256,7 @@ This makes testing harder:
 A better way to organize our code is to use the high-level
 archictural design pattern known as *Model-View-Controller* (MVC):
 
-![](../assets/libgdx/libgdx-mvc.svg)
+![](assets/libgdx/libgdx-mvc.svg)
 
 ---
 
@@ -1266,7 +1266,7 @@ The MVC pattern is more suited for gui-driven applications than to games, that n
 
 For these we propose a slightly different approach:
 
-![](../assets/libgdx/libgdx-architecture.svg)
+![](assets/libgdx/libgdx-architecture.svg)
 
 ---
 

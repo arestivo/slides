@@ -117,7 +117,7 @@ The activity lifecycle allows the developer to deal with resource management dec
 ]
 
 .pull-right[
-![](../assets/android/activity.jpg)
+![](assets/android/activity.jpg)
 ]
 
 ---
@@ -135,7 +135,7 @@ Interface to global information about an application environment.
 
 It allows access to application-specific resources and classes, as well as up-calls for application-level operations.
 
-![](../assets/android/context.svg)
+![](assets/android/context.svg)
 
 ---
 
@@ -211,7 +211,7 @@ The XML language is used to describe hierarchical (tree-like) information. In th
 
 It starts with a single layout root that can contain other layouts and/or UI elements.
 
-![](../assets/android/layout_example.svg)
+![](assets/android/layout_example.svg)
 
 ---
 
@@ -237,7 +237,7 @@ Views are the UI elements that draw something on the screen that the user can in
 
 **Examples**: Button, TextView, EditText, Spinner, RadioButton, CheckBox...
 
-![](../assets/android/ui-controls.png)
+![](assets/android/ui-controls.png)
 
 ---
 
@@ -245,7 +245,7 @@ Views are the UI elements that draw something on the screen that the user can in
 
 Layouts are in fact also views. Can you spot the [design pattern](https://sourcemaking.com/design_patterns/composite)?
 
-![](../assets/android/layout_uml.svg)
+![](assets/android/layout_uml.svg)
 
 ---
 
@@ -361,7 +361,7 @@ There are two views that can be used to display lists: *ListView* and *RecyclerV
 
 Both of these use a *adapters* that act as a bridge between the list and the underlying data.
 
-![](../assets/android/listview.svg)
+![](assets/android/listview.svg)
 
 A *RecyclerView* is a more recent and powerful form to display lists.
 

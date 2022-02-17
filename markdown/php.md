@@ -1436,7 +1436,7 @@ name:sessions
 
 Cookies are a mechanism for storing data in the remote browser.
 
-![](../assets/php/cookies.png)
+![](assets/php/cookies.png)
 
 ---
 
@@ -1475,7 +1475,7 @@ Sessions are a mechanism, using cookies, that can be used to persist state infor
 
 # Sessions
 
-![](../assets/php/sessions.png)
+![](assets/php/sessions.png)
 
 ---
 
@@ -1832,7 +1832,7 @@ Never mix scripts that show data with scripts that change data:
 
 # Separate Actions from Views
 
-![](../assets/php/best-practices.svg)
+![](assets/php/best-practices.svg)
 
 ---
 

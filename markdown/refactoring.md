@@ -52,7 +52,7 @@ name:introduction
 * Its essence is applying a series of **small behavior-preserving transformations**, each of which "*too small to be worth doing*". 
 * However the **cumulative** effect of each of these transformations is quite **significant**.
 
-<img src="../assets/refactoring/refactoring.jpg" width="220px">
+<img src="assets/refactoring/refactoring.jpg" width="220px">
 
 ---
 
@@ -221,7 +221,7 @@ These ones deal with **methods** and **temporary** variables:
 
 These ones deal with **classes** and **methods**.
 
-![](../assets/refactoring/composing-methods-1.svg)
+![](assets/refactoring/composing-methods-1.svg)
 
 ---
 
@@ -229,7 +229,7 @@ These ones deal with **classes** and **methods**.
 
 These ones deal with **methods** and temporary **variables**.
 
-![](../assets/refactoring/composing-methods-2.svg)
+![](assets/refactoring/composing-methods-2.svg)
 
 ---
 
@@ -387,13 +387,13 @@ These ones are about **untangling** class associations by changing the way they 
 
 # 2. Moving Features between Objects (III)
 
-![](../assets/refactoring/moving-features-1.svg)
+![](assets/refactoring/moving-features-1.svg)
 
 ---
 
 # 2. Moving Features between Objects (IV)
 
-![](../assets/refactoring/moving-features-2.svg)
+![](assets/refactoring/moving-features-2.svg)
 
 ---
 

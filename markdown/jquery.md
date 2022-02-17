@@ -593,7 +593,7 @@ template: inverse
 * Not a technology in itself, but a term coined in 2005 by Jesse James Garrett, that describes an approach to using a number of existing technologies: namely the *XMLHttpRequest* object.
 * With *Ajax*, the webpage is able to make requests to the server without reloading the page.
 
-![](../assets/jquery/ajax.png)
+![](assets/jquery/ajax.png)
 
 ---
 

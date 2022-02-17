@@ -81,7 +81,7 @@ name:classes
 
 The UML representation of a class is a **rectangle** containing **three** **compartments** stacked **vertically**:
 
-![](../assets/uml-classes/class.svg)
+![](assets/uml-classes/class.svg)
 
 ---
 
@@ -153,7 +153,7 @@ The ability of one class (child class) to **inherit** the identical **functional
 
 Inheritance is indicated by a **solid line** with a **closed**, **unfilled** arrowhead **pointing** at the **super** **class**.
 
-![](../assets/uml-classes/inheritance.svg)
+![](assets/uml-classes/inheritance.svg)
 
 ---
 
@@ -165,7 +165,7 @@ Inheritance is indicated by a **solid line** with a **closed**, **unfilled** arr
 
 > They are **both** represented in *italic*.
 
-![](../assets/uml-classes/abstract.svg)
+![](assets/uml-classes/abstract.svg)
 
 ---
 
@@ -181,7 +181,7 @@ Associations are assumed to be **bi-directional** by default. This means that bo
 
 A bi-directional association is indicated by a **solid line** between the two classes.
 
-![](../assets/uml-classes/bi-directional.svg)
+![](assets/uml-classes/bi-directional.svg)
 
 
 At either end of the line, you place a **role** name and a **multiplicity** value.
@@ -212,7 +212,7 @@ In a uni-directional association, **two classes** are **related**, but **only on
 
 A uni-directional association is drawn as a **solid line** with an **open** **arrowhead** pointing to the **known** class. 
 
-![](../assets/uml-classes/uni-directional.svg)
+![](assets/uml-classes/uni-directional.svg)
 
 ---
 
@@ -222,7 +222,7 @@ An **association class** includes **information** about a **relationship**.
 
 It is represented like a **normal class** but has a **dotted line** **connecting** it to the **association**.
 
-![](../assets/uml-classes/association-class.svg)
+![](assets/uml-classes/association-class.svg)
 
 ---
 
@@ -242,7 +242,7 @@ name:interfaces
 
 In UML, an interface is depicted just like a **class** but with a **«interface» keyword**.
 
-![](../assets/uml-classes/interface.svg)
+![](assets/uml-classes/interface.svg)
 
 ---
 
@@ -250,7 +250,7 @@ In UML, an interface is depicted just like a **class** but with a **«interface�
 
 A class can **declare** that it **implements** a certain **interface** in a very similar way to inheritance (but with the line **dotted** and not solid).
 
-![](../assets/uml-classes/implements.svg)
+![](assets/uml-classes/implements.svg)
 
 ---
 
@@ -270,7 +270,7 @@ name:aggregation
 
 * To represent an aggregation we use an **unfilled diamond** shape on the **parent**'s association **end**.
 
-![](../assets/uml-classes/aggregation.svg)
+![](assets/uml-classes/aggregation.svg)
 
 ---
 
@@ -282,7 +282,7 @@ name:aggregation
 
 * To represent a composition aggregation we use an **filled diamond** shape on the **parent**'s association **end**.
 
-![](../assets/uml-classes/composition.svg)
+![](assets/uml-classes/composition.svg)
 
 ---
 
@@ -298,4 +298,4 @@ Represents a **dependency** between two elements of a UML diagram (e.g., classes
 
 Important when we want to show that **changes** to an element **may impact** another one; even when there is no association (as in an attribute referencing the other class) between them.
 
-![](../assets/uml-classes/dependency.svg)
+![](assets/uml-classes/dependency.svg)

@@ -47,7 +47,7 @@ The process of organizing attributes and relations of a relational database to r
 
 A simplification of the design so that the database achieves its optimum structure.
 
-![](../assets/normalization/normalization.svg)
+![](assets/normalization/normalization.svg)
 
 ---
 
@@ -57,7 +57,7 @@ A strategy used on a normalized database in order to increase performance. Often
 
 But we must ensure that it does not become inconsistent.
 
-![](../assets/normalization/denormalization.svg)
+![](assets/normalization/denormalization.svg)
 
 ---
 
@@ -65,7 +65,7 @@ But we must ensure that it does not become inconsistent.
 
 Having the same fact more than once in the database.
 
-![](../assets/normalization/redundancy.svg)
+![](assets/normalization/redundancy.svg)
 
 In this example we have several redundant facts:
 
@@ -108,7 +108,7 @@ Written as: X &rarr; Y.
 
 Some functional dependency examples:
 
-![](../assets/normalization/redundancy.svg)
+![](assets/normalization/redundancy.svg)
 
 * e_num &rarr; e_name, job
 
@@ -173,7 +173,7 @@ A **super key** is a set of attributes whose closure is the set of all atributes
 
 Example:
 
-![](../assets/normalization/redundancy.svg)
+![](assets/normalization/redundancy.svg)
 
 **e_num, p_num** &rarr; e_num, e_name, job, salary, p_num, p_name, hours
 
@@ -205,7 +205,7 @@ A database is said to be in the first normal form if:
 * All attributes are atomic.
 * The primary key has been identified.
 
-![](../assets/normalization/1nf.svg)
+![](assets/normalization/1nf.svg)
 
 ---
 
@@ -223,7 +223,7 @@ A database is said to be in the second normal form if:
 * The database is in the first normal form.
 * Every attribute not belonging to a candidate key is dependent on the whole of every candidate key (i.e. no partial dependencies from part of a candidate key).
 
-![](../assets/normalization/2nf.svg)
+![](assets/normalization/2nf.svg)
 
 ---
 
@@ -240,7 +240,7 @@ A database is said to be in the third normal form if:
 * The database is in the second normal form.
 * If X &rarr; Y then X is a super key or Y is part of a candidate key. 
 
-![](../assets/normalization/3nf.svg)
+![](assets/normalization/3nf.svg)
 
 ---
 
@@ -262,7 +262,7 @@ A database is said to be in the third normal form if:
 
 The following example is in the third normal form but is not BCNF:
 
-![](../assets/normalization/bcnf.svg)
+![](assets/normalization/bcnf.svg)
  
 
 

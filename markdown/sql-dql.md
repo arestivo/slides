@@ -279,7 +279,7 @@ With all these operators, **duplicate** rows are **eliminated** automatically.
 
 # Union, Intersection and Difference
 
-![](../assets/sql/setoperators.png)
+![](assets/sql/setoperators.png)
 
 ---
 

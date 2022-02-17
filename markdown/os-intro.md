@@ -40,14 +40,14 @@ name:intro
 # Software Stack
 
 
-![](../assets/os/os-stack.svg)
+![](assets/os/os-stack.svg)
 
 ---
 
 # Hardware is Complicated
 
 .small[
-![](../assets/os/os-motherboard.svg)
+![](assets/os/os-motherboard.svg)
 ]
 
 ---

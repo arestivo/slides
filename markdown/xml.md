@@ -75,7 +75,7 @@ name:intro
 
 # SGML, XML and HTML
 
-![](../assets/xml/sgml.png)
+![](assets/xml/sgml.png)
 
 * SGML and XML are **metalanguages**. They allow users to develop their own
   languages.
@@ -393,7 +393,7 @@ name: technologies
 * XSLT (E**x**tensible **S**tylesheet **L**anguage **T**ransformations) is a language for transforming XML documents into other XML documents.
 * XSL-FO (**XSL** **F**ormatting **O**bjects) is a markup language for XML document formatting which is most often used to generate PDFs.
 
-![](../assets/xml/xsl.png)
+![](assets/xml/xsl.png)
 
 ---
 

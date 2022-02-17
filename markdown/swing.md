@@ -45,7 +45,7 @@ name:intro
 
 A library containing a set of graphical control elements (called **widgets**) used to construct the graphical user interface (**GUI**) of programs.
 
-![](../assets/swing/swt-widgets.png)
+![](assets/swing/swt-widgets.png)
 
 ---
 
@@ -74,7 +74,7 @@ name:swing
 * **LayoutManager** tells how components are layed out in containers.
 
 .small[
-![](../assets/swing/swing-uml.svg)
+![](assets/swing/swing-uml.svg)
 ]
 
 ---
@@ -132,7 +132,7 @@ frame.getContentPane().add(radioone);
 frame.getContentPane().add(radiotwo);
 ```
 
-![](../assets/swing/buttons.png)
+![](assets/swing/buttons.png)
 
 ---
 
@@ -156,7 +156,7 @@ JTextArea details = new JTextArea("details");
 frame.getContentPane().add(details);
 ```
 
-![](../assets/swing/textfields.png)
+![](assets/swing/textfields.png)
 
 ---
 
@@ -174,7 +174,7 @@ combobox.setSelectedIndex(3);
 frame.getContentPane().add(combobox);
 ```
 
-![](../assets/swing/combobox.png)
+![](assets/swing/combobox.png)
 
 ---
 
@@ -192,7 +192,7 @@ list.setSelectedIndex(3);
 frame.getContentPane().add(list);
 ```
 
-![](../assets/swing/list.png)
+![](assets/swing/list.png)
 
 [More components and how to use them...](https://www.cs.tut.fi/lintula/manual/java/tutorial/uiswing/components/components.html) 
 
@@ -254,7 +254,7 @@ frame.getContentPane().add(button2);
 frame.getContentPane().add(button3);
 ```
 
-![](../assets/swing/boxlayout.png)
+![](assets/swing/boxlayout.png)
 
 ---
 
@@ -276,7 +276,7 @@ frame.getContentPane().add(button2, BorderLayout.CENTER);
 frame.getContentPane().add(button3, BorderLayout.SOUTH);
 ```
 
-![](../assets/swing/borderlayout.png)
+![](assets/swing/borderlayout.png)
 
 ---
 
@@ -316,7 +316,7 @@ frame.getContentPane().add(button2, gbc2);
 frame.getContentPane().add(button3, gbc3);
 ```
 
-![](../assets/swing/gridbaglayout.png)
+![](assets/swing/gridbaglayout.png)
 
 ---
 
@@ -341,7 +341,7 @@ frame.getContentPane().add(panel1);
 frame.getContentPane().add(panel2);
 ```
 
-![](../assets/swing/panels.png)
+![](assets/swing/panels.png)
 
 ---
 
@@ -367,7 +367,7 @@ frame.getContentPane().add(button2);
 frame.getContentPane().add(button3);
 ```
 
-![](../assets/swing/miglayout.png)
+![](assets/swing/miglayout.png)
 
 ---
 
@@ -376,7 +376,7 @@ frame.getContentPane().add(button3);
 IntelliJ has a builtin **GUI designer** that simplifies the creation of graphical interfaces. To access it just do **New > Gui Form**. It also provides a simplified layout manager (**GridLayoutManager**).
 
 .small[
-![](../assets/swing/gui-designer.png)
+![](assets/swing/gui-designer.png)
 ]
 
 By default it sets the **modal** property to **true**, you probably want it set to **false**. To **open** the window just do:

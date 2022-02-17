@@ -71,7 +71,7 @@ Objects are **named elements** which represent a **individual participants** in 
 
 An object is represented by a rectangle that identifies the participant element.
 
-![](../assets/uml-communication/objects.svg)
+![](assets/uml-communication/objects.svg)
 
 The element can be an **anonymous** representative of a certain class, or a **named** one.
 
@@ -81,7 +81,7 @@ The element can be an **anonymous** representative of a certain class, or a **na
 
 An **Actor** is always something (a system or person) that is **outside** the **scope** of the system.
 
-![](../assets/uml-communication/actor.svg)
+![](assets/uml-communication/actor.svg)
 
 Actors are drawn as **stickman** figures (although they may not be users), and can be participants in communication diagrams.
 
@@ -97,7 +97,7 @@ name:messages
 
 Messages are represented by a **line** with an arrow above that indicates the direction of the message (and a sequence expression).
 
-![](../assets/uml-communication/messages.svg)
+![](assets/uml-communication/messages.svg)
 
 ---
 
@@ -121,7 +121,7 @@ Each sequence term represents a **level** of procedural **nesting** within the *
 integer [ name ] [ recurrence ] 
 ```
 
-![](../assets/uml-communication/sequence.svg)
+![](assets/uml-communication/sequence.svg)
 
 ---
 
@@ -129,7 +129,7 @@ integer [ name ] [ recurrence ]
 
 The integer represents the sequential order of the message within the next higher level of procedural calling (**activation**). 
 
-![](../assets/uml-communication/order.svg)
+![](assets/uml-communication/order.svg)
 
 Messages that differ in one integer term are **sequential** at that **level of nesting**. 
 
@@ -139,7 +139,7 @@ Messages that differ in one integer term are **sequential** at that **level of n
 
 The **name** represents a **concurrent thread** of control. Messages that differ in the final name are **concurrent** at that level of nesting. 
 
-![](../assets/uml-communication/name.svg)
+![](assets/uml-communication/name.svg)
 
 The hero instance send **both** requests (1.1a and 1.1b) to the Maze object **concurrently**.
 
@@ -149,4 +149,4 @@ The hero instance send **both** requests (1.1a and 1.1b) to the Maze object **co
 
 The recurrence of a sequence term can be a **guard** (a condition inside **square brackets**) or a **loop** (an **asterisk** followed by a condition inside **square brackets**).
 
-![](../assets/uml-communication/recurrence.svg)
+![](assets/uml-communication/recurrence.svg)

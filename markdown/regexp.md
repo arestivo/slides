@@ -680,7 +680,7 @@ https://cyberzhg.github.io/toolbox/nfa2dfa
 (a(b|c)+a)|([a-z])*T
 ```
 
-![](../assets/regexp/dfa.svg)
+![](assets/regexp/dfa.svg)
 
 ---
 

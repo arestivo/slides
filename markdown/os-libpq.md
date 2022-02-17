@@ -47,7 +47,7 @@ name:intro
 
 *Libpq* is a set of library functions that allow client programs to pass queries to the PostgreSQL backend server and to receive the results of these queries.
 
-![](../assets/libpq/libpq.svg)
+![](assets/libpq/libpq.svg)
 
 ---
 
@@ -288,7 +288,7 @@ What happens if the user inputs:
 
 # SQL Injection
 
-![](../assets/security/plate.png)
+![](assets/security/plate.png)
 
 ---
 

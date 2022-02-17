@@ -81,7 +81,7 @@ private static void peelAndEat(Fruit fruit) {
 
 We can start by imagining that we need classes **similar** to this:
 
-![](../assets/inheritance-composition/motivation.svg)
+![](assets/inheritance-composition/motivation.svg)
 
 
 ---
@@ -207,7 +207,7 @@ This can be done in different ways:
 
 # Using Multiple Inheritance
 
-![](../assets/inheritance-composition/multiple-inheritance.svg)
+![](assets/inheritance-composition/multiple-inheritance.svg)
 
 ---
 
@@ -252,7 +252,7 @@ In Java, all variables declared inside interfaces are implicitly **public**, **s
 
 # Using Interfaces
 
-![](../assets/inheritance-composition/interfaces.svg)
+![](assets/inheritance-composition/interfaces.svg)
 
 ---
 
@@ -296,7 +296,7 @@ One solution would be to have abstract classes for all (or only those that we ne
 
 # Using Combination Classes
 
-![](../assets/inheritance-composition/combination-classes.svg)
+![](assets/inheritance-composition/combination-classes.svg)
 
 ---
 
@@ -339,7 +339,7 @@ But attributes still need to be **public**, **static**, and **final** (and this 
 
 # Using Defaults
 
-![](../assets/inheritance-composition/defaults.svg)
+![](assets/inheritance-composition/defaults.svg)
 
 ---
 
@@ -367,7 +367,7 @@ Instead of fruits inheriting from the *Edible*, *Peelable* and *Sliceable* base 
 
 # Using Composition
 
-![](../assets/inheritance-composition/composition.svg)
+![](assets/inheritance-composition/composition.svg)
 
 ---
 
@@ -472,7 +472,7 @@ All other **drawbacks** of simple composition are **still present**.
 
 # Using Delegation
 
-![](../assets/inheritance-composition/delegation.svg)
+![](assets/inheritance-composition/delegation.svg)
 
 ---
 

@@ -74,7 +74,7 @@ name:basic
 
 A state is denoted by a round-cornered rectangle with the name of the state written inside it.
 
-![](../assets/uml-state/state.svg)
+![](assets/uml-state/state.svg)
 
 ---
 
@@ -88,7 +88,7 @@ The final state is denoted by a circle with a dot inside.
 Both can be labeled with a name.
 
 
-![](../assets/uml-state/initial-final.svg)
+![](assets/uml-state/initial-final.svg)
 
 
 ---
@@ -99,7 +99,7 @@ Transitions from one state to the next are denoted by lines with arrowheads.
 
 A transition may have a trigger, a guard and an effect.
 
-![](../assets/uml-state/transition.svg)
+![](assets/uml-state/transition.svg)
 
 * **Trigger** is the cause of the transition, which could be a signal, an event, a change in some condition, or the passage of time.
 * **Guard**" is a condition which must be true in order for the trigger to cause the transition. 
@@ -113,7 +113,7 @@ If the target state has many transitions arriving at it, and each transition had
 
 This can be done by defining an entry action for the state. There can also be exit actions, actions that happen when a certain event occurs, and actions that always occur.
 
-![](../assets/uml-state/entry-exit.svg)
+![](assets/uml-state/entry-exit.svg)
 
 ---
 
@@ -123,7 +123,7 @@ A state can have a transition that returns to itself.
 
 This is useful when an effect is associated with the transition without the state changing.
 
-![](../assets/uml-state/self.svg)
+![](assets/uml-state/self.svg)
 
 
 ---
@@ -138,7 +138,7 @@ name:composite
 
 A state machine diagram may include sub-machine diagrams.
 
-![](../assets/uml-state/composite.svg)
+![](assets/uml-state/composite.svg)
 
 ---
 
@@ -146,7 +146,7 @@ A state machine diagram may include sub-machine diagrams.
 
 It is also possible to simplify the diagram by showing composite states as separate diagrams.
 
-![](../assets/uml-state/separate-composite.svg)
+![](assets/uml-state/separate-composite.svg)
 
 ---
 
@@ -156,7 +156,7 @@ Sometimes you do not want to enter a sub-machine at the normal initial state.
 
 In those cases, you can have an alternative labeled entry point.
 
-![](../assets/uml-state/entry-point.svg)
+![](assets/uml-state/entry-point.svg)
 
 ---
 
@@ -164,7 +164,7 @@ In those cases, you can have an alternative labeled entry point.
 
 It is also possible to have named alternative exit points. 
 
-![](../assets/uml-state/exit-point.svg)
+![](assets/uml-state/exit-point.svg)
 
 
 <!--

@@ -293,7 +293,7 @@ worksOn(Employee, Project) N:N
 
 # Cardinality
 
-![](../assets/entityrelationship/cardinality.png)
+![](assets/entityrelationship/cardinality.png)
 
 ---
 
@@ -313,7 +313,7 @@ All cars in the database must have an owner. Not all persons have to own cars.
 
 # Participation
 
-![](../assets/entityrelationship/participation.png)
+![](assets/entityrelationship/participation.png)
 
 ---
 
@@ -374,10 +374,10 @@ name: notation
 
 # Visual Notation
 
-![](../assets/entityrelationship/notation.png)
+![](assets/entityrelationship/notation.png)
 
 ---
 
 # Example
 
-![](../assets/entityrelationship/example.png)
+![](assets/entityrelationship/example.png)

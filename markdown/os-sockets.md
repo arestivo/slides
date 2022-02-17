@@ -57,7 +57,7 @@ A protocol stack is an implementation of a computer networking protocol suite.
 
 The **OSI Model** is a conceptual model that characterizes the communication functions without regard to their technology.
 
-![](../assets/sockets/osi.jpg)
+![](assets/sockets/osi.jpg)
 
 .right.small[
 [1] [IBM Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSCVHB_1.1.0/glossary/npi_osi_model.html)
@@ -69,7 +69,7 @@ The **OSI Model** is a conceptual model that characterizes the communication fun
 
 A concrete implementation of the OSI model.
 
-![](../assets/sockets/tcpip.svg)
+![](assets/sockets/tcpip.svg)
 
 ---
 
@@ -103,13 +103,13 @@ Socket Types
 
 * When a process sends data trough a socket, the operating knows from which port to send it from.
 
-![](../assets/sockets/portsockets.svg)
+![](assets/sockets/portsockets.svg)
 
 ---
 
 # Server/Client sockets
 
-![](../assets/sockets/serverclient.svg)
+![](assets/sockets/serverclient.svg)
 
 ---
 
@@ -315,6 +315,6 @@ close(sockfd);
 
 Server that can handle several connections at the same type must use multiple processes or threads.
 
-![](../assets/sockets/thread.svg)
+![](assets/sockets/thread.svg)
 
 [Example](https://web.fe.up.pt/~arestivo/page/solutions/os/sockets/step10/)

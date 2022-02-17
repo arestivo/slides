@@ -31,7 +31,7 @@ template:inverse
 
 # Master Plan
 
-![](../assets/lpoo/lpoo-classes.svg)
+![](assets/lpoo/lpoo-classes.svg)
 
 ---
 
@@ -57,4 +57,4 @@ template:inverse
 
 * Final grade will be calculated as follows:
 
-![](../assets/lpoo/lpoo-evaluation.svg)
+![](assets/lpoo/lpoo-evaluation.svg)

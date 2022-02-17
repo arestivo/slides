@@ -45,7 +45,7 @@ name:intro
 
 A system that **records changes** to a file or set of files **over time**.
 
-![](../assets/git/version-control.svg)
+![](assets/git/version-control.svg)
 
 It allows you to:
 
@@ -64,7 +64,7 @@ AKA Source Control Management (**SCM**)
 * Most store only the **differences** between files instead of copies of each version.
 * Examples: [RCS](https://www.gnu.org/software/rcs/)
 
-![](../assets/git/local-vcs.svg)
+![](assets/git/local-vcs.svg)
 
 
 ---
@@ -75,7 +75,7 @@ AKA Source Control Management (**SCM**)
 * Users can **checkout** a particular file version.
 * Examples: [CVS](http://cvs.nongnu.org/), [Subversion](https://subversion.apache.org/)
 
-![](../assets/git/centralized-vcs.svg)
+![](assets/git/centralized-vcs.svg)
 
 ---
 
@@ -101,7 +101,7 @@ Disadvantages:
 * But one, or more, computers can be used as a **central point** of synchronization.
 * Allows lots of different **workflows**.
 
-![](../assets/git/distributed-vcs.svg)
+![](assets/git/distributed-vcs.svg)
 
 Examples: [Git](https://git-scm.com/), [Mercurial](https://www.mercurial-scm.org/), [Bazaar](http://bazaar.canonical.com/en/), [Darcs](http://darcs.net/)
 
@@ -138,7 +138,7 @@ If not changed, files are just **links** to a previous version.
 
 All objects (files, commits, ...) have an **hash** identifier.
 
-![](../assets/git/file-versions.svg)
+![](assets/git/file-versions.svg)
 
 ---
 
@@ -150,7 +150,7 @@ The **working tree** is a single **checkout** of one version of the project.
 
 The **staging area** (or **index**) is a file in your Git directory that stores information about what will go into your next commit.
 
-![](../assets/git/git-sections.svg)
+![](assets/git/git-sections.svg)
 
 ---
 
@@ -158,7 +158,7 @@ The **staging area** (or **index**) is a file in your Git directory that stores 
 
 Files in the working directory can be in different states:
 
-![](../assets/git/file-states.svg)
+![](assets/git/file-states.svg)
 
 ---
 
@@ -433,7 +433,7 @@ As we have seen before, files are stored as **blobs** and identified by an **has
 
 Versions (or commits) are just a **snapshot**, also identified by an **hash**, pointing to a series of blobs.
 
-![](../assets/git/commits.svg)
+![](assets/git/commits.svg)
 
 Each commit contains the author’s **name** and **email** address, the **message** that was typed, and pointers to the commit (or commits) that directly came before this commit (its **parent** or parents).
 
@@ -447,11 +447,11 @@ In this specific example we have 3 commits:
 2. **70aca513** - A second commit where a LICENSE file was added.
 3. **f4d54ef1** - A third commit where the README file was modified.
 
-![](../assets/git/commits.svg)
+![](assets/git/commits.svg)
 
 From now on, we will use a simplified version of this commit tree:
 
-![](../assets/git/commits-simplified.svg)
+![](assets/git/commits-simplified.svg)
 
 
 ---
@@ -464,7 +464,7 @@ The **default** branch name in Git is *master*.
 
 As you start making commits, you’re given a *master* branch that points to the **last** commit you made. 
 
-![](../assets/git/branch-master.svg)
+![](assets/git/branch-master.svg)
 
 Every time you commit, the *current* branch pointer moves **forward** **automatically**.
 
@@ -474,7 +474,7 @@ Every time you commit, the *current* branch pointer moves **forward** **automati
 
 Git uses a special pointer called **HEAD** that **always** points to your **current branch**.
 
-![](../assets/git/branch-head.svg)
+![](assets/git/branch-head.svg)
 
 And now this makes a little bit more sense:
 
@@ -495,7 +495,7 @@ To create a branch we use the **branch** command. This only creates the branch, 
 $ git branch testing
 ```
 
-![](../assets/git/branch-testing.svg)
+![](assets/git/branch-testing.svg)
 
 The **branch** command can also show the current local branches.
 
@@ -517,7 +517,7 @@ $ git checkout testing
 * testing
 ```
 
-![](../assets/git/branch-checkout.svg)
+![](assets/git/branch-checkout.svg)
 
 
 We can also **create and checkout** a new branch using the **-b** flag: 
@@ -537,7 +537,7 @@ $ echo "more license info" >> LICENSE
 $ git commit -a -m "Testing LICENSE"
 ```
 
-![](../assets/git/branch-checkout-commit.svg)
+![](assets/git/branch-checkout-commit.svg)
 
 We can see that **only the current branch**, the one pointed by the HEAD, **moved**.
 
@@ -554,7 +554,7 @@ $ git checkout master
 1. The HEAD moves to the commit pointed by the **master** branch.
 2. Our files are reverted to the snapshot that **master** points to.
 
-![](../assets/git/branch-checkout-master.svg)
+![](assets/git/branch-checkout-master.svg)
 
 This means we are now working on top of a version that has **already been changed**. Any changes we make will create a **divergent history**.
 
@@ -570,7 +570,7 @@ $ echo "license looks better this way" >> LICENSE
 git commit -a -m "Better LICENSE"
 ```
 
-![](../assets/git/branch-divergent-history.svg)
+![](assets/git/branch-divergent-history.svg)
 
 Now we have two divergent histories that have to be **merged** together.
 
@@ -602,7 +602,7 @@ $ git checkout master
 $ git merge testing
 ```
 
-![](../assets/git/branch-fast-forward.svg)
+![](assets/git/branch-fast-forward.svg)
 
 
 ---
@@ -616,7 +616,7 @@ $ git checkout master
 $ git merge testing
 ```
 
-![](../assets/git/branch-three-way.svg)
+![](assets/git/branch-three-way.svg)
 
 ---
 
@@ -794,7 +794,7 @@ $ git fetch origin
 ```
 
 .smaller[
-![](../assets/git/remote-fetch.svg)
+![](assets/git/remote-fetch.svg)
 ]
 
 Fetching **only downloads** the data to your local repository. It doesn’t automatically merge it with any of your work or modify what you’re currently working on. 
@@ -825,7 +825,7 @@ $ git pull origin master # fetches and merges origin/master
 ```
 
 .smaller[
-![](../assets/git/remote-pull.svg)
+![](assets/git/remote-pull.svg)
 ]
 
 This fetches data from the server you originally cloned from and automatically tries to merge it into the code you are currently working on.
@@ -848,7 +848,7 @@ $ git push # or git push origin master
 ```
 
 .smaller[
-![](../assets/git/remote-push.svg)
+![](assets/git/remote-push.svg)
 ]
 
 
@@ -947,7 +947,7 @@ The ~(tilde) and ^(caret) symbols are used to point to a position **relative** t
 * COMMIT~2 refers to **two commits** before to COMMIT.
 * And so on...
 
-![](../assets/git/commit-relative.svg)
+![](assets/git/commit-relative.svg)
 
 ---
 
@@ -972,7 +972,7 @@ There are endless different ways to use Git. For example:
 [Git Flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) is one way, but not the only one, of using git.
 
 .smaller[
-![](../assets/git/git-flow.svg)
+![](assets/git/git-flow.svg)
 ]
 
 What's important is that you, and your team, are **consistent** in the way you use Git.

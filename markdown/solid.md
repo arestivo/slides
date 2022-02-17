@@ -143,7 +143,7 @@ If we **analyze** the four **symptoms** of rotting design just presented, carefu
 
 * As **time** goes by, **hacks** (needed because of **unforseen** **requirement** **changes**), introduce **unwanted** dependencies.
 
-![](../assets/solid/dependencies.svg)
+![](assets/solid/dependencies.svg)
 
 ---
 
@@ -170,13 +170,13 @@ If a module assumes more than one responsibility, then:
 
 # Example
 
-![](../assets/solid/srp.svg)
+![](assets/solid/srp.svg)
 
 ---
 
 # When to (or not to) use?
 
-<img src="../assets/solid/srp-modem.svg" width="75%">
+<img src="assets/solid/srp-modem.svg" width="75%">
 
 > Gather together the things that change for the same reasons. Separate those things that change for different reasons &mdash; [Uncle Bob, 2014](https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html)
 
@@ -352,7 +352,7 @@ Or, in other words, **derived methods should expect no more and provide no less*
 
 # One Service, Different Interfaces
 
-![](../assets/solid/isp.svg)
+![](assets/solid/isp.svg)
 
 * Makes the code more **readable** and **manageable**.
 
@@ -378,7 +378,7 @@ And
 
 **Concrete** things change a **lot**, **abstract** things change much **less** frequently.
 
-![](../assets/solid/dip.svg)
+![](assets/solid/dip.svg)
 
 * No client code has to be **changed** simply because an object it **depends** on needs to be **changed** to a **different one** (loose coupling).
 
@@ -482,17 +482,17 @@ name:other
 
 # Bad Design
 
-![](../assets/solid/bad-design.svg)
+![](assets/solid/bad-design.svg)
 
 ---
 
 # Violated Principles
 
-![](../assets/solid/violated-principles.svg)
+![](assets/solid/violated-principles.svg)
 
 
 ---
 
 # Solid Design
 
-![](../assets/solid/solid-design.svg)
+![](assets/solid/solid-design.svg)

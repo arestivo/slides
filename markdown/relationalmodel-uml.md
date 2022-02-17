@@ -66,7 +66,7 @@ name: intro
 
 # Relation
 
-![](../assets/relationalmodel/relation.png)
+![](assets/relationalmodel/relation.png)
 
 ---
 
@@ -153,7 +153,7 @@ Key chosen to be used to **identify** tuples in a relation:
 
 # Table with a Primary Key
 
-![](../assets/relationalmodel/primarykey.png)
+![](assets/relationalmodel/primarykey.png)
 
 ---
 
@@ -175,7 +175,7 @@ Employee (<u>id</u>, name [NN], address, telephone)
 
 # Table with a Double Primary Key
 
-![](../assets/relationalmodel/doubleprimarykey.png)
+![](assets/relationalmodel/doubleprimarykey.png)
 
 ---
 
@@ -188,7 +188,7 @@ Employee (<u>id</u>, name [NN], address, telephone)
 
 # Table with an Unique Key
 
-![](../assets/relationalmodel/uniquekey.png)
+![](assets/relationalmodel/uniquekey.png)
 
 ---
 
@@ -219,7 +219,7 @@ Employee (<u>id</u>, name [NN], address, telephone [UK])
 
 ## Table with a Foreign Key
 
-![](../assets/relationalmodel/foreignkey.png)
+![](assets/relationalmodel/foreignkey.png)
 
 The domain of the foreign key (column F) is the set of values of the primary key in the referenced table.
 
@@ -278,7 +278,7 @@ name: uml-to-mr
 
 # Class
 
-![](../assets/uml/class.svg)
+![](assets/uml/class.svg)
 
 --
 
@@ -294,7 +294,7 @@ Person (<u>id</u>, birth_date, name, address, salary)
 
 # Many-to-one Association (partial)
 
-![](../assets/uml/many-to-one-partial.svg)
+![](assets/uml/many-to-one-partial.svg)
 
 --
 
@@ -311,7 +311,7 @@ Department (<u>num</u>, name)
 
 # Many-to-one Association (total)
 
-![](../assets/uml/many-to-one-total.svg)
+![](assets/uml/many-to-one-total.svg)
 
 --
 
@@ -328,7 +328,7 @@ Department (<u>num</u>, name)
 
 # One-to-one Association (partial)
 
-![](../assets/uml/one-to-one-partial.svg)
+![](assets/uml/one-to-one-partial.svg)
 
 --
 
@@ -346,7 +346,7 @@ Passport (<u>number</u>, date, #id &rarr; Person [UK,NN])
 
 # One-to-one Association (total)
 
-![](../assets/uml/one-to-one-total.svg)
+![](assets/uml/one-to-one-total.svg)
 
 --
 
@@ -365,7 +365,7 @@ Passport (<u>number</u>, date)
 
 # Many-to-many Association
 
-![](../assets/uml/many-to-many.svg)
+![](assets/uml/many-to-many.svg)
 
 --
 
@@ -385,7 +385,7 @@ Wrote (<u>#isbn &rarr; Book</u>, <u>#number &rarr; Author</u>)
 
 # Association Class
 
-![](../assets/uml/association-class.svg)
+![](assets/uml/association-class.svg)
 
 --
 
@@ -403,7 +403,7 @@ Enrolled (<u>#number &rarr; Student</u>, <u>#code &rarr; Course</u>, grade)
 
 # Aggregation
 
-![](../assets/uml/aggregation.svg)
+![](assets/uml/aggregation.svg)
 
 --
 
@@ -420,7 +420,7 @@ Part (<u>code</u>, name, type, #number &rarr; Computer)
 
 # Composition
 
-![](../assets/uml/composition.svg)
+![](assets/uml/composition.svg)
 
 --
 
@@ -437,7 +437,7 @@ Part (<u>code</u>, name, type, #number &rarr; Computer [NN])
 
 # Qualified Associations
 
-![](../assets/uml/qualified.svg)
+![](assets/uml/qualified.svg)
 
 --
 
@@ -457,7 +457,7 @@ Joined (<u>#code &rarr; Club</u>, <u>#id &rarr; Member</u>, number [NN])
 
 # Ternary Associations (\* \* \*)
 
-![](../assets/uml/ternary.svg)
+![](assets/uml/ternary.svg)
 
 --
 
@@ -478,7 +478,7 @@ Played (<u>#name &rarr; Team</u>, <u>#year &rarr; Season</u>, <u>#id &rarr; Play
 
 # Ternary Associations (\* \* 1)
 
-![](../assets/uml/ternary-one.svg)
+![](assets/uml/ternary-one.svg)
 
 --
 
@@ -499,7 +499,7 @@ Played (#name &rarr; Team, <u>#year &rarr; Season</u>, <u>#id &rarr; Player</u>,
 
 # Inheritance (method #1)
 
-![](../assets/uml/generalization.svg)
+![](assets/uml/generalization.svg)
 
 --
 
@@ -522,7 +522,7 @@ Appointment (<u>id</u>, #numd &rarr; Doctor [NN], #nump &rarr; Patient [NN], dat
 
 # Inheritance (method #2)
 
-![](../assets/uml/generalization.svg)
+![](assets/uml/generalization.svg)
 
 * Some queries require more work (e.g. person named John);
 * No way to ensure disjoint generalization;
@@ -541,7 +541,7 @@ Appointment (<u>id</u>, #numd &rarr; Doctor [NN], #nump &rarr; Patient [NN], dat
 
 # Inheritance (method #3)
 
-![](../assets/uml/generalization.svg)
+![](assets/uml/generalization.svg)
 
 * Needs extra code to ensure an appointment is between a doctor and a patient, only doctors have a specialty and patients an ensurance;
 * Easy to ensure disjoint generalization;
@@ -558,7 +558,7 @@ Appointment (<u>id</u>, #numd &rarr; Person [NN], #nump &rarr; Person [NN], date
 
 # Inheritance (method #4)
 
-![](../assets/uml/generalization.svg)
+![](assets/uml/generalization.svg)
 
 Same as previous but for overlapped generalizations.
 
@@ -580,7 +580,7 @@ name: example
 
 # Example
 
-![](../assets/uml/example.svg)
+![](assets/uml/example.svg)
 
 ---
 

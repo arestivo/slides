@@ -51,7 +51,7 @@ name:intro
   * Secondary: Non-volatile, slow, cheap, ...
 * The memory management function of the OS creates an abstraction
 that simplifies the usage of memory.
-![](../assets/memory/memory.svg)
+![](assets/memory/memory.svg)
 
 ---
 
@@ -75,7 +75,7 @@ name:physical
 * Physical addresses start at zero.
 * Example for a 32-bit computer with 16MiB of memory:
 
-![](../assets/memory/addresses.svg)
+![](assets/memory/addresses.svg)
 
 ---
 
@@ -86,7 +86,7 @@ name:physical
 * With the exception of a small portion reserved for the operating system.
 * Examples: MS-DOS, Embedded Systems, ...
 
-![](../assets/memory/single.svg)
+![](assets/memory/single.svg)
 
 ---
 
@@ -105,7 +105,7 @@ name:physical
 * A better solution is to allocate a part of the memory to each process.
 * Access to the memory is protected using *base* and *limit* registers (hardware protection): base &leq; address < base + limit.
 
-![](../assets/memory/multiple.svg)
+![](assets/memory/multiple.svg)
 
 ---
 
@@ -127,7 +127,7 @@ When code is compiled from a high level language into machine code, the address 
 
 Address binding is the process of translating logical addresses into their corresponding physical addresses:
 
-![](../assets/memory/logical.svg)
+![](assets/memory/logical.svg)
 
 * Address relocation: physical = logical + base
 * Memory protection: base &leq; physical < base + limit
@@ -140,7 +140,7 @@ Sometimes there is not enough space to keep all processes in memory at the same 
 
 Swapping is a mechanism in which a process can be swapped temporarily out of main memory to secondary storage (disk) and make that memory available to other processes.
 
-![](../assets/memory/swapping.svg)
+![](assets/memory/swapping.svg)
 
 ---
 
@@ -148,7 +148,7 @@ Swapping is a mechanism in which a process can be swapped temporarily out of mai
 
 The problem of having contiguous memory allocation is that as processes are swapped in and out of memory, the memory becomes fragmented:
 
-![](../assets/memory/fragmentation.svg)
+![](assets/memory/fragmentation.svg)
 
 Fragmentation can be fixed by using a memory compaction technique.
 
@@ -164,7 +164,7 @@ name:virtual
 
 Gives the illusion of access to a larger memory space than exists by storing part of the process data into secondary storage.
 
-![](../assets/memory/virtual.svg)
+![](assets/memory/virtual.svg)
 
 ---
 
@@ -179,7 +179,7 @@ Most virtual memory systems are implemented using a memory management technique 
 ]
 
 .pull-right[
-![](../assets/memory/paging.svg)
+![](assets/memory/paging.svg)
 ]
 
 ---
@@ -201,7 +201,7 @@ Most virtual memory systems are implemented using a memory management technique 
 * A virtual address is composed by a page number and an offset.
 * A physical address is composed by a frame number and an offset.
 
-![](../assets/memory/page-frame.svg)
+![](assets/memory/page-frame.svg)
 
 * From the standpoint of the process, memory is contiguous.
 * Page tables are used to translate the virtual addresses seen by the application into physical addresses used by the hardware.
@@ -228,7 +228,7 @@ name:process
 * Heap (Dynamically allocated memory).
 * Good idea to allocate extra space to allow program growth.
 
-![](../assets/memory/process.svg)
+![](assets/memory/process.svg)
 
 ---
 
@@ -236,7 +236,7 @@ name:process
 
 Program and data can be separated in memory making it easier to have multiple instances of the same program.
 
-![](../assets/memory/multiprocess.svg)
+![](assets/memory/multiprocess.svg)
 
 ---
 
@@ -347,7 +347,7 @@ void main() {
 ```
 
 .large[
-![](../assets/memory/static.svg)
+![](assets/memory/static.svg)
 ]
 
 ---
@@ -369,7 +369,7 @@ void main() {
 ```
 
 .large[
-![](../assets/memory/dynamic.svg)
+![](assets/memory/dynamic.svg)
 ]
 
 ---
@@ -389,7 +389,7 @@ void main() {
 ```
 
 .small[
-![](../assets/memory/byvalue.svg)
+![](assets/memory/byvalue.svg)
 ]
 
 ---
@@ -408,7 +408,7 @@ void main() {
 }
 ```
 
-![](../assets/memory/bypointer.svg)
+![](assets/memory/bypointer.svg)
 
 ---
 
@@ -426,7 +426,7 @@ void main() {
 }
 ```
 
-![](../assets/memory/byreference.svg)
+![](assets/memory/byreference.svg)
 
 ---
 
@@ -446,6 +446,6 @@ void main() {
 ```
 
 .large[
-![](../assets/memory/byreferencepointer.svg)
+![](assets/memory/byreferencepointer.svg)
 ]
 

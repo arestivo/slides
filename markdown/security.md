@@ -233,13 +233,13 @@ SELECT * FROM items WHERE title = ''; INSERT INTO users VALUES
 
 # SQL Injection
 
-![](../assets/security/plate.png)
+![](assets/security/plate.png)
 
 ---
 
 # SQL Injection
 
-![](../assets/security/xkcd.png)
+![](assets/security/xkcd.png)
 
 ---
 
@@ -603,7 +603,7 @@ name:maninthemiddle
 * Once the TCP connection is intercepted, the attacker acts as a proxy, being able to read, insert and modify the data in the intercepted communication.
 
 .smaller[
-  ![](../assets/security/maninthemiddle.png)
+  ![](assets/security/maninthemiddle.png)
 ]
 
 ---
@@ -621,7 +621,7 @@ Also known as **asymmetric** cryptography, is a class of cryptographic algorithm
 # Public-key Cryptography
 
 .smaller[
-  ![](../assets/security/publickey.png)
+  ![](assets/security/publickey.png)
 ]
 
 ---
@@ -631,7 +631,7 @@ Also known as **asymmetric** cryptography, is a class of cryptographic algorithm
 * Using encryption is **not enough** because every encryption method requires an additional exchange or transmission of information over a secure channel (e.g. the public key).
 
 .smaller[
-  ![](../assets/security/maninthemiddle2.png)
+  ![](assets/security/maninthemiddle2.png)
 ]
 
 * The solution is to use public keys that have been signed by a **certificate authority** (CA).
@@ -644,7 +644,7 @@ Also known as **asymmetric** cryptography, is a class of cryptographic algorithm
 * For efficiency reasons, normally only a hash of the original message is signed.
 
 .smaller[
-  ![](../assets/security/signature.png)
+  ![](assets/security/signature.png)
 ]
 
 ---
@@ -655,7 +655,7 @@ Also known as **asymmetric** cryptography, is a class of cryptographic algorithm
 * By signing a certificate, a Certificate Authority (CA) states that it verified the organization's information.
 
 .smaller[
-  ![](../assets/security/certificate.png)
+  ![](assets/security/certificate.png)
 ]
 
 ---
@@ -676,7 +676,7 @@ Also known as **asymmetric** cryptography, is a class of cryptographic algorithm
 * This allows browsers to only pre-install a few root certificates.
 
 .smaller[
-  ![](../assets/security/authorities.png)
+  ![](assets/security/authorities.png)
 ]
 
 ---
@@ -688,7 +688,7 @@ Also known as **asymmetric** cryptography, is a class of cryptographic algorithm
 * For efficiency reasons, public key cryptography is used to exchange a symmetric key that is used for the rest of the session (SSL handshake).
 
 .smaller[
-  ![](../assets/security/https.png)
+  ![](assets/security/https.png)
 ]
 
 ---
@@ -848,7 +848,7 @@ boolean password_verify ( string $password , string $hash )
 * This allows the **verify** function to verify the hash without needing separate storage for the salt or algorithm.
 
 .smaller[
-![](../assets/security/password_hash.svg)
+![](assets/security/password_hash.svg)
 ]
 
 ---

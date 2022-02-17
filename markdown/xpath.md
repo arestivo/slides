@@ -132,73 +132,73 @@ An axis specifies the tree relationship between the nodes selected by the locati
 
 #Self
 
-![](../assets/xpath/self.png)
+![](assets/xpath/self.png)
 
 ---
 
 #Child
 
-![](../assets/xpath/child.png)
+![](assets/xpath/child.png)
 
 ---
 
 #Descendant
 
-![](../assets/xpath/descendant.png)
+![](assets/xpath/descendant.png)
 
 ---
 
 #Parent
 
-![](../assets/xpath/parent.png)
+![](assets/xpath/parent.png)
 
 ---
 
 #Ancestor
 
-![](../assets/xpath/ancestor.png)
+![](assets/xpath/ancestor.png)
 
 ---
 
 #Ancestor or Self
 
-![](../assets/xpath/ancestor-or-self.png)
+![](assets/xpath/ancestor-or-self.png)
 
 ---
 
 #Descendant or Self
 
-![](../assets/xpath/descendant-or-self.png)
+![](assets/xpath/descendant-or-self.png)
 
 ---
 
 #Preceding Sibling
 
-![](../assets/xpath/preceding-sibling.png)
+![](assets/xpath/preceding-sibling.png)
 
 ---
 
 #Following Sibling
 
-![](../assets/xpath/following-sibling.png)
+![](assets/xpath/following-sibling.png)
 
 ---
 
 #Preceding
 
-![](../assets/xpath/preceding.png)
+![](assets/xpath/preceding.png)
 
 ---
 
 #Following
 
-![](../assets/xpath/following.png)
+![](assets/xpath/following.png)
 
 ---
 
 #Attribute
 
-![](../assets/xpath/attribute.png)
+![](assets/xpath/attribute.png)
 
 ---
 

@@ -82,7 +82,7 @@ name:intro
 * Compiling and executing can be done using the Java Development Kit (**JDK**).
 * The Java Runtime Environment (**JRE**) can be used instead for executing only.
   
-![](../assets/java/java-jvm.svg)
+![](assets/java/java-jvm.svg)
 
 ---
 
@@ -681,7 +681,7 @@ When a **primitive type** variable is declared, its value is **stored** directly
 int a = 5, b; // if a field, b is initialized with a default value of 0.
 ```
 
-![](../assets/java/oop-objects-primitive.svg)
+![](assets/java/oop-objects-primitive.svg)
 
 When an **object** is declared, it only contains a reference to the actual object.
 
@@ -689,7 +689,7 @@ When an **object** is declared, it only contains a reference to the actual objec
 Light light; // if a field, light is initialized with a default value of null. 
 ```
 
-![](../assets/java/oop-objects-object.svg)
+![](assets/java/oop-objects-object.svg)
 
 ---
 
@@ -702,7 +702,7 @@ Light light = new Light();
 Light another = light;      // this only copies the reference
 ```
 
-![](../assets/java/oop-objects-new.svg)
+![](assets/java/oop-objects-new.svg)
 
 
 ---
@@ -711,7 +711,7 @@ Light another = light;      // this only copies the reference
 
 If we need to have two instances of the same object, we must use the **clone()** method. To use clone, our class must implement the **Cloneable** interface and override the **clone()** method making it **public**.
 
-![](../assets/java/oop-objects-clone.svg)
+![](assets/java/oop-objects-clone.svg)
 
 ```java
 public class Light implements Cloneable{
@@ -1329,7 +1329,7 @@ name:threads
 
 Multitasking is a method to allow **multiple processes** to share processors and other system resources.
 
-![](../assets/java/processes.svg)
+![](assets/java/processes.svg)
 
 
 
@@ -1339,7 +1339,7 @@ Multitasking is a method to allow **multiple processes** to share processors and
 
 A process may be made up of **multiple threads** of execution that execute instructions concurrently.
 
-![](../assets/java/threads.svg)
+![](assets/java/threads.svg)
 
 Threads are **lightweight processes** that have their own **stack** but have access to **shared data**.
 

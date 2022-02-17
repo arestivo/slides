@@ -122,7 +122,7 @@ public int mySumTest() {
 class: center
 class: top
 
-![](../assets/pbt/batman.png)
+![](assets/pbt/batman.png)
 
 ---
 

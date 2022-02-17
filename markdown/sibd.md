@@ -49,7 +49,7 @@ After completing this course you should be able to:
 
 Implementation of an information system as a web application.
 
-![Project Diagram](../assets/web/project.svg)
+![Project Diagram](assets/web/project.svg)
 
 ---
 

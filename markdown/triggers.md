@@ -45,7 +45,7 @@ name:intro
 
 A stored procedure that automatically executes when an event occurs in the database server.
 
-![](../assets/triggers/trigger.svg)
+![](assets/triggers/trigger.svg)
 
 ---
 

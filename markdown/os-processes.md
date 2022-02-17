@@ -101,7 +101,7 @@ to restart a process. It normally contains at least:
 
 When a process executes, it passes through different states:
 
-![](../assets/processes/processes-state.svg)
+![](assets/processes/processes-state.svg)
 
 ---
 
@@ -374,7 +374,7 @@ What happens if two threads call the transfer and increase functions at the same
 
 One threads at a time:
 
-![](../assets/processes/processes-critical1.svg)
+![](assets/processes/processes-critical1.svg)
 
 Different but consistent results.
 
@@ -384,7 +384,7 @@ Different but consistent results.
 
 Multi-thread cenario:
 
-![](../assets/processes/processes-critical2.svg)
+![](assets/processes/processes-critical2.svg)
 
 Inconsistent result!
 
