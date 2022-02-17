@@ -37,9 +37,9 @@ A global system of interconnected **computer networks** using the standard *Inte
 
 A system of interlinked **hypertext documents** accessed via the **Internet** using a **Browser**.
 
-Also known as the World Wide Web or WWW.
+Also known as the **World Wide Web** or **WWW**.
 
-![](assets/web/www.png)
+![](assets/web/www.svg)
 
 ---
 
@@ -81,23 +81,23 @@ From the browser to the server and back
 
 What happens when you type http://www.google.com/ in the address bar of your browser?
 
-![](assets/web/web1.png)
+![](assets/web/web1.svg)
 
 ---
 
 # Routers
 
-Computers are usually connected using other devices (such as routers)
+Computers are usually connected using other devices (such as routers).
 
-![](assets/web/web2.png)
+![](assets/web/web2.svg)
 
 ---
 
 # Internet Infrastructure
 
-The Internet is a redundant network of networks that connects millions of hardware devices from laptops to servers.
+The Internet is a **redundant** "*network of networks*" that connects millions of hardware **devices** from laptops to servers.
 
-![](assets/web/web3.png)
+![](assets/web/web3.svg)
 
 ---
 
@@ -106,7 +106,7 @@ The Internet is a redundant network of networks that connects millions of hardwa
 * Each connected device has at least one IP (Internet Protocol) address.
 * Given an address, routers can calculate where they should send information to reach the desired device.
 
-![](assets/web/web4.png)
+![](assets/web/web4.svg)
 
 ---
 
@@ -115,7 +115,7 @@ The Internet is a redundant network of networks that connects millions of hardwa
 * IP addresses (IPv4) consist of four 8 bit numbers (0-255).
 * There are 4,294,967,296 different possible IP addresses.
 * Some IP addresses are exclusive for internal use: 10.x.x.x, 172.16-31.x.x and 192.168.x.x.
-* IPv4 addresses are nearly exhausted and slowly being replaced by the new IPv6 standard (e.g. 2001:4860:4860::8888). There are 3.4×10<sup>38</sup> possible IPv6 addresses.
+* IPv4 addresses are nearly exhausted and slowly being replaced by the new IPv6 standard (e.g., 2001:4860:4860::8888). There are 3.4×10<sup>38</sup> possible IPv6 addresses.
 * Some devices have static IP addresses while others have dynamic ones. Dynamic addresses are distributed using DHCP (Dynamic Host Configuration Protocol).
 
 ---
@@ -125,16 +125,16 @@ The Internet is a redundant network of networks that connects millions of hardwa
 * A typical person has, in his house, several computers connected to a router.
 * The router has two IP addresses: one internal (probably 192.168.1.1) and one external.
 * When a computer connects to the router, it is assigned an internal IP address (e.g., 192.168.1.100).
-* When a computer tries to send a message outside the local network, the router knows it has to route the message through its external interface and into the Internet.
+* When a computer tries to send a message outside the local network, the router knows it has to route it through its external interface and into the Internet.
 
 ---
 
 # Internet Service Providers
 
-* ISPs are the organizations that connect users to the Internet.
-* Most of the time, the external IP address on each router is assigned by the ISP using DHCP.
+* ISPs are the **organizations** that connect **users** to the **Internet**.
+* Most of the time, the **external** IP address on each router is assigned by the ISP using **DHCP**.
 
-![](assets/web/web5.png)
+![](assets/web/web5.svg)
 
 ---
 
@@ -144,16 +144,19 @@ How do we go from www.google.com to 173.194.34.224?
 
 The **Domain Name System (DNS)** is a hierarchical distributed naming system for computers connected to the Internet.
 
-![](assets/web/web6.png)
+![](assets/web/web6.svg)
 
 ---
 
 # DNS Hierarchy
 
-* DNS requests escalate the hierarchy until a DNS server contains a record for the desired name.
+* If client caches (*i.e.*, computer, router) don't know the IP address, a **DNS query** must be made to the **DNS server** assigned by the ISP (via DHCP).
+* DNS requests **escalate** the hierarchy until a DNS server contains a record for the desired name.
 * If the root zone DNS does not have the record, the request goes down until it reaches the responsible zone DNS.
 
-![](assets/web/web7.png)
+.short[
+![](assets/web/web7.svg)
+]
 
 ---
 
@@ -206,4 +209,4 @@ template:inverse
 * The most common are HTML pages, but they can also be images, style sheets, PDF files, ...
 * The browser is responsible for presenting them in the most convenient way to the user.
 
-![](assets/web/web8.png)
+![](assets/web/web8.svg)
