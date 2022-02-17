@@ -1776,6 +1776,27 @@ Like this: **difference** → **equal** → *global*
 
 # Closures
 
+When a function is returned from another function it 
+**retains** the lexical environment in which it was **created**.
+
+That's why this code works:
+
+```javascript
+function createCounter() {
+  let counter = 0
+  return function() {
+    return ++counter
+  }
+}
+
+const counter = createCounter()
+console.log(counter()) // 1
+console.log(counter()) // 2
+console.log(counter()) // 3
+```
+
+A **closure** is the combination of a function bundled together with its surrounding lexical environment.
+
 ---
 
 template: inverse
