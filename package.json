@@ -1,0 +1,13 @@
+{
+  "name": "arestivo-presentation",
+  "version": "1.0.0",
+  "description": "André Restivo Slides",
+  "main": "index.js",
+  "repository": "git@github.com:arestivo/slides.git",
+  "author": "André Restivo",
+  "license": "GPL3",
+  "private": false,
+  "scripts": {
+    "sync": "rsync -r --info=progress2 --exclude='.git' . arestivo@pinguim.fe.up.pt:~/public_html/slides"
+  }
+}
