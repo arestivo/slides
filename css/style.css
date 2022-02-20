@@ -190,8 +190,14 @@ blockquote {
   quotes: "\201C""\201D""\2018""\2019";
   font-style: italic;
 }
+
 blockquote p {
   display: inline;
+}
+
+abbr {
+  text-decoration: none;
+  border-bottom: 1px solid var(--highlight-color);
 }
 
 small {
@@ -221,6 +227,7 @@ small {
   border-bottom: 1px solid black;
   padding: 0.5em;
 }
+
 .simple table td { color: black}
 .simple table td { background-color: var(--light-bg-color)}
 

@@ -16,3 +16,36 @@
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
 }
+
+.example {
+    background-color: #FEECE8;
+    padding: 1em;
+    display: block;
+}
+
+.example ol, .example ul, .example dl {
+    padding: 0;
+    margin: 0;
+}
+
+.example ol, .example ul {
+    margin-left: 1em;
+}
+
+.example table {
+    border-collapse: collapse;
+}
+
+.example table td, .example table th {
+    border: 1px solid black;
+    border-radius: 0;
+    background: none;
+    color: black;
+    min-width: 5em;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.example pre, .example p {
+    margin: 0
+}
