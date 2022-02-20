@@ -71,7 +71,7 @@ Three constituents: **HTML** + **URL** + **HTTP**:
 
 ---
 
-template:inverse
+template: inverse
 # How does it work
 From the browser to the server and back
 
@@ -115,7 +115,7 @@ The Internet is a **redundant** "*network of networks*" that connects millions o
 * IP addresses (IPv4) consist of four 8 bit numbers (0-255).
 * There are 4,294,967,296 different possible IP addresses.
 * Some IP addresses are exclusive for internal use: 10.x.x.x, 172.16-31.x.x and 192.168.x.x.
-* IPv4 addresses are nearly exhausted and slowly being replaced by the new IPv6 standard (e.g., 2001:4860:4860::8888). There are 3.4×10<sup>38</sup> possible IPv6 addresses.
+* IPv4 addresses are nearly exhausted and slowly replaced by the new IPv6 standard (e.g., 2001:4860:4860::8888). There are 3.4×10<sup>38</sup> possible IPv6 addresses.
 * Some devices have static IP addresses while others have dynamic ones. Dynamic addresses are distributed using DHCP (Dynamic Host Configuration Protocol).
 
 ---
@@ -210,3 +210,14 @@ template:inverse
 * The browser is responsible for presenting them in the most convenient way to the user.
 
 ![](assets/web/web8.svg)
+
+---
+
+# A Typical Scenario
+
+* A web server that receives **requests** for HTML pages.
+* HTML pages are **partially generated** from data in a **database**.
+* The HTML reaches the browser that requests **additional content** (CSS, JavaScript, images, ...).
+* Page is **rendered** in the browser.
+
+![](assets/web/web9.svg)
