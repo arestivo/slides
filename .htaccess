@@ -1,7 +1,7 @@
 RewriteEngine On
 
-RewriteCond %{QUERY_STRING} !^p=
+RewriteCond %{QUERY_STRING} !^s=
 RewriteRule ^([-a-zA-Z0-9]+)$ /~arestivo/slides/$1/ [R]
 
-RewriteCond %{QUERY_STRING} !^p=
-RewriteRule ^([-a-zA-Z0-9]+)/$ /~arestivo/slides/?s=$1
+RewriteCond %{QUERY_STRING} !^s=
+RewriteRule ^([-a-zA-Z0-9]+)/$ /~arestivo/slides/?s=$1 [R]
