@@ -1543,6 +1543,4 @@ name: validation
 * Browsers try to correct mistakes done by developers (*e.g.*, missing closing tag).
 * But we cannot rely on all browsers fixing our mistakes in the same way.
 * Sometimes mistakes are not present in the rendered version of the page (*e.g.*, using the wrong semantic element or missing a mandatory semantic attribute).
-* These are some reasons why you should always validate your HTML code:
-
-http://validator.w3.org/
+* These are some reasons why you should always validate your HTML code:<br>http://validator.w3.org/
