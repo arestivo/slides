@@ -26,7 +26,7 @@ name: index
 1. [Introduction](#intro)
 1. [Resources](#resources)
 1. [Content](#content)
-1. [Section](#section)
+1. [Sections](#sections)
 1. [Lists](#lists)
 1. [Tables](#tables)
 1. [Forms](#forms)
