@@ -107,7 +107,7 @@ We can apply CSS styles to HTML documents in three different ways.
 
 ## Inline
 
-Directly in the HTML element
+Directly in the HTML element:
 
 ```html
 <p style="color: red">
@@ -119,7 +119,7 @@ Directly in the HTML element
 
 # Internal Style Sheet
 
-Using a stylesheet inside the HTML document
+Using a stylesheet inside the HTML document:
 
 ```html
 <head>
@@ -133,10 +133,11 @@ Using a stylesheet inside the HTML document
   <p>This is a red paragraph.</p>
 </body>
 ```
+
 ---
 ## External Style Sheet
 
-In a separate stylesheet
+In a separate stylesheet:
 
 ```html
 <head>
@@ -179,180 +180,244 @@ name:selectors
 
 ---
 
-# Element Selectors
+# Selectors
 
-Select elements by their tag name
+* A selector defines a pattern matching rule that determines which style rules apply to which elements in the document tree.
+* There are several types of selectors:
+  - The [Universal](https://drafts.csswg.org/selectors-3/#universal-selector)(*) selector.
+  - [Type](https://drafts.csswg.org/selectors-3/#type-selectors) selectors.
+  - [Attribute](https://drafts.csswg.org/selectors-3/#attribute-selectors)([ ]) selectors.
+  - [Class](https://drafts.csswg.org/selectors-3/#class-html)(.) & [Id](https://drafts.csswg.org/selectors-3/#id-selectors)(#) selectors.
+  - [Pseudo-classes](https://drafts.csswg.org/selectors-3/#pseudo-classes)(:) and [Pseudo-elements](https://drafts.csswg.org/selectors-3/#pseudo-elements)(::).
+* There are also ways to:
+  - [Group](https://drafts.csswg.org/selectors-3/#grouping)(,) selectors to reuse properties.
+  - [Combine](https://drafts.csswg.org/selectors-3/#combinators)(space, &gt;, +, ~) selectors into more complicated ones.
+
+
+---
+
+# Type Selectors
+
+Select elements by their element type:
 
 ```css
 a
 ```
 
-<img src="assets/css3/tree-element.png" style="padding: 5px">
+<img src="assets/css3/selectors1.svg" width="80%">
 
 ---
+
 # Id Selector
 
-Selects element by their id (#)
+Selects element by their id (#):
 
 ```css
-#menu
+#posts
 ```
 
-<img src="assets/css3/tree-id.png" style="padding: 5px">
+<img src="assets/css3/selectors2.svg" width="80%">
 
 ---
 # Class Selector
 
-Selects element by their class (.)
+Selects element by their class (.):
 
 ```css
-.introduction
+.intro
 ```
 
-<img src="assets/css3/tree-class.png" style="padding: 5px">
+<img src="assets/css3/selectors3.svg" width="80%">
 
 ---
 
-# Select All
+# Universal Selector
 
-Selects all elements (*)
+Selects all elements (*):
 ```css
  *
 ```
 
-<img src="assets/css3/tree-all.png" style="padding: 5px">
+<img src="assets/css3/selectors4.svg" width="80%">
 
 ---
 
-# Descendant Selector
+# Attribute Selectors
 
-Selects all descendants (space)
+Select elements based on their attribute existence and values:
+
+* **[attribute]** exists
+* **[attribute=value]** equals
+* **[attribute~=value]** containing value (word)
+* **[attribute|=value]** starting with value (word)
+* **[attribute^=value]** starting with value
+* **[attribute$=value]** ending with value
+* **[attribute*=value]** containing value
 
 ```css
-article a
+form[method=get] /* selects all forms with attribute method="get" */
 ```
 
-<img src="assets/css3/tree-descendant.png" style="padding: 5px">
+---
+
+template: inverse
+name:selectors
+# Combining Selectors
+
+---
+
+# Combining Selectors
+
+* Sometimes, we want to select elements based on their relationship with other elements.
+* For this we can use the following [combinators](https://drafts.csswg.org/selectors-3/#combinators):
+  - [Descendant](https://drafts.csswg.org/selectors-3/#descendant-combinators) combinator (space).
+  - [Child](https://drafts.csswg.org/selectors-3/#child-combinators) combinator (&gt;).
+  - [Next-sibling](https://drafts.csswg.org/selectors-3/#adjacent-sibling-combinators) combinator (+).
+  - [Subsequent-siblings](https://drafts.csswg.org/selectors-3/#general-sibling-combinators) combinator (~).
+* In combinators, the **last selector** is the one that identifies the element we are selecting.
+
+---
+
+# Descendant Combinator
+
+Selects all descendants (space):
+
+```css
+aside a
+```
+
+<img src="assets/css3/selectors5.svg" width="80%">
 
 ---
 
 # Child Selector
 
-Selects all children (&gt;)
+Selects all children (&gt;). they have to be direct descendants:
 ```css
 aside > a
 ```
 
-<img src="assets/css3/tree-child.png" style="padding: 5px">
+<img src="assets/css3/selectors6.svg" width="80%">
 
 ---
 
-# Immediatly After Selector
+# Next-sibling Selector
 
-Selects next sibling (+)
+Selects next sibling (+). They have to be the next one:
 
 ```css
-.selected + li
+.intro + p
 ```
 
-<img src="assets/css3/tree-iafter.png" style="padding: 5px">
+<img src="assets/css3/selectors7.svg" width="80%">
 
 ---
 
-# After Selector
+# Subsequent-sibling Selector
 
-Selects next siblings (~)
+Selects subsequent siblings (~). They just have to be after:
 
 ```css
 .selected ~ li
 ```
 
-<img src="assets/css3/tree-after.png" style="padding: 5px">
+<img src="assets/css3/selectors8.svg" width="80%">
 
 ---
 
-# Multiple Selectors
+template: inverse
+name: grouping-selectors
+# Grouping Selectors
 
-Multiple selectors (,)
+---
+
+
+# Grouping Selectors
+
+Selector groups (,) are just a way to simplify css rules:
 
 ```css
-.selected ~ li, p > a, #menu
+header > *, main article, #articles p
 ```
 
-<img src="assets/css3/tree-multiple.png" style="padding: 5px">
+<img src="assets/css3/selectors9.svg" width="80%">
 
 ---
 
-# Combinations
-
-All these concepts can be combined to form powerful selectors
-
-```css
-aside#menu li.selected + li > a
-```
-
-<img src="assets/css3/tree-combinations.png" style="padding: 5px">
+template: inverse
+name:selectors
+# Pseudo-selectors
 
 ---
 
-## Pseudo Classes and Elements
+## Pseudo-classes and Pseudo-elements
 
-* A pseudo-class is a way of selecting existing HTML elements, based on some specific characteristic (e.g. a visited link)
-* Pseudo-elements allow logical elements to be defined which are not actually in the document element tree (e.g. The first letter of a paragraph)
-
-More on [pseudo-classes](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes) and [pseudo-elements](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements)
+* A [pseudo-class](https://drafts.csswg.org/selectors-3/#pseudo-classes)(:) is a way of selecting **existing elements**, based on their **state** as if it was a class (*e.g.*, all elements of the class visiteds links).
+* A [pseudo-element](https://drafts.csswg.org/selectors-3/#pseudo-elements)(::) allows logical elements to be defined which are not actually elements (*e.g.*, The first letter of a paragraph).
 
 ---
 
 ## Anchor Pseudo-classes
 
-Selects anchors (links) based on their state:
+Pseudo-classes that select anchors (links) based on their state:
 
 ```css
-a:hover
+a:visited /* selects all links that were visited */
 ```
 
-* **link**: Link was not visited
-* **visited**: Link was visited previously
-* **active**: Link is active
-* **hover**: Mouse is over the link (works on other elements)
+* **link**: Link was never visited.
+* **visited**: Link was visited previously.
+* **active**: Link is active (being clicked).
+* **hover**: Mouse is over the link (also works on other element types):
+
+```css
+img:hover /* selects images when the mouse pointer is over them */
+```
 
 ---
 
 # Form Pseudo-classes
 
-Selects form controls that have input focus:
+Selects form controls based on their state:
+
 ```css
-input:focus
+input:focus     /* the input is focused */
 
-input:valid
-input:invalid
+input:valid     /* the data in the input is valid */
+input:invalid   /* the data in the input is not valid */
 
-input:required
-input:optional
+input:required  /* the input is mandatory */
+input:optional  /* the input is optional */
 
-input:read-only
-input:read-write
+input:read-only  /* the input is read-only */
+input:read-write /* the input is not read-only */
 
-radio:checked
+radio:checked    /* the radio button is checked */
 ```
 
 ---
 
 # Target Pseudo-class
 
-The **target** pseudo-class represents the unique element, if any, with an id matching the fragment identifier of the URI of the document.
+The **target** pseudo-class selects the **unique** element, if any, with an *id* matching the fragment identifier (the part after #) of the URL.
 
+If we have this HTML in our *news.html* page:
+
+.small[
 ```html
-<a href="#menu">Menu</a>
+<section id="sports">...</section>
+<section id="politics">...</section>
+```
+]
 
-<div id="menu"></div>
+And the URL changes to *news.html#sports*, the page scrolls to the *section* with *id* "sports", and both these selectors then select that section:
+
+```css
+:target
 ```
 
 ```css
-div:target {
-  border: 1px solid red;
-}
+section:target
 ```
 
 ---
@@ -360,8 +425,14 @@ div:target {
 ## First and Last Pseudo-classes
 
 Selects elements based on their position in the tree:
+
 ```css
-p:first-child
+/* any paragraphs that are the first child of their parents */ 
+p:first-child 
+
+
+/* any element that is the last child of their parents */ 
+:last-child 
 ```
 
 * **first-child**: Selects elements that are the first child of their parents
@@ -389,28 +460,51 @@ The **nth-of-type(an+b)** selector does the same thing but counts only siblings 
 
 ---
 
-## First and Last Pseudo-elements
+## Empty and Only-child Pseudo-classes
 
-Selects parts of elements based on their position in the tree:
+Selects elements based on the **number of children** of an element:
+
 ```css
-p:first-letter
+/* paragrpahs that are the only children of their parents */
+p:only-child 
+
+/* paragraphs that have no children (not even text) */
+p:empty
 ```
 
-* **first-line**: Selects the first line of the selector
-* **first-letter**: Selects the first character of the selector
+---
+
+## First and Last Pseudo-elements
+
+Selects **parts** of elements based on their position in the element:
+
+```css
+p::first-letter /* the first letter of any paragraph */
+```
+
+* **::first-line**: Selects the first line of the selector
+* **::first-letter**: Selects the first character of the selector
+
+A more complicated example
+
+```css
+/* the first letter of any paragraph that     */
+/* is the first paragraph child of an article */
+article > p:first-of-type::first-letter
+```
 
 ---
 
 # Before and After Pseudo-elements
 
-Before and after pseudo-elements can be combined with the **content** property to generate content in an element.
+Before and after pseudo-elements can be combined with the **content** property to generate content around an element.
 
 The **content** property can have the following values:
 
  * **none** The default value, adds nothing. Cannot be combined with other values: *none*
  * **a string** Using single quotes. Adds the text to the element: *'Chapter'*
  * **an url** An external resource (such as an image): *url('dog.png')*
- * **counter** Variables maintained by CSS whose values may be incremented by CSS rules to track how many times they're used: *counter(section)* [Learn more](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Counters).
+ * **counter** Variables maintained by CSS whose values may be [manipulated](https://www.w3.org/TR/css-lists-3/#auto-numbering) by CSS rules to track how many times they're used: *counter(section)*.
  * **open-quote** and **close-quote** Open and close quotes: *open-quote*
 
 ```css
@@ -420,21 +514,82 @@ blockquote:after  { content: close-quote; }
 
 ---
 
-# Attribute Selectors
+template: inverse
+name: complex-selectors
+# Complex Selectors
 
-Select elements based on their attribute existence and values:
+---
+
+# Complex Selectors
+
+All these type of selectors can be combined to form complex selectors:
 
 ```css
-form[method=get]
+nav.menu + * > section :first-child p.intro
 ```
 
-* **[attribute]** exists
-* **[attribute=value]** equals
-* **[attribute~=value]** containing value (word)
-* **[attribute|=value]** starting with value (word)
-* **[attribute^=value]** starting with value
-* **[attribute$=value]** ending with value
-* **[attribute*=value]** containing value
+It's easier to read them from the **right to the left**:
+
+> Paragraphs with class "intro" that are descendants of elements that are the first child of their parents and are descendants of "sections" that are direct childs of any element that is the next sibling of a "nav" with class "menu".
+
+<img src="assets/css3/selectors10.svg" width="50%">
+
+---
+
+# Common Mistakes
+
+**Spaces are important** when writing and parsing CSS selectors:
+
+```css
+/* a paragraph with class "intro" */
+p.intro  
+
+/* an element with class "intro" descendant of a paragraph */
+p .intro 
+```
+
+
+```css
+/* a paragraph that is the first child of its parent */
+p.first-child  
+
+/* an element that is the first child of its */
+/* parent and a descendant of a paragraph */
+p .first-child
+```
+
+---
+
+# Common Mistakes
+
+So its the whole **context**:
+
+.small[
+```html
+<nav>
+  <ul>
+    <li><a>...</a></li>
+    <li><a>...</a></li>
+    <li><a>...</a></li>
+  </ul>
+</nav>
+```
+]
+
+
+```css
+/* selects all links of the list */
+a:first-child
+
+/* selects all links of the list */
+:first-child a
+
+/* selects the first link of the list */
+li:first-child a
+
+/* selects the first link of the list */
+:first-child > a
+```
 
 ---
 
@@ -445,7 +600,7 @@ name:color
 ---
 # Text Color
 
-Setting the text color of any element.
+We can set the text color of any element:
 
 ```css
 p {
@@ -453,17 +608,33 @@ p {
 }
 ```
 
+```html
+<p>The quick brown fox jumps over the lazy dog</p>
+```
+
+Results in:
+
+<p style="color: green">The quick brown fox jumps over the lazy dog</p>
+
 ---
 
 # Background Color
 
-Setting the background color of any element.
+We can set the background color of any element:
 
 ```css
 p {
-  background-color: green;
+  background-color: yellow;
 }
 ```
+
+```html
+<p>The quick brown fox jumps over the lazy dog</p>
+```
+
+Results in:
+
+<p style="background-color: yellow">The quick brown fox jumps over the lazy dog</p>
 
 ---
 
@@ -483,7 +654,28 @@ p {
 }
 ```
 
+<span style="line-height: 2em; padding: 0.2em; background-color: black; color: aqua">aqua</span>
+<span style="padding: 0.2em; color: black">black</span>
+<span style="padding: 0.2em; color: blue">blue</span>
+<span style="padding: 0.2em; color: fuchsia">fuchsia</span>
+<span style="padding: 0.2em; color: gray">gray</span>
+<span style="padding: 0.2em; color: green">green</span>
+<span style="padding: 0.2em; color: lime">lime</span>
+<span style="padding: 0.2em; color: maroon">maroon</span>
+<span style="padding: 0.2em; color: navy">navy</span>
+<span style="padding: 0.2em; color: olive">olive</span>
+<span style="padding: 0.2em; color: orange">orange</span>
+<span style="padding: 0.2em; color: purple">purple</span>
+<span style="padding: 0.2em; color: red">red</span>
+<span style="padding: 0.2em; background-color: black; color: silver">silver</span>
+<span style="padding: 0.2em; color: teal">teal</span>
+<span style="padding: 0.2em; background-color: black; color: white">white</span>
+<span style="padding: 0.2em; background-color: black; color: yellow">yellow</span>
+
+
+Modern browsers support an [extended set](https://www.w3.org/wiki/CSS/Properties/color/keywords) of these. 
 ---
+
 ## Color by Hexadecimal Value
 
 A hexadecimal color is specified with: #<span style="color:red">RR</span><span style="color:green">GG</span><span style="color:blue">BB</span>, where the <span style="color:red">RR</span> (red), <span style="color:green">GG</span> (green) and <span style="color:blue">BB</span> (blue) hexadecimal integers specify the components of the color. All values must be between 00 and FF.
@@ -517,145 +709,13 @@ p {
 
 #Opacity
 
-Specifies the transparency of an element. Values can go from 0.0 (completely transparent) to 1.0 (fully opaque).
+Opacity represents the transparency of an element. Values can go from 0.0 (completely transparent) to 1.0 (fully opaque).
 
 ```css
 p {
   opacity: 0.5;
 }
 ```
-
----
-
-template: inverse
-name:dimensions
-# Dimensions
-
----
-
-# Width and Height
-
-Set the width and height of an element. Values can be a **length**, a **percentage** or **auto**.
-
-```css
-div {
-  width: 50%;
-  height: 200px;
-}
-```
-
-Auto is the default value.
-
----
-
-# Minimum and Maximum
-
-Set the minimum and maximum width and height of an element. Values can be a **length**, a **percentage** or **none**.
-
-```css
-div {
-  max-width: 800px;
-  min-height: none;
-}
-```
-
-None is the default value.
-
----
-
-template: inverse
-name:units
-# Length Units
-
-https://developer.mozilla.org/en-US/docs/Web/CSS/length
-
----
-# Absolute length
-
-Absolute length units represents a physical measurement. They are useful when the physical properties of the output medium are known, such as for print layout.
-
-```css
-mm, cm, in, pt and pc
-```
-
-* **mm** One millimeter.
-* **cm** One centimeter (10 millimeters).
-* **in** One inch (2.54 centimeters).
-* **pt** One point (1/72nd of an inch).
-* **pc** One pica (12 points).
-
----
-# Font relative length
-
-Font relative length units are relative to the size of a particular character or font attribute in the font currently in effect in the element (or parent element in some cases).
-
-They are useful when the physical properties of the output medium are unknown, such as for screen layout.
-
-* **rem** Represents the size of the root element font.
-If used in the root element, represents the initial (default) value of the browser (typically 16px).
-* **em** When used with *font-size*, represents the size of the parent element font. For lengths, represents the size of the current element font.
-
----
-# Example (rem)
-
-```html
-<div>
-  <p>Some text</p>
-  <div>
-    <p>Some more text</p>
-  </div>
-</div>
-```
-
-```css
-div {
-  font-size: 1.2rem;
-}
-```
-
-![](assets/css3/rem.png)
-
----
-
-# Example (em)
-
-```html
-<div>
-  <p>Some text</p>
-  <div>
-    <p>Some more text</p>
-  </div>
-</div>
-```
-
-```css
-div {
-  font-size: 1.2em;
-}
-```
-
-![](assets/css3/em.png)
-
----
-
-# Pixel
-
-* On low dpi screens, the **pixel (px)** represents one device pixel (**dot**).
-* On higher dpi devices, a pixel represents an integer number of device pixels so that 1in ≈ 96px.
-
----
-
-# Percentage
-
-The *percentage* CSS data type represents a percentage value. A percentage consists of a *number* followed by the percentage sign %. There is no space between the symbol and the number.
-
-```css
-  div {
-    width: 50%;
-  }
-```
-
-Many CSS properties (width, margin, padding, font-size, ...) can take *percentage* values to define a size as relative to its parent object.
 
 ---
 
@@ -684,7 +744,7 @@ p {
 ---
 # Generic Font Family
 
-Or a generic family like: **serif**, **sans-serif** and **monospace**.
+Or a generic family like: **sans-serif**, **serif** and **monospace**.
 
 ```css
 p {
@@ -692,16 +752,21 @@ p {
 }
 ```
 
-![](assets/css3/serif-sansserif.jpg)
+<figure>
+
+<img src="assets/css3/serif-sansserif.jpg" width="70%">
+<figcaption><center>Sans-serif (left) vs. Serif (right)<center></figcaption>
+
+</figure>
 
 ---
 # Web Safe Fonts
 
-* To ensure that websites look the same across different platforms we should use *web safe* fonts like: Arial, Helvetica, Times New Roman, Times, Courier New or Courier.
+* To ensure that websites look the same across different platforms we should use *web safe* fonts like: *Arial*, *Helvetica*, *Times New Roman*, *Times*, *Courier New* or *Courier*.
 
-* You can specify several fonts. The browser will try to use the first and continue down the list if it doesn't exist.
+* You can specify several fonts. The browser will try to use the **first** and continue **down the list** if it doesn't exist.
 
-* Start with the font you want and gradually fall back to platform defaults and finally generic defaults:
+* Start with the font you **want** and gradually **fall back** to platform defaults and finally **generic** defaults:
 
 ```css
 p {
@@ -723,7 +788,11 @@ p {
 }
 ```
 
-* An easier way to provide remote fonts is to use Google's fonts service: https://fonts.google.com/
+* An easier way to use remote fonts is to use [Google's Fonts](https://fonts.google.com/).
+
+```css
+@import url('https://fonts.googleapis.com/css?family=Lora:400,700');
+```
 
 ---
 
@@ -736,10 +805,13 @@ p.introduction {
   font-weight: bold;
 }
 ```
+
+Not all fonts support all weights.
+
 ---
 # Font Style
 
-The font-style property allows you to specify if the font style should be italic. Values can be **normal**, **italic**, or **oblique**.
+The font-style property allows you to specify if the font style should be *italic* or not. Values can be **normal**, **italic**, or **oblique**.
 
 ```css
 span.author {
@@ -757,7 +829,7 @@ p.introduction {
 }
 ```
 
-Use **rem** or **em**.
+Using **rem** or **em** units is a good idea for scalable layouts. More on this [soon](#units).
 
 ---
 
@@ -782,12 +854,18 @@ The **text-decoration** property is mostly used to remove underlines from links.
 Text can be aligned **left**, **right**, **center** or justified (**justify**) using the **text-align** property. This property should be used for aligning text only.
 
 ```css
-#menu {
+p {
   text-align: center;
 }
 ```
 
-![](assets/css3/text-align.png)
+<section style="display: flex; flex-wrap: wrap; gap: 0.3em;">
+<p style="width: 8em; border:1px solid gray; padding: 0.5em; text-align: left;"><strong>left</strong><br>The quick brown fox jumps over the lazy dog</p>
+<p style="width: 8em; border:1px solid gray; padding: 0.5em; text-align: right;"><strong>right</strong><br>The quick brown fox jumps over the lazy dog</p>
+<p style="width: 8em; border:1px solid gray; padding: 0.5em; text-align: center;"><strong>center</strong><br>The quick brown fox jumps over the lazy dog</p>
+<p style="width: 8em; border:1px solid gray; padding: 0.5em; text-align: justify;"><strong>justified</strong><br>The quick brown fox jumps over the lazy dog</p>
+<section>
+
 
 ---
 
@@ -801,6 +879,8 @@ h1 {
 }
 ```
 
+<h4 style="padding: 0.2em; border: 1px solid; text-transform: capitalize">The quick brown fox jumps over the lazy dog</h1>
+
 ---
 
 # Indentation
@@ -812,6 +892,346 @@ The first line of each paragraph can be indented using the **text-indent** prope
   text-indent: 10px;
 }
 ```
+
+<p style="width: 12em; padding: 1em; border: 1px solid; text-align: justify; text-indent: 1em">"The quick brown fox jumps over the lazy dog" is an English-language pangram—a sentence that contains all of the letters of the English alphabet.</h1>
+
+
+---
+
+template: inverse
+name: units
+# Length Units
+
+---
+
+# Units
+
+We can use several different [units of length](https://developer.mozilla.org/en-US/docs/Web/CSS/length) to change the dimension of elements in CSS.
+These units come in different flavors:
+
+- Absolute units
+- Font-relative units
+- Viewport-percentage units
+- [Percentages](https://developer.mozilla.org/en-US/docs/Web/CSS/percentage)
+
+---
+
+# Absolute units
+
+* Absolute length units represent a physical measurement. 
+* They are useful when the physical properties of the output medium are known, such as for print layout.
+
+```css
+mm, cm, in, pt and pc
+```
+
+* **mm** One millimeter.
+* **cm** One centimeter (10 millimeters).
+* **in** One inch (2.54 centimeters).
+* **pt** One point (1/72nd of an inch).
+* **pc** One pica (12 points).
+
+---
+
+# Pixel
+
+* Also considered an **absolute length**.
+* On low dpi screens, the **pixel (px)** represents one device pixel (**dot**).
+* On higher dpi devices, most devices these days, a pixel represents an integer number of device pixels so that 1in ≈ 96px.
+
+---
+# Font-relative units
+
+Font relative length units are relative to the size of a particular character or font attribute in the font **currently in effect** in the element (or parent element in some cases).
+
+They are useful when the physical properties of the output medium are unknown, such as for **screen layout**.
+
+Units *rem* and *em* are used to create **scalable layouts**, which maintain the [vertical rhythm](https://nowodzinski.pl/syncope/) of the page even when the user changes the font size.
+
+* **rem** Represents the size of the root element font. If used to change the *font size* in the root element, it represents the initial (default or user-defined) value of the browser (typically 16px).
+
+* **em** When used to change the *font size*, it represents the size of the parent element font. When used to set the size of an element, it represents the size of the current element font.
+
+---
+# Example (rem and em)
+
+This example shows how changing font size in some elements affects the font size in others:
+
+* Setting the font-size of the root element (**&lt;html&gt;**) to 2rem.<br><small>For other elements, 1rem becomes 32px (if the user didn't change the default).</small>
+* Setting the font-size of other element to 2rem.<br><small>The font-size of that element becomes 64px, twice the size of the root's font-size.</small>
+* Setting the font-size of the **&lt;body&gt;** element to 2em.<br><small>The font-size of that element becomes 64px, twice its parent's font-size.</small>
+
+```css
+html { font-size: 2rem; } /* 32px */
+p    { font-size: 2rem; } /* 64px regardless of its location     */
+body { font-size: 2em;  } /* 64px the parent is the html element */
+```
+
+---
+
+# Viewport-percentage units
+
+Define lengths relative to the viewport size (the visible part of the document):
+
+* **vw** - 1% of the viewport width.
+* **vh** - 1% of the viewport heigth.
+* **vmin** - the smaller of *vw* and *vh*.
+* **vmax** - the larger of *vw* and *vh*.
+
+So, if the viewport is 600x400 pixels, vw = 6px, vh = 4px, vmin = 4px, vmax = 6px.
+
+---
+
+# Percentage unit
+
+* The *percentage* CSS data type represents a percentage value. 
+* A percentage consists of a *number* followed by the percentage sign %. 
+* There is no space between the symbol and the number.
+
+Many CSS properties (width, margin, padding, font-size, ...) can take *percentage* values to define a size relative to its parent object.
+
+```css
+width: 50%;     /* width is 50% of the parent's  width        */
+font-size: 80%; /* font-size is 80% of the parent's font-size */
+                /* the same as 0.8em                          */
+```
+
+---
+
+template: inverse
+name: box-model
+# Box-model
+
+---
+
+# Box-model
+
+* All page elements are rectangular.
+* They can have a **border**.
+* Some space between themselves and that border (**padding**) 
+* And some space between themselves and the next element (**margin**).
+
+![](assets/css3/box-model.svg)
+
+---
+
+# Width and Height
+
+We can use the *width* and *height* properties to change the size of the **content area**:
+
+* Values can be a **length**, a **percentage** or **auto** (the browser will automatically calculate a width/height).
+* The *default* value is **auto**.
+
+```css
+section {
+  width: auto;
+  height: 50px;
+}
+```
+
+![](assets/css3/content-box.svg)
+
+---
+
+# Box-sizing
+
+We can change the behavior of the *width* and *height* properties, by changing the** box-sizing** property:
+
+* **border-box** - the width and height properties include the **padding** and **border** (much easier to work with).
+* **content-box** - the width and height properties refer to the **content area** only (the default).
+
+```css
+section {
+  box-sizing: border-box;
+  height: 50px;
+}
+```
+
+![](assets/css3/border-box.svg)
+
+---
+
+# Minimum and Maximum
+
+* When the width/height is calculated depending on something else (e.g., the parent's size or the ammount of content), we can set their minimum and maximum values using the **min-width**, **max-width**, **min-height** and **max-height** properties.
+
+* Values can be a **length**, a **percentage**, or **auto** (the default value).
+
+```css
+section {
+  /* width is 50% of the parent's width but 40em at maximum */
+  width: 50%; max-width: 40em;
+
+  /* height is automatically calculated but 100px at minimum */
+  height: auto; min-width: 100px;
+}
+```
+
+---
+
+# Margin and Padding 
+
+We can use the *padding* and *margin* properties to change those two areas of the *box-model*:
+
+```css
+  padding: 20px;
+  margin: 1em;
+```
+
+But in reality, each one of these properties is a **shorthand** for four other properies:
+
+* padding-**top**, padding-**right**, padding-**bottom** and padding-**left**.
+* margin-**top**, margin-**right**, margin-**bottom** and margin-**left**.
+
+```css
+  margin-left: 1em;
+  margin-right: 2em;
+  padding-top: 100px;
+```
+
+---
+
+# Margin/Padding Shorthands
+
+The **margin** and **padding** shorthands can take four forms:
+
+- **One** value: changes **all four** sides of the area at once.
+- **Two** values: the first is **top/bottom**, and the second is **left/right**.
+- **Three** values: the first is **top**, then **left/right**, and then **bottom**.
+- **Four** values: corresponding to **top**, **right**, **bottom**, **left**.
+
+Some examples:
+
+```css
+body { margin: 0 auto; } /* A common way to center the body */
+
+#menu { padding: 1em; }  /* 1em padding all around */
+
+/* 1.5em top, 1em left/right, 3em bottom/ */
+body > nav li { margin: 1.5em 1em 3em; }  
+```
+
+---
+
+# Border
+
+The border can be set using the **border** property:
+
+* It takes three values: the *width*, the *style* and the *color*.
+* The width is a [length](#units), but can also be *thin*, *medium* or *thick*.
+* Style is one of the following: *none*, *hidden*, *dotted*, *dashed*, *solid*, *double*, *groove*, *ridge*, *inset*, and *outset*.
+* And color is a [color](#color).
+
+And is just a shorthand for three different properties: **border-width**, **border-style**, and **border-color**.
+
+---
+
+# Border Styles
+
+Border **style** examples (**5px, gray**):
+
+<section style="margin: 0.3em; padding: 0.2em; border: 5px dotted gray">dotted</section>
+<section style="margin: 0.3em; padding: 0.2em; border: 5px dashed gray">dashed</section>
+<section style="margin: 0.3em; padding: 0.2em; border: 5px solid gray">solid</section>
+<section style="margin: 0.3em; padding: 0.2em; border: 5px double gray">double</section>
+<section style="margin: 0.3em; padding: 0.2em; border: 5px groove gray">groove</section>
+<section style="margin: 0.3em; padding: 0.2em; border: 5px ridge gray">ridge</section>
+<section style="margin: 0.3em; padding: 0.2em; border: 5px inset gray">inset</section>
+<section style="margin: 0.3em; padding: 0.2em; border: 5px outset gray">outset</section>
+
+---
+
+# Border Shorthands
+
+Each of the three border properties (*border-width*, *border-style*, and *border-color*) is also a shorthand to set all **four** borders at once.
+
+This means what we really have are, for example, **border-bottom-width**, **border-top-style**, or **border-left-color**; 12 (3 &times; 4) properties on total.
+
+Just like with *margin* and *padding*, there are also shorthands for setting different values for each property at once:
+
+<section style="margin:0.3em; padding: 0.2em; border: 5px solid gray; border-width: 2px 4px 6px 8px">border-width: 2px 4px 6px 8px;</section>
+<section style="margin:0.3em; padding: 0.2em; border: 5px solid gray; border-style: solid dashed">border-style: solid dashed;</section>
+<section style="margin:0.3em; padding: 0.2em; border: 5px solid; border-color: red green blue">border-color: red green blue;</section>
+
+---
+
+# Border Radius
+
+* The **border-radius** property is used to define how rounded border corners are.
+* The curve of each corner is defined using **one or two** *radii*, defining its shape: **circle** or **ellipse**.
+* We can set different border radius for each corner using the properties:
+  * **border-top-left-radius**
+  * **border-top-right-radius**
+  * **border-bottom-right-radius**
+  * **border-bottom-left-radius**.
+* Values can be a *length* or a *percentage*.
+* If two radii are used, they are separated by a **/**.
+
+---
+
+# Shorthands
+
+As with other properties we can use more than one value in the radius property to change the border radius of several corners at the same time.
+
+The possible combinations are as follows:
+
+* One value: single radius for the whole element.
+* Two values: **top-left-and-bottom-right** and **top-right-and-bottom-left**.
+* Three values: **top-left**, **top-right-and-bottom-left** and **bottom-right**.
+* Four values: **top-left**, **top-right**, **bottom-right**, **bottom-left**.
+
+---
+
+# Examples
+
+
+.small[
+```html
+<div id="a"></div><div id="b"></div><div id="c"></div>
+<div id="d"></div><div id="e"></div><div id="f"></div>
+```
+
+```css
+div {
+  width: 50px; height: 50px;
+}
+#a { border-radius: 10px; background-color: blue;}
+#b { border-radius: 40px 10px; background-color: red;}
+#c { border-radius: 40px 10px / 20px 20px; background-color: green;}
+#d { border-radius: 10% / 10% 20% 30% 40%; background-color: orange;}
+#e { border-radius: 10% 20% / 40px 10px; background-color: yellow;}
+#f { border-radius: 20px 0; background-color: fuchsia;}
+```
+]
+
+<section style="display:flex; justify-content: center">
+<div style="width: 50px; height: 50px; margin: 10px; border-radius: 10px; background-color: blue;"></div>
+<div style="width: 50px; height: 50px; margin: 10px; border-radius: 40px 10px; background-color: red;"></div>
+<div style="width: 50px; height: 50px; margin: 10px; border-radius: border-radius: 40px 10px / 20px 20px; background-color: green;"></div>
+<div style="width: 50px; height: 50px; margin: 10px; border-radius: 10% / 10% 20% 30% 40%; background-color: orange;"></div>
+<div style="width: 50px; height: 50px; margin: 10px; border-radius: 10% 20% / 40px 10px; background-color: yellow;"></div>
+<div style="width: 50px; height: 50px; margin: 10px; border-radius: 20px 0; background-color: fuchsia;"></div>
+</section>
+
+---
+
+# Margin Collapse
+
+Adjacent margins collapse in three different cases:
+
+* The margins of **adjacent siblings** are collapsed.
+* The margin of **parents** and **descendants** with no separating content.
+* The top and bottom margin of **empty** elements.
+
+Margins collapse into a **single margin** with size equal to the **largest** of the individual margins.
+
+---
+
+# Margin Collapse Examples
+
+The three types of margin collapse, visualized:
+
+![](assets/css3/margin-collapse.svg)
 
 ---
 
@@ -918,209 +1338,6 @@ span {
   display: none;
 }
 ```
-
----
-
-# Margin and Padding
-
-* To change the margin and padding of an element we use the following properties: **margin-top**, **margin-right**, **margin-bottom**, **margin-left**, **padding-top**, **padding-right**, **padding-bottom** and **padding-left**.
-
-* They all take a length as their value.
-
-```css
-h1 {
-  margin-top: 10px;
-}
-```
-
-* **Auto** A suitable margin is calculated by the browser (useful for centering).
-* **Percentage** Calculated with respect to the width of the generated containing block (even for top/bottom).
-
----
-
-# Shorthands
-
-To make it easier to define the margin and padding properties, shorthands can be used:
-
-* Using **two values**, the **top/bottom** (vertical) and **left/right** (horizontal) margins are defined simultaneously.
-
-* Using **three values**, the **top**, **horizontal** and **bottom** margins are defined.
-
-* Using **four values**, the **top**, **right**, **bottom** and **left** values are defined (in that order i.e. **clockwise**).
-
-* Using **one value**, **all values** are defined the same.
-
----
-
-# Shorthand Examples
-
-```css
-h1 {
-  margin: 5px 10px;
-}
-
-#menu {
-  margin: 10px;
-}
-
-#content {
-  padding: 5px 3px 10px 15px;
-}
-```
-
-Common shorthand used to center the *body* element:
-
-```css
-body {
-  margin: 0 auto;
-}
-```
-
-
----
-# Margin Collapse
-
-Adjacent margins collapse in three different cases
-
-* The margins of **adjacent siblings** are collapsed.
-* If there is no border, padding, inline content, or clearance to separate the margin-top of a block with the margin-top of its **first child** block, or no border, padding, inline content, height, min-height, or max-height to separate the margin-bottom of a block with the margin-bottom of its **last child**, then those margins collapse.
-* If there is no border, padding, inline content, height, or min-height to separate a block's margin-top from its margin-bottom, then its top and bottom margins collapse.
----
-## Margin Collapse Examples
-
-<img src="assets/css3/margin-collapse.jpg" style="padding: 10px;">
----
-
-template:inverse
-name:border
-# Border
-
----
-# Element Border
-
-An element border is a line that separates the padding from the margin.
-
-<img src="assets/css3/box-model.png" style="padding: 10px;">
-
----
-# Border Style
-
-* The **border-style** property specifies what kind of border to display. The following values are possible: **none**, **dotted**, **dashed**, **solid**, **double**, **groove**, **ridge**, **inset** and **outset**.
-
-* We can set different border styles for each side using the properties: **border-top-style**, **border-right-style**, **border-bottom-style** and **border-left-style**.
-
-```css
-#menu {
-  border-style: solid;
-}
-```
----
-## Border Style Examples
-
-<img src="assets/css3/border-style.png" style="padding: 10px;">
----
-# Border Width
-
-* The **border-width** property is used to specify the width of the border. Its value can be a length or a predefined value: **thin**, **medium**, or **thick**.
-
-* We can set different border widths for each side using the properties: **border-top-width**, **border-right-width**, **border-bottom-width** and **border-left-width**.
-
-```css
-#menu {
-  border-left-width: 10px;
-  border-right-width: thin;
-}
-```
----
-# Border Color
-
-* The **border-color** property is used to specify the color of the border.
-
-* We can set different border colors for each side using the properties: **border-top-color**, **border-right-color**, **border-bottom-color** and **border-left-color**.
-
-```css
-#menu {
-  border-color: #336699;
-}
-```
----
-# Shorthands
-
-* As with the padding and margin properties we can use more than one value in the style, color and width properties to change the border of several sides at the same time.
-
-* Using **two values**, the **top/bottom** and **left/right** border properties are defined simultaneously.
-
-* Using **four values**, the **top**, **right**, **bottom** and **left** values are defined (in that order i.e. **clockwise**).
-
-* Using **one value**, **all values** are defined the same.
-
-```css
-#menu {
-  border-width: 5px 10px;
-}
-```
----
-# Shorthands
-
-* The **border** property allows us to define all border properties in one declaration.
-
-* The properties that can be set, are (in order): **border-width**, **border-style**, and **border-color**.
-
-* It does not matter if one of the values above is missing.
-
-```css
-#menu {
-  border: 1px solid red;
-}
-```
-
----
-
-# Border Radius
-
-* The **border-radius** property is used to define how rounded border corners are.
-* The curve of each corner is defined using one or two radii, defining its shape: circle or ellipse.
-* We can set different border radius for each corner using the properties: **border-top-left-radius**, **border-top-right-radius**, **border-bottom-right-radius** and **border-bottom-left-radius**.
-* Values can be a length or a percentage.
-* If two radii are used, they are separated by a **/**.
-
----
-
-# Shorthands
-
-* As with other properties we can use more than one value in the radius property to change the border radius of several corners at the same time.
-
-The possible combinations are as follows:
-
-* One value: single radius for the whole element
-* Two values: **top-left-and-bottom-right** and **top-right-and-bottom-left**
-* Three values: **top-left**, **top-right-and-bottom-left** and **bottom-right**
-* Four values: **top-left**, **top-right**, **bottom-right**, **bottom-left**
-
----
-
-# Examples
-
-```html
-<div id="a"></div><div id="b"></div><div id="c"></div>
-<div id="d"></div><div id="e"></div><div id="f"></div>
-```
-
-```css
-div {
-  background-color: #336699;
-  width: 50px; height: 50px;
-  margin: 10px; float: left;
-}
-#a { border-radius: 10px; background-color: blue;}
-#b { border-radius: 40px 10px; background-color: red;}
-#c { border-radius: 40px 10px / 20px 20px; background-color: green;}
-#d { border-radius: 10% / 10% 20% 30% 40%; background-color: orange;}
-#e { border-radius: 10% 20% / 40px 10px; background-color: yellow;}
-#f { border-radius: 20px 0; background-color: fuchsia;}
-```
-
-![](assets/css3/radius.png)
 
 ---
 
