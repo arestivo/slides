@@ -30,7 +30,7 @@ name: index
 1. [Lists](#lists)
 1. [Tables](#tables)
 1. [Forms](#forms)
-1. [Character Entities](#emtities)
+1. [Character Entities](#entities)
 1. [Media](#media)
 1. [Metadata](#metadata)
 1. [Validation](#validation)

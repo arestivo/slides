@@ -14,13 +14,14 @@ class: left, middle
 
 ---
 
-template:inverse
+template: inverse
 # The Web
 <a href="http://www.fe.up.pt/~arestivo">André Restivo</a>
 
 ---
 
-template:inverse
+template: inverse
+name: web
 # Web vs Internet
 
 ---
@@ -44,11 +45,12 @@ Also known as the **World Wide Web** or **WWW**.
 ---
 
 template: inverse
-#Web Origins
+name: origins
+# Web Origins
 
 ---
 
-#The Origins of the WWW
+# The Origins of the WWW
 
 **Tim Berners-Lee ** invented the WWW at CERN (1989).
 
@@ -72,6 +74,7 @@ Three constituents: **HTML** + **URL** + **HTTP**:
 ---
 
 template: inverse
+name: work
 # How does it work
 From the browser to the server and back
 
