@@ -1000,16 +1000,16 @@ font-size: 80%; /* font-size is 80% of the parent's font-size */
 
 template: inverse
 name: box-model
-# Box-model
+# Box Model
 
 ---
 
-# Box-model
+# Box Model
 
-* All page elements are rectangular.
+* All page elements are **rectangular**.
 * They can have a **border**.
-* Some space between themselves and that border (**padding**) 
-* And some space between themselves and the next element (**margin**).
+* Some **space** between themselves and that **border** (**padding**) 
+* And some **space** between themselves and the **next element** (**margin**).
 
 ![](assets/css3/box-model.svg)
 
@@ -1236,113 +1236,7 @@ The three types of margin collapse, visualized:
 ---
 
 template: inverse
-name:boxmodel
-# Box Model
-
----
-
-# Box Model
-
-Elements all live inside a box. They can have a **border**, some space between themselves and that border (**padding**) and some space between themselves and the next element (**margin**).
-
-<img src="assets/css3/box-model.png" style="padding: 10px;">
-
----
-
-# Display
-
-There are 41 different possible values for the **display** property. For now, we will concentrate on only four of them: **none**, **inline**, **block** and **inline-block**.
-
-https://developer.mozilla.org/en-US/docs/Web/CSS/display
-
----
-
-# Block Elements
-
-* Block elements are laid out one after the other, **vertically**.
-* Respect **any** margins and padding.
-* If no **width** is set, they will **expand** naturally to **fill** their parent container.
-* If no **height** is set, they will **expand** naturally to **fit** their child elements and content.
-
-Examples: p, div, h1-h6, section, article, header, footer, ...
-
-```css
-img {
-  display: block;
-}
-```
-
----
-
-# Blocks
-
-![blocks example](assets/css3/blocks.svg)
-
----
-
-# Inline Elements
-
-* Respect **left** and **right** margins and padding, but **not** top & bottom.
-* **Cannot** have a width and height set.
-* **Allow** other elements to sit to their left and right.
-* Can break from one line to the next if there is no more space.
-
-Examples: img, span, strong, a, em, ...
-
-```css
-span {
-  display: inline;
-  margin: 1em;
-  padding: 1em;
-  background-color: red;
-}
-```
-
-![inline example](assets/css3/inline.png)
-
-
----
-
-# Blocks and Inlines
-
-<img src="assets/css3/css-normal-flow.png" style="padding: 10px;">
-
----
-
-# Inline-Block Elements
-
-* Inline elements that **behave** as block elements.
-* Block elements that **stack** horizontally. 
-
-```css
-span {
-  display: inline-block;
-  margin: 1em;
-  padding: 1em;
-  background-color: red;
-}
-```
-
-![inline-block example](assets/css3/inline-block.png)
-
----
-
-
-# Display None
-
-* Setting the **display** property to none, **removes** the element from the page completely.
-* Different from making it invisible (with the *visibility* attribute).
-
-```css
-#menu {
-  display: none;
-}
-```
-
----
-
-template: inverse
-name:background
+name: background
 # Background
 
 ---
@@ -1352,19 +1246,20 @@ name:background
 * This property accepts an URL as its value.
 
 ```css
-div#menu {
+nav#menu {
   background-image: url('squares.png');
 }
 ```
 ---
 # Position
 
-* The position of the background image can be set using the **background-position** property. This property receives two values.
+The position of the background image can be set using the **background-position** property. This property receives two values:
+
 * The first one can be **left**, **right**,  **center** or a **length**.
 * The second one can be **top**, **bottom**, **center** or a **length**.
 
 ```css
-div#menu {
+nav#menu {
   background-image: url('squares.png');
   background-position: left top;
 }
@@ -1377,7 +1272,7 @@ div#menu {
 * Scroll is the default value.
 
 ```css
-div#menu {
+nav#menu {
   background-image: url('squares.png');
   background-position: left top;
   background-attachment: local;
@@ -1393,7 +1288,7 @@ https://css-tricks.com/almanac/properties/b/background-attachment/
 We can also define if the background repeats along one or both axis with the **background-repeat** property. Possible values are **no-repeat**, **repeat-x**, **repeat-y** and **repeat**.
 
 ```css
-div#menu {
+nav#menu {
   background-image: url('squares.png');
   background-position: left top;
   background-attachment: local;
@@ -1405,11 +1300,11 @@ div#menu {
 
 # Clipping
 
-* By default, background properties, like **background-color**, apply to the space occupied by the element, its padding and border.
+* By default, background properties, like **background-color**, apply to the content, padding, and border.
 
 * This can be changed using the **background-clip** property.
 
-* The possible values are: **border-box** (default), **padding-box** (only content and border) and **content-box** (only content).
+* The possible values are: **border-box** (default), **padding-box** (only content and padding) and **content-box** (only content).
 
 https://css-tricks.com/almanac/properties/b/background-clip/
 
@@ -1421,14 +1316,16 @@ https://css-tricks.com/almanac/properties/b/background-clip/
 
 * The properties that can be set, are: **background-color**, **background-position**, **background-size**, **background-repeat**, **background-origin**, **background-clip**, **background-attachment**, and **background-image**.
 
-* It does not matter if one of the values above are missing.
+* It does not matter if one or more of the values above are missing.
 
 ```css
-div#menu {
+nav#menu {
   background: url('squares.png') repeat left top;
 }
 ```
+
 ---
+
 
 template: inverse
 name:lists
@@ -1438,8 +1335,8 @@ name:lists
 
 # Markers
 
-* Each item, in ordered and unordered lists, have left marks defining its position.
-* We can change the markers of both types of lists using the **list-style-type** property.
+* In lists, each item has left markers that define their position.
+* We can change the markers of both types of lists (ordered and unordered) using the **list-style-type** property.
 * Some possible values for unordered lists are: **none**, **disc** (default), **circle** and **square**.
 * For ordered lists we can use: **none**, **decimal** (default), **lower-alpha**, **lower-greek**, **lower-roman**, **upper-alpha** and **upper-roman**.
 
@@ -1448,6 +1345,7 @@ name:lists
   .article ol { list-style-type:lower-roman }
 ```
 ---
+
 # Images as Markers
 
 It is also possible to use an arbitrary image as the list marker:
@@ -1468,39 +1366,57 @@ name:tables
 
 # Borders
 
-To draw border around table elements we can use the **border** property that we've seen before:
+To draw border around table elements we can use the **border** property that we have seen before:
 
 ```css
 table, th, td {
-	border: 1px solid black;
+	border: 1px solid red;
 }
 ```
+
+.example[
+<table style="border-collapse: separate">
+  <tr><td style="border: 1px solid red">A</td><td style="border: 1px solid red">B</td></tr>
+  <tr><td style="border: 1px solid red">C</td><td style="border: 1px solid red">D</td></tr>
+</table>
+]
+
+
 ---
 
 # Collapse Borders
 
-* Both tables and cells have borders.
-* Specifying borders for both will result in a double border effect.
-* To collapse borders from these two elements into one single border we can use the **border-collapse** property:
+There is a gap between the borders of adjacent cells:
+* To collapse borders into a single border, use the **border-collapse** property.
+* The default value is **separate**.
 
 ```css
-table {
-	border-collapse: collapse;
-}
+table { border-collapse: collapse; }
+td    { border: 1px solid; }
 ```
+.example[
+separate
+<table style="border-collapse: separate"><tr><td style="border: 1px solid">A</td><td style="border: 1px solid">B</td></tr></table>
+<br>
+collapse
+<table style="border-collapse: collapse"><tr><td style="border: 1px solid">A</td><td style="border: 1px solid">B</td></tr></table>
+]
 
 ---
 
 template:inverse
 name:transforms
-#Transforms
+# Transforms
 
 ---
 
 #Transform
 
-* The **transform** propery modifies the coordinate space of the CSS visual formatting model. A space separated list of transforms, which are applied one after the others.
-* The **transform-origin** property specifies the position of the transform origin. By default it is at the center of the element. It takes two values (x-offset and y-offset) that can be a length, a percentage or one of left, center, right, top and bottom.
+* The **transform** property modifies the coordinate space of the CSS visual formatting model:
+  * A space-separated list of transforms, which are applied one after the others.
+* The **transform-origin** property specifies the position of the transform origin:
+  * By default, it is at the center of the element. 
+  * It takes two values (x-offset and y-offset) that can be a length, a percentage, or one of *left*, *center*, *right*, *top*, and *bottom*.
 
 ---
 
@@ -1511,6 +1427,7 @@ name:transforms
 <div id="d"></div><div id="e"></div><div id="f"></div>
 ```
 
+.small[
 ```css
 div {
   margin: 30px;
@@ -1524,73 +1441,135 @@ div {
 #e {transform: rotate(30deg) scale(0.5); background-color: yellow;}
 #f {transform: skew(30deg) rotate(30deg); background-color: fuchsia;}
 ```
+]
 
-![](assets/css3/transform.png)
-
-
----
-
-template:inverse
-name:transitions
-#Transitions
-
----
-
-#Transitions
-
-* Provide a way to control **animation speed** when changing CSS properties
-
-* Instead of having property changes take effect immediately, you can cause the changes in a property to take place over a period of time.
-
-* CSS transitions let you decide:
-  * which properties to animate (**list**)
-  * when the animation will start (**delay**)
-  * how long the transition will last (**duration**)
-  * how the transition will run (**timing function**)
-
----
-
-#Example
-
-<div class="transition"></div>
-
-```css
-.box {
-    border-style: solid;
-    border-width: 1px;
-    width: 100px;
-    height: 100px;
-    background-color: #0000FF;
-    transition: width 2s, height 2s, background-color 2s, transform 2s;
-}
-
-.box:hover {
-    background-color: #FFCCCC;
-    width: 150px;
-    height: 150px;
-    transform: rotate(180deg);
-}
-```
+<section style="display: flex">
+<div id="a" style="transform: rotate(30deg); margin: 30px; width: 50px; height:50px; background-color: blue"></div>
+<div id="b" style="transform: skew(30deg); margin: 30px; width: 50px; height:50px; background-color: red"></div>
+<div id="c" style="transform: translate(10px, 10%); margin: 30px; width: 50px; height:50px; background-color: green"></div>
+<div id="d" style="transform: translate(10px, 10%); margin: 30px; width: 50px; height:50px; background-color: orange"></div>
+<div id="e" style="transform: rotate(30deg) scale(0.5); margin: 30px; width: 50px; height:50px; background-color: yellow"></div>
+<div id="f" style="transform: skew(30deg) rotate(30deg); margin: 30px; width: 50px; height:50px; background-color: fuchsia"></div>
+<section>
 
 ---
 
 template: inverse
-name:positioning
-# Positioning
-
----
-
+name: flow
 # The Flow
 
-* By default, elements follow something called **the flow** of the document.
+---
 
-* In order to make page drawing easier for browsers, elements are always placed from **top** to **bottom** and **left** to **right**. Unless they are removed from the flow.
+# Normal Flow
+
+
+Normal flow, or flow layout, is how elements are placed on a page before any layout changes.
+
+There are two main types of elements contributing to this flow: **block** and inline **elements**.
+
+* Block elements start on the **top** and move **down** the page.
+* Inline elements start on the **left** (or the right, depending on the *locale*) and move to the **right**.
+
+![](assets/css3/flow.svg)
 
 ---
 
-# Position
+# Display
 
-The **position** property allows the developer to alter the way an element is positioned. There are 4 possible values:
+* The display property controls if an element is **block** or **inline**.
+
+* There are **many** possible values for this property. 
+
+* For example, **tables** (rows and cells) and **lists** (and items) have **specific** display values.
+
+* But we will concentrate on four of them: **block**, **inline**, **inline-block**, and **none**.
+
+```css
+img {
+  display: block;
+}
+```
+
+.box_warning[
+  We are simplifying some concepts. [Here](https://www.w3.org/TR/css-display-3/) are all the nasty details!
+]
+
+---
+
+# Block
+
+* Always take a **new line**.
+* If its width is *auto*, it occupies the **entire horizontal space** of its parent element.
+* If its height is *auto*, it will be **as tall as needed** to contain its child elements.
+* Respects **margins** and **padding**.
+* Can **contain** other *block-level* and *inline-level* elements.
+
+These are some *block* elements: *p*, *h1*&ndash;*h6*, *main*, *section*, *article*, *header*, *footer*, and *div*.
+
+<section style="width: 20em; font-size: 70%; background-color: #eee; margin: 0 auto; text-align: center">
+  <article style="margin: 1em; padding: 0.5em; background-color: cyan">margin: 1em</article>
+  <article style="margin: 1em; padding: 0.5em; background-color: cyan">margin: 1em</article>
+  <article style="margin: 1em; width: 75%; padding: 0.5em; background-color: cyan">margin: 1em<br>width: 75%</article>
+  <article style="margin: 0 auto; width: 8em; padding: 0.5em; background-color: cyan">margin: 0 auto<br>width: 8em</article>
+</section>
+
+---
+
+# Inline
+
+* Layed out **horizontally** one after the other.
+* Ignore any width or height values. They only take as much space as necessary.
+* **Top** and **bottom** margin and padding do not affect other elements.
+* May be **aligned vertically** on their tops, bottoms, baselines, ...
+* Can break from one line to the next if there is no more space.
+
+These are some *inline* elements: *a*, *strong*, *em*, *span*, and *text*.
+
+<br>
+
+<figure>
+<p style="background-color: #eee">
+  The quick brown fox <span style="margin: 1em; padding: 1em; background-color: cyan">margin: 1em; padding: 1em</span> jumps over the lazy dog. 
+  The quick brown fox jumps over the lazy dog. 
+  The quick brown fox jumps over the lazy dog. 
+  The quick brown fox jumps over the lazy dog. 
+</p>
+<center><figcaption>A paragraph with a cyan span inside.</figcaption></center>
+<figure>
+
+---
+
+# Inline-Block
+
+* Inline elements that **behave** as block elements.
+* Block elements that **stack** horizontally.
+
+<figure>
+<p style="background-color: #eee">
+  The quick brown fox <span style="display: inline-block; margin: 1em; padding: 1em; background-color: cyan">margin: 1em; padding: 1em</span> jumps over the lazy dog. 
+  The quick brown fox jumps over the lazy dog. 
+  The quick brown fox jumps over the lazy dog. 
+  The quick brown fox jumps over the lazy dog. 
+</p>
+<center><figcaption>A paragraph with a cyan span inside having **display: inline-block**.</figcaption></center>
+<figure>
+
+---
+
+
+# None
+
+* Setting the **display** property to none, **removes** the element from the page completely.
+* This is different from making it invisible (with the *visibility* attribute).
+* The element disappears and does not occupy any space on the page.
+
+---
+
+# Changing the Flow
+
+The **position** property allows the developer to alter how an element is positioned. 
+
+There are four possible values:
 
 * static
 * relative
@@ -1599,15 +1578,42 @@ The **position** property allows the developer to alter the way an element is po
 
 ---
 
-# Position Static
+# Position Example
+
+The next few pages will use the following example:
+
+```html
+<section>
+  <article id="a">
+  <article id="b">
+  <article id="c">
+  <article id="d">
+</section>
+```
+
+```css
+  section { background-color: #eee; width: 10em; padding: 0.2em; }
+  article { width: 5em; margin: 0.2em; padding: 0.2em; }
+  #a { background-color: #f3722c } #b { background-color: #f9c74f }
+  #c { background-color: #90be6d } #d { background-color: #4d908e }
+```
+
+---
+
+# Static
 
 * The default value.
 * The element keeps its place **in the document flow**.
 
-<img src="assets/css3/position-static.png" style="padding: 10px;">
+<section style="background-color: #eee; width: 10em; padding: 0.2em">
+  <article id="a" style="background-color: #f3722c; width: 5em; margin: 0.2em; padding: 0.2em">A</article>
+  <article id="b" style="background-color: #f9c74f; width: 5em; margin: 0.2em; padding: 0.2em">B</article>
+  <article id="c" style="background-color: #90be6d; width: 5em; margin: 0.2em; padding: 0.2em">C</article>
+  <article id="d" style="background-color: #4d908e; width: 5em; margin: 0.2em; padding: 0.2em">D</article>
+</section>
 
 ```css
-#b {
+article {
   position: static;
 }
 ```
@@ -1617,15 +1623,23 @@ The **position** property allows the developer to alter the way an element is po
 # Position Relative
 
 * The element keeps its position **in the flow**.
-* But can be moved relatively to its static position using the properties: **top**, **right**, **bottom** and **left**.
+* But can be moved relative to its static position using **top**, **right**, **bottom**, and **left**.
 
-<img src="assets/css3/position-relative.png" style="padding: 10px;">
+<section style="background-color: #eee; width: 10em; padding: 0.2em">
+  <article id="a" style="background-color: #f3722c; width: 5em; margin: 0.2em; padding: 0.2em">A</article>
+  <article id="b" style="position: relative; background-color: #f9c74f; width: 5em; margin: 0.2em; padding: 0.2em">B</article>
+  <article id="c" style="position: relative; left: 20px; top: -20px; background-color: #90be6d; width: 5em; margin: 0.2em; padding: 0.2em">C</article>
+  <article id="d" style="background-color: #4d908e;  width: 5em; margin: 0.2em; padding: 0.2em">D</article>
+</section>
 
 ```css
 #b {
   position: relative;
-  left: -20px;
-  top: 20px;
+}
+#c {
+  position: relative;
+  left: 20px;
+  top: -20px;
 }
 ```
 
@@ -1634,17 +1648,21 @@ The **position** property allows the developer to alter the way an element is po
 # Position Fixed
 
 * The element is **no longer a part of the flow**.
-* Can be positioned relatively to the **browser window**.
+* Can be positioned relative to the **browser window**.
 * **Scrolling doesn't** change the element's **position**.
 
-<img src="assets/css3/position-fixed.png" style="padding: 10px;">
+<section style="background-color: #eee; width: 10em; padding: 0.2em">
+  <article id="a" style="background-color: #f3722c; width: 5em; margin: 0.2em; padding: 0.2em">A</article>
+  <article id="b" style="position: fixed; right: 1em; top: 1em; background-color: #f9c74f; width: 5em; margin: 0.2em; padding: 0.2em">B</article>
+  <article id="c" style="background-color: #90be6d; width: 5em; margin: 0.2em; padding: 0.2em">C</article>
+  <article id="d" style="background-color: #4d908e;  width: 5em; margin: 0.2em; padding: 0.2em">D</article>
+</section>
 
 ```css
 #b {
-  position: fixed;
-  left: 20px;
-  top: 0px;
-  height: 20px;
+  position: fixed; 
+  right: 1em; 
+  top: 1em;
 }
 ```
 
@@ -1652,17 +1670,23 @@ The **position** property allows the developer to alter the way an element is po
 
 # Position Absolute
 
-* **No longer a part of the flow** and scrolls with the page.
-* Can be positioned relatively to its **first non static parent**.
+* The element is **no longer a part of the flow**.
+* But it **still scrolls** with the page.
+* Can be positioned relative to its **first positioned parent** (non-static).
 
-<img src="assets/css3/position-absolute.png" style="padding: 10px;">
+<section style="position: relative; background-color: #eee; width: 10em; padding: 0.2em">
+  <article id="a" style="background-color: #f3722c; width: 5em; margin: 0.2em; padding: 0.2em">A</article>
+  <article id="b" style="position: absolute; right: 0; top: 0; background-color: #f9c74f; width: 5em; margin: 0.2em; padding: 0.2em">B</article>
+  <article id="c" style="background-color: #90be6d; width: 5em; margin: 0.2em; padding: 0.2em">C</article>
+  <article id="d" style="background-color: #4d908e;  width: 5em; margin: 0.2em; padding: 0.2em">D</article>
+</section>
 
 ```css
+section { position: relative }
 #b {
-  position: absolute;
-  left: 20px;
-  top: 0px;
-  height: 20px;
+  position: absolute; 
+  right: 0; 
+  top: 0;
 }
 ```
 
@@ -1672,37 +1696,64 @@ The **position** property allows the developer to alter the way an element is po
 
 The **float** property removes an element from the document flow and shifts it to the **left** or to the **right** until it touches the edge of its containing box or another floated element.
 
-<img src="assets/css3/float-left.png" style="padding: 10px;">
+<section style="position: relative; background-color: #eee; width: 10em; padding: 0.2em">
+  <article id="a" style="background-color: #f3722c; width: 5em; margin: 0.2em; padding: 0.2em">A</article>
+  <article id="b" style="float: right; background-color: #f9c74f; width: 5em; margin: 0.2em; padding: 0.2em">B</article>
+  <article id="c" style="background-color: #90be6d; width: 5em; margin: 0.2em; padding: 0.2em">C</article>
+  <article id="d" style="background-color: #4d908e;  width: 5em; margin: 0.2em; padding: 0.2em">D</article>
+</section>
 
 ```css
 #b {
-  float: left;
+  float: right;
 }
 ```
+
+.box_info[
+Articles "b" and "c" are misaligned due to a strange phenomena. As "b" is no longer part of the flow, it's top margin doesn't collapse anymore.
+]
+
 ---
 # Floats and Text
 
 Text always flows around floated elements. This is useful to make text that flows around images.
 
-<img src="assets/css3/float-text.png" style="padding: 10px;">
+<section style="margin: 0 auto;position: relative; background-color: #eee; width: 15em; padding: 0.2em">
+  <article id="a" style="float:left; background-color: #f3722c; width: 5em; margin: 0.1em; padding: 0.2em">A</article>
+  <p style="font-size: 50%; margin: 0">The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog</p>
+</section>
+
+```html
+<section>
+  <article id="a">
+  <p>...text...</p>z
+</section>
+```
 
 ```css
-.article img {
+#a {
   float: left;
 }
 ```
 ---
 # Multiple Floats
 
-Floats go right or left until they find another float or the parent container.
+Floats go right or left until they find another float, or the parent container.
 
-<img src="assets/css3/float-multiple.png" style="padding: 10px;">
+<section style="position: relative; background-color: #eee; width: 10em; padding: 0.2em">
+  <article id="a" style="background-color: #f3722c; width: 5em; margin: 0.2em; padding: 0.2em">A</article>
+  <article id="b" style="float: right; background-color: #f9c74f; width: 2em; margin: 0.2em; padding: 0.2em">B</article>
+  <article id="c" style="float: right; background-color: #90be6d; width: 2em; margin: 0.2em; padding: 0.2em">C</article>
+  <article id="d" style="background-color: #4d908e;  width: 5em; margin: 0.2em; padding: 0.2em">D</article>
+</section>
 
 ```css
-#b1, #b2 {
-  float: left;
+#b, #c {
+  width: 2em;
+  float: right; 
 }
 ```
+
 ---
 ## Clear
 
@@ -1741,6 +1792,57 @@ By default, the elements are stacked following the order they are declared in th
  * **hidden**:	The overflow is clipped, and the rest of the content will be invisible.
  * **scroll**:	The overflow is clipped, but a scroll-bar is added to see the rest of the content.
  * **auto**:	If overflow is clipped, a scroll-bar should be added to see the rest of the content.
+
+
+---
+
+template:inverse
+name:transitions
+#Transitions
+
+---
+
+# Transitions
+
+* Provide a way to control **animation speed** when changing CSS properties
+
+* Instead of having property changes take effect immediately, you can cause the changes in a property to take place over a period of time.
+
+* CSS transitions let you decide:
+  * which properties to animate (**list**)
+  * when the animation will start (**delay**)
+  * how long the transition will last (**duration**)
+  * how the transition will run (**timing function**)
+
+---
+
+#Example
+
+.small[
+```css
+.box {
+    border-style: solid;
+    border-width: 1px;
+    width: 100px;
+    height: 100px;
+    background-color: #0000FF;
+    transition: width 2s, height 2s, background-color 2s, transform 2s;
+}
+
+.box:hover {
+    background-color: #FFCCCC;
+    width: 150px;
+    height: 150px;
+    transform: rotate(180deg);
+}
+```
+]
+
+<section style="display: flex; gap: 1em>">
+  <article class="transition"></article>
+  <article class="transition"></article>
+  <article class="transition"></article>
+</section>
 
 ---
 
