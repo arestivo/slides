@@ -20,7 +20,7 @@
 .inverse {
   background: #FFF;
   color: #000;
-  text-shadow: 0 0 20px #333;
+  text-shadow: none;
 }
 
 .inverse h1, .inverse h2 {
