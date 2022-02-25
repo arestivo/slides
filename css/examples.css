@@ -1,18 +1,24 @@
 .transition {
-    margin: auto;
-    border-style: solid;
-    border-width: 1px;
+    margin: 0 auto;
+    border: 1px solid;
     width: 100px;
     height: 100px;
-    background-color: #0000FF;
-    transition: width 2s, height 2s, background-color 2s, transform 2s;
+    background-color: #f3722c;
+    transition: width 2s, height 2s, background-color 2s, transform 2s, border-radius 4s;
+
+    color: white;
+    font-size: 2em;
+    text-align: center;
+    text-decoration: underline;
+    line-height: 2em;
 }
 
 .transition:hover {
-    background-color: #FFCCCC;
+    background-color: #4d908e;
     width: 150px;
     height: 150px;
     transform: rotate(180deg);
+    border-radius: 50%;
 }
 
 .example {

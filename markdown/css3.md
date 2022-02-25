@@ -27,19 +27,21 @@ name:index
 1. [Linking](#linking)
 1. [Resources](#resources)
 1. [Selectors](#selectors)
+1. [Combining Selectors](#combining-selectors)
+1. [Grouping Selectors](#grouping-selectors)
+1. [Pseudo Selectors](#pseudo-selectors)
+1. [Complex Selectors](#complex-selectors)
 1. [Color](#color)
-1. [Dimensions](#dimensions)
-1. [Units](#units)
 1. [Fonts](#fonts)
 1. [Text](#text)
+1. [Length Units](#units)
 1. [Box Model](#boxmodel)
-1. [Border](#border)
 1. [Background](#background)
 1. [Lists](#lists)
 1. [Tables](#tables)
-1. [Transforms](#transforms)
-1. [Transitions](#transitions)
-1. [Positioning](#positioning)
+1. [Transform](#transforms)
+1. [Transition](#transitions)
+1. [The Flow](#flow)
 1. [Flexbox](#flexbox)
 1. [Grid](#grid)
 1. [Precedence](#precedence)
@@ -52,7 +54,7 @@ name:index
 ---
 
 template: inverse
-name:intro
+name: intro
 # Introduction
 
 ---
@@ -98,7 +100,7 @@ Together, selectors and properties define CSS **rules**.
 ---
 
 template: inverse
-name:linking
+name: linking
 # Linking to HTML
 
 We can apply CSS styles to HTML documents in three different ways.
@@ -160,8 +162,8 @@ The preferred way. Allows for style **separation** and **reuse**.
 
 ---
 
-template:inverse
-name:resources
+template: inverse
+name: resources
 # Resources
 
 * References:
@@ -175,7 +177,7 @@ name:resources
 ---
 
 template: inverse
-name:selectors
+name: selectors
 # Selectors
 
 ---
@@ -261,7 +263,7 @@ form[method=get] /* selects all forms with attribute method="get" */
 ---
 
 template: inverse
-name:selectors
+name: combining-selectors
 # Combining Selectors
 
 ---
@@ -334,7 +336,7 @@ name: grouping-selectors
 
 # Grouping Selectors
 
-Selector groups (,) are just a way to simplify css rules:
+Selector groups (,) are just a way to simplify CSS rules:
 
 ```css
 header > *, main article, #articles p
@@ -345,15 +347,15 @@ header > *, main article, #articles p
 ---
 
 template: inverse
-name:selectors
+name: pseudo-selectors
 # Pseudo-selectors
 
 ---
 
 ## Pseudo-classes and Pseudo-elements
 
-* A [pseudo-class](https://drafts.csswg.org/selectors-3/#pseudo-classes)(:) is a way of selecting **existing elements**, based on their **state** as if it was a class (*e.g.*, all elements of the class visiteds links).
-* A [pseudo-element](https://drafts.csswg.org/selectors-3/#pseudo-elements)(::) allows logical elements to be defined which are not actually elements (*e.g.*, The first letter of a paragraph).
+* A [pseudo-class](https://drafts.csswg.org/selectors-3/#pseudo-classes)(:) is a way of selecting **existing elements**, based on their **state** as if it was a class (*e.g.*, all elements of the class *visited links*).
+* A [pseudo-element](https://drafts.csswg.org/selectors-3/#pseudo-elements)(::) allows logical elements to be defined which are not really elements (*e.g.*, The first letter of a paragraph).
 
 ---
 
@@ -365,10 +367,10 @@ Pseudo-classes that select anchors (links) based on their state:
 a:visited /* selects all links that were visited */
 ```
 
-* **link**: Link was never visited.
-* **visited**: Link was visited previously.
-* **active**: Link is active (being clicked).
-* **hover**: Mouse is over the link (also works on other element types):
+* **link**: The link was never visited.
+* **visited**: The link was visited previously.
+* **active**: The link is active (being clicked).
+* **hover**: The mouse is over the link (also works on other element types):
 
 ```css
 img:hover /* selects images when the mouse pointer is over them */
@@ -435,16 +437,16 @@ p:first-child
 :last-child 
 ```
 
-* **first-child**: Selects elements that are the first child of their parents
-* **last-child**: Selects elements that are the last child of their parents
-* **first-of-type**: Selects elements that are the first child of their type in their parents children's list
-* **last-of-type**: Selects elements that are the last child of their type in their parents children's list
+* **first-child**: Selects elements that are the first child of their parents.
+* **last-child**: Selects elements that are the last child of their parents.
+* **first-of-type**: Selects elements that are the first child of their parents with their type.
+* **last-of-type**: Selects elements that are the last child of their parents with their type.
 
 ---
 
 ## Nth Child Pseudo-classes
 
-The **nth-child(an+b)** selector, selects elements that are the **bth** child of an element after all its children have been split into groups of **a** elements each.
+The **nth-child(an+b)** selector selects elements that are the **bth** child of an element after all its children have been split into groups of **a** elements each.
 
 In other words, this class matches all children whose index fall in the set *{ an + b; n = 0, 1, 2, ... }*.
 
@@ -465,7 +467,7 @@ The **nth-of-type(an+b)** selector does the same thing but counts only siblings 
 Selects elements based on the **number of children** of an element:
 
 ```css
-/* paragrpahs that are the only children of their parents */
+/* paragraphs that are the only children of their parents */
 p:only-child 
 
 /* paragraphs that have no children (not even text) */
@@ -501,7 +503,7 @@ Before and after pseudo-elements can be combined with the **content** property t
 
 The **content** property can have the following values:
 
- * **none** The default value, adds nothing. Cannot be combined with other values: *none*
+ * **none** The default value; adds nothing. Cannot be combined with other values: *none*
  * **a string** Using single quotes. Adds the text to the element: *'Chapter'*
  * **an url** An external resource (such as an image): *url('dog.png')*
  * **counter** Variables maintained by CSS whose values may be [manipulated](https://www.w3.org/TR/css-lists-3/#auto-numbering) by CSS rules to track how many times they're used: *counter(section)*.
@@ -530,7 +532,7 @@ nav.menu + * > section :first-child p.intro
 
 It's easier to read them from the **right to the left**:
 
-> Paragraphs with class "intro" that are descendants of elements that are the first child of their parents and are descendants of "sections" that are direct childs of any element that is the next sibling of a "nav" with class "menu".
+> Paragraphs with class "intro" that are descendants of elements that are the first child of their parents and are descendants of "sections" that are direct children of any element that is the next sibling of a "nav" with class "menu."
 
 <img src="assets/css3/selectors10.svg" width="50%">
 
@@ -594,7 +596,7 @@ li:first-child a
 ---
 
 template: inverse
-name:color
+name: color
 # Color
 
 ---
@@ -730,11 +732,11 @@ name:fonts
 In CSS, there are two types of font family names:
 
 * **generic family** - a group of font families with a similar look.
-* **font family** - a specific font family (e.g. Times New Roman).
+* **font family** - a specific font family (*e.g.*, Times New Roman).
 ---
 # Specific Font Family
 
-You can define a specific font family to be used. Be careful as the it might not exist in the target computer.
+You can define a specific font family. Be careful as it might not exist in the target computer.
 
 ```css
 p {
@@ -762,7 +764,7 @@ p {
 ---
 # Web Safe Fonts
 
-* To ensure that websites look the same across different platforms we should use *web safe* fonts like: *Arial*, *Helvetica*, *Times New Roman*, *Times*, *Courier New* or *Courier*.
+* To ensure that websites look the same across different platforms, we should use *websafe* fonts like *Arial*, *Helvetica*, *Times New Roman*, *Times*, *Courier New* or *Courier*.
 
 * You can specify several fonts. The browser will try to use the **first** and continue **down the list** if it doesn't exist.
 
@@ -778,7 +780,7 @@ p {
 # Remote Fonts
 
 * The *@font-face* rule specifies a custom font with which to display text.
-* The font can be loaded from a remote server making it possible to use all kind of fonts.
+* The font can be loaded from a remote server, making it possible to use all kinds of fonts.
 
 ```css
 @font-face {
@@ -821,7 +823,7 @@ span.author {
 ---
 # Font Size
 
-To define the font size you use the **font-size** property.
+To define the font size, you use the **font-size** property.
 
 ```css
 p.introduction {
@@ -869,9 +871,9 @@ p {
 
 ---
 
-# Transformation
+# Text Case
 
-The **text-transform** property can be used to make the text **uppercase**, **lowercase** or capitalized (**capitalize** first letter of each word).
+The **text-transform** property makes the text **uppercase**, **lowercase** or capitalized (**capitalize** first letter of each word).
 
 ```css
 h1 {
@@ -948,9 +950,9 @@ They are useful when the physical properties of the output medium are unknown, s
 
 Units *rem* and *em* are used to create **scalable layouts**, which maintain the [vertical rhythm](https://nowodzinski.pl/syncope/) of the page even when the user changes the font size.
 
-* **rem** Represents the size of the root element font. If used to change the *font size* in the root element, it represents the initial (default or user-defined) value of the browser (typically 16px).
+* **rem** Represents the size of the root element font. If used to change the *font-size* in the root element, it represents the initial (default or user-defined) value of the browser (typically 16px).
 
-* **em** When used to change the *font size*, it represents the size of the parent element font. When used to set the size of an element, it represents the size of the current element font.
+* **em** When used to change the *font-size*, it represents the size of the parent element font. When used to set the size of an element, it represents the size of the current element font.
 
 ---
 # Example (rem and em)
@@ -999,7 +1001,7 @@ font-size: 80%; /* font-size is 80% of the parent's font-size */
 ---
 
 template: inverse
-name: box-model
+name: boxmodel
 # Box Model
 
 ---
@@ -1053,7 +1055,7 @@ section {
 
 # Minimum and Maximum
 
-* When the width/height is calculated depending on something else (e.g., the parent's size or the ammount of content), we can set their minimum and maximum values using the **min-width**, **max-width**, **min-height** and **max-height** properties.
+* When the width/height is calculated depending on something else (e.g., the parent's size or the amount of content), we can set their minimum and maximum values using the **min-width**, **max-width**, **min-height**, and **max-height** properties.
 
 * Values can be a **length**, a **percentage**, or **auto** (the default value).
 
@@ -1117,7 +1119,7 @@ body > nav li { margin: 1.5em 1em 3em; }
 
 The border can be set using the **border** property:
 
-* It takes three values: the *width*, the *style* and the *color*.
+* It takes three values: the *width*, the *style*, and the *color*.
 * The width is a [length](#units), but can also be *thin*, *medium* or *thick*.
 * Style is one of the following: *none*, *hidden*, *dotted*, *dashed*, *solid*, *double*, *groove*, *ridge*, *inset*, and *outset*.
 * And color is a [color](#color).
@@ -1171,7 +1173,7 @@ Just like with *margin* and *padding*, there are also shorthands for setting dif
 
 # Shorthands
 
-As with other properties we can use more than one value in the radius property to change the border radius of several corners at the same time.
+As with other properties, we can use more than one value in the *border-radius* property to simultaneously change the *radius* of several corners.
 
 The possible combinations are as follows:
 
@@ -1404,17 +1406,17 @@ collapse
 
 ---
 
-template:inverse
-name:transforms
-# Transforms
+template: inverse
+name: transforms
+# Transform
 
 ---
 
-#Transform
+# Transform
 
 * The **transform** property modifies the coordinate space of the CSS visual formatting model:
-  * A space-separated list of transforms, which are applied one after the others.
-* The **transform-origin** property specifies the position of the transform origin:
+  * A space-separated list of transforms applied one after the others.
+* The **transform-origin** property specifies the origin of the transformation:
   * By default, it is at the center of the element. 
   * It takes two values (x-offset and y-offset) that can be a length, a percentage, or one of *left*, *center*, *right*, *top*, and *bottom*.
 
@@ -1443,7 +1445,8 @@ div {
 ```
 ]
 
-<section style="display: flex">
+<center>
+<section style="display:flex; justify-content: center">
 <div id="a" style="transform: rotate(30deg); margin: 30px; width: 50px; height:50px; background-color: blue"></div>
 <div id="b" style="transform: skew(30deg); margin: 30px; width: 50px; height:50px; background-color: red"></div>
 <div id="c" style="transform: translate(10px, 10%); margin: 30px; width: 50px; height:50px; background-color: green"></div>
@@ -1451,6 +1454,63 @@ div {
 <div id="e" style="transform: rotate(30deg) scale(0.5); margin: 30px; width: 50px; height:50px; background-color: yellow"></div>
 <div id="f" style="transform: skew(30deg) rotate(30deg); margin: 30px; width: 50px; height:50px; background-color: fuchsia"></div>
 <section>
+</center>
+
+---
+
+template: inverse
+name: transitions
+# Transition
+
+---
+
+# Transition
+
+* Provide a way to control **animation speed** when changing CSS properties
+
+* Instead of having property changes take effect immediately, you can cause the changes in a property to take place over a period of time.
+
+* CSS transitions let you decide:
+  * which properties to animate (**list**)
+  * when the animation will start (**delay**)
+  * how long the transition will last (**duration**)
+  * how the transition will run (**timing function**): ease, ease-in, ease-out, ease-in-out, linear, step-start, step-end
+
+
+```css
+transition-property: opacity, left, top, height;
+transition-duration: 3s, 5s; /* repeats for the other two 3s, 5s */
+transition-delay: 1s;        /* same for all properties */
+transition-timing-function: ease-in;
+```
+
+---
+
+#Example
+
+There is also a shorthand to set all these properties.
+
+.small[
+```css
+.box {
+    margin: 0 auto;
+    border: 1px solid;
+    width: 100px;
+    height: 100px;
+    background-color: #0000FF;
+    transition: width 2s, height 2s, background-color 2s, transform 2s, border-radius 4s;
+}
+
+.box:hover {
+    background-color: #FFCCCC;
+    width: 150px;
+    height: 150px;
+    transform: rotate(180deg);
+}
+```
+]
+
+<article class="transition">LTW</article>
 
 ---
 
@@ -1520,7 +1580,7 @@ These are some *block* elements: *p*, *h1*&ndash;*h6*, *main*, *section*, *artic
 * Layed out **horizontally** one after the other.
 * Ignore any width or height values. They only take as much space as necessary.
 * **Top** and **bottom** margin and padding do not affect other elements.
-* May be **aligned vertically** on their tops, bottoms, baselines, ...
+* May be **aligned vertically** on their tops, bottoms, baselines, and others.
 * Can break from one line to the next if there is no more space.
 
 These are some *inline* elements: *a*, *strong*, *em*, *span*, and *text*.
@@ -1555,7 +1615,6 @@ These are some *inline* elements: *a*, *strong*, *em*, *span*, and *text*.
 <figure>
 
 ---
-
 
 # None
 
@@ -1696,7 +1755,7 @@ section { position: relative }
 
 The **float** property removes an element from the document flow and shifts it to the **left** or to the **right** until it touches the edge of its containing box or another floated element.
 
-<section style="position: relative; background-color: #eee; width: 10em; padding: 0.2em">
+<section style="background-color: #eee; width: 10em; padding: 0.2em">
   <article id="a" style="background-color: #f3722c; width: 5em; margin: 0.2em; padding: 0.2em">A</article>
   <article id="b" style="float: right; background-color: #f9c74f; width: 5em; margin: 0.2em; padding: 0.2em">B</article>
   <article id="c" style="background-color: #90be6d; width: 5em; margin: 0.2em; padding: 0.2em">C</article>
@@ -1710,7 +1769,7 @@ The **float** property removes an element from the document flow and shifts it t
 ```
 
 .box_info[
-Articles "b" and "c" are misaligned due to a strange phenomena. As "b" is no longer part of the flow, it's top margin doesn't collapse anymore.
+Articles "b" and "c" are misaligned due to a strange phenomenon. As "b" is no longer part of the flow, its top margin doesn't collapse anymore.
 ]
 
 ---
@@ -1718,7 +1777,7 @@ Articles "b" and "c" are misaligned due to a strange phenomena. As "b" is no lon
 
 Text always flows around floated elements. This is useful to make text that flows around images.
 
-<section style="margin: 0 auto;position: relative; background-color: #eee; width: 15em; padding: 0.2em">
+<section style="margin: 0 auto; background-color: #eee; width: 15em; padding: 0.2em">
   <article id="a" style="float:left; background-color: #f3722c; width: 5em; margin: 0.1em; padding: 0.2em">A</article>
   <p style="font-size: 50%; margin: 0">The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog</p>
 </section>
@@ -1738,9 +1797,9 @@ Text always flows around floated elements. This is useful to make text that flow
 ---
 # Multiple Floats
 
-Floats go right or left until they find another float, or the parent container.
+Floats go right or left until they find another float or the parent container.
 
-<section style="position: relative; background-color: #eee; width: 10em; padding: 0.2em">
+<section style="background-color: #eee; width: 10em; padding: 0.2em">
   <article id="a" style="background-color: #f3722c; width: 5em; margin: 0.2em; padding: 0.2em">A</article>
   <article id="b" style="float: right; background-color: #f9c74f; width: 2em; margin: 0.2em; padding: 0.2em">B</article>
   <article id="c" style="float: right; background-color: #90be6d; width: 2em; margin: 0.2em; padding: 0.2em">C</article>
@@ -1760,89 +1819,52 @@ Floats go right or left until they find another float, or the parent container.
 * The **clear** property indicates if an element can be next to floating elements that precede it or must be moved down.
 * Values can be **left**, **right** or **both**.
 
-<img src="assets/css3/float-clear.png" style="padding: 10px;">
+
+<section style="background-color: #eee; width: 10em; padding: 0.2em;">
+  <article id="a" style="background-color: #f3722c; width: 5em; margin: 0.2em; padding: 0.2em">A</article>
+  <article id="b" style="float: right; background-color: #f9c74f; width: 2em; margin: 0.2em; padding: 0.2em">B</article>
+  <article id="c" style="float: right; clear: right; background-color: #90be6d; width: 2em; margin: 0.2em; padding: 0.2em">C</article>
+  <article id="d" style="clear: right; background-color: #4d908e;  width: 5em; margin: 0.2em; padding: 0.2em">D</article>
+</section>
 
 ```css
-#b1, #b2 { float: left; }
-#b1 { clear: both; }
-```
----
-# Ordering
-
-* When elements are positioned outside the normal flow, they can overlap other elements. The **z-index** property specifies the stack order of an element.
-* An element with greater stack order is always in front of an element with a lower stack order.
-
-```css
-#b {
-  z-index: -1;
+#b, #c {
+  width: 2em;
+  float: right; 
+}
+#c, #d {
+  clear: right; 
 }
 ```
 
-By default, the elements are stacked following the order they are declared in the HTML.
+---
+# Ordering
+
+* When elements are positioned outside the normal flow, they can overlap others. 
+* The **z-index** property specifies the stack order of an element and its descendants.
+* But it can only be applied to positioned elements (non-static).
+* An element with greater stack order is always in front of an element with a lower stack order.
+* By default, the elements are stacked following the order they are declared in the HTML.
+
+```css
+#b {
+  position: relative;
+  z-index: -1;
+}
+```
 
 ---
 
 # Overflow
 
-* The **overflow** property especifies the behavior of an element when its contents don't fit its specified size.
+* The **overflow** property specifies the behavior of an element when its contents don't fit its specified size.
 
 * Possible values are:
 
- * **visible**:	The overflow is not clipped. It renders outside the element's box. This is default.
+ * **visible**:	The overflow is not clipped. It renders outside the element's box. This is the default.
  * **hidden**:	The overflow is clipped, and the rest of the content will be invisible.
- * **scroll**:	The overflow is clipped, but a scroll-bar is added to see the rest of the content.
- * **auto**:	If overflow is clipped, a scroll-bar should be added to see the rest of the content.
-
-
----
-
-template:inverse
-name:transitions
-#Transitions
-
----
-
-# Transitions
-
-* Provide a way to control **animation speed** when changing CSS properties
-
-* Instead of having property changes take effect immediately, you can cause the changes in a property to take place over a period of time.
-
-* CSS transitions let you decide:
-  * which properties to animate (**list**)
-  * when the animation will start (**delay**)
-  * how long the transition will last (**duration**)
-  * how the transition will run (**timing function**)
-
----
-
-#Example
-
-.small[
-```css
-.box {
-    border-style: solid;
-    border-width: 1px;
-    width: 100px;
-    height: 100px;
-    background-color: #0000FF;
-    transition: width 2s, height 2s, background-color 2s, transform 2s;
-}
-
-.box:hover {
-    background-color: #FFCCCC;
-    width: 150px;
-    height: 150px;
-    transform: rotate(180deg);
-}
-```
-]
-
-<section style="display: flex; gap: 1em>">
-  <article class="transition"></article>
-  <article class="transition"></article>
-  <article class="transition"></article>
-</section>
+ * **scroll**:	The overflow is clipped, but a scroll bar is added to see the rest of the content.
+ * **auto**:	If overflow is clipped, a scroll bar should be added to see the rest of the content.
 
 ---
 
@@ -1868,12 +1890,13 @@ https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
 # Flexbox Vocabulary
 
-![](assets/css3/flexbox-vocabulary.png)
+<img src="assets/css3/flexbox.svg" width="80%">
 
 ---
 
 # Running Example
 
+.small[
 ```html
 <div class="container">
   <div class="item">1</div>
@@ -1884,24 +1907,23 @@ https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
 ```css
 .container {
-  background-color: #665178;
-  padding: 1em;
+  background-color: #94d2bd;
+  padding: 0.5em;
 }
 
 .item {
-  color: black;
-  text-align: center;
-  margin: 1em;
-  padding: 1em;
-  background-color: #A9CDC3;
+  color: white; text-align: center;
+  margin: 0.5em; padding: 0.5em;
+  background-color: #0a9396;
 }
 ```
+]
 
----
-
-# Running Example
-
-![](assets/css3/flexbox-example.png)
+<div class="container" style="background-color: #94d2bd; padding: 0.5em;">
+  <div class="item" style="text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">1</div>
+  <div class="item" style="text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">2</div>
+  <div class="item" style="text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">3</div>
+</div>
 
 ---
 
@@ -1914,16 +1936,19 @@ Changing the *display* property of the container to *flex* transforms the contai
   display: flex;
 }
 ```
+<div class="container" style="display: flex; background-color: #94d2bd; padding: 0.5em;">
+  <div class="item" style="text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">1</div>
+  <div class="item" style="text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">2</div>
+  <div class="item" style="text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">3</div>
+</div>
 
-![](assets/css3/flexbox-display.png)
-
-By default the main axis is horizontal from left to right.
+By default, the *main* axis is horizontal from left to right.
 
 ---
 
 # Flex Direction
 
-We can change the directon of the main axis by changing the *flex-direction* property of the container to: **row**, **row-reverse**, **column** or **column-reverse**.
+We can change the direction of the *main* axis by changing the *flex-direction* property of the container to: **row**, **row-reverse**, **column** or **column-reverse**.
 
 ```css
 .container {
@@ -1931,7 +1956,11 @@ We can change the directon of the main axis by changing the *flex-direction* pro
 }
 ```
 
-![](assets/css3/flexbox-example.png)
+<div class="container" style="flex-direction: column; display: flex; background-color: #94d2bd; padding: 0.5em;">
+  <div class="item" style="text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">1</div>
+  <div class="item" style="text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">2</div>
+  <div class="item" style="text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">3</div>
+</div>
 
 ---
 
@@ -1942,11 +1971,27 @@ wrap when changing lines: **nowrap**, **wrap**, **wrap-reverse**. The default is
 
 ```css
 .container {
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
+}
+.item {
+  width: 4em;
 }
 ```
 
-![](assets/css3/flexbox-wrap.png)
+<div class="container" style="flex-wrap: wrap; display: flex; background-color: #94d2bd; padding: 0.5em;">
+  <div class="item" style="width: 4em;text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">1</div>
+  <div class="item" style="width: 4em;text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">2</div>
+  <div class="item" style="width: 4em;text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">3</div>
+  <div class="item" style="width: 4em;text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">4</div>
+  <div class="item" style="width: 4em;text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">5</div>
+  <div class="item" style="width: 4em;text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">6</div>
+  <div class="item" style="width: 4em;text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">7</div>
+  <div class="item" style="width: 4em;text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">8</div>
+  <div class="item" style="width: 4em;text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">9</div>
+  <div class="item" style="width: 4em;text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">10</div>
+  <div class="item" style="width: 4em;text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">11</div>
+  <div class="item" style="width: 4em;text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">12</div>
+</div>
 
 ---
 
@@ -1960,7 +2005,59 @@ The *justify-content* property defines the alignment along the **main** axis all
 }
 ```
 
-![](assets/css3/flexbox-justify.png)
+<div style="display: flex; align-items: center; gap: 1em">
+<div class="container" style="flex-grow: 1; justify-content: flex-start; display: flex; background-color: #94d2bd; padding: 0.1em; margin-bottom: 0.1em">
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">1</div>
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">2</div>
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">3</div>
+</div>
+  <span style="flex-basis: 8em; text-align: left; font-size: 75%">flex-start</span>
+</div>
+
+<div style="display: flex; align-items: center; gap: 1em">
+<div class="container" style="flex-grow: 1; justify-content: flex-end; display: flex; background-color: #94d2bd; padding: 0.1em; margin-bottom: 0.1em">
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">1</div>
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">2</div>
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">3</div>
+</div>
+  <span style="flex-basis: 8em; text-align: left; font-size: 75%">flex-end</span>
+</div>
+
+<div style="display: flex; align-items: center; gap: 1em">
+<div class="container" style="flex-grow: 1; justify-content: center; display: flex; background-color: #94d2bd; padding: 0.1em; margin-bottom: 0.1em">
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">1</div>
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">2</div>
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">3</div>
+</div>
+  <span style="flex-basis: 8em; text-align: left; font-size: 75%">center</span>
+</div>
+
+<div style="display: flex; align-items: center; gap: 1em">
+<div class="container" style="flex-grow: 1; justify-content: space-around; display: flex; background-color: #94d2bd; padding: 0.1em; margin-bottom: 0.1em">
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">1</div>
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">2</div>
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">3</div>
+</div>
+  <span style="flex-basis: 8em; text-align: left; font-size: 75%">space-around</span>
+</div>
+
+<div style="display: flex; align-items: center; gap: 1em">
+<div class="container" style="flex-grow: 1; justify-content: space-between; display: flex; background-color: #94d2bd; padding: 0.1em; margin-bottom: 0.1em">
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">1</div>
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">2</div>
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">3</div>
+</div>
+  <span style="flex-basis: 8em; text-align: left; font-size: 75%">space-between</span>
+</div>
+
+<div style="display: flex; align-items: center; gap: 1em">
+<div class="container" style="flex-grow: 1; justify-content: space-evenly; display: flex; background-color: #94d2bd; padding: 0.1em; margin-bottom: 0.1em">
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">1</div>
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">2</div>
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">3</div>
+</div>
+  <span style="flex-basis: 8em; text-align: left; font-size: 75%">space-evenly</span>
+</div>
 
 ---
 
@@ -1973,14 +2070,56 @@ The *align-items* property defines the default behaviour for how flex items are 
   align-items: flex-start;
 }
 ```
+<div style="display: flex; align-items: center; gap: 1em">
+  <div class="container" style="flex-grow:1; align-items: flex-start; display: flex; background-color: #94d2bd; padding: 0.1em; margin-bottom: 0.1em">
+    <div class="item" style="font-size: 50%; text-align: center; margin: 0.2em; padding: 0.2em 2em; background-color: #0a9396; color: white">1</div>
+    <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">2</div>
+    <div class="item" style="font-size: 50%; text-align: center; margin: 0.2em; padding: 0.2em 2em; background-color: #0a9396; color: white">3</div>
+  </div>
+  <span style="flex-basis: 5em; text-align: left; font-size: 75%">flex-start</span>
+</div>
 
-![](assets/css3/flexbox-align.png)
+<div style="display: flex; align-items: center; gap: 1em">
+  <div class="container" style="flex-grow:1; align-items: flex-end; display: flex; background-color: #94d2bd; padding: 0.1em; margin-bottom: 0.1em">
+    <div class="item" style="font-size: 50%; text-align: center; margin: 0.2em; padding: 0.2em 2em; background-color: #0a9396; color: white">1</div>
+    <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">2</div>
+    <div class="item" style="font-size: 50%; text-align: center; margin: 0.2em; padding: 0.2em 2em; background-color: #0a9396; color: white">3</div>
+  </div>
+  <span style="flex-basis: 5em; text-align: left; font-size: 75%">flex-end</span>
+</div>
+
+<div style="display: flex; align-items: center; gap: 1em">
+<div class="container" style="flex-grow:1; align-items: center; display: flex; background-color: #94d2bd; padding: 0.1em; margin-bottom: 0.1em">
+  <div class="item" style="font-size: 50%; text-align: center; margin: 0.2em; padding: 0.2em 2em; background-color: #0a9396; color: white">1</div>
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">2</div>
+  <div class="item" style="font-size: 50%; text-align: center; margin: 0.2em; padding: 0.2em 2em; background-color: #0a9396; color: white">3</div>
+</div>
+  <span style="flex-basis: 5em; text-align: left; font-size: 75%">center</span>
+</div>
+
+<div style="display: flex; align-items: center; gap: 1em">
+<div class="container" style="flex-grow:1; align-items: baseline; display: flex; background-color: #94d2bd; padding: 0.1em; margin-bottom: 0.1em">
+  <div class="item" style="font-size: 50%; text-align: center; margin: 0.2em; padding: 0.2em 2em; background-color: #0a9396; color: white">1</div>
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">2</div>
+  <div class="item" style="font-size: 50%; text-align: center; margin: 0.2em; padding: 0.2em 2em; background-color: #0a9396; color: white">3</div>
+</div>
+  <span style="flex-basis: 5em; text-align: left; font-size: 75%">baseline</span>
+</div>
+
+<div style="display: flex; align-items: center; gap: 1em">
+<div class="container" style="flex-grow:1; align-items: stretch; display: flex; background-color: #94d2bd; padding: 0.1em; margin-bottom: 0.1em">
+  <div class="item" style="font-size: 50%; text-align: center; margin: 0.2em; padding: 0.2em 2em; background-color: #0a9396; color: white">1</div>
+  <div class="item" style="text-align: center; margin: 0.1em; padding: 0.1em 1em; background-color: #0a9396; color: white">2</div>
+  <div class="item" style="font-size: 50%; text-align: center; margin: 0.2em; padding: 0.2em 2em; background-color: #0a9396; color: white">3</div>
+</div>
+  <span style="flex-basis: 5em; text-align: left; font-size: 75%">stretch</span>
+</div>
 
 ---
 
 # Order
 
-The **order** property alters the order in which a flex item is layed out in its container.
+The **order** property alters the order in which a **flex item** is laid out in its container.
 
 ```css
 .item:first-child {
@@ -1988,16 +2127,27 @@ The **order** property alters the order in which a flex item is layed out in its
 }
 ```
 
-![](assets/css3/flexbox-order.png)
+<div class="container" style="display: flex; background-color: #94d2bd; padding: 0.5em;">
+  <div class="item" style="order: 3; text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">1</div>
+  <div class="item" style="text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">2</div>
+  <div class="item" style="text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">3</div>
+</div>
+
+.box_info[
+  Notice that we are targetting the items now!
+]
 
 ---
 
 # Grow and Shrink
 
-The *flex-grow* and *flex-shrink* properties define the ability for a flex item to grow, if there is extra space, or shrink, if there isn't enough. They accept a unitless value that serves as a proportion. The default is **1** for both properties.
+The *flex-grow* and *flex-shrink* properties define the ability for a flex item to grow (if there is extra space) or shrink (if there isn't enough):
+* They accept a unitless value that serves as a proportion. 
+* The default is **0** for *flex-grow*, which means items don't grow by default.
+* The default is **1** for *flex-shrink*, which means items shrink equally.
 
 ```css
-.item {
+.item:nth-child(1) {
   flex-grow: 1;
 }
 
@@ -2006,30 +2156,67 @@ The *flex-grow* and *flex-shrink* properties define the ability for a flex item 
 }
 ```
 
-![](assets/css3/flexbox-grow.png)
+<div class="container" style="display: flex; background-color: #94d2bd; padding: 0.5em;">
+  <div class="item" style="flex-grow: 1; text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">1</div>
+  <div class="item" style="flex-grow: 2; text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">2</div>
+  <div class="item" style="text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">3</div>
+</div>
 
 ---
 
 # Align Self
 
-Allows the alignment specified by align-items to be overridden for individual flex items. The default value is **auto** meaning that items follow the alignment specified by align-items.
+Allows the alignment specified by *align-items* to be overridden for individual flex items. The default value is **auto**, meaning that items follow the alignment set by *align-items*.
 
 ```css
 .container {
   align-items: flex-start;
 }
 
-.item:nth-child(2) {
-  align-self: center;
-}
+.item:nth-child(1) { height: 3em; }
+.item:nth-child(2) { align-self: center; }
 ```
 
-All items are aligned as **flex-start** except the second one that is **center**-aligned.
+All items aligned as **flex-start** except the second one that is **center**-aligned.
+
+<div class="container" style="align-items: flex-start; display: flex; background-color: #94d2bd; padding: 0.5em;">
+  <div class="item" style="height: 3em; text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">1</div>
+  <div class="item" style="align-self: center; text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">2</div>
+  <div class="item" style="text-align: center; margin: 0.5em; padding: 0.5em; background-color: #0a9396; color: white">3</div>
+</div>
+
+---
+
+# Gap
+
+The **gap** property is a shorthand for two other properties:
+
+- **row-gap**: a gap between every row in a flexbox.
+- **column-gap**: a gap between every column in a flexbox.
+
+You can either pass only one value (a length) and set both simultaneously or two values and set each one individually (*row-gap* first, then *column-gap*).
+
+```css
+.container { gap: 2em 1em; }
+
+.item { width: 6em; margin: 0; flex-grow: 1; }
+```
+
+<div class="container" style="flex-wrap: wrap; gap: 2em 1em; align-items: flex-start; display: flex; background-color: #94d2bd; padding: 0.5em;">
+  <div class="item" style="flex-grow: 1; width: 6em; text-align: center; padding: 0.5em; background-color: #0a9396; color: white">1</div>
+  <div class="item" style="flex-grow: 1; width: 6em; text-align: center; padding: 0.5em; background-color: #0a9396; color: white">2</div>
+  <div class="item" style="flex-grow: 1; width: 6em; text-align: center; padding: 0.5em; background-color: #0a9396; color: white">3</div>
+  <div class="item" style="flex-grow: 1; width: 6em; text-align: center; padding: 0.5em; background-color: #0a9396; color: white">4</div>
+  <div class="item" style="flex-grow: 1; width: 6em; text-align: center; padding: 0.5em; background-color: #0a9396; color: white">5</div>
+  <div class="item" style="flex-grow: 1; width: 6em; text-align: center; padding: 0.5em; background-color: #0a9396; color: white">6</div>
+  <div class="item" style="flex-grow: 1; width: 6em; text-align: center; padding: 0.5em; background-color: #0a9396; color: white">7</div>
+  <div class="item" style="flex-grow: 1; width: 6em; text-align: center; padding: 0.5em; background-color: #0a9396; color: white">8</div>
+</div>
 
 ---
 
 template: inverse
-name:grid
+name: grid
 # Grid
 
 ---
@@ -2038,7 +2225,7 @@ name:grid
 
 * A grid layout enables us to align elements into **columns** and **rows**.
 
-* A grid container's child elements can position themselves so they **overlap** and **layer**.
+* A grid container's child elements can position themselves, so they **overlap** and **layer**.
 
 ![](assets/css3/grid-1.svg)
 
@@ -2091,7 +2278,7 @@ Changing the *display* property of the container to *grid* transforms the contai
 }
 ```
 
-By default there is only one column.
+By default, there is only one column.
 
 ---
 
@@ -2379,16 +2566,16 @@ Specificity Calculator: [http://specificity.keegan.st](http://specificity.keegan
 
 ---
 
-template:inverse
-name:vars
-# CSS Vars
+template: inverse
+name: vars
+# Vars
 
 ---
 
-# CSS Vars
+# Vars
 
-* Entities that contain specific values to be reused throughout a document.
-* Set using custom property notation:
+* Entities that contain reusable values.
+* Set using a custom property notation:
 
 ```var
 body {
