@@ -44,7 +44,7 @@ name:index
 1. [The Flow](#flow)
 1. [Flexbox](#flexbox)
 1. [Grid](#grid)
-1. [Precedence](#precedence)
+1. [Cascading](#cascading)
 1. [Vars](#vars)
 1. [Responsive Design](#responsive)
 1. [Vendor Prefixes](#prefix)
@@ -1884,7 +1884,7 @@ name:flexbox
   
 * The flex container's margins **do not collapse** with the margins of its contents.
 
-https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+[A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 
 ---
 
@@ -1929,7 +1929,7 @@ https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 
 # Flex
 
-Changing the *display* property of the container to *flex* transforms the contained items into flexboxes.
+Changing the [display](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-display) property of the container to *flex* transforms the contained items into flexboxes.
 
 ```css
 .container {
@@ -1948,7 +1948,7 @@ By default, the *main* axis is horizontal from left to right.
 
 # Flex Direction
 
-We can change the direction of the *main* axis by changing the *flex-direction* property of the container to: **row**, **row-reverse**, **column** or **column-reverse**.
+We can change the direction of the *main* axis by changing the [flex-direction](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flex-direction) property of the container to: **row**, **row-reverse**, **column** or **column-reverse**.
 
 ```css
 .container {
@@ -1966,7 +1966,7 @@ We can change the direction of the *main* axis by changing the *flex-direction* 
 
 # Flex Wrap
 
-The *flex-wrap* property allows us to specify how items should
+The [flex-wrap](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flex-wrap) property allows us to specify how items should
 wrap when changing lines: **nowrap**, **wrap**, **wrap-reverse**. The default is **nowrap**.
 
 ```css
@@ -1997,7 +1997,7 @@ wrap when changing lines: **nowrap**, **wrap**, **wrap-reverse**. The default is
 
 # Justify Content
 
-The *justify-content* property defines the alignment along the **main** axis allowing the distribution of extra space: **flex-start**, **flex-end**, **center**, **space-around**, **space-between**, **space-evenly**. The default is **flex-start**.
+The [justify-content](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-justify-content) property defines the alignment along the **main** axis allowing the distribution of extra space: **flex-start**, **flex-end**, **center**, **space-around**, **space-between**, **space-evenly**. The default is **flex-start**.
 
 ```css
 .container {
@@ -2063,7 +2063,7 @@ The *justify-content* property defines the alignment along the **main** axis all
 
 # Align Items
 
-The *align-items* property defines the default behaviour for how flex items are laid out along the **cross** axis on the current line: **flex-start**, **flex-end**, **center**, **baseline**, **stretch**. The default is **stretch**.
+The [align-items](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-align-items) property defines the default behaviour for how flex items are laid out along the **cross** axis on the current line: **flex-start**, **flex-end**, **center**, **baseline**, **stretch**. The default is **stretch**.
 
 ```css
 .container {
@@ -2119,7 +2119,7 @@ The *align-items* property defines the default behaviour for how flex items are 
 
 # Order
 
-The **order** property alters the order in which a **flex item** is laid out in its container.
+The [order](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-order) property alters the order in which a **flex item** is laid out in its container.
 
 ```css
 .item:first-child {
@@ -2141,7 +2141,7 @@ The **order** property alters the order in which a **flex item** is laid out in 
 
 # Grow and Shrink
 
-The *flex-grow* and *flex-shrink* properties define the ability for a flex item to grow (if there is extra space) or shrink (if there isn't enough):
+The [flex-grow](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flex-grow) and [flex-shrink](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flex-shrink) properties define the ability for a flex item to grow (if there is extra space) or shrink (if there isn't enough):
 * They accept a unitless value that serves as a proportion. 
 * The default is **0** for *flex-grow*, which means items don't grow by default.
 * The default is **1** for *flex-shrink*, which means items shrink equally.
@@ -2166,7 +2166,7 @@ The *flex-grow* and *flex-shrink* properties define the ability for a flex item 
 
 # Align Self
 
-Allows the alignment specified by *align-items* to be overridden for individual flex items. The default value is **auto**, meaning that items follow the alignment set by *align-items*.
+The [align-self](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-align-self) property allows the alignment specified by *align-items* to be overridden for individual flex items. The default value is **auto**, meaning that items follow the alignment set by *align-items*.
 
 ```css
 .container {
@@ -2189,7 +2189,7 @@ All items aligned as **flex-start** except the second one that is **center**-ali
 
 # Gap
 
-The **gap** property is a shorthand for two other properties:
+The [gap](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-gap-row-gap-column-gap) property is a shorthand for two other properties:
 
 - **row-gap**: a gap between every row in a flexbox.
 - **column-gap**: a gap between every column in a flexbox.
@@ -2223,18 +2223,17 @@ name: grid
 
 # Grid
 
-* A grid layout enables us to align elements into **columns** and **rows**.
+A grid layout enables us to align elements into **columns** and **rows** of different sizes.
 
-* A grid container's child elements can position themselves, so they **overlap** and **layer**.
+Elements in a grid layout can occupy the same cells as other elements, thus overlapping and creating layers.
 
-![](assets/css3/grid-1.svg)
-
-https://css-tricks.com/snippets/css/complete-guide-grid/
+[A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
 ---
 
 # Running Example
 
+.small[
 ```html
 <div class="container">
   <div class="item header">Header</div>
@@ -2247,30 +2246,27 @@ https://css-tricks.com/snippets/css/complete-guide-grid/
 
 ```css
 .container {
-  background-color: #1A3C3D;
-  padding: 5px;
+  background-color: #eee;padding: 5px;  
 }
 .item {
-  color: black;
-  text-align: center;
-  margin: 2px;
-  padding: 1em;
-  background-color: #84A174;
+  color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: ...
 }
 ```
+]
 
----
-
-# Running Example
-
-
-![](assets/css3/grid-example.png)
+<div class="container" style="background-color: #eee;padding: 5px;">
+  <div class="item header" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #2a9d8f;">Header</div>
+  <div class="item menu1" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e9d8a6;">Menu 1</div>
+  <div class="item menu2" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e9c46a;">Menu 2</div>
+  <div class="item content" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #f4a261;">Content</div>
+  <div class="item footer" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e76f51;">Footer</div>
+</div>
 
 ---
 
 # Grid
 
-Changing the *display* property of the container to *grid* transforms the container into a grid layout.
+Changing the [display](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-display) property of the container to *grid* transforms it into a grid layout.
 
 ```css
 .container {
@@ -2280,36 +2276,73 @@ Changing the *display* property of the container to *grid* transforms the contai
 
 By default, there is only one column.
 
+<div class="container" style="background-color: #eee;padding: 5px; display: grid;">
+  <div class="item header" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #2a9d8f;">Header</div>
+  <div class="item menu1" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e9d8a6;">Menu 1</div>
+  <div class="item menu2" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e9c46a;">Menu 2</div>
+  <div class="item content" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #f4a261;">Content</div>
+  <div class="item footer" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e76f51;">Footer</div>
+</div>
+
+
 ---
 
 # Grid Templates
 
-The *grid-template-columns* and *grid-template-rows* properties allow us to define the number and size of the columns and rows of our table.
+The [grid-template-columns and grid-template-rows](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-grid-template-columnsgrid-template-rows) properties allow us to define the number and size of the columns and rows of our table.
 
 Sizes can be defined as **auto**, a **length**, a **percentage** or a **fraction** of the free space (using the *fr* unit).
 
 ```css
 .container {
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto auto 1fr auto;
+  grid-template-columns: 10em 1fr 2fr;
+  grid-template-rows: 2em 3em;
 }
 ```
 
-![](assets/css3/grid-templates.png)
+<div class="container" style="background-color: #eee;padding: 5px; display: grid; grid-template-columns: 10em 1fr 5em; grid-template-rows: 2em 3em;">
+  <div class="item header" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #2a9d8f;">Header</div>
+  <div class="item menu1" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e9d8a6;">Menu 1</div>
+  <div class="item menu2" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e9c46a;">Menu 2</div>
+  <div class="item content" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #f4a261;">Content</div>
+  <div class="item footer" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e76f51;">Footer</div>
+</div>
+
+---
+
+# Grid Templates Repeating
+
+The [repeat](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-the-repeat-function-and-keywords) keyword can be used to simplify grid templates with many columns and rows of the same size.
+
+```css
+.container {
+  grid-template-columns: repeat(2, 5em) 1fr repeat(2, 6em);
+  grid-template-rows: 2em;
+}
+```
+
+<div class="container" style="background-color: #eee;padding: 5px; display: grid; grid-template-columns: repeat(2, 5em) 1fr repeat(2, 6em); grid-template-rows: 2em;">
+  <div class="item header" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #2a9d8f;">Header</div>
+  <div class="item menu1" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e9d8a6;">Menu 1</div>
+  <div class="item menu2" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e9c46a;">Menu 2</div>
+  <div class="item content" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #f4a261;">Content</div>
+  <div class="item footer" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e76f51;">Footer</div>
+</div>
+
 
 ---
 
 # Numerical Names
 
-By default, grid lines are assigned numerical values.
+By default, gridlines are assigned a numerical value starting on *one*.
 
-![](assets/css3/grid-2.svg)
+<img src="assets/css3/grid.svg" width="30%">
 
 ---
 
 # Assigning Location
 
-We can assign a **location** to an item within the grid by referring to specific grid lines using the *grid-column-start*, *grid-column-end*, *grid-row-start* and *grid-row-end* properties.
+We can assign a **location** to an item within the grid by referring to specific grid lines using the [grid-column-start, grid-column-end, grid-row-start, and grid-row-end](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-grid-column-startgrid-column-endgrid-row-startgrid-row-end) properties.
 
 ```css
 .header {
@@ -2320,9 +2353,7 @@ We can assign a **location** to an item within the grid by referring to specific
 }
 ```
 
-Values can be the **numerical** default names of the grid lines or a name assigned by us.
-
-The end values can also be the number of rows or columns to span. By default these values are a span of one.
+The *end* values can also be the number of rows or columns to span. By default, these values have a *span* of 1.
 
 ```css
 .header {
@@ -2335,9 +2366,9 @@ The end values can also be the number of rows or columns to span. By default the
 
 # Location Shorthand
 
-The *grid-column* and *grid-row* properties can be used as a shorthand for assigning the location of an item. Each one of them receives two values separated by a forward slash (start / end).
+The [grid-column and grid-row](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-grid-columngrid-row) properties can be used as a shorthand for assigning the location of an item. Each one of them receives two values separated by a forward slash (start / end).
 
-The *grid-area* property can be used as a shorthand for the four values at once: *row-start* / *column-start* / *row-end* / *column-end*.
+The [grid-area](https://css-tricks.com/snippets/css/complete-guide-grid/#prop-grid-area) property can be used as a shorthand for the four values at once: *row-start* / *column-start* / *row-end* / *column-end*.
 
 .small[
 ```css
@@ -2346,23 +2377,19 @@ The *grid-area* property can be used as a shorthand for the four values at once:
 }
 
 .menu1 {
-  grid-column: 1;
-  grid-row: 2;
+  grid-column: 1; grid-row: 2;
 }
 
 .menu2 {
-  grid-column: 1;
-  grid-row: 3 / 5;
+  grid-column: 1; grid-row: 3 / 5;
 }
 
 .content {
-  grid-column: 2;
-  grid-row: 2 / span 2;
+  grid-column: 2; grid-row: 2 / span 2;
 }
 
 .footer {
-  grid-column: 2;
-  grid-row: 4;
+  grid-column: 2; grid-row: 4;
 }
 ```
 ]
@@ -2371,14 +2398,30 @@ The *grid-area* property can be used as a shorthand for the four values at once:
 
 # Location Result
 
-![](assets/css3/grid-location.png)
+```css
+.container {
+  grid-template-columns: auto 1fr; 
+  grid-template-rows: auto auto 1fr auto;
+}
+.menu1   { height: 3em;  } /* to simulate  */
+.content { height: 10em; } /* some content */
+```
+
+<div class="container" style="background-color: #eee;padding: 5px; display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto 1fr auto;">
+  <div class="item header" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #2a9d8f;grid-area: 1 / 1 / span 1 / span 2;">Header</div>
+  <div class="item menu1" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e9d8a6;grid-column: 1; grid-row: 2; height: 3em">Menu 1</div>
+  <div class="item menu2" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e9c46a;  grid-column: 1; grid-row: 3 / 5;">Menu 2</div>
+  <div class="item content" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #f4a261;  grid-column: 2; grid-row: 2 / span 2; height: 10em;">Content</div>
+  <div class="item footer" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e76f51; grid-column: 2; grid-row: 4;">Footer</div>
+</div>
 
 ---
 
 # Grid Line Names
 
-When defining the grid template, we can assign names to the grid lines. A line can have more than one name.
+We can assign names (more than one) to the grid lines.
 
+.small[
 ```css
 .container {
   grid-template-columns: [left] auto [middle] 1fr [right];
@@ -2389,8 +2432,9 @@ When defining the grid template, we can assign names to the grid lines. A line c
   grid-area: content-start / middle / footer-start / right;
 }
 ```
+]
 
-![](assets/css3/grid-3.svg)
+<img src="assets/css3/grid-names.svg" width="35%">
 
 ---
 
@@ -2400,6 +2444,7 @@ By giving names to items using the *grid-area* property, we can define a grid te
 
 Any number of adjacent periods can be used to declare a single empty cell.
 
+.small[
 ```css
 .container {
   grid-template-columns: auto 1fr;
@@ -2421,50 +2466,162 @@ Any number of adjacent periods can be used to declare a single empty cell.
 
 .footer { grid-area: footer; }
 ```
+]
+
+---
+
+# Adjusting Items
+
+Like with *flexbox*, we can adjust the placement of each item inside its cell on the grid.
+For that we use the folllowing properties:
+
+* [column-gap, row-gap](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-column-gaprow-gapgrid-column-gapgrid-row-gap), and [gap](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-gapgrid-gap): they work just like in flexbox.
+* [justify-items](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-justify-items): Align items along the row with: *start*, *end*, *center*, and *stretch*.
+* [align-items](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-align-items): Align items along the column with: *start*, *end*, *center*, *stretch*, and *baseline*.
+* [justify-content](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-justify-content) and [align-content](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-align-content): Align the rows and columns inside the grid container (if they have room to spare) with: *start*, *end*, *center*, *stretch*, *space-around*, *space-between*, *space-evenly*.
+
+There are also properties to adjust each item individually: [justify-self](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-justify-self) and [align-self](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-align-self).
+
+---
+
+# Implicit Cells
+
+You can assign an item to a location that you did not define with *grid-template-columns* and *grid-template-rows*.
+
+In that case, the needed column and rows are automatically added width size auto.
+
+```css
+.container { grid-template-rows: 2em; grid-template-columns: 2em; }
+.item_a { grid-column-start: 1 }
+.item_b { grid-column-start: 4 }
+```
+
+<div style="display: grid; grid-template-rows: 2em; grid-template-columns: 2em;;">
+  <div style="color: white; text-align: center; background-color: #2a9d8f">A</div>
+  <div style="color: white; text-align: center; background-color: #e9c46a; grid-column-start: 4">B</div>
+</div>
+
+There are three **implicit** grid tracks in this example.
+
+---
+
+# Auto Column and Rows
+
+We can specify the size of any implicit grid tracks using *grid-auto-rows* and *grid-auto-columns*.
+
+These properties can receive a length &mdash; or a series of lengths &mdash; that is repeated as needed.
+
+.small[
+```css
+.container { 
+  grid-template-rows: 2em; grid-template-columns: 2em; grid-auto-columns: 3em 4em;
+}
+.item_a { grid-column-start: 1 }
+.item_b { grid-column-start: 4 }
+```
+]
+
+<div style="display: grid; grid-template-rows: 2em; grid-template-columns: 2em; grid-auto-columns: 3em 4em">
+  <div style="color: white; text-align: center; background-color: #2a9d8f">A</div>
+  <div style="color: white; text-align: center; background-color: #e9c46a; grid-column-start: 4">B</div>
+</div>
+
+The three **implicit** grid tracks in this example have sizes *3em*, *4em*, and *3em*.
+Only the last one has content.
+
+---
+
+# Auto Flow
+
+If some items are not explicitly assigned a location, then an *auto-placement* algorithm is used to place them.
+
+The behavior of this algorithm can be changed using the [grid-auto-flow](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-grid-auto-flow) property:
+
+* *row* - The default value; Fill empty spaces row by row (if the item fits) and add new rows if necessary.
+* *column* - Fill empty spaces column by column (if the item fits) and add new columns if necessary.
+* *dense* - If some spaces were left empty, see if items that appear later fit there and use those spaces. This changes the order of the items.
+
+---
+
+# Simplified Positioning
+
+We can use the auto-placement algorithm to simplify item positioning:
+
+.small[
+```css
+.container { 
+  grid-template-columns: auto 1fr; 
+  grid-template-rows: auto auto 1fr auto; 
+}
+.header { grid-column-end: span 2 }
+.content { grid-row: 2 / span 2; grid-column: 2 }
+.menu2 { grid-row-end: span 2 }
+```
+]
+
+<div class="container" style="background-color: #eee;padding: 5px; display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto 1fr auto;">
+  <div class="item header" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #2a9d8f; grid-column-end: span 2">Header</div>
+  <div class="item menu1" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e9d8a6;height: 3em">Menu 1</div>
+  <div class="item menu2" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e9c46a;grid-row-end: span 2">Menu 2</div>
+  <div class="item content" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #f4a261; grid-row: 2 / span 2; grid-column: 2;height: 8em">Content</div>
+  <div class="item footer" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e76f51;">Footer</div>
+</div>
+
 
 ---
 
 template: inverse
-name:precedence
-# Precedence, Inheritance and Specificity
+name: cascading
+# Cascading
 
 ---
 
 # Example
 
-The text becomes red but the links are still blue. Why?
+
+What color will the text be? And what about the link?
 
 ```css
-<div>
-  <p>This is some text with a <a>link</a></p>
-</div>
+<section>
+ <p>The quick brown fox <a href="#">jumps</a> over the lazy dog</p>
+</section>
 ```
 
 ```css
-div {
+section {
   color: red;
 }
 ```
+
+--
+
+<p style="color:red">The quick brown fox <a href="#" style="color:blue">jumps</a> over the lazy dog</p>
+
+The text becomes red, but the link is still blue. Why?
+
+
 ---
 
 # Defaults
 
-* Each browser has **its own** set of default values for the properties of each HTML element.
-* These defaults are very similar between browsers but the little differences make cross-browser development harder.
+Each browser has **its own** set of default values for the properties of each HTML element.
 
-**Tip**: There are several reset CSS available that redeclare each default value to have the same value in every browser.
+These defaults are very similar between browsers, but slight differences can make cross-browser development harder.
+
+**Tip**: There are several CSS stylesheets that [normalize](https://github.com/necolas/normalize.css/) and [reset](https://github.com/elad2412/the-new-css-reset) each default value to mitigate this problem.
 
 ---
 
 # Inherit
 
-* A special value that can be used in almost every property.
+A special value that can be used in almost every property:
 * When a property is set to **inherit**, the value of that property is **inherited** from the element's **parent**.
+* Most browser defaults have the value **inherit**. 
 
 ```css
-<div id="menu">
-  <h1>Menu</h1> <!-- inherits the blue color from the div -->
-</div>
+<nav id="menu">
+  <h1>Menu</h1> <!-- inherits the blue color from the nav -->
+</nav>
 ```
 
 ```css
@@ -2477,37 +2634,42 @@ h1{
 }
 ```
 ---
-# I Get it Now
 
-* In most browsers the **anchor** color is defined as **blue**.
-* On the other hand, the **paragraph** color is defined as **inherit**.
+# Example Revisited
+
+* In most browsers, the **anchor** color is set as **blue**.
+* On the other hand, the **paragraph** color is set as **inherit**.
 
 ```css
-<div>
-  <p>This is some text with a <a>link</a></p>
-</div>
+<section>
+ <p>The quick brown fox <a href="#">jumps</a> over the lazy dog</p>
+</section>
 ```
 
 ```css
 a {
-  color: blue;
+  color: blue;    /* Doesn't inherit the color */
 }
 
 p {
-  color: inherit;
+  color: inherit; /* Inherits the color from the section */
 }
 
-div {
+section {
   color: red;
 }
 ```
+
 ---
+
 # Specificity
 
+What about this example?
+
 ```css
-<div id="menu">
+<nav id="menu">
   <p>What is my color?</p>
-</div>
+</nav>
 ```
 
 ```css
@@ -2520,37 +2682,40 @@ div p {
 }
 ```
 --
-<div class="fragment roll-in"><span style="color: green">Green</span>! Because the first rule is more specific than the second one.</div>
+
+<span style="color: green">Green</span>! Because the first **rule** is **more specific** than the second one.
+
 ---
 ## Calculating Specificity
 
-* The specificity of a rule is defined as 4 values (a, b, c, d).
+A rule's specificity is defined as three values (a, b, c).
   
-* Each one of them is incremented when a certain type of selector is used:
+Each one of them is incremented when a certain type of selector is used:
 
- * **d**: Element, Pseudo Element
- * **c**: Class, Pseudo class, Attribute
- * **b**: Id
- * **a**: Inline Style
----
-## Specificity Examples
+ * **a**: Id
+ * **b**: Class, Pseudo class, Attribute
+ * **c**: Element, Pseudo Element
 
-* *: - (0,0,0,0)
-* p: 1 element – (0,0,0,1)
-* div: 1 element – (0,0,0,1)
-* \#sidebar: 1 id – (0,1,0,0)
-* div#sidebar: 1 element, 1 id – (0,1,0,1)
-* div#sidebar p: 2 elements, 1 id – (0,1,0,2)
-* div#sidebar p.bio: 2 elements, 1 class, 1 id – (0,1,1,2)
-
-Specificity Calculator: [http://specificity.keegan.st](http://specificity.keegan.st)
-
----
-## Specificity Rules
+Ordering:
 
 * Rules with a bigger **a** value are **more specific**.
 * If the **a** value is the same for both rules, the **b** value is used for comparison.
-* If still needed, the **c** and **d** values are used.
+* If still needed, the **c** value is used.
+
+---
+
+## Specificity Examples
+
+* *: - (0, 0, 0)
+* p: 1 element – (0, 0, 1)
+* div: 1 element – (0, 0, 1)
+* \#sidebar: 1 id – (1, 0, 0)
+* div#sidebar: 1 element, 1 id – (1, 0, 1)
+* div#sidebar p: 2 elements, 1 id – (1, 0, 2)
+* div#sidebar p.bio: 2 elements, 1 class, 1 id – (1, 1, 2)
+
+Specificity Calculator: [http://specificity.keegan.st](http://specificity.keegan.st)
+
 ---
 # Cascading
 
