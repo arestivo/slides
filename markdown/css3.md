@@ -779,7 +779,7 @@ p {
 ---
 # Remote Fonts
 
-* The *@font-face* rule specifies a custom font with which to display text.
+* The *@font-face* rule specifies a custom font to display text.
 * The font can be loaded from a remote server, making it possible to use all kinds of fonts.
 
 ```css
@@ -950,7 +950,7 @@ They are useful when the physical properties of the output medium are unknown, s
 
 Units *rem* and *em* are used to create **scalable layouts**, which maintain the [vertical rhythm](https://nowodzinski.pl/syncope/) of the page even when the user changes the font size.
 
-* **rem** Represents the size of the root element font. If used to change the *font-size* in the root element, it represents the initial (default or user-defined) value of the browser (typically 16px).
+* **rem** Represents the size of the root element font. If used to change the *font-size* in the root element, it represents the browser's initial (default or user-defined) value (typically 16px).
 
 * **em** When used to change the *font-size*, it represents the size of the parent element font. When used to set the size of an element, it represents the size of the current element font.
 
@@ -1468,7 +1468,7 @@ name: transitions
 
 * Provide a way to control **animation speed** when changing CSS properties
 
-* Instead of having property changes take effect immediately, you can cause the changes in a property to take place over a period of time.
+* Instead of having property changes take effect immediately, you can cause changes in a property over a period of time.
 
 * CSS transitions let you decide:
   * which properties to animate (**list**)
@@ -1525,7 +1525,7 @@ name: flow
 
 Normal flow, or flow layout, is how elements are placed on a page before any layout changes.
 
-There are two main types of elements contributing to this flow: **block** and inline **elements**.
+There are two primary types of elements contributing to this flow: **block** and inline **elements**.
 
 * Block elements start on the **top** and move **down** the page.
 * Inline elements start on the **left** (or the right, depending on the *locale*) and move to the **right**.
@@ -2366,7 +2366,7 @@ The *end* values can also be the number of rows or columns to span. By default, 
 
 # Location Shorthand
 
-The [grid-column and grid-row](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-grid-columngrid-row) properties can be used as a shorthand for assigning the location of an item. Each one of them receives two values separated by a forward slash (start / end).
+The [grid-column and grid-row](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-grid-columngrid-row) properties can be used as a shorthand for assigning the location of an item. Each receives two values separated by a forward slash (start / end).
 
 The [grid-area](https://css-tricks.com/snippets/css/complete-guide-grid/#prop-grid-area) property can be used as a shorthand for the four values at once: *row-start* / *column-start* / *row-end* / *column-end*.
 
@@ -2440,7 +2440,7 @@ We can assign names (more than one) to the grid lines.
 
 # Grid Template Areas
 
-By giving names to items using the *grid-area* property, we can define a grid template in a more visual fashion.
+We can define a grid template more visually by giving names to items using the *grid-area* property.
 
 Any number of adjacent periods can be used to declare a single empty cell.
 
@@ -2739,8 +2739,7 @@ name: vars
 
 # Vars
 
-* Entities that contain reusable values.
-* Set using a custom property notation:
+Entities that contain reusable values. Set using a custom property notation:
 
 ```var
 body {
@@ -2749,7 +2748,7 @@ body {
 }
 ```
 
-* Accessed using the *var()* function:
+Accessed using the *var()* function:
 
 ```css
 body header {
@@ -2761,8 +2760,9 @@ body header {
 
 # CSS Vars Inheritance
 
-* CSS vars can be inherited. 
-* If no value is set for a var on a given element, the value of its parent is used.
+CSS vars are also inherited. 
+
+If no value is set for a *var* on a given element, the value of its *parent* is used.
 
 ```html
 <section>
@@ -2774,10 +2774,12 @@ body header {
 ```
 
 ```css
-section { --text-color: blue; }
-h1 { --text-color: red; }
-header * { color: var(--text-color); } /* what if the asterisk is removed? */
+section  { --text-color: blue; }
+h1       { --text-color: red; }
+header * { color: var(--text-color); } 
 ```
+
+**Extra**: What if the * is removed?
 
 ---
 
@@ -2789,38 +2791,41 @@ name:responsive
 
 # Responsive Design
 
-Responsive web design is a way of making websites that works effectively on both desktop browsers and the myriad of mobile devices on the market.
+Responsive web design makes websites that work effectively on both desktop browsers and the myriad of mobile devices on the market.
 
 ![](assets/css3/responsive.jpg)
 
 .footnote[
-http://foodsense.is/ image taken from http://designmodo.com/responsive-design-examples/
+Image taken from http://designmodo.com/responsive-design-examples/
 ]
 
 ---
 
-# Responsive vs Adaptative
+# Responsive vs. Adaptative
 
-**Adaptive Design** : Multiple **fixed** width layouts
+**Adaptive Design**: Multiple **fixed** width layouts
 
-**Responsive Design** : Multiple **fluid** grid layouts
+**Responsive Design**: Multiple **fluid** grid layouts
 
-**Mixed Approach** : Multiple fixed width layout for larger screens, multiple fluid layout for smaller screens.
+**Mixed Approach**: Multiple fixed width layout for larger screens, multiple fluid layout for smaller screens.
 
 ---
 
 # Viewport
 
-Pages optimized for a variety of devices must include a meta viewport element in the head of the document. A meta viewport tag gives the browser instructions on how to control the page's dimensions and scaling.
+Pages optimized for various devices must include a meta viewport element in the head of the document. 
+
+A meta viewport tag gives the browser instructions on how to control the page's dimensions and scale.
 
 ```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" 
+      content="width=device-width, initial-scale=1.0">
 ```
 
 * *width=device-width* matchs the screen's width in device independent pixels.
 * initial-scale=1* establishs a 1:1 relationship between CSS pixels and device independent pixels.
 
-Learn more: https://developer.mozilla.org/en/docs/Mozilla/Mobile/Viewport_meta_tag and a tale of two viewports [part 1](http://www.quirksmode.org/mobile/viewports.html) and [part 2](http://www.quirksmode.org/mobile/viewports2.html)
+Learn more: [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Viewport_concepts) and a tale of two viewports [part 1](http://www.quirksmode.org/mobile/viewports.html) and [part 2](http://www.quirksmode.org/mobile/viewports2.html).
 
 ---
 
@@ -2828,7 +2833,7 @@ Learn more: https://developer.mozilla.org/en/docs/Mozilla/Mobile/Viewport_meta_t
 
 A **media-query** is composed of a **media type** and/or a number of **media features**.
 
-They can be used when linking to a CSS file from HTML or directly in the CSS code.
+They can be used when linking to a CSS file from HTML or directly in the CSS code (allowing dynamic changes).
 
 ```html
 <link rel="stylesheet"
@@ -2848,7 +2853,7 @@ They can be used when linking to a CSS file from HTML or directly in the CSS cod
 
 # Media Types
 
-The media type indicates the type of media the CSS is to be applied to.
+The media type indicates in what media type the CSS is to be applied.
 
 * **all** - suitable for all devices.
 * **print** - intended for paged material and for documents viewed on screen in print preview mode.
@@ -2871,7 +2876,9 @@ The media type indicates the type of media the CSS is to be applied to.
 * **orientation=landscape**	width is greater than the height.
 
 ```html
-<link rel="stylesheet" media="(min-width: 800px)" href="large.css" />
+<link rel="stylesheet" 
+      media="(min-width: 800px)" 
+      href="large.css" />
 ```
 
 Parentheses are required around expressions; failing to use them is an error.
@@ -2880,9 +2887,9 @@ Parentheses are required around expressions; failing to use them is an error.
 
 # Logical Operators
 
-* **and** used for combining multiple media features together
-* **comma-separated** lists behave as the logical operator **or**
-* **not** applies to the whole media query and returns true if the media query would otherwise return false
+* **and** used for combining multiple media features.
+* **comma-separated** lists behave as the logical operator **or**.
+* **not** applies to the whole media query and returns true if the media query would otherwise return false.
 
 ```html
 <link rel="stylesheet"
@@ -2890,7 +2897,7 @@ Parentheses are required around expressions; failing to use them is an error.
       href="large.css" />
 ```
 
-Learn more: <br>https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries
+Learn more: [MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries).
 
 ---
 
@@ -2902,7 +2909,7 @@ name:prefix
 
 #Vendor Prefixes
 
-While the specification of selectors, properties and values are still being finalized, it is normal for browsers to go through an **experimentation** period.
+While the specification of selectors, properties, and values are still being finalized, it is normal for browsers to go through an **experimentation** period.
 
 Browsers might also have **proprietary** extensions to the CSS standard.
 
@@ -2918,7 +2925,7 @@ In order to accommodate the release of vendor-specific extensions, the CSS speci
 
 Prefixes: **-webkit-** (chrome, safari), **-moz-** (firefox), **-o-** (opera), **-ms-** (internet explorer), ...
 
-Check browser suppport: http://caniuse.com/
+Check browser support: http://caniuse.com/
 
 ---
 
@@ -2932,8 +2939,6 @@ http://jigsaw.w3.org/css-validator/
 # Extra stuff
 
 * Frameworks: [Ink](http://ink.sapo.pt/), [Bootstrap](http://getbootstrap.com/), [Flat UI](http://designmodo.github.io/Flat-UI/), [Pure](http://purecss.io/)
-* Reset: [CSS Reset](http://www.cssreset.com/)
-* Fonts: [Google Fonts](https://www.google.com/fonts)
 * Advanced/Experimental: [Shadows](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow), [Animations](https://developer.mozilla.org/en-US/docs/Web/CSS/animation)
 * Playgrounds: [JSFiddle](https://jsfiddle.net/), [CodePen](https://codepen.io/)
 * Pre-processors: [Less](http://lesscss.org/), [Sass](http://sass-lang.com/)
