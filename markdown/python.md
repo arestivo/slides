@@ -122,10 +122,10 @@ You can use the python interpreter as a **calculator** by using the <code>+</cod
 
 # Numerical Types
 
-* Integer numbers (*e.g.*, 2, 4) have type ```int```.
-* Real numbers (*e.g.*, 1.6) have type ```float```.
+* Integer numbers (*e.g.*, 2, 4) have type *int*.
+* Real numbers (*e.g.*, 1.6) have type *float*.
 
-Division **always** returns a ```float```. For **floor division** use ```//```.
+Division **always** returns a *float*. For **floor division** use *//*.
 
 ```python
 >>> 8/4
