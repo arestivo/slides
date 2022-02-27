@@ -142,8 +142,6 @@ template:inverse
 
 * References:
   * http://php.net/manual/en/
-* Benchmarks:
-  * http://www.phpbench.com/
 * Books:
   * http://www.phptherightway.com/
 
@@ -520,7 +518,7 @@ Some developers consider it a best practice to use single quotes when assigning 
 
 # Concatenation
 
-As we have seen before, the *sum* operator expects two numeric values. If used with strings it will try to cast the string into numbers and them sum them.
+The *sum* operator expects two numeric values as we have seen before. If used with strings, it will try to cast the strings into numbers, and sum them.
 
 A different operator is used to concatenate strings together.
 
@@ -545,7 +543,7 @@ echo strlen('John')   // 4
 ***
 
 ```php
-mixed strpos ( string $haystack , mixed $needle [, int $offset = 0 ] )
+mixed strpos (string $haystack, mixed $needle [, int $offset = 0 ])
 ```
 
 Find the numeric position of the first occurrence of *needle* in the *haystack* string starting at *offset*. Returns false if not found.
@@ -562,7 +560,7 @@ echo strpos ('abccba', 'bc', 2); // false
 # Some String Functions
 
 ```php
-string substr ( string $string , int $start [, int $length ] )
+string substr (string $string, int $start [, int $length ])
 ```
 Returns the portion of string specified by the start and length parameters.
 
@@ -573,7 +571,8 @@ echo substr('abcdefgh', 2, 4); // cdef
 ***
 
 ```php
-mixed str_replace ( mixed $search , mixed $replace , mixed $subject [, int &$count ] )
+mixed str_replace (mixed $search, mixed $replace, 
+                   mixed $subject [, int &$count ])
 ```
 Returns a string or an array with all occurrences of search in subject replaced with the given replace value.
 
@@ -588,19 +587,14 @@ echo $count; //2
 # Some String Functions
 
 ```php
-array explode ( string $delimiter , string $string [, int $limit ] )
+array explode (string $delimiter , string $string [, int $limit ])
 ```
 Returns an array of strings, each of which is a substring of string formed by splitting it on boundaries formed by the string *delimiter*.
 
-
-***
-
 ```php
-string implode ( string $glue , array $pieces )
+string implode (string $glue , array $pieces)
 ```
-Join array elements with a *glue* string.
-
-***
+Joins *pieces* from an array with a *glue* string.
 
 ```php
 $pieces = explode(' ', 'a b c'); // $pieces = array('a', 'b', 'c')
@@ -609,8 +603,8 @@ $text = implode('-', $pieces);   //$text = 'a-b-c'
 
 ---
 
-template:inverse
-name:arrays
+template: inverse
+name: arrays
 # Arrays
 
 ---
@@ -624,7 +618,8 @@ $values[0] = 5;  // although they don't need to be defined
 $values[1] = 10; // and they don't have a fixed size
 $values[2] = 20;
 
-for ($i = 0; $i < count($values); $i++) // count returns the size of the array
+// count returns the size of the array
+for ($i = 0; $i < count($values); $i++)
   $sum = $sum + $values[$i];
 
 echo $sum / count($values); // calculates average: 11.666666666667
@@ -634,9 +629,9 @@ echo $sum / count($values); // calculates average: 11.666666666667
 
 # Arrays
 
-An array is a **ordered map** organized as an ordered collection of **key-value** pairs.
+An array is an **ordered map** organized as an ordered collection of **key-value** pairs.
 
-Keys can be either **integers** or **strings** and values can hold any type of data. They can even hold different kinds of data in the same array.
+Keys can be either **integers** or **strings**, and values can hold any data type. They can even hold different kinds of data in the same array.
 
 ```php
 $values['name'] = 'John';
@@ -657,7 +652,8 @@ $values = array(); // this creates an empty array
 They can also be initialized with some values.
 
 ```php
-$values = array(1, 2, 3, 'John'); // 0 => 1, 1 => 2, 2=>3, 3 => 'John'
+$values = array(1, 2, 3, 'John'); 
+// 0 => 1, 1 => 2, 2 => 3, 3 => 'John'
 ```
 
 ```php
@@ -668,17 +664,17 @@ $values = array('name' => 'John', 'age' => 45, 3 => 'Car');
 
 # Using Arrays
 
-When a key is not provided, PHP will use the increment of the largest previously used integer key.
+When a key is not provided, PHP will increment the largest previously used integer key.
 
 ```php
-$values = array('name' => 'John', 'age' => 45, 2 => 'Car', 'Bicycle');
+$values = array('name'=>'John', 'age'=>45, 2=>'Car', 'Bicycle');
 $values[] = 'Boat';
-// 'name' => John, 'age' => 45, 2 => 'Car', 3 => 'Bicycle', 4 => 'Boat'
+// 'name'=>John, 'age'=>45, 2=>'Car', 3=>'Bicycle', 4=>'Boat'
 ```
 
-> Note that the maximum integer key used for this need not currently exist in the array. It need only have existed in the array at some time since the last time the array was re-indexed.
+.box_info[Note that the maximum integer key used for this does not need to currently exist in the array. It need only have existed in the array at some time since the last time the array was re-indexed.]
 
-We can even use arrays as an array value.
+We can also have arrays as an array value.
 
 ```php
 $people = array(
@@ -692,17 +688,17 @@ echo $people[0]['name']; // John
 
 # Cycling Arrays
 
-As arrays might not have sequential keys, like in other languages, in PHP we use the following construct to cycle through them:
+As arrays might not have sequential keys, like in other languages, in PHP we use the following construct to cycle through their **values**:
 
 ```php
-$values = array('name' => 'John', 'age' => 45, 2 => 'Car', 'Bicycle');
+$values = array('name'=>'John', 'age'=>45, 2=>'Car', 'Bicycle');
 foreach ($values as $value)
   echo "$value\n";
 ```
 
-A similiar construct can be used to cycle through the keys and values simultaneously:
+A similiar construct can be used to cycle through the **keys and values** simultaneously:
 ```php
-$values = array('name' => 'John', 'age' => 45, 2 => 'Car', 'Bicycle');
+$values = array('name'=>'John', 'age'=>45, 2=>'Car', 'Bicycle');
 foreach ($values as $key => $value)
   echo "$key = $value\n";
 ```
@@ -711,24 +707,22 @@ foreach ($values as $key => $value)
 
 # Some Array Functions
 
-Searching for data:
+**Searching for data:**
 
 ```php
-bool in_array ( mixed $needle , array $haystack [, bool $strict = FALSE ] )
+bool in_array (mixed $needle, 
+               array $haystack [, bool $strict = false ])
 ```
 Searches haystack for needle using loose comparison unless strict is set. Returns true if found, false otherwise.
 
-***
-
 ```php
-mixed array_search ( mixed $needle , array $haystack [, bool $strict = false ] )
+mixed array_search (mixed $needle, 
+                    array $haystack [, bool $strict = false ])
 ```
 Returns the key for needle if it is found in the array, *false* otherwise.
 
-***
-
 ```php
-bool array_key_exists ( mixed $key , array $array )
+bool array_key_exists (mixed $key, array $array)
 ```
 Returns *true* if the given key is set in the array, *false* otherwise.
 
@@ -736,43 +730,38 @@ Returns *true* if the given key is set in the array, *false* otherwise.
 
 # Some Array Functions
 
-Sorting data:
+**Sorting data:**
 
 ```php
-bool asort ( array &$array [, int $sort_flags = SORT_REGULAR ] )
+bool asort (array &$array [, int $sort_flags = SORT_REGULAR ])
 ```
 Sorts an array such that array indexes maintain their correlation with the array elements they are associated with. **arsort** does the same but in reverse.
 
-***
-
 ```php
-bool ksort ( array &$array [, int $sort_flags = SORT_REGULAR ] )
+bool ksort (array &$array [, int $sort_flags = SORT_REGULAR ])
 ```
 Sorts an array by key, maintaining key to data correlations. **krsort** does the same but in reverse.
 
-***
-
 Sort Flags: **SORT_REGULAR**, **SORT_NUMERIC**, **SORT_STRING**, **SORT_LOCALE_STRING**, **SORT_NATURAL** and **SORT_FLAG_CASE**.
 
-Learn more: http://php.net/manual/en/array.sorting.php
+Learn more: [php.net &ndash; array sorting](http://php.net/manual/en/array.sorting.php)
 
 ---
 
 # Some Array Functions
 
-Random arrays:
+**Random arrays:**
 
 ```php
-bool shuffle ( array &$array )
+bool shuffle (array &$array)
 ```
 This function randomizes the order of the elements in an array. Returns *true* on success or *false* on failure.
 
-***
-
 ```php
-mixed array_rand ( array $array [, int $num = 1 ] )
+mixed array_rand (array $array [, int $num = 1 ])
 ```
-Picks one or more random entries out of an array, and returns the key (or keys) of the random entries. When picking only one entry, returns the key, otherwise returns an array of keys.
+
+Picks one or more random entries out of an array and returns the random entries' key (or keys). When picking only one entry, returns the key, otherwise returns an array of keys.
 
 ---
 
@@ -781,7 +770,7 @@ Picks one or more random entries out of an array, and returns the key (or keys) 
 ```php
 array list ( mixed $var1 [, mixed $... ] )
 ```
-Used to assign a list of variables in one operation. This is not really a function, but a language construct.
+Used to assign a list of variables in one operation; not really a function but a language construct.
 
 ```php
 $values = array('John', 45, 'Bicycle');
@@ -796,7 +785,7 @@ $values = array('John', 45, 'Bicycle');
 list($name, , $vehicle) = $values; // skipping some values
 ```
 
-Many more functions: http://php.net/manual/en/ref.array.php
+Many more functions: [php.net &ndash; arrays](http://php.net/manual/en/ref.array.php)
 
 ---
 
@@ -1293,7 +1282,9 @@ $stmt->execute();
 Another form of prepared statements.
 
 ```php
-$stmt = $dbh->prepare('INSERT INTO person (name, address) VALUES (?, ?)');
+$stmt = $dbh->prepare('INSERT INTO person (name, address) 
+                       VALUES (?, ?)');
+                       
 $stmt->execute(array($name, $address));
 ```
 
