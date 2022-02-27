@@ -22,9 +22,25 @@ if (slides) {
   function initialize_search() {
     if (document.querySelector('.remark-slides-area') != null) {
       RemarkSearch.create();
-      document.addEventListener('keyup', (e) => { if (e.key == 'l') laserToggle() })
-      document.addEventListener('keyup', (e) => { if (e.key == 'x') paragraphFocusToggle() })
+      document.addEventListener('keyup', (e) => { if (e.altKey && e.key == 'l') laserToggle() })
+      document.addEventListener('keyup', (e) => { if (e.altKey && e.key == 'x') paragraphFocusToggle() })
+      document.addEventListener('keyup', (e) => { if (e.altKey && e.key == 'c') toggleColor() })
     } else setTimeout(initialize_search, 100)
+  }
+
+  function toggleColor() {
+    const index = themes.indexOf(currentTheme) + 1
+    const nextTheme = themes[index >= themes.length ? 0 : index]
+
+    const blocks = document.querySelectorAll(`.hljs-${currentTheme}`)
+    console.log(`.hljs-${currentTheme}`)
+    console.log(blocks)
+    for (const block of blocks){
+      block.classList.remove(`hljs-${currentTheme}`)
+      block.classList.add(`hljs-${nextTheme}`)
+    }
+
+    currentTheme = nextTheme
   }
 
   function initialize_color() {
@@ -32,19 +48,7 @@ if (slides) {
       const colorLinks = document.querySelectorAll('a.color')
       for (const link of colorLinks) link.addEventListener('click', (e) => {
         e.preventDefault()
-
-        const index = themes.indexOf(currentTheme) + 1
-        const nextTheme = themes[index >= themes.length ? 0 : index]
-
-        const blocks = document.querySelectorAll(`.hljs-${currentTheme}`)
-        console.log(`.hljs-${currentTheme}`)
-        console.log(blocks)
-        for (const block of blocks){
-          block.classList.remove(`hljs-${currentTheme}`)
-          block.classList.add(`hljs-${nextTheme}`)
-        }
-
-        currentTheme = nextTheme
+        toggleColor()
       })
     } else setTimeout(initialize_color, 100)
   }
