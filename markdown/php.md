@@ -78,23 +78,23 @@ or even shorter
 
 # PHP Delimiters
 
-* The PHP interpreter only executes PHP code within its delimiters. Anything outside its delimiters is not processed by PHP.
-* PHP code can be delimited using "<?php" and "?>", "<?" and "?>" or "&lt;script language="php">" and "&lt;/script>".
-* The purpose of all these delimiters is to separate PHP code from non-PHP code, including HTML.
+* The PHP interpreter only executes PHP code within its delimiters.<br><small>Anything outside its delimiters is not processed by PHP.</small>
+* PHP code is delimited using "<?php" and "?>".<br><small>In some cases "<?" and "?>" or "&lt;script language="php">" and "&lt;/script>" also work.</small>
+* The purpose is to separate PHP code from non-PHP code (*e.g.*, HTML).
 * After processing, the PHP code blocks are replaced by their output.
 
 ```php
-<div>
+<section>
   <p><?php echo 'Hello World'?></p>
-</div>
+</section>
 ```
 
-becomes
+Becomes:
 
 ```html
-<div>
+<section>
   <p>Hello World</p>
-</div>
+</section>
 ```
 
 ---
@@ -108,6 +108,7 @@ becomes
 ```php
 <?php echo 'Hello World'; ?>
 ```
+The same as:
 
 ```php
 <?='Hello World'?>
@@ -117,14 +118,14 @@ becomes
 
 # Comments
 
-There are two ways of creating single line comments:
+There are two ways of creating single-line comments:
 
 ```php
 echo 'Hello World'; // This line prints Hello World
 echo 'Hello World'; # This line prints Hello World
 ```
 
-Multiple line comments can also be used:
+Multi-line comments can also be used:
 
 ```php
 /**
@@ -155,9 +156,9 @@ name:data
 
 # Variables
 
-* Variables in PHP are represented by a dollar sign followed by the name of the variable.
-* The variable name is **case-sensitive**.
-* PHP does not require (or support) explicit type definition in variable declaration
+* Variables in PHP are represented by a dollar sign followed by the variable's name.
+* The variable's name is **case-sensitive**.
+* PHP does not require (or support) explicit type definition in variable declarations.
 * A variable's type is determined by the context in which the variable is used.
 
 ```php
@@ -171,16 +172,16 @@ $age = 25;
 
 PHP supports the following scalar types:
 
-* boolean
-* integer
-* float
-* string
+* [bool](https://www.php.net/manual/en/language.types.boolean.php): **case-insensitive** *true* or *false*.
+* [int](https://www.php.net/manual/en/language.types.integer.php): integer between *PHP_INT_MIN* and *PHP_INT_MAX*.<br><small>Range is platform-dependent; converted to float in the case of an overflow.</small>
+* [float](https://www.php.net/manual/en/language.types.float.php): IEEE 754 double precision format.
+* [string](https://www.php.net/manual/en/language.types.string.php): Text.
 
 ---
 
 # Assignment
 
-* The type of a variable is defined when a value is assigned to it.
+* The variable type is defined when a value is assigned to it.
 * Variables can change type when values of another type are assigned to them.
 * Assignment is done by value unless the **&** sign is used.
 
@@ -207,9 +208,7 @@ echo 5 + '10 potatoes'; // 15
 
 * PHP automatically converts the string into an integer.
 
-> If the string does not contain any of the characters '.', 'e', or 'E' and the numeric value fits into integer type limits (as defined by PHP_INT_MAX), the string will be evaluated as an integer. In all other cases it will be evaluated as a float.
-<br><br>
-> The value is given by the initial portion of the string. If the string starts with valid numeric data, this will be the value used. Otherwise, the value will be 0 (zero). Valid numeric data is an optional sign, followed by one or more digits (optionally containing a decimal point), followed by an optional exponent. The exponent is an 'e' or 'E' followed by one or more digits.
+More on [type juggling](https://www.php.net/manual/en/language.types.type-juggling.php) and [why](https://owasp.org/www-pdf-archive/PHPMagicTricks-TypeJuggling.pdf) you should be careful.
 
 ---
 
@@ -217,9 +216,9 @@ echo 5 + '10 potatoes'; // 15
 
 The special **null** value represents a variable with no value.
 
-A variable is considered to be null if:
+A variable is considered *null* if:
 
-* it has been assigned the constant NULL.
+* it has been assigned the constant *null*.
 * it has not been set to any value yet.
 * it has been unset().
 
@@ -231,14 +230,14 @@ $a = 10;   // 10;
 unset($a); // null;
 ```
 
-The constant **null** is case-insensitive.
+The constant **null** is **case-insensitive**.
 
 ---
 
 # Var Dump
 
-The **var_dump** function displays structured information about one or more expressions that includes its type and value.
-Arrays and objects are explored recursively with values indented to show structure.
+The **var_dump** function displays structured information about one or more expressions, including their type and value.
+Arrays and objects are explored recursively to show their structure.
 
 ```php
 $a = 10.5;
@@ -251,14 +250,14 @@ float(10.5)
 bool(true)
 ```
 
-Very useful for simple and dirty debugging.
+Very useful for dirty and straightforward debugging.
 
 An alternative is **print_r**, a simplified form of **var_dump**.
 
 ---
 
-template:inverse
-name:control
+template: inverse
+name: control
 # Control Structures
 Not so different from other languages
 
@@ -291,7 +290,7 @@ endwhile;
 
 # Do While
 
-Similar to while loops, except the truth expression is checked at the end of each iteration instead of in the beginning.
+Similar to while loops, but the expression is checked at the end of each iteration instead of at the beginning.
 
 ```php
 do {
@@ -305,7 +304,7 @@ do {
 
 The first expression is executed once unconditionally at the beginning of the loop.
 
-In the beginning of each iteration, the second expression is evaluated. If it evaluates to *false*, the execution of the loop ends.
+At the beginning of each iteration, the second expression is evaluated. If it evaluates to *false*, the execution of the loop ends.
 
 At the end of each iteration, the third expression is executed.
 
@@ -325,7 +324,7 @@ for ($i = 0; $i < 10; $i++) {
 
 # If
 
-If the expression evaluates to *true*, executes the statement(s), and if it evaluates to *false*, ignores it(them).
+Only if the expression evaluates to *true* does the following code execute.
 
 ```php
 if ($expr)
@@ -343,7 +342,7 @@ if ($expr) {
 
 # Else
 
-The **else** statement extends an **if** statement to execute a statement in case the expression in the if statement evaluates to *false*.
+The *else statement* extends an *if statement* to execute alternative code if the expression in the *if statement* evaluates to *false*.
 
 ```php
 if ($expr)
@@ -367,7 +366,7 @@ else {
 
 Break ends execution of the current **for**, **foreach**, **while**, **do-while** or **switch** structure.
 
-Continue skips the rest of the current loop iteration and continue execution at the condition evaluation.
+Continue skips the rest of the current loop iteration and continues execution at the condition evaluation.
 
 ```php
 while ($expr) {
@@ -382,9 +381,9 @@ while ($expr) {
 
 # Switch
 
-The switch statement is similar to a series of *if* statements on the same expression.
+The *switch statement* is similar to a series of *if statements* on the same expression.
 
-After finding a true condition, PHP continues to execute the statements until the end of the switch block, or the first time it sees a break statement.
+After finding a *true* condition, PHP continues to execute the statements until the end of the switch block, or the first time it sees a break statement.
 
 ```php
 switch($name) {
@@ -406,7 +405,8 @@ switch($name) {
 
 Both **die** and **exit** stop the execution of the current PHP script.
 
-They can receive a status as a string, that will be printed before stopping, or an integer, that will be as the exit status and not printed.
+* **die**: can receive a status string that will be printed before stopping
+* **exit**: can receive a result integer that will be the exit status and not printed.
 
 ```php
   if ($something == "wrong") die ("Something is Wrong");
@@ -420,9 +420,9 @@ They can receive a status as a string, that will be printed before stopping, or 
 
 # Loose and Strict Comparisons
 
-Comparisons can be tricky in PHP. There are two type of equality operators:
+Comparisons can be tricky in PHP. There are two types of equality operators:
 
-**Loose comparison**
+**Loose comparison**: Types can be converted before comparison.
 
 ```php
 if ($a == $b) {   // != gives the opposite result
@@ -430,7 +430,7 @@ if ($a == $b) {   // != gives the opposite result
 }
 ```  
 
-**Strict comparison**
+**Strict comparison**: Types must be the same.
 
 ```php
 if ($a === $b) {   // !== gives the opposite result
@@ -464,7 +464,7 @@ if ("Car" == true)  // true
 if ("Car" === true) // false;
 ```
 
-Learn more: http://php.net/manual/en/types.comparisons.php
+Learn [more](http://php.net/manual/en/types.comparisons.php).
 
 ---
 
@@ -531,22 +531,21 @@ echo 'Hello World!' . " This is $name.";
 
 # Some String Functions
 
+Returns the **length** of the given string:
+
 ```php
-int strlen ( string $string )
+int strlen (string $string)
 ```
-Returns the length of the given string.
 
 ```php
 echo strlen('John')   // 4
 ```
 
-***
+Find the numeric position of the **first occurrence** of *needle* in the *haystack* string starting at *offset*. Returns false if not found.
 
 ```php
 mixed strpos (string $haystack, mixed $needle [, int $offset = 0 ])
 ```
-
-Find the numeric position of the first occurrence of *needle* in the *haystack* string starting at *offset*. Returns false if not found.
 
 ```php
 echo strpos ('abccba', 'bc');    // 1
@@ -559,22 +558,22 @@ echo strpos ('abccba', 'bc', 2); // false
 
 # Some String Functions
 
+Returns the **string portion** specified by the *start* and *length* parameters.
+
 ```php
 string substr (string $string, int $start [, int $length ])
 ```
-Returns the portion of string specified by the start and length parameters.
 
 ```php
 echo substr('abcdefgh', 2, 4); // cdef
 ```
 
-***
+Returns a string with all occurrences of search in subject **replaced** with the given replace value. <small>Also works with arrays.</small>
 
 ```php
 mixed str_replace (mixed $search, mixed $replace, 
                    mixed $subject [, int &$count ])
 ```
-Returns a string or an array with all occurrences of search in subject replaced with the given replace value.
 
 ```php
 $text = str_replace("cd", "--", "abcdabcd", $count);
@@ -586,15 +585,17 @@ echo $count; //2
 
 # Some String Functions
 
+Returns an array of strings, each of which is a substring of the initial string formed by **splitting** it on the boundaries defined by the string *delimiter*.
+
 ```php
 array explode (string $delimiter , string $string [, int $limit ])
 ```
-Returns an array of strings, each of which is a substring of string formed by splitting it on boundaries formed by the string *delimiter*.
+
+**Joins** *pieces* from an array with a *glue* string.
 
 ```php
 string implode (string $glue , array $pieces)
 ```
-Joins *pieces* from an array with a *glue* string.
 
 ```php
 $pieces = explode(' ', 'a b c'); // $pieces = array('a', 'b', 'c')
@@ -664,7 +665,7 @@ $values = array('name' => 'John', 'age' => 45, 3 => 'Car');
 
 # Using Arrays
 
-When a key is not provided, PHP will increment the largest previously used integer key.
+PHP will increment the **largest previously used** integer key when a key is not provided.
 
 ```php
 $values = array('name'=>'John', 'age'=>45, 2=>'Car', 'Bicycle');
@@ -672,9 +673,9 @@ $values[] = 'Boat';
 // 'name'=>John, 'age'=>45, 2=>'Car', 3=>'Bicycle', 4=>'Boat'
 ```
 
-.box_info[Note that the maximum integer key used for this does not need to currently exist in the array. It need only have existed in the array at some time since the last time the array was re-indexed.]
+.box_info[Note that the largest previously used integer key does not need to exist in the array. It needs only to have been used as a key since the last time the array was re-indexed.]
 
-We can also have arrays as an array value.
+We can also have arrays as an array value:
 
 ```php
 $people = array(
@@ -709,22 +710,25 @@ foreach ($values as $key => $value)
 
 **Searching for data:**
 
+**Searches** *haystack* for *needle* using loose comparison unless strict is set. Returns true if found, false otherwise.
+
 ```php
 bool in_array (mixed $needle, 
                array $haystack [, bool $strict = false ])
 ```
-Searches haystack for needle using loose comparison unless strict is set. Returns true if found, false otherwise.
+
+Returns the **key** for needle if it exists in the array, *false* otherwise.
 
 ```php
 mixed array_search (mixed $needle, 
                     array $haystack [, bool $strict = false ])
 ```
-Returns the key for needle if it is found in the array, *false* otherwise.
+
+Returns *true* if the given key **exists** in the array, *false* otherwise.
 
 ```php
 bool array_key_exists (mixed $key, array $array)
 ```
-Returns *true* if the given key is set in the array, *false* otherwise.
 
 ---
 
@@ -732,15 +736,17 @@ Returns *true* if the given key is set in the array, *false* otherwise.
 
 **Sorting data:**
 
+Sorts an array such that array indexes **maintain** their **correlation** with the array elements they are associated with.<br><small>**arsort** does the same but in reverse.</small>
+
 ```php
 bool asort (array &$array [, int $sort_flags = SORT_REGULAR ])
 ```
-Sorts an array such that array indexes maintain their correlation with the array elements they are associated with. **arsort** does the same but in reverse.
+
+Sorts an array by key, **maintaining** key to data **correlations**.<br><small>**krsort** does the same but in reverse.</small>
 
 ```php
 bool ksort (array &$array [, int $sort_flags = SORT_REGULAR ])
 ```
-Sorts an array by key, maintaining key to data correlations. **krsort** does the same but in reverse.
 
 Sort Flags: **SORT_REGULAR**, **SORT_NUMERIC**, **SORT_STRING**, **SORT_LOCALE_STRING**, **SORT_NATURAL** and **SORT_FLAG_CASE**.
 
@@ -752,25 +758,28 @@ Learn more: [php.net &ndash; array sorting](http://php.net/manual/en/array.sorti
 
 **Random arrays:**
 
+This function **randomizes** the order of the elements in an array. Returns *true* on success or *false* on failure.
+
 ```php
 bool shuffle (array &$array)
 ```
-This function randomizes the order of the elements in an array. Returns *true* on success or *false* on failure.
+
+Picks **one or more random entries** out of an array and returns the random entries' key (or keys). 
+<br><small>When picking only one entry, returns the key, otherwise returns an array of keys.</small>
 
 ```php
 mixed array_rand (array $array [, int $num = 1 ])
 ```
 
-Picks one or more random entries out of an array and returns the random entries' key (or keys). When picking only one entry, returns the key, otherwise returns an array of keys.
-
 ---
 
 # Some Array Functions
 
+Used to assign a list of variables in one operation; not really a function but a language construct.
+
 ```php
 array list ( mixed $var1 [, mixed $... ] )
 ```
-Used to assign a list of variables in one operation; not really a function but a language construct.
 
 ```php
 $values = array('John', 45, 'Bicycle');
@@ -806,43 +815,39 @@ Function names are **case-insensitive**.
 To create a function, we use the *function* keyword:
 
 ```php
-function do_something() {
+function doSomething() {
   echo "done";
 }
 
-do_something(); // prints done
+doSomething(); // prints done
 ```
 
 ---
 
-# Arguments
+# Parameters
 
-Information may be passed to functions via the argument list.
-
-Arguments have no type specified.
-
-By default, function arguments are passed by value. To have an argument to a function always passed by reference, prepend an ampersand (&) to the argument name in the function definition.
+By default, function parameters are passed by value. Parameters passed by reference are preceded by an ampersand (&).
 
 ```php
 function sum($a, &$b) {
-  echo $a + $b;
-  $a++;
-  $b++;
+  return $a++ + $b++;
 }
 
 $a = 1; $b = 2;
-sum($a, $b); // prints 3
-echo $a;     // prints 1
-echo $b;     // prints 3
+
+echo sum($a, $b); // prints 3
+
+echo $a;          // prints 1
+echo $b;          // prints 3
 ```
 
 ---
 
 # Default Values
 
-Arguments can have a default value.
+Function parameters can have default values.
 
-When using default arguments, any defaults should be on the right side of any non-default arguments
+Any parameters with a default value should appear after all parameters without defaults.
 
 ```php
 function sum($a, $b = 0, $c = 0) {
@@ -858,11 +863,11 @@ sum(1,2,3); // prints 6
 
 # Returning Values
 
-PHP functions can return values.
+Functions can return values.
 
-The type of the returned value does not need to be specified. In fact, a function can return different types of values depending on some condition.
+The type of the returned value does not need to be specified. A function can even return different types of values depending on some condition.
 
-There is no distinction between a procedure (a function that doesn't return a value) and a function.
+Functions that do not return a value return *null*. 
 
 ```php
 function sum($a, $b = 0, $c = 0) {
@@ -889,6 +894,7 @@ function sort2($a, $b) {
 }
 
 list($smaller, $larger) = sort2(10, 5);
+
 echo $smaller; \\ 5
 echo $larger;  \\ 10
 ```
@@ -897,20 +903,21 @@ echo $larger;  \\ 10
 
 # Global
 
-As PHP variables do not need to be defined before usage, to use a global variable inside a function we need to declare it as global.
+As PHP variables do not need to be defined before usage, we need to declare global variables as global to use them inside functions.
 
 ```php
 function foo() {
-  echo $var;
+  echo $baz;
 }
 
 function bar() {
-  global $var;
-  echo $var;
+  global $baz;
+  echo $baz;
 }
 
-$var = 10;
-foo(); // prints nothing
+$baz = 10;
+
+foo(); // prints nothing, may result in a warning
 bar(); // prints 10
 ```
 
