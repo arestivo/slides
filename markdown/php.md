@@ -101,7 +101,7 @@ Becomes:
 
 # Echo
 
-* The **echo** function outputs one or more strings.
+* The [echo](https://www.php.net/manual/en/function.echo.php) function outputs one or more strings.
 * It is not actually a function (it is a language construct), so you are not required to use parentheses with it.
 * It also has a shortcut syntax, where you can immediately follow the opening tag with an equals sign.
 
@@ -156,14 +156,14 @@ name:data
 
 # Variables
 
-* Variables in PHP are represented by a dollar sign followed by the variable's name.
+* Variables are represented by a dollar sign followed by the variable's name.
 * The variable's name is **case-sensitive**.
-* PHP does not require (or support) explicit type definition in variable declarations.
+* There are no explicit type definition in variable declarations.
 * A variable's type is determined by the context in which the variable is used.
 
 ```php
-$name = 'John';
-$age = 25;
+$name = 'John';  // string
+$age = 25;       // int
 ```
 
 ---
@@ -175,31 +175,31 @@ PHP supports the following scalar types:
 * [bool](https://www.php.net/manual/en/language.types.boolean.php): **case-insensitive** *true* or *false*.
 * [int](https://www.php.net/manual/en/language.types.integer.php): integer between *PHP_INT_MIN* and *PHP_INT_MAX*.<br><small>Range is platform-dependent; converted to float in the case of an overflow.</small>
 * [float](https://www.php.net/manual/en/language.types.float.php): IEEE 754 double precision format.
-* [string](https://www.php.net/manual/en/language.types.string.php): Text.
+* [string](https://www.php.net/manual/en/language.types.string.php): A series of characters.
 
 ---
 
 # Assignment
 
-* The variable type is defined when a value is assigned to it.
-* Variables can change type when values of another type are assigned to them.
+* The variable type is defined when a value is [assigned](https://www.php.net/manual/en/language.operators.assignment.php) to it.
+* Type can change when values of another type are assigned.
 * Assignment is done by value unless the **&** sign is used.
 
 ```php
-$foo = 5;
-$foo = 'John';
+$foo = 5;        // int
+$foo = 'John';   // string
 
-$bar = &$foo;
+$bar = &$foo;    // by reference, bar and foo are the same
 $foo = 'Mary';
 
-echo $bar; // Mary
+echo $bar;       // Mary
 ```
 
 ---
 
 # Type Juggling
 
-* PHP does automatic type conversion whenever it is needed.
+* PHP does automatic **type conversion** whenever it is needed.
 * For example, the **+** (sum) operator expects two numerical values.
 
 ```php
@@ -234,10 +234,33 @@ The constant **null** is **case-insensitive**.
 
 ---
 
+# Null Coalesce
+
+The [isset](https://www.php.net/manual/en/function.isset.php) function determines if a variable is declared and different from *null*:
+
+```php
+$bar = isset($bar) ? $bar : $some_default_value;
+```
+
+An easier way to acccomplish this would be to use the *null coalesce* operator:
+
+```php
+$bar = $bar ?? $some_default_value;
+```
+
+Or even simpler:
+
+```php
+$bar ??= $some_default_value;
+```
+
+---
+
 # Var Dump
 
-The **var_dump** function displays structured information about one or more expressions, including their type and value.
-Arrays and objects are explored recursively to show their structure.
+The [var_dump](https://www.php.net/manual/en/function.var-dump.php) function displays structured information about one or more expressions, including their type and value.
+
+Arrays and objects are explored recursively and their values are indented to show their structure.
 
 ```php
 $a = 10.5;
@@ -252,7 +275,7 @@ bool(true)
 
 Very useful for dirty and straightforward debugging.
 
-An alternative is **print_r**, a simplified form of **var_dump**.
+An alternative is [print_r](https://www.php.net/manual/en/function.print-r.php), a simplified form of *var_dump*.
 
 ---
 
@@ -265,7 +288,7 @@ Not so different from other languages
 
 # While
 
-Executes the nested statement(s) repeatedly, as long as the while expression evaluates to *true*.
+Executes the nested statement(s) repeatedly, as long as the [while](https://www.php.net/manual/en/control-structures.while.php) expression evaluates to *true*.
 
 ```php
 while($expr)
@@ -290,7 +313,7 @@ endwhile;
 
 # Do While
 
-Similar to while loops, but the expression is checked at the end of each iteration instead of at the beginning.
+[Do...while](https://www.php.net/manual/en/control-structures.do.while.php) loops are similar to *while loops*, but the expression is checked at the end of each iteration instead of at the beginning.
 
 ```php
 do {
@@ -302,11 +325,11 @@ do {
 
 # For
 
-The first expression is executed once unconditionally at the beginning of the loop.
+In [for](https://www.php.net/manual/en/control-structures.for.php) loops, the **first** expression is executed once unconditionally at the beginning of the loop.
 
-At the beginning of each iteration, the second expression is evaluated. If it evaluates to *false*, the execution of the loop ends.
+At the beginning of each iteration, the **second** expression is evaluated. If it evaluates to *false*, the execution of the loop ends.
 
-At the end of each iteration, the third expression is executed.
+At the end of each iteration, the **third** expression is executed.
 
 ```php
 for ($i = 0; $i < 10; $i++)
@@ -324,7 +347,7 @@ for ($i = 0; $i < 10; $i++) {
 
 # If
 
-Only if the expression evaluates to *true* does the following code execute.
+Only [if](https://www.php.net/manual/en/control-structures.if.php) the expression evaluates to *true* does the following code execute.
 
 ```php
 if ($expr)
@@ -342,7 +365,7 @@ if ($expr) {
 
 # Else
 
-The *else statement* extends an *if statement* to execute alternative code if the expression in the *if statement* evaluates to *false*.
+The [else](https://www.php.net/manual/en/control-structures.else.php) statement extends an *if* statement to execute alternative code if the expression in the *if* statement evaluates to *false*.
 
 ```php
 if ($expr)
@@ -364,9 +387,9 @@ else {
 
 # Break and Continue
 
-Break ends execution of the current **for**, **foreach**, **while**, **do-while** or **switch** structure.
+[Break](https://www.php.net/manual/en/control-structures.break.php) ends execution of the current **for**, **foreach**, **while**, **do-while** or **switch** structure.
 
-Continue skips the rest of the current loop iteration and continues execution at the condition evaluation.
+[Continue](https://www.php.net/manual/en/control-structures.continue.php) skips the rest of the current loop iteration and continues execution at the condition evaluation.
 
 ```php
 while ($expr) {
@@ -381,7 +404,7 @@ while ($expr) {
 
 # Switch
 
-The *switch statement* is similar to a series of *if statements* on the same expression.
+The [switch](https://www.php.net/manual/en/control-structures.switch.php) statement is similar to a series of *if statements* on the same expression.
 
 After finding a *true* condition, PHP continues to execute the statements until the end of the switch block, or the first time it sees a break statement.
 
@@ -403,7 +426,7 @@ switch($name) {
 
 # Die and Exit
 
-Both **die** and **exit** stop the execution of the current PHP script.
+Both [die](https://www.php.net/manual/en/function.die.php) and [exit](https://www.php.net/manual/en/function.exit.php) stop the execution of the current PHP script.
 
 * **die**: can receive a status string that will be printed before stopping
 * **exit**: can receive a result integer that will be the exit status and not printed.
@@ -420,7 +443,7 @@ Both **die** and **exit** stop the execution of the current PHP script.
 
 # Loose and Strict Comparisons
 
-Comparisons can be tricky in PHP. There are two types of equality operators:
+Comparisons can be [tricky](https://www.php.net/manual/en/types.comparisons.php) in PHP. There are two types of equality operators:
 
 **Loose comparison**: Types can be converted before comparison.
 
@@ -923,6 +946,80 @@ bar(); // prints 10
 
 ---
 
+# Coercive Typing
+
+PHP is a dynamically typed language, but since PHP 7, it is possible to add [type hints](https://www.php.net/manual/en/language.types.declarations.php) to function **parameters**:
+
+```php
+function add($a, $b) {
+  return $a + $b;
+}
+
+echo add(1, 4);          // 5 
+echo add(1.2, 3.6);      // 4.8
+echo add("1.2", "3.6");  // 4.8
+```
+
+With *type hints*, types are **coerced** into the correct type (if possible):<br><small>Otherwise an error is thrown.</small>
+
+```php
+function add(int $a, int $b) {
+  return $a + $b;
+}
+
+echo add(1, 4);          // 5 
+echo add(1.2, 3.6);      // 4
+echo add("1.2", "3.6");  // 4
+```
+
+---
+
+# Coercive Typing
+
+**Type hints** can also be added to **return values**:
+
+```php
+function add($a, $b) : int {
+  return $a + $b;
+}
+
+echo add(1, 4);          // 5 
+echo add(1.2, 3.6);      // 4
+echo add("1.2", "3.6");  // 4
+```
+
+Returned values are **coerced** into the correct type (if possible).<br><small>Otherwise an error is thrown.</small>
+
+Besides the four scalar types, the following are also possible type hints: *array*, *object*, a *class/interface name*, *callable*, *iterable*, *self*, and *parent*.
+
+---
+
+# Strict Typing
+
+
+It is possible to enable **strict mode** on a per-file basis by using this directive at the beginning of a PHP file:
+
+```php
+declare(strict_types=1);
+```
+
+In strict mode, only values corresponding to the type declaration will be accepted.
+<br><small>The only exception to this rule is that an **int** value will pass a **float** type declaration.</br>
+
+```php
+declare(strict_types=1);
+
+function add(int $a, int $b) : int {
+  return $a + $b;
+}
+
+echo add(1, 4);          // 5 
+echo add(1.2, 3.6);      // Error
+echo add("1.2", "3.6");  // Error
+```
+
+---
+
 template:inverse
 name:classes
 # Classes
@@ -931,9 +1028,9 @@ name:classes
 
 # Classes
 
-PHP 5 marks the introduction of a brand new object model for PHP.
+PHP 5 marked the introduction of a brand new **object model** for PHP.
 
-Every class starts with the word class followed by its name and the class definition (inside curly brackets):
+Every class starts with the word *class* followed by its *name* and the *class definition* (inside curly brackets):
 
 ```php
 class Car {
@@ -947,7 +1044,7 @@ class Car {
 
 # Properties
 
-Properties are defined by using one of the visibility keywords **public**, **protected**, or **private**, followed by a normal variable declaration.
+Properties are defined by using the visibility keywords **public**, **protected**, or **private**, followed by a variable declaration.
 
 This declaration may include an initialization, but this initialization must be a constant value.
 
@@ -971,24 +1068,24 @@ class Car {
   private $plate;
   private $driver = 'John Doe';
 
-  public function getDriver() {
+  public function getDriver() : string {
     return $this->driver; // return $driver would have returned null
   }
 }
 ```
 
+Methods can also be *coercively* and *strictly* typed.
+
 ---
 
 # Creating
 
-To create an instance of a class, the **new** keyword must be used.
+To create an instance of a class, we use the **new** keyword.
 
 An object will always be created unless the object has a constructor defined that throws an exception on error.
 
 ```php
-
-  $my_car = new Car();
-
+$car = new Car();
 ```
 
 ---
@@ -997,7 +1094,7 @@ An object will always be created unless the object has a constructor defined tha
 
 PHP allows developers to declare constructor methods for classes.
 
-Classes which have a constructor method call this method on each newly-created object.
+Classes that have a constructor method, call this method on each newly-created object.
 
 The constructor method is always called **__construct** and can receive any number of parameters. The destructor method is, as expected, called **__destruct**.
 
@@ -1020,7 +1117,9 @@ $car = new Car('John Doe', '12-34-AB');
 
 # Extends
 
-A class can inherit the methods and properties of another class by using the keyword extends in the class declaration. It is not possible to extend multiple classes; a class can only inherit from one base class.
+A class can inherit the methods and properties of another class by using the keyword extends in the class declaration. 
+
+It is not possible to extend multiple classes; a class can only inherit from one base class.
 
 ```php
 class RaceCar extends Car {
@@ -1052,11 +1151,11 @@ Obviously, **$this** cannot be used inside a static method.
 ---
 # Scope
 
-There are three special keywords that are used to access properties or methods from inside the class definition
+These are used to access **static properties or methods** from inside the class definition:
 
-* **self::** - accesses the current class (different from **$this**)
-* **parent::** - accesses the parent class
-* **static::** - accesses a static member of property
+* **self::** - the current class
+* **parent::** - the parent class
+* **static::** - the class of the current object
 
 ```php
 class Car {
@@ -1076,45 +1175,40 @@ echo Car::milesToKm(10);
 
 ---
 
-# Self vs Static
+# Self vs. Static
 
 ```php
-<?php
+class Foo
+{
+  protected static $bar = 'fizz';
 
-  class Foo
-  {
-    protected static $bar = 1234;
-
-    public function print() {
-      echo "static " . static::$bar . "<br>";
-      echo "self " . self::$bar . "<br>";
-    }
+  public function print() {
+    echo static::$bar;
+    echo self::$bar;
   }
+}
 
-  class Bar extends Foo
-  {
-    protected static $bar = 4321;
-  }
+class Bar extends Foo
+{
+  protected static $bar = 'buzz';
+}
 
-  $foo = new Foo();
-  $bar = new Bar();
+$foo = new Foo();
+$bar = new Bar();
 
-  $foo->print();  // 1234 and 1234
-  $bar->print();  // 4321 and 1234
-
-?>
+$foo->print();  // fizz fizz
+$bar->print();  // buzz fizz
 ```
+
+Read [more](https://www.php.net/manual/en/language.oop5.late-static-bindings.php).
 
 ---
 
 # Abstract
 
-Classes defined as abstract may not be instantiated.
-Classes that contain at least one abstract method must also be abstract.
-Methods defined as abstract cannot define the implementation.
-When inheriting from an abstract class, all methods marked abstract in the parent's class declaration must:
-  * be defined by the child;
-  * be defined with the same (or a less restricted) visibility;
+* Classes defined as abstract may not be instantiated.
+* Classes that contain abstract methods must be abstract.
+* Methods defined as abstract do not have an implementation.
 
 ```php
 abstract class Car {
@@ -1133,48 +1227,50 @@ abstract class Car {
 
 # Interfaces
 
-Interfaces are defined using the **interface** keyword, in the same way as a standard class, but without any of the methods having their contents defined.
+* We use the **interface** keyword to define an interface, just as we use the *class* keyword to define a class.
+* Interfaces are just like classes, but their methods do not have an implementation.
+* The **implements** keyword specifies that a specific class implements the interface.
 
-The **implements** specifies that a specific class implements the interface.
-
+.small[
 ```php
 interface Car {
-  public function getDriver();
-  public function getPlate();
+  public function getDriver() : string;
+  public function getPlate() : string;
 }
 
 class RaceCar implements Car {
   private $plate;
   private $driver;
 
-  public function getDriver() {
+  public function getDriver() : string {
     return $this->driver;
   }
 
-  public function getPlate() {
+  public function getPlate() : string {
     return $this->plate;
   }
 }
-```
+```  
+]
 
 ---
 
 # Final
 
-The final keyword, prevents child classes from overriding a method by prefixing the definition with final.
+The *final* keyword prevents child classes from overriding a method.
 
-If the class itself is being defined final then it cannot be extended.
+If the class itself is *final*, it cannot be extended.
 
 ```php
 final class RaceCar implements Car {
   private $plate;
   private $driver;
 
-  public function getDriver() {
+  public function getDriver() : string {
     return $this->driver;
   }
 
-  final public function getPlate() {
+  final public function getPlate() : string {
     return $this->plate;
   }
 }
@@ -1190,9 +1286,9 @@ name:exceptions
 
 # Exceptions
 
-Exceptions are events that occur during the execution of a script that disrupt the normal flow of instructions.
+Exceptions are events that disrupt the normal flow of instructions.
 
-Like in other programming languages, exceptions can be thrown, and caught within PHP.
+As in other programming languages, exceptions can be **thrown** and **caught**.
 
 To throw an exception we use the throw keyword:
 
@@ -1205,7 +1301,7 @@ if ($db == null)
 
 # Exceptions
 
-Exception is a class with the following public methods:
+**Exception** is a class with the following public methods:
 
 ```php
 final public string getMessage ();
@@ -1217,7 +1313,7 @@ final public array getTrace ();
 final public string getTraceAsString ();
 ```
 
-A user defined Exception class can be defined by extending the built-in Exception class.
+User-defined exceptions can be defined by extending the built-in *Exception* class.
 
 ---
 
@@ -1260,7 +1356,8 @@ $dbh = new PDO('mysql:host=localhost;dbname=test', $user, $pass);
 ```
 
 ```php
-$dbh = new PDO('pgsql:host=localhost;port=5432;dbname=anydb', $user, $pass);
+$dbh = new PDO('pgsql:host=localhost;port=5432;dbname=anydb', 
+               $user, $pass);
 ```
 
 ```php
@@ -1271,7 +1368,7 @@ $dbh = new PDO('sqlite:database.db');
 
 # Prepared Statements
 
-Prepared statements are the recommended way of executing queries as they prevent SQL injection attacks.
+Prepared statements are the recommended way of executing queries as they prevent **SQL injection** attacks (more on this later).
 
 ```php
 $stmt = $dbh->prepare('INSERT INTO person (name, address)
@@ -1301,9 +1398,9 @@ Values are bound to each question mark in order.
 
 # Getting Results
 
-To get the results of a SELECT query the function **fetch** can be used.
+To get the query results, we use the [fetch](https://www.php.net/manual/en/pdostatement.fetch.php) function.
 
-This function fetchs one row at a time and returns false if there are no more rows.
+This function fetches one row at a time and returns false if there are no more rows.
 
 ```php
 $stmt = $dbh->prepare('SELECT * FROM person WHERE name = ?');
@@ -1318,7 +1415,7 @@ while ($row = $stmt->fetch()) {
 
 # Getting Results
 
-The **fetch_all** function returns the complete result as an array of rows.
+The [fetchAll](https://www.php.net/manual/en/pdostatement.fetchall.php) function returns the complete result as an array of rows.
 
 ```php
 $stmt = $dbh->prepare('SELECT * FROM person WHERE name = ?');
@@ -1331,7 +1428,7 @@ foreach ($result as $row) {
 }
 ```
 
-If the query result is large, using **fetch_all** might waste a lot of memory.
+If the result size is substantial, using *fetchAll* might take too much memory.
 
 ---
 
