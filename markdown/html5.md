@@ -79,16 +79,16 @@ Learn more: http://en.wikipedia.org/wiki/HTML#History
 
 **The First War (1995 &ndash; 2001)**:
 
-- Netscape and Internet Explorer battle for WWW dominance.
-- Web standards were still not well established.
-- New proprietary features are introduced into HTML as browsers compete for market share.
-- Developers were forced to have two versions of their websites.
+- **Netscape** and **Internet Explorer** battle for WWW dominance.
+- Web standards were still **not well established**.
+- New **proprietary features** are introduced into HTML as browsers compete for market share.
+- Developers were **forced** to have two versions of their websites.
 
 **Aftermath**:
 
-- Internet Explorer won the war and decided to stale any new developments.
-- From the ashes of Netscape, Firefox starts to regain market share.
-- Eventually, browsers decided to work together, and we now have a much better web landscape!
+- Internet Explorer won the war and decided to **stale** any **new developments**.
+- From the ashes of Netscape, **Firefox** starts to gain market share.
+- Eventually, browsers decided to work together, and we now have a **much better** web landscape!
 
 ---
 
@@ -306,13 +306,20 @@ name: content
 - If we want to change lines (but not paragraphs, e.g., in a poem) we can use the [&lt;br&gt;](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-br-element) tag.
 
 ```html
-<p>This is a paragraph.</p>   <!-- this is a comment btw -->
+<p>"The Old Pond" by Matsuo Bashō</p>
 
-<p>
-This is another paragraph<br> <!-- br is an empty tag -->
-with a line break.
-</p>
+<p>An old silent pond<br>
+A frog jumps into the pond—<br>
+Splash! Silence again.</p>
 ```
+
+.example[
+<p>"The Old Pond" by Matsuo Bashō</p>
+
+<p style="padding-top: 0.5em">An old silent pond<br>
+A frog jumps into the pond—<br>
+Splash! Silence again.</p>
+]
 
 ---
 
@@ -358,7 +365,7 @@ for (i = 0; i < 10; i++)
 </code></pre>
 ```
 
-.example[<pre><code>for (i = 0; i < 10; i++)
+.example[<pre><code style="margin: 0">for (i = 0; i < 10; i++)
   print(i)</code></pre>]
 
 ---
@@ -493,7 +500,7 @@ name: sections
 # Sectioning Content
 
 - The [&lt;article&gt;](https://html.spec.whatwg.org/multipage/sections.html#the-article-element), [&lt;section&gt;](https://html.spec.whatwg.org/multipage/sections.html#the-section-element), [&lt;nav&gt;](https://html.spec.whatwg.org/multipage/sections.html#the-nav-element), and [&lt;aside&gt;](https://html.spec.whatwg.org/multipage/sections.html#the-aside-element) elements are sectioning elements. 
-- Sectioning elements are those that are supposed to have headings.
+- Sectioning elements are those that are supposed to have **headings**.
 - Each one of these has a different semantic meaning:
   - **article**: Represents a complete, or self-contained, element; one that can be independently distributable or reusable, for example, a blog post, a news article, or a comment.
   - **section**: A thematic grouping of content, generally with a heading.
@@ -539,9 +546,10 @@ Sectioning content defines the scope of **headings**, **headers**, and **footers
     <header>
       <h1>Page Title</h1>
     </header>
-    <nav><ul>...navigation link...</ul></nav>
+    <nav><ul>...navigation links...</ul></nav>
     <main>
       <section id="posts">...</section>
+      ...
     </main>
   </body>
 </html>

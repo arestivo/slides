@@ -1020,6 +1020,29 @@ echo add("1.2", "3.6");  // Error
 
 ---
 
+# Nullable Types
+
+Sometimes we want to declare a type but also **allow the null value**.
+
+This can be achieved by **prefixing** the type name with a '?':
+
+```php
+declare(strict_types=1);
+
+function add(?int $a, ?int $b) : ?int {
+  if ($a === null || $b === null) return null;
+
+  return $a + $b;
+}
+
+echo add(1, 4);          // 5 
+echo add(1, null);       // null 
+```
+
+Nullable types also work with return values.
+
+---
+
 template:inverse
 name:classes
 # Classes
@@ -1119,7 +1142,7 @@ $car = new Car('John Doe', '12-34-AB');
 
 A class can inherit the methods and properties of another class by using the keyword extends in the class declaration. 
 
-It is not possible to extend multiple classes; a class can only inherit from one base class.
+Extending from multiple classes is impossible; a class can only inherit from one base class.
 
 ```php
 class RaceCar extends Car {
@@ -1133,7 +1156,7 @@ class RaceCar extends Car {
 
 # Static
 
-The static keyword allows us to define static properties and methods that are shared between all instances of the class.
+The static keyword allows us to define static properties and methods shared between all class instances.
 
 ```php
 class Car {
@@ -1341,15 +1364,15 @@ name:databases
 
 # PDO
 
-The PHP Data Objects (PDO) extension defines a lightweight, consistent interface for accessing databases in PHP.
+The PHP Data Objects ([PDO](https://www.php.net/manual/en/book.pdo.php)) extension defines a lightweight, consistent interface for accessing databases in PHP.
 
 ---
 
 # Connecting
 
-To connect to a database we use a PDO object.
+To connect to a database, we use a [PDO](https://www.php.net/manual/en/class.pdo.php) object.
 
-The connection string is database dependent.
+The connection string is database-dependent.
 
 ```php
 $dbh = new PDO('mysql:host=localhost;dbname=test', $user, $pass);
@@ -1368,11 +1391,12 @@ $dbh = new PDO('sqlite:database.db');
 
 # Prepared Statements
 
-Prepared statements are the recommended way of executing queries as they prevent **SQL injection** attacks (more on this later).
+Prepared statements (first [prepare](https://www.php.net/manual/en/pdo.prepare.php), then [execute](https://www.php.net/manual/en/pdostatement.execute.php)) are the recommended way of executing queries as they prevent **SQL injection** attacks (more on this later):
 
 ```php
 $stmt = $dbh->prepare('INSERT INTO person (name, address)
                        VALUES (:name, :address)');
+
 $stmt->bindParam(':name', $name);
 $stmt->bindParam(':address', $address);
 
@@ -1383,7 +1407,7 @@ $stmt->execute();
 
 # Prepared Statements
 
-Another form of prepared statements.
+Another form of prepared statements:
 
 ```php
 $stmt = $dbh->prepare('INSERT INTO person (name, address) 
@@ -1392,7 +1416,7 @@ $stmt = $dbh->prepare('INSERT INTO person (name, address)
 $stmt->execute(array($name, $address));
 ```
 
-Values are bound to each question mark in order.
+Values are bound to each question mark by their order.
 
 ---
 
@@ -1400,7 +1424,7 @@ Values are bound to each question mark in order.
 
 To get the query results, we use the [fetch](https://www.php.net/manual/en/pdostatement.fetch.php) function.
 
-This function fetches one row at a time and returns false if there are no more rows.
+This function fetches one row at a time and returns *false* if there are no more rows.
 
 ```php
 $stmt = $dbh->prepare('SELECT * FROM person WHERE name = ?');
@@ -1428,7 +1452,7 @@ foreach ($result as $row) {
 }
 ```
 
-If the result size is substantial, using *fetchAll* might take too much memory.
+Using *fetchAll* might take too much memory if the result size is substantial.
 
 ---
 
@@ -1436,9 +1460,9 @@ If the result size is substantial, using *fetchAll* might take too much memory.
 
 Query results can return results in several different modes. Some of them:
 
-* PDO::FETCH_ASSOC: returns an array indexed by column name
-* PDO::FETCH_NUM: returns an array indexed by column number
-* PDO::FETCH_BOTH (default): returns an array indexed by both column name and 0-indexed column number
+* PDO::FETCH_ASSOC: returns an array indexed by column name.
+* PDO::FETCH_NUM: returns an array indexed by column number.
+* PDO::FETCH_BOTH (default): returns an array indexed by both column name and 0-indexed column number.
 
 Changing the default fetch mode (has to be done every time a connection is created):
 
@@ -1452,7 +1476,7 @@ $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
 Unfortunately, not every database supports transactions, so PDO needs to run in what is known as "auto-commit" mode when you first open the connection.
 
-If you need a transaction, you must use the **beginTransaction()** method to initiate one.
+If you need a transaction, you must use the [beginTransaction](https://www.php.net/manual/en/pdo.begintransaction.php) method to initiate one.
 
 ```php
 $dbh->beginTransaction();
@@ -1461,6 +1485,8 @@ $dbh->beginTransaction();
 
 $dbh->commit; // or $dbh->rollBack();
 ```
+
+To close a transaction we can either use [commit](https://www.php.net/manual/en/pdo.commit.php) or [rollBack](https://www.php.net/manual/en/pdo.commit.php).
 
 ---
 
@@ -1509,15 +1535,16 @@ name:parameters
 
 # $\_GET and &dollar;\_POST
 
-The special **$_GET** variable is an associative array of variables passed to the current script via the **URL** parameters.
-The special **$_POST** variable is an associative array of variables passed to the current script via the **HTTP Header**.
+**$_GET** and **$_POST** are arrays of values passed to the current script:
+- **$_GET** is received via the **URL** parameters.
+- **$_POST** is received via the **HTTP Headers**.
 
 ```php
 $name = $_GET['name'];
 $email = $_GET['email'];
 ```
 
-These are **superglobal**, or automatic global, variables. There is no need to do **global $variable;** to access them within functions or methods.
+These are **superglobal**, or automatically global, variables. There is no need to do *"global $variable;"* to access them within functions or methods.
 
 ---
 
