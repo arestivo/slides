@@ -87,7 +87,7 @@ Learn more: http://en.wikipedia.org/wiki/HTML#History
 **Aftermath**:
 
 - Internet Explorer won the war and decided to **stale** any **new developments**.
-- From the ashes of Netscape, **Firefox** starts to gain market share.
+- From the ashes of Netscape, [Firefox](assets/html5/nytimes-firefox-final.pdf) starts to gain market share.
 - Eventually, browsers decided to work together, and we now have a **much better** web landscape!
 
 ---
