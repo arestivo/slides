@@ -730,7 +730,7 @@ name: tables
 
 # Table
 
-* Tables ([&lt;table&gt;](https://html.spec.whatwg.org/multipage/tables.html#the-table-element)) represent **tabular data** (e.g., student grades) and should **not be used** for any kind og design layout.
+* Tables ([&lt;table&gt;](https://html.spec.whatwg.org/multipage/tables.html#the-table-element)) represent **tabular data** (e.g., student grades) and should **not be used** for any kind of design layout.
 * In its most simple form, tables are composed of rows ([&lt;tr&gt;](https://html.spec.whatwg.org/multipage/tables.html#the-tr-element)) of data cells ([&lt;td&gt;](https://html.spec.whatwg.org/multipage/tables.html#the-td-element)):
 
 ```html
