@@ -523,7 +523,7 @@ Sectioning content defines the scope of **headings**, **headers**, and **footers
   <article>
     <header>
       <h2>Title of the Post</h2>
-      <h3>And the subtitle</h2>
+      <h3>And the subtitle</h3>
     </header>
     <p>The post content</p>
     <p>More content</p>
