@@ -411,7 +411,7 @@ However, the **&lt;span&gt;** element should only be used if no other, more *sem
 
 ```html
 One of the boldest colors in the spectrum, 
-<span class="color">red</color> stands out 
+<span class="color">red</span> stands out 
 in any work of art, hence its use to signal 
 danger or warning.
 ```
