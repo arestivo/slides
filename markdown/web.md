@@ -52,7 +52,7 @@ name: origins
 
 # The Origins of the WWW
 
-**Tim Berners-Lee ** invented the WWW at CERN (1989).
+**Tim Berners-Lee ** [invented](https://www.w3.org/History/1989/proposal.html) the WWW at CERN (1989).
 
 Three constituents: **HTML** + **URL** + **HTTP**:
 
@@ -110,25 +110,6 @@ The Internet is a **redundant** "*network of networks*" that connects millions o
 * Given an address, routers can calculate where they should send information to reach the desired device.
 
 ![](assets/web/web4.svg)
-
----
-
-# IPv4 and IPv6
-
-* IP addresses (IPv4) consist of four 8 bit numbers (0-255).
-* There are 4,294,967,296 different possible IP addresses.
-* Some IP addresses are exclusive for internal use: 10.x.x.x, 172.16-31.x.x and 192.168.x.x.
-* IPv4 addresses are nearly exhausted and slowly replaced by the new IPv6 standard (e.g., 2001:4860:4860::8888). There are 3.4×10<sup>38</sup> possible IPv6 addresses.
-* Some devices have static IP addresses while others have dynamic ones. Dynamic addresses are distributed using DHCP (Dynamic Host Configuration Protocol).
-
----
-
-# Routing Example
-
-* A typical person has, in his house, several computers connected to a router.
-* The router has two IP addresses: one internal (probably 192.168.1.1) and one external.
-* When a computer connects to the router, it is assigned an internal IP address (e.g., 192.168.1.100).
-* When a computer tries to send a message outside the local network, the router knows it has to route it through its external interface and into the Internet.
 
 ---
 
