@@ -1277,7 +1277,7 @@ The main difference is that it is connected to an **input** element (using the *
 .small[
 ```html
 <input name="fruit" list="fruits" value="Banana">
-<datalist id="fruits" name="fruit">
+<datalist id="fruits">
   <option>Orange</option>
   <option selected>Banana</option>
   <option>Tomato</option>
@@ -1288,7 +1288,7 @@ The main difference is that it is connected to an **input** element (using the *
 
 .example[
 <input name="fruit" list="fruits" value="Banana">
-<datalist id="fruits" name="fruit">
+<datalist id="fruits">
   <option>Orange</option>
   <option selected>Banana</option>
   <option>Tomato</option>
