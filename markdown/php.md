@@ -99,6 +99,16 @@ Becomes:
 
 ---
 
+# How It Works
+
+<img src="assets/php/scenario.svg" width="60%">
+
+1. Browser **asks** the server for a **resource** that corresponds to a PHP script.
+2. Server **runs** PHP script.
+3. Server **returns** result to the browser. Normally an HTML document.
+
+---
+
 # Echo
 
 * The [echo](https://www.php.net/manual/en/function.echo.php) function outputs one or more strings.
@@ -1533,18 +1543,52 @@ name:parameters
 
 ---
 
-# $\_GET and &dollar;\_POST
+# Query String
 
-**$_GET** and **$_POST** are arrays of values passed to the current script:
-- **$_GET** is received via the **URL** parameters.
-- **$_POST** is received via the **HTTP Headers**.
+The **query string** allows extra information to be sent to a webserver when requesting a resource.
 
-```php
-$name = $_GET['name'];
-$email = $_GET['email'];
+<img src="assets/php/url.svg">
+
+```html
+<a href="newsitem.php?id=10">
 ```
 
-These are **superglobal**, or automatically global, variables. There is no need to do *"global $variable;"* to access them within functions or methods.
+```html
+<form action="search.php" method="get"> <!-- search.php?q=... -->
+  <input type="search" name="q">
+  <button type="submit">
+</form>
+```
+
+For a form with *method="post"*, it works the same way but the information is sent separately from the URL (more on this later).
+
+---
+
+# HTTP Parameters
+
+Extra information sent to a resource, can be accessed in a PHP script using two different arrays, **$_GET** and **$_POST**, depending on the way the information was sent.
+
+```html
+<a href="newsitem.php?id=10">
+```
+
+```php
+$id = $_GET['id'];  // On newsitem.php
+```
+***
+```html
+<form action="search.php" method="post">
+  <input type="search" name="q">
+  <button type="submit">
+</form>
+```
+
+```php
+$q = $_POST['q'];  // On search.php
+```
+
+
+These arrays are **superglobal**, or **automatically global**, variables. There is no need to do *"global $variable;"* to access them within functions or methods.
 
 ---
 
@@ -1556,48 +1600,58 @@ name:sessions
 
 # Cookies
 
-Cookies are a mechanism for storing data in the remote browser.
+* The HTTP protocol is a **stateless** protocol.
 
-![](assets/php/cookies.png)
+* No state information is stored on the server.
+<br><small>Every request must be understood in isolation.</small>
+
+* Cookies are a mechanism for storing data in the browser.
+<br><small>That is sent to the server in every request.</small>
+
+![](assets/php/cookies.svg)
 
 ---
 
 # Cookies
 
-You can set a cookie using the **setcookie** function:
+Cookies can be set using the **setcookie** function:
 
 ```php
-bool setcookie ( string $name [, string $value [, int $expire = 0
-                 [, string $path [, string $domain [, bool $secure = false
-                 [, bool $httponly = false ]]]]]] )
+bool setcookie (string $name, string $value, int $expire = 0, 
+                string $path, string $domain, bool $secure = false,
+                bool $httponly = false)
 ```
 
-Like other header functions, cookies must be sent before any output from your script (this is a protocol restriction).
-This requires that you place calls to this function prior to any output, including **<html>** and **<head>** tags as well as any **whitespace**.
+* All parameters are optional except the *cookie name*.
+* Cookies must be sent before any output from your script.<br><small>This is an HTTP protocol restriction.</small>
+* This requires that you place calls to this function prior to any output, including any **whitespace**.
 
 You can access the cookies sent by the browser using the special **$_COOKIE** array.
 
-If you set a cookie, it won't be sent back until the next request and so the data won't be present in $_COOKIE.
-
 ---
 
 # Sessions
 
-As cookies are stored in the browser, they cannot be used as a secure mechanism for storing sensitive information (e.g. the current user).
+As cookies are stored in the browser, they **cannot be used** as a secure mechanism for storing sensitive information (*e.g.*, the current user).
 
-Sessions are a mechanism, using cookies, that can be used to persist state information between page requests in the server:
+Sessions are a mechanism that can be used to persist state information between page requests in the server:
 
-1. When a session is started, PHP will either:
- * **retrieve** an existing session using the ID passed (usually from a session cookie) or
- * if no session is passed it will **create** a new session.
-2. PHP will populate the **$_SESSION** superglobal with any session data after the session has started.
-3. When the script ends, it will automatically take the contents of the $_SESSION superglobal, serialize it, and send it for storage.
+* A **unique session identifier** is stored on the **client** (*e.g.*, using a cookie).
+* The **server** keeps any **session information** associated with that **session id**.
+
+![](assets/php/sessions.svg)
 
 ---
 
-# Sessions
+# Sessions in PHP
 
-![](assets/php/sessions.png)
+PHP automatically manages sessions. When a session is started:
+
+1. Retrieve session information:
+ * if a *session id* is received (usually from a cookie), **retrieve** any state information for that id.
+ * if no *session id* is received, **generate** a new *session id* and **send** it to the client (usually to a cookie).
+2. Populate the **$_SESSION** superglobal array with session information associated with the *session id*.
+3. When the script ends, serialize the **$_SESSION** contents and store them.
 
 ---
 
@@ -1606,33 +1660,20 @@ Sessions are a mechanism, using cookies, that can be used to persist state infor
 Sessions can be started using the **session_start** function:
 
 ```php
-bool session_start ( void )
+bool session_start (void)
 ```
 
-Like other header functions, sessions must be started before any output from your script (this is a protocol restriction).
-This requires that you place calls to this function prior to any output, including **<html>** and **<head>** tags as well as any **whitespace**.
+* Like other header functions, sessions must be started before any output from your script.<br><small>Because we are using cookies.</small>
 
-Normally called in every page to ensure session variables are always accessible.
-
----
-
-# $_SESSION
-
-The special **$_SESSION** variable is an associative array containing session variables available to the current script.
+* Normally called in every page to ensure session variables are always accessible.
 
 ```php
 session_start();
-echo $_SESSION['name'];
-$_SESSION['name'] = 'John';
+
+var_dump($_SESSION);               // inspect session variables
+
+$_SESSION['username'] = $username; // modify session variables
 ```
-
-The correct way of verifying if a session variable exists is:
-
-```php
-if (isset($_SESSION['name']))
-```
-
-But do not forget that it can exist and still be empty.
 
 ---
 
@@ -1640,13 +1681,11 @@ But do not forget that it can exist and still be empty.
 
 The function **session_destroy** destroys all of the data associated with the current session.
 
-It does not unset any of the global variables associated with the session, or unset the session cookie.
-
-In order to kill the session altogether, like to log the user out, the session id must also be unset.
-
 ```php
-bool session_destroy ( void )
+bool session_destroy (void)
 ```
+
+It must be called after calling **session_start()**.
 
 ---
 
@@ -1655,18 +1694,22 @@ bool session_destroy ( void )
 The parameters of the cookie used for the session cookie can be changed using the **session_set_cookie_params** function.
 
 ```php
-void session_set_cookie_params ( int $lifetime [, string $path [, string $domain
-                                 [, bool $secure = false
-                                 [, bool $httponly = false ]]]] )
+void session_set_cookie_params 
+  (int $lifetime, string $path, string $domain,
+   bool $secure = false, bool $httponly = false)
 ```
 
-* **lifetime** of the session cookie, defined in seconds. The value 0 means "until the browser is closed
+All parameters are optional except *lifetime*.
+
+* **lifetime** of the session cookie, defined in seconds. The value 0 means "until the browser is closed.
 * **path** on the domain where the cookie will work. Use a single slash ('/') for all paths on the domain.
-* Cookie **domain**, for example 'www.fe.up.pt'. To make cookies visible on all subdomains then the domain must be prefixed with a dot like '.fe.up.pt'.
+* Cookie **domain**, for example 'www.fe.up.pt'. To make cookies visible on all subdomains, then the domain must be prefixed with a dot, *e.g.*, '.fe.up.pt'.
+
+We will talk about the *secure* and *httponly* parameters when we talk about security.
 
 ---
-template:inverse
-name:passwords
+template: inverse
+name: passwords
 # Storing Passwords
 
 ---
@@ -1684,6 +1727,8 @@ echo hash('sha256', 'apple');
 // 3a7bd3e2360a3d29eea436fcfb7e44c735d117c42d1c1835420b6b9942dd4f1b
 ```
 
+We will talk about better ways of storing passwords when we talk about security.
+
 ---
 template:inverse
 name:headers
@@ -1695,16 +1740,17 @@ name:headers
 
 The header function sends a raw HTTP header to the browser.
 
-This can be used, for example, to redirect the browser to another page:
+* This can be used, for example, to redirect the browser to another page:
 
 ```php
 header('Location: another_page.php');
 ```
 
-Like other header functions, headers must be sent before any output from your script (this is a protocol restriction).
-This requires that you place calls to this function prior to any output, including **<html>** and **<head>** tags as well as any **whitespace**.
+* Headers must be sent before any output from your script.<br><small>This is a protocol restriction.</small>
+* Do not forget that this does not stop the execution of the script. 
+* If you want to stop execution you must follow this instruction with **die()** or **exit()**.
 
-Do not forget that this does not stop the execution of the script. If you want to stop execution you must follow this instruction with **die()** or **exit()**.
+We will talk more about headers when we study the HTTP protocol.
 
 ---
 template:inverse
@@ -1715,19 +1761,23 @@ name:includes
 
 # Includes
 
-The **include** statement includes and evaluates the specified file.
+* The **include** statement includes and evaluates the specified file.
 
-The **require** statement is identical to include except upon failure it will also produce a fatal **E_COMPILE_ERROR** level error.
+* The **require** statement is identical to include, except, upon failure, it will also produce a fatal **E_COMPILE_ERROR** level error.
 
-The **include_once** statement is identical to include except PHP will check if the file has already been included.
+* The **include_once** statement is identical to include, except PHP will check if the file has already been included.
 
-The **require_once** statement is identical to require except PHP will check if the file has already been included.
+* The **require_once** statement is identical to require, except PHP will check if the file has already been included.
+
+```php
+include_once('other_file.php');
+```
 
 ---
 
 # Relative Includes
 
-In PHP, includes are relative to the **file requested** by the browser, not the file that contains the include command. This means that:
+In PHP, includes are relative to the **file requested** by the browser, not the file that contains the 'include'. This means that:
 
 ```php
   b/Y.php // file requested by the browser
@@ -1751,11 +1801,11 @@ But:
 
 # Magic Constants (for files)
 
-To make including files in PHP easier, we can use the following **magic constants**:
+To make including files in PHP more manageable, we can use the following **magic constants**:
 
 ```php
 __FILE__ // The full path and filename of the current file.
-__DIR__ // The folder of the current file.
+__DIR__  // The folder of the current file.
 ```
 
 And the following function that returns the folder of a file:
@@ -1768,7 +1818,7 @@ For example:
 
 ```php
 dirname(__FILE__) // same as __DIR__
-dirname(__DIR__) // returns the parent folder of the current file
+dirname(__DIR__)  // returns the parent folder of the current file
 ```
 
 ---
@@ -1811,11 +1861,10 @@ The PHP **json_encode** and **json_decode** functions can be used to encode from
   $decoded = json_decode($encoded); //$decoded === $posts
 ```
 
-
 ---
 
-template:inverse
-name:best
+template: inverse
+name: best
 # Best Practices
 
 ---
