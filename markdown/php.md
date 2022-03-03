@@ -26,7 +26,7 @@ name:index
 
 .indexlist[
 1. [Introduction](#intro)
-1. [Variables](#data)
+1. [Variables](#variables)
 1. [Control Structures](#control)
 1. [Strings](#strings)
 1. [Arrays](#arrays)
@@ -158,9 +158,9 @@ template:inverse
 
 ---
 
-template:inverse
-name:data
-#Variables
+template: inverse
+name: variables
+# Variables
 
 ---
 
