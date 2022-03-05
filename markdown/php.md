@@ -1968,9 +1968,7 @@ Use include and/or functions to avoid code repetions:
 
 ---
 
-# DRY
-
-##Don't Repeat Yourself
+# Don't Repeat Yourself (DRY)
 
 Use include and/or functions to avoid code repetions:
 
@@ -1987,9 +1985,27 @@ foreach ($cars as $car) { ?>
   <li><strong>Model:</strong> <?=$car['model']?></li>
   <li><strong>Price:</strong> <?=$car['price']?></li>
 </ul>
+
 <? }
 include ('templates/header.html');
 ?>
+```
+
+---
+
+# Templates
+
+You can also create and reuse **parameterized** functions that output HTML code:
+
+```php
+<?php function listCars(array $cars) { ?>
+  <?php foreach ($cars as $car) { ?>
+  <ul>
+    <li><strong>Model:</strong> <?=$car['model']?></li>
+    <li><strong>Price:</strong> <?=$car['price']?></li>
+  </ul>
+  <?php } ?>
+<?php } ?>
 ```
 
 ---
@@ -2023,9 +2039,8 @@ Never mix scripts that show data with scripts that change data:
 # Extra Stuff
 
 * Functions: [Dates](http://php.net/manual/en/ref.datetime.php), [Image Processing](http://php.net/manual/en/book.image.php)
-* Charts: [jpGraph](http://jpgraph.net/), [pChart](http://pchart.sourceforge.net/index.php)
-* Extensions: [SPL](http://php.net/manual/en/book.spl.php)
-* Libraries: [Pear](http://pear.php.net/)
+* Charts: [jpGraph](http://jpgraph.net/), [pChart](http://pchart.sourceforge.net/index.php), [phpChart](https://phpchart.com/), [Charts 4 PHP](https://www.chartphp.com/)
+* Standard Library: [SPL](http://php.net/manual/en/book.spl.php)
 * Dependency Manager: [Composer](https://getcomposer.org/)
-* Template Engines: [Smarty](http://www.smarty.net/)
-* Frameworks: [CodeIgniter](https://ellislab.com/codeigniter), [CakePHP](http://cakephp.org/), [Symfony](http://symfony.com/), [Zend](http://framework.zend.com/), [Laravel](http://laravel.com/), ...
+* Template Engines: [Twig](https://twig.symfony.com/), [Blade](https://laravel.com/docs/blade), [Smarty](http://www.smarty.net/)
+* Frameworks: [CodeIgniter](https://codeigniter.com/), [CakePHP](http://cakephp.org/), [Symfony](http://symfony.com/), [Zend](http://framework.zend.com/), [Laravel](http://laravel.com/), ...
