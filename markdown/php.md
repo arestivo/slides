@@ -187,6 +187,13 @@ PHP supports the following scalar types:
 * [float](https://www.php.net/manual/en/language.types.float.php): IEEE 754 double precision format.
 * [string](https://www.php.net/manual/en/language.types.string.php): A series of characters.
 
+We can find the type of a variable using the [gettype](https://www.php.net/manual/en/function.gettype.php) function:
+
+```php
+$name = 'John';
+echo gettype($name); // string
+```
+
 ---
 
 # Assignment
@@ -1830,7 +1837,7 @@ name:json
 
 # JSON
 
-* JSON (**J**ava**S**cript **O**bject **N**otation) is a lightweight data-interchange format.
+* JSON (**J**ava**S**cript **O**bject **N**otation) is a *lightweight data-interchange format*. <small>Some alternatives are [YAML](https://yaml.org/) and [TOML](https://toml.io/en/).</small>
 * It is easy for **humans** to read and write.
 * It is easy for **machines** to parse and generate.
 
@@ -1854,7 +1861,7 @@ name:json
 
 #JSON
 
-The PHP **json_encode** and **json_decode** functions can be used to encode from and to JSON easily.
+The **json_encode** and **json_decode** functions can be used to encode from and to JSON easily.
 
 ```php
   $encoded = json_encode($posts);
