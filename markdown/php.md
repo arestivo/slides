@@ -2026,5 +2026,6 @@ Never mix scripts that show data with scripts that change data:
 * Charts: [jpGraph](http://jpgraph.net/), [pChart](http://pchart.sourceforge.net/index.php)
 * Extensions: [SPL](http://php.net/manual/en/book.spl.php)
 * Libraries: [Pear](http://pear.php.net/)
+* Dependency Manager: [Composer](https://getcomposer.org/)
 * Template Engines: [Smarty](http://www.smarty.net/)
 * Frameworks: [CodeIgniter](https://ellislab.com/codeigniter), [CakePHP](http://cakephp.org/), [Symfony](http://symfony.com/), [Zend](http://framework.zend.com/), [Laravel](http://laravel.com/), ...
