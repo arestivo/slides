@@ -1806,9 +1806,9 @@ But:
 
 ---
 
-# Magic Constants (for files)
+# Magic Constants
 
-To make including files in PHP more manageable, we can use the following **magic constants**:
+To make including files in PHP more manageable, we can use the following [magic constants](https://www.php.net/manual/en/language.constants.magic.php):
 
 ```php
 __FILE__ // The full path and filename of the current file.
@@ -1827,6 +1827,10 @@ For example:
 dirname(__FILE__) // same as __DIR__
 dirname(__DIR__)  // returns the parent folder of the current file
 ```
+
+.box_info[
+  Magic constants change value depending on where they are used!
+]
 
 ---
 template:inverse
@@ -1886,6 +1890,8 @@ Never trust the user:
              length($_GET['username'] > 20))
     // Do something about it
 ```
+
+Always verify if the data you are receiving is in the expected format.
 
 ---
 
@@ -1992,19 +1998,19 @@ include ('templates/header.html');
 
 Never mix scripts that show data with scripts that change data:
 
-  * **list_news.php**
+  * **list_articles.php**
     * Shows all news.
-    * Has links to each one of the news items **view_item.php**.
-  * **view_item.php**
-    * Shows one news item and its comments.
-    * Receives the id of the item.
-    * Link to **edit_item.php**.
-  * **edit_item.php**
-    * Shows a form that allows the user to edit a news item.
-    * Submits to **save_item.php**.
-  * **save_item.php**
-    * Receives the new data for the news item.
-    * Saves it in the database and redirects to **view_item.php**.
+    * Has links to each one of the news articles **view_article.php**.
+  * **view_article.php**
+    * Shows one news article and its comments.
+    * Receives the id of the article.
+    * Link to **edit_article.php**.
+  * **edit_article.php**
+    * Shows a form that allows the user to edit a news article.
+    * Submits to **save_article.php**.
+  * **save_article.php**
+    * Receives the new data for the news article.
+    * Saves it in the database and redirects to **view_item.php** (on success).
 
 ---
 
