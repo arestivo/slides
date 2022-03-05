@@ -337,6 +337,10 @@ Boolean('0') == false // 1 == 0 -> false
 Boolean('0') == true  // 1 == 1 -> true
 ```
 
+.box_warning[
+Primitives are compared by their value; objects (*e.g.*, arrays) are compared by their reference. This means [1, 2, 3] != [1, 2, 3]
+]
+
 ---
 
 # Boolean Evaluation
@@ -378,8 +382,8 @@ if (bar) // evaluates to false
 Comparing anything with **null** and **undefined** returns false. Comparisons between them have the following results:
 
 ```javascript
-  null === undefined // false
-  null == undefined  // true
+null === undefined // false
+null == undefined  // true
 ```
 
 ---
@@ -2110,5 +2114,39 @@ And we get *synchronous-like* code that behaves in a **non-blocking** manner.
 ---
 template: inverse
 name: json
+# JSON
+
+---
 
 # JSON
+
+* JSON (**J**ava**S**cript **O**bject **N**otation) is a *lightweight data-interchange format*. <small>Some alternatives are [YAML](https://yaml.org/) and [TOML](https://toml.io/en/).</small>
+* It is easy for humans to **read** and **write**.
+* It is easy for machines to **parse** and **generate**.
+
+```javascript
+const posts = [
+  {
+   "id":"1",
+   "title":"Mauris...",
+   "introduction":"Sed eu...",
+   "fulltext":"Donec feugiat..."
+  }, {
+   "id":"2",
+   "title":"Etiam efficitur...",
+   "introduction":"Cum sociis ...",
+   "fulltext":"Donec feugiat..."
+  }
+]
+```
+
+---
+
+# JSON
+
+The **JSON.stringify** and **JSON.parse** functions can be used to encode from and to JSON easily.
+
+```javascript
+  const encoded = JSON.stringify(posts)  // return a JSON string
+  const decoded = JSON.parse(encoded)    // same content as posts
+```
