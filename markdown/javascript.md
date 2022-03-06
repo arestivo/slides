@@ -1812,6 +1812,30 @@ A **closure** is the combination of a function bundled together with its surroun
 
 ---
 
+# Closures
+
+A **new closure** is created everytime a function is created:
+
+```javascript
+function createCounter() {
+  let counter = 0
+  return function() {
+    return ++counter
+  }
+}
+
+const counter1 = createCounter()
+const counter2 = createCounter()
+
+console.log(counter1()) // 1
+console.log(counter1()) // 2
+console.log(counter2()) // 1
+console.log(counter1()) // 3
+console.log(counter2()) // 2
+```
+
+---
+
 template: inverse
 name: asynchronous
 
