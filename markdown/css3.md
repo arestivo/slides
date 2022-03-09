@@ -1065,7 +1065,7 @@ section {
   width: 50%; max-width: 40em;
 
   /* height is automatically calculated but 100px at minimum */
-  height: auto; min-width: 100px;
+  height: auto; min-height: 100px;
 }
 ```
 
