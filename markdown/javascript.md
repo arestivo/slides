@@ -406,6 +406,24 @@ console.log(typeof console.log)       // "function"
 
 ---
 
+# Nullish Coalescing
+
+A common way to assign a **default value** is to use the **or** operator (||):
+
+```javascript
+const bar = foo || some_default_value
+```
+
+This works, but it assigns the default value for any **falsy** value.
+
+The nullish coalescing operator (??) returns the second argument if the first is *undefined* or *null*.
+
+```javascript
+const bar = foo ?? some_default_value
+```
+
+---
+
 name: control
 template: inverse
 

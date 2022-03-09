@@ -52,28 +52,13 @@ name:intro
 
 # DOM
 
-* The **Document Object Model** (DOM) is a **programming interface** for HTML and XML documents.
-* It provides a structured representation of the document and it defines a way that the structure can be accessed from programs so that they can change the document **structure**, **style** and **content**.
-* The DOM is a fully object-oriented representation of the web page, and it can be modified with a scripting language such as **JavaScript**.
+* The **Document Object Model** (DOM) is a fully object-oriented representation of a web page as a logical tree of *nodes*.
 
----
+* It allow programmatic access to the tree, allowing programs to **read** and **change** the document **structure**, **style** and **content**.
 
-template: inverse
-# Resources
+* Nodes can also have event handlers attached to them. Once an event is triggered, the event handlers get executed.
 
-
-* Reference:
-  * [MDN JavaScript Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)
-  * [ECMAScript Reference](http://ecma-international.org/ecma-262/5.1/)
-  * [MDN DOM Reference](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
-
-* Resources:
-  * [MDN JavaScript Resources](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-  * [JS Fiddle](http://jsfiddle.net/)
-
-* Tutorials:
-  * [The Modern JavaScript Tutorial](http://javascript.info)
-  * [JavaScript Style Guide](https://github.com/airbnb/javascript)
+* It can be manipulated from the browser using **JavaScript**.
 
 ---
 
@@ -93,15 +78,15 @@ Or as an external resource:
 <script src="script.js"></script>
 ```
 
-The closing *tag* is mandatory.
+The closing *tag* is **mandatory**.
 
 ---
 
 # Script tag position
 
-As *JavaScript* is capable of changing the HTML structure of a document, whenever the browser finds a **script** tag, it first fetches and runs that script and only then resumes loading the page.
+Most *JavaScript* scripts wait for the document to be fully loaded before operating any changes, but the browser does not know this. 
 
-Most *JavaScript* scripts don't change the document until it is fully loaded but the browser does not know this. For that reason, it was recommended that **script** tags were placed at the bottom of the **body**.
+Whenever the browser finds a **script** tag, it first fetches and runs that script and only then resumes loading the page. For that reason, it was recommended that **script** tags were placed at the bottom of the **body**.
 
 Modern browsers support the async and defer attributes, so scripts can safely be placed in the **head** of the document:
 
@@ -112,8 +97,24 @@ Modern browsers support the async and defer attributes, so scripts can safely be
 </head>
 ```
 
-* A asynchronous (**async**) script is run as soon as it is downloaded but without blocking the browser.
+* An asynchronous (**async**) script is run as soon as it is downloaded but without blocking the browser.
 * Deferred (**defer**) scripts are executed only when the page is loaded and in order.
+
+---
+
+template: inverse
+# Resources
+
+
+* Reference:
+  * [WHATWG DOM Specification](https://dom.spec.whatwg.org/)
+  * [W3C DOM Specification](https://www.w3.org/TR/DOM-Level-3-Core/)
+  * [MDN DOM Reference](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
+
+* Tutorials:
+  * [The Modern JavaScript Tutorial](http://javascript.info)
+  * [JavaScript Style Guide](https://github.com/airbnb/javascript)
+
 
 ---
 
@@ -125,115 +126,212 @@ You can access the current document in *JavaScript* using the **global** variabl
 
 Some Document **properties**:
 
-  *  **URL** - read-only location of the document
-  * **title** - contains the document title
-  * **location** - a *location* object that can be assigned in order to change to another document
+  * [URL](https://developer.mozilla.org/en-US/docs/Web/API/Document/URL) &ndash; Read-only location of the document.
+  * [title](https://developer.mozilla.org/en-US/docs/Web/API/Document/title) &ndash; The document title.
+  * [location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location) &ndash; A [Location](https://developer.mozilla.org/en-US/docs/Web/API/Location) object that can be assigned in order to navigate to another document.
 
 ```javascript
-document.location = 'http://www.google.com/'
+document.location.assign('https://www.google.com/')
 ```
 
-There is also another **global** variable that represents the browser called **window**.
+Another **global** variable represents the browser called [Window](https://developer.mozilla.org/en-US/docs/Web/API/Window).
 
 ---
 
-# Accessing Elements
+# Location
 
-The following *document* **methods** can be used to access specific HTML elements:
+A [Location](https://developer.mozilla.org/en-US/docs/Web/API/Location) allows us to separate the URL into its many components.
 
-|||
-|-:|-|
-| Element **getElementById**(id)             | returns the element with the specified id
-| NodeList **getElementsByClassName**(class) | returns all elements with the specified class
-| NodeList **getElementsByTagName**(name)    | returns all elements with the specified tag name
-| Element **querySelector**(selector)        | returns the first element selected by the specified CSS selector
-| NodeList **querySelectorAll**(selector)    | returns all elements selected by the specified CSS selector
+If the current URL is:
+
+```url
+https://www.example.com:8080/path?key=value#somewhere
+```
+
+Then:
 
 ```javascript
-let menu = document.getElementById('menu')
-let paragraphs = document.getElementsByTagName('p')  
-let intros = document.querySelectorAll('article p:first-child')  
+console.log(document.location.protocol)    // https:
+console.log(document.location.host)        // www.example.com:8080
+console.log(document.location.hostname)    // www.example.com
+console.log(document.location.port || 80)  // 8080
+console.log(document.location.pathname)    // /path
+console.log(document.location.search)      // ?key=vale
+console.log(document.location.hash)        // #somewhere
+```
+
+
+---
+
+# DOM UML Diagram
+
+A **partial** representation of the DOM:
+
+![](assets/javascript-dom/uml.svg)
+
+---
+
+# Selecting Elements
+
+The following [Document](https://developer.mozilla.org/en-US/docs/Web/API/Document) and [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element) **methods** can be used to access specific HTML elements:
+
+* [getElementById(id)](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById) that returns an [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element).
+  <br><small>returns the element with the specified id.</small>
+* [getElementsByClassName(class)](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByClassName) that returns a [NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList). 
+  <br><small>returns all elements with the specified class.</small>
+* [getElementsByTagName(name)](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName) that returns a [NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList).
+  <br><small>returns all elements with the specified tag name.</small>
+* [querySelector(selector)](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector) that returns an [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element).
+  <br><small>returns the **first** element selected by the specified CSS selector.</small>
+* [querySelectorAll(selector)](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll) that returns a [NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList).
+  <br><small>returns all elements selected by the specified CSS selector.</small>
+
+```javascript
+const menu = document.getElementById('menu')
+const paragraphs = document.getElementsByTagName('p')  
+const intros = document.querySelectorAll('article p:first-child')  
+const links = menu.querySelectorAll('a')  
 ```
 
 ---
 
 # Element
 
-An [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element) object represents an HTML element.
+An [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element) object represents an element in a [Document](https://developer.mozilla.org/en-US/docs/Web/API/Document). 
+
+More specific elements, like the [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement), will have more specific properties.
 
 Some common Element **properties**:
 
-|||
-|-:|-|
-| **id**        | The id attribute |
-| **innerHTML** | The HTML code inside the element |
-| **outerHTML** | The HTML code including this element |
-| **style**    | The CSS style of the element |
+* [id](https://developer.mozilla.org/en-US/docs/Web/API/Element/id)  &ndash; The element's identifier.
+* [innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) &ndash; The markup code of the element's content.
+* [outerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/outerHTML) &ndash; The markup code describing the element, including its descendants.
+* [textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) &ndash; The text content of an Element. <small>Inherited from the [Node](https://developer.mozilla.org/en-US/docs/Web/API/Node) class.</small>
+
+```javascript
+const article = document.querySelector('#posts article:first-child')
+article.innerHTML = '<p>Changed the content of the article</p>'
+```
+
+In most cases, using innerHTML to add new elements is [not a good idea](https://stackoverflow.com/questions/2946656/advantages-of-createelement-over-innerhtml).
 
 ---
 
-# Element
+# Element Attributes
 
-Some common Element **methods**:
+[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element) attributes can be accessed and modified using the following methods:
 
-|||
-|-:|-|
-| String **getAttribute**(name) | get the attribute with the given name (or null).
-| **setAttribute**(name, value) | modifies the attribute with the given name to value.
-| **remove**()                  | removes the element from its parent.
-
-We can also use the same methods we used with the *document* object to access element children:
+* [getAttribute(name)](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute) &ndash; **returns** the value for the attribute with the given name (or null).
+* [setAttribute(name, value)](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute) &ndash; **modifies** the attribute with the given name to value.
+* [removeAttribute(name)](https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttribute) &ndash; **removes** the attribute with the given name from the element.
+* [hasAttribute(name)](https://developer.mozilla.org/en-US/docs/Web/API/Element/hasAttribute) &ndash; returns true if the element **has** an attribute with the given name.
 
 ```javascript
-  let article = document.getElementById('top-article')
-  let intro = article.getElementsByTagName('p')[0]
+const link = document.querySelector('#posts a:first-child')
+console.log(link.getAttribute('href'))
+link.setAttribute('href', 'http://www.example.com/'))
 ```
 
-Other **methods**: **removeAttribute**, **hasAttribute**
+---
+
+# Element Class
+
+To modify the class attribute of an [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element), we must use the [classList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList)  property that returns a live collection of classes.
+
+This can then be used to manipulate the class list:
+
+* [add(class, ...)](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/add) &ndash; **adds** one or more classes to the class list.
+* [remove(class, ...)](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/remove) &ndash; **removes** one or more classes from the class list.
+* [replace(oldClass, newClass)](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/replace) &ndash; **replaces** *oldClass* with *newClass*.<br><small>But only if the *oldClass* is present. Returns true if the class was replaced.</small>
+* [toggle(class)](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/toggle) &ndash; **toggles** class from the class list.<br> <small>Returns true if the class was added, false if it was removed.</small>
+
+```javascript
+const article = document.querySelector('#posts article:first-child')
+article.classList.add('selected')
+```
 
 ---
 
 # Creating Elements
 
-The **createElement** method of the *document* object can be used to create new elements:
+The [createElement](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) method of the [Document](https://developer.mozilla.org/en-US/docs/Web/API/Document) object is the preferred method for creating new elements:
 
 ```javascript
-let title = 'Some Title'
-let intro = 'This is a long introduction'
+const text = 'The quick brown fox jumps over the lazy dog'
+const paragraph = document.createElement('p')
 
-let article = document.createElement('article')
-article.setAttribute('class', 'post')
-article.innerHTML = '<h1>' + title + '</h1><p>' + intro + '</p>'
+paragraph.textContent = text
 
-console.log(article.outerHTML)
+console.log(paragraph.outerHTML)
 ```
 
-The returned **article** variable is a subclass of the [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement) class.
+The **paragraph** variable is a subclass of the [HTMLParagraphElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLParagraphElement) class.
 
 ```html
-<article class="post">
-  <h1>Some Title</h1>
-  <p>This is a long introduction</p>
-</article>
+<p>The quick brown fox jumps over the lazy dog</p>
 ```
 
-The variable still **has not been inserted** anywhere in the *document*.
+The paragraph still **has not been inserted** anywhere in the *document*.
 
 ---
 
-# HTML Element
+# HTMLElement
 
-The HTMLElement inherits from the Element object. There are [different](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model#HTML_interfaces)
-HTMLElement objects for each HTML element.
+The [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement) inherits from the [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element) object. 
 
-|||
-|-:|-|
-| [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement)       | style, title, blur(), click(), focus()
-| [HTMLInputElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement)  | name, type, value, checked, autocomplete, autofocus, defaultChecked, defaultValue, disabled, min, max, readOnly, required
-| [HTMLSelectElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement) | name, multiple, required, size, length
-| [HTMLOptionElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement) | disabled, selected, defaultSelected, text, value
-| [HTMLAnchorElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement) | href, host, hostname, port, hash, pathname, protocol, text, username, password
-| [HTMLImageElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)  | alt, src, width, height
+For each HTML tag, a different class implements (directly or indirectly) this interface. These are some of their **properties**:
+
+* [style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) &ndash; The CSS style of the element.
+* [hidden](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/hidden) &ndash; Is the element hidden.
+
+And **methods**:
+
+
+* [focus()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) &ndash; Sets keyboard focus on the element.
+* [blur()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/blur) &ndash; Removes keyboard focus on the element.
+* [click()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/click) &ndash; Simulates a mouse click on the element.
+
+---
+
+# HTML*Element
+
+For each *HTML tag*, there is a class implementing the [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement) interface.
+
+These are some of them and some of their *attributes* and *methods*:
+
+* [HTMLInputElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement) &ndash; name, type, value, checked, autocomplete, autofocus, defaultChecked, defaultValue, disabled, min, max, readOnly, required, [select()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select).
+* [HTMLSelectElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement) &ndash; name, multiple, required, size, length, [add(item, before)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/add), [item(index)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/item), [remove(index)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/remove).
+* [HTMLOptionElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement) &ndash; disabled, selected, defaultSelected, text, value.
+* [HTMLAnchorElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement) &ndash; href, host, hostname, port, hash, pathname, protocol, text, username, password.
+* [HTMLImageElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)  &ndash; alt, src, width, height.
+
+---
+
+# HTMLInputElement
+
+Notice the difference between using the **value** attribute, and the **getAttribute** method to get the value of an [HTMLInputElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement):
+
+
+```html
+<form id="register">
+  <input type="text" name="username" value="johndoe">
+</form>
+```
+
+.example[
+<form id="register">
+  <input type="text" name="username" value="johndoe">
+</form>
+]
+
+If the user changes the value to '*johndoe123*':
+
+```javascript
+const input = document.querySelector('#register input')
+console.log(input.getAttribute('value'))  // still johndoe
+console.log(input.value)                  // johndoe123
+```
+
 
 ---
 
@@ -249,6 +347,8 @@ Some common Node **methods**:
 | **replaceChild**(new, old)        | replaces a child of this node.
 | **removeChild**(child)            | removes a child from this node.
 | **insertBefore**(new, reference)  | inserts a new child before the reference child.
+
+| **remove**()                  | removes the element from its parent.
 
 ---
 

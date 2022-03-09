@@ -510,8 +510,8 @@ The **content** property can have the following values:
  * **open-quote** and **close-quote** Open and close quotes: *open-quote*
 
 ```css
-blockquote:before { content: open-quote;  }
-blockquote:after  { content: close-quote; }
+blockquote::before { content: open-quote;  }
+blockquote::after  { content: close-quote; }
 ```
 
 ---
@@ -553,11 +553,11 @@ p .intro
 
 ```css
 /* a paragraph that is the first child of its parent */
-p.first-child  
+p:first-child  
 
 /* an element that is the first child of its */
 /* parent and a descendant of a paragraph */
-p .first-child
+p :first-child
 ```
 
 ---
