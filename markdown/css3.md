@@ -403,7 +403,7 @@ The focus pseudo-class can be used in other elements (*cf.* [accessibility](http
 
 # Target Pseudo-class
 
-The **target** pseudo-class selects the **unique** element, if any, with an *id* matching the fragment identifier (the part after #) of the URL.
+The **target** pseudo-class selects the **unique** element, if any, with an *id* matching the URL's fragment identifier (the part after #).
 
 If we have this HTML in our *news.html* page:
 
@@ -428,7 +428,7 @@ section:target { }
 
 ## First and Last Pseudo-classes
 
-Selects elements based on their position in the tree:
+Select elements based on their position in the tree:
 
 ```css
 /* any paragraphs that are the first child of their parents */ 
@@ -466,7 +466,7 @@ The **nth-of-type(an+b)** selector does the same thing but counts only siblings 
 
 ## Empty and Only-child Pseudo-classes
 
-Selects elements based on the **number of children** of an element:
+Select elements based on the **number of children** of an element:
 
 ```css
 /* paragraphs that are the only children of their parents */
@@ -507,7 +507,7 @@ section :not(article) p { } /* does not select the paragraph */
 
 ## First and Last Pseudo-elements
 
-Selects **parts** of elements based on their position in the element:
+Select **parts** of elements based on their position in the element:
 
 ```css
 p::first-letter /* the first letter of any paragraph */
@@ -516,7 +516,7 @@ p::first-letter /* the first letter of any paragraph */
 * **::first-line**: Selects the first line of the selector
 * **::first-letter**: Selects the first character of the selector
 
-A more complicated example
+A more complicated example:
 
 ```css
 /* the first letter of any paragraph that     */
