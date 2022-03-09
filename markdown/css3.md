@@ -367,10 +367,10 @@ Pseudo-classes that select anchors (links) based on their state:
 a:visited /* selects all links that were visited */
 ```
 
-* **link**: The link was never visited.
-* **visited**: The link was visited previously.
-* **active**: The link is active (being clicked).
-* **hover**: The mouse is over the link (also works on other element types):
+* **:link** &ndash; The link was never visited.
+* **:visited** &ndash; The link was visited previously.
+* **:active** &ndash; The link is active (being clicked).
+* **:hover** &ndash; The mouse is over the link (also works on other element types):
 
 ```css
 img:hover /* selects images when the mouse pointer is over them */
@@ -397,6 +397,8 @@ input:read-write /* the input is not read-only */
 radio:checked    /* the radio button is checked */
 ```
 
+The focus pseudo-class can be used in other elements (*cf.* [accessibility](https://www.w3.org/WAI/fundamentals/accessibility-intro/)).
+
 ---
 
 # Target Pseudo-class
@@ -415,11 +417,11 @@ If we have this HTML in our *news.html* page:
 And the URL changes to *news.html#sports*, the page scrolls to the *section* with *id* "sports", and both these selectors then select that section:
 
 ```css
-:target
+:target { }
 ```
 
 ```css
-section:target
+section:target { }
 ```
 
 ---
@@ -430,11 +432,11 @@ Selects elements based on their position in the tree:
 
 ```css
 /* any paragraphs that are the first child of their parents */ 
-p:first-child 
+p:first-child { }
 
 
 /* any element that is the last child of their parents */ 
-:last-child 
+:last-child { }
 ```
 
 * **first-child**: Selects elements that are the first child of their parents.
@@ -451,11 +453,11 @@ The **nth-child(an+b)** selector selects elements that are the **bth** child of 
 In other words, this class matches all children whose index fall in the set *{ an + b; n = 0, 1, 2, ... }*.
 
 ```css
-  :nth-child(1)    /* is the same as :first-child */
-  :nth-child(2)    /* second child */
-  :nth-child(2n)   /* the even childs */
-  :nth-child(2n+1) /* the odd childs */
-  :nth-child(-n+3) /* one of the first three children */
+  :nth-child(1) { }    /* is the same as :first-child */
+  :nth-child(2) { }    /* second child */
+  :nth-child(2n) { }   /* the even childs */
+  :nth-child(2n+1) { } /* the odd childs */
+  :nth-child(-n+3) { } /* one of the first three children */
 ```
 
 The **nth-of-type(an+b)** selector does the same thing but counts only siblings with the same name.
@@ -468,10 +470,37 @@ Selects elements based on the **number of children** of an element:
 
 ```css
 /* paragraphs that are the only children of their parents */
-p:only-child 
+p:only-child { }
 
 /* paragraphs that have no children (not even text) */
-p:empty
+p:empty { }
+```
+
+---
+
+# Negation Pseudo-class
+
+Represents elements that **do not match** a list of selectors:<br><small>Negation pseudo-class selectors cannot be nested.</small>
+
+```css
+:not(p) { } /* all elements that are not a paragraph  */
+
+/* all paragraphs inside sections that are direct      */
+/* children of an element that is not an article       */
+section :not(article) p { }
+```
+
+Be careful with some **pitfalls**:
+
+```html
+<section><article><p>
+  The quick brown fox jumps over the lazy dog
+</p></article></section>
+```
+
+```css
+section :not(article) p { } /* does not select the paragraph */
+:not(section) p { }         /* selects the paragraph, why?   */
 ```
 
 ---
