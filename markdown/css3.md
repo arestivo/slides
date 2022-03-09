@@ -1124,6 +1124,12 @@ The border can be set using the **border** property:
 * Style is one of the following: *none*, *hidden*, *dotted*, *dashed*, *solid*, *double*, *groove*, *ridge*, *inset*, and *outset*.
 * And color is a [color](#color).
 
+```css
+section#posts {
+  border: 1px solid blue;
+}
+```
+
 And is just a shorthand for three different properties: **border-width**, **border-style**, and **border-color**.
 
 ---
