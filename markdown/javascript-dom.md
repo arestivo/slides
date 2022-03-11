@@ -206,7 +206,7 @@ Some common Element **properties**:
 * [id](https://developer.mozilla.org/en-US/docs/Web/API/Element/id)  &ndash; The element's identifier.
 * [innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) &ndash; The markup code of the element's content.
 * [outerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/outerHTML) &ndash; The markup code describing the element, including its descendants.
-* [textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) &ndash; The text content of an Element. <small>Inherited from the [Node](https://developer.mozilla.org/en-US/docs/Web/API/Node) class.</small>
+* [textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) &ndash; The text content of an Element. <small>Inherited from [Node](https://developer.mozilla.org/en-US/docs/Web/API/Node).</small>
 
 ```javascript
 const article = document.querySelector('#posts article:first-child')
@@ -234,11 +234,11 @@ link.setAttribute('href', 'http://www.example.com/'))
 
 ---
 
-# Element Class
+# Element Class List
 
-To modify the class attribute of an [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element), we must use the [classList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList)  property that returns a live collection of classes.
+To modify the class attribute of an [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element), we should use the [classList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList)  property that returns a live collection of classes.
 
-This can then be used to manipulate the class list:
+This property can then be used to manipulate the class list:
 
 * [add(class, ...)](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/add) &ndash; **adds** one or more classes to the class list.
 * [remove(class, ...)](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/remove) &ndash; **removes** one or more classes from the class list.
@@ -329,122 +329,151 @@ If the user changes the value to '*johndoe123*':
 ```javascript
 const input = document.querySelector('#register input')
 console.log(input.getAttribute('value'))  // still johndoe
-console.log(input.value)                  // johndoe123
+console.log(input.value)                  // changes to johndoe123
 ```
-
 
 ---
 
 # Node
 
-The [Node](https://developer.mozilla.org/en-US/docs/Web/API/Node) object represents a node in the document tree. The *Element* object inherits from the *Node* object.
+The [Node](https://developer.mozilla.org/en-US/docs/Web/API/Node) object represents a node in the document tree. 
 
-Some common Node **methods**:
+The *Element* and *HTMLElement* objects inherit these methods from the *Node* object:
 
-|||
-|-:|-|
-| **appendChild**(node)             | appends a node to this node.
-| **replaceChild**(new, old)        | replaces a child of this node.
-| **removeChild**(child)            | removes a child from this node.
-| **insertBefore**(new, reference)  | inserts a new child before the reference child.
 
-| **remove**()                  | removes the element from its parent.
+* [appendChild(child)](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) &ndash; **adds** a node to the end of a parent's node list of children.
+* [replaceChild(newChild, oldChild)](https://developer.mozilla.org/en-US/docs/Web/API/Node/replaceChild) &ndash; **replaces** a child of this node with another one.
+* [removeChild(child)](https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild) &ndash; **removes a child** from this node.
+* [insertBefore(newNode, referenceNode)](https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore) &ndash;  **inserts** a new child **before** the reference child.
+* [remove()](https://developer.mozilla.org/en-US/docs/Web/API/Element/remove) &ndash; **removes the element** from its parent.<br><small>From the [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element) interface</small>.
+
+When adding nodes, if the node already has a parent, it is **first removed** from its current location.
+
+---
+
+# HTMLElement Style
+
+To change the inline style of an [HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement), we can use the [style](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) object.
+
+Either changing the **whole inline style** at once:
+
+```javascript
+const article = document.querySelector('#posts article:first-child')
+article.style = 'color: red'
+```
+
+Or just **one property**:
+
+```javascript
+article.style.color = 'red'
+```
+
+To **reset** all inline styles we can set the style object to *null* or to an *empty string*:
+
+```javascript
+article.style = ''
+article.style = null
+```
 
 ---
 
 # Element and Node
 
-Some examples:
+A simple example:
 
 ```javascript
-let element = document.getElementById("menu") // gets the element with id menu
+// gets the first article
+const article = document.querySelector('#posts article:first-child')
 
-element.style.color = "blue"                  // changes the text color to blue
-element.style.padding = "2em"                 // and the padding to 2em
+article.style.color = 'blue'  // changes the text color to blue
+article.style.padding = '2em' // and the padding to 2em
 
-let paragraph = document.createElement("p")   // creates a new paragraph
-paragraph.innerHTML = "Some text"             // inserts text in the paragraph
+// creates a new paragraph
+const paragraph = document.createElement("p") 
+// inserts text in the paragraph
+paragraph.textContent = 'Some text'
 
-element.appendChild(paragraph)                // adds the paragraph to the menu
-element.remove()                              // removes the menu
+article.appendChild(paragraph) // adds the paragraph to the article
 ```
 
----
-
-# Traversing the DOM tree
-
-The *Node* object has the following properties that can be used to traverse the DOM tree:
-
-|||
-|-:|-|
-| **firstChild** and **lastChild**           | first and last node children of this node.
-| **childNodes**                             | all children nodes as a NodeList.
-| **previousSibling** and **nextSibling**    | previous and next siblings to this node.
-| **parentNode**                             | parent of this node.
-| **nodeType**                               | the type of the node.
-
-We have to be careful as not all nodes are elements (see [node type list](https://developer.mozilla.org/en-US/docs/Web/API/Node.nodeType))
+See the example in [action](https://jsfiddle.net/52nawdou/2/).
 
 ---
 
-# Traversing the DOM tree
+# Traversing the DOM tree (Node)
+
+The *Node* object has the following properties that allow traversing the DOM tree:
+
+* [firstChild](https://developer.mozilla.org/en-US/docs/Web/API/Node/firstChild) and [lastChild](https://developer.mozilla.org/en-US/docs/Web/API/Node/lastChild) &ndash; first and last node children of this node.
+* [childNodes](https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes) &ndash; all children nodes as a **live** [NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList).
+* [previousSibling](https://developer.mozilla.org/en-US/docs/Web/API/Node/previousSibling) and [nextSibling](https://developer.mozilla.org/en-US/docs/Web/API/Node/nextSibling) &ndash; previous and next siblings to this node.
+* [parentNode](https://developer.mozilla.org/en-US/docs/Web/API/Node/parentNode) &ndash; parent of this node.
+* [nodeType](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType) &ndash; the type of this node.
+
+.box_warning[
+Be careful, as all these functions return nodes that might not be HTMLElements (*e.g.*, text and comment nodes). See the complete [node type list](https://developer.mozilla.org/en-US/docs/Web/API/Node.nodeType).
+]
+
+---
+
+# Traversing Example
 
 Consider the following HTML:
 
 ```html
-<article id="article">
+<section id="posts">
   <h1>Title</h1>
   <p>Some text</p>
-</article>
+</section>
 ```
 
 And the following *JavaScript*:
 
 ```javascript
-let article = document.getElementById('article')
-console.log(article.firstChild)                         // #text
-console.log(article.firstChild.textContent)             // '\n '
-console.log(article.firstChild.nextSibling)             // <h1>
-console.log(article.firstChild.nextSibling.textContent) // 'Title'
+const posts = document.querySelector('#posts')
+console.log(posts.firstChild)                         // #text
+console.log(posts.firstChild.textContent)             // '\n '
+console.log(posts.firstChild.nextSibling)             // <h1>
+console.log(posts.firstChild.nextSibling.textContent) // 'Title'
 ```
 
 ---
 
-# Traversing the DOM tree
+# Traversing the DOM tree (Element)
 
-To solve this problem, the following properties have been added since *ECMAScript 6*:
+To simplify traversing HTML documents, the following properties have been added to the [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element) interface:
 
-|||
-|-:|-|
-| **firstElementChild** and **lastElementChild**        | first and last element children of this node.
-| **children**                                          | all children elements as a NodeList.
-| **previousElementSibling** and **nextElementSibling** | previous and next element siblings to this node.
+* [firstElementChild](https://developer.mozilla.org/en-US/docs/Web/API/Element/firstElementChild) and [lastElementChild](https://developer.mozilla.org/en-US/docs/Web/API/Element/lastElementChild) &ndash; first and last element children of this node.
+* [children](https://developer.mozilla.org/en-US/docs/Web/API/Element/children) &ndash; all children elements as a NodeList.
+* [previousElementSibling](https://developer.mozilla.org/en-US/docs/Web/API/Element/previousElementSibling) and [nextElementSibling](https://developer.mozilla.org/en-US/docs/Web/API/Element/nextElementSibling) &ndash; previous and next element siblings of this node.
 
 ```html
-<article id="article">
+<section id="posts">
   <h1>Title</h1>
   <p>Some text</p>
-</article>
+</section>
 ```
 
 ```javascript
-let article = document.getElementById('article')
-console.log(article.firstElementChild)                         // <h1>
-console.log(article.firstElementChild.textContent)             // 'Title'
+const posts = document.querySelector('#posts')
+console.log(posts.firstElementChild)              // <h1>
+console.log(posts.firstElementChild.textContent)  // 'Title'
 ```
 
 ---
 
 # NodeList
 
-* A *NodeList* is an object that behaves like an array of elements.
-* Functions like **document.getElementsByTagName()** return a *NodeList*.
-* Items in a Node List can be accessed by index like in an array:
+* A [NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList) is an object that behaves like an array of elements.
+* Functions like [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) and [getElementsByTagName()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName) return a *NodeList*.
+* In some cases, the NodeList is live. <small>DOM changes automatically update it.</small>
+
+Items in a *NodeList* can be accessed **by index** like in an array:
 
 ```javascript
-let paragraphs = document.getElementsByTagName("p")
+const paragraphs = document.querySelectorAll('p')
 for (let i = 0; i < paragraphs.length; i++) {
-  let paragraph = paragraphs[i]
+  const paragraph = paragraphs[i]
   // do something with the paragraph
 }
 ```
@@ -452,9 +481,9 @@ for (let i = 0; i < paragraphs.length; i++) {
 Or using a **for..of** loop:
 
 ```javascript
-let paragraphs = document.getElementsByTagName("p")
+const paragraphs = document.querySelectorAll('p')
 for (const paragraph of paragraphs) {
-  // do something with the element
+  // do something with the paragraph
 }
 ```
 
