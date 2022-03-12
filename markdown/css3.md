@@ -248,13 +248,13 @@ Selects all elements (*):
 
 Select elements based on their attribute existence and values:
 
-* **[attribute]** exists
-* **[attribute=value]** equals
-* **[attribute~=value]** containing value (word)
-* **[attribute|=value]** starting with value (word)
-* **[attribute^=value]** starting with value
-* **[attribute$=value]** ending with value
-* **[attribute*=value]** containing value
+* **[attribute]** &ndash; exists.
+* **[attribute=value]** &ndash; equals.
+* **[attribute~=value]** &ndash; containing value (word).
+* **[attribute|=value]** &ndash; starting with value (word).
+* **[attribute^=value]** &ndash; starting with value.
+* **[attribute$=value]** &ndash; ending with value.
+* **[attribute*=value]** &ndash; containing value.
 
 ```css
 form[method=get] /* selects all forms with attribute method="get" */
@@ -439,10 +439,10 @@ p:first-child
 :last-child
 ```
 
-* **first-child**: Selects elements that are the first child of their parents.
-* **last-child**: Selects elements that are the last child of their parents.
-* **first-of-type**: Selects elements that are the first child of their parents with their type.
-* **last-of-type**: Selects elements that are the last child of their parents with their type.
+* **first-child** &ndash; Selects elements that are the first child of their parents.
+* **last-child** &ndash; Selects elements that are the last child of their parents.
+* **first-of-type** &ndash; Selects elements that are the first child of their parents having their type.
+* **last-of-type** &ndash; Selects elements that are the last child of their parents having their type.
 
 ---
 
@@ -513,8 +513,8 @@ Select **parts** of elements based on their position in the element:
 p::first-letter /* the first letter of any paragraph */
 ```
 
-* **::first-line**: Selects the first line of the selector
-* **::first-letter**: Selects the first character of the selector
+* **::first-line** &ndash; Selects the first line of the selector.
+* **::first-letter** &ndash; Selects the first character of the selector.
 
 A more complicated example:
 
@@ -532,11 +532,11 @@ Before and after pseudo-elements can be combined with the **content** property t
 
 The **content** property can have the following values:
 
- * **none** The default value; adds nothing. Cannot be combined with other values: *none*
- * **a string** Using single quotes. Adds the text to the element: *'Chapter'*
- * **an url** An external resource (such as an image): *url('dog.png')*
- * **counter** Variables maintained by CSS whose values may be [manipulated](https://www.w3.org/TR/css-lists-3/#auto-numbering) by CSS rules to track how many times they're used: *counter(section)*.
- * **open-quote** and **close-quote** Open and close quotes: *open-quote*
+ * **none** &ndash; The default value; adds nothing. Cannot be combined with other values: *none*.
+ * **a string** &ndash; Using single quotes. Adds the text to the element: *'Chapter'*.
+ * **an url** &ndash; An external resource (such as an image): *url('dog.png')*.
+ * **counter** &ndash; Variables maintained by CSS whose values may be [manipulated](https://www.w3.org/TR/css-lists-3/#auto-numbering) by CSS rules to track how many times they're used: *counter(section)*.
+ * **open-quote** and **close-quote** &ndash; Open and close quotes: *open-quote*.
 
 ```css
 blockquote::before { content: open-quote;  }
