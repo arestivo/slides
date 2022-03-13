@@ -45,7 +45,7 @@ name:index
 ---
 
 template: inverse
-name:intro
+name: intro
 # Introduction
 
 ---
@@ -59,62 +59,6 @@ name:intro
 * Nodes can also have event handlers attached to them. Once an event is triggered, the event handlers get executed.
 
 * It can be manipulated from the browser using **JavaScript**.
-
----
-
-# JavaScript on HTML Documents
-
-*JavaScript* can be embedded directly into an HTML document:
-
-```html
-<script>
-  // javascript code goes here
-</script>
-```
-
-Or as an external resource:
-
-```html
-<script src="script.js"></script>
-```
-
-The closing *tag* is **mandatory**.
-
----
-
-# Script tag position
-
-Most *JavaScript* scripts wait for the document to be fully loaded before operating any changes, but the browser does not know this. 
-
-Whenever the browser finds a **script** tag, it first fetches and runs that script and only then resumes loading the page. For that reason, it was recommended that **script** tags were placed at the bottom of the **body**.
-
-Modern browsers support the async and defer attributes, so scripts can safely be placed in the **head** of the document:
-
-```html
-<head>
-  <script src="script.js" async></script>
-  <script src="script.js" defer></script>
-</head>
-```
-
-* An asynchronous (**async**) script is run as soon as it is downloaded but without blocking the browser.
-* Deferred (**defer**) scripts are executed only when the page is loaded and in order.
-
----
-
-template: inverse
-# Resources
-
-
-* Reference:
-  * [WHATWG DOM Specification](https://dom.spec.whatwg.org/)
-  * [W3C DOM Specification](https://www.w3.org/TR/DOM-Level-3-Core/)
-  * [MDN DOM Reference](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
-
-* Tutorials:
-  * [The Modern JavaScript Tutorial](http://javascript.info)
-  * [JavaScript Style Guide](https://github.com/airbnb/javascript)
-
 
 ---
 
@@ -171,6 +115,28 @@ A **partial** representation of the DOM:
 
 ---
 
+template: inverse
+# Resources
+
+
+* Reference:
+  * [WHATWG DOM Specification](https://dom.spec.whatwg.org/)
+  * [W3C DOM Specification](https://www.w3.org/TR/DOM-Level-3-Core/)
+  * [MDN DOM Reference](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
+
+* Tutorials:
+  * [The Modern JavaScript Tutorial](http://javascript.info)
+  * [JavaScript Style Guide](https://github.com/airbnb/javascript)
+
+
+---
+
+template: inverse
+name: elements
+# Elements
+
+---
+
 # Selecting Elements
 
 The following [Document](https://developer.mozilla.org/en-US/docs/Web/API/Document) and [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element) **methods** can be used to access specific HTML elements:
@@ -204,6 +170,7 @@ More specific elements, like the [HTMLElement](https://developer.mozilla.org/en-
 Some common Element **properties**:
 
 * [id](https://developer.mozilla.org/en-US/docs/Web/API/Element/id)  &ndash; The element's identifier.
+* [tagName](https://developer.mozilla.org/en-US/docs/Web/API/Element/tagName) &ndash; The tag name.
 * [innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) &ndash; The markup code of the element's content.
 * [outerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/outerHTML) &ndash; The markup code describing the element, including its descendants.
 * [textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) &ndash; The text content of an Element. <small>Inherited from [Node](https://developer.mozilla.org/en-US/docs/Web/API/Node).</small>
@@ -400,6 +367,39 @@ See the example in [action](https://jsfiddle.net/52nawdou/2/).
 
 ---
 
+# NodeList
+
+* A [NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList) is an object that behaves like an array of elements.
+* Functions like [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) and [getElementsByTagName()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName) return a *NodeList*.
+* In some cases, the NodeList is live. <small>DOM changes automatically update it.</small>
+
+Items in a *NodeList* can be accessed **by index** like in an array:
+
+```javascript
+const paragraphs = document.querySelectorAll('p')
+for (let i = 0; i < paragraphs.length; i++) {
+  const paragraph = paragraphs[i]
+  // do something with the paragraph
+}
+```
+
+Or using a **for..of** loop:
+
+```javascript
+const paragraphs = document.querySelectorAll('p')
+for (const paragraph of paragraphs) {
+  // do something with the paragraph
+}
+```
+
+---
+
+template: inverse
+name: traversing
+# Traversing
+
+---
+
 # Traversing the DOM tree (Node)
 
 The *Node* object has the following properties that allow traversing the DOM tree:
@@ -411,9 +411,10 @@ The *Node* object has the following properties that allow traversing the DOM tre
 * [nodeType](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType) &ndash; the type of this node.
 
 .box_warning[
-Be careful, as all these functions return nodes that might not be HTMLElements (*e.g.*, text and comment nodes). See the complete [node type list](https://developer.mozilla.org/en-US/docs/Web/API/Node.nodeType).
+Be careful, as all these functions return nodes that might not be HTMLElements (*e.g.*, text and comment nodes).
 ]
 
+See the complete [node type list](https://developer.mozilla.org/en-US/docs/Web/API/Node.nodeType).
 ---
 
 # Traversing Example
@@ -462,95 +463,113 @@ console.log(posts.firstElementChild.textContent)  // 'Title'
 
 ---
 
-# NodeList
-
-* A [NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList) is an object that behaves like an array of elements.
-* Functions like [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) and [getElementsByTagName()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName) return a *NodeList*.
-* In some cases, the NodeList is live. <small>DOM changes automatically update it.</small>
-
-Items in a *NodeList* can be accessed **by index** like in an array:
-
-```javascript
-const paragraphs = document.querySelectorAll('p')
-for (let i = 0; i < paragraphs.length; i++) {
-  const paragraph = paragraphs[i]
-  // do something with the paragraph
-}
-```
-
-Or using a **for..of** loop:
-
-```javascript
-const paragraphs = document.querySelectorAll('p')
-for (const paragraph of paragraphs) {
-  // do something with the paragraph
-}
-```
-
+template: inverse
+name: events
+# Events
 
 ---
 
-# Events
+# Event-driven Architecture
 
-* Events are sent to notify code of interesting things that have taken place.
+The DOM follows an [event-driven](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events) architecture (an architecture built on top of the publish-subscribe or observer pattern):
 
-* Each event is represented by an object which is based on the Event interface, and may have additional custom fields and/or functions used to get additional information about what happened.
+* Events are occurrences that happen in the system.<br><small>*e.g.*, the user clicks on a button.</small>
+* Specific events in specific object can have event handlers attched to them.
+* When the event happens, the attached handler is called.
 
-Some possible events:
+**Some** possible events:
 
-|||
-|-:|-|
-| Mouse | click, dblclick, mousedown, mouseup, mouseenter, mouseleave, mouseover, mousewheel
-| Keys | keypress, keydown, keyup
-| Text | cut, copy, paste, select
-| Form | reset, submit
-| Input | focus, blur, change
+* Mouse ([MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)) &ndash; [click](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event), [dblclick](https://developer.mozilla.org/en-US/docs/Web/API/Element/dblclick_event), [mouseup](https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseup_event), [mousenter](https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseenter_event), [mouseleave](https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseleave_event), [mouseover](https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseover_event).
+* Forms ([InputEvent](https://developer.mozilla.org/en-US/docs/Web/API/InputEvent), [FocusEvent](https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent), [FormDataEvent](https://developer.mozilla.org/en-US/docs/Web/API/FormDataEvent) and [SubmitEvent](https://developer.mozilla.org/en-US/docs/Web/API/SubmitEvent)) &ndash; [input](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event), [change](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event), [focus](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event), [blur](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event), [formdata](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/formdata_event), [submit](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event).
+* Keyboard ([KeyboardEvent](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent)) &ndash; [keydown](https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event), [keyup](https://developer.mozilla.org/en-US/docs/Web/API/Document/keyup_event), [keypress](https://developer.mozilla.org/en-US/docs/Web/API/Document/keypress_event).
 
 ---
 
 # Events in HTML
 
-A possible way to get notified of Events of a particular type (such as click) for a given object is to specify an event handler using:
+A possible way to get notified of events of a particular type (such as click) for a given object is to specify an event handler using an HTML attribute named on{eventtype} on an element.
 
-An HTML attribute named on{eventtype} on an element, for example:
+For example:
+
+```html
+<button onclick="console.log('User clicked button')">
+  Click me
+</button>
+```
+
+Or:
 
 ```html
 <button onclick="return handleClick(event)">
+  Click me
+</button>
 ```
 
-or by setting the corresponding property from JavaScript, for example:
+.box_warning[
+  But, you should [not use this](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#inline_event_handlers_%E2%80%94_dont_use_these)!
+]
+
+---
+
+# Events on Element Properties
+
+Another way of attaching an event handler would be by setting the corresponding property.
+
+For example:
 
 ```javascript
-document.getElementById("mybutton").onclick = function(event) { ... }
+document.querySelector("button").onclick = function(event) {
+  console.log('User clicked button')
+}
+```
+
+Or:
+
+
+```javascript
+function handleEvent(event) {
+  console.log('User clicked button')
+}
+
+document.querySelector("button").onclick = handleEvent
 ```
 
 ---
 
 # Add Event Handler
 
-On modern browsers, the *JavaScript* function **addEventListener** should be used to handle events.
+On modern browsers, the [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) function is the most common way to attach event handlers.
+
+For example:
 
 ```javascript
-element.addEventListener(type, listener[, useCapture = false])
+const button = document.querySelector("button")
+
+button.addEventListener('click', function(event){
+  console.log('User clicked button')
+})
 ```
 
 Example:
 
 ```javascript
 function handleEvent() {
-  ...
+  console.log('User clicked button')
 }
 
-let menu = document.getElementById("menu")
-menu.addEventListener("click", handleEvent)
-menu.addEventListener("click", function(){...})
+const button = document.querySelector("button")
+button.addEventListener('click', handleEvent)
 ```
 
 ---
 
-# Event Handler Functions
+# The Event Object
 
-A function that handles an event can receive a parameter representing the event that caused the function to be called.
+A function that handles an event can receive a parameter representing the event:
+
+* Depending on its type, the event can have different [properties and methods](https://developer.mozilla.org/en/docs/Web/API/Event#DOM_Event_interface).
+
+* We can use the [preventDefault()](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method to ensure that the default behavior is suppressed (*e.g.*, a link isn't followed or a form isn't submitted).
 
 ```javascript
 function handleEvent(event) {
@@ -558,25 +577,24 @@ function handleEvent(event) {
   event.preventDefault()
 }
 
-let link = document.querySelector("a")
-link.addEventListener('click', handleEvent)
+const button = document.querySelector("button")
+button.addEventListener('click', handleEvent)
 ```
 
-Depending on its type, the event can have different properties and methods: [Reference](https://developer.mozilla.org/en/docs/Web/API/Event#DOM_Event_interface)
-
-To make sure that the original behavior is prevented, we can use the event.[preventDefault](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) method.
+See the example in [action](https://jsfiddle.net/wxcmd387/11/).
 
 ---
 
 
 # Bubbling
 
-* When an event happens on an element, it first runs the handlers on it, then on its parent, then all the way up on other ancestors.
-* In each step, the handler can know the current target (*event.currentTarget* or *this*) and also the initial target (*event.target*).
+When an event happens on an element, it first runs any handlers attached to it, then on its parent, then up to the root.
+
+In each step, the handler can know the current target ([event.currentTarget](https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget) or *this*) and also the initial target ([event.target](https://developer.mozilla.org/en-US/docs/Web/API/Event/target)).
 
 .small[
 
-Example where we add some events on all elements and print **this** and **event.target** tag names:
+Example where we add some events on all elements and print **this** and **event.target** [tag names](https://developer.mozilla.org/en-US/docs/Web/API/Element/tagName):
 
 ```html
 <section> <article> <p>Text</p> </article> </section>
@@ -601,24 +619,25 @@ Bubble: SECTION - P
 ```
 ]
 
-To stop bubbling we use the event.[stopPropagation](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation) method.
+To stop bubbling, we can use the [event.stopPropagation()](https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation) method.
 
 ---
 
 # Capturing
 
-Event processing has two phases:
+Event processing has [two phases](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling_and_capture):
+
   * Capturing: goes down to the element.
   * Bubbling: the event bubbles up from the element.
 
-Although rarely used, the **useCapture** parameter of the *addEventListener* method, allows us to set the event handler on the capturing phase.
+Although rarely used, the **useCapture** parameter of the [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) method allows us to set the event handler on the capturing phase.
 
-The previous example with some more capture events:
+Adding capture events to the previous example:
 
 .small[
 ```javascript
 document.querySelector('section').addEventListener('click', function(event){
-  console.log('Capture: ' + this.tagName + " - " + event.target.tagName)}, true) // notice the true in the end
+  console.log('Capture: ' + this.tagName + " - " + event.target.tagName)}, true)
 document.querySelector('article').addEventListener('click', function(event){
   console.log('Capture: ' + this.tagName + " - " + event.target.tagName)}, true)
 document.querySelector('p').addEventListener('click', function(event){
