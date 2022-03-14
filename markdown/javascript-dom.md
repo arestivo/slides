@@ -666,36 +666,37 @@ window.addEventListener('load', function() {
   // initialization code goes here.
 })
 ```
-
-With *ECMAScript 6* and the *defer* attribute, this is no longer necessary.
+This is no longer strictly necessary with the [defer](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-defer) attribute.
 
 ---
 
 name:ajax
 template: inverse
-#Ajax
+# AJAX
 
 ---
 
-# Ajax
+# AJAX
 
-* Asynchronous JavaScript + XML.
-* Not a technology in itself, but a term coined in 2005 by **Jesse James Garrett**, that describes an
-  approach to using a number of existing technologies: namely the **XMLHttpRequest** object.
+* Asynchronous JavaScript + XML (JSON is more common now).
+* Not a technology in itself, but a term coined in 2005 by **Jesse James Garrett** that describes an
+  approach to using several existing technologies: namely the **XMLHttpRequest** object.
+
+![](assets/javascript-dom/ajax.svg)
 
 ---
 
 # XMLHttpRequest
 
-XMLHttpRequest makes sending HTTP requests very easy.
+[XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) makes sending HTTP requests from JavaScript very easy.
 
 ```javascript
 void open(method, url, async)
 ```
 
-  * Method: **get** or **post**.
-  * Url: The URL to fetch.
-  * Async: if false, execution will stop while waiting for response.
+  * method: **get** or **post** <small>(or others to be seen later)</small>.
+  * url: The URL to fetch.
+  * async: if false, execution will stop while waiting for response.<br><small>Default is true.</small>
 
 Example:
 
@@ -704,8 +705,9 @@ function requestListener () {
   console.log(this.responseText)
 }
 
-let request = new XMLHttpRequest()
-request.onload = requestListener
+const request = new XMLHttpRequest()
+request.addEventListener('load', requestListener)
+// or request.onload = requestListener
 request.open("get", "getdata.php", true)
 request.send()
 ```
@@ -714,9 +716,11 @@ request.send()
 
 # Monitoring Progress
 
+Different events let us monitor progress of the request:
+
 .small[
 ```javascript
-let request = new XMLHttpRequest()
+const request = new XMLHttpRequest()
 
 request.addEventListener("progress", updateProgress)
 request.addEventListener("load", transferComplete)
@@ -728,7 +732,7 @@ request.send()
 
 function updateProgress (event) {
   if (event.lengthComputable)
-    let percentComplete = event.loaded / event.total
+    const percentComplete = event.loaded / event.total
 }
 
 function transferComplete(event) {
@@ -749,7 +753,7 @@ function transferCanceled(event) {
 
 # Sending data
 
-To send data to the server, we first must encode it properly:
+To send data to the server, we first must encode it properly:<br><small>We are simplifying, there are [other ways](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest#using_nothing_but_xmlhttprequest) of doing this.</small>
 
 ```javascript
 function encodeForAjax(data) {
@@ -762,7 +766,8 @@ function encodeForAjax(data) {
 Sending it using **get**:
 
 ```javascript
-request.open("get", "getdata.php?" + encodeForAjax({id: 1, name: 'John'}), true)
+request.open("get", 
+  "getdata.php?" + encodeForAjax({id: 1, name: 'John'}), true)
 request.send()
 ```
 
@@ -770,102 +775,154 @@ Sending it using **post**:
 
 ```javascript
 request.open("post", "getdata.php", true)
-request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+request.setRequestHeader('Content-Type', 
+  'application/x-www-form-urlencoded')
 request.send(encodeForAjax({id: 1, name: 'John'}))
 ```
 
 ---
 
-# Analyzing a XMLRequest Response
+# Analyzing an XMLRequest Response
 
-If you use XMLHttpRequest to get the content of a remote **XML** document, the responseXML property will be a DOM Object containing a parsed XML document, which can be hard to manipulate and analyze.
+If the server responds in **XML** format, the [responseXML](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseXML) property will be a DOM Object containing a parsed XML document, which can be hard to manipulate and analyze.
 
-If you use **JSON**, it is very easy to parse the response as JSON is already in *JavaScript Object Notation*.
+If the server responds in **JSON**, it is straightforward to parse the [responseText](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseText) property:
 
 ```javascript
-JSON.parse('{}')              // {}
-JSON.parse('true')            // true
-JSON.parse('"foo"')           // "foo"
-JSON.parse('[1, 5, "false"]') // [1, 5, "false"]
-JSON.parse('null')            // null
-JSON.parse('{"1": 1, "2": 2}') // Object {1: 1, 2: 2}
-JSON.parse(this.responseText)  // The server response
+const request = new XMLHttpRequest()
+request.addEventListener("load", transferComplete)
+request.open("get", "getdata.php", true)
+request.send()
+
+function transferComplete() {
+  const response = JSON.parse(this.responseText)
+}
 ```
 
 ---
 
-name:advanced-functions
+# AJAX with Promises
+
+The [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) is a more modern interface for fetching remote resources:
+
+* The global [fetch()](https://developer.mozilla.org/en-US/docs/Web/API/fetch) can be used to fetch a remote resource.
+* It returns a *Promise* that will eventually be **fulfilled** as a [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response).
+* It will only get **rejected** if there was a network or permission error (*i.e.*, any response from the server is fulfilled).
+
+```javascript
+async function getData() {
+    return fetch('https://example.com/')
+}
+
+getData().then(response => {
+  console.log(response)
+}).catch(() => {
+  console.error('Network Error')
+})
+```
+
+---
+
+# Response
+
+The response should be checked:
+
+* [ok](https://developer.mozilla.org/en-US/docs/Web/API/Response/ok) &ndash; Boolean indicating if the response was successful (*i.e.*, the status is in the 200&ndash;299 interval).
+* [status](https://developer.mozilla.org/en-US/docs/Web/API/Response/status) &ndash; The status code of the response (*e.g.*, 200, 404).
+* [redirected](https://developer.mozilla.org/en-US/docs/Web/API/Response/redirected) &ndash; Indicates if the request was redirected to another URL.
+* [url](https://developer.mozilla.org/en-US/docs/Web/API/Response/url) &ndash; Final URL after redirects.
+* [body](https://developer.mozilla.org/en-US/docs/Web/API/Response/body) &ndash; The body of the response (*i.e.*, the data).
+
+```javascript
+getData().then(response => {
+  if (response.ok)
+    console.log(response.body)
+  else
+    console.error(`Error: code ${request.status}`)
+}).catch(() => {
+  console.error('Network Error')
+})
+```
+
+---
+
+# JSON Response
+
+To parse a JSON [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) we use the [json()](https://developer.mozilla.org/en-US/docs/Web/API/Response/json) method that also returns a promise:
+
+```javascript
+getData()
+  .catch(() => console.error('Network Error'))
+  .then(response => response.json())
+  .catch(() => console.error('Error parsing JSON'))
+  .then(json => console.log(json))
+```
+
+If the [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) is text, then we use the [text()](https://developer.mozilla.org/en-US/docs/Web/API/Response/text) method that also returns a promise:
+
+```javascript
+getData()
+  .catch(() => console.error('Network Error'))
+  .then(response => response.text())
+  .then(text => console.log(text))
+```
+
+
+---
+
+# Request
+
+For more complicated requests, the [fetch()](https://developer.mozilla.org/en-US/docs/Web/API/fetch) method can receive an object with extra parameters:
+
+```javascript
+async function postData(data) {
+  return fetch('https://example.com/', {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: encodeForAjax(data)
+  })
+}
+
+postData({id: 100, name: 'John'})
+  .catch(() => console.error('Network Error'))
+  .then(response => response.json())
+  .catch(() => console.error('Error parsing JSON'))
+  .then(json => console.log(json))
+```
+
+More on this when we study the **HTTP** protocol in depth.
+
+---
+
+name: advanced-events
 template: inverse
-#Advanced Functions
-
----
-
-# Apply and Call
-
-* The **apply()** method calls a function with a given *this* value, and arguments provided as an array.
-* The **call()** method calls a function with a given *this* value and arguments provided individually.
-
-```javascript
-function foo(bar1, bar2) {
-  console.log(this)
-  console.log(bar1)
-  console.log(bar2)
-}
-
-foo.apply('hello', ['john', 123] ) //hello john 123
-foo.call('hello', 'john', 123)     //hello john 123
-```
-
----
-
-# Bind
-
-The *bind()* method is similar to *call()* but returns a new function where *this* and any of the initial parameters are set to the provided values.
-
-```javascript
-function foo(bar1, bar2) {
-  console.log(this)
-  console.log(bar1)
-  console.log(bar2)
-}
-
-let foo2 = foo.bind('hello', 'john')
-foo2(123) //hello john 123
-```
-
----
-
-# Closures
-
-A closure is the combination of a function and the lexical environment within which that function was declared.
-
-```javascript
-function foo() {
-  let number = 123
-  return function bar() {
-    console.log(number)
-  }
-}
-
-bar = foo()
-bar() // 123
-```
+# Advanced Event Handling
 
 ---
 
 # Closures and Events
 
-Closures are the reason code like this works in *JavaScript*:
+Let's start by thinking if this code should work...
 
 ```JavaScript
-let paragraphs = document.querySelectorAll('p')
+const paragraphs = document.querySelectorAll('p')
 for (let i = 0; i < paragraphs.length; i++)
   paragraphs[i].addEventListener('click', function() {
       console.log('I am paragraph #' + i)
   })
 ```
 
-Several functions were created in this code, and for each one of them, the variable **i** has a different value.
+--
+
+When we click a paragraph, what will be the value of the *i* variable? Let's [test it](https://jsfiddle.net/205byurL/1/).
+
+--
+
+The only reason why this code works as intended is that each time an event handler is added, a new function is created with a **different closure** (and a different *i* variable in that closure with a **different value**).
+
+> "When a function is created, it **retains** the lexical environment in which it was **created**."<br>&mdash; [Closures](?s=javascript#closures), JavaScript Slides.
 
 ---
 
@@ -1170,191 +1227,6 @@ The return value is an *id* that can be used to cancel the timer:
 
 ---
 
-name:promises
-template: inverse
-#Promises
-## Async, Await and the Event Loop
-
----
-
-# Event Loop
-
-JavaScript is **single-threaded**!
-
-That means there is always only one thread running, which has a **call stack**.
-
-But there can be a multitude of event callbacks waiting to be executed in the **event queue**.
-
-![](assets/javascript/event-loop.svg)
-
-```javascript
-button.addEventListener('click', function() {
-  foo()
-})
-```
-
----
-
-# Asynchronous 
-
-So how do asynchronous calls (e.g., Ajax) work?
-
-Asynchronous calls are **delegated** to the **browser** (web apis) and run in a separate thread.
-
-When the call **returns**, the browser **injects** a call into the **event queue**.
-
-![](assets/javascript/webapis.svg)
-
----
-
-# Promises
-
-A *promise* represents the eventual result of an asynchronous operation. 
-
-A *promise* may be in one of 3 possible states: **fulfilled**, **rejected**, or **pending**.
-
-A *promise* can be used to return asynchronously from an synchronous function. This can save us from [Callback Hell](http://callbackhell.com/).
-
-```javascript
-let promise = new Promise(function(resolve, reject) {
-  /* Very long operation */
-  if (ok)
-    resolve(result)
-  else
-    reject(error)
-})
-```
-
----
-
-# Consuming
-
-When the *promise* *resolves*, or is *rejected*, we can use *then* and *catch* to consume it:
-
-```javascript
-promise.then(function(result){
-  console.log('Ok')
-}).catch(function(error)){
-  console.log('Error')
-}
-```
-
----
-
-# Example
-
-Transforming a **synchronous** *XMLHttpRequest* into a *promise*:
-
-```javascript
-function getSomeData() {
-  return new Promise(function(resolve, reject) {
-    let request = new XMLHttpRequest()
-    request.open("get", "getdata.php", false) // synchronous
-    request.send()
-    if (request.status === 200) resolve(request.response)
-    else reject(request.statusText)
-  })
-}
-```
-
-```javascript
-getSomeData().then(console.log).catch(alert)
-```
-
----
-
-# Chaining
-
-*Promises* can be chained, making successive calls to asynchronous functions much easier:
-
-```javascript
-getSomeData()
-  .then(function(result){
-    return getMoreDataBasedOn(result) // also returns a promise
-  })
-  .then(function(result){
-    return getEvenMoreDataBasedOn(result)
-  })
-  .then(function(result){
-    console.log(result)
-  })
-  .catch(console.log) // catches any error in the chain
-```
-
----
-
-# Async Functions
-
-An **async** function is a function which operates asynchronously (via the event loop), using an **implicit** *Promise* to return its result.
-
-An **async** function always returns a *promise*. If the code returns a *non-promise*, then JavaScript automatically wraps it into a resolved *promise* with that value.
-
-```javascript
-async function getSomeData() {
-  let request = new XMLHttpRequest()
-  request.open("get", "getdata.php", false) // synchronous
-  request.send()
-  if (request.status === 200) 
-    return request.response
-  else
-    throw(new Error('Error getting data'))
-}
-```
-
-**Note:** using promises and async does **not** make JavaScript multi-thread.
-
----
-
-# Await
-
-The keyword *await* makes JavaScript wait until a *promise* settles and returns its result.
-
-```javascript
-async function doSomething() {
-  let result = await getSomeData() // returns a promise
-  console.log(result)
-}
-```
-
-The keyword *await* can only be used inside *async* functions.
-
----
-
-# Promise.all
-
-The *Promise.all(&lt;promises&gt;)* method returns a single *Promise* that resolves when all of the *promises* in the argument have resolved. It rejects with the reason of the first *promise* that rejects.
-
-```javascript
-async function doSomething() {
-  let promise1 = getSomeData()
-  let promise2 = getEvenMoreData()
-  Promise.all([promise1, promise2]).then(function(values) {
-    console.log(values)
-  })
-}
-```
-
-The result is an array with the results of each one of the *promises*
-
----
-
-# Ajax with Promises
-
-The commands fetch() and json() return promises:
-
-```javascript
-
-const request = async () => {
-    const response = await fetch('https://example.com/');
-    const json = await response.json();
-    console.log(json);
-}
-
-request();
-```
-
----
-
 name:data
 template: inverse
 #Data Attributes (not really JS)
@@ -1374,80 +1246,3 @@ This can be useful, for example, to store the id of a certain database tuple to 
     <li data-id="3">Pear</li>
   </ul>
 ```
-
----
-
-name:jquery
-template: inverse
-#jQuery
-
----
-
-# jQuery
-
-**jQuery** is a *JavaScript* library that solves several different problems:
-
-  * Inadequacy of the *Javscript* DOM.
-  * Browser compatibility issues.
-  * Verbosity of some *JavaScript* commands.
-
-Most of these have been mitigated by recent advances in the *JavaScript* standard.
-
----
-
-# How it works
-
-* *jQuery* defines a function/object called *$* (yes, the dollar sign).
-* This function is responsible for selecting and filtering elements, traversing and modifying the DOM, ...
-* Elements selected are returned nested inside a *$* object making it harder to mix *jQuery* with plain *JavaScript* code.
-
-Example:
-
-```javascript
-$('p').click(function() {
-  console.log($(this).text())
-})
-```
-
-In plain JavaScript this would be:
-
-```javascript
-let paragraphs = document.querySelectorAll('p')
-for (let i = 0; i < paragraphs.length; i++)
-  paragraphs[i].addEventListener('click', function(){
-    console.log(this.textContent)    
-  })
-```
-
----
-
-# Drawbacks
-
-  * *jQuery* is big (85Kb minified).
-  * *jQuery* is slow (mainly due to having to maintain compatibility with older browsers).
-  * You end up being trapped into the *jQuery* ecosystem.
-
----
-
-# Alternatives
-
-Roll your own:
-
-```javascript
-function $(selector) {
-  return document.querySelectorAll(selector)
-}
-
-NodeList.prototype.css = function(property, value) {
-  [].forEach.call(this, function(element) {
-    element.style[property] = value
-  })
-  return this
-}
-
-$('p').css('color', 'red').css('background-color', 'blue')
-```
-
-Smaller and simpler alternatives like: http://zeptojs.com/ (25Kb)
-
-Just use plain JavaScript: https://plainjs.com/

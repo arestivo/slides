@@ -1805,10 +1805,10 @@ Like this: **difference** → **equal** → *global*
 
 ---
 
+name: closures
 # Closures
 
-When a function is returned from another function it 
-**retains** the lexical environment in which it was **created**.
+When a function is created, it **retains** the lexical environment in which it was **created**.
 
 That's why this code works:
 
