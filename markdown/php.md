@@ -1868,9 +1868,18 @@ name:json
 The **json_encode** and **json_decode** functions can be used to encode from and to JSON easily.
 
 ```php
-  $encoded = json_encode($posts);
-  $decoded = json_decode($encoded); //$decoded === $posts
+$encoded = json_encode($posts);
+$decoded = json_decode($encoded); //$decoded === $posts
 ```
+
+Don't forget to tell the client your are sending JSON data:
+
+```php
+$data = getSomeData();
+header('Content-Type: application/json; charset=utf-8');
+echo json_encode($data);
+```
+
 
 ---
 
