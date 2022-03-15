@@ -26,20 +26,12 @@ name:index
 
 .indexlist[
 1. [Introduction](#intro)
-1. [Variables](#variables)
-1. [Control Structures](#control)
-1. [Functions](#functions)
-1. [Objects](#objects)
-1. [Arrays](#arrays)
-1. [Exceptions](#exceptions)
-1. [DOM](#dom)
+1. [Elements](#elements)
+1. [Traversing](#traversing)
+1. [Events](#events)
 1. [Ajax](#ajax)
-1. [Advanced Functions](#advanced-functions)
-1. [Advanced Arrays](#advanced-arrays)
 1. [Timers](#timers)
-1. [Promises](#promises)
-1. [Data Attributes](#data)
-1. [jQuery](#jQuery)
+1. [Advanced](#advanced)
 ]
 
 ---
@@ -363,7 +355,7 @@ paragraph.textContent = 'Some text'
 article.appendChild(paragraph) // adds the paragraph to the article
 ```
 
-See the example in [action](https://jsfiddle.net/52nawdou/2/).
+See this example in [action](https://jsfiddle.net/52nawdou/2/).
 
 ---
 
@@ -581,7 +573,7 @@ const button = document.querySelector("button")
 button.addEventListener('click', handleEvent)
 ```
 
-See the example in [action](https://jsfiddle.net/wxcmd387/11/).
+See this example in [action](https://jsfiddle.net/wxcmd387/11/).
 
 ---
 
@@ -825,7 +817,7 @@ getData().then(response => {
 
 # Response
 
-The response should be checked:
+Because only failed requests get rejected, the response must be checked:
 
 * [ok](https://developer.mozilla.org/en-US/docs/Web/API/Response/ok) &ndash; Boolean indicating if the response was successful (*i.e.*, the status is in the 200&ndash;299 interval).
 * [status](https://developer.mozilla.org/en-US/docs/Web/API/Response/status) &ndash; The status code of the response (*e.g.*, 200, 404).
@@ -896,9 +888,52 @@ More on this when we study the **HTTP** protocol in depth.
 
 ---
 
-name: advanced-events
+name:timers
 template: inverse
-# Advanced Event Handling
+#Timers
+
+---
+
+# Set Timeout
+
+The [window.setTimeout(funtion, delay)](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout) fuction sets a timer which executes a function once after a certain delay:
+
+```javascript
+const id = window.setTimeout(function() {
+  console.log('5 seconds later!')
+}, 5000)
+```
+
+The return value is an *id* that can be used to cancel the timer:
+
+```javascript
+window.clearTimeout(id)
+```
+
+---
+
+# Set Interval
+
+The [window.setInterval(function, interval)](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) is similar but executes the function until it is stopped with a fixed time delay between calls.
+
+```javascript
+let counter = 1
+const id = window.setInterval(function() {
+  console.log(`${counter++}s later!`)
+}, 1000)
+```
+
+The return value is an *id* that can be used to cancel the timer:
+
+```javascript
+window.clearInterval(id)
+```
+
+---
+
+name: advanced
+template: inverse
+# Advanced DOM
 
 ---
 
@@ -928,29 +963,30 @@ The only reason why this code works as intended is that each time an event handl
 
 # Bind and Events
 
-Sometimes we lose our *this*:
+Sometimes we **lose** our *this*:
 
 ```javascript
 class Foo {
-    setup() {
-      document.querySelector('h1').addEventListener('click', this.bar)
-    }
+  setup() {
+    document.querySelector('h1').addEventListener('click', this.bar)
+  }
 
-    bar(event) {
-      console.log(this)         // the h1 element (we wanted the object)
-      console.log(event.target) // the h1 element
-    }
+  bar(event) {
+    // we want to get the Foo object, but:
+    console.log(this)         // the h1 element
+    console.log(event.target) // the h1 element
+  }
 }
 
-let foo = new Foo()
-foo.setup()
+new Foo().setup()
 ```
 
-We can fix it using *bind*:
+We can **fix** it using *bind*:
 
 ```javascript
 setup() {
-  document.querySelector('h1').addEventListener('click', this.bar.bind(this))
+  document.querySelector('h1')
+    .addEventListener('click', this.bar.bind(this))
 }
 ```
 
@@ -958,8 +994,9 @@ setup() {
 
 # Partial Functions
 
-Sometimes we might want to do this:
+We might want to call a function with parameters that depend on the element:
 
+.small[
 ```javascript
 document.querySelector('p.blue').addEventListener('click', changeColor('blue'))
 document.querySelector('p.red').addEventListener('click', changeColor('red'))
@@ -968,9 +1005,13 @@ function changeColor(color) {
   this.style.color = color
 }
 ```
+]
 
-But it obviously doesn't work. A solution would be to create anonymous functions to create a closure:
+But it obviously doesn't work. 
 
+A solution would be to create **anonymous functions**:
+
+.small[
 ```javascript
 document.querySelector('p.blue').addEventListener('click', function(event) {
   changeColor('blue', event)}
@@ -983,18 +1024,19 @@ function changeColor(color, event) {
   event.target.style.color = color
 }
 ```
+]
 
 ---
 
 # Partial Functions
 
-Instead we can create partial functions using bind:
+Another, more elegant solution, would be to create **partial functions** using *bind*:
 
 ```javascript
-let blue = document.querySelector('p.blue')
+const blue = document.querySelector('p.blue')
 blue.addEventListener('click', changeColor.bind(blue, 'blue'))
 
-let red = document.querySelector('p.red')
+const red = document.querySelector('p.red')
 red.addEventListener('click', changeColor.bind(red, 'red'))
 
 function changeColor(color) {
@@ -1004,7 +1046,11 @@ function changeColor(color) {
 
 ---
 
-A more useful example:
+# Mapping Selectors
+
+We already saw how we could use the [map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) function with *non-array* iterables (like a [NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList)).
+
+One way we can use this feature:
 
 ```javascript
 const inputs = document.querySelectorAll('input[type=number]')
@@ -1012,11 +1058,13 @@ const values = [].map.call(inputs, input => input.value)
 console.log(values) // an array with all the number input values
 ```
 
+See this example in [action](https://jsfiddle.net/8sLhp915/3/).
+
 ---
 
-# Objects to Arrays
+# Selectors to Arrays
 
-Sometimes we need to convert an *array like* object (like *NodeList*) to a true array so that we can use these awesome new array functions.
+Other times we just want to **convert** a [NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList) to an **array**, so we can use functions like [map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), [reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce), and [filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter):
 
 ```javascript
 const paragraphs = document.querySelectorAll('p')
@@ -1028,59 +1076,14 @@ There are several ways to achieve this:
 const array1 = Array.apply(null, paragraphs)
 const array2 = Array.prototype.slice.call(paragraphs)
 const array3 = [].slice.call(paragraphs)
-const array4 = [...paragraphs] // the ECMAScript 2015 spread operator
+const array4 = [...paragraphs]
 ```
-
----
-
-name:timers
-template: inverse
-#Timers
-
----
-
-# Set Timeout
-
-The *window* object has a function (*setTimeout*) that sets a timer which executes a function, or specified piece of code, once it expires:
-
-```javascript
-  let id = window.setTimeout(function() {console.log('Yay!')}, 5000)
-```
-
-The return value is an *id* that can be used to cancel the timer:
-
-```javascript
-  window.clearTimeout(id)
-```
-
----
-
-# Set Interval
-
-Another function (*setInterval*) executes executes a function, or specified piece of code, with a fixed time delay between each call.
-
-```javascript
-  let counter = 1
-  let id = window.setInterval(function() {
-    console.log('Yay! ' + counter++)
-  }, 1000)
-```
-
-The return value is an *id* that can be used to cancel the timer:
-
-```javascript
-  window.clearInterval(id)
-```
-
----
-
-name:data
-template: inverse
-#Data Attributes (not really JS)
 
 ---
 
 # HTML5 Data Attributes
+
+<small>This is not really JavaScript!</small>
 
 HTML5 data-* attributes allow us to store extra information on standard, semantic HTML elements without using hacks.
 
