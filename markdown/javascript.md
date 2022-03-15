@@ -1476,6 +1476,162 @@ years.print() // This array has length 4
 
 ---
 
+# forEach()
+
+The [forEach()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) method **executes** a function once **for each** array element:
+
+```javascript
+const numbers = [4, 8, 15, 16, 23, 42]
+numbers.forEach(function(value, index){
+    console.log('Element #' + index + ' is ' + value)
+})
+```
+
+The result would be:
+
+```html
+Element #0 is 4
+Element #1 is 8
+Element #2 is 15
+Element #3 is 16
+Element #4 is 23
+Element #5 is 42
+```
+
+---
+
+# filter()
+
+The [filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) method returns a **new array** with all elements that **pass a test**.
+
+```javascript
+const numbers = [4, 8, 15, 16, 23, 42]
+const even = numbers.filter(function(n) { return n % 2 == 0 })
+console.log(even) // [ 4, 8, 16, 42 ]
+```
+
+Or using arrow functions:
+
+```javascript
+const numbers = [4, 8, 15, 16, 23, 42]
+const even = numbers.filter(n => n % 2 == 0)
+console.log(even) // [ 4, 8, 16, 42 ]
+```
+
+An alternative would be:
+
+```javascript
+const numbers = [4, 8, 15, 16, 23, 42]
+const even = []
+for (let i = 0; i < numbers.length; i++)
+  if (numbers[i] % 2 == 0) even.push(numbers[i])
+console.log(even) // [ 4, 8, 16, 42 ]
+```
+
+---
+
+# map()
+
+The [map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method creates a **new array** by **applying a function** to every element in the original array.
+
+```javascript
+const numbers = [4, 8, 15, 16, 23, 42]
+const doubled = numbers.map(function(n) { return n * 2 })
+console.log(doubled) // 8, 16, 30, 32, 46, 84
+```
+
+Or using **arrow functions**:
+
+```javascript
+const numbers = [4, 8, 15, 16, 23, 42]
+const doubled = numbers.map(n => n * 2)
+console.log(doubled) // 8, 16, 30, 32, 46, 84
+```
+
+---
+
+# Generic use of map()
+
+The [map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) method can be used on **other types** of *array-like* objects:
+
+```javascript
+const ascii = Array.prototype.map.call('John', l => l.charCodeAt(0))
+console.log(ascii) // [74, 111, 104, 110]
+```
+
+Simpler:
+
+```javascript
+const ascii = [].map.call('John', letter => letter.charCodeAt(0))
+console.log(ascii) // [74, 111, 104, 110]
+```
+
+A more useful example:
+
+```javascript
+const inputs = document.querySelectorAll('input[type=number]')
+const values = [].map.call(inputs, input => input.value)
+console.log(values) // an array with all the number input values
+```
+
+---
+
+# reduce()
+
+The [reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) method **applies a function** to each element in the array:
+
+The result is passed to the next iteration as an **accumulator** (starting at 0 by default). <small>The objective is to **reduce** the array to a **single value** in the end.</small>
+
+```javascript
+const numbers = [4, 8, 15, 16, 23, 42]
+const total = numbers.reduce(function(accumulator, number) {
+  return accumulator + number
+})
+console.log(total) // 108
+```
+
+Or with **arrow functions**:
+
+```javascript
+[4, 8, 15, 16, 23, 42].reduce( (acc, num) => acc + num ) // 108
+```
+
+We can **initialize** the accumulator by adding a second parameter:
+
+```javascript
+[4, 8, 15, 16, 23, 42].reduce( (acc, num) => acc + num, 10 ) // 118
+```
+
+---
+
+# Spread Operator
+
+The [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) allows an iterable, such as an array or string, to be **expanded** in places where zero or more arguments are expected:
+
+```javascript
+function sum(x, y, z) {
+  return x + y + z
+}
+
+const numbers = [1, 2, 3]
+
+console.log( sum(...numbers) ) // 6
+```
+
+Other example:
+
+```javascript
+function sum(...args) { // sum any number of args
+  let sum = 0
+  for (let i = 0; i < args.length; i++)
+    sum += args[i]
+  return sum
+}
+console.log( sum(1, 2, 3) ) // 6
+```
+
+---
+
 name: destructuring
 template: inverse
 

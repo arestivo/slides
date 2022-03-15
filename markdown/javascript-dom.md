@@ -1004,135 +1004,12 @@ function changeColor(color) {
 
 ---
 
-name:advanced-arrays
-template: inverse
-#Advanced Arrays
-
-
----
-
-# forEach
-
-The *forEach()* method executes a provided function once for each array element.
-
-```javascript
-let numbers = [4, 8, 15, 16, 23, 42]
-numbers.forEach(function(value, index){
-    console.log('Element #' + index + ' is ' + value)
-})
-```
-
-The result would be:
-
-```html
-Element #0 is 4
-Element #1 is 8
-Element #2 is 15
-Element #3 is 16
-Element #4 is 23
-Element #5 is 42
-```
-
----
-
-# Filter
-
-The *filter()* method creates a new array with all elements that pass the test implemented by the provided function.
-
-```javascript
-let numbers = [4, 8, 15, 16, 23, 42]
-let even = numbers.filter(function(n) {return n % 2 == 0})
-console.log(even) // [ 4, 8, 16, 42 ]
-```
-
-Or using arrow functions:
-
-```javascript
-let numbers = [4, 8, 15, 16, 23, 42]
-let even = numbers.filter(n => n % 2 == 0)
-console.log(even) // [ 4, 8, 16, 42 ]
-```
-
-The alternative would be:
-
-```javascript
-let numbers = [4, 8, 15, 16, 23, 42]
-let even = []
-for (let i = 0; i < numbers.length; i++)
-  if (numbers[i] % 2 == 0) even.push(numbers[i])
-console.log(even) // [ 4, 8, 16, 42 ]
-```
-
----
-
-# Map
-
-The *map()* method creates a new array with the results of calling a provided function on every element in the calling array.
-
-```javascript
-let numbers = [4, 8, 15, 16, 23, 42]
-let doubled = numbers.map(function(n) {return n * 2})
-console.log(doubled) // 8, 16, 30, 32, 46, 84
-```
-
-Or using arrow functions:
-
-```javascript
-let numbers = [4, 8, 15, 16, 23, 42]
-let doubled = numbers.map(n => n * 2)
-console.log(doubled) // 8, 16, 30, 32, 46, 84
-```
-
----
-
-# Generic use of map
-
-The *map()* method can be used on other types of *array like* objects:
-
-```javascript
-let ascii = Array.prototype.map.call('John', letter => letter.charCodeAt(0))
-console.log(ascii) // [74, 111, 104, 110]
-```
-
-Simpler:
-
-```javascript
-let ascii = [].map.call('John', letter => letter.charCodeAt(0))
-console.log(ascii) // [74, 111, 104, 110]
-```
-
 A more useful example:
 
 ```javascript
-let inputs = document.querySelectorAll('input[type=number]')
-let values = [].map.call(inputs, input => input.value)
+const inputs = document.querySelectorAll('input[type=number]')
+const values = [].map.call(inputs, input => input.value)
 console.log(values) // an array with all the number input values
-```
-
----
-
-# Reduce
-
-The *reduce()* method applies a function against an accumulator (starting at 0 by default) and each element in the array (from left to right) to reduce it to a single value.
-
-```javascript
-let numbers = [4, 8, 15, 16, 23, 42]
-let total = numbers.reduce(function(current, number) {
-  return current + number
-})
-console.log(total) // 108
-```
-
-Or with arrow functions:
-
-```javascript
-[4, 8, 15, 16, 23, 42].reduce( (c, n) => c + n ) // 108
-```
-
-We can initialize the accumulator adding a second parameter:
-
-```javascript
-[4, 8, 15, 16, 23, 42].reduce( (c, n) => c + n, 10 ) // 118
 ```
 
 ---
@@ -1142,46 +1019,16 @@ We can initialize the accumulator adding a second parameter:
 Sometimes we need to convert an *array like* object (like *NodeList*) to a true array so that we can use these awesome new array functions.
 
 ```javascript
-let paragraphs = document.querySelectorAll('p')
+const paragraphs = document.querySelectorAll('p')
 ```
 
 There are several ways to achieve this:
 
 ```javascript
-let array1 = Array.apply(null, paragraphs)
-let array2 = Array.prototype.slice.call(paragraphs)
-let array3 = [].slice.call(paragraphs)
-let array4 = [...paragraphs] // the ECMAScript 2015 spread operator
-```
-
----
-
-# Spread Operator
-
-The spread operator allows an iterable, such as an array or string, to be expanded in places where zero or more arguments are expected.
-
-```javascript
-function sum(x, y, z) {
-  return x + y + z
-}
-
-const numbers = [1, 2, 3]
-
-console.log(sum(...numbers))
-```
-
-Other examples:
-
-```javascript
-[...document.querySelectorAll('input')] // all inputs as an array
-
-function sum(...args) { // sum any number of args
-  let sum = 0
-  for (let i = 0; i < args.length; i++)
-    sum += args[i]
-  return sum
-}
-sum (1,2,3) // 6
+const array1 = Array.apply(null, paragraphs)
+const array2 = Array.prototype.slice.call(paragraphs)
+const array3 = [].slice.call(paragraphs)
+const array4 = [...paragraphs] // the ECMAScript 2015 spread operator
 ```
 
 ---
