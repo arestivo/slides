@@ -500,7 +500,8 @@ Be careful with some **pitfalls**:
 
 ```css
 section :not(article) p /* does not select the paragraph */
-:not(section) p         /* selects the paragraph, why?   */
+:not(article) > p       /* does not select the paragraph */
+:not(article) p         /* selects the paragraph, why?   */
 ```
 
 ---
