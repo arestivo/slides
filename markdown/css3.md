@@ -1697,7 +1697,7 @@ The next few pages will use the following example:
 
 # Static
 
-* The default value.
+* The **default** value.
 * The element keeps its place **in the document flow**.
 
 <section style="background-color: #eee; width: 10em; padding: 0.2em">
@@ -1789,7 +1789,7 @@ section { position: relative }
 
 # Float
 
-The **float** property removes an element from the document flow and shifts it to the **left** or to the **right** until it touches the edge of its containing box or another floated element.
+The [float](https://developer.mozilla.org/en-US/docs/Web/CSS/float) property removes an element from the document flow and shifts it to the **left** or to the **right** until it touches the edge of its containing box or another floated element.
 
 <section style="background-color: #eee; width: 10em; padding: 0.2em">
   <article id="a" style="background-color: #f3722c; width: 5em; margin: 0.2em; padding: 0.2em">A</article>
@@ -1811,7 +1811,7 @@ Articles "b" and "c" are misaligned due to a strange phenomenon. As "b" is no lo
 ---
 # Floats and Text
 
-Text always flows around floated elements. This is useful to make text that flows around images.
+Text always **flows around** floated elements. This is useful to make text that **flows around** images.
 
 <section style="margin: 0 auto; background-color: #eee; width: 15em; padding: 0.2em">
   <article id="a" style="float:left; background-color: #f3722c; width: 5em; margin: 0.1em; padding: 0.2em">A</article>
@@ -1833,7 +1833,7 @@ Text always flows around floated elements. This is useful to make text that flow
 ---
 # Multiple Floats
 
-Floats go right or left until they find another float or the parent container.
+Floats go right or left until they find **another float** or the **parent container**.
 
 <section style="background-color: #eee; width: 10em; padding: 0.2em">
   <article id="a" style="background-color: #f3722c; width: 5em; margin: 0.2em; padding: 0.2em">A</article>
@@ -1852,7 +1852,7 @@ Floats go right or left until they find another float or the parent container.
 ---
 ## Clear
 
-* The **clear** property indicates if an element can be next to floating elements that precede it or must be moved down.
+* The [clear](https://developer.mozilla.org/en-US/docs/Web/CSS/clear) property indicates if an element can be next to floating elements that precede it or must be moved down.
 * Values can be **left**, **right** or **both**.
 
 
@@ -1874,13 +1874,14 @@ Floats go right or left until they find another float or the parent container.
 ```
 
 ---
+
 # Ordering
 
-* When elements are positioned outside the normal flow, they can overlap others. 
+* When elements are positioned outside the normal flow, they can **overlap** others. 
 * The **z-index** property specifies the stack order of an element and its descendants.
-* But it can only be applied to positioned elements (non-static).
-* An element with greater stack order is always in front of an element with a lower stack order.
-* By default, the elements are stacked following the order they are declared in the HTML.
+* But it can only be applied to **positioned elements** (non-static).
+* An element with **greater** stack order is always in **front** of an element with a lower stack order.
+* By **default**, the elements are stacked following the order they are declared in the HTML.
 
 ```css
 #b {
@@ -2177,8 +2178,8 @@ The [order](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-order) pr
 
 # Grow and Shrink
 
-The [flex-grow](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flex-grow) and [flex-shrink](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flex-shrink) properties define the ability for a flex item to grow (if there is extra space) or shrink (if there isn't enough):
-* They accept a unitless value that serves as a proportion. 
+The [flex-grow](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flex-grow) and [flex-shrink](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-flex-shrink) properties define the ability for a flex item to **grow** (if there is extra space) or **shrink** (if there isn't enough):
+* They accept a unitless value that serves as a **proportion**. 
 * The default is **0** for *flex-grow*, which means items don't grow by default.
 * The default is **1** for *flex-shrink*, which means items shrink equally.
 
@@ -2331,12 +2332,12 @@ Sizes can be defined as **auto**, a **length**, a **percentage** or a **fraction
 
 ```css
 .container {
-  grid-template-columns: 10em 1fr 2fr;
+  grid-template-columns: 5em 1fr 2fr;
   grid-template-rows: 2em 3em;
 }
 ```
 
-<div class="container" style="background-color: #eee;padding: 5px; display: grid; grid-template-columns: 10em 1fr 5em; grid-template-rows: 2em 3em;">
+<div class="container" style="background-color: #eee;padding: 5px; display: grid; grid-template-columns: 5em 1fr 2fr; grid-template-rows: 2em 3em;">
   <div class="item header" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #2a9d8f;">Header</div>
   <div class="item menu1" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e9d8a6;">Menu 1</div>
   <div class="item menu2" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e9c46a;">Menu 2</div>
@@ -2352,12 +2353,12 @@ The [repeat](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-the-rep
 
 ```css
 .container {
-  grid-template-columns: repeat(2, 5em) 1fr repeat(2, 6em);
+  grid-template-columns: repeat(2, 5em) 1fr repeat(2, 7em);
   grid-template-rows: 2em;
 }
 ```
 
-<div class="container" style="background-color: #eee;padding: 5px; display: grid; grid-template-columns: repeat(2, 5em) 1fr repeat(2, 6em); grid-template-rows: 2em;">
+<div class="container" style="background-color: #eee;padding: 5px; display: grid; grid-template-columns: repeat(2, 5em) 1fr repeat(2, 7em); grid-template-rows: 2em;">
   <div class="item header" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #2a9d8f;">Header</div>
   <div class="item menu1" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e9d8a6;">Menu 1</div>
   <div class="item menu2" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e9c46a;">Menu 2</div>
@@ -2389,7 +2390,7 @@ We can assign a **location** to an item within the grid by referring to specific
 }
 ```
 
-The *end* values can also be the number of rows or columns to span. By default, these values have a *span* of 1.
+The *end* values can also be the number of **rows** or **columns** to **span**. By default, these values have a *span* of 1.
 
 ```css
 .header {
@@ -2402,9 +2403,9 @@ The *end* values can also be the number of rows or columns to span. By default, 
 
 # Location Shorthand
 
-The [grid-column and grid-row](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-grid-columngrid-row) properties can be used as a shorthand for assigning the location of an item. Each receives two values separated by a forward slash (start / end).
+The [grid-column and grid-row](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-grid-columngrid-row) properties can be used as a **shorthand** for assigning the location of an item. Each receives **two values** separated by a **forward slash** (start / end).
 
-The [grid-area](https://css-tricks.com/snippets/css/complete-guide-grid/#prop-grid-area) property can be used as a shorthand for the four values at once: *row-start* / *column-start* / *row-end* / *column-end*.
+The [grid-area](https://css-tricks.com/snippets/css/complete-guide-grid/#prop-grid-area) property can be used as a **shorthand** for the **four values** at once: *row-start* / *column-start* / *row-end* / *column-end*.
 
 .small[
 ```css
@@ -2455,7 +2456,7 @@ The [grid-area](https://css-tricks.com/snippets/css/complete-guide-grid/#prop-gr
 
 # Grid Line Names
 
-We can assign names (more than one) to the grid lines.
+We can assign **names** (more than one) to the grid lines.
 
 .small[
 ```css
@@ -2476,9 +2477,9 @@ We can assign names (more than one) to the grid lines.
 
 # Grid Template Areas
 
-We can define a grid template more visually by giving names to items using the *grid-area* property.
+We can define a **grid template** more visually by giving names to items using the *grid-area* property.
 
-Any number of adjacent periods can be used to declare a single empty cell.
+Any number of **adjacent periods** can be used to declare a single empty cell.
 
 .small[
 ```css
@@ -2511,20 +2512,20 @@ Any number of adjacent periods can be used to declare a single empty cell.
 Like with *flexbox*, we can adjust the placement of each item inside its cell on the grid.
 For that we use the folllowing properties:
 
-* [column-gap, row-gap](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-column-gaprow-gapgrid-column-gapgrid-row-gap), and [gap](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-gapgrid-gap): they work just like in flexbox.
-* [justify-items](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-justify-items): Align items along the row with: *start*, *end*, *center*, and *stretch*.
-* [align-items](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-align-items): Align items along the column with: *start*, *end*, *center*, *stretch*, and *baseline*.
-* [justify-content](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-justify-content) and [align-content](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-align-content): Align the rows and columns inside the grid container (if they have room to spare) with: *start*, *end*, *center*, *stretch*, *space-around*, *space-between*, *space-evenly*.
+* [column-gap, row-gap](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-column-gaprow-gapgrid-column-gapgrid-row-gap), and [gap](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-gapgrid-gap): they work just like in **flexbox**.
+* [justify-items](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-justify-items): Align items along the **row** with: *start*, *end*, *center*, and *stretch*.
+* [align-items](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-align-items): Align items along the **column** with: *start*, *end*, *center*, *stretch*, and *baseline*.
+* [justify-content](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-justify-content) and [align-content](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-align-content): Align the rows and columns inside the grid **container** (if they have room to spare) with: *start*, *end*, *center*, *stretch*, *space-around*, *space-between*, *space-evenly*.
 
-There are also properties to adjust each item individually: [justify-self](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-justify-self) and [align-self](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-align-self).
+There are also properties to adjust each **item individually**: [justify-self](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-justify-self) and [align-self](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-align-self).
 
 ---
 
 # Implicit Cells
 
-You can assign an item to a location that you did not define with *grid-template-columns* and *grid-template-rows*.
+You can assign an item to a location that you **did not define** with [grid-template-columns](https://css-tricks.com/snippets/css/complete-guide-grid/#prop-grid-template-columns-rows) and [grid-template-rows](https://css-tricks.com/snippets/css/complete-guide-grid/#prop-grid-template-columns-rows).
 
-In that case, the needed column and rows are automatically added width size auto.
+In that case, the needed column and rows are **automatically** added width size auto.
 
 ```css
 .container { grid-template-rows: 2em; grid-template-columns: 2em; }
@@ -2532,7 +2533,7 @@ In that case, the needed column and rows are automatically added width size auto
 .item_b { grid-column-start: 4 }
 ```
 
-<div style="display: grid; grid-template-rows: 2em; grid-template-columns: 2em;;">
+<div style="display: grid; grid-template-rows: 2em; grid-template-columns: 2em;">
   <div style="color: white; text-align: center; background-color: #2a9d8f">A</div>
   <div style="color: white; text-align: center; background-color: #e9c46a; grid-column-start: 4">B</div>
 </div>
@@ -2543,9 +2544,9 @@ There are three **implicit** grid tracks in this example.
 
 # Auto Column and Rows
 
-We can specify the size of any implicit grid tracks using *grid-auto-rows* and *grid-auto-columns*.
+We can specify the **size** of any **implicit grid tracks** using *grid-auto-rows* and *grid-auto-columns*.
 
-These properties can receive a length &mdash; or a series of lengths &mdash; that is repeated as needed.
+These properties can receive a **length** &mdash; or a series of lengths &mdash; that is **repeated** as needed.
 
 .small[
 ```css
@@ -2569,19 +2570,19 @@ Only the last one has content.
 
 # Auto Flow
 
-If some items are not explicitly assigned a location, then an *auto-placement* algorithm is used to place them.
+If some items are **not explicitly** assigned a location, then an *auto-placement* algorithm is used to place them.
 
 The behavior of this algorithm can be changed using the [grid-auto-flow](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-grid-auto-flow) property:
 
-* *row* - The default value; Fill empty spaces row by row (if the item fits) and add new rows if necessary.
-* *column* - Fill empty spaces column by column (if the item fits) and add new columns if necessary.
-* *dense* - If some spaces were left empty, see if items that appear later fit there and use those spaces. This changes the order of the items.
+* *row* - The **default** value; Fill empty spaces **row by row** (if the item fits) and add **new rows** if necessary.
+* *column* - Fill empty spaces **column by column** (if the item fits) and add **new columns** if necessary.
+* *dense* - If some spaces were left **empty**, see if items that appear **later** fit there and use those spaces. This **changes the order** of the items.
 
 ---
 
 # Simplified Positioning
 
-We can use the auto-placement algorithm to simplify item positioning:
+We can use the **auto-placement** algorithm to **simplify** item positioning:
 
 .small[
 ```css
@@ -2615,7 +2616,7 @@ name: cascading
 # Example
 
 
-What color will the text be? And what about the link?
+What **color** will the **text** be? And what about the **link**?
 
 ```css
 <section>
@@ -2654,7 +2655,7 @@ A special value that can be used in almost every property:
 * When a property is set to **inherit**, the value of that property is **inherited** from the element's **parent**.
 * Most browser defaults have the value **inherit**. 
 
-```css
+```html
 <nav id="menu">
   <h1>Menu</h1> <!-- inherits the blue color from the nav -->
 </nav>
@@ -2676,7 +2677,7 @@ h1{
 * In most browsers, the **anchor** color is set as **blue**.
 * On the other hand, the **paragraph** color is set as **inherit**.
 
-```css
+```html
 <section>
  <p>The quick brown fox <a href="#">jumps</a> over the lazy dog</p>
 </section>
@@ -2756,14 +2757,14 @@ Specificity Calculator: [http://specificity.keegan.st](http://specificity.keegan
 # Cascading
 
 * The rule to be applied is selected using the following rules in order:
- * Origin (author, user, default)
- * Specificity (bigger is better)
- * Position (last is better)
+ * **Origin** (author, user, default).
+ * **Specificity** (bigger is better).
+ * **Position** (last is better).
 
-* Origin Explanation:
- * **author**: The CSS rules defined by the page developer
- * **user**: User defined preferences
- * **default**: Browser defaults
+* **Origin** Explanation:
+ * **author**: The CSS rules defined by the page developer.
+ * **user**: User defined preferences.
+ * **default**: Browser defaults.
 
 ---
 
@@ -2775,7 +2776,7 @@ name: vars
 
 # Vars
 
-Entities that contain reusable values. Set using a custom property notation:
+Entities that contain **reusable values**. Set using a **custom property** notation:
 
 ```var
 body {
@@ -2796,7 +2797,7 @@ body header {
 
 # CSS Vars Inheritance
 
-CSS vars are also inherited. 
+CSS vars are also **inherited**. 
 
 If no value is set for a *var* on a given element, the value of its *parent* is used.
 
