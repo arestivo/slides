@@ -487,7 +487,7 @@ Represents elements that **do not match** a list of selectors:<br><small>Negatio
 
 /* all paragraphs inside sections that are direct      */
 /* children of an element that is not an article       */
-section :not(article) p
+section :not(article) > p
 ```
 
 Be careful with some **pitfalls**:
@@ -1515,8 +1515,8 @@ name: transitions
 
 ```css
 transition-property: opacity, left, top, height;
-transition-duration: 3s, 5s; /* repeats for the other two 3s, 5s */
-transition-delay: 1s;        /* same for all properties */
+transition-duration: 3s, 5s; /* repeats (3s, 5s, 3s, 5s) */
+transition-delay: 1s;        /* same for all properties  */
 transition-timing-function: ease-in;
 ```
 
@@ -1531,17 +1531,16 @@ There is also a shorthand to set all these properties.
 .box {
     margin: 0 auto;
     border: 1px solid;
-    width: 100px;
-    height: 100px;
+    width: 100px; height: 100px;
     background-color: #0000FF;
     transition: width 2s, height 2s, background-color 2s, transform 2s, border-radius 4s;
 }
 
 .box:hover {
     background-color: #FFCCCC;
-    width: 150px;
-    height: 150px;
+    width: 150px; height: 150px;
     transform: rotate(180deg);
+    border-radius: 50%;
 }
 ```
 ]
@@ -1687,10 +1686,10 @@ The next few pages will use the following example:
 ```
 
 ```css
-  section { background-color: #eee; width: 10em; padding: 0.2em; }
-  article { width: 5em; margin: 0.2em; padding: 0.2em; }
-  #a { background-color: #f3722c } #b { background-color: #f9c74f }
-  #c { background-color: #90be6d } #d { background-color: #4d908e }
+section { background-color: #eee; width: 10em; padding: 0.2em; }
+article { width: 5em; margin: 0.2em; padding: 0.2em; }
+#a { background-color: #f3722c } #b { background-color: #f9c74f }
+#c { background-color: #90be6d } #d { background-color: #4d908e }
 ```
 
 ---
@@ -1814,14 +1813,14 @@ Articles "b" and "c" are misaligned due to a strange phenomenon. As "b" is no lo
 Text always **flows around** floated elements. This is useful to make text that **flows around** images.
 
 <section style="margin: 0 auto; background-color: #eee; width: 15em; padding: 0.2em">
-  <article id="a" style="float:left; background-color: #f3722c; width: 5em; margin: 0.1em; padding: 0.2em">A</article>
+  <article id="a" style="float:left; background-color: #f3722c; width: 5em; margin: 0.1em; padding: 0.2em">IMG</article>
   <p style="font-size: 50%; margin: 0">The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog.The quick brown fox jumps over the lazy dog</p>
 </section>
 
 ```html
 <section>
-  <article id="a">
-  <p>...text...</p>z
+  <img id="a">
+  <p>...text...</p>
 </section>
 ```
 
@@ -2262,7 +2261,7 @@ name: grid
 
 A grid layout enables us to align elements into **columns** and **rows** of different sizes.
 
-Elements in a grid layout can occupy the same cells as other elements, thus overlapping and creating layers.
+Elements in a grid layout can occupy the same cells as other elements, thus **overlapping** and creating **layers**.
 
 [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
@@ -2618,7 +2617,7 @@ name: cascading
 
 What **color** will the **text** be? And what about the **link**?
 
-```css
+```html
 <section>
  <p>The quick brown fox <a href="#">jumps</a> over the lazy dog</p>
 </section>
@@ -2714,7 +2713,7 @@ What about this example?
   color: green;
 }
 
-div p {
+nav p {
   color: red;
 }
 ```
