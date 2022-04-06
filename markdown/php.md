@@ -1095,6 +1095,14 @@ class Car {
 }
 ```
 
+Properties can also be *coercively* and *strictly* typed:
+
+```php
+class Car {
+  private string $plate = '12-34-AB';
+  private string $driver = 'John Doe';
+}
+```
 ---
 
 # Methods
