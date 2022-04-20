@@ -542,7 +542,7 @@ button.addEventListener('click', function(event){
 })
 ```
 
-Example:
+Or:
 
 ```javascript
 function handleEvent() {
