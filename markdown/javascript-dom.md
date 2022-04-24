@@ -53,7 +53,6 @@ name: intro
 * It can be manipulated from the browser using **JavaScript**.
 
 ---
-
 # Document
 
 The [Document](https://developer.mozilla.org/en/docs/Web/API/Document) object represents an HTML document.
@@ -104,6 +103,42 @@ console.log(document.location.hash)        // #somewhere
 A **partial** representation of the DOM:
 
 ![](assets/javascript-dom/uml.svg)
+
+---
+
+# Script Element
+
+The HTML [&lt;script&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) element is used to associate *JavaScript* code with an *HTML* page (either **embedded** or using a **reference** to a separate document containing the code):
+
+```html
+<html>
+  <head>
+    <script src="...url of javascript script..."></script>
+    <script>...javascript code goes here...</script>
+  </head>
+</html>
+```
+
+.box_warning[
+Either way, the &lt;script&gt; tag must be closed.
+]
+
+---
+
+# Defer and Async
+
+By default, when the browser encounters a [&lt;script&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) element, it **pauses** rendering HTML, **fetches** the JavaScript script (if not embedded), and **runs** the corresponding code.
+
+However, as most JavaScript code interacts with the page's HTML, normally we need to have all HTML code parsed and rendered before running it. A common way to solve this problem was to only use the [&lt;script&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) in the end of the HTML document.
+
+A more modern way is to use one of two special attributes of the [&lt;script&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) tag: **defer** and **async**. 
+
+```html
+<script src="...url of javascript script..." defer></script>
+<script src="...url of javascript script..." async></script>
+```
+
+Both don't pause the HTML loading and rendering process, but **defer** only executes the code when the page finishes loading.
 
 ---
 
@@ -650,15 +685,15 @@ Bubble: SECTION - P
 
 # On Load Event
 
-As we want to be sure the DOM is completely loaded before adding events to any elements,
-we normally add any initialization code to the *load* event of the *window* element.
+Besides placing the [&lt;script&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) at the end of the HTML code, another common way of waiting for the DOM to be completely loaded before adding events to any elements is to add any initialization code to the *load* event of the *window* element:
 
 ```javascript
 window.addEventListener('load', function() {
   // initialization code goes here.
 })
 ```
-This is no longer strictly necessary with the [defer](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-defer) attribute.
+
+This is no longer needed as we can now use the [defer](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-defer) attribute.
 
 ---
 
