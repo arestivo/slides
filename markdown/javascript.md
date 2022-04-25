@@ -804,7 +804,7 @@ console.log(person.fullName)   // Jane Doe
 
 # For ... in
 
-The **for...in** statement iterates over all properties of an object.
+The **for ... in** statement iterates over all properties of an object.
 
 ```javascript
 const person = { name: 'John Doe', age: 45 }
@@ -1415,7 +1415,7 @@ for (let i = 0; i < years.length; i++)
   console.log(years[i])
 ```
 
-Or you can use a **for..of** loop:
+Or you can use a **for ... of** loop:
 
 ```javascript
 let years = [1990, 1991, 1992, 1993]
