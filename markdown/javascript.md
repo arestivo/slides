@@ -939,13 +939,17 @@ function bar(var1, var2) {
 }
 bar(1, 2) // 1 2 undefined
 
-const foo = bar.bind('baz')
-foo(1, 2) // 1 2 baz
+const foo = bar.bind(3)
+foo(1, 2) // 1 2 3
 ```
 
-.box_info[
-  This will prove very useful in future examples!
-]
+It can also be used to bind **parameters**. In this case it returns a function with only one parameter:
+
+```javascript
+const baz = bar.bind('this', 'first')
+baz('second')    // 'first' 'second' 'this
+```
+
 ---
 
 # This in Methods
