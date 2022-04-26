@@ -972,6 +972,8 @@ bar()         // Window or Global
 baz()         // Window or Global
 ```
 
+Arrow functions do not bind their own this , instead, they inherit the one from the parent scope (lexical scoping).
+
 ---
 
 name: prototypes
