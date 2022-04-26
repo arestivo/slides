@@ -1011,6 +1011,7 @@ Cool! So, how does this work?
 * Each *JavaScript* function has an internal **prototype** property initialized as a nearly empty object.
 * When the **new** operator is used on a constructor function, a new object derived from its prototype is created. 
 * The function is then executed, having the new object as its context.
+* The new object is returned.
 
 ```javascript
 function Person(name, age) {
