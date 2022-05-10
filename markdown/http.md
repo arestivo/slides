@@ -26,6 +26,7 @@ name:index
 
 .indexlist[
 1. [Introduction](#intro)
+1. [Resources](#resources)
 1. [URIs and URLs](#urls)
 1. [HTTP URL](#httpurl)
 1. [Session](#session)
@@ -81,6 +82,20 @@ Since then, the **HTTP 1.1** protocol evolved by adding new headers.
 
 * [**HTTP/2.0**](https://developer.mozilla.org/en-US/docs/Glossary/HTTP_2) (2014&ndash;15) A major revision of the **HTTP** network protocol.
 * [**HTTP/3**](https://developer.mozilla.org/en-US/docs/Glossary/HTTP_3) (2019&ndash;) A HTTP mapping over [QUIC](https://developer.mozilla.org/en-US/docs/Glossary/QUIC) (a general-purpose transport layer network protocol designed by Jim Roskind at Google).
+
+---
+
+template: inverse
+name: resources
+
+# Resources
+
+- References:
+  - [RFC2616](https://datatracker.ietf.org/doc/html/rfc2616): The official specification.
+  - [Mozilla Developer Network (MDN) Reference](https://developer.mozilla.org/en-US/docs/Web/HTTP).
+
+- Tools:
+  - [Playing with cURL](https://reqbin.com/curl).
 
 ---
 
