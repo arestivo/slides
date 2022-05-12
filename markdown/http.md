@@ -29,7 +29,6 @@ name:index
 1. [Resources](#resources)
 1. [URIs and URLs](#urls)
 1. [HTTP URL](#httpurl)
-1. [Session](#session)
 1. [HTTP Request](#request)
 1. [HTTP Response](#response)
 1. [Headers](#headers)
@@ -218,25 +217,6 @@ Either a domain name or an IP address.
 * If used with HTML, represents an element in the page identified by its **id**.
 
 .box_info[\#content]
-
----
-
-template: inverse
-name: session
-
-# Session
-
----
-
-# Session
-
-An **HTTP** session consists of three phases:
-
-* The client establishes a TCP **connection**.
-* The client sends its **request** and then waits for the answer.
-* The server processes the request and sends back its **response**, containing a **status code** and the appropriate data.
-
-The session then ends. The HTTP protocol is **stateless**. No state is kept on the server about the session.
 
 ---
 
@@ -694,7 +674,7 @@ HTTP/1.1 204 No Content
 Access-Control-Allow-Origin: https://foo.org
 Access-Control-Allow-Method: POST
 Access-Control-Allow-Headers: Content-Type
-Access-Control-Max-Age: 864000
+Access-Control-Max-Age: 86400
 ```
 
 Access-Control-Allow-Origin could be * to allow requests from any origin.
