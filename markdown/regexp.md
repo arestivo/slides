@@ -730,7 +730,7 @@ For example, the **i** pattern modifier makes the pattern case **insensitive**.
 # preg_match
 
 ```php
-int preg_match ( string $pattern , string $subject [, array &$matches ])
+int preg_match (string $pattern ,string $subject [,array &$matches])
 ```
 
 The [preg_match](http://php.net/manual/en/function.preg-match.php), searches *subject* for a match to the regular expression given in *pattern*.
@@ -739,19 +739,14 @@ The [preg_match](http://php.net/manual/en/function.preg-match.php), searches *su
 * Returns 1 if the pattern matches given subject, 0 if it does not and false if an error occurred.
 
 ```php
-<?php
-  preg_match('/(\d{4})(?:-(\d{3}))?/', '4100-122', $matches);
-  print_r($matches);
-?>
+preg_match('/(\d{4})(?:-(\d{3}))?/', '4100-122', $matches);
+print_r($matches);
 ```
 
 ```text
-Array
-(
-    [0] => 4100-122
-    [1] => 4100
-    [2] => 122
-)
+Array ( [0] => 4100-122
+        [1] => 4100
+        [2] => 122 )
 ```
 
 ---
@@ -759,7 +754,7 @@ Array
 # preg_match_all
 
 ```php
-int preg_match_all ( string $pattern , string $subject [, array &$matches ])
+int preg_match_all (string $pat, string $subj [,array &$matches])
 ```
 
 The [preg_match_all](http://php.net/manual/en/function.preg-match-all.php), searches *subject* for **all** matches to the regular expression given in *pattern*.
@@ -768,19 +763,14 @@ The [preg_match_all](http://php.net/manual/en/function.preg-match-all.php), sear
 * Returns the number of full pattern matches and false if an error occurred.
 
 ```php
-<?php
-  preg_match_all('/(\d{4})(?:-(\d{3}))?/', '4100-122 4200', $matches);
-  print_r($matches);
-?>
+preg_match_all('/(\d{4})(?:-(\d{3}))?/', '4100-122 4200', $matches);
+print_r($matches);
 ```
 
 ```text
-Array
-(
-    [0] => Array ([0] => 4100-122 [1] => 4200)
-    [1] => Array ([0] => 4100 [1] => 4200)
-    [2] => Array ([0] => 122 [1] => )
-)
+Array ( [0] => Array ([0] => 4100-122 [1] => 4200)
+        [1] => Array ([0] => 4100 [1] => 4200)
+        [2] => Array ([0] => 122 [1] => ) )
 ```
 
 ---
@@ -788,7 +778,7 @@ Array
 # preg_replace
 
 ```php
-mixed preg_replace ( mixed $pattern , mixed $replacement , mixed $subject )
+mixed preg_replace (mixed $pat, mixed $repl, mixed $subj)
 ```
 
 The [preg_replace](http://php.net/manual/en/function.preg-replace.php) function, searches *subject* for matches to *pattern* and replaces them with *replacement*.
@@ -796,12 +786,12 @@ The [preg_replace](http://php.net/manual/en/function.preg-replace.php) function,
 The replacement can contain backreferences in the form $n or ${n}.
 
 ```php
-<?php
-  echo preg_replace('/(cat|dog)/', 'my $1s', 'dog are dog');
-?>
+echo preg_replace('/(cat|dog)/', 'my $1s', 'dog are dog');
 ```
 
-```text
+Result:
+
+```bash
 my dogs are my dogs
 ```
 
@@ -826,7 +816,7 @@ Don't forget the beginning and end of string anchors.
 You can also use the **preg_replace** function to clean up input data before storing it in the database.
 
 ```php
-  $text = preg_replace('/[^\w\d\s\.!,\?]/', '', $_GET['text']);
+$text = preg_replace('/[^\w\d\s\.!,\?]/', '', $_GET['text']);
 ```
 
 ---
@@ -861,7 +851,9 @@ The [test](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glo
 console.log(/(\d{4})(?:-(\d{3}))?/.test('4100-122'));
 ```
 
-```text
+Result:
+
+```bash
 true
 ```
 
@@ -876,11 +868,13 @@ str.match(regexp)
 The [match](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match) function, executes a search for a regular expression in a string.
 
 ```javascript
-console.log('4100-122 4200'.match(/(\d{4})(?:-(\d{3}))?/));
-console.log('4100-122 4200'.match(/(\d{4})(?:-(\d{3}))?/g));
+console.log('4100-122 4200'.match(/(\d{4})(?:-(\d{3}))?/))
+console.log('4100-122 4200'.match(/(\d{4})(?:-(\d{3}))?/g))
 ```
 
-```text
+Result:
+
+```bash
 ["4100-122", "4100", "122", index: 0, input: "4100-122 4200"]
 ["4100-122", "4200"]
 ```
@@ -896,10 +890,12 @@ str.search([regexp])
 If successful, [search](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search) returns the index of the first match of the regular expression inside the string.
 
 ```javascript
-console.log('My zip code is 4100-122'.search(/(\d{4})(?:-(\d{3}))?/));
+console.log('Zip code is 4100-122'.search(/(\d{4})(?:-(\d{3}))?/))
 ```
 
-```text
+Result:
+
+```bash
 15
 ```
 
@@ -914,11 +910,13 @@ str.replace(regexp, replacement)
 The replacement can contain backreferences in the form $n.
 
 ```javascript
-console.log('dog are dog'.replace(/(cat|dog)/, 'my $1s'));
-console.log('dog are dog'.replace(/(cat|dog)/g, 'my $1s'));
+console.log('dog are dog'.replace(/(cat|dog)/, 'my $1s'))
+console.log('dog are dog'.replace(/(cat|dog)/g, 'my $1s'))
 ```
 
-```text
+Result:
+
+```bash
 my dogs are dog
 my dogs are my dogs
 ```
@@ -931,7 +929,7 @@ Using the **test** function, we can easily validate data using regular expressio
 
 ```javascript
 function is_phone_number(element) {
-  return /^\d{9}|\d{3}-\d{3}-\d{3}$/.test(element);
+  return /^\d{9}|\d{3}-\d{3}-\d{3}$/.test(element)
 }
 ```
 
