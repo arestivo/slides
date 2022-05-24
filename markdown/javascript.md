@@ -1676,7 +1676,7 @@ console.log(a, b) // 5 10
 
 # The Rest
 
-After all elements are assigned, the remaining (or "the rest") can be assigned too, using *spread operator* (...):
+After all elements are assigned, the remaining (or "the rest") can be assigned too, using a *spread operator* (...):
 
 ```javascript
 const numbers = [1, 2, 3, 5, 8]
