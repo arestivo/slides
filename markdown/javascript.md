@@ -1417,7 +1417,7 @@ console.log(years.0)  // Syntax error
 You can use a **for** loop to iterate over array elements:
 
 ```javascript
-let years = [1990, 1991, 1992, 1993]
+const years = [1990, 1991, 1992, 1993]
 for (let i = 0; i < years.length; i++)
   console.log(years[i])
 ```
@@ -1425,7 +1425,7 @@ for (let i = 0; i < years.length; i++)
 Or you can use a **for ... of** loop:
 
 ```javascript
-let years = [1990, 1991, 1992, 1993]
+const years = [1990, 1991, 1992, 1993]
 for (const year of years)
   console.log(year)
 ```
@@ -1449,7 +1449,7 @@ Some examples:
 
 .small[
 ```javascript
-let years = [1990, 1991, 1992, 1993]
+const years = [1990, 1991, 1992, 1993]
 years.push(1994)
 console.log(years.length)   // 5
 
