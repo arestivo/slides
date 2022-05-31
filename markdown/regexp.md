@@ -78,6 +78,7 @@ Used in:
 
 ---
 
+template: inverse
 # References
 
 * [Online Regular Expression Tester](http://regex101.com/)
