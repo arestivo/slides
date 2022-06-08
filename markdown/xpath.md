@@ -130,73 +130,73 @@ An axis specifies the tree relationship between the nodes selected by the locati
 
 ---
 
-#Self
+#self::
 
 ![](assets/xpath/self.png)
 
 ---
 
-#Child
+#child::
 
 ![](assets/xpath/child.png)
 
 ---
 
-#Descendant
+#descendant::
 
 ![](assets/xpath/descendant.png)
 
 ---
 
-#Parent
+#parent::
 
 ![](assets/xpath/parent.png)
 
 ---
 
-#Ancestor
+#ancestor::
 
 ![](assets/xpath/ancestor.png)
 
 ---
 
-#Ancestor or Self
+#ancestor-or-self::
 
 ![](assets/xpath/ancestor-or-self.png)
 
 ---
 
-#Descendant or Self
+#descendant-or-self::
 
 ![](assets/xpath/descendant-or-self.png)
 
 ---
 
-#Preceding Sibling
+#preceding-sibling
 
 ![](assets/xpath/preceding-sibling.png)
 
 ---
 
-#Following Sibling
+#following-sibling
 
 ![](assets/xpath/following-sibling.png)
 
 ---
 
-#Preceding
+#preceding
 
 ![](assets/xpath/preceding.png)
 
 ---
 
-#Following
+#following
 
 ![](assets/xpath/following.png)
 
 ---
 
-#Attribute
+#attribute
 
 ![](assets/xpath/attribute.png)
 

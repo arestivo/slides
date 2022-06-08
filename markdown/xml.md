@@ -347,7 +347,6 @@ defined for and used by **multiple** software modules.
 ---
 
 # Example
-##Namespace
 
 ```xml
 <?xml version="1.0"?>
@@ -360,7 +359,7 @@ defined for and used by **multiple** software modules.
 
 ---
 
-# Namespace Scope
+# Scope
 
 The **scope** of a namespace declaration extends from the beginning of the **start-tag** in which it appears to the end of the corresponding **end-tag**.
 
