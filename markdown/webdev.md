@@ -124,7 +124,7 @@ Single Page Applications (SPA) have several advantages:
 
 * **Speed**: Most pages load faster.
 * **Network**: Less network intensive.
-**Decoupling**: The backend and Frontend are decoupled.
+* **Decoupling**: The backend and Frontend are decoupled.
 * **UX**: Better user experience.
 
 But Multiple Page Applications (SPA) also have some strong points:
@@ -193,7 +193,7 @@ Web workers **can't** directly **manipulate the DOM**.
 # Service Workers
 
 * Intercepts resource requests acting as a **network proxy**.
-* Normally used to cache resources and provide an **offline experience**.
+* Typically used to cache resources and provide an **offline experience**.
 * An **enhancement** to existing websites. **No** baseline **functionality is broken** if the browser does not support them.
 * After a service worker is installed and activated, it controls the page to offer **improved reliability** and **speed**.
 
@@ -268,6 +268,7 @@ A low-level API for **client-side** storage of **significant amounts** of struct
 * [Clipboard](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API): read and write from the system clipboard.
 * [Geolocation](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API): get the current location.
 * [Websockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API): open two-way communication channels with a server.
+* [History](https://developer.mozilla.org/en-US/docs/Web/API/History_API): change the browser history.
 * [Many More](https://developer.mozilla.org/en-US/docs/Web/API).
 ---
 
