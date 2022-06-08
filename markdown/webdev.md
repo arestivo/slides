@@ -292,7 +292,7 @@ A framework that supports development of front-end user interfaces, back-end log
 * [Laravel](https://laravel.com/) (PHP).
 * [Django](https://www.djangoproject.com/) (Python).
 * [CakePHP](https://cakephp.org/) (PHP).
-* [Meteor](https://www.meteor.com/) (JavaScript).
+* [Meteor](https://www.meteor.com/) (JavaScript / NodeJS).
 
 Typically, they include several services:
 
@@ -334,11 +334,12 @@ Svelte example:
 
 # CSS Frameworks
 
-CSS is hard; CSS frameworks can be a good start for a great design:
+CSS is complicated; CSS frameworks can be a **good start** for a great design:
 
 * [Bootstrap](https://getbootstrap.com/).
 * [Foundation](https://get.foundation/).
 
-More semantically (*class-less*) friendly ones:
+More **semantically** (*[class-less](https://dohliam.github.io/dropin-minimal-css/)*) friendly ones:
 
 * [Pico CSS](https://picocss.com/).
+* [Milligram](https://milligram.io/).
