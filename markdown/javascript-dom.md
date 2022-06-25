@@ -809,7 +809,7 @@ request.send(encodeForAjax({id: 1, name: 'John'}))
 
 ---
 
-# Analyzing an XMLRequest Response
+# Analyzing the Response
 
 If the server responds in **XML** format, the [responseXML](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseXML) property will be a DOM Object containing a parsed XML document, which can be hard to manipulate and analyze.
 
