@@ -501,7 +501,7 @@ name: events
 The DOM follows an [event-driven](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events) architecture (an architecture built on top of the publish-subscribe or observer pattern):
 
 * Events are occurrences that happen in the system.<br><small>*e.g.*, the user clicks on a button.</small>
-* Specific events in specific object can have event handlers attched to them.
+* Specific events in specific objects can have event handlers attached to them.
 * When the event happens, the attached handler is called.
 
 **Some** possible events:
