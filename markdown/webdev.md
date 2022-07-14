@@ -127,7 +127,7 @@ Single Page Applications (SPA) have several advantages:
 * **Decoupling**: The backend and Frontend are decoupled.
 * **UX**: Better user experience.
 
-But Multiple Page Applications (SPA) also have some strong points:
+But Multiple Page Applications (MPA) also have some strong points:
 
 * **SEO**: Easier search engine optimization.
 * **First Load**: The speed of the first load is usually better.
