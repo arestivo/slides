@@ -11,7 +11,7 @@
    width="798px"
    height="432px"
    version="1.1"
-   style="background-color: rgb(255, 255, 255);"
+   style="background-color: rgba(255, 255, 255, 0);"
    id="svg264"
    sodipodi:docname="example.svg"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
@@ -27,7 +27,7 @@
     </rdf:RDF>
   </metadata>
   <sodipodi:namedview
-     pagecolor="#ffffff"
+     pagecolor="none"
      bordercolor="#666666"
      borderopacity="1"
      objecttolerance="10"
@@ -77,7 +77,7 @@
        y="103"
        width="140"
        height="60"
-       fill="#ffffff"
+       fill="none"
        stroke="#000000"
        pointer-events="none"
        id="rect10" />
@@ -177,7 +177,7 @@
        y="103"
        width="140"
        height="60"
-       fill="#ffffff"
+       fill="none"
        stroke="#000000"
        pointer-events="none"
        id="rect32" />
@@ -247,7 +247,7 @@
        y="0"
        width="140"
        height="70"
-       fill="#ffffff"
+       fill="none"
        stroke="#000000"
        pointer-events="none"
        id="rect48" />
@@ -351,7 +351,7 @@
        y="103"
        width="140"
        height="60"
-       fill="#ffffff"
+       fill="none"
        stroke="#000000"
        pointer-events="none"
        id="rect72" />
@@ -535,7 +535,7 @@
        y="203"
        width="140"
        height="60"
-       fill="#ffffff"
+       fill="none"
        stroke="#000000"
        pointer-events="none"
        id="rect114" />
@@ -612,7 +612,7 @@
        y="358"
        width="140"
        height="70"
-       fill="#ffffff"
+       fill="none"
        stroke="#000000"
        pointer-events="none"
        id="rect130" />
@@ -720,7 +720,7 @@
        y="251"
        width="140"
        height="60"
-       fill="#ffffff"
+       fill="none"
        stroke="#000000"
        pointer-events="none"
        id="rect154" />
@@ -792,7 +792,7 @@
        y="183"
        width="140"
        height="60"
-       fill="#ffffff"
+       fill="none"
        stroke="#000000"
        pointer-events="none"
        id="rect170" />
@@ -1013,7 +1013,7 @@
        y="106"
        width="120"
        height="59"
-       fill="#ffffff"
+       fill="none"
        stroke="#000000"
        pointer-events="none"
        id="rect218" />
@@ -1092,7 +1092,7 @@
        y="123"
        width="47"
        height="20"
-       fill="#ffffff"
+       fill="none"
        stroke="#000000"
        pointer-events="none"
        id="rect236" />
