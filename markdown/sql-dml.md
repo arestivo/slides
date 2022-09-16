@@ -84,13 +84,15 @@ name: inserting
 To insert values into a table we use the **INSERT** command:
 
 ```sql
-INSERT INTO <tablename> (<col1>, <col2>, ...) VALUES (<val1>, <val2>, ...);
+INSERT INTO <tablename> (<col1>, <col2>, ...) 
+VALUES (<val1>, <val2>, ...);
 ```
 
 Example:
 
 ```sql
-INSERT INTO employee (id, name, salary) VALUES (1, 'John Doe', 1000);
+INSERT INTO employee (id, name, salary) 
+VALUES (1, 'John Doe', 1000);
 ```
 
 ---
@@ -164,7 +166,9 @@ name: updating
 * New values can be calculated on the fly.
 
 ```sql
-UPDATE <tablename> SET <col1> = <val1>, <col2> = <val2>, ... WHERE <condition>;
+UPDATE <tablename> 
+SET <col1> = <val1>, <col2> = <val2>, ... 
+WHERE <condition>;
 ```
 
 ---

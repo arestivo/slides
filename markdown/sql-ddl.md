@@ -320,7 +320,8 @@ Giving names to constraints allows us to better identify them when errors occur 
 
 ```sql
 CREATE TABLE <table_name> (
-  <column_name> <data_type> CONSTRAINT <constraint_name> CHECK <check_expression>, 
+  <column_name> <data_type> 
+    CONSTRAINT <constraint_name> CHECK <check_expression>, 
   <column_name> <data_type>,
   ...
   <column_name> <data_type>
@@ -641,7 +642,8 @@ CREATE TABLE call (
   phone INTEGER,
   when DATE,
   caller INTEGER,
-  FOREIGN KEY (employee, phone) REFERENCES telephone (employee, phone)
+  FOREIGN KEY (employee, phone) 
+    REFERENCES telephone (employee, phone)
 );
 ```
 
@@ -794,7 +796,8 @@ Is equivalent to:
 ```sql
 CREATE SEQUENCE <tablename_colname_seq>;
 CREATE TABLE <tablename> (
-    <colname> INTEGER DEFAULT nextval('<tablename_colname_seq>') NOT NULL
+    <colname> INTEGER DEFAULT 
+              nextval('<tablename_colname_seq>') NOT NULL
 );
 ```
 
@@ -802,6 +805,8 @@ CREATE TABLE <tablename> (
 
 # Example
 
+
+.small[
 ```sql
 CREATE TABLE category (
   id SERIAL PRIMARY KEY,
@@ -817,3 +822,4 @@ CREATE TABLE product (
 INSERT INTO category VALUES(DEFAULT, 'Fruits');
 INSERT INTO products VALUES(DEFAULT, 'Lemon', currval('category_id_seq'));
 ```
+]

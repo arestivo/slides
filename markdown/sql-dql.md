@@ -691,7 +691,8 @@ SELECT * FROM employee;
 
 ```sql
 SELECT * FROM employee JOIN 
-              employee AS supervisor ON employee.sup_id = supervisor.id;
+              employee AS supervisor 
+                ON employee.sup_id = supervisor.id;
 ```
 
 .smaller.sqltable[
@@ -728,6 +729,7 @@ MIN, MAX, SUM, AVG and COUNT
 |3
 ]
 
+.small[
 ```sql
 SELECT MIN(value)             FROM table; -- 1
 SELECT MAX(value)             FROM table; -- 3
@@ -737,6 +739,7 @@ SELECT COUNT(value)           FROM table; -- 4 (counts non null values)
 SELECT COUNT(DISTINCT value)  FROM table; -- 3 (counts distinct non null values)
 SELECT COUNT(*)               FROM table; -- 5 (counts lines)
 ```
+]
 
 ---
 
