@@ -73,7 +73,7 @@ name: intro
 # Tuples
 
  * The **lines** of a relation;
- * **Ordered** sequence of values;
+ * An **ordered** sequence of values;
  * Tuples do not have a specific order between them;
  * Tuple values are **atomic** (no composite or multi-value).
 
@@ -132,11 +132,8 @@ Employee (id, name [NN], address, telephone)
 
 * No two tuples can have the same combination of values for
 all their attributes;
-* **Superkey**: set of attributes in a relation R such that no 2
-different tuples will have the same values for that set of
-attributes;
-* **Key**: minimal set of attributes in relation R such that no 2
-tuples have the same values;
+* **Superkey**: a set of attributes in a relation *R* such that no 2 different tuples will have the same values for that set of attributes;
+* **Key**: a minimal set of attributes in relation *R* such that no 2 tuples have the same values;
 * **Candidate key**: any key. 
 
 ---
@@ -186,7 +183,7 @@ Employee (<u>id</u>, name [NN], address, telephone)
 
 ---
 
-# Table with an Unique Key
+# Table with a Unique Key
 
 ![](assets/relationalmodel/uniquekey.png)
 
@@ -212,8 +209,8 @@ Employee (<u>id</u>, name [NN], address, telephone [UK])
 # Foreign Keys
 
 * An **attribute** (or set of attributes) that uniquely identifies a tuple of another, or the same, relation.
-* Can be used to **cross-reference** relations.
-* Possible to use the values of attributes in the referenced relation to restrict the domain of one or more attributes in the referencing relation.
+* They can be used to **cross-reference** relations.
+* It is possible to use the values of attributes in the referenced relation to restrict the domain of one or more attributes in the referencing relation.
 
 ---
 
@@ -282,9 +279,9 @@ name: uml-to-mr
 
 --
 
-* A relation representing the class;
-* Derived attribute can be ommited and calculated when needed;
-* If no good candidate key exists, a primary key can be created.
+* A **relation** representing the class;
+* A **derived** attribute can be omitted and calculated when needed;
+* If no good candidate key exists, a **primary key** can be **created**.
 
 .relational_example[
 Person (<u>id</u>, birth_date, name, address, salary)
@@ -298,8 +295,8 @@ Person (<u>id</u>, birth_date, name, address, salary)
 
 --
 
-* Foreign key from the many to the one side;
-* Can have null values as employee might not have a department.
+* **Foreign key** from the **many** to the **one** side;
+* **Can** have **null** values as an employee might not have a department.
 
 .relational_example[
 Employee (<u>id</u>, birth_date, name, address, salary, #num &rarr; Department)
@@ -315,8 +312,8 @@ Department (<u>num</u>, name)
 
 --
 
-* Foreign key from the many to the one side;
-* Cannot have null values as employee must have a department.
+* **Foreign key** from the **many** to the **one** side;
+* **Cannot** have **null** values as an employee must have a department.
 
 .relational_example[
 Employee (<u>id</u>, bdate, name, address, salary, #num &rarr; Department [NN])
@@ -332,9 +329,9 @@ Department (<u>num</u>, name)
 
 --
 
-* Foreign key from the partial to the total side;
-* Cannot have null values as passport must belong to someone;
-* Unique key, as every passport must belong to a different person.
+* **Foreign key** from the **partial** to the **total** side;
+* **Cannot** have **null** values as a passport must belong to someone;
+* A **unique key** as every passport must belong to a different person.
 
 .relational_example[
 Person (<u>id</u>, birth_date, name, address)
@@ -350,10 +347,10 @@ Passport (<u>number</u>, date, #id &rarr; Person [UK,NN])
 
 --
 
-* Foreign key in either side;
-* Cannot have null values as person must have a passport;
-* Unique key, as every passport must belong to a different person;
-* Relations can be merged. Same number of tuples in both sides.
+* **Foreign key** on **either** side;
+* **Cannot** have **null** values as a person must have a passport;
+* A **unique** key, as every passport must belong to a different person;
+* Relations can be merged; both sides will have the same number of tuples.
 
 .relational_example[
 Person (<u>id</u>, birth_date, name, address, #number &rarr; Passport [UK,NN])
@@ -369,8 +366,8 @@ Passport (<u>number</u>, date)
 
 --
 
-* A new relation containing foreign keys to both relations;
-* Primary key formed by both foreign keys.
+* A **new relation** containing **foreign keys** pointing to **both** relations;
+* A **primary key** is formed by **both** foreign keys.
 
 .relational_example[
 Book (<u>isbn</u>, title, date)
@@ -389,7 +386,8 @@ Wrote (<u>#isbn &rarr; Book</u>, <u>#number &rarr; Author</u>)
 
 --
 
-Attributes from the association class go to the same relation as the newly created foreign keys.
+* Normally a **many-to-many** association;
+* **Attributes** from the association class go to the **same relation** as the newly created foreign keys.
 
 .relational_example[
 Student (<u>number</u>, name)
@@ -407,8 +405,8 @@ Enrolled (<u>#number &rarr; Student</u>, <u>#code &rarr; Course</u>, grade)
 
 --
 
-* One-to-many relationship;
-* Diamond side has an implicit 0..1 cardinality.
+* **One-to-many** relationship;
+* The *whole* side has an **implicit** 0..1 cardinality (partial).
 
 .relational_example[
 Computer (<u>number</u>, location)
@@ -424,8 +422,8 @@ Part (<u>code</u>, name, type, #number &rarr; Computer)
 
 --
 
-* One-to-many relationship;
-* Diamond side has an implicit 1 cardinality.
+* **One-to-many** relationship;
+* The diamond side has an **implicit** 1 cardinality (total).
 
 .relational_example[
 Computer (<u>number</u>, location)
@@ -441,8 +439,9 @@ Part (<u>code</u>, name, type, #number &rarr; Computer [NN])
 
 --
 
-* Primary key ensures that each member can only be once in each club.
-* Unique key ensures the unicity of the qualified attribute.
+* **Many-to-many** relationship (table with foreign keys and the attribute);
+* The **primary key** ensures that each member can only be once in each club;
+* The **unique key** ensures the unicity of the qualifier attribute.
 
 .relational_example[
 Club (<u>code</u>, title)
@@ -461,7 +460,7 @@ Joined (<u>#code &rarr; Club</u>, <u>#id &rarr; Member</u>, number [NN])
 
 --
 
-Similar to a many-to-many relationship. All combinations are possible.
+* Similar to a **many-to-many** relationship; **all combinations** are possible.
 
 .small.relational_example[
 Team (<u>name</u>)
@@ -482,7 +481,7 @@ Played (<u>#name &rarr; Team</u>, <u>#year &rarr; Season</u>, <u>#id &rarr; Play
 
 --
 
-Players can only play for one team each season.
+* The **primary key** ensures players can only play for only one team each season.
 
 .small.relational_example[
 Team (<u>name</u>)
@@ -503,9 +502,9 @@ Played (#name &rarr; Team, <u>#year &rarr; Season</u>, <u>#id &rarr; Player</u>,
 
 --
 
-* Some queries are more complex (e.g. name of all heart surgeons);
-* No way to ensure disjoint generalization;
-* Type attribute optional.
+* **Some queries** will be **more complex** (e.g. name of all heart surgeons);
+* No way to ensure **disjoint** generalization;
+* Type attribute **optional**.
 
 .small.relational_example[
 Person (<u>num</u>, name, type)
@@ -524,14 +523,14 @@ Appointment (<u>id</u>, #numd &rarr; Doctor [NN], #nump &rarr; Patient [NN], dat
 
 ![](assets/uml/generalization.svg)
 
-* Some queries require more work (e.g. person named John);
-* No way to ensure disjoint generalization;
-* Can become complex if generic class has many attributes and associations.
+* **Some queries** require **more work** (e.g. person named John);
+* No way to ensure **disjoint** generalization;
+* Can become **complex**, if the **generic** class has **many** attributes and associations.
 
 .small.relational_example[
 Doctor (<u>num</u>, name, specialty)
 
-Patient (<u>num</u>, name, ensurance)
+Patient (<u>num</u>, name, insurance)
 
 Appointment (<u>id</u>, #numd &rarr; Doctor [NN], #nump &rarr; Patient [NN], date)
 
@@ -543,9 +542,9 @@ Appointment (<u>id</u>, #numd &rarr; Doctor [NN], #nump &rarr; Patient [NN], dat
 
 ![](assets/uml/generalization.svg)
 
-* Needs extra code to ensure an appointment is between a doctor and a patient, only doctors have a specialty and patients an ensurance;
-* Easy to ensure disjoint generalization;
-* Can become complex if specialized classes have many attributes and associations.
+* Needs **extra code** to ensure an appointment is between a doctor and a patient, only doctors have a specialty and patients insurance;
+* **Easy** to ensure **disjoint** generalization;
+* Can become **complex** if **specialized** classes have **many** attributes and associations.
 
 .small.relational_example[
 Person (<u>num</u>, name, specialty, ensurance, type)
@@ -560,10 +559,12 @@ Appointment (<u>id</u>, #numd &rarr; Person [NN], #nump &rarr; Person [NN], date
 
 ![](assets/uml/generalization.svg)
 
-Same as previous but for overlapped generalizations.
+* Same as previous but for **overlapping generalizations**.
+* One boolean attribute **for each** specialized class.
+* A person can be a doctor and a patient at the same time.
 
 .small.relational_example[
-Person (<u>num</u>, name, specialty, ensurance, isdoctor, ispatient)
+Person (<u>num</u>, name, specialty, insurance, isdoctor, ispatient)
 
 Appointment (<u>id</u>, #numd &rarr; Person [NN], #nump &rarr; Person [NN], date)
 
