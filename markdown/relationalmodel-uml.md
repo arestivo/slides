@@ -511,7 +511,7 @@ Person (<u>num</u>, name, type)
 
 Doctor (<u>#num &rarr; Person</u>, specialty)
 
-Patient (<u>#num &rarr; Person</u>, ensurance)
+Patient (<u>#num &rarr; Person</u>, insurance)
 
 Appointment (<u>id</u>, #numd &rarr; Doctor [NN], #nump &rarr; Patient [NN], date)
 
@@ -547,7 +547,7 @@ Appointment (<u>id</u>, #numd &rarr; Doctor [NN], #nump &rarr; Patient [NN], dat
 * Can become **complex** if **specialized** classes have **many** attributes and associations.
 
 .small.relational_example[
-Person (<u>num</u>, name, specialty, ensurance, type)
+Person (<u>num</u>, name, specialty, insurance, type)
 
 Appointment (<u>id</u>, #numd &rarr; Person [NN], #nump &rarr; Person [NN], date)
 
@@ -606,7 +606,7 @@ Prescribed (<u>#id &rarr; Appointment</u>, <u>#ref &rarr; Drug</u>, dosage)
 
 Company (<u>name</u>)
 
-Ensurance (<u>#num &rarr; Patient</u>, <u>#company &rarr; Company</u>, number)<br>{UK: company, number}
+Insurance (<u>#num &rarr; Patient</u>, <u>#company &rarr; Company</u>, number)<br>{UK: company, number}
 
 ]
 
