@@ -1139,6 +1139,7 @@ pip3 install psycopg2-binary
 
 We then can use the <code>connect</code> function to **connect** to the database:
 
+<small>
 ```python
 import psycopg2 
 
@@ -1150,6 +1151,7 @@ con = psycopg2.connect(
   options='-c search_path=schema'  # use the schema you want to connect to
 )
 ```
+</small>
 
 The <code>connect</code> function **returns** a **connection object**.
 
@@ -1165,7 +1167,7 @@ The <code>connect</code> function **returns** a **connection object**.
 id = int(input('Employee ID: '))
 
 cur = con.cursor()
-cur.execute(f'SELECT * FROM employee WHERE id_emp = {id}')
+cur.execute(f'SELECT * FROM employee WHERE id = {id}')
 employee = cur.fetchone()
 
 print(employee)
