@@ -334,22 +334,22 @@ $ git commit -m "Added some and another text"  # Commiting both changes at once
 If you delete a file from your working area, it will appear as a change that needs to be staged in order to be reflected in the repository:
 
 ```bash
-$ rm README                       # File is removed from working directory
+$ rm README                      # File removed from working dir
 $ git status -s
- D README                         # File removed in working tree
-$ git add README                  # File removal is staged
+ D README                        # File removed in working tree
+$ git add README                 # File removal is staged
 $ git status -s
-D  README                         # File removed in staging area
-$ git commit -m "Removed README"  # File removal is committed
+D  README                        # File removed in staging area
+$ git commit -m "Removed README" # File removal is committed
 ```
 
 The **git rm** command simplifies this operation by removing the file from the working directory and staging that change at the same time.
 
 ```bash
-$ git rm README                   # Removed from working directory and staged
+$ git rm README                  # Removed and staged in 1 step
 $ git status -s
-D  README                         # File removed in staging area
-$ git commit -m "Removed README"  # File removal is committed
+D  README                        # File removed in staging area
+$ git commit -m "Removed README" # File removal is committed
 ```
 
 ---
