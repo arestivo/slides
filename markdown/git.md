@@ -232,6 +232,7 @@ $ git commit -a -m "Edited README" # Stages and commits the file
 
 The [status](https://git-scm.com/docs/git-status) command can be used to determine which files are in which state:
 
+.small[
 ```bash
 $ echo "hello git" > README    # File is created
 $ git status                   # Asking for file status
@@ -247,6 +248,7 @@ Untracked files:
 
 nothing added to commit but untracked files present (use "git add" to track)
 ```
+]
 
 The **--short** (or **-s**) flag can be used to get a more concise output:
 
