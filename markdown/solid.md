@@ -32,6 +32,7 @@ name:index
 1. [Causes](#causes)
 1. [SOLID Principles](#principles)
 1. [Other Principles](#other)
+1. [Hero Example](#example)
 ]
 
 ---
@@ -52,19 +53,19 @@ name:software-rot
 
 # Software Rot
 
-Even when software design **starts** as a **pristine work of art**, portraying the **clean** and **elegant** image in the **mind** of the designer, it **eventually** starts to **rot**:
+Even when software design **starts** as a **pristine work of art**, portraying a **clean** and **elegant** image as idealized by the designer, it **eventually** starts to **rot**:
 
 * It starts with a **small hack** but the overall beauty of the design is still there.
 
 * The hacks start **accumulating**, each one another **nail** in the **coffin**.
 
-* The code **eventually** becomes an incredibly **hard to maintain** mess.
+* The code **eventually** becomes an incredibly **hard-to-maintain** mess.
 
 ---
 
 # System Redesign
 
-* At this point a **redesign** is needed. But the old code is still in **production**, **evolving** and **changing**.
+* At this point, a **redesign** is needed. But the old code is still in **production**, **evolving** and **changing**.
 
 * So the *system redesign* is trying to **shoot** at a **moving target**.
 
@@ -73,7 +74,7 @@ Even when software design **starts** as a **pristine work of art**, portraying t
 ---
 
 template: inverse
-name:symptoms
+name: symptoms
 # Symptoms of Rotting Design
 
 ---
@@ -83,7 +84,7 @@ name:symptoms
 * The **tendency** for software to be **difficult** to **change**.
 * Every **change** causes a **cascade** of subsequent **changes**.
   
-When software behaves this way, managers **fear** to allow engineers to **fix** non-critical **problems** (as they may disappear for long periods of time).
+When software behaves this way, managers **fear** allowing engineers to **fix** non-critical **problems** (as they may disappear for long periods).
 
 ---
 
@@ -98,7 +99,7 @@ When software behaves this way, managers and customers start to suspect that the
 
 # Immobility
 
-* The **inability** to **reuse** **software** from other projects or from parts of the same project.
+* The **inability** to **reuse** **software** from other projects or parts of the same project.
 * The **work** and **risk** required to **separate** the desirable parts of the software from the undesirable parts are **too great** to tolerate.
 
 Software ends up being **rewritten**.
@@ -107,18 +108,18 @@ Software ends up being **rewritten**.
 
 # Viscosity
 
-Viscosity of the **design**: 
+The viscosity of the **design**: 
   * There is **more than one** way to make a change: preserving the **design**, and **hacks**.
-  * The **design** preserving methods are **harder** to employ than the **hacks**.
+  * The **design-preserving** methods are **harder** to employ than the **hacks**.
 
-Viscosity of the **environment**:
-  * The development environment is **slow** and **inefficient** (long compile times, complicated and long check in procedures, ...).
+The viscosity of the **environment**:
+  * The development environment is **slow** and **inefficient** (long compile times, complicated and long check-in procedures, ...).
   * Developers end up choosing solutions that require **as few changes** as possible, **regardless** of whether the **design** is **preserved**.
 
 ---
 
 template: inverse
-name:causes
+name: causes
 # Causes of Rotting Design
 
 ---
@@ -139,22 +140,22 @@ Changing requirements should **not** be **a surprise**, and blaming them is the 
 
 If we **analyze** the four **symptoms** of rotting design just presented, carefully, there is one **common theme** among them: **improper dependencies** between modules.
 
-* The **initial design** properly separates the **responsibilities** of each module; dependencies seem **logic** and **stratified**.
+* The **initial design** properly separates the **responsibilities** of each module; dependencies seem **logical** and **stratified****.
 
-* As **time** goes by, **hacks** (needed because of **unforseen** **requirement** **changes**), introduce **unwanted** dependencies.
+* As **time** goes by, **hacks** (needed because of **unforeseen requirement changes**), introduce **unwanted** dependencies.
 
 ![](assets/solid/dependencies.svg)
 
 ---
 
 template: inverse
-name:causes
+name: principles
 # Principles of Object-Oriented Design
 ## SOLID
 
 ---
 
-# (S) The Single Responsibility Principle (SRP)
+## (S) The Single Responsibility Principle (SRP)
 
 > "Each software module should have **one** and **only one** **reason** to **change**."
 
@@ -196,7 +197,7 @@ responsibilities to **change at different times**, then there is **no need to se
 
 ---
 
-# (O) The Open-Closed Principle (OCP)
+## (O) The Open-Closed Principle (OCP)
 
 > A module should be **open** for extension but **closed** for modification.
 
@@ -267,13 +268,15 @@ List<Shape> listOfShapes;
 
 ---
 
-# (L) The Liskov Substitution Principle (LSP)
+## (L) The Liskov Substitution Principle (LSP)
+
+Introduced by [Barbara Liskov](https://www.ted.com/talks/barbara_liskov_how_data_abstraction_changed_computing_forever) in a 1988 conference keynote address titled "Data abstraction and hierarchy".
 
 > Subclasses should be substitutable for their base classes.
 
-A **user** of a **base class** should **continue** to **function properly** if a **derivative** of that base class is **passed** to it.
+A **client** of a **base class** should **continue** to **function properly** if a **derivative** of that base class is **passed** to it.
 
-This might seem **obvious** at first, but many times its **hard to detect** that this principle is being **broken**.
+This might seem **obvious** at first, but many times it's **hard to detect** that this principle is being **broken**.
 
 ---
 
@@ -328,6 +331,8 @@ And we are back at the **OCP** problem!
 
 # LSP as Contracts
 
+Resemblance to Bertrand Meyer's "[design by contract](https://en.wikipedia.org/wiki/Design_by_contract)".
+
 A **derived** class is **substitutable** for its **base** class if:
 
 1. Its **preconditions** are no **stronger** than the **base** class method.
@@ -337,7 +342,7 @@ Or, in other words, **derived methods should expect no more and provide no less*
 
 ---
 
-# (I) The Interface Segregation Principle (ISP)
+## (I) The Interface Segregation Principle (ISP)
 
 > **Many** **client specific** interfaces are better than **one** **general purpose** interface.
 
@@ -360,7 +365,7 @@ Or, in other words, **derived methods should expect no more and provide no less*
 
 ---
 
-# (D) The Dependency Inversion Principle (DIP)
+### (D) The Dependency Inversion Principle (DIP)
 
 > **High-level** modules should **not depend** on **low-level** modules. **Both** should **depend** on **abstractions**.
 
@@ -389,7 +394,7 @@ And
 ---
 
 template: inverse
-name:other
+name: other
 # Other Principles
 
 ---
@@ -398,7 +403,7 @@ name:other
 
 ---
 
-# The Release Reuse Equivalency Principle (REP)
+## The Release Reuse Equivalency Principle (REP)
 
 > The granule of reuse is the granule of release.
 
@@ -408,11 +413,11 @@ name:other
   
 ---
 
-# The Common Closure Principle (CCP)
+## The Common Closure Principle (CCP)
 
 > Classes that change together, belong together.
 
-* If the code in an application **must change**, changes should be **focused** into a **single package**.
+* If the code in an application **must change**, changes should be **focused** on a **single package**.
 
 * If two classes almost **always change together**, then they **belong** in the **same package**.
 
@@ -420,11 +425,11 @@ name:other
 
 ---
 
-# The Common Reuse Principle (CRP)
+## The Common Reuse Principle (CRP)
 
 > Classes that **aren’t** **reused** together **should not** be **grouped** together.
 
-* Generally **reusable** classes **collaborate** with other classes that are part of the **reusable** abstraction.
+* Reusable classes **collaborate** with other classes that are part of the **reusable** abstraction.
 
 * These classes **belong** in the **same** package.
 
@@ -436,7 +441,7 @@ name:other
 
 ---
 
-# The Acyclic Dependencies Principle (ADP)
+## The Acyclic Dependencies Principle (ADP)
 
 > The **dependencies** between packages **must not form cycles**.
 
@@ -448,7 +453,7 @@ name:other
 
 ---
 
-# The Stable Dependencies Principle (SDP)
+## The Stable Dependencies Principle (SDP)
 
 > Depend in the direction of stability.
 
@@ -462,7 +467,7 @@ name:other
 
 ---
 
-# The Stable Abstractions Principle (SAP)
+## The Stable Abstractions Principle (SAP)
 
 > Stable packages should be abstract packages.
 
@@ -475,7 +480,7 @@ name:other
 ---
 
 template: inverse
-name:other
+name: example
 # An Example
 
 ---
