@@ -2524,7 +2524,7 @@ There are also properties to adjust each **item individually**: [justify-self](h
 
 You can assign an item to a location that you **did not define** with [grid-template-columns](https://css-tricks.com/snippets/css/complete-guide-grid/#prop-grid-template-columns-rows) and [grid-template-rows](https://css-tricks.com/snippets/css/complete-guide-grid/#prop-grid-template-columns-rows).
 
-In that case, the needed column and rows are **automatically** added width size auto.
+In that case, the needed column and rows are **automatically** added with size auto.
 
 ```css
 .container { grid-template-rows: 2em; grid-template-columns: 2em; }

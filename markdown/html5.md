@@ -567,11 +567,11 @@ However, the **&lt;div&gt;** element should only be used if no other, more *sema
 
 ```html
 <article class="post">
-  <div class="introduction">
+  <p>...</p>
+  <div class="emphasis">
     <p>...</p>
     <p>...</p>
   </div>
-  <p>...</p>
   <p>...</p>
 </article>
 ```
