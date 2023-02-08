@@ -2506,10 +2506,10 @@ Any number of **adjacent periods** can be used to declare a single empty cell.
 
 ---
 
-# Adjusting Items
+# Aligning Items
 
 Like with *flexbox*, we can adjust the placement of each item inside its cell on the grid.
-For that we use the folllowing properties:
+For that, we use the following properties:
 
 * [column-gap, row-gap](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-column-gaprow-gapgrid-column-gapgrid-row-gap), and [gap](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-gapgrid-gap): they work just like in **flexbox**.
 * [justify-items](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-justify-items): Align items along the **row** with: *start*, *end*, *center*, and *stretch*.
@@ -2520,9 +2520,91 @@ There are also properties to adjust each **item individually**: [justify-self](h
 
 ---
 
+# Alignment Example
+
+An interactive example to showcase different alignments:
+
+<div id="ex-ji" class="container" style="height: 14em; background-color: #eee;padding: 5px; display: grid; grid-template-columns: auto auto auto; grid-template-rows: auto auto auto;">
+  <div class="item-a" style="text-align: center; font-size: 0.8em; margin: 2px; padding: 0.3em; background-color: #e9d8a6; ">A</div>
+  <div style="text-align: center; font-size: 1em; margin: 2px; padding: 0.3em; background-color: #f4a261; ">B <br> B</div>
+  <div style="text-align: center; font-size: 1.2em; margin: 2px; padding: 0.3em; background-color: #e76f51; ">CCC</div>
+
+  <div style="text-align: center; font-size: 1.2em; margin: 2px; padding: 0.3em; background-color: #e9d8a6; ">DDD</div>
+  <div style="text-align: center; font-size: 0.8em; margin: 2px; padding: 0.3em; background-color: #f4a261; ">EEEEE</div>
+  <div style="text-align: center; font-size: 1em; margin: 2px; padding: 0.3em; background-color: #e76f51; ">F</div>
+
+  <div style="text-align: center; font-size: 0.8em; margin: 2px; padding: 0.3em; background-color: #e9d8a6; ">GG</div>
+  <div style="text-align: center; font-size: 1.2em; margin: 2px; padding: 0.3em; background-color: #f4a261; ">H<br>H<br>H</div>
+  <div style="text-align: center; font-size: 1em; margin: 2px; padding: 0.3em; background-color: #e76f51; ">II</div>
+</div>
+<div style="margin-top: 1em; font-size: 0.6em; font-family: monospace; background-color: #EEE; padding: 0.5em; display: grid; grid-template-columns: auto auto">
+  <div>
+  .container {
+    <div style="display: grid; grid-template-columns: auto; justify-content: start; margin-left: 2em; column-gap: 1em;">
+    <label>grid-template-columns: <select onchange="document.querySelector('#ex-ji').style.gridTemplateColumns = this.value">
+      <option>auto auto auto</option>
+      <option>auto auto 1fr</option>
+      <option>auto 1fr 2fr</option>
+    </select>;</label>
+    <label>justify-items: <select onchange="document.querySelector('#ex-ji').style.justifyItems = this.value">
+      <option>stretch</option>
+      <option>start</option>
+      <option>end</option>
+      <option>center</option>
+    </select>;</label>
+    <label>align-items: <select onchange="document.querySelector('#ex-ji').style.alignItems = this.value">
+      <option>stretch</option>
+      <option>start</option>
+      <option>end</option>
+      <option>center</option>
+      <option>baseline</option>
+    </select>;</label>
+    <label>justify-content: <select onchange="document.querySelector('#ex-ji').style.justifyContent = this.value">
+      <option>stretch</option>
+      <option>start</option>
+      <option>end</option>
+      <option>center</option>
+      <option>space-around</option>
+      <option>space-between</option>
+      <option>space-evenly</option>
+    </select>;</label>
+    <label>align-content: <select onchange="document.querySelector('#ex-ji').style.alignContent = this.value">
+      <option>stretch</option>
+      <option>start</option>
+      <option>end</option>
+      <option>center</option>
+      <option>space-around</option>
+      <option>space-between</option>
+      <option>space-evenly</option>
+    </select>;</label>
+    </div>
+  }
+  </div>
+  <div>
+  .item-a {
+    <div style="display: grid; grid-template-columns: auto; justify-content: start; margin-left: 2em; column-gap: 1em;">
+    <label>justify-self: <select onchange="document.querySelector('#ex-ji .item-a').style.justifySelf = this.value">
+      <option>stretch</option>
+      <option>start</option>
+      <option>end</option>
+      <option>center</option>
+    </select>;</label>
+    <label>align-self: <select onchange="document.querySelector('#ex-ji .item-a').style.alignSelf = this.value">
+      <option>stretch</option>
+      <option>start</option>
+      <option>end</option>
+      <option>center</option>
+      <option>baseline</option>
+    </select>;</label>
+    </div>
+  }
+  </div>
+<div>
+---
+
 # Implicit Cells
 
-You can assign an item to a location that you **did not define** with [grid-template-columns](https://css-tricks.com/snippets/css/complete-guide-grid/#prop-grid-template-columns-rows) and [grid-template-rows](https://css-tricks.com/snippets/css/complete-guide-grid/#prop-grid-template-columns-rows).
+You can assign an item to a location you **did not define** using [grid-template-columns]((https://css-tricks.com/snippets/css/complete-guide-grid/#prop-grid-template-columns-rows) and [grid-template-rows](https://css-tricks.com/snippets/css/complete-guide-grid/#prop-grid-template-columns-rows).
 
 In that case, the needed column and rows are **automatically** added with size auto.
 
