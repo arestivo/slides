@@ -2544,6 +2544,7 @@ An interactive example to showcase different alignments:
     <label>grid-template-columns: <select onchange="document.querySelector('#ex-ji').style.gridTemplateColumns = this.value">
       <option>auto auto auto</option>
       <option>auto auto 1fr</option>
+      <option>auto 20em 1fr</option>
       <option>auto 1fr 2fr</option>
     </select>;</label>
     <label>justify-items: <select onchange="document.querySelector('#ex-ji').style.justifyItems = this.value">
