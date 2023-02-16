@@ -668,6 +668,8 @@ Results in:
 
 <p style="background-color: yellow">The quick brown fox jumps over the lazy dog</p>
 
+The default background color of most elements is **transparent**.
+
 ---
 
 # Color by Name
@@ -938,7 +940,7 @@ name: units
 
 # Units
 
-We can use several different [units of length](https://developer.mozilla.org/en-US/docs/Web/CSS/length) to change the dimension of elements in CSS.
+We can use several [length units](https://developer.mozilla.org/en-US/docs/Web/CSS/length) to change the dimension of elements in CSS.
 These units come in different flavors:
 
 - Absolute units
@@ -1237,7 +1239,7 @@ div {
 #b { border-radius: 40px 10px; background-color: red;}
 #c { border-radius: 40px 10px / 20px 20px; background-color: green;}
 #d { border-radius: 10% / 10% 20% 30% 40%; background-color: orange;}
-#e { border-radius: 10% 20% / 40px 10px; background-color: yellow;}
+#e { border-radius: 10% 20% / 40px 10px; background-color: gold;}
 #f { border-radius: 20px 0; background-color: fuchsia;}
 ```
 ]
@@ -1245,9 +1247,9 @@ div {
 <section style="display:flex; justify-content: center">
 <div style="width: 50px; height: 50px; margin: 10px; border-radius: 10px; background-color: blue;"></div>
 <div style="width: 50px; height: 50px; margin: 10px; border-radius: 40px 10px; background-color: red;"></div>
-<div style="width: 50px; height: 50px; margin: 10px; border-radius: border-radius: 40px 10px / 20px 20px; background-color: green;"></div>
+<div style="width: 50px; height: 50px; margin: 10px; border-radius: 40px 10px / 20px 20px; background-color: green;"></div>
 <div style="width: 50px; height: 50px; margin: 10px; border-radius: 10% / 10% 20% 30% 40%; background-color: orange;"></div>
-<div style="width: 50px; height: 50px; margin: 10px; border-radius: 10% 20% / 40px 10px; background-color: yellow;"></div>
+<div style="width: 50px; height: 50px; margin: 10px; border-radius: 10% 20% / 40px 10px; background-color: gold;"></div>
 <div style="width: 50px; height: 50px; margin: 10px; border-radius: 20px 0; background-color: fuchsia;"></div>
 </section>
 
