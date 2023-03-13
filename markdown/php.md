@@ -1768,6 +1768,7 @@ header('Location: another_page.php');
 We will talk more about headers when we study the HTTP protocol.
 
 ---
+
 template:inverse
 name:includes
 # Includes
@@ -1902,9 +1903,7 @@ name: best
 Never trust the user:
 
 ```php
-  if (!isset($_GET['username'] ||
-             $_GET['username'] === '' ||
-             length($_GET['username'] > 20))
+  if (empty($_GET['username']) || length($_GET['username'] > 20))
     // Do something about it
 ```
 
@@ -1914,7 +1913,7 @@ Always verify if the data you are receiving is in the expected format.
 
 # Separate your PHP and HTML code
 
-Always start by calculating/querying all your data and only then start outputting HTML.
+Always start by calculating/querying all your data, and only after that output HTML.
 
 ```php
 <?php
@@ -1925,28 +1924,27 @@ Always start by calculating/querying all your data and only then start outputtin
 ?>
 <body>
 <? foreach ($cars as $car) { ?>
-<ul>
-  <li><strong>Model:</strong> <?=$car['model']?></li>
-  <li><strong>Price:</strong> <?=$car['price']?></li>
-</ul>
+  <ul>
+    <li><strong>Model:</strong> <?=$car['model']?></li>
+    <li><strong>Price:</strong> <?=$car['price']?></li>
+  </ul>
 <? } ?>
 </body>
 ```
 
-You can use the short version of echo to make your code look nicer.
+You can use the short *echo* version to make your code look nicer.
 
-PHP delimiters can break in the middle of a block and pickup later.
+**Tip**: PHP delimiters can break in the middle of a block and pick up later.
 
 ---
 
-# DRY
+# Don't Repeat Yourself (DRY)
 
-##Don't Repeat Yourself
-
-Use include and/or functions to avoid code repetions:
+Use include and/or functions to avoid code repetitions:
 
 ```php
-function getAllCars($dbh) { // inside database/cars.php
+// inside database/cars.php
+function getAllCars(PDO $dbh) : array { 
   $stmt = $dbh->prepare('SELECT * FROM car WHERE make = ?');
   $stmt->execute(array($make));
 
@@ -1955,19 +1953,16 @@ function getAllCars($dbh) { // inside database/cars.php
 ```
 
 ```php
-include ('database/init.php');
+include ('database/connection.php');
 include ('database/cars.php');
-$cars = getCars($dbh);
+$cars = getAllCars($dbh);
 ```
 
 ---
 
-# DRY
+# Don't Repeat Yourself (DRY)
 
-##Don't Repeat Yourself
-
-Use include and/or functions to avoid code repetions:
-
+Use include and/or functions to avoid code repetitions:
 
 ```html
 <html> <!-- inside templates/header.html -->
@@ -1987,24 +1982,25 @@ Use include and/or functions to avoid code repetions:
 
 # Don't Repeat Yourself (DRY)
 
-Use include and/or functions to avoid code repetions:
+Use include and/or functions to avoid code repetitions:
 
 ```php
 <?php
-include ('database/init.php');
-include ('database/cars.php');
-$cars = getCars($dbh);
+  include ('database/connection.php');
+  include ('database/cars.php');
+  $cars = getAllCars($dbh);
 
-include ('templates/header.html');
+  include ('templates/header.html');
 
-foreach ($cars as $car) { ?>
-<ul>
-  <li><strong>Model:</strong> <?=$car['model']?></li>
-  <li><strong>Price:</strong> <?=$car['price']?></li>
-</ul>
+  foreach ($cars as $car) { ?>
+
+    <ul>
+      <li><strong>Model:</strong> <?=$car['model']?></li>
+      <li><strong>Price:</strong> <?=$car['price']?></li>
+    </ul>
 
 <? }
-include ('templates/header.html');
+  include ('templates/header.html');
 ?>
 ```
 
@@ -2015,7 +2011,7 @@ include ('templates/header.html');
 You can also create and reuse **parameterized** functions that output HTML code:
 
 ```php
-<?php function listCars(array $cars) { ?>
+<?php function drawCarList(array $cars) { ?>
   <?php foreach ($cars as $car) { ?>
   <ul>
     <li><strong>Model:</strong> <?=$car['model']?></li>
@@ -2024,12 +2020,33 @@ You can also create and reuse **parameterized** functions that output HTML code:
   <?php } ?>
 <?php } ?>
 ```
+---
+
+# Templates
+
+And in the end you will get clean PHP code:
+
+```php
+<?php
+  include ('database/connection.php');
+  include ('database/cars.php');
+
+  include ('templates/common.php');
+  include ('templates/cars.php');
+
+  $cars = getAllCars($dbh);
+
+  drawHeader();       // from templates/common.php
+  drawCarList($cars); // from templates/cars.php
+  drawFooter();       // from templates/common.php
+?>
+```
 
 ---
 
 # Separate Actions from Views
 
-Never mix scripts that show data with scripts that change data:
+**Never mix** scripts that **return** data with scripts that **change** data:
 
   * **list_articles.php**
     * Shows all news.
