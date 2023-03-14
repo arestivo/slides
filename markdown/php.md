@@ -2000,7 +2000,7 @@ Use include and/or functions to avoid code repetitions:
     </ul>
 
 <? }
-  include ('templates/header.html');
+  include ('templates/footer.html');
 ?>
 ```
 
@@ -2024,7 +2024,7 @@ You can also create and reuse **parameterized** functions that output HTML code:
 
 # Templates
 
-And in the end you will get clean PHP code:
+And in the end, you will get clean PHP code:
 
 ```php
 <?php
