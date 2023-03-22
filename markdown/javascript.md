@@ -632,7 +632,7 @@ function executeNTimes(f, n) { // Executes function f, n times
     f(i)
 }
 
-executeNTimes(foo, 3)   // bar = 1 bar = 2 bar = 3
+executeNTimes(foo, 3)   // bar = 0 bar = 1 bar = 2
 executeNTimes(foo(), 3) // this is a common mistake
 ```
 
