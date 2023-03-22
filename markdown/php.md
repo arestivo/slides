@@ -1923,12 +1923,12 @@ Always start by calculating/querying all your data, and only after that output H
   $cars = $stmt->fetchAll();
 ?>
 <body>
-<? foreach ($cars as $car) { ?>
+<?php foreach ($cars as $car) { ?>
   <ul>
     <li><strong>Model:</strong> <?=$car['model']?></li>
     <li><strong>Price:</strong> <?=$car['price']?></li>
   </ul>
-<? } ?>
+<?php } ?>
 </body>
 ```
 
