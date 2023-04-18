@@ -211,11 +211,9 @@ $dbh->query("SELECT * FROM users WHERE " .
       "AND password ='" . $password . "'");
 ```
 
-Navigate to URL:
+Use these credentials to login: 
 
-```http
-http://foo.com/login.php?username=johndoe&password=' OR 1 = 1; --
-```
+<span class="inline-code">username: "johndoe" and password: "' OR 1 = 1; --"</span>
 
 ```sql
 SELECT * users 
@@ -245,18 +243,6 @@ Third parameter has admin status of user:
 SELECT * FROM items WHERE title = ''; INSERT INTO users VALUES
 ('johndoe', 'password', true); --'
 ```
-
----
-
-# SQL Injection
-
-![](assets/security/plate.png)
-
----
-
-# SQL Injection
-
-![](assets/security/xkcd.png)
 
 ---
 
