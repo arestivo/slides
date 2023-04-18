@@ -506,7 +506,7 @@ section :not(article) p /* does not select the paragraph */
 
 ---
 
-## First and Last Pseudo-elements
+## Typographic Pseudo-elements
 
 Select **parts** of elements based on their position in the element:
 
