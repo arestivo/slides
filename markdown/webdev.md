@@ -143,9 +143,9 @@ A second dichotomy is **where to render** the **HTML** code:
 * Client-side Rendering (**CSR**): The browser receives data in a different format (*e.g.*, JSON or XML) and renders that data as HTML.
 * Server-side Rendering (**SSR**): The server already sends data as HTML.
 
-<img src="assets/webdev/csrssr.svg" width="30%">
+<img src="assets/webdev/csrssr.svg" width="35%">
 
-We can use the **HTTP Accept header** to allow a single server-side script to work both ways.
+We can use the **HTTP Accept header** to allow using a single server-side script to generate both JSON and HTML.
 
 ---
 
