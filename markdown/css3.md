@@ -1680,10 +1680,10 @@ The next few pages will use the following example:
 
 ```html
 <section>
-  <article id="a">
-  <article id="b">
-  <article id="c">
-  <article id="d">
+  <article id="a">A</article>
+  <article id="b">B</article>
+  <article id="c">C</article>
+  <article id="d">D</article>
 </section>
 ```
 
