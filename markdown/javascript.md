@@ -947,7 +947,7 @@ It can also be used to bind **parameters**. In this case it returns a function w
 
 ```javascript
 const baz = bar.bind('this', 'first')
-baz('second')    // 'first' 'second' 'this
+baz('second')    // 'first' 'second' 'this'
 ```
 
 ---
