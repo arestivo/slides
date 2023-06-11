@@ -935,8 +935,8 @@ function sort2($a, $b) {
 
 list($smaller, $larger) = sort2(10, 5);
 
-echo $smaller; \\ 5
-echo $larger;  \\ 10
+echo $smaller; // 5
+echo $larger;  // 10
 ```
 
 ---
