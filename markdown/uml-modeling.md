@@ -171,7 +171,7 @@ A person’s age can be calculated from that person’s birth date.
 * Or that the value is not **applicable**.
 * It is **not the same** as an empty character string.
 * Some attributes might **not allow null** values.
-* We will represent these with a not null stereotype («not null»).
+* We will represent these with a "*not null*" **stereotype** («not null»).
 
 ![](assets/uml-database/notnull.svg)
 
@@ -179,8 +179,8 @@ A person’s age can be calculated from that person’s birth date.
 
 # Unique Attributes
 
-* Some attributes do not allow repeated values.
-* We will represent these with a unique stereotype («unique»).
+* Some attributes do not allow **repeated values**.
+* We will represent these with a "*unique*" **stereotype** («unique»).
 
 .box_example[
 Two different cars cannot have the same plate number. If we know the number, we can identify the car.
@@ -283,7 +283,7 @@ In practical terms, it is much like a normal association. The difference is mere
 ![](assets/uml-database/association-composition.svg)
 
 .box_example[
-This means we **do not** want to have **courses** in our database **without** a **department**.
+This means we **do not** want to have **courses** in our database **without** a **programme**.
 ]
 
 ---

@@ -43,7 +43,7 @@ name: intro
 # Relational Model
 
 * A simple **Database model** based on first-order predicate logic.
-* First formulated and proposed in **1969** by Edgar F. **Codd**.
+* First formulated and proposed in **1970** by Edgar F. **Codd**.
 * But still the most used model for databases.
 * Other models include *hierarchical* and *network* models.
 
@@ -606,7 +606,7 @@ Prescribed (<u>#id &rarr; Appointment</u>, <u>#ref &rarr; Drug</u>, dosage)
 
 Company (<u>name</u>)
 
-Insurance (<u>#num &rarr; Patient</u>, <u>#company &rarr; Company</u>, number)<br>{UK: company, number}
+Insurance (<u>#num &rarr; Patient</u>, <u>#company &rarr; Company</u>, number [NN])<br>{UK: company, number}
 
 ]
 
