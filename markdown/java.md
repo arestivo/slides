@@ -178,7 +178,7 @@ int i = 10;
 Java has all the conditional blocks you would expect from a [C-family](https://en.wikipedia.org/wiki/List_of_C-family_programming_languages) programming language:
 
 ```java
-if (condition) {      // Curly brackets when more than one statement
+if (condition) { // Curly brackets when more than one statement
   doSomething();      
   doSomethingElse();
 } else 
@@ -188,9 +188,9 @@ if (condition) {      // Curly brackets when more than one statement
 And also:
 
 ```java
-switch (variable) {                 // variable must be of the correct type 
+switch (variable) {  // variable must be of the correct type
   case 1: doSomething();
-    break;                          // don't forget the break
+    break;           // don't forget the break
   case 2: doSomethingElse();
     break;
   default: doSomethingDefault();
@@ -256,10 +256,14 @@ System.out.println("Hello world");  // also changes line
 Reading from the keyboard can be done using the **Scanner** class from *java.util* package:
 
 ```java
-Scanner scanner = new Scanner(System.in); // Instantiating a new Scanner object
-String line = scanner.nextLine();         // Reading a line
-System.out.println(line);                 // Printing out the line
-int number = scanner.nextInt();           // We can also read primitive types
+// Instantiating a new Scanner object
+Scanner scanner = new Scanner(System.in); 
+// Reading a line
+String line = scanner.nextLine();         
+// Printing out the line
+System.out.println(line);                 
+// We can also read primitive types
+int number = scanner.nextInt();           
 ```
 
 ---
@@ -296,7 +300,8 @@ String sentence = hello + " " + world;
 String are objects, so to compare them we **must** use the **equals** method:
 
 ```java
-if (hello.equals(world)) {  // hello == world would compare the references
+// hello == world would compare the references
+if (hello.equals(world)) {  
   doSomething(i); 
 }
 ```
@@ -311,8 +316,10 @@ That means our customary **Hello World** example looks like this:
 
 ```java
 public class HelloWorld {
-  public static void main(String[] args) { // when we run a class this method
-    System.out.println("Hello, World");    // runs first
+  // when we run a class this method
+  public static void main(String[] args) { 
+    // runs first
+    System.out.println("Hello, World");
   }
 }
 ```
@@ -331,19 +338,21 @@ name:arrays
 
 In Java, an **array** is an **object**. This object has a given type for the contained primitive types or objects (int, char, String, ...). 
 
-An array can be declared in several ways: 
+An array can be declared in several ways (declaration only): 
 
 ```java
 int[] array;  // recommended
 int array[];  // identical but less used
 ```
 
-These arrays have been declared but haven't been instantiated yet. We can do it in a few different ways:
+We can instantiate the array in a few different ways:
 
 ```java
-array = new int[10];                              // 10 default elements 
-array = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; // works anywhere
-int[] other = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};    // only works in the declaration
+array = new int[10]; // 10 default elements 
+// works anywhere
+array = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; 
+// only works in the declaration
+int[] other = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};    
 ```
 
 The default value depends on the data type. For objects it's **null**, for numeric types it's **0**, for booleans is **false** and for chars it's **'\u0000'** (whose decimal equivalent is 0).
@@ -444,7 +453,7 @@ Data **A**bstraction:
 > Clear separation between the **public interface** of a data type, and its concrete implementation.
 
 **P**olymorphism:
-> A **single symbol** can **represent** a **multitude** of **different types**.
+> A **single symbol** (or identifier) can **represent** a **multitude** of **different types**.
 
 **I**nheritance:
 > Objects can **inherit** **properties** and **behaviors** from **other** objects.
@@ -454,21 +463,179 @@ Data **A**bstraction:
 
 ---
 
+# Data Abstraction
+
+![](assets/java/data-abstraction.svg)
+
+The separation of a class's **interface** (the methods and properties it exposes to the outside world) from its **implementation** (how those methods and properties are implemented within the class).
+
+---
+
+# Encapsulation
+
+![](assets/java/encapsulation.svg)
+
+* **Restricting access** to some of the object's **internal mechanisms**.
+* Allows the **bundling** of **data** with **operations** on that data.
+
+---
+
+### Data Abstraction and Encapsulation in Java
+
+~~~java
+public class BankAccount {
+  private double balance = 0;
+
+  public deposit(double amount) {
+    if (amount <= 0) throw new Exception("Invalid amount");
+    this.balance += amount;
+  }
+
+  public withdraw(double amount) {
+    if (amount <= 0) throw new Exception("Invalid amount");
+    if (amount > balance) throw new Exception("Not enough money");
+    this.balance -= amount;
+  }
+}
+~~~
+
+---
+
+# Polymorphism
+
+![](assets/java/polymorphism.svg)
+
+A **single symbol** (or identifier) can represent **different types**.
+
+* **Ad hoc polymorphism**: method **overloading** in Java.
+* **Parametric polymorphism**: **generics** in Java.
+* **Subtype polymorphism**: class **inheritance** in Java.
+
+---
+
+# Inheritance:
+
+![](assets/java/inheritance.svg)
+
+A derived subclass inherits properties and behaviors from a base class.
+
+Facilitates **polymorphism** by:
+* method **overriding**: a subclass can provide its own implementation of a method. 
+* **subtyping**: objects of derived classes can be treated as objects of the base class.
+
+---
+
+### Polymorphism and Inheritance in Java
+
+~~~java
+public class Person {
+  private String name;
+
+  public Person(String name) { this.name = name; }
+
+  public getName() { return this.name };
+}
+~~~
+
+By **overriding** the `getName()` method in a subclass:
+
+~~~java
+public class Doctor extends Person {
+  private String specialty;
+
+  public Doctor(String name, String specialty) { 
+    super(name); 
+    this.specialty = specialty; 
+  }
+
+  public getName() { return "Dr. " + super.getName() };
+}
+~~~
+
+---
+
+### Polymorphism and Inheritance in Java
+
+~~~java
+public printPersonName(Person person) {
+  System.out.println(person.getName())
+}
+~~~
+
+~~~java
+Person person = new Person("John Doe");
+printPersonName(person);
+~~~
+
+A `Doctor` is also a `Person` (**subtype** polymorphism):
+
+~~~java
+Doctor doctor = new Doctor("Jane Doe", "Surgery");
+printPersonName(doctor);
+~~~
+
+---
+
+### Polymorphism and Inheritance in Java
+
+~~~java
+public printPeopleName(List<Person> people) {
+  for (Person p : people) 
+    System.out.println(p.getName())
+}
+
+List<Person> people = new ArrayList();
+
+people.add(new Doctor("Jane Doe", "Surgery"));
+people.add(new Person("John Doe");
+
+printPeopleName(people)
+~~~
+
+* A `Doctor` is also a `Person` (**subtype** polymorphism).
+* A `List` can be parametrized to allow any type of objects (**parametric** polymorphism).  
+
+
+---
+
+### Polymorphism and Inheritance in Java
+
+~~~java
+public class Appointment {
+    private Person patient;
+    private Doctor doctor;
+
+    public void addPerson(Person person) {
+        this.patient = person;
+    }
+
+    public void addPerson(Doctor doctor) {
+        this.doctor = doctor;
+    }
+}
+~~~
+
+By **overloading** the `addPerson()` method.
+
+---
+
 template: inverse
 name:classes
-# Classes
+# Class-based OOP
 
 ---
 
 # Classes
 
 * All **objects**, while being **unique**, are also part of a **class** of objects that have **characteristics** and **behaviors** in common.
-* Objects that are identical &mdash; **except** for their **state** &mdash; are grouped together into **classes of objects**.
+* Objects that are identical &mdash; **except** for their **state** &mdash; are grouped into **classes of objects**.
 * Classes **extend** the programming language by adding new **data types**.
 
-<hr>
+---
 
-* Each class is defined by its **interface**.
+# A class interface
+
+* Each class is **defined** by its (public) **interface**.
 * The **interface** determines the **requests** that you can make for a particular
 object.
 * An object **provides services** and can use **other objects'** services to accomplish it.
@@ -661,7 +828,8 @@ public class Light {
 ```
 
 ```java
-System.out.println(Light.getMaximumLevel()); // no need for an object
+// no need for an object
+System.out.println(Light.getMaximumLevel());
 ```
 
 
@@ -678,7 +846,8 @@ name:objects
 When a **primitive type** variable is declared, its value is **stored** directly in its **memory** location.
 
 ```java
-int a = 5, b; // if a field, b is initialized with a default value of 0.
+// if a field, b is initialized with a default value of 0.
+int a = 5, b;
 ```
 
 ![](assets/java/oop-objects-primitive.svg)
@@ -686,7 +855,8 @@ int a = 5, b; // if a field, b is initialized with a default value of 0.
 When an **object** is declared, it only contains a reference to the actual object.
 
 ```java
-Light light; // if a field, light is initialized with a default value of null. 
+// if a field, light is initialized with a default value of null. 
+Light light; 
 ```
 
 ![](assets/java/oop-objects-object.svg)
@@ -699,7 +869,8 @@ To create a new object, we just have to call its constructor using the **new** k
 
 ```java
 Light light = new Light();
-Light another = light;      // this only copies the reference
+// this only copies the reference
+Light another = light;      
 ```
 
 ![](assets/java/oop-objects-new.svg)
@@ -714,7 +885,7 @@ If we need to have two instances of the same object, we must use the **clone()**
 ![](assets/java/oop-objects-clone.svg)
 
 ```java
-public class Light implements Cloneable{
+public class Light implements Cloneable {
   @Override
   public Object clone() throws CloneNotSupportedException {
     return super.clone();
@@ -838,10 +1009,8 @@ public class Rectangle extends Shape {
 
 Java allows classes to **override** superclass methods, providing that:
 * The access modifier (visibility) for an overriding method can allow **more**, but **not less**, access than the overridden method.
-* **Final** methods can not be overridden.
-* **Static** methods can not be overridden.
-* **Private** methods can not be overridden.
-* The overriding method must have **same return type** (or **subtype**).
+* **Final**, **static**, and **private** methods cannot be overridden.
+* The overriding method must have **same return type** (or a **subtype**).
 
 We can call a parent class method using the **super** keyword.
 
@@ -972,12 +1141,14 @@ The **correct** way to do so looks something like:
 ```java
 @Override
 public boolean equals(Object o) {
-  if (this == o) return true;                   // are the references equal
-  if (o == null) return false;                  // is the other object null
-  if (getClass() != o.getClass()) return false; // both objects the same class
+  if (this == o) return true;    // are the references equal?
+  if (o == null) return false;   // is the other object null?
+  // are both objects the same class?
+  if (getClass() != o.getClass()) return false; 
 
-  Point p = (Point) o;                          // cast the other object
-  return x == p.getX() && y == p.getY();        // actual comparison
+  Point p = (Point) o;           // cast the other object
+  // the actual comparison
+  return x == p.getX() && y == p.getY();        
 }
 ```
 
@@ -1078,8 +1249,8 @@ To use a class from another package we must first import it:
 import com.example.HelloWorld;
 import com.example.*; // imports all classes from the package
 
-// ...
-  HelloWorld hw = new HelloWorld();
+// ... inside a class
+HelloWorld hw = new HelloWorld();
 ```
 
 It is important to understand that **import** is simply used by the compiler to let you name your classes by their **unqualified** name.
@@ -1114,9 +1285,7 @@ public void moreCode() {
 }
 
 public void code() {
-  try {
-    moreCode();
-  } catch (NullPointerException e) {
+  try { moreCode(); } catch (NullPointerException e) {
     // do something about the error
   }
 }
@@ -1265,17 +1434,18 @@ Cat cat = new Cat();
 
 List<Animal> animals = new ArrayList<>();
 
-animals.add(dog); animals.add(cat); // Adding some animals
+animals.add(dog); 
+animals.add(cat);              // Adding some animals
 
-for (Animal animal : animals)       // Looping over the collection
+for (Animal animal : animals)  // Looping over the collection
   animal.talk();
 
-animals.get(0).talk();              // Element at position 0 (dog)
+animals.get(0).talk();         // Element at position 0 (dog)
 
-animals.remove(0);                  // Removing element at position 0
-animals.remove(cat);                // Removing the cat
+animals.remove(0);             // Removing element at position 0
+animals.remove(cat);           // Removing the cat
 
-animals.clear();                    // Removing all elements
+animals.clear();               // Removing all elements
 ```
 
 ---
@@ -1355,8 +1525,8 @@ But what happens if we need to block to read data from some source but still wan
 public void run() {
   while (true) {
     draw();                         // Draws the current game state
-    processKey(screen.readInput()); // "Read input" blocks waiting for a key
-                                    // to be pressed.
+    processKey(screen.readInput()); // "Read input" blocks waiting 
+                                    // for a key to be pressed.
     doStep();                       // Makes our game move forward
                                     // e.g. enemies move
   }
@@ -1434,7 +1604,7 @@ The thread class has a series of useful methods:
 * **long getId()** - Returns the **identifier** of this Thread.
 * **void join()** - **Waits** for this thread to **die**.
 * **boolean isAlive() and isInterrupted()** - Tests whether this thread is **alive** or has been **interrupted**.
-* **static Thread interrupted()** - Checks if current thread has been interrupted and **resets flag**.
+* **static Thread interrupted()** - Checks if the current thread has been interrupted and **resets flag**.
 
 ---
 
@@ -1510,8 +1680,7 @@ new Thread() {
   public void run() { while (true) { m.increment(); } }
 }.start();
 
-new Thread() {
-  // This will not always print two equal values
+new Thread() { // This will not always print two equal values
   public void run() { while (true) v.draw(m); }    
 }.start();
 ```
@@ -1564,22 +1733,20 @@ When a **synchronized method** is called, it **automatically** acquires the **in
   class Model {
     int a = 0, b = 0;
     public synchronized void increment() { a++; b++; }
-    public synchronized void draw() { System.out.println(a + " - " + b); }
+    public synchronized void draw() { 
+      System.out.println(a + " - " + b); 
+    }
   }
 
   Model m = new Model();
 
   new Thread() {
-    public void run() {
-      while (true) { m.increment(); }
-    }
+    public void run() { while (true) { m.increment(); } }
   }.start();
 
 
   new Thread() {
-    public void run() {
-      while (true) { m.draw(); }
-    }
+    public void run() { while (true) { m.draw(); } }
   }.start();
 ```
 
@@ -1608,9 +1775,7 @@ Thread thread = new Thread() {
 
 thread.start();
 // Sometime later
-synchronized (thread) {
-  thread.notify();
-}
+synchronized (thread) { thread.notify(); }
 ```
 
 ---
@@ -1710,6 +1875,7 @@ When you create a **Java Gradle** project in **IntelliJ**, a folder for *resourc
 
 To access them you can do something like this:
 
+.small[
 ```java
 private static List<String> readLines(int levelNumber) throws IOException {
   URL resource = RoomLoader.class.getResource("/rooms/" + levelNumber + ".lvl");
@@ -1722,3 +1888,4 @@ private static List<String> readLines(int levelNumber) throws IOException {
   return lines;
 }
 ```
+]
