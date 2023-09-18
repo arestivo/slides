@@ -90,7 +90,7 @@ name:intro
 
 * [Book: Thinking in Java, 4th edition](https://ia800103.us.archive.org/20/items/TIJ4CcR1/TIJ4-cc-R1.pdf)
 * [Book: Java Programming](https://en.wikibooks.org/wiki/Java_Programming)
-* [JDK 11 Documentation](https://docs.oracle.com/en/java/javase/11/)
+* [JDK 17 Documentation](https://docs.oracle.com/en/java/javase/17/)
 
 ---
 
