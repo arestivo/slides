@@ -88,7 +88,7 @@ name:intro
 
 # Resources
 
-* [Book: Thinking in Java, 4th edition](https://ia800103.us.archive.org/20/items/TIJ4CcR1/TIJ4-cc-R1.pdf)
+* [Book: Thinking in Java, 4th edition](https://sd.blackball.lv/library/thinking_in_java_4th_edition.pdf)
 * [Book: Java Programming](https://en.wikibooks.org/wiki/Java_Programming)
 * [JDK 17 Documentation](https://docs.oracle.com/en/java/javase/17/)
 
