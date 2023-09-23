@@ -14,7 +14,7 @@ class: left, middle
 
 ---
 
-template:inverse
+template: inverse
 # Python 3
 <a href="http://www.fe.up.pt/~arestivo">André Restivo</a>
 
@@ -40,7 +40,7 @@ name:index
 ---
 
 template: inverse
-name:introduction
+name: introduction
 # Introduction
 
 ---
@@ -83,21 +83,22 @@ Hello World
 ---
 
 template: inverse
-name:basics
+name: basics
 # Basics
 
 ---
 
 # The Interpreter
 
-Starting the python **interpreter** depends on your operating system. After starting it, you will be greeted by something similar to:
+Starting the Python **interpreter** depends on your operating system. After starting it, you will be greeted by something similar to:
 
+.small[
 ```python
-Python 3.7.3 (default, Jul 25 2020, 13:03:44) 
-[GCC 8.3.0] on linux
+Python 3.11.5 (main, Aug 29 2023, 15:31:31) [GCC 13.2.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
->>> 
+>>>
 ```
+]
 
 To exit just type "*exit()*" or press "*Ctrl-D*".
 
@@ -105,7 +106,7 @@ To exit just type "*exit()*" or press "*Ctrl-D*".
 
 # A Calculator
 
-You can use the python interpreter as a **calculator** by using the <code>+</code>, <code>-</code>, <code>*</code> , and <code>/</code> operators:
+You can use the Python interpreter as a **calculator** by using the <code>+</code>, <code>-</code>, <code>*</code>, and <code>/</code> operators:
 
 ```python
 >>> 2 + 2
@@ -134,7 +135,7 @@ Division **always** returns a *float*. For **floor division** use *//*.
 2
 ```
 
-The &ast;&ast; operator is used to calculate **powers**:
+The &ast;&ast; operator is used for **exponentiation**:
 
 ```python
 >>> 2**4
@@ -162,7 +163,7 @@ The &ast;&ast; operator is used to calculate **powers**:
 ---
 
 template: inverse
-name:strings
+name: strings
 # Strings
 
 ---
@@ -180,7 +181,7 @@ name:strings
 Hello World
 ```
 
-* The <code>len(string)</code> built-in function return the **length** of a string.
+* The <code>len(string)</code> built-in function returns the **length** of a string.
 
 ```python
 >>> print (len('Python'))
@@ -207,8 +208,8 @@ Hello World. This is a lot of text!
 # Extracting Text
 
 We can **extract part** of a string (*slicing* and *indexing*) using:
-* <code>[i]</code> Extracts character at position <code>i</code>.
-* <code>[-i]</code> Extracts character at position <code>i</code> starting at the end of the string.
+* <code>[i]</code> Extracts character at position <code>i</code> from the start of the string (0).
+* <code>[-i]</code> Extracts character at position <code>i</code> starting at the end of the string (-1).
 * <code>[i:j]</code> Extracts characters from position <code>i</code> (included) to position <code>j</code> (excluded).
 * <code>[i:]</code> Extracts characters from position <code>i</code> (included) until the end of the string.
 * <code>[:j]</code> Extracts characters from the beginning of the string to position <code>j</code> (excluded).
@@ -262,14 +263,14 @@ You can **cast** values from one type to another (if they are compatible):
 ---
 
 template: inverse
-name:lists
+name: lists
 # Lists
 
 ---
 
 # Lists
 
-* A **list** is a **compound** data (used to **group** together values).
+* A **list** is a **compound** data (used to **group** values).
 * A list can **store** items of **different** types (not common).
 * Just like strings, lists are a **sequence** type and can be **sliced** and **indexed**.
 * The <code>len()</code> function can also be used with lists.
@@ -349,7 +350,7 @@ Including **lists of lists**:
 
 * Tuples are **another** type of **ordered** collection of values.
 * Unlike lists, tuples are **immutable**.
-* A tuple consists of a number of values separated by **commas**.
+* A tuple consists of several values separated by **commas**.
 * If the tuple is a part of a larger expression, parenthesis are necessary:
 
 ```python
@@ -359,6 +360,12 @@ Including **lists of lists**:
 1
 >>> numbers
 (1, 2, 3)
+```
+
+Single-value tuples must end with a comma (,). 
+
+```python
+>>> numbers = (1,)
 ```
 
 ---
@@ -389,7 +396,7 @@ print (a, b) # 20 10
 * A set of <code>key: value</code> **pairs** written inside **braces**.
 * Where **keys** are **unique**.
 * A pair of **braces** creates an **empty** dictionary: <code>{}</code>.
-* The <code>del</code> statement, removes a pair from the dictionary.
+* The <code>del</code> statement removes a pair from the dictionary.
 
 ```python
 telephones = { 'john': 1234, 'mary': 5555 }
@@ -479,7 +486,7 @@ print(f'The area is {area}')
 ---
 
 template: inverse
-name:control
+name: control
 # Control Structures
 
 ---
@@ -548,7 +555,7 @@ if number > 10: print ('number is larger than 10')
 
 * You can use a **code block** to execute **more than one** instruction inside an <code>if</code>.
 * Python uses **indentation** for blocks, instead of curly braces.
-* You can use **spaces** or **tabs**, but do **not mix** them.
+* You can use **spaces** or **tabs** but do **not mix** them.
 
 ```python
 number = int(input('Write a number: '))
@@ -760,7 +767,7 @@ for (i, v) in enumerate(colors):
 ---
 
 template: inverse
-name:functions
+name: functions
 # Functions
 
 ---
@@ -768,7 +775,7 @@ name:functions
 # Functions
 
 * A function is a **block** of **organized**, **reusable** code that is used to **perform** a **single**, related action.
-* In python we define functions using the <code>def</code> statement:
+* In Python, we define functions using the <code>def</code> statement:
 
 ```python
 def greet(name):
@@ -898,7 +905,7 @@ def fibonacci(n = 10, a = 0, b = 1):
   
   return result
 
-print(fibonacci(100))        # [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+print(fibonacci(50))         # [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 print(fibonacci(100, 5, 10)) # [5, 10, 15, 25, 40, 65]
 print(fibonacci())           # [0, 1, 1, 2, 3, 5, 8]
 ```
@@ -908,7 +915,7 @@ Notice that the arguments with default values must be the **last** in the list.
 ---
 
 template: inverse
-name:modules
+name: modules
 # Modules
 
 ---
@@ -961,12 +968,12 @@ def distance(p1, p2):
 print(distance((0,0), (1,1))) # 1.4142135623730951
 ```
 
-Other modules: [psycopg2](https://www.psycopg.org/), [matplotlib](https://matplotlib.org/), [numpy](https://numpy.org/), [sci-kit](https://scikit-learn.org/stable/), [pandas](https://pandas.pydata.org/)
+Other modules: [psycopg3](https://www.psycopg.org/), [matplotlib](https://matplotlib.org/), [numpy](https://numpy.org/), [sci-kit](https://scikit-learn.org/stable/), [pandas](https://pandas.pydata.org/)
 
 ---
 
 template: inverse
-name:files
+name: files
 # Files
 
 ---
@@ -1017,7 +1024,7 @@ print(data)
 
 # Readline
 
-We can also read a file **line by line** using the <code>readline</code> function:
+We can also read a file **line by line** using a <code>for</code> loop:
 
 ```python
 f = open('somefile.txt')
@@ -1028,7 +1035,7 @@ for line in f:
 f.close()
 ```
 
-We can also read **all the lines** into a **list** using the <code>readlines</code> function:
+Or read **all the lines** at once into a **list** using the <code>readlines</code> function:
 
 ```python
 f = open('somefile.txt')
@@ -1043,7 +1050,7 @@ f.close()
 
 # Writing
 
-The <code>write</code> function **writes** the **contents** of **string** to the **file**, returning the **number of characters** written:
+The <code>write</code> function **writes** the **contents** of a **string** to a **file**, returning the **number of characters** written:
 
 ```python
 f = open('somefile.txt', 'w')
@@ -1119,37 +1126,34 @@ name:postgresql
 
 ---
 
-# Psycopg2
+# Psycopg3
 
-To connect to a PostgreSQL database we first need to install the [psycopg2](https://www.psycopg.org/) module:
-
-```python
-sudo pip3 install psycopg2
-```
-
-You can also try installing only the binary:
+To connect to a PostgreSQL database we first need to install the [psycopg3](https://www.psycopg.org/) module:
 
 ```python
-pip3 install psycopg2-binary
+pip install "psycopg[binary]"
 ```
+
+Some extra [documentation](https://www.psycopg.org/psycopg3/docs/index.html).
 
 ---
 
 # Connecting
 
-We then can use the <code>connect</code> function to **connect** to the database:
+We can use the <code>connect</code> function to **connect** to the database:
 
 <small>
 ```python
-import psycopg2 
+import psycopg
 
-con = psycopg2.connect(
-  database="username",             # your database is the same as your username
-  user="username",                 # your username
-  password="password",             # your password
-  host="dbm.fe.up.pt",             # the database host
-  options='-c search_path=schema'  # use the schema you want to connect to
-)
+conn = psycopg.connect("""
+  dbname=username
+  user=username
+  password=password
+  host=dbm.fe.up.pt
+  port=5433
+  options='-c search_path=schema'
+  """)
 ```
 </small>
 
@@ -1166,32 +1170,34 @@ The <code>connect</code> function **returns** a **connection object**.
 ```python
 id = int(input('Employee ID: '))
 
-cur = con.cursor()
-cur.execute(f'SELECT * FROM employee WHERE id = {id}')
+cur = conn.cursor()
+cur.execute('SELECT * FROM employee WHERE id = %s', (id,))
 employee = cur.fetchone()
 
 print(employee)
 ```
 
-The <code>fetchone</code> function returns a **tuple** representing the fetched row or <code>None</code>.
+* A tuple with query parameters can be passed to `execute`. Be careful about [SQL injection](https://web.fe.up.pt/~arestivo/slides/?s=security#sql) attacks.
 
-You can also use the <code>fetchall</code> function that returns a **list** of tuples or <code>[]</code>.
+* If there is no row to return, <code>fetchone</code> returns <code>None</code>.
+
+* You can also use the <code>fetchall</code> function that returns a **list** of tuples or <code>[]</code>.
 
 ---
 
 # Writing Data
 
-To **insert, update or delete** data, just use the <code>execute</code> function to run a <code>INSERT</code>, <code>UPDATE</code> or <code>DELETE</code> query:
+To **insert, update or delete** data, just use the <code>execute</code> function to run an <code>INSERT</code>, <code>UPDATE</code> or <code>DELETE</code> query:
 
 ```python
 id = input('Department Id: ')
 name = input('Department Name: ')
 
-cur = con.cursor()
-cur.execute(f"INSERT INTO department VALUES ({id}, '{name}')")
+cur = conn.cursor()
+cur.execute(f'INSERT INTO department VALUES (%s, %s)', (id, name))
 
-con.commit()
-con.close()
+conn.commit()
+conn.close()
 ```
 
 The values **are only written** if you <code>commit</code> to the database.
