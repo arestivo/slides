@@ -1142,7 +1142,6 @@ Some extra [documentation](https://www.psycopg.org/psycopg3/docs/index.html).
 
 We can use the <code>connect</code> function to **connect** to the database:
 
-<small>
 ```python
 import psycopg
 
@@ -1155,7 +1154,6 @@ conn = psycopg.connect("""
   options='-c search_path=schema'
   """)
 ```
-</small>
 
 The <code>connect</code> function **returns** a **connection object**.
 
