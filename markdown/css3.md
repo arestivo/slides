@@ -478,7 +478,7 @@ p:empty
 
 ---
 
-# Negation Pseudo-class
+# Not Pseudo-class
 
 Represents elements that **do not match** a list of selectors:<br><small>Negation pseudo-class selectors cannot be nested.</small>
 
@@ -503,6 +503,30 @@ section :not(article) p /* does not select the paragraph */
 :not(article) > p       /* does not select the paragraph */
 :not(article) p         /* selects the paragraph, why?   */
 ```
+
+---
+
+# Has Pseudo-class
+
+Represents elements where any of the relative selectors passed as arguments match:<br><small>Also known as the "parent selector" because it allows you to select elements based on their descendants.</small>
+
+```css
+section:has(p)    /* all sections that contain a paragraph */
+h1:has(+ h2)      /* a h1 that is followed by a h2 */
+:has(p)            /* any element that contains a paragraph */
+```
+
+Examples:
+
+```html
+<section>    <!-- selected by :has(p) and section:has(p)-->
+  <article>  <!-- selected by :has(p) -->
+    <p>The quick brown fox jumps over the lazy dog</p>
+  </article>
+</section>
+```
+
+What about "`section :has(p)`"?
 
 ---
 
