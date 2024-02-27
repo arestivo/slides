@@ -31,6 +31,7 @@ name:index
 1. [Grouping Selectors](#grouping-selectors)
 1. [Pseudo Selectors](#pseudo-selectors)
 1. [Complex Selectors](#complex-selectors)
+1. [Nesting Selectors](#nesting-selectors)
 1. [Color](#color)
 1. [Fonts](#fonts)
 1. [Text](#text)
@@ -184,7 +185,7 @@ name: selectors
 
 # Selectors
 
-* A selector defines a pattern matching rule that determines which style rules apply to which elements in the document tree.
+* A selector defines a pattern-matching rule that determines which style rules apply to which elements in the document tree.
 * There are several types of selectors:
   - The [Universal](https://drafts.csswg.org/selectors-3/#universal-selector)(*) selector.
   - [Type](https://drafts.csswg.org/selectors-3/#type-selectors) selectors.
@@ -271,7 +272,7 @@ name: combining-selectors
 # Combining Selectors
 
 * Sometimes, we want to select elements based on their relationship with other elements.
-* For this we can use the following [combinators](https://drafts.csswg.org/selectors-3/#combinators):
+* For this, we can use the following [combinators](https://drafts.csswg.org/selectors-3/#combinators):
   - [Descendant](https://drafts.csswg.org/selectors-3/#descendant-combinators) combinator (space).
   - [Child](https://drafts.csswg.org/selectors-3/#child-combinators) combinator (&gt;).
   - [Next-sibling](https://drafts.csswg.org/selectors-3/#adjacent-sibling-combinators) combinator (+).
@@ -294,7 +295,7 @@ aside a
 
 # Child Selector
 
-Selects all children (&gt;). they have to be direct descendants:
+Selects all children (&gt;); they have to be direct descendants:
 ```css
 aside > a
 ```
@@ -305,7 +306,7 @@ aside > a
 
 # Next-sibling Selector
 
-Selects next sibling (+). They have to be the next one:
+Selects the next sibling (+); they have to be the next one:
 
 ```css
 .intro + p
@@ -354,8 +355,9 @@ name: pseudo-selectors
 
 ## Pseudo-classes and Pseudo-elements
 
-* A [pseudo-class](https://drafts.csswg.org/selectors-3/#pseudo-classes)(:) is a way of selecting **existing elements**, based on their **state** as if it was a class (*e.g.*, all elements of the class *visited links*).
-* A [pseudo-element](https://drafts.csswg.org/selectors-3/#pseudo-elements)(::) allows logical elements to be defined which are not really elements (*e.g.*, The first letter of a paragraph).
+* A [pseudo-class](https://drafts.csswg.org/selectors-3/#pseudo-classes)(:) is a way of selecting **existing elements** based on their **state** as if it were a class (_e.g._, all elements of the class _visited links_).
+
+* A [pseudo-element](https://drafts.csswg.org/selectors-3/#pseudo-elements)(::) allows logical, not actual, elements to be defined (_e.g._, the first letter of a paragraph).
 
 ---
 
@@ -414,7 +416,7 @@ If we have this HTML in our *news.html* page:
 ```
 ]
 
-And the URL changes to *news.html#sports*, the page scrolls to the *section* with *id* "sports", and both these selectors then select that section:
+When the URL changes to *news.html#sports*, the page scrolls to the *section* with *id* "sports", and both these selectors then select that section:
 
 ```css
 :target
@@ -618,7 +620,7 @@ p :first-child
 
 # Common Mistakes
 
-So its the whole **context**:
+And so is the whole **context**:
 
 .small[
 ```html
@@ -646,6 +648,105 @@ li:first-child a
 /* selects the first link of the list */
 :first-child > a
 ```
+
+---
+
+template: inverse
+name: nesting-selectors
+# Nesting Selectors
+
+---
+
+# Nesting Selectors
+
+Nested style rules **inherit** their parent rule's selector context, eliminating the need for repetition and allowing for further building upon the parent's selector context while still associating properties with elements via selectors.
+
+These two are equivalent:
+
+.split[
+```css
+.foo {
+  color: blue;
+  .bar {
+    color: red;
+  }
+}
+```
+
+```css
+.foo { color: blue; }
+
+.foo .bar { color: red; }
+```
+]
+
+.box_warning[
+This recent development may not be universally supported across all browsers. It's essential to <a href="https://caniuse.com/css-nesting">verify</a> the percentage of users whose browsers can accommodate this feature before implementation.
+]
+
+---
+
+# Relative Selectors
+
+Nested style rules can use relative selectors to specify relationships other than "descendant":
+
+* The parent of the nested selector: &amp;
+* The child, next sibling, and next siblings combinators: &gt;, +, ~ 
+
+.split[
+```css
+form {
+  color: blue;
+  & input {
+    color: red;
+  }
+}
+```
+
+```css
+form { color: blue; }
+
+form input { color: red; }
+```
+]
+
+.box_warning[
+A nested selector cannot start with an element selector (*i.e.*, an identifier), or it would be hard to distinguish between elements and properties. 
+]
+
+---
+
+# Nested Examples
+
+.split[
+```css
+header {
+  color: blue;
+
+  > h1 {
+    color: red;
+    + h2 {
+      color: yellow;
+    }
+  }
+
+  body > & {
+    color: green;
+  }
+}
+```
+
+```css
+header { color: blue; }
+
+header > h1 { color: red; }
+
+header > h1 + h2 { color: yellow; }
+
+body > header { color: green; }
+```
+]
+
 
 ---
 
@@ -736,7 +837,7 @@ Modern browsers support an [extended set](https://www.w3.org/wiki/CSS/Properties
 
 ## Color by Hexadecimal Value
 
-A hexadecimal color is specified with: #<span style="color:red">RR</span><span style="color:green">GG</span><span style="color:blue">BB</span>, where the <span style="color:red">RR</span> (red), <span style="color:green">GG</span> (green) and <span style="color:blue">BB</span> (blue) hexadecimal integers specify the components of the color. All values must be between 00 and FF.
+A hexadecimal color is specified using #<span style="color:red">RR</span><span style="color:green">GG</span><span style="color:blue">BB</span>, where the <span style="color:red">RR</span> (red), <span style="color:green">GG</span> (green) and <span style="color:blue">BB</span> (blue) hexadecimal integers specify the components of the color. All values must be between 00 and FF.
 
 ```css
 p {
@@ -756,11 +857,19 @@ p {
 
 ## Color by Decimal Value
 
-An RGB color value also be specified using: rgb(<span style="color:red">red</span>, <span style="color:green">green</span>, <span style="color:blue">blue</span>). Each parameter (<span style="color:red">red</span>, <span style="color:green">green</span> and <span style="color:blue">blue</span>) defines the intensity of the color and can be an integer between 0 and 255 or a percentage value (from 0% to 100%).
+An RGB color value can also be specified using: rgb(<span style="color:red">red</span>, <span style="color:green">green</span>, <span style="color:blue">blue</span>). Each parameter (<span style="color:red">red</span>, <span style="color:green">green</span> and <span style="color:blue">blue</span>) defines the intensity of the color and can be an integer between 0 and 255 or a percentage value (from 0% to 100%).
 
 ```css
 p {
   background-color: rgb(50, 100, 200);
+}
+```
+
+Or: 
+
+```css
+p {
+  background-color: rgb(25%, 50%, 75%);
 }
 ```
 ---
