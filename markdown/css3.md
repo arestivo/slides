@@ -521,14 +521,14 @@ h1:has(+ h2)      /* a h1 that is followed by a h2 */
 Examples:
 
 ```html
-<section>    <!-- selected by :has(p) and section:has(p)-->
+<section>    <!-- selected by :has(p) and section :has(p)-->
   <article>  <!-- selected by :has(p) -->
     <p>The quick brown fox jumps over the lazy dog</p>
   </article>
 </section>
 ```
 
-What about "`section :has(p)`"?
+What about "`section:has(p)`"?
 
 ---
 
