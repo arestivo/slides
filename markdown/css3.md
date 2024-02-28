@@ -2891,7 +2891,7 @@ h1{
 
 # Example Revisited
 
-* In most browsers, the **anchor** color is set as **blue**.
+* In most browsers, the **link** color is set as **blue**.
 * On the other hand, the **paragraph** color is set as **inherit**.
 
 ```html
