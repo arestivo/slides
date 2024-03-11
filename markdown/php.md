@@ -536,7 +536,7 @@ Single quoted strings don't recognize any other escape sequences.
 
 # Double Quote
 
-If the string is enclosed in *double quotes*, more escape sequences for special characters are allowed (e.g. \r, \n, \t, \\\\, \"):
+If the string is enclosed in *double quotes*, more escape sequences for special characters are allowed (e.g. \r, \n, \t, \\\\, \", \$):
 
 ```php
 $title = "The quick brown fox\njumps over the lazy dog";
