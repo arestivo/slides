@@ -894,6 +894,27 @@ getData()
   .then(text => console.log(text))
 ```
 
+---
+
+# Using Await
+
+This can all be simplified by using the async/await mechanism:
+
+```javascript
+async function getJsonData() {
+  const response = await getData()
+  const content = await response.json()
+}
+```
+
+Or for text:
+
+```javascript
+async function getTextData() {
+  const response = await getData()
+  const content = await response.text()
+}
+```
 
 ---
 
@@ -919,7 +940,7 @@ postData({id: 100, name: 'John'})
   .then(json => console.log(json))
 ```
 
-More on this when we study the **HTTP** protocol in depth.
+More on this will be discussed when we study the **HTTP** protocol in depth.
 
 ---
 

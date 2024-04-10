@@ -1396,7 +1396,7 @@ name: arrays
   * Arrays can be initialized using a bracket notation:
 
 ```javascript
-let years = [1990, 1991, 1992, 1993]
+const years = [1990, 1991, 1992, 1993]
 console.log(years[0])     // 1990
 years.info = "Nice array" // Arrays are objects
 console.log(years.info)   // Nice array
@@ -1405,7 +1405,7 @@ console.log(years.info)   // Nice array
 Array elements are object properties, but they cannot be accessed using the **dot** notation because their names are invalid.
 
 ```javascript
-let years = [1990, 1991, 1992, 1993]
+const years = [1990, 1991, 1992, 1993]
 console.log(years[0]) // 1990
 console.log(years.0)  // Syntax error
 ```
@@ -2028,8 +2028,8 @@ name: asynchronous
 # JavaScript Engines
 
 * JavaScript code is executed by a **JavaScript Engine**.
-* Some notable examples: [V8](https://v8.dev/), [SpiderMonkey](https://spidermonkey.dev/), Nitro.
-* They provide a heap, a single call stack, and a way to run JavaScript code. 
+* Some notable examples: [V8](https://v8.dev/) (Chrome, Node.js), [SpiderMonkey](https://spidermonkey.dev/) (Firefox), and [JavaScriptCore](https://docs.webkit.org/Deep%20Dive/JSC/JavaScriptCore.html) Safari.
+* They provide a [heap](https://en.wikipedia.org/wiki/Memory_management), a single [call stack](https://en.wikipedia.org/wiki/Call_stack), and a way to run JavaScript code. 
 
 However:
 
@@ -2046,10 +2046,10 @@ However:
 
 * **JavaScript Runtime Environment**s provide the necessary APIs to do I/O.<br>
   <small>For example, both Chrome and Node.js use the same engine (V8) but provide very **different** environments.</small>
-* These environments also allow us to schedule **asynchronous** actions.<br>
+* These environments also allow us to schedule **asynchronous** actions (*e.g.*, timers, events, network).<br>
   <small>Actions that are independent of the main program flow.</small>
-* These actions run in **separate** and **independent** processes. 
-* When they finish, they enter an *event queue*, waiting for their time to execute.
+* These actions run in **separate** and **independent** [threads](https://en.wikipedia.org/wiki/Thread_(computing)). 
+* When they finish, they put a [callback](https://en.wikipedia.org/wiki/Callback_(computer_programming%29) function on an *event queue*, waiting to be executed.
 
 .smaller[
 ![](assets/javascript/event-loop.svg)
@@ -2059,7 +2059,7 @@ However:
 
 # The Event Loop
 
-Consider the following code where **readFile** is an asynchronous function provided by some *runtime environment*:
+Consider the following code where **readFile** is an **asynchronous** function provided by some *runtime environment*:
 
 .small[
 ```javascript
@@ -2072,11 +2072,12 @@ readFile(path, function(error, content) {
 ```
 ]
 
-The **event loop** is an endless loop, where the JavaScript *engine* **waits** for tasks, **executes** them and then **waits** for more tasks:
-
 * The **readFile** function asks the *environment* to read a file.<br><small>The environment returns imediately and starts reading the file in a separate process.</small>
 * When the *environment* finishes reading the file, the *callback* function is placed in an *event queue*.
 * Tasks in this *queue* are executed only when the *call stack* becomes empty.<br><small>In a FIFO order.</small>
+
+.box_info[The **event loop** is an endless loop where the JavaScript *engine* **waits** for tasks, **executes** them, and then **waits** for more tasks.
+]
 
 ---
 
@@ -2108,7 +2109,7 @@ This is called *callback hell* or the *pyramid of doom*!
 
 # Why don't we use synchronous code?
 
-Imagine we had a different version of the **readFile** function that worked synchronously:
+Imagine we had a different version of the **readFile** function that worked **synchronously**:
 
 ```javascript
 const content1 = readFileSync('file1.txt')
@@ -2131,10 +2132,11 @@ Promises solve this problem in a very elegant way.
 * A Promise is an *object* that takes a **function** with two parameters, functions **resolve** and **reject**:
 
 ```javascript
-const promise = new Promise(function(resolve, reject) {
-  const [error, content] = readFileSync('file.txt')
-  if (error) reject(error)
-  else resolve(content)
+const promise = new Promise((resolve, reject) => {
+  readFile('file.txt', (err, data) => {
+    if (err) reject(err)
+    else resolve(data)
+  })
 })
 ```
 
@@ -2158,15 +2160,16 @@ This might not seem much better, but *promises* still have some tricks left!
 
 # Returning Promises
 
-The idea behind *promises* is that, **instead** of using *callbacks* to transform *synchronous* into *asynchronous* code, *asynchronous* functions should return *promises* instead: 
+The idea behind *promises* is that **instead** of using *callbacks* to transform *synchronous* into *asynchronous* code, *asynchronous* functions should return *promises* instead: 
 
 ```javascript
 function promiseFile(filename) {
-  return new Promise(function(resolve, reject)) {
-    const [error, content] = readFileSync('file.txt')
-    if (error) reject(error)
-    else resolve(content)
-  }
+  return new Promise((resolve, reject) => {
+    readFile(filename, (err, data) => {
+      if (err) reject(err)
+      else resolve(data)
+    })
+  })
 }
 ```
 
@@ -2200,7 +2203,7 @@ promiseFile('file1.txt')
 
 * In fact, **.then** and **.catch** handlers always return *promises*.
 * If the code inside them returns something else, the result is wrapped in an automatically fulfilled *promise*.
-* This simplifies *promise chaining*. 
+* This simplifies *promise chaining* (no more *callback hell*). 
 
 ---
 
@@ -2256,7 +2259,7 @@ Promise.all([promiseFile('file1.txt'),
 * **Promise.all** receives an array of *promises*.
 * The **.then** handler is called when they all resolve.
 * If any of them *throw* an *error* (or call *reject*), then **.catch** is called.
-* We are using *destructuring* to receive all the results in separate variables.
+* We are using [destructuring](#destructuring) to receive all the results in separate variables.
 
 ---
 
@@ -2270,10 +2273,23 @@ async function getName() {
 }
 ```
 
-So this is possible:
+So this would be possible:
 
 ```javascript
 getName().then(console.log) // John Doe
+```
+
+And this would be our read function:
+
+```javascript
+async function promiseFile(filename) {
+  return new Promise((resolve, reject) => {
+    readFile(filename, (err, data) => {
+      if (err) reject(err)
+      else resolve(data)
+    })
+  })
+}
 ```
 
 ---
