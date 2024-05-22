@@ -1,3 +1,500 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="192px" height="192px" viewBox="-0.5 -0.5 192 192"><defs><style type="text/css">@import url(https://fonts.googleapis.com/css?family=Barlow);&#xa;@import url(https://fonts.googleapis.com/css?family=GFS+Didot);&#xa;@import url(https://fonts.googleapis.com/css?family=Noto+Serif);&#xa;@import url(https://fonts.googleapis.com/css?family=Poppins);&#xa;</style></defs><g><rect x="35" y="5" width="60" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)scale(0.9999999999999999)"><switch><foreignObject pointer-events="none" width="101%" height="101%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 15px; margin-left: 36px;"><div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 12px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">MPA</div></div></div></foreignObject><text x="65" y="19" fill="rgb(0, 0, 0)" font-family="Poppins" font-size="12px" text-anchor="middle">MPA</text></switch></g><rect x="115" y="5" width="60" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)scale(0.9999999999999999)"><switch><foreignObject pointer-events="none" width="101%" height="101%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 15px; margin-left: 116px;"><div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 12px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">SPA</div></div></div></foreignObject><text x="145" y="19" fill="rgb(0, 0, 0)" font-family="Poppins" font-size="12px" text-anchor="middle">SPA</text></switch></g><rect x="-15" y="55" width="60" height="20" fill="none" stroke="none" transform="rotate(270,15,65)" pointer-events="all"/><g transform="translate(-0.5 -0.5)scale(0.9999999999999999)rotate(270 14.999999999999886 65)"><switch><foreignObject pointer-events="none" width="101%" height="101%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 65px; margin-left: -14px;"><div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 12px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">CSR</div></div></div></foreignObject><text x="15" y="69" fill="rgb(0, 0, 0)" font-family="Poppins" font-size="12px" text-anchor="middle">CSR</text></switch></g><rect x="-15" y="135" width="60" height="20" fill="none" stroke="none" transform="rotate(270,15,145)" pointer-events="all"/><g transform="translate(-0.5 -0.5)scale(0.9999999999999999)rotate(270 14.999999999999886 145)"><switch><foreignObject pointer-events="none" width="101%" height="101%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 145px; margin-left: -14px;"><div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 12px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">SSR</div></div></div></foreignObject><text x="15" y="149" fill="rgb(0, 0, 0)" font-family="Poppins" font-size="12px" text-anchor="middle">SSR</text></switch></g><rect x="35" y="35" width="60" height="20" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/><g transform="translate(-0.5 -0.5)scale(0.9999999999999999)"><switch><foreignObject pointer-events="none" width="101%" height="101%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 45px; margin-left: 36px;"><div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 8px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">Classic</div></div></div></foreignObject><text x="65" y="47" fill="rgb(0, 0, 0)" font-family="Poppins" font-size="8px" text-anchor="middle">Classic</text></switch></g><rect x="35" y="65" width="60" height="110" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/><g transform="translate(-0.5 -0.5)scale(0.9999999999999999)"><switch><foreignObject pointer-events="none" width="101%" height="101%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 120px; margin-left: 36px;"><div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 8px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">Hybrid</div></div></div></foreignObject><text x="65" y="122" fill="rgb(0, 0, 0)" font-family="Poppins" font-size="8px" text-anchor="middle">Hybrid</text></switch></g><path d="M 105 185 L 105 25" fill="none" stroke="#666666" stroke-miterlimit="10" stroke-dasharray="0.9999999999999999 0.9999999999999999" pointer-events="stroke"/><path d="M 25 105 L 185 105" fill="none" stroke="#666666" stroke-miterlimit="10" stroke-dasharray="0.9999999999999999 0.9999999999999999" pointer-events="stroke"/><rect x="119" y="35" width="60" height="60" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/><g transform="translate(-0.5 -0.5)scale(0.9999999999999999)"><switch><foreignObject pointer-events="none" width="101%" height="101%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 65px; margin-left: 120px;"><div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 8px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">Web App<br /><font style="font-size: 5px;">client receives JSON</font></div></div></div></foreignObject><text x="149" y="67" fill="rgb(0, 0, 0)" font-family="Poppins" font-size="8px" text-anchor="middle">Web App...</text></switch></g><rect x="119" y="115" width="60" height="60" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/><g transform="translate(-0.5 -0.5)scale(0.9999999999999999)"><switch><foreignObject pointer-events="none" width="101%" height="101%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 145px; margin-left: 120px;"><div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 8px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">Web App<br /><font style="font-size: 5px;">client receives HTML</font></div></div></div></foreignObject><text x="149" y="147" fill="rgb(0, 0, 0)" font-family="Poppins" font-size="8px" text-anchor="middle">Web App...</text></switch></g><rect x="45" y="75" width="40" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)scale(0.9999999999999999)"><switch><foreignObject pointer-events="none" width="101%" height="101%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 38px; height: 1px; padding-top: 85px; margin-left: 46px;"><div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 5px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">some pages are classic</div></div></div></foreignObject><text x="65" y="87" fill="rgb(0, 0, 0)" font-family="Poppins" font-size="5px" text-anchor="middle">some pages are...</text></switch></g><rect x="45" y="135" width="40" height="20" fill="none" stroke="none" pointer-events="all"/><g transform="translate(-0.5 -0.5)scale(0.9999999999999999)"><switch><foreignObject pointer-events="none" width="101%" height="101%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 38px; height: 1px; padding-top: 145px; margin-left: 46px;"><div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 5px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">others use Ajax and JSON</div></div></div></foreignObject><text x="65" y="147" fill="rgb(0, 0, 0)" font-family="Poppins" font-size="5px" text-anchor="middle">others use Ajax...</text></switch></g></g><switch><g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/><a transform="translate(0,-5)" xlink:href="https://www.drawio.com/doc/faq/svg-export-text-problems" target="_blank"><text text-anchor="middle" font-size="10px" x="50%" y="100%">Text is not SVG - cannot display</text></a></switch></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   width="192px"
+   height="192px"
+   viewBox="-0.5 -0.5 192 192"
+   id="svg12"
+   sodipodi:docname="csrssr.svg"
+   inkscape:version="1.3.1 (9b9bdc1480, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <sodipodi:namedview
+     id="namedview12"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="4.015625"
+     inkscape:cx="96"
+     inkscape:cy="96"
+     inkscape:window-width="1920"
+     inkscape:window-height="1019"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g11" />
+  <defs
+     id="defs1">
+    <style
+       type="text/css"
+       id="style1">@import url(https://fonts.googleapis.com/css?family=Barlow);
+@import url(https://fonts.googleapis.com/css?family=GFS+Didot);
+@import url(https://fonts.googleapis.com/css?family=Noto+Serif);
+@import url(https://fonts.googleapis.com/css?family=Poppins);
+</style>
+  </defs>
+  <g
+     id="g11">
+    <rect
+       x="35"
+       y="5"
+       width="60"
+       height="20"
+       fill="none"
+       stroke="none"
+       pointer-events="all"
+       id="rect1" />
+    <g
+       transform="translate(-0.5 -0.5)scale(0.9999999999999999)"
+       id="g1">
+      <switch
+         id="switch1">
+        <foreignObject
+           pointer-events="none"
+           width="101%"
+           height="101%"
+           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+           style="overflow: visible; text-align: left;">
+          <xhtml:div
+             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 15px; margin-left: 36px;">
+            <xhtml:div
+               data-drawio-colors="color: rgb(0, 0, 0); "
+               style="box-sizing: border-box; font-size: 0px; text-align: center;">
+              <xhtml:div
+                 style="display: inline-block; font-size: 12px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">MPA</xhtml:div>
+            </xhtml:div>
+          </xhtml:div>
+        </foreignObject>
+        <text
+           x="65"
+           y="19"
+           fill="rgb(0, 0, 0)"
+           font-family="Poppins"
+           font-size="12px"
+           text-anchor="middle"
+           id="text1">MPA</text>
+      </switch>
+    </g>
+    <rect
+       x="115"
+       y="5"
+       width="60"
+       height="20"
+       fill="none"
+       stroke="none"
+       pointer-events="all"
+       id="rect2" />
+    <g
+       transform="translate(-0.5 -0.5)scale(0.9999999999999999)"
+       id="g2">
+      <switch
+         id="switch2">
+        <foreignObject
+           pointer-events="none"
+           width="101%"
+           height="101%"
+           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+           style="overflow: visible; text-align: left;">
+          <xhtml:div
+             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 15px; margin-left: 116px;">
+            <xhtml:div
+               data-drawio-colors="color: rgb(0, 0, 0); "
+               style="box-sizing: border-box; font-size: 0px; text-align: center;">
+              <xhtml:div
+                 style="display: inline-block; font-size: 12px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">SPA</xhtml:div>
+            </xhtml:div>
+          </xhtml:div>
+        </foreignObject>
+        <text
+           x="145"
+           y="19"
+           fill="rgb(0, 0, 0)"
+           font-family="Poppins"
+           font-size="12px"
+           text-anchor="middle"
+           id="text2">SPA</text>
+      </switch>
+    </g>
+    <rect
+       x="-15"
+       y="55"
+       width="60"
+       height="20"
+       fill="none"
+       stroke="none"
+       transform="rotate(270,15,65)"
+       pointer-events="all"
+       id="rect3" />
+    <g
+       transform="translate(-0.5 -0.5)scale(0.9999999999999999)rotate(270 14.999999999999886 65)"
+       id="g3">
+      <switch
+         id="switch3">
+        <foreignObject
+           pointer-events="none"
+           width="101%"
+           height="101%"
+           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+           style="overflow: visible; text-align: left;">
+          <xhtml:div
+             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 65px; margin-left: -14px;">
+            <xhtml:div
+               data-drawio-colors="color: rgb(0, 0, 0); "
+               style="box-sizing: border-box; font-size: 0px; text-align: center;">
+              <xhtml:div
+                 style="display: inline-block; font-size: 12px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">CSR</xhtml:div>
+            </xhtml:div>
+          </xhtml:div>
+        </foreignObject>
+        <text
+           x="15"
+           y="69"
+           fill="rgb(0, 0, 0)"
+           font-family="Poppins"
+           font-size="12px"
+           text-anchor="middle"
+           id="text3">CSR</text>
+      </switch>
+    </g>
+    <rect
+       x="-15"
+       y="135"
+       width="60"
+       height="20"
+       fill="none"
+       stroke="none"
+       transform="rotate(270,15,145)"
+       pointer-events="all"
+       id="rect4" />
+    <g
+       transform="translate(-0.5 -0.5)scale(0.9999999999999999)rotate(270 14.999999999999886 145)"
+       id="g4">
+      <switch
+         id="switch4">
+        <foreignObject
+           pointer-events="none"
+           width="101%"
+           height="101%"
+           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+           style="overflow: visible; text-align: left;">
+          <xhtml:div
+             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 145px; margin-left: -14px;">
+            <xhtml:div
+               data-drawio-colors="color: rgb(0, 0, 0); "
+               style="box-sizing: border-box; font-size: 0px; text-align: center;">
+              <xhtml:div
+                 style="display: inline-block; font-size: 12px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">SSR</xhtml:div>
+            </xhtml:div>
+          </xhtml:div>
+        </foreignObject>
+        <text
+           x="15"
+           y="149"
+           fill="rgb(0, 0, 0)"
+           font-family="Poppins"
+           font-size="12px"
+           text-anchor="middle"
+           id="text4">SSR</text>
+      </switch>
+    </g>
+    <rect
+       x="34.802494"
+       y="150.48465"
+       width="59.895012"
+       height="24.462862"
+       fill="#ffffff"
+       stroke="#000000"
+       pointer-events="all"
+       id="rect5"
+       style="stroke-width:1.10499" />
+    <g
+       transform="translate(-0.74999976,118.66634)"
+       id="g5">
+      <switch
+         id="switch5">
+        <foreignObject
+           pointer-events="none"
+           width="101%"
+           height="101%"
+           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+           style="overflow: visible; text-align: left;">
+          <xhtml:div
+             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 45px; margin-left: 36px;">
+            <xhtml:div
+               data-drawio-colors="color: rgb(0, 0, 0); "
+               style="box-sizing: border-box; font-size: 0px; text-align: center;">
+              <xhtml:div
+                 style="display: inline-block; font-size: 8px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">Classic</xhtml:div>
+            </xhtml:div>
+          </xhtml:div>
+        </foreignObject>
+        <text
+           x="65"
+           y="47"
+           fill="#000000"
+           font-family="Poppins"
+           font-size="8px"
+           text-anchor="middle"
+           id="text5">Classic</text>
+      </switch>
+    </g>
+    <rect
+       x="34.977024"
+       y="34.977024"
+       width="60.045952"
+       height="100.04595"
+       fill="#ffffff"
+       stroke="#000000"
+       pointer-events="all"
+       id="rect6"
+       style="stroke-width:0.954047" />
+    <g
+       transform="translate(-0.5,-40.5)"
+       id="g6">
+      <switch
+         id="switch6">
+        <foreignObject
+           pointer-events="none"
+           width="101%"
+           height="101%"
+           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+           style="overflow: visible; text-align: left;">
+          <xhtml:div
+             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 120px; margin-left: 36px;">
+            <xhtml:div
+               data-drawio-colors="color: rgb(0, 0, 0); "
+               style="box-sizing: border-box; font-size: 0px; text-align: center;">
+              <xhtml:div
+                 style="display: inline-block; font-size: 8px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">Hybrid</xhtml:div>
+            </xhtml:div>
+          </xhtml:div>
+        </foreignObject>
+        <text
+           x="65"
+           y="122"
+           fill="#000000"
+           font-family="Poppins"
+           font-size="8px"
+           text-anchor="middle"
+           id="text6">Hybrid</text>
+      </switch>
+    </g>
+    <path
+       d="M 105 185 L 105 25"
+       fill="none"
+       stroke="#666666"
+       stroke-miterlimit="10"
+       stroke-dasharray="0.9999999999999999 0.9999999999999999"
+       pointer-events="stroke"
+       id="path6" />
+    <path
+       d="M 25 105 L 185 105"
+       fill="none"
+       stroke="#666666"
+       stroke-miterlimit="10"
+       stroke-dasharray="0.9999999999999999 0.9999999999999999"
+       pointer-events="stroke"
+       id="path7" />
+    <rect
+       x="119"
+       y="35"
+       width="60"
+       height="60"
+       fill="rgb(255, 255, 255)"
+       stroke="rgb(0, 0, 0)"
+       pointer-events="all"
+       id="rect7" />
+    <g
+       transform="translate(-0.5 -0.5)scale(0.9999999999999999)"
+       id="g7">
+      <switch
+         id="switch7">
+        <foreignObject
+           pointer-events="none"
+           width="101%"
+           height="101%"
+           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+           style="overflow: visible; text-align: left;">
+          <xhtml:div
+             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 65px; margin-left: 120px;">
+            <xhtml:div
+               data-drawio-colors="color: rgb(0, 0, 0); "
+               style="box-sizing: border-box; font-size: 0px; text-align: center;">
+              <xhtml:div
+                 style="display: inline-block; font-size: 8px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">Web App<xhtml:br />
+<xhtml:font
+   style="font-size: 5px;">client receives JSON</xhtml:font>
+</xhtml:div>
+            </xhtml:div>
+          </xhtml:div>
+        </foreignObject>
+        <text
+           x="149"
+           y="67"
+           fill="rgb(0, 0, 0)"
+           font-family="Poppins"
+           font-size="8px"
+           text-anchor="middle"
+           id="text7">Web App...</text>
+      </switch>
+    </g>
+    <rect
+       x="119"
+       y="115"
+       width="60"
+       height="60"
+       fill="rgb(255, 255, 255)"
+       stroke="rgb(0, 0, 0)"
+       pointer-events="all"
+       id="rect8" />
+    <g
+       transform="translate(-0.5 -0.5)scale(0.9999999999999999)"
+       id="g8">
+      <switch
+         id="switch8">
+        <foreignObject
+           pointer-events="none"
+           width="101%"
+           height="101%"
+           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+           style="overflow: visible; text-align: left;">
+          <xhtml:div
+             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 58px; height: 1px; padding-top: 145px; margin-left: 120px;">
+            <xhtml:div
+               data-drawio-colors="color: rgb(0, 0, 0); "
+               style="box-sizing: border-box; font-size: 0px; text-align: center;">
+              <xhtml:div
+                 style="display: inline-block; font-size: 8px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">Web App<xhtml:br />
+<xhtml:font
+   style="font-size: 5px;">client receives HTML</xhtml:font>
+</xhtml:div>
+            </xhtml:div>
+          </xhtml:div>
+        </foreignObject>
+        <text
+           x="149"
+           y="147"
+           fill="rgb(0, 0, 0)"
+           font-family="Poppins"
+           font-size="8px"
+           text-anchor="middle"
+           id="text8">Web App...</text>
+      </switch>
+    </g>
+    <rect
+       x="45"
+       y="75"
+       width="40"
+       height="20"
+       fill="none"
+       stroke="none"
+       pointer-events="all"
+       id="rect9" />
+    <g
+       transform="translate(-0.5,-40.5)"
+       id="g9">
+      <switch
+         id="switch9">
+        <foreignObject
+           pointer-events="none"
+           width="101%"
+           height="101%"
+           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+           style="overflow: visible; text-align: left;">
+          <xhtml:div
+             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 38px; height: 1px; padding-top: 85px; margin-left: 46px;">
+            <xhtml:div
+               data-drawio-colors="color: rgb(0, 0, 0); "
+               style="box-sizing: border-box; font-size: 0px; text-align: center;">
+              <xhtml:div
+                 style="display: inline-block; font-size: 5px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">some pages are classic</xhtml:div>
+            </xhtml:div>
+          </xhtml:div>
+        </foreignObject>
+        <text
+           x="65"
+           y="87"
+           fill="#000000"
+           font-family="Poppins"
+           font-size="5px"
+           text-anchor="middle"
+           id="text9">some pages use Ajax</text>
+      </switch>
+    </g>
+    <rect
+       x="45"
+       y="135"
+       width="40"
+       height="20"
+       fill="none"
+       stroke="none"
+       pointer-events="all"
+       id="rect10" />
+    <g
+       transform="translate(-0.11816406,-25.370605)"
+       id="g10">
+      <switch
+         id="switch10">
+        <foreignObject
+           pointer-events="none"
+           width="101%"
+           height="101%"
+           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+           style="overflow: visible; text-align: left;">
+          <xhtml:div
+             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 38px; height: 1px; padding-top: 145px; margin-left: 46px;">
+            <xhtml:div
+               data-drawio-colors="color: rgb(0, 0, 0); "
+               style="box-sizing: border-box; font-size: 0px; text-align: center;">
+              <xhtml:div
+                 style="display: inline-block; font-size: 5px; font-family: Poppins; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">others use Ajax and JSON</xhtml:div>
+            </xhtml:div>
+          </xhtml:div>
+        </foreignObject>
+        <text
+           x="65"
+           y="147"
+           fill="#000000"
+           font-family="Poppins"
+           font-size="5px"
+           text-anchor="middle"
+           id="text10"><tspan
+             sodipodi:role="line"
+             id="tspan12"
+             x="65"
+             y="147">others are</tspan><tspan
+             sodipodi:role="line"
+             id="tspan13"
+             x="65"
+             y="153.25">server rendered</tspan></text>
+      </switch>
+    </g>
+  </g>
+  <switch
+     id="switch12">
+    <g
+       requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+       id="g12" />
+    <a
+       transform="translate(0,-5)"
+       xlink:href="https://www.drawio.com/doc/faq/svg-export-text-problems"
+       target="_blank"
+       id="a12">
+      <text
+         text-anchor="middle"
+         font-size="10px"
+         x="50%"
+         y="100%"
+         id="text12">Text is not SVG - cannot display</text>
+    </a>
+  </switch>
+</svg>
