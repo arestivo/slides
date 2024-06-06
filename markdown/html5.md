@@ -1092,7 +1092,7 @@ How do you get to school?<br>
 
 # Radio Button
 
-* A <a href="https://html.spec.whatwg.org/multipage/input.html#radio-button-state-(type=radio)">radio</a> allows the selecting one form several choices.
+* A <a href="https://html.spec.whatwg.org/multipage/input.html#radio-button-state-(type=radio)">radio</a> allows selecting **one** from several choices.
 * If a radio button is **selected**, then its name/value pair is submitted to the server.
 * If a radio button is **not selected**, nothing is submitted.
 * If two radio buttons have the **same name**, then only one can be selected; they form a selection group.
