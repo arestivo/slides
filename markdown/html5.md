@@ -982,7 +982,7 @@ There are several different types of inputs just for normal text entry.
 * <a href="https://html.spec.whatwg.org/multipage/input.html#telephone-state-(type=tel)">tel</a>: input value is a telephone number
 * <a href="https://html.spec.whatwg.org/multipage/input.html#text-(type=text)-state-and-search-state-(type=search)">search</a>: input value is used to perform a search
 * <a href="https://html.spec.whatwg.org/multipage/input.html#url-state-(type=url)">url</a>: input value is an URL
-* <a href="https://html.spec.whatwg.org/multipage/input.html#email-state-(type=email)">email</a>: input value is used an e-mail
+* <a href="https://html.spec.whatwg.org/multipage/input.html#email-state-(type=email)">email</a>: input value is an e-mail address
 ]
 
 Some browsers may use slightly different controls for each type.
