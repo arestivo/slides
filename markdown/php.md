@@ -71,7 +71,7 @@ The infamous hello world example in PHP:
 or even shorter
 
 ```php
-<?='Hello World;
+<?='Hello World'?>
 ```
 
 ---
@@ -168,7 +168,7 @@ name: variables
 
 * Variables are represented by a dollar sign followed by the variable's name.
 * The variable's name is **case-sensitive**.
-* There are no explicit type definition in variable declarations.
+* There are no explicit type definitions in variable declarations.
 * A variable's type is determined by the context in which the variable is used.
 
 ```php
@@ -259,7 +259,7 @@ The [isset](https://www.php.net/manual/en/function.isset.php) function determine
 $bar = isset($bar) ? $bar : $some_default_value;
 ```
 
-An easier way to acccomplish this would be to use the *null coalesce* operator:
+An easier way to accomplish this would be to use the *null coalesce* operator:
 
 ```php
 $bar = $bar ?? $some_default_value;
@@ -1109,7 +1109,7 @@ class Car {
 
 Methods are like functions that have access to the private properties of the class. They also have the same visibility keywords as properties.
 
-However, due to the dynamic typed nature of PHP, to access these properties the pseudo-variable **$this** must be used:
+However, due to the dynamically typed nature of PHP, to access these properties the pseudo-variable **$this** must be used:
 
 ```php
 class Car {
@@ -1522,7 +1522,7 @@ PDO offers you a choice of 3 different error handling strategies:
 * **PDO::ERRMODE_SILENT** The default mode. No error is shown. You can use the errorCode()
   and errorInfo() on both database and statement objects to inspect the error.
 
-* **PDO::ERRMODE_WARNING** Similar to previous one but a warning is shown.
+* **PDO::ERRMODE_WARNING** Similar to the previous one but a warning is shown.
 
 * **PDO::ERRMODE_EXCEPTION** In addition to setting the error code, PDO will throw a PDOException and set its properties to reflect the error code and error information.
 
@@ -1881,7 +1881,7 @@ $encoded = json_encode($posts);
 $decoded = json_decode($encoded); //$decoded === $posts
 ```
 
-Don't forget to tell the client your are sending JSON data:
+Don't forget to tell the client you are sending JSON data:
 
 ```php
 $data = getSomeData();
