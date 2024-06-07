@@ -1544,7 +1544,7 @@ The [map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Gl
 ```javascript
 const numbers = [4, 8, 15, 16, 23, 42]
 const doubled = numbers.map(function(n) { return n * 2 })
-console.log(doubled) // 8, 16, 30, 32, 46, 84
+console.log(doubled) // [8, 16, 30, 32, 46, 84]
 ```
 
 Or using **arrow functions**:
@@ -1552,7 +1552,7 @@ Or using **arrow functions**:
 ```javascript
 const numbers = [4, 8, 15, 16, 23, 42]
 const doubled = numbers.map(n => n * 2)
-console.log(doubled) // 8, 16, 30, 32, 46, 84
+console.log(doubled) // [8, 16, 30, 32, 46, 84]
 ```
 
 ---
@@ -1818,7 +1818,7 @@ console.log(set.has('Jane Doe'))  // false
 We can loop over the elements in a Set using **for ... of** loops:
 
 ```javascript
-const set = new Map(['John Doe', 'Jane Doe'])
+const set = new Set(['John Doe', 'Jane Doe'])
 for (const element of set) 
   console.log(element)
 ```
