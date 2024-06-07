@@ -438,7 +438,7 @@ template: inverse
 
 ```javascript
 if (condition) {
-  //do domething
+  //do something
 } else {
   //something else
 }
@@ -943,7 +943,7 @@ const foo = bar.bind(3)
 foo(1, 2) // 1 2 3
 ```
 
-It can also be used to bind **parameters**. In this case it returns a function with only one parameter:
+It can also be used to bind **parameters**. In this case, it returns a function with only one parameter:
 
 ```javascript
 const baz = bar.bind('this', 'first')
@@ -1147,7 +1147,7 @@ template: inverse
 
 * For example, we can do complicated meta-programming by manipulating the prototype chain.
 
-* The original decision to use prototypes instead of classes in JavaScript as to do mainly with performance.
+* The original decision to use prototypes instead of classes in JavaScript has to do mainly with performance.
 
 But why choose **one** when we can have **both**?
 
