@@ -1586,7 +1586,7 @@ name: transforms
 # Transform
 
 * The **transform** property modifies the coordinate space of the CSS visual formatting model:
-  * A space-separated list of transforms applied one after the others.
+  * A space-separated list of transforms applied one after the other.
 * The **transform-origin** property specifies the origin of the transformation:
   * By default, it is at the center of the element. 
   * It takes two values (x-offset and y-offset) that can be a length, a percentage, or one of *left*, *center*, *right*, *top*, and *bottom*.
@@ -1621,7 +1621,7 @@ div {
 <div id="a" style="transform: rotate(30deg); margin: 30px; width: 50px; height:50px; background-color: blue"></div>
 <div id="b" style="transform: skew(30deg); margin: 30px; width: 50px; height:50px; background-color: red"></div>
 <div id="c" style="transform: translate(10px, 10%); margin: 30px; width: 50px; height:50px; background-color: green"></div>
-<div id="d" style="transform: translate(10px, 10%); margin: 30px; width: 50px; height:50px; background-color: orange"></div>
+<div id="d" style="transform: scale(0.3); margin: 30px; width: 50px; height:50px; background-color: orange"></div>
 <div id="e" style="transform: rotate(30deg) scale(0.5); margin: 30px; width: 50px; height:50px; background-color: yellow"></div>
 <div id="f" style="transform: skew(30deg) rotate(30deg); margin: 30px; width: 50px; height:50px; background-color: fuchsia"></div>
 <section>
