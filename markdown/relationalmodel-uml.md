@@ -77,20 +77,7 @@ name: intro
  * Tuples do not have a specific order between them;
  * Tuple values are **atomic** (no composite or multi-value).
 
----
-
-# Notation
-
-| | |
-|-|-| 
-| R (A1, A2, ..., An) | Relation schema R of degree n |
-| Q, R, S | Relation names |
-| t, u, v | Tuples |
-| t (a1, a2, ..., an) | Tuple *t* of a relation |
-| t[Ai] | The value of the attribute *Ai* in the tuple *t* |
-| t[Ai, Aj, Ak] | value of the attributes *Ai, Aj ,Ak* in the tuple *t* |
-
-Example for an employee:
+Example notation for an employee:
 
 .relational_example[
 Employee (id, name, address, telephone)
