@@ -589,7 +589,8 @@ SELECT * FROM employees WHERE type <> 'normal';
 Another possible use for partial indexes is to enforce constraints in a subset of the table:
 
 ```sql
-CREATE UNIQUE INDEX idx_mail ON employees (mail) WHERE type <> 'admin';
+CREATE UNIQUE INDEX idx_mail ON employees (mail) 
+                             WHERE type <> 'admin';
 ```
 
 ---
