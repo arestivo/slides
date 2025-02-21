@@ -186,7 +186,7 @@ name: selectors
 # Selectors
 
 * A selector defines a pattern-matching rule that determines which style rules apply to which elements in the document tree.
-* There are several types of selectors:
+* There are several types of **simple** selectors:
   - The [Universal](https://drafts.csswg.org/selectors-3/#universal-selector)(*) selector.
   - [Type](https://drafts.csswg.org/selectors-3/#type-selectors) selectors.
   - [Attribute](https://drafts.csswg.org/selectors-3/#attribute-selectors)([ ]) selectors.
@@ -259,6 +259,28 @@ Select elements based on their attribute existence and values:
 
 ```css
 form[method=get] /* selects all forms with attribute method="get" */
+```
+
+---
+
+# Compound Selectors
+
+- A sequence of **simple** selectors that are **not separated by spaces** (or any [combinator](#combining-selectors), more on that soon).
+- Represents a set of simultaneous conditions that must all be true for an element to be selected.
+- If a type selector (e.g., div, p) or a universal selector (*) is present, it must be the first selector in the sequence, and the only such selector.
+
+```css
+/* a button with class primary */
+button.primary           
+
+/* any element with id main and classes highlight and posts */
+*#main.highlight.posts
+
+/* we can omit the universal selector */
+#main.highlight.posts
+
+/* an input of type text with class error */
+input[type="text"].error 
 ```
 
 ---
