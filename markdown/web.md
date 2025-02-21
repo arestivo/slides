@@ -28,7 +28,7 @@ name: web
 
 # The Internet
 
-A global system of interconnected **computer networks** using the standard *Internet protocol suite* to link several **billion** devices worldwide.
+A global system of interconnected **computer networks** using the standard *[Internet Protocol Suite](https://en.wikipedia.org/wiki/Internet_protocol_suite)* to link several **billion** devices worldwide.
 
 ![](assets/web/internet.png)
 
