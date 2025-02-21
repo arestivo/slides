@@ -317,7 +317,7 @@ aside a
 
 # Child Selector
 
-Selects all children (&gt;); they have to be direct descendants:
+Selects all **direct** children (&gt;):
 ```css
 aside > a
 ```
@@ -328,7 +328,7 @@ aside > a
 
 # Next-sibling Selector
 
-Selects the next sibling (+); they have to be the next one:
+Selects the **next** sibling (+):
 
 ```css
 .intro + p
@@ -340,7 +340,7 @@ Selects the next sibling (+); they have to be the next one:
 
 # Subsequent-sibling Selector
 
-Selects subsequent siblings (~). They just have to be after:
+Selects all **subsequent** siblings (~):
 
 ```css
 .selected ~ li
