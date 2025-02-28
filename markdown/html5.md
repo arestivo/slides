@@ -692,9 +692,10 @@ Lists can be nested inside other lists:
 
 ---
 
-# Definition or Association Lists
+# Description Lists
 
-* A *definition list* ([&lt;dl&gt;](https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element)) contains terms ([&lt;dt&gt;](https://html.spec.whatwg.org/multipage/grouping-content.html#the-dt-element)) and definitions ([&lt;dd&gt;](https://html.spec.whatwg.org/multipage/grouping-content.html#the-dd-element)).<br><small>Definitions call also be called descriptions, or values.</small>
+* A *description list* ([&lt;dl&gt;](https://html.spec.whatwg.org/multipage/grouping-content.html#the-dl-element)) contains terms ([&lt;dt&gt;](https://html.spec.whatwg.org/multipage/grouping-content.html#the-dt-element)) and descriptions ([&lt;dd&gt;](https://html.spec.whatwg.org/multipage/grouping-content.html#the-dd-element)).
+
 * A term can have several descriptions, and a description can describe several terms.
 
 .small[
