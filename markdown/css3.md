@@ -2505,23 +2505,44 @@ Sizes can be defined as **auto**, a **length**, a **percentage** or a **fraction
 
 # Grid Templates Repeating
 
-The [repeat](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-the-repeat-function-and-keywords) keyword can be used to simplify grid templates with many columns and rows of the same size.
+The [repeat()](https://css-tricks.com/snippets/css/complete-guide-grid/#aa-the-repeat-function-and-keywords) function can be used to simplify grid templates with many columns and rows of the same size.
+
+The first parameter is the *repeat count*, and the second are the *tracks* (space-separated) that will be created. 
 
 ```css
 .container {
-  grid-template-columns: repeat(2, 5em) 1fr repeat(2, 7em);
-  grid-template-rows: 2em;
+  grid-template-columns: repeat(2, 5em) 1fr repeat(2, 5em 4em);
 }
 ```
 
-<div class="container" style="background-color: #eee;padding: 5px; display: grid; grid-template-columns: repeat(2, 5em) 1fr repeat(2, 7em); grid-template-rows: 2em;">
-  <div class="item header" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #2a9d8f;">Header</div>
-  <div class="item menu1" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e9d8a6;">Menu 1</div>
-  <div class="item menu2" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e9c46a;">Menu 2</div>
-  <div class="item content" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #f4a261;">Content</div>
-  <div class="item footer" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e76f51;">Footer</div>
+<div class="container" style="background-color: #eee;padding: 5px; display: grid; grid-template-columns: repeat(2, 5em) 1fr repeat(2, 5em 4em); grid-template-rows: 2em; font-size: 0.8em;">
+  <div class="item header" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #2a9d8f;">(5em)</div>
+  <div class="item menu1" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #2a9d8f;">(5em)</div>
+  <div class="item menu2" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e9c46a;">(1fr)</div>
+  <div class="item content" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #f4a261;">(5em)</div>
+  <div class="item content" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e76f51;">(4em)</div>
+  <div class="item footer" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #f4a261;">(5em)</div>
+  <div class="item footer" style="color: black; text-align: center; margin: 2px; padding: 0.2em; background-color: #e76f51;">(4em)</div>
 </div>
 
+
+---
+
+# Flexible Grid Repeating
+
+When defining multiple columns with the `repeat()` function, we can also set the *count* to `auto-fit` or `auto-fill`:
+
+- `repeat(n, value)`: Repeats a track definition *n* times.
+- `repeat(auto-fill, value)`: Creates as many columns as fit within the container.
+- `repeat(auto-fit, value)`: Similar to auto-fill but [collapses](https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/) unused space.
+
+The `minmax()` function sets a track’s minimum and maximum size, ensuring it stays within a defined range. This allows [responsive](https://jsfiddle.net/7yahvgmp/2/) grid designs.
+
+```css
+.container {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+```
 
 ---
 
