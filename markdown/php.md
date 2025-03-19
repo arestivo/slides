@@ -701,6 +701,12 @@ $values = array(1, 2, 3, 'John');
 $values = array('name' => 'John', 'age' => 45, 3 => 'Car');
 ```
 
+Or using a simplified syntax:
+
+```php
+$values = [1, 2, 3, 'John'];
+```
+
 ---
 
 # Using Arrays
