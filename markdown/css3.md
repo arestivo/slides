@@ -3235,9 +3235,9 @@ http://jigsaw.w3.org/css-validator/
 
 # Extra stuff
 
-* Frameworks: [Ink](http://ink.sapo.pt/), [Bootstrap](http://getbootstrap.com/), [Flat UI](http://designmodo.github.io/Flat-UI/), [Pure](http://purecss.io/)
+* Frameworks: [Ink](http://ink.sapo.pt/), [Bootstrap](http://getbootstrap.com/), [Flat UI](http://designmodo.github.io/Flat-UI/), [Pure](http://purecss.io/), [Pico](https://picocss.com/), [Tailwind](https://tailwindcss.com/)
 * Advanced/Experimental: [Shadows](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow), [Animations](https://developer.mozilla.org/en-US/docs/Web/CSS/animation)
 * Playgrounds: [JSFiddle](https://jsfiddle.net/), [CodePen](https://codepen.io/)
 * Pre-processors: [Less](http://lesscss.org/), [Sass](http://sass-lang.com/)
 * Information: [Google Web Essentials](https://developers.google.com/web/fundamentals/), [Mozilla Developer Network](https://developer.mozilla.org/en-US/)
-* Icons: [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
+* Icons: [Font Awesome](https://fontawesome.com/)
