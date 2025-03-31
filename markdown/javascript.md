@@ -259,7 +259,7 @@ The standard defines the following data types:
   * Boolean (**true** or **false**)
   * BigInt (**numbers** of arbitrary length, *e.g.*, 123456789n)
   * Null (only one possible value: case sensitive **null**)
-  * Undefined (has **not** been **assigned** a value)
+  * Undefined (has **not** been **assigned** a value; case sensitive **undefined**)
 
 ---
 
@@ -291,9 +291,10 @@ The plus (+) operator sums numbers, but if one of the operands is a string,
 it converts the other one into a string and concatenates the two:
 
 ```javascript
-console.log(11 + 31)   // 42
-console.log('11' + 31) // '1131'
-console.log(11 + '31') // '1131'
+console.log(11 + 31)     // 42
+console.log('11' + 31)   // '1131'
+console.log(11 + '31')   // '1131'
+console.log('11' + '31') // '1131'
 ```
 
 ---

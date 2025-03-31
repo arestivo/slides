@@ -89,7 +89,7 @@ Then:
 console.log(document.location.protocol)    // https:
 console.log(document.location.host)        // www.example.com:8080
 console.log(document.location.hostname)    // www.example.com
-console.log(document.location.port || 80)  // 8080
+console.log(document.location.port ?? 80)  // 8080
 console.log(document.location.pathname)    // /path
 console.log(document.location.search)      // ?key=vale
 console.log(document.location.hash)        // #somewhere
@@ -469,7 +469,7 @@ console.log(posts.firstChild.nextSibling.textContent) // 'Title'
 
 # Traversing the DOM tree (Element)
 
-To simplify traversing HTML documents, the following properties have been added to the [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element) interface:
+To simplify traversing HTML documents, the following properties have been added to the [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element) interface: <small>they always return Elements; not text or comments.</small>
 
 * [firstElementChild](https://developer.mozilla.org/en-US/docs/Web/API/Element/firstElementChild) and [lastElementChild](https://developer.mozilla.org/en-US/docs/Web/API/Element/lastElementChild) &ndash; first and last element children of this node.
 * [children](https://developer.mozilla.org/en-US/docs/Web/API/Element/children) &ndash; all children elements as a NodeList.
