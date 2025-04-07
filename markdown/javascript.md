@@ -1301,8 +1301,6 @@ console.log(john1.maxAge, Person.maxAge) // undefined 100
 * We could even use this convention, along with getters and setters, to create a read-only property:
 
 
-
-.small[
 ```javascript
 class Person {
   constructor(name, age) { 
@@ -1310,9 +1308,7 @@ class Person {
     this._age = age
   }
 
-  get age() {
-    return this._age    
-  }
+  get age() { return this._age }
 }
 
 const john = new Person('John Doe', 45)
@@ -1321,7 +1317,6 @@ console.log(john.age) // 45
 john.age = 50         // no error, but no effect
 console.log(john.age) // 45
 ```
-]
 
 ---
 
