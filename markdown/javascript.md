@@ -1009,17 +1009,18 @@ Cool! So, how does this work?
 
 # Prototype
 
-* Each *JavaScript* function has an internal **prototype** property initialized as a nearly empty object.
-* When the **new** operator is used on a constructor function, a new object derived from its prototype is created. 
-* The function is then executed, having the new object as its context.
-* The new object is returned.
+* *JavaScript* functions have an internal <code>.prototype</code> property.
+* The **new** operator, when used on a function creates a **new object**, and:
+  - Sets the new object's **internal**, hidden, <code>[[Prototype]]</code> property to the function's <code>.prototype</code>.
+  - The function is called with **this** bound to the new object.
+  - Returns the object created, unless the function returns something else.
 
 ```javascript
 function Person(name, age) {
   this.name = name // this receives a nearly empty object
   this.age = age   // based on the function's prototype
-  this.print = function() {
-    console.log(`${this.name} is ${this.age} years old!`)
+  this.print = function() {  
+    console.log(`${this.name} is ${this.age} years old!`) 
   }
 }
 
@@ -1063,9 +1064,9 @@ What? How does THIS work?
 
 # Prototype of Objects
 
-Every object has a **prototype of the function** that created them.
+Every object in JavaScript has an **internal** <code>[[Prototype]]</code> (also informally called the object's prototype), which is typically set to the <code>.prototype</code> property of the constructor function that created it.
 
-It can be accesses with **Object.getPrototypeOf(obj)** and modified using **Object.setPrototypeOf(obj, pro)**.
+This **internal** prototype can be accessed using <code>Object.getPrototypeOf(obj)</code> and modified using <code>Object.setPrototypeOf(obj, proto)</code>.
 
 ```javascript
 function Person(name) {
@@ -1085,9 +1086,9 @@ Object.setPrototypeOf(john, {})
 
 # The Prototype Chain
 
-When we read a property from an object, and it’s missing, JavaScript will try taking it from the prototype of that object. 
-
-And then from the prototype of that prototype, until it reaches *null*.
+- When we attempt to access a property from an object and it’s missing, JavaScript will look for the property in the object's <code>.prototype</code>. 
+- If it’s **not found** there, JavaScript will then check the prototype of that prototype, continuing up the **prototype chain** until it reaches **null**. 
+- If the property is **not found** by the time it reaches **null**, the result is **undefined**.
 
 ```javascript
 function Person(name) {
@@ -1103,8 +1104,6 @@ console.log(john.age)                   // 45
 Object.setPrototypeOf(john, {})         // Changes the prototype
 console.log(john.age)                   // undefined
 ```
-
-Because **john.age** does not exist, but **Object.getPrototypeOf(john).age** does.
 
 ---
 
@@ -1218,7 +1217,7 @@ console.log(Object.getPrototypeOf(john) === Worker.prototype)
 
 # Classes Basic Syntax
 
-* Classes can have **fields** (only very recently), **methods**, and a single **constructor**.
+* Classes can have **fields**, **methods**, and a single **constructor**.
 * The *this* keyword refers to the object that has called the method.
 
 ```javascript
