@@ -1294,11 +1294,13 @@ console.log(john1.maxAge, Person.maxAge) // undefined 100
 
 ---
 
-# Protected Fields and Methods 
+# Private Fields and Methods 
 
-* There is no *language-level* way to create protected fields.
-* But there is a *well-established* convention that fields/methods starting with an *underscore* should not be accessed directly.
-* We can use this convention and *getters/setters* to create a *read-only* property:
+* In older versions of JavaScript, there was no *language-level* way to create *private* or *protected* fields.
+* However, there was a *well-established* convention that fields and methods starting with an **underscore** *should* not be accessed directly.
+* We could even use this convention, along with getters and setters, to create a read-only property:
+
+
 
 .small[
 ```javascript
@@ -1325,8 +1327,7 @@ console.log(john.age) // 45
 
 # Private Fields and Methods
 
-* Unlike protected fields, there is a *language-level* way to create private fields.
-* Like other field declaration aspects, this is still very recent and may not work everywhere.
+* In more recent versions, there is a *language-level* way to create private fields and methods.
 * Private fields/methods are marked with a hash sign.
 
 .small[
