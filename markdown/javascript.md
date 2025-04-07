@@ -771,7 +771,7 @@ person.name = 'Jane Doe'
 
 ---
 
-# Getter and Setters
+# Setter and Getters
 
 *Setter* and *getters*, accessor properties, are functions that execute on 
 getting and setting a value, but behave like regular properties.
