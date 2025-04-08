@@ -1322,8 +1322,8 @@ console.log(john.age) // 45
 
 # Private Fields and Methods
 
-* In more recent versions, there is a *language-level* way to create private fields and methods.
-* Private fields/methods are marked with a hash sign.
+* In more recent versions, there is a *language-level* way to create **private** fields and methods.
+* Private fields/methods are marked with a **hash** sign.
 
 .small[
 ```javascript
@@ -1387,9 +1387,9 @@ name: arrays
 
 # Arrays
 
-  * Arrays are **list-like objects** whose prototype has methods to perform traversal and mutation operations.
+  * Arrays are **list-like objects** whose **prototype** has methods to perform **traversal** (<code>.forEach</code>...) and **mutation**(<code>push</code>...) operations.
   * *JavaScript* arrays are zero-indexed
-  * Arrays can be initialized using a bracket notation:
+  * Arrays can be initialized using a bracket ([]) notation:
 
 ```javascript
 const years = [1990, 1991, 1992, 1993]
