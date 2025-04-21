@@ -2150,6 +2150,9 @@ promise.then(function(content) {
 })
 ```
 
+* <code>.then(result => {...})</code> registers a function to be called when the promise is resolved.
+* <code>.catch(error => {...})</code> registers a function to be called when the promise is rejected.
+
 This might not seem much better, but *promises* still have some tricks left!
 
 ---
