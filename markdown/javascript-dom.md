@@ -705,9 +705,17 @@ template: inverse
 
 # AJAX
 
-* Asynchronous JavaScript + XML (JSON is more common now).
-* Not a technology in itself, but a term coined in 2005 by **Jesse James Garrett** that describes an
-  approach to using several existing technologies: namely the **XMLHttpRequest** object.
+AJAX stands for **A**synchronous **J**avaScript **a**nd **X**ML.
+
+* Although originally associated with **XML**, in modern usage **JSON** is far more common as the data format.
+* AJAX is not a single technology. It is a **technique** or **approach** for building web applications, first popularized by **Jesse James Garrett** in **2005**. 
+* It involves using several existing technologies, originally centered around the **XMLHttpRequest** object (in modern *JavaScript*, we use **fetch**).
+
+---
+
+# AJAX
+
+AJAX involves the asynchronous communication between the client (browser) and the server, without requiring a full page reload (steps 7&ndash;11).
 
 ![](assets/javascript-dom/ajax.svg)
 
@@ -721,7 +729,7 @@ template: inverse
 void open(method, url, async)
 ```
 
-  * method: **get** or **post** <small>(or others to be seen later)</small>.
+  * method: **GET** or **POST** <small>(or others to be seen later)</small>.
   * url: The URL to fetch.
   * async: if false, execution will stop while waiting for response.<br><small>Default is true.</small>
 
@@ -735,7 +743,7 @@ function requestListener () {
 const request = new XMLHttpRequest()
 request.addEventListener('load', requestListener)
 // or request.onload = requestListener
-request.open("get", "getdata.php", true)
+request.open("GET", "getdata.php", true)
 request.send()
 ```
 
@@ -784,9 +792,9 @@ To send data to the server, we first must encode it properly:<br><small>We are s
 
 ```javascript
 function encodeForAjax(data) {
-  return Object.keys(data).map(function(k){
-    return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-  }).join('&')
+  return Object.keys(data).map(
+    k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+  ).join('&')
 }
 ```
 
@@ -924,20 +932,17 @@ For more complicated requests, the [fetch()](https://developer.mozilla.org/en-US
 
 ```javascript
 async function postData(data) {
-  return fetch('https://example.com/', {
+  const response = await fetch('https://example.com/', {
     method: 'post',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
     body: encodeForAjax(data)
   })
+  return await response.json()
 }
 
-postData({id: 100, name: 'John'})
-  .catch(() => console.error('Network Error'))
-  .then(response => response.json())
-  .catch(() => console.error('Error parsing JSON'))
-  .then(json => console.log(json))
+const result = await postData({id: 100, name: 'John'})
 ```
 
 More on this will be discussed when we study the **HTTP** protocol in depth.
@@ -1011,7 +1016,7 @@ When we click a paragraph, what will be the value of the *i* variable? Let's [te
 
 --
 
-The only reason why this code works as intended is that each time an event handler is added, a new function is created with a **different closure** (and a different *i* variable in that closure with a **different value**).
+The reason this code works as expected is that each time an event handler is added, a new function is created, and each function captures a **unique closure**. This closure **retains** a **reference** to the value of the variable <code>i</code> at the **moment** the event listener is added, ensuring that each handler has access to the correct value of <code>i</code> for the specific iteration.
 
 > "When a function is created, it **retains** the lexical environment in which it was **created**."<br>&mdash; [Closures](?s=javascript#closures), JavaScript Slides.
 
@@ -1139,11 +1144,9 @@ const array4 = [...paragraphs]
 
 # HTML5 Data Attributes
 
-<small>This is not really JavaScript!</small>
+HTML5 data-* attributes allow us to store **extra information** on *standard*, *semantic* HTML elements without using hacks.
 
-HTML5 data-* attributes allow us to store extra information on standard, semantic HTML elements without using hacks.
-
-This can be useful, for example, to store the id of a certain database tuple to be used in an Ajax call.
+This can be useful, for example, to store the id of a certain database tuple to be used in an *Ajax* call.
 
 ```html
   <ul>
@@ -1151,4 +1154,12 @@ This can be useful, for example, to store the id of a certain database tuple to 
     <li data-id="2">Banana</li>
     <li data-id="3">Pear</li>
   </ul>
+```
+
+Accessing this values using *JavaScript*:
+
+```javascript
+const items = document.querySelectorAll('li');
+for (const item of items)
+  console.log(item.dataset.id)
 ```
