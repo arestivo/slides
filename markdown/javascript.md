@@ -2245,7 +2245,7 @@ promiseFile('file1.txt')
 
 # Promise.all
 
-There is also an easy way to run several *promises* in parallel and **wait** for them **all**:
+An easy way to run several *promises* in parallel and **wait** for them **all**:
 
 ```javascript
 Promise.all([promiseFile('file1.txt'), 
@@ -2255,10 +2255,13 @@ Promise.all([promiseFile('file1.txt'),
   .catch(console.error)
 ```
 
-* **Promise.all** receives an array of *promises*.
+* **Promise.all** receives an array of *promises*, and returns a single *promise* that:
+  * **resolves** when all input *promises* have resolved, producing an array of their results, in the same order;
+  * **rejects** immediately if any *promise* rejects, with the reason of the **first rejection**.
 * The **.then** handler is called when they all resolve.
 * If any of them *throw* an *error* (or call *reject*), then **.catch** is called.
-* We are using [destructuring](#destructuring) to receive all the results in separate variables.
+
+We are using [destructuring](#destructuring) to receive all the results in separate variables.
 
 ---
 
@@ -2284,8 +2287,7 @@ And this would be our read function:
 async function promiseFile(filename) {
   return new Promise((resolve, reject) => {
     readFile(filename, (err, data) => {
-      if (err) reject(err)
-      else resolve(data)
+      if (err) reject(err) else resolve(data)
     })
   })
 }
@@ -2295,18 +2297,19 @@ async function promiseFile(filename) {
 
 # Await
 
-The keyword *await* makes *JavaScript* wait until a promise settles and returns its result:
+The **await** keyword instructs *JavaScript* to pause the execution of an **async** function 
+until the awaited *promise* settles (either fulfilled or rejected), and then resumes execution 
+with the result:
 
-* *Await* only works inside *async* functions.
-* *Await* uses the event loop mechanism; the code is suspended until the 
-  promise settles and a new *callback* is added to the *event queue*.
-  This way, no CPU resources are wasted.
+* **await** only works inside *async* functions.
+* **await** suspends the current function without blocking the main thread. It leverages the event loop: once the Promise settles, the function is resumed by placing its continuation into the event queue. This way, no CPU resources are wasted.
 
-It's just a more elegant way to use sequential promises:
+It's just a more elegant way to use **sequential promises**:
 
 ```javascript
-async function foo() {
-  const name = await readFile('file.txt')
+async function fileLength(filename) {
+  const contents = await readFile(filename)
+  return contents.length
 }
 ```
 
