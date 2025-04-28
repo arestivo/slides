@@ -90,7 +90,7 @@ name: resources
 # Resources
 
 - References:
-  - [RFC2616](https://datatracker.ietf.org/doc/html/rfc2616): The official specification.
+  - [RFC9110](https://www.rfc-editor.org/rfc/rfc9110.html): The official specification.
   - [Mozilla Developer Network (MDN) Reference](https://developer.mozilla.org/en-US/docs/Web/HTTP).
 
 - Tools:
@@ -380,7 +380,7 @@ Other not so common/important methods:
 * [**CONNECT**](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/CONNECT): Can be used to open a tunnel.
 * [**PATCH**](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH): Applies partial modifications to a resource.
 
-[All methods](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) as defined in *RFC 2616*.
+[All methods](https://www.rfc-editor.org/rfc/rfc9110.html#name-methods) as defined in *RFC 9110*.
 
 ---
 
@@ -403,7 +403,7 @@ The **status line** is the **first line** in the **response** message. It consis
 HTTP/1.0 200 OK
 ```
 
-Responses can be grouped into five categories: **informational** (1xx), **success** (2xx), **redirection** (3xx), **client error** (4xx) and **server error** (5xx). <br><small>[Status codes in the RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).</small>
+Responses can be grouped into five categories: **informational** (1xx), **success** (2xx), **redirection** (3xx), **client error** (4xx) and **server error** (5xx). <br><small>[Status codes in the RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html#name-status-codes).</small>
 
 ---
 
@@ -428,7 +428,7 @@ Content-Length: 1354
 
 ---
 
-# Some Response Codes
+# Some Status Codes
 
 **2xx Success**:
 
@@ -440,7 +440,7 @@ Content-Length: 1354
 
 ---
 
-# Some Response Codes
+# Some Status Codes
 
 **2xx Success**:
 
@@ -450,7 +450,7 @@ Content-Length: 1354
 
 ---
 
-# Some Response Codes
+# Some Status Codes
 
 **3xx Redirect**:
 
@@ -459,7 +459,7 @@ Content-Length: 1354
 
 ---
 
-# Some Response Codes
+# Some Status Codes
 
 **4xx Client Error**:
 
@@ -469,7 +469,7 @@ Content-Length: 1354
 
 ---
 
-# Some Response Codes
+# Some Status Codes
 
 **4xx Client Error**:
 
@@ -479,7 +479,7 @@ Content-Length: 1354
 
 ---
 
-# Some Response Codes
+# Some Status Codes
 
 **418 I'm a teapot** - "Any attempt to brew coffee with a teapot should result in the error
    code "418 I'm a teapot". The resulting entity body MAY be short and stout." -- [RFC2324](https://tools.ietf.org/html/rfc2324)
@@ -490,7 +490,7 @@ Content-Length: 1354
 
 ---
 
-# Some Response Codes
+# Some Status Codes
 
 **5xx Server Error**:
 
@@ -498,7 +498,7 @@ Content-Length: 1354
 * **502 Bad Gateway** - The server, while acting as a gateway or proxy, received an invalid response from the upstream server it accessed in attempting to fulfill the request.
 * **503 Service Unavailable** - The server is currently unable to handle the request due to a temporary overloading or maintenance of the server.
 
-[All response codes](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)
+[All status codes](https://www.rfc-editor.org/rfc/rfc9110.html#name-status-codes)
 
 ---
 
@@ -599,7 +599,7 @@ Set-Cookie: session_id=7f...; Domain=foo.com; Path=/; Expires=Wed, 13 ... GMT;
 ```
 </small>
 
-[More on header fields as described in RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+Header fields are defined in [RFC9110](https://www.rfc-editor.org/rfc/rfc9110.html#name-fields) in several sections.
 
 ---
 
