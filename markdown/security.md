@@ -46,9 +46,9 @@ template:inverse
 
 # Attacks and Vulnerabilities
 
-* A **vulnerability** is a hole or a weakness in the application, which can be a design flaw or an implementation bug, that allows an attacker to cause harm to the stakeholders of an application.
+* A **vulnerability** is a **flaw** or **weakness** in an application &mdash; whether in its design or implementation &mdash; that **can be exploited** by an attacker to compromise the security or functionality of the system, potentially causing harm to its stakeholders.
 
-* **Attacks** are the techniques that attackers use to exploit the vulnerabilities in applications.
+* An **attack** is a **technique** or **method** used by an attacker to **exploit** a vulnerability in order to gain unauthorized access, disrupt operations, or otherwise compromise the system.
 
 Reference: [Open Web Application Security Project](https://www.owasp.org/)
 
@@ -108,11 +108,11 @@ Reference: [Open Web Application Security Project](https://www.owasp.org/)
 # Security Impact
 
 * Financial losses
-* Intellectual property theft
-* Brand reputation compromise
-* Fraud
-* Legal exposure
-* Extortion
+* Theft of intellectual property
+* Damage to brand reputation
+* Fraudulent activities
+* Legal liability and regulatory exposure
+* Extortion and ransom demands
 
 ---
 
@@ -124,13 +124,14 @@ name: path
 
 # Path Traversal Attack
 
-Using the **..** and **/** symbols to gain access to files and directories that are not intended to be accessed.
+An attacker exploits **file path manipulation** &mdash; typically using the <code>..</code> (parent directory) and <code>/</code> (directory separator) symbols &mdash; to **gain access** to files and directories outside the intended scope.
+
 
 ```http
 http://www.foo.com/../../database.db
 ```
 
-Normally web servers are well protected against these types of attacks but the application can also be targeted:
+Normally, web servers are well protected against serving files **outside** the designated **root** directory, but the application itself can also be targeted:
 
 ```http
 http://www.foo.com/page.php?page=../../database.db
@@ -140,15 +141,33 @@ http://www.foo.com/page.php?page=../../database.db
 http://www.foo.com/viewimage.php?path=viewimage.php
 ```
 
+Such attacks can expose sensitive files such as **configuration files**, **source code**, or **credentials** if proper input validation is not enforced.
+
 ---
 
 # Preventing
+
+A common example is attempting to access version control metadata such as the .git directory:
+
+```http
+http://www.foo.com/.git/config
+```
+
+To prevent this, ensure that the web server is configured to serve **only the necessary files and directories**. Sensitive files and folders &mdash; such as <code>.git</code>, configuration files, environment variables (<code>.env</code>), sqlite database, and other sensitive files &mdash; should never be exposed over HTTP.
+
+If you are using PHP, **serve only a specific public folder** (*e.g.*, <code>/public</code>) that contains the pages, action handlers, and API entry points. All other application files &mdash; including logic, configuration, and version control &mdash; should reside outside the web root and be inaccessible via HTTP.
+
+---
+
+# Preventing
+
+A common vulnerable pattern is including **user-controlled** input directly in file paths:
 
 ```http
 http://www.foo.com/index.php?page=news
 ```
 
-Replace:
+Vulnerable code:
 
 ```php
   include('header.php');
@@ -156,7 +175,7 @@ Replace:
   include('footer.php');
 ```
 
-With:
+Secure alternative using a fixed allowlist:
 
 ```php
   include('header.php');
@@ -175,14 +194,15 @@ name: sql
 
 # SQL Injection
 
-Insertion of a SQL query via the **input data** from the client to the application.
+SQL Injection is the **manipulation** of SQL queries through **input data** sent from the client to the application.
 
-SQL injection attacks allow attackers to:
+SQL injection **attacks** can allow an attacker to:
 
-* spoof identity
-* tamper with existing data
-* allow the complete disclosure of all data on the system
-* become administrators of the database server
+* Spoof **identities** (e.g., impersonate other users).
+* Tamper with existing **data** (insert, update, or delete records).
+* Extract sensitive **information** (full disclosure of database contents).
+* Gain **administrative** access to the database server.
+* Execute arbitrary **commands**, in some cases, depending on database configuration.
 
 ---
 
@@ -248,15 +268,18 @@ SELECT * FROM items WHERE title = ''; INSERT INTO users VALUES
 
 # Preventing
 
-* Use of **Prepared Statements** (Parameterized Queries).
-* Use of Stored Procedures.
-* Escaping all User Supplied Input.
+To prevent SQL injection, consider the following best practices:
+
+* Use **Prepared Statements** (Parameterized Queries): This ensures that user input is treated as data, not executable code.
+* Escape all user-supplied input: While parameterized queries are **preferred**, escaping input can be an **additional layer** of defense.
 
 ```php
 $stmt = $dbh->prepare('SELECT * FROM items WHERE title = ?');
 $stmt->execute(array($title));
 $items = $stmt->fetchAll();
 ```
+
+[SQL Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html)
 
 ---
 
@@ -272,15 +295,17 @@ Cross-Site Scripting (XSS) attacks are a type of **injection**, in which **malic
 
 ---
 
-#Types
+# Types
 
-* **Persistent** XSS generally occurs when user input is **stored on the target server**, such as in a database, in a message forum, visitor log, or comment field, ...
-* **Reflected** XSS occurs when user input is **immediately returned by a web application** in an error message, search result, or any other response, **without permanently storing** the user-provided data.
-* **DOM Based** XSS occurs when the data flow **never leaves the browser**. For example, the malicious script could be in the URL and the page inserts it into the DOM adding malicious code.
+There are several types of XSS attacks:
+
+* **Stored** XSS: The malicious script is stored on the server (e.g., in a database) and is served to users when they access the compromised page.
+* **Reflected** XSS: The malicious script is reflected off a web server, typically via user input in URLs, form submissions, or query strings.
+* **DOM-based** XSS: The vulnerability is in the client-side code, where the DOM (Document Object Model) is manipulated by malicious input.
 
 ---
 
-# Cross-site Scripting (XSS) : Persistent
+# XSS : Stored
 
 ```php
 <?php
@@ -311,7 +336,9 @@ comment.php?postid=10&text=<script>alert("hacked")</script>
 
 ---
 
-# Cross-site Scripting (XSS) : Reflected
+# XSS : Reflected
+
+Reflected XSS occurs when malicious scripts are **reflected off the web server**, typically via user input in URLs, form submissions, or query strings. The script is executed **immediately** after being included in the server's response, affecting **users who click the link**.
 
 ```php
 <?php
@@ -319,6 +346,27 @@ echo "You searched for: " . $_GET["query"];
 // List search results
 ?> 
 ```
+
+In this code, the user’s search query is directly echoed into the response without any sanitization or escaping.
+
+
+```http
+http://foo.com/search.php?query=<script>alert("hacked")</script>
+```
+
+---
+
+# XSS : DOM-based
+
+DOM-based XSS occurs when a vulnerability in the client-side code allows malicious input to be executed in the browser. The attack is typically triggered by manipulating the Document Object Model (DOM), where user input is inserted directly into the page without proper sanitization or escaping.
+
+```javascript
+  const query = new URLSearchParams(window.location.search).get('q')
+  document.getElementById('searchResult').innerHTML = query
+```
+
+In this code, the user’s search query is directly echoed into the response without any sanitization or escaping.
+
 
 ```http
 http://foo.com/search.php?query=<script>alert("hacked")</script>
@@ -341,7 +389,7 @@ Never put untrusted data:
 
 # Preventing
 
-**Validate**: If the input contains unexpected characters reject it:
+**Validation** ensures that user input matches an expected pattern, rejecting any unexpected characters or formats.
 
 ```php
 if ( !preg_match ("/^[a-zA-Z\s]+$/", $_GET['name'])) {
@@ -349,7 +397,7 @@ if ( !preg_match ("/^[a-zA-Z\s]+$/", $_GET['name'])) {
 }
 ```
 
-**Filter**: Or just filter the unexpected characters:
+**Filtering** removes unwanted characters, sanitizing the input before processing it.
 
 ```php
 $name = preg_replace ("/[^a-zA-Z\s]/", '', $_GET['name']);
@@ -359,7 +407,7 @@ $name = preg_replace ("/[^a-zA-Z\s]/", '', $_GET['name']);
 
 # Preventing
 
-**Encode**: When showing untrusted data encode it first using [htmlspecialchars()](http://php.net/manual/en/function.htmlspecialchars.php) or [htmlentities()](http://php.net/manual/en/function.htmlentities.php):
+When **displaying** untrusted data on the web page, always **encode** it to prevent malicious scripts from being executed using functions like [htmlspecialchars()](http://php.net/manual/en/function.htmlspecialchars.php) or [htmlentities()](http://php.net/manual/en/function.htmlentities.php):
 
 ```php
 <?=htmlentities($post['text'])?>     // encodes all characters
@@ -382,7 +430,7 @@ Becomes this:
 
 # Preventing
 
-**Encode**: When using untrusted data to create URLs encode it first using [urlencode()](http://php.net/manual/en/function.urlencode.php):
+When using untrusted data to **create URLs**, always **encode** the data to prevent malicious content from being executed using [urlencode()](http://php.net/manual/en/function.urlencode.php):
 
 ```php
 <a href="search.php?q=<?=urlencode($_GET['q'])?>">
@@ -402,13 +450,18 @@ search.php?q%3D%3Cscript%3Ealert(%22hacked%22)%3C%2Fscript%3E
 
 ---
 
-# Preventing
+# Preventing : Advanced Techniques
 
-* To write untrusted data in other locations (attributes, tag names, comments, ...), use a **context-aware encoder** like [PHP-ESAPI](https://github.com/OWASP/PHP-ESAPI).
 
-* If you want to allow some HTML, [strip_tags()](http://php.net/manual/en/function.strip-tags.php) **might not be enough**.
+Context-aware Encoding:
 
-* Use a more advanced **HTML filter library** like [HTML Purifier](http://htmlpurifier.org/).
+ * When writing untrusted data in various **locations** (attributes, tag names, comments, etc.), use context-aware encoders like [PHP-ESAPI](https://github.com/OWASP/PHP-ESAPI).
+
+Allowing HTML?:
+
+ * [strip_tags()](https://www.php.net/manual/en/function.strip-tags.php) **isn't enough**. 
+ * Use libraries like [HTML Purifier](http://htmlpurifier.org/) to properly **filter** and **sanitize** user-generated HTML.
+ * HTML Purifier ensures only safe HTML is allowed, removing malicious tags or attributes while keeping valid content.
 
 ---
 
@@ -439,14 +492,17 @@ Not enough in all locations; use **context-aware encoders**. For example [OWASP 
 
 # Cookies
 
-* Preventing all XSS flaws is hard.
-* To mitigate the impact of an XSS flaw on your site, set the [HTTPOnly](https://owasp.org/www-community/HttpOnly) flag on your session cookie using [session-set-cookie-params](http://php.net/manual/en/function.session-set-cookie-params.php) before starting your session:
+* Preventing all XSS flaws is **difficult**, but you can **mitigate the impact** by securing your session cookies.
+* Set the [HTTPOnly](https://owasp.org/www-community/HttpOnly) flag on your **session cookie** to **prevent** client-side scripts from **accessing** the cookie. 
+* This is a key defense against XSS attacks **targeting session cookies**.
+
+Use [session-set-cookie-params](http://php.net/manual/en/function.session-set-cookie-params.php) before starting your session:
 
 ```php
 session_set_cookie_params(0, '/', 'www.fe.up.pt', true, true);
 ```
 
-If the HttpOnly flag is included in the HTTP response header, the cookie cannot be accessed through a client-side script.
+If the HttpOnly flag is included in the HTTP response header, the cookie **cannot be accessed** through a client-side script.
 
 ---
 
@@ -473,13 +529,16 @@ name: csrf
 
 # Cross-site Request Forgery (CSRF)
 
-The application allows a user to submit a **state-changing request** that does **not include anything secret**.
+CSRF occurs when an attacker tricks a user into submitting a state-changing request without their knowledge or consent.
+
+**Example**: The application allows state-changing requests that don’t require any secret (e.g., an authentication token).
 
 ```http
 http://foo.com/transfer.php?amount=1500&destination=4673243
 ```
 
-The attacker constructs a request that will **transfer money** from the victim’s account to the attacker’s account, and then **embeds** this attack in an image request stored on various sites under the attacker’s control:
+**Example**: The attacker constructs a malicious request that performs a state-changing action (e.g., transferring money) and embeds it in a hidden image request:
+
 
 ```html
 <img
@@ -487,16 +546,17 @@ The attacker constructs a request that will **transfer money** from the victim�
   width="0" height="0" />
 ```
 
-If the victim visits any of the attacker’s sites while already authenticated to *foo.com*, these forged requests will automatically include the user’s session info, authorizing the attacker’s request.
+If the victim is already authenticated to <code>foo.com</code>, this request will automatically be sent with the victim’s session information, performing the action without the victim’s knowledge.
 
 ---
 
-# Preventing (NOT)
+# Things that do NOT WORK
+
+Common techniques like secret cookies, POST-only restrictions, and multi-step transactions **are not sufficient** to prevent CSRF.
 
 * Using a Secret Cookie
 * Only Accepting POST Requests
 * Multi-Step transactions
-* URL Rewriting
 
 These methods **DO NOT WORK**
 
@@ -504,10 +564,14 @@ These methods **DO NOT WORK**
 
 # Preventing
 
+Effective prevention requires using **anti-CSRF tokens** and ensuring proper request validation.
+
 * **Generate** a random token per session
 * **Store** this token as a session variable
 * **Send** this token as part of every (sensitive) request
 * **Verify** the token is correct on every page
+
+[OWASP CSRF](https://owasp.org/www-community/attacks/csrf)
 
 ---
 
