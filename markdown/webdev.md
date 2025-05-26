@@ -149,6 +149,54 @@ We can use the **HTTP Accept header** to allow using a single server-side script
 
 ---
 
+# The Shadow DOM
+
+Templates are inert HTML fragments that are **not rendered** until cloned.
+
+The Shadow DOM allows **encapsulation** of HTML/CSS, avoiding style collisions.
+
+```html
+<template id="user-template"> <!--This is not rendered -->
+  <style> <!--This is only valid for this template -->
+    .username { font-weight: bold; }
+  </style>
+  <div class="user">
+    Hello, <span class="username"></span>!
+  </div>
+</template>
+
+<div id="container"></div>
+```
+
+Let's try to instantiate the template inside the container...
+
+---
+
+# The Shadow DOM
+
+To instantiate a new user card, we just clone it, modify it, and then insert it into the DOM.
+
+```javascript
+function createUserCard(name, container) {
+  const template = document.querySelector("#user-template")
+
+  if (!template || !container) return
+
+  const userCard = document.createElement("div")
+  const shadow = userCard.attachShadow({ mode: "open" })
+  const clone = template.content.cloneNode(true)
+
+  clone.querySelector(".username").textContent = name
+  shadow.appendChild(clone)
+  container.appendChild(userCard)
+}
+
+createUserCard('John Doe', document.querySelector("#container"))
+
+```
+
+---
+
 # Progressive Web Apps (PWA)
 
 [PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps): Apps that have the [capabilities](https://whatwebcando.today/) of **native** apps with the **reach** of **web** apps:
