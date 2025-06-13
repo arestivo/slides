@@ -897,7 +897,7 @@ console.log('Zip code is 4100-122'.search(/(\d{4})(?:-(\d{3}))?/))
 Result:
 
 ```bash
-15
+12
 ```
 
 ---
