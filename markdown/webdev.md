@@ -110,10 +110,11 @@ function parse_fragment() {
     const article = /#article\/(\d+)/.exec(hash)
     if (article) return load_article(article[1])
 
-  } 
-
-  load_articles()    
+  } else load_articles()
 }
+
+parse_fragement()
+
 ```
 
 ---
