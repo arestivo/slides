@@ -428,11 +428,11 @@ After finding a *true* condition, PHP continues to execute the statements until 
 ```php
 switch($name) {
   case "John":
-    do_something():
-    do_something_more():
+    do_something();
+    do_something_more();
     break;
   case "Mary":
-    do_something():
+    do_something();
     break;
   default:
     do_something_else();    
