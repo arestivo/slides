@@ -486,12 +486,12 @@ The separation of a class's **interface** (the methods and properties it exposes
 public class BankAccount {
   private double balance = 0;
 
-  public deposit(double amount) {
+  public void deposit(double amount) {
     if (amount <= 0) throw new Exception("Invalid amount");
     this.balance += amount;
   }
 
-  public withdraw(double amount) {
+  public void withdraw(double amount) {
     if (amount <= 0) throw new Exception("Invalid amount");
     if (amount > balance) throw new Exception("Not enough money");
     this.balance -= amount;
