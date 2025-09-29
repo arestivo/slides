@@ -557,7 +557,7 @@ public class Doctor extends Person {
 ### Polymorphism and Inheritance in Java
 
 ~~~java
-public printPersonName(Person person) {
+public void printPersonName(Person person) {
   System.out.println(person.getName())
 }
 ~~~
@@ -579,7 +579,7 @@ printPersonName(doctor);
 ### Polymorphism and Inheritance in Java
 
 ~~~java
-public printPeopleName(List<Person> people) {
+public void printPeopleName(List<Person> people) {
   for (Person p : people) 
     System.out.println(p.getName())
 }
@@ -684,6 +684,9 @@ public class Light {
 
 ```java
 public class Light {
+  private boolean isOn;
+  private int level;
+
   public void turnOn() {
     this.isOn = true;
   }
@@ -753,6 +756,9 @@ class, you **do not** need to use *this*. But you should, for **readability** pu
 
 ```java
 public class Light {
+  private boolean isOn;
+  private int level;
+
   public Light() {
     this.isOn = false;
     this.level = 50;
