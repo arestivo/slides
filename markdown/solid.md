@@ -319,7 +319,7 @@ If this method really **needs** this to hold, then it has to **test** if the Rec
 
 ```java
 public void doSomething(Rectangle r) {
-  if (!(r instanceof Square) {
+  if (!(r instanceof Square)) {
     // ...
   }
 }
