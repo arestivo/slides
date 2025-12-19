@@ -102,7 +102,7 @@ A transition may have a trigger, a guard and an effect.
 ![](assets/uml-state/transition.svg)
 
 * **Trigger** is the cause of the transition, which could be a signal, an event, a change in some condition, or the passage of time.
-* **Guard**" is a condition which must be true in order for the trigger to cause the transition. 
+* **Guard** is a condition which must be true in order for the trigger to cause the transition. 
 * **Effect** is an action which will be invoked directly on the object that owns the state machine as a result of the transition.
 
 ---
