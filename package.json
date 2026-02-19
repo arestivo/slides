@@ -8,6 +8,10 @@
   "license": "GPL-3.0-or-later",
   "private": false,
   "scripts": {
-    "sync": "rsync -r --info=progress2 --exclude='.git' . arestivo@pinguim.fe.up.pt:~/public_html/slides"
+    "sync": "lftp -e 'set mirror:use-pget-n 5; mirror -R --verbose --exclude ^.git --exclude node_modules ./ public_html/slides; bye' sftp://up353972@pages.up.pt",
+    "serve": "http-server -p 8080"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
   }
 }

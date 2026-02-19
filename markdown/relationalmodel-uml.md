@@ -420,9 +420,9 @@ Part (<u>code</u>, name, type, #number &rarr; Computer [NN])
 
 ---
 
-# Qualified Associations
+# Qualified Associations (*)
 
-![](assets/uml/qualified.svg)
+![](assets/uml-database/association-qualified.svg)
 
 --
 
@@ -438,6 +438,26 @@ Member (<u>id</u>, name, address, phone)
 Joined (<u>#code &rarr; Club</u>, <u>#id &rarr; Member</u>, number [NN]) 
 {UK: code, number}
 ]
+
+---
+
+# Qualified Associations (1)
+
+![](assets/uml-database/association-qualified-one.svg)
+
+--
+
+* **Many-to-one** relationship (foreign key from the **many** to the **one**);
+* The **unique key** ensures the unicity of the qualifier attribute.
+
+.relational_example[
+School (<u>code</u>, title)
+
+Student (<u>id</u>, name, address, phone, #school &rarr; School [NN])
+{UK: number, school}
+
+]
+
 
 ---
 

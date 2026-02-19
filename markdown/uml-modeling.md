@@ -288,7 +288,7 @@ This means we **do not** want to have **courses** in our database **without** a 
 
 ---
 
-# Qualified Association
+# Qualified Association (*)
 
 * Qualified associations define an **attribute** used to **distinguish** between the associated instance.
 
@@ -296,7 +296,19 @@ This means we **do not** want to have **courses** in our database **without** a 
 
 * In this example, a club can have **many members**, but **only one for each number**. 
 * The members can belong to **many clubs**, and there is no restriction on their number. 
-* A member can have the same number in two different clubs.
+* We can have two members with the same number as long as they are in two different clubs.
+
+---
+
+# Qualified Association (1)
+
+* Qualified associations define an **attribute** used to **distinguish** between the associated instance.
+
+![](assets/uml-database/association-qualified-one.svg)
+
+* In this example, a school can have **many students**, but **only one for each number**. 
+* The students can belong to **just one school**.
+* We can have two students with the same number as long as they are in two different schools.
 
 ---
 
