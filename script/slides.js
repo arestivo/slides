@@ -3,6 +3,7 @@ const hljs = remark.highlighter.engine;
 const query = window.location.search
 const params = new URLSearchParams(query)
 const slides = params.get('s')
+const darkThemeStorageKey = 'slides-dark-theme'
 
 if (slides) {
   const markdown = fetch(`markdown/${slides.toLowerCase()}.md`).then(r => {if (!r.ok) window.location = 'https:www.fe.up.pt/~arestivo/'})
@@ -19,12 +20,27 @@ if (slides) {
 
   document.title = `André Restivo :: ${slides}`
 
+  function setDarkTheme(enabled) {
+    document.body.classList.toggle('dark-theme', enabled)
+  }
+
+  function toggleDarkTheme() {
+    const enabled = !document.body.classList.contains('dark-theme')
+    setDarkTheme(enabled)
+    try {
+      window.localStorage.setItem(darkThemeStorageKey, enabled ? '1' : '0')
+    } catch (e) {
+      // Ignore storage errors; visual toggle still works.
+    }
+  }
+
   function initialize_search() {
     if (document.querySelector('.remark-slides-area') != null) {
       RemarkSearch.create();
       document.addEventListener('keyup', (e) => { if (e.altKey && e.key == 'l') laserToggle() })
       document.addEventListener('keyup', (e) => { if (e.altKey && e.key == 'x') paragraphFocusToggle() })
       document.addEventListener('keyup', (e) => { if (e.altKey && e.key == 'c') toggleColor() })
+      document.addEventListener('keyup', (e) => { if (e.metaKey && e.key.toLowerCase() == 'd') toggleDarkTheme() })
     } else setTimeout(initialize_search, 100)
   }
 
@@ -53,6 +69,12 @@ if (slides) {
     } else setTimeout(initialize_color, 100)
   }
 
+
+  try {
+    setDarkTheme(window.localStorage.getItem(darkThemeStorageKey) === '1')
+  } catch (e) {
+    setDarkTheme(false)
+  }
 
   setTimeout(initialize_search, 100)
   setTimeout(initialize_color, 100)

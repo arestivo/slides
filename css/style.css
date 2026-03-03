@@ -6,11 +6,23 @@ body {
   --box-bg-color: #fef9f8;
 }
 
+body.dark-theme {
+  --main-color: #ececec;
+  --highlight-color: #ff916f;
+  --light-bg-color: #111417;
+  --box-bg-color: #1f252b;
+}
+
 body.laser {
   cursor: url(../images/laser.png), auto;
 }
 
 .remark-slide-content {
+  background-color: var(--light-bg-color);
+  color: var(--main-color);
+}
+
+body.dark-theme .remark-slide-content:not(.inverse) {
   background-color: var(--light-bg-color);
   color: var(--main-color);
 }
@@ -187,6 +199,10 @@ img {
   max-width: 90%;
 }
 
+body.dark-theme img {
+  background-color: #fff;
+}
+
 .indexlink {
   bottom: 12px;
   position: absolute;
@@ -229,6 +245,10 @@ table td:first-child {
   background-color: inherit;
 }
 
+body.dark-theme table td:first-child {
+  color: #ececec;
+}
+
 blockquote {
   font-size: 0.7em;
   background: #f9f9f9;
@@ -237,6 +257,11 @@ blockquote {
   padding: 0.5em 10px;
   quotes: "\201C" "\201D" "\2018" "\2019";
   font-style: italic;
+}
+
+body.dark-theme blockquote {
+  background: #1f252b;
+  border-left-color: #4f5d6a;
 }
 
 blockquote p {
@@ -250,6 +275,10 @@ abbr {
 
 small {
   color: #666;
+}
+
+body.dark-theme small {
+  color: #a9b4bf;
 }
 
 .relation table {
@@ -299,6 +328,18 @@ small {
   text-align: center;
 }
 
+body.dark-theme .sqltable table td {
+  background-color: #161c22;
+  color: #ececec;
+  border-color: #4f5d6a;
+}
+
+body.dark-theme .sqltable table th {
+  background-color: #242d37;
+  color: #ececec;
+  border-color: #4f5d6a;
+}
+
 .sqltable.smaller td,
 .sqltable.smaller th {
   padding: 5px 1em;
@@ -315,8 +356,17 @@ small {
   padding: 0.5em;
 }
 
+body.dark-theme .simple table tr:first-child th {
+  border-top-color: #4f5d6a;
+  border-bottom-color: #4f5d6a;
+}
+
 .simple table td {
   color: black
+}
+
+body.dark-theme .simple table td {
+  color: #ececec;
 }
 
 .simple table td {

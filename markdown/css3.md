@@ -1571,8 +1571,8 @@ table, th, td {
 
 .example[
 <table style="border-collapse: separate">
-  <tr><td style="border: 1px solid red">A</td><td style="border: 1px solid red">B</td></tr>
-  <tr><td style="border: 1px solid red">C</td><td style="border: 1px solid red">D</td></tr>
+  <tr><td style="border: 1px solid red; color: #000">A</td><td style="border: 1px solid red; color: #000">B</td></tr>
+  <tr><td style="border: 1px solid red; color: #000">C</td><td style="border: 1px solid red; color: #000">D</td></tr>
 </table>
 ]
 
@@ -1591,10 +1591,10 @@ td    { border: 1px solid; }
 ```
 .example[
 separate
-<table style="border-collapse: separate"><tr><td style="border: 1px solid">A</td><td style="border: 1px solid">B</td></tr></table>
+<table style="border-collapse: separate"><tr><td style="border: 1px solid; color: #000">A</td><td style="border: 1px solid; color: #000">B</td></tr></table>
 <br>
 collapse
-<table style="border-collapse: collapse"><tr><td style="border: 1px solid">A</td><td style="border: 1px solid">B</td></tr></table>
+<table style="border-collapse: collapse"><tr><td style="border: 1px solid; color: #000">A</td><td style="border: 1px solid; color: #000">B</td></tr></table>
 ]
 
 ---
