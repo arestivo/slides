@@ -1126,7 +1126,7 @@ mm, cm, in, pt and pc
 
 * Also considered an **absolute length**.
 * On low dpi screens, the **pixel (px)** represents one device pixel (**dot**).
-* On higher dpi devices, most devices these days, a pixel represents an integer number of device pixels so that 1in ≈ 96px.
+* On higher dpi devices, most devices these days, a pixel represents an integer number of device pixels, so that 1in ≈ 96px.
 
 ---
 # Font-relative units
@@ -2058,6 +2058,31 @@ Floats go right or left until they find **another float** or the **parent contai
  * **hidden**:	The overflow is clipped, and the rest of the content will be invisible.
  * **scroll**:	The overflow is clipped, but a scroll bar is added to see the rest of the content.
  * **auto**:	If overflow is clipped, a scroll bar should be added to see the rest of the content.
+
+---
+
+# Units Revisited (em)
+
+|Property Type	| Reference Point	| Key Behavior |
+|---------------|-----------------|--------------|
+| font-size	    | Parent's font-size	| Nested elements get exponentially larger/smaller. |
+| width / height	| Element's own font-size	| Box size scales perfectly with the text inside it. |
+| padding / margin	| Element's own font-size	| Spacing grows/shrinks as the text size changes. |
+| border-width	| Element's own font-size	| Borders that scale with text. Prefer px. |
+
+---
+
+# Units Revisited (%)
+
+|Property Type	| Reference Point	| Key Behavior |
+|---------------|-----------------|--------------|
+| font-size	 | Parent's font-size	| Identical to em (150%=1.5em). |
+| width	| Parent's width	| Relative to the parent's content box. |
+| height	| Parent's height	| Only works if the parent has a fixed height defined. |
+| padding / margin	| Parent's width	| Vertical margins/padding use parent width, not height! |
+| border	| None	| Borders can't be set using percentages. Use px. |
+| left / right	| Parent's width	| Only applies if position is absolute, relative, or fixed. |
+| top / bottom	| Parent's height	| Only applies if position is absolute, relative, or fixed. |
 
 ---
 
@@ -3025,6 +3050,37 @@ Specificity Calculator: [http://specificity.keegan.st](http://specificity.keegan
  * **author**: The CSS rules defined by the page developer.
  * **user**: User defined preferences.
  * **default**: Browser defaults.
+
+---
+
+# Layers
+
+- Cascade Layers allow you to group your CSS into "buckets" and decide which bucket is more important, **regardless** of how **specific** the selectors are.
+
+- Sometimes a **generic rule** (like #menu p) is hard to override later in your CSS because it has **high specificity** (1,0,1). You end up writing longer and longer selectors just to change a color.
+
+- By using `@layer`, the order of the layer defines the winner. A "later" layer **always** beats an "earlier" layer.
+
+---
+
+# Layers Example
+
+```css
+/* 1. Define the hierarchy at the top */
+@layer base, components;
+
+@layer base {
+  /* This has high specificity (1, 0, 1) */
+  #menu p { color: red; } 
+}
+
+@layer components {
+  /* This has low specificity (0, 0, 1) but WINS 
+     because 'components' comes after 'base' */
+  p { color: blue; } 
+}
+```
+Layers are between **origin** and **specificity** in the cascading order.
 
 ---
 
