@@ -86,7 +86,7 @@ Learn more: http://en.wikipedia.org/wiki/HTML#History
 
 **Aftermath**:
 
-- Internet Explorer won the war and decided to **stale** any **new developments**.
+- Internet Explorer won the war and decided to **stall** any **new developments**.
 - From the ashes of Netscape, [Firefox](assets/html5/nytimes-firefox-final.pdf) starts to gain market share.
 - Eventually, browsers decided to work together, and we now have a **much better** web landscape!
 
@@ -139,7 +139,7 @@ The content of a tag is everything between the opening and closing tags:
 <p>Some content</p>
 ```
 
-It can be text, but is can also be other tags:
+It can be text, but it can also be other tags:
 
 ```html
 <article>
@@ -201,7 +201,7 @@ The **id** and **class** attributes are used to easily identify a tag for manipu
 An HTML document **cannot** have two elements with the same **id**:
 
 ```html
-<img id="logo" src="logo.png>
+<img id="logo" src="logo.png">
 ```
 
 An HTML element can have more than one **class** (separated by whitespace).
@@ -895,8 +895,8 @@ They are very useful to set the *class* of each column without having to do it i
 
 ---
 
-template:inverse
-name:forms
+template: inverse
+name: forms
 # Forms
 
 ---
@@ -1144,7 +1144,7 @@ Upload: <form action="upload_file.php" method="post" enctype="multipart/form-dat
 
 # Hidden Input
 
-Inputs with type <a href"https://html.spec.whatwg.org/multipage/input.html#hidden-state-(type=hidden)">hidden</a> are not shown and are not meant to be changed by the user.
+Inputs with type <a href="https://html.spec.whatwg.org/multipage/input.html#hidden-state-(type=hidden)">hidden</a> are not shown and are not meant to be changed by the user.
 
 ```html
 <input type="hidden" name="username" value="mightymouse">
